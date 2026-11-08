@@ -1,3 +1,4 @@
+import { AJUSTES } from "./ajustes";
 import { jogadorDoClube } from "./clube";
 import { ESQUEMA_POSTOS, PESO_SETOR } from "./constantes";
 import { type Rng, limitar, poisson, sortearComPeso } from "./rng";
@@ -5,9 +6,10 @@ import type { Clube, Jogador, Posicao } from "./tipos";
 
 /** Placar de um jogo não assistido, por Poisson sobre a diferença de força. */
 export function placarRapido(rng: Rng, casa: Clube, visitante: Clube): [number, number] {
+  const { golsMandante, golsVisitante, escalaForca } = AJUSTES.simulacaoRapida;
   const diferenca = casa.forca - visitante.forca;
-  const lambdaCasa = 1.2 * Math.exp(diferenca / 11) * 1.1;
-  const lambdaVisitante = (1.12 * Math.exp(-diferenca / 11)) / 1.05;
+  const lambdaCasa = golsMandante * Math.exp(diferenca / escalaForca);
+  const lambdaVisitante = golsVisitante * Math.exp(-diferenca / escalaForca);
   return [poisson(rng, lambdaCasa), poisson(rng, lambdaVisitante)];
 }
 
@@ -40,7 +42,8 @@ export function estatisticasRapidas(rng: Rng, clube: Clube, golsPro: number, gol
       rng,
       deLinha,
       (e) =>
-        (PESO_SETOR[e.posto].a + 0.1) * (e.jogador.at.FIN / 60) ** 1.6 +
+        (PESO_SETOR[e.posto].a + 0.1) *
+          (e.jogador.at.FIN / 60) ** AJUSTES.simulacaoRapida.expoenteFinalizador +
         (e.posto === "ZAG" ? 0.07 * (e.jogador.at.CAB / 60) ** 2 : 0),
     );
     autor.gols++;

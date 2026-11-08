@@ -1,4 +1,5 @@
 export * from "./tipos";
+export * from "./ajustes";
 export * from "./rng";
 export * from "./constantes";
 export * from "./jogador";

@@ -216,7 +216,8 @@ const ORDEM_DE_ESCALACAO: readonly Posicao[] = [
 
 /**
  * Escala o time no esquema, dando preferência aos `preferidos` (por nome) e só
- * trocando quando há alguém claramente melhor para o posto. Ignora lesionados e suspensos.
+ * trocando quando há alguém claramente melhor para o posto. Ignora lesionados e suspensos,
+ * a não ser que o elenco não tenha 11 disponíveis.
  */
 export function escalarAutomatico(clube: Clube, esquema: Esquema, preferidos?: readonly string[]): string[] {
   const postos = ESQUEMA_POSTOS[esquema];
@@ -242,7 +243,12 @@ export function escalarAutomatico(clube: Clube, esquema: Esquema, preferidos?: r
       }
     }
     escolhido ??= clube.jogadores.find(livre) ?? null;
-    if (!escolhido) throw new Error(`${clube.nome} não tem 11 jogadores disponíveis`);
+    // Elenco curto demais (lesões + suspensões): entra quem estiver menos longe de voltar.
+    escolhido ??=
+      clube.jogadores
+        .filter((j) => !usados.has(j.id))
+        .sort((a, b) => a.susp + a.lesao - (b.susp + b.lesao))[0] ?? null;
+    if (!escolhido) throw new Error(`${clube.nome} tem menos de 11 jogadores no elenco`);
     usados.add(escolhido.id);
     escalacao[i] = escolhido.id;
   }

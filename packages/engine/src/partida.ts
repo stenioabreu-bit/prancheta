@@ -1,3 +1,4 @@
+import { AJUSTES } from "./ajustes";
 import { escalarAutomatico, jogadorDoClube, melhorPara } from "./clube";
 import {
   ESQUEMA_POSTOS,
@@ -471,7 +472,12 @@ function finalizador(m: Partida, lado: LadoPartida, tipo: TipoLance): PostoEmCam
     const w = Math.max(0.05, PESO_SETOR[p.posto].a + 0.16 * i.apoio);
     const at = p.atual.jogador.at;
     const s = tipo === "cruz" ? at.CAB : at.FIN;
-    return (w * w + 0.07) * (s / 60) ** 2 * (tipo === "cruz" ? 1 + 0.9 * i.alvo : 1);
+    const { expoentePesoPosicao, basePesoPosicao, expoenteFinalizador } = AJUSTES.partida;
+    return (
+      (w ** expoentePesoPosicao + basePesoPosicao) *
+      (s / 60) ** expoenteFinalizador *
+      (tipo === "cruz" ? 1 + 0.9 * i.alvo : 1)
+    );
   });
 }
 
@@ -526,13 +532,17 @@ function lance(
   let xg = min + rng.proximo() * (max - min);
   if (tipo === "parada") xg *= 1 + atk.bonus.parada;
   if (tipo === "cruz") xg *= 0.7 + (sh.jogador.at.CAB - rd.D * 0.9) / 70;
-  xg = limitar(xg * (1 + (ra.A - rd.D) / 120), 0.01, 0.7);
+  xg = limitar(xg * (1 + (ra.A - rd.D) / AJUSTES.partida.escalaXgPorForca), 0.01, 0.7);
   atk.est.chutes++;
   atk.est.xg += xg;
   if (tipo === "parada") atk.est.escanteios++;
   const fatorFinalizacao = (sh.jogador.at.FIN / 72) * fatorCondicao(sh.cond) * fatorMoral(sh.moral);
   const fatorGoleiro = (goleiro?.jogador.at.GOL ?? 40) / 72;
-  const pGol = limitar((0.84 * xg * fatorFinalizacao ** 1.6) / fatorGoleiro ** 1.1, 0.005, 0.85);
+  const pGol = limitar(
+    (0.84 * xg * fatorFinalizacao ** AJUSTES.partida.expoenteFinalizacaoNoGol) / fatorGoleiro ** 1.1,
+    0.005,
+    0.85,
+  );
   const r = rng.proximo();
   const nomeGoleiro = goleiro?.jogador.nome ?? "o goleiro";
   if (r < pGol) {
@@ -633,7 +643,7 @@ export function passo(m: Partida): ResultadoDoPasso {
   const ia = somaDeInstrucoes(A);
   let posseCasa =
     0.5 +
-    (rh.M - ra.M) / 70 +
+    (rh.M - ra.M) / AJUSTES.partida.escalaPossePorMeio +
     mh.possePorPressao -
     ma.possePorPressao +
     mh.possePorRitmo -
@@ -652,8 +662,17 @@ export function passo(m: Partida): ResultadoDoPasso {
   const mDef = atk === H ? ma : mh;
   const iAtk = atk === H ? ih : ia;
 
-  const razao = (rAtk.A * mAtk.ataque) / (rDef.D * mDef.defesa);
-  const pChance = 0.19 * razao ** 2.1 * mAtk.ritmoDeChance * (1 + 0.035 * iAtk.passe);
+  const { vantagemMandante, chanceBase, expoenteRazao, expoenteTatica } = AJUSTES.partida;
+  const mando = atk === H ? vantagemMandante : 1 / vantagemMandante;
+  const razaoDeForca = rAtk.A / rDef.D;
+  const razaoTatica = mAtk.ataque / mDef.defesa;
+  const pChance =
+    chanceBase *
+    razaoDeForca ** expoenteRazao *
+    razaoTatica ** expoenteTatica *
+    mando *
+    mAtk.ritmoDeChance *
+    (1 + 0.035 * iAtk.passe);
   const rouboNaPressao = atk.tatica.pressao === 2 ? 0.025 * (rAtk.M / Math.max(rDef.M, 40)) : 0;
   const riscoDeContra =
     (atk.tatica.contra ? 1.6 : 1) *
@@ -673,7 +692,7 @@ export function passo(m: Partida): ResultadoDoPasso {
     if (rouboNaPressao > 0 && rng.proximo() < rouboNaPressao * 8) opcoes.push(["press", 0.5]);
     const tipo = sortearComPeso(rng, opcoes, (o) => o[1])[0];
     lance(m, atk, def, tipo, rAtk, rDef);
-  } else if (rng.proximo() < 0.13) {
+  } else if (rng.proximo() < AJUSTES.partida.chanceFalta) {
     const faltoso = escolherEmCampo(
       m,
       def,
@@ -685,12 +704,13 @@ export function passo(m: Partida): ResultadoDoPasso {
     const temperamento = f.jogador.perso === "temperamental" ? 1.6 : 1;
     const textoFalta = preencher(sortear(rng, NARRACAO.falta), { p: f.jogador.nome, v: vitima.jogador.nome });
     const pCartao =
-      0.11 *
+      AJUSTES.partida.chanceCartao *
+      (f.amarelo ? AJUSTES.partida.cautelaComAmarelo : 1) *
       temperamento *
       (def.tatica.pressao === 2 ? 1.25 : 1) *
       (1 + 0.4 * instrucao(def, faltoso).desarme);
     if (rng.proximo() < pCartao) {
-      if (f.amarelo || rng.proximo() < 0.04) {
+      if (f.amarelo || rng.proximo() < AJUSTES.partida.chanceVermelhoDireto) {
         expulsar(m, def, faltoso);
       } else {
         f.amarelo = true;

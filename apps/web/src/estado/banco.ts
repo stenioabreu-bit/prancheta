@@ -5,7 +5,7 @@ import { type IDBPDatabase, openDB } from "idb";
 /** Pacote importado pelo jogador: o JSON e as imagens de escudo (por id de clube). */
 export interface PacoteImportado {
   pacote: PacoteDados;
-  escudos: Record<string, Blob>;
+  escudos: Record<string, Blob | string>;
 }
 
 interface Esquema {

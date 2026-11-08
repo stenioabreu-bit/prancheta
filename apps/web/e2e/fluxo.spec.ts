@@ -7,11 +7,11 @@ async function foto(page: Page, nome: string) {
 
 async function novoJogo(page: Page) {
   await page.goto("/");
-  await page.getByLabel("Seu nome").fill("Teste");
-  await page.getByRole("button", { name: /Real Planalto/ }).click();
+  await page.getByLabel("Nome do técnico").fill("Teste");
+  await page.getByRole("button", { name: /Corinthians/ }).click();
   await foto(page, "01-novo-jogo");
-  await page.getByRole("button", { name: "Assumir o clube" }).click();
-  await expect(page.getByRole("heading", { level: 1, name: "Real Planalto" })).toBeVisible();
+  await page.getByRole("button", { name: /Assinar com/ }).click();
+  await expect(page.getByRole("heading", { level: 1, name: "Corinthians" })).toBeVisible();
 }
 
 test.beforeEach(async ({ page }) => {

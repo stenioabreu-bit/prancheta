@@ -1395,3 +1395,203 @@ tr.me.pisca td {
     font-size: 60px;
   }
 }
+
+/* ---------- nova carreira ---------- */
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.carreira-nova {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-block: 0 24px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.cn-topo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.marca {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: .02em;
+  color: var(--accent);
+}
+.cn-passo {
+  font-family: var(--f-display);
+  font-size: 18px;
+  color: var(--muted);
+  flex: 1;
+  min-width: 160px;
+}
+.cn-base select {
+  width: auto;
+  padding: 7px 10px;
+  font-size: 13px;
+}
+.cn-importar {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.cn-corpo {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+  flex: 1;
+}
+.cn-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.cn-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+}
+.cn-clube {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  text-align: center;
+  min-width: 0;
+}
+.cn-clube:hover {
+  border-color: var(--muted);
+}
+.cn-clube[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+}
+.cn-clube-nome {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.15;
+  min-height: 2.3em;
+  display: flex;
+  align-items: center;
+}
+.cn-forca {
+  width: 100%;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--surface2);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+}
+.cn-forca::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--f);
+  background: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.cn-forca b {
+  position: relative;
+  font-size: 12px;
+}
+.cn-lado {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+.dossie {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.dossie-topo {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.dossie-nome {
+  font-size: 30px;
+}
+.dossie-ficha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0;
+}
+.dossie-ficha div {
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.dossie-ficha dt {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+.dossie-ficha dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+}
+.dossie-jog {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  padding: 4px 0;
+  border-top: 1px solid var(--line);
+}
+.vazio-dossie {
+  min-height: 200px;
+  justify-content: center;
+}
+.cn-contrato {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.cn-contrato label {
+  font-size: 13px;
+  font-weight: 600;
+}
+@media (min-width: 960px) {
+  .cn-corpo {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    align-items: start;
+  }
+  .cn-lado {
+    position: sticky;
+    top: 16px;
+  }
+}

@@ -59,7 +59,7 @@ export const useLoja = create<Loja>((set, get) => ({
   async iniciar() {
     const jogo = await carregar(armazenamento);
     const escudos = jogo ? await escudosDoPacote(await lerConfig("pacoteDoJogo")) : {};
-    set({ jogo, escudos, pronto: true });
+    set(jogo ? { jogo, escudos, pronto: true } : { pronto: true });
   },
 
   async comecar({ pacoteId, tecnico, clubeId }) {

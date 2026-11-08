@@ -1,0 +1,8325 @@
+{
+ "formato": 1,
+ "id": "teste-real",
+ "nome": "Brasileirão 2026 (teste pessoal, nomes reais)",
+ "ficticio": false,
+ "temporada": 2026,
+ "divisoes": {
+  "A": [
+   {
+    "id": "corinthians",
+    "nome": "Corinthians",
+    "sigla": "COR",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-2-3-1",
+    "estilo": "equilibrado",
+    "elenco": [
+     [
+      "Hugo Souza",
+      "GOL",
+      77,
+      {
+       "ATQ": 34,
+       "FIN": 32,
+       "CTL": 53,
+       "PAS": 60,
+       "VEL": 54,
+       "FIS": 75,
+       "RES": 65,
+       "DEF": 51,
+       "CAB": 55,
+       "GOL": 77,
+       "perso": "lider"
+      }
+     ],
+     [
+      "Kauê",
+      "GOL",
+      66,
+      {
+       "ATQ": 25,
+       "FIN": 20,
+       "CTL": 44,
+       "PAS": 52,
+       "VEL": 49,
+       "FIS": 65,
+       "RES": 60,
+       "DEF": 35,
+       "CAB": 44,
+       "GOL": 63,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Felipe Longo",
+      "GOL",
+      64,
+      {
+       "ATQ": 22,
+       "FIN": 20,
+       "CTL": 36,
+       "PAS": 50,
+       "VEL": 46,
+       "FIS": 57,
+       "RES": 53,
+       "DEF": 32,
+       "CAB": 41,
+       "GOL": 62,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Matheuzinho",
+      "LD",
+      74,
+      {
+       "ATQ": 70,
+       "FIN": 57,
+       "CTL": 71,
+       "PAS": 74,
+       "VEL": 80,
+       "FIS": 74,
+       "RES": 77,
+       "DEF": 75,
+       "CAB": 70,
+       "GOL": 26,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Pedro Milans",
+      "LD",
+      70,
+      {
+       "ATQ": 68,
+       "FIN": 52,
+       "CTL": 67,
+       "PAS": 70,
+       "VEL": 71,
+       "FIS": 64,
+       "RES": 72,
+       "DEF": 70,
+       "CAB": 61,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Jacaré",
+      "LD",
+      62,
+      {
+       "ATQ": 56,
+       "FIN": 50,
+       "CTL": 61,
+       "PAS": 61,
+       "VEL": 69,
+       "FIS": 62,
+       "RES": 63,
+       "DEF": 63,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Matheus Bidu",
+      "LE",
+      75,
+      {
+       "ATQ": 72,
+       "FIN": 64,
+       "CTL": 69,
+       "PAS": 72,
+       "VEL": 80,
+       "FIS": 75,
+       "RES": 83,
+       "DEF": 75,
+       "CAB": 69,
+       "GOL": 22,
+       "perso": "profissional",
+       "alt": [
+        "PE"
+       ]
+      }
+     ],
+     [
+      "Fabrizio Angileri",
+      "LE",
+      71,
+      {
+       "ATQ": 62,
+       "FIN": 59,
+       "CTL": 71,
+       "PAS": 74,
+       "VEL": 76,
+       "FIS": 71,
+       "RES": 73,
+       "DEF": 69,
+       "CAB": 66,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Hugo",
+      "LE",
+      68,
+      {
+       "ATQ": 63,
+       "FIN": 56,
+       "CTL": 68,
+       "PAS": 66,
+       "VEL": 75,
+       "FIS": 63,
+       "RES": 73,
+       "DEF": 68,
+       "CAB": 64,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Gustavo Henrique",
+      "ZAG",
+      74,
+      {
+       "ATQ": 56,
+       "FIN": 46,
+       "CTL": 62,
+       "PAS": 72,
+       "VEL": 66,
+       "FIS": 76,
+       "RES": 74,
+       "DEF": 74,
+       "CAB": 82,
+       "GOL": 21,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "André Ramalho",
+      "ZAG",
+      73,
+      {
+       "ATQ": 49,
+       "FIN": 49,
+       "CTL": 67,
+       "PAS": 68,
+       "VEL": 67,
+       "FIS": 74,
+       "RES": 72,
+       "DEF": 76,
+       "CAB": 73,
+       "GOL": 27,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Gabriel Paulista",
+      "ZAG",
+      73,
+      {
+       "ATQ": 54,
+       "FIN": 46,
+       "CTL": 63,
+       "PAS": 64,
+       "VEL": 67,
+       "FIS": 75,
+       "RES": 73,
+       "DEF": 75,
+       "CAB": 79,
+       "GOL": 27,
+       "perso": "lider"
+      }
+     ],
+     [
+      "João Pedro",
+      "ZAG",
+      68,
+      {
+       "ATQ": 45,
+       "FIN": 41,
+       "CTL": 58,
+       "PAS": 63,
+       "VEL": 62,
+       "FIS": 68,
+       "RES": 63,
+       "DEF": 73,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Iago Machado",
+      "ZAG",
+      62,
+      {
+       "ATQ": 41,
+       "FIN": 38,
+       "CTL": 54,
+       "PAS": 57,
+       "VEL": 57,
+       "FIS": 65,
+       "RES": 58,
+       "DEF": 66,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Yago Melo",
+      "ZAG",
+      62,
+      {
+       "ATQ": 37,
+       "FIN": 39,
+       "CTL": 52,
+       "PAS": 57,
+       "VEL": 55,
+       "FIS": 66,
+       "RES": 59,
+       "DEF": 65,
+       "CAB": 67,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Breno Bidon",
+      "MC",
+      76,
+      {
+       "ATQ": 73,
+       "FIN": 74,
+       "CTL": 78,
+       "PAS": 79,
+       "VEL": 73,
+       "FIS": 74,
+       "RES": 78,
+       "DEF": 73,
+       "CAB": 65,
+       "GOL": 25,
+       "perso": "jovem",
+       "alt": [
+        "VOL",
+        "MEI"
+       ]
+      }
+     ],
+     [
+      "Raniele",
+      "VOL",
+      72,
+      {
+       "ATQ": 64,
+       "FIN": 59,
+       "CTL": 70,
+       "PAS": 72,
+       "VEL": 65,
+       "FIS": 73,
+       "RES": 78,
+       "DEF": 76,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "André",
+      "VOL",
+      72,
+      {
+       "ATQ": 60,
+       "FIN": 64,
+       "CTL": 71,
+       "PAS": 75,
+       "VEL": 67,
+       "FIS": 72,
+       "RES": 79,
+       "DEF": 74,
+       "CAB": 72,
+       "GOL": 26,
+       "perso": "jovem",
+       "alt": [
+        "MC"
+       ]
+      }
+     ],
+     [
+      "Charles",
+      "VOL",
+      70,
+      {
+       "ATQ": 62,
+       "FIN": 56,
+       "CTL": 66,
+       "PAS": 67,
+       "VEL": 61,
+       "FIS": 76,
+       "RES": 71,
+       "DEF": 74,
+       "CAB": 64,
+       "GOL": 23,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Allan",
+      "VOL",
+      70,
+      {
+       "ATQ": 62,
+       "FIN": 62,
+       "CTL": 65,
+       "PAS": 71,
+       "VEL": 65,
+       "FIS": 69,
+       "RES": 77,
+       "DEF": 76,
+       "CAB": 67,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Alex Santana",
+      "MC",
+      69,
+      {
+       "ATQ": 70,
+       "FIN": 63,
+       "CTL": 69,
+       "PAS": 70,
+       "VEL": 63,
+       "FIS": 67,
+       "RES": 69,
+       "DEF": 61,
+       "CAB": 62,
+       "GOL": 22,
+       "perso": "tranquilo",
+       "alt": [
+        "VOL"
+       ]
+      }
+     ],
+     [
+      "Dieguinho",
+      "MC",
+      66,
+      {
+       "ATQ": 61,
+       "FIN": 63,
+       "CTL": 71,
+       "PAS": 73,
+       "VEL": 60,
+       "FIS": 61,
+       "RES": 71,
+       "DEF": 59,
+       "CAB": 60,
+       "GOL": 20,
+       "perso": "jovem",
+       "alt": [
+        "MEI"
+       ]
+      }
+     ],
+     [
+      "Ryan",
+      "MC",
+      63,
+      {
+       "ATQ": 62,
+       "FIN": 61,
+       "CTL": 62,
+       "PAS": 69,
+       "VEL": 58,
+       "FIS": 61,
+       "RES": 65,
+       "DEF": 58,
+       "CAB": 53,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Bahia",
+      "MC",
+      62,
+      {
+       "ATQ": 58,
+       "FIN": 54,
+       "CTL": 67,
+       "PAS": 66,
+       "VEL": 61,
+       "FIS": 60,
+       "RES": 62,
+       "DEF": 61,
+       "CAB": 51,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Rodrigo Garro",
+      "MEI",
+      76,
+      {
+       "ATQ": 80,
+       "FIN": 72,
+       "CTL": 80,
+       "PAS": 83,
+       "VEL": 76,
+       "FIS": 68,
+       "RES": 72,
+       "DEF": 55,
+       "CAB": 68,
+       "GOL": 30,
+       "perso": "veterano",
+       "alt": [
+        "MC",
+        "PD"
+       ]
+      }
+     ],
+     [
+      "Jesse Lingard",
+      "MEI",
+      74,
+      {
+       "ATQ": 74,
+       "FIN": 74,
+       "CTL": 78,
+       "PAS": 80,
+       "VEL": 70,
+       "FIS": 67,
+       "RES": 74,
+       "DEF": 53,
+       "CAB": 64,
+       "GOL": 23,
+       "perso": "veterano",
+       "alt": [
+        "PE",
+        "ATA"
+       ]
+      }
+     ],
+     [
+      "André Carrillo",
+      "PD",
+      72,
+      {
+       "ATQ": 78,
+       "FIN": 69,
+       "CTL": 76,
+       "PAS": 66,
+       "VEL": 81,
+       "FIS": 67,
+       "RES": 72,
+       "DEF": 48,
+       "CAB": 64,
+       "GOL": 24,
+       "perso": "veterano",
+       "alt": [
+        "MEI"
+       ]
+      }
+     ],
+     [
+      "Zakaria Labyad",
+      "MEI",
+      70,
+      {
+       "ATQ": 71,
+       "FIN": 67,
+       "CTL": 76,
+       "PAS": 76,
+       "VEL": 70,
+       "FIS": 65,
+       "RES": 71,
+       "DEF": 47,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Matheus Pereira",
+      "MEI",
+      68,
+      {
+       "ATQ": 70,
+       "FIN": 68,
+       "CTL": 71,
+       "PAS": 70,
+       "VEL": 65,
+       "FIS": 58,
+       "RES": 63,
+       "DEF": 47,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "veterano",
+       "alt": [
+        "MC"
+       ]
+      }
+     ],
+     [
+      "Memphis Depay",
+      "ATA",
+      79,
+      {
+       "ATQ": 87,
+       "FIN": 84,
+       "CTL": 84,
+       "PAS": 72,
+       "VEL": 79,
+       "FIS": 82,
+       "RES": 72,
+       "DEF": 50,
+       "CAB": 80,
+       "GOL": 28,
+       "perso": "temperamental",
+       "alt": [
+        "PE",
+        "MEI"
+       ]
+      }
+     ],
+     [
+      "Yuri Alberto",
+      "ATA",
+      77,
+      {
+       "ATQ": 85,
+       "FIN": 79,
+       "CTL": 76,
+       "PAS": 73,
+       "VEL": 84,
+       "FIS": 76,
+       "RES": 70,
+       "DEF": 49,
+       "CAB": 77,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Kaio César",
+      "PE",
+      71,
+      {
+       "ATQ": 71,
+       "FIN": 73,
+       "CTL": 72,
+       "PAS": 71,
+       "VEL": 83,
+       "FIS": 61,
+       "RES": 69,
+       "DEF": 53,
+       "CAB": 61,
+       "GOL": 24,
+       "perso": "jovem",
+       "alt": [
+        "PD"
+       ]
+      }
+     ],
+     [
+      "Vitinho",
+      "PD",
+      70,
+      {
+       "ATQ": 71,
+       "FIN": 68,
+       "CTL": 72,
+       "PAS": 68,
+       "VEL": 74,
+       "FIS": 60,
+       "RES": 73,
+       "DEF": 51,
+       "CAB": 57,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Pedro Raul",
+      "ATA",
+      70,
+      {
+       "ATQ": 72,
+       "FIN": 78,
+       "CTL": 70,
+       "PAS": 62,
+       "VEL": 71,
+       "FIS": 72,
+       "RES": 63,
+       "DEF": 46,
+       "CAB": 82,
+       "GOL": 24,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gui Negão",
+      "ATA",
+      68,
+      {
+       "ATQ": 69,
+       "FIN": 72,
+       "CTL": 66,
+       "PAS": 57,
+       "VEL": 69,
+       "FIS": 71,
+       "RES": 65,
+       "DEF": 40,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Kayke",
+      "ATA",
+      65,
+      {
+       "ATQ": 70,
+       "FIN": 66,
+       "CTL": 62,
+       "PAS": 60,
+       "VEL": 67,
+       "FIS": 64,
+       "RES": 61,
+       "DEF": 37,
+       "CAB": 63,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Luizinho",
+      "PD",
+      62,
+      {
+       "ATQ": 66,
+       "FIN": 57,
+       "CTL": 67,
+       "PAS": 61,
+       "VEL": 66,
+       "FIS": 51,
+       "RES": 61,
+       "DEF": 43,
+       "CAB": 48,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ],
+     [
+      "Nícollas",
+      "ATA",
+      60,
+      {
+       "ATQ": 63,
+       "FIN": 66,
+       "CTL": 62,
+       "PAS": 49,
+       "VEL": 58,
+       "FIS": 61,
+       "RES": 59,
+       "DEF": 30,
+       "CAB": 63,
+       "GOL": 20,
+       "perso": "jovem"
+      }
+     ]
+    ],
+    "estadio": "Neo Química Arena",
+    "grande": true,
+    "tecnico": "Clarence Seedorf",
+    "perfilDiretoria": "economico",
+    "titulares": [
+     "Hugo Souza",
+     "Matheuzinho",
+     "Gustavo Henrique",
+     "André Ramalho",
+     "Matheus Bidu",
+     "André",
+     "Breno Bidon",
+     "Kaio César",
+     "Rodrigo Garro",
+     "Memphis Depay",
+     "Yuri Alberto"
+    ]
+   },
+   {
+    "id": "flamengo",
+    "nome": "Flamengo",
+    "sigla": "FLA",
+    "cores": {
+     "principal": "#c4161c",
+     "secundaria": "#111111"
+    },
+    "esquema": "4-2-3-1",
+    "estilo": "posse",
+    "elenco": [
+     [
+      "Rossi",
+      "GOL",
+      78,
+      {
+       "ATQ": 39,
+       "FIN": 35,
+       "CTL": 54,
+       "PAS": 60,
+       "VEL": 61,
+       "FIS": 76,
+       "RES": 69,
+       "DEF": 45,
+       "CAB": 60,
+       "GOL": 81,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Varela",
+      "LD",
+      76,
+      {
+       "ATQ": 70,
+       "FIN": 64,
+       "CTL": 77,
+       "PAS": 73,
+       "VEL": 79,
+       "FIS": 76,
+       "RES": 82,
+       "DEF": 75,
+       "CAB": 67,
+       "GOL": 24,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Léo Ortiz",
+      "ZAG",
+      78,
+      {
+       "ATQ": 57,
+       "FIN": 51,
+       "CTL": 70,
+       "PAS": 73,
+       "VEL": 74,
+       "FIS": 80,
+       "RES": 78,
+       "DEF": 85,
+       "CAB": 80,
+       "GOL": 27,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Léo Pereira",
+      "ZAG",
+      77,
+      {
+       "ATQ": 52,
+       "FIN": 49,
+       "CTL": 66,
+       "PAS": 72,
+       "VEL": 68,
+       "FIS": 83,
+       "RES": 74,
+       "DEF": 77,
+       "CAB": 79,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Ayrton Lucas",
+      "LE",
+      75,
+      {
+       "ATQ": 71,
+       "FIN": 60,
+       "CTL": 69,
+       "PAS": 71,
+       "VEL": 81,
+       "FIS": 68,
+       "RES": 78,
+       "DEF": 74,
+       "CAB": 69,
+       "GOL": 28,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Erick Pulgar",
+      "VOL",
+      77,
+      {
+       "ATQ": 65,
+       "FIN": 63,
+       "CTL": 73,
+       "PAS": 74,
+       "VEL": 74,
+       "FIS": 76,
+       "RES": 83,
+       "DEF": 82,
+       "CAB": 73,
+       "GOL": 28,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Jorginho",
+      "VOL",
+      80,
+      {
+       "ATQ": 67,
+       "FIN": 66,
+       "CTL": 78,
+       "PAS": 78,
+       "VEL": 78,
+       "FIS": 82,
+       "RES": 86,
+       "DEF": 84,
+       "CAB": 78,
+       "GOL": 27,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Carrascal",
+      "PD",
+      78,
+      {
+       "ATQ": 77,
+       "FIN": 75,
+       "CTL": 82,
+       "PAS": 76,
+       "VEL": 84,
+       "FIS": 73,
+       "RES": 75,
+       "DEF": 54,
+       "CAB": 65,
+       "GOL": 27,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Arrascaeta",
+      "MEI",
+      83,
+      {
+       "ATQ": 84,
+       "FIN": 81,
+       "CTL": 89,
+       "PAS": 88,
+       "VEL": 83,
+       "FIS": 73,
+       "RES": 79,
+       "DEF": 60,
+       "CAB": 70,
+       "GOL": 37,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Samuel Lino",
+      "PE",
+      79,
+      {
+       "ATQ": 81,
+       "FIN": 79,
+       "CTL": 86,
+       "PAS": 80,
+       "VEL": 86,
+       "FIS": 68,
+       "RES": 76,
+       "DEF": 54,
+       "CAB": 67,
+       "GOL": 30,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Pedro",
+      "ATA",
+      81,
+      {
+       "ATQ": 88,
+       "FIN": 85,
+       "CTL": 85,
+       "PAS": 74,
+       "VEL": 77,
+       "FIS": 79,
+       "RES": 81,
+       "DEF": 51,
+       "CAB": 80,
+       "GOL": 33,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Andrew",
+      "GOL",
+      70,
+      {
+       "ATQ": 32,
+       "FIN": 27,
+       "CTL": 49,
+       "PAS": 54,
+       "VEL": 53,
+       "FIS": 64,
+       "RES": 61,
+       "DEF": 40,
+       "CAB": 49,
+       "GOL": 69,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Emerson Royal",
+      "LD",
+      74,
+      {
+       "ATQ": 65,
+       "FIN": 57,
+       "CTL": 68,
+       "PAS": 69,
+       "VEL": 74,
+       "FIS": 71,
+       "RES": 77,
+       "DEF": 73,
+       "CAB": 67,
+       "GOL": 27,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Danilo",
+      "ZAG",
+      74,
+      {
+       "ATQ": 56,
+       "FIN": 52,
+       "CTL": 61,
+       "PAS": 72,
+       "VEL": 70,
+       "FIS": 74,
+       "RES": 74,
+       "DEF": 79,
+       "CAB": 76,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "De la Cruz",
+      "MC",
+      78,
+      {
+       "ATQ": 74,
+       "FIN": 72,
+       "CTL": 79,
+       "PAS": 79,
+       "VEL": 76,
+       "FIS": 74,
+       "RES": 77,
+       "DEF": 72,
+       "CAB": 72,
+       "GOL": 30,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Saúl",
+      "MC",
+      76,
+      {
+       "ATQ": 74,
+       "FIN": 72,
+       "CTL": 81,
+       "PAS": 76,
+       "VEL": 71,
+       "FIS": 75,
+       "RES": 79,
+       "DEF": 71,
+       "CAB": 70,
+       "GOL": 28,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Plata",
+      "PD",
+      77,
+      {
+       "ATQ": 80,
+       "FIN": 73,
+       "CTL": 81,
+       "PAS": 76,
+       "VEL": 84,
+       "FIS": 72,
+       "RES": 76,
+       "DEF": 57,
+       "CAB": 69,
+       "GOL": 26,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Bruno Henrique",
+      "ATA",
+      76,
+      {
+       "ATQ": 80,
+       "FIN": 83,
+       "CTL": 77,
+       "PAS": 67,
+       "VEL": 78,
+       "FIS": 80,
+       "RES": 71,
+       "DEF": 46,
+       "CAB": 78,
+       "GOL": 27,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Leonardo Jardim"
+   },
+   {
+    "id": "palmeiras",
+    "nome": "Palmeiras",
+    "sigla": "PAL",
+    "cores": {
+     "principal": "#0b6b3a",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "3-4-3",
+    "estilo": "intenso",
+    "elenco": [
+     [
+      "Carlos Miguel",
+      "GOL",
+      78,
+      {
+       "ATQ": 36,
+       "FIN": 35,
+       "CTL": 54,
+       "PAS": 67,
+       "VEL": 62,
+       "FIS": 74,
+       "RES": 67,
+       "DEF": 49,
+       "CAB": 55,
+       "GOL": 75,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Murilo",
+      "ZAG",
+      77,
+      {
+       "ATQ": 52,
+       "FIN": 53,
+       "CTL": 65,
+       "PAS": 75,
+       "VEL": 69,
+       "FIS": 78,
+       "RES": 79,
+       "DEF": 83,
+       "CAB": 83,
+       "GOL": 24,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Gustavo Gómez",
+      "ZAG",
+      79,
+      {
+       "ATQ": 55,
+       "FIN": 51,
+       "CTL": 67,
+       "PAS": 72,
+       "VEL": 70,
+       "FIS": 78,
+       "RES": 76,
+       "DEF": 80,
+       "CAB": 84,
+       "GOL": 32,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Alexander Barboza",
+      "ZAG",
+      76,
+      {
+       "ATQ": 54,
+       "FIN": 49,
+       "CTL": 63,
+       "PAS": 74,
+       "VEL": 68,
+       "FIS": 77,
+       "RES": 72,
+       "DEF": 80,
+       "CAB": 81,
+       "GOL": 28,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Giay",
+      "LD",
+      76,
+      {
+       "ATQ": 67,
+       "FIN": 62,
+       "CTL": 74,
+       "PAS": 72,
+       "VEL": 83,
+       "FIS": 71,
+       "RES": 77,
+       "DEF": 76,
+       "CAB": 70,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Marlon Freitas",
+      "VOL",
+      76,
+      {
+       "ATQ": 70,
+       "FIN": 63,
+       "CTL": 70,
+       "PAS": 75,
+       "VEL": 68,
+       "FIS": 80,
+       "RES": 78,
+       "DEF": 80,
+       "CAB": 75,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Lucas Evangelista",
+      "MC",
+      76,
+      {
+       "ATQ": 71,
+       "FIN": 68,
+       "CTL": 78,
+       "PAS": 82,
+       "VEL": 72,
+       "FIS": 75,
+       "RES": 76,
+       "DEF": 69,
+       "CAB": 72,
+       "GOL": 28,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Piquerez",
+      "LE",
+      77,
+      {
+       "ATQ": 73,
+       "FIN": 59,
+       "CTL": 74,
+       "PAS": 76,
+       "VEL": 77,
+       "FIS": 74,
+       "RES": 81,
+       "DEF": 76,
+       "CAB": 69,
+       "GOL": 25,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Arias",
+      "PD",
+      79,
+      {
+       "ATQ": 84,
+       "FIN": 79,
+       "CTL": 81,
+       "PAS": 75,
+       "VEL": 87,
+       "FIS": 69,
+       "RES": 83,
+       "DEF": 56,
+       "CAB": 71,
+       "GOL": 28,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Flaco López",
+      "ATA",
+      79,
+      {
+       "ATQ": 85,
+       "FIN": 80,
+       "CTL": 81,
+       "PAS": 71,
+       "VEL": 79,
+       "FIS": 81,
+       "RES": 75,
+       "DEF": 50,
+       "CAB": 78,
+       "GOL": 30,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Andreas Pereira",
+      "MEI",
+      79,
+      {
+       "ATQ": 79,
+       "FIN": 78,
+       "CTL": 82,
+       "PAS": 86,
+       "VEL": 80,
+       "FIS": 70,
+       "RES": 73,
+       "DEF": 56,
+       "CAB": 70,
+       "GOL": 26,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Marcelo Lomba",
+      "GOL",
+      68,
+      {
+       "ATQ": 29,
+       "FIN": 27,
+       "CTL": 44,
+       "PAS": 57,
+       "VEL": 47,
+       "FIS": 64,
+       "RES": 56,
+       "DEF": 40,
+       "CAB": 52,
+       "GOL": 68,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Khellven",
+      "LD",
+      73,
+      {
+       "ATQ": 67,
+       "FIN": 60,
+       "CTL": 69,
+       "PAS": 74,
+       "VEL": 78,
+       "FIS": 71,
+       "RES": 75,
+       "DEF": 76,
+       "CAB": 68,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Bruno Fuchs",
+      "ZAG",
+      73,
+      {
+       "ATQ": 49,
+       "FIN": 48,
+       "CTL": 61,
+       "PAS": 70,
+       "VEL": 67,
+       "FIS": 72,
+       "RES": 74,
+       "DEF": 76,
+       "CAB": 76,
+       "GOL": 27,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Emiliano Martínez",
+      "VOL",
+      75,
+      {
+       "ATQ": 64,
+       "FIN": 61,
+       "CTL": 75,
+       "PAS": 74,
+       "VEL": 67,
+       "FIS": 73,
+       "RES": 78,
+       "DEF": 77,
+       "CAB": 75,
+       "GOL": 29,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Felipe Anderson",
+      "MEI",
+      76,
+      {
+       "ATQ": 79,
+       "FIN": 75,
+       "CTL": 84,
+       "PAS": 83,
+       "VEL": 77,
+       "FIS": 72,
+       "RES": 70,
+       "DEF": 54,
+       "CAB": 64,
+       "GOL": 29,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Maurício",
+      "MEI",
+      74,
+      {
+       "ATQ": 79,
+       "FIN": 76,
+       "CTL": 76,
+       "PAS": 81,
+       "VEL": 76,
+       "FIS": 70,
+       "RES": 69,
+       "DEF": 52,
+       "CAB": 60,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Vitor Roque",
+      "ATA",
+      79,
+      {
+       "ATQ": 86,
+       "FIN": 87,
+       "CTL": 83,
+       "PAS": 75,
+       "VEL": 78,
+       "FIS": 78,
+       "RES": 76,
+       "DEF": 54,
+       "CAB": 79,
+       "GOL": 27,
+       "perso": "veterano"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Abel Ferreira"
+   },
+   {
+    "id": "sao-paulo",
+    "nome": "São Paulo",
+    "sigla": "SAO",
+    "cores": {
+     "principal": "#d71920",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-3-3",
+    "estilo": "equilibrado",
+    "elenco": [
+     [
+      "Rafael",
+      "GOL",
+      74,
+      {
+       "ATQ": 32,
+       "FIN": 32,
+       "CTL": 51,
+       "PAS": 63,
+       "VEL": 57,
+       "FIS": 68,
+       "RES": 62,
+       "DEF": 47,
+       "CAB": 53,
+       "GOL": 74,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Pedro Lima",
+      "LD",
+      71,
+      {
+       "ATQ": 69,
+       "FIN": 58,
+       "CTL": 68,
+       "PAS": 68,
+       "VEL": 74,
+       "FIS": 65,
+       "RES": 76,
+       "DEF": 73,
+       "CAB": 67,
+       "GOL": 25,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Arboleda",
+      "ZAG",
+      75,
+      {
+       "ATQ": 56,
+       "FIN": 53,
+       "CTL": 66,
+       "PAS": 69,
+       "VEL": 67,
+       "FIS": 75,
+       "RES": 77,
+       "DEF": 76,
+       "CAB": 78,
+       "GOL": 27,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Sabino",
+      "ZAG",
+      73,
+      {
+       "ATQ": 48,
+       "FIN": 45,
+       "CTL": 66,
+       "PAS": 69,
+       "VEL": 68,
+       "FIS": 73,
+       "RES": 73,
+       "DEF": 73,
+       "CAB": 74,
+       "GOL": 26,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Iago",
+      "LE",
+      70,
+      {
+       "ATQ": 63,
+       "FIN": 56,
+       "CTL": 70,
+       "PAS": 68,
+       "VEL": 73,
+       "FIS": 69,
+       "RES": 72,
+       "DEF": 69,
+       "CAB": 63,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Bobadilla",
+      "VOL",
+      75,
+      {
+       "ATQ": 66,
+       "FIN": 66,
+       "CTL": 71,
+       "PAS": 74,
+       "VEL": 66,
+       "FIS": 75,
+       "RES": 77,
+       "DEF": 78,
+       "CAB": 68,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Marcos Antônio",
+      "MC",
+      74,
+      {
+       "ATQ": 74,
+       "FIN": 71,
+       "CTL": 76,
+       "PAS": 77,
+       "VEL": 71,
+       "FIS": 74,
+       "RES": 79,
+       "DEF": 67,
+       "CAB": 66,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Newton",
+      "MC",
+      70,
+      {
+       "ATQ": 67,
+       "FIN": 61,
+       "CTL": 74,
+       "PAS": 71,
+       "VEL": 63,
+       "FIS": 67,
+       "RES": 72,
+       "DEF": 64,
+       "CAB": 64,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Artur",
+      "PD",
+      74,
+      {
+       "ATQ": 75,
+       "FIN": 70,
+       "CTL": 77,
+       "PAS": 74,
+       "VEL": 81,
+       "FIS": 67,
+       "RES": 74,
+       "DEF": 51,
+       "CAB": 60,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Calleri",
+      "ATA",
+      76,
+      {
+       "ATQ": 83,
+       "FIN": 84,
+       "CTL": 73,
+       "PAS": 65,
+       "VEL": 76,
+       "FIS": 75,
+       "RES": 69,
+       "DEF": 52,
+       "CAB": 78,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Luciano",
+      "PE",
+      75,
+      {
+       "ATQ": 77,
+       "FIN": 72,
+       "CTL": 76,
+       "PAS": 74,
+       "VEL": 82,
+       "FIS": 65,
+       "RES": 77,
+       "DEF": 50,
+       "CAB": 67,
+       "GOL": 26,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Coronel",
+      "GOL",
+      68,
+      {
+       "ATQ": 29,
+       "FIN": 20,
+       "CTL": 40,
+       "PAS": 53,
+       "VEL": 49,
+       "FIS": 63,
+       "RES": 55,
+       "DEF": 37,
+       "CAB": 52,
+       "GOL": 72,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Wendell",
+      "LE",
+      73,
+      {
+       "ATQ": 67,
+       "FIN": 62,
+       "CTL": 70,
+       "PAS": 73,
+       "VEL": 74,
+       "FIS": 67,
+       "RES": 77,
+       "DEF": 71,
+       "CAB": 66,
+       "GOL": 25,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Rafael Tolói",
+      "ZAG",
+      72,
+      {
+       "ATQ": 51,
+       "FIN": 48,
+       "CTL": 59,
+       "PAS": 65,
+       "VEL": 68,
+       "FIS": 75,
+       "RES": 73,
+       "DEF": 73,
+       "CAB": 78,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Pablo Maia",
+      "VOL",
+      73,
+      {
+       "ATQ": 64,
+       "FIN": 64,
+       "CTL": 72,
+       "PAS": 77,
+       "VEL": 71,
+       "FIS": 77,
+       "RES": 74,
+       "DEF": 79,
+       "CAB": 67,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Lucas Moura",
+      "MEI",
+      76,
+      {
+       "ATQ": 78,
+       "FIN": 74,
+       "CTL": 80,
+       "PAS": 79,
+       "VEL": 77,
+       "FIS": 70,
+       "RES": 77,
+       "DEF": 54,
+       "CAB": 64,
+       "GOL": 24,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Ferreira",
+      "PE",
+      72,
+      {
+       "ATQ": 75,
+       "FIN": 71,
+       "CTL": 80,
+       "PAS": 71,
+       "VEL": 77,
+       "FIS": 63,
+       "RES": 76,
+       "DEF": 47,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "André Silva",
+      "ATA",
+      70,
+      {
+       "ATQ": 78,
+       "FIN": 75,
+       "CTL": 70,
+       "PAS": 65,
+       "VEL": 67,
+       "FIS": 71,
+       "RES": 64,
+       "DEF": 39,
+       "CAB": 68,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Dorival Júnior"
+   },
+   {
+    "id": "santos",
+    "nome": "Santos",
+    "sigla": "SAN",
+    "cores": {
+     "principal": "#e8e8e8",
+     "secundaria": "#111111"
+    },
+    "esquema": "4-4-2",
+    "estilo": "ofensivo",
+    "elenco": [
+     [
+      "Diógenes",
+      "GOL",
+      68,
+      {
+       "ATQ": 32,
+       "FIN": 24,
+       "CTL": 40,
+       "PAS": 54,
+       "VEL": 52,
+       "FIS": 60,
+       "RES": 57,
+       "DEF": 37,
+       "CAB": 47,
+       "GOL": 66,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Rodinei",
+      "LD",
+      71,
+      {
+       "ATQ": 65,
+       "FIN": 57,
+       "CTL": 65,
+       "PAS": 73,
+       "VEL": 74,
+       "FIS": 66,
+       "RES": 74,
+       "DEF": 67,
+       "CAB": 67,
+       "GOL": 25,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "João Alencar",
+      "ZAG",
+      68,
+      {
+       "ATQ": 49,
+       "FIN": 46,
+       "CTL": 56,
+       "PAS": 61,
+       "VEL": 66,
+       "FIS": 72,
+       "RES": 68,
+       "DEF": 73,
+       "CAB": 71,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Luan Peres",
+      "ZAG",
+      72,
+      {
+       "ATQ": 51,
+       "FIN": 47,
+       "CTL": 59,
+       "PAS": 69,
+       "VEL": 70,
+       "FIS": 73,
+       "RES": 69,
+       "DEF": 79,
+       "CAB": 78,
+       "GOL": 26,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Barreal",
+      "LE",
+      72,
+      {
+       "ATQ": 63,
+       "FIN": 60,
+       "CTL": 68,
+       "PAS": 68,
+       "VEL": 75,
+       "FIS": 67,
+       "RES": 78,
+       "DEF": 73,
+       "CAB": 66,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Oliva",
+      "VOL",
+      71,
+      {
+       "ATQ": 60,
+       "FIN": 60,
+       "CTL": 70,
+       "PAS": 68,
+       "VEL": 66,
+       "FIS": 70,
+       "RES": 78,
+       "DEF": 74,
+       "CAB": 64,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Gustavo Henrique",
+      "MC",
+      66,
+      {
+       "ATQ": 65,
+       "FIN": 63,
+       "CTL": 66,
+       "PAS": 72,
+       "VEL": 64,
+       "FIS": 59,
+       "RES": 66,
+       "DEF": 63,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gabriel Bontempo",
+      "MC",
+      70,
+      {
+       "ATQ": 69,
+       "FIN": 62,
+       "CTL": 69,
+       "PAS": 77,
+       "VEL": 69,
+       "FIS": 67,
+       "RES": 76,
+       "DEF": 69,
+       "CAB": 64,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Philippe Coutinho",
+      "MEI",
+      75,
+      {
+       "ATQ": 82,
+       "FIN": 78,
+       "CTL": 76,
+       "PAS": 77,
+       "VEL": 75,
+       "FIS": 64,
+       "RES": 70,
+       "DEF": 56,
+       "CAB": 63,
+       "GOL": 26,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Everton",
+      "PE",
+      73,
+      {
+       "ATQ": 76,
+       "FIN": 74,
+       "CTL": 76,
+       "PAS": 67,
+       "VEL": 77,
+       "FIS": 64,
+       "RES": 77,
+       "DEF": 54,
+       "CAB": 63,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Gabriel",
+      "ATA",
+      75,
+      {
+       "ATQ": 81,
+       "FIN": 77,
+       "CTL": 76,
+       "PAS": 66,
+       "VEL": 74,
+       "FIS": 78,
+       "RES": 75,
+       "DEF": 51,
+       "CAB": 78,
+       "GOL": 24,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Gabriel Brazão",
+      "GOL",
+      72,
+      {
+       "ATQ": 29,
+       "FIN": 30,
+       "CTL": 51,
+       "PAS": 55,
+       "VEL": 54,
+       "FIS": 71,
+       "RES": 63,
+       "DEF": 40,
+       "CAB": 54,
+       "GOL": 73,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Escobar",
+      "LE",
+      70,
+      {
+       "ATQ": 67,
+       "FIN": 55,
+       "CTL": 69,
+       "PAS": 70,
+       "VEL": 71,
+       "FIS": 68,
+       "RES": 78,
+       "DEF": 70,
+       "CAB": 63,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Lucas Veríssimo",
+      "ZAG",
+      72,
+      {
+       "ATQ": 47,
+       "FIN": 47,
+       "CTL": 66,
+       "PAS": 64,
+       "VEL": 65,
+       "FIS": 74,
+       "RES": 70,
+       "DEF": 79,
+       "CAB": 74,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Willian Arão",
+      "VOL",
+      72,
+      {
+       "ATQ": 61,
+       "FIN": 61,
+       "CTL": 65,
+       "PAS": 71,
+       "VEL": 64,
+       "FIS": 70,
+       "RES": 77,
+       "DEF": 75,
+       "CAB": 70,
+       "GOL": 24,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Rollheiser",
+      "MEI",
+      73,
+      {
+       "ATQ": 77,
+       "FIN": 70,
+       "CTL": 75,
+       "PAS": 81,
+       "VEL": 68,
+       "FIS": 62,
+       "RES": 71,
+       "DEF": 52,
+       "CAB": 63,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Neymar",
+      "MEI",
+      82,
+      {
+       "ATQ": 87,
+       "FIN": 80,
+       "CTL": 89,
+       "PAS": 90,
+       "VEL": 77,
+       "FIS": 73,
+       "RES": 76,
+       "DEF": 60,
+       "CAB": 71,
+       "GOL": 32,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Rony",
+      "ATA",
+      72,
+      {
+       "ATQ": 80,
+       "FIN": 78,
+       "CTL": 72,
+       "PAS": 66,
+       "VEL": 69,
+       "FIS": 69,
+       "RES": 72,
+       "DEF": 48,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Cuca"
+   },
+   {
+    "id": "atletico-mg",
+    "nome": "Atlético-MG",
+    "sigla": "CAM",
+    "cores": {
+     "principal": "#1a1a1a",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-2-3-1",
+    "estilo": "equilibrado",
+    "elenco": [
+     [
+      "Everson",
+      "GOL",
+      75,
+      {
+       "ATQ": 34,
+       "FIN": 27,
+       "CTL": 49,
+       "PAS": 62,
+       "VEL": 53,
+       "FIS": 74,
+       "RES": 69,
+       "DEF": 42,
+       "CAB": 58,
+       "GOL": 79,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Preciado",
+      "LD",
+      73,
+      {
+       "ATQ": 71,
+       "FIN": 61,
+       "CTL": 68,
+       "PAS": 69,
+       "VEL": 74,
+       "FIS": 66,
+       "RES": 75,
+       "DEF": 70,
+       "CAB": 63,
+       "GOL": 26,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Vitão",
+      "ZAG",
+      72,
+      {
+       "ATQ": 52,
+       "FIN": 49,
+       "CTL": 60,
+       "PAS": 65,
+       "VEL": 63,
+       "FIS": 75,
+       "RES": 67,
+       "DEF": 76,
+       "CAB": 76,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Léo Duarte",
+      "ZAG",
+      72,
+      {
+       "ATQ": 48,
+       "FIN": 44,
+       "CTL": 63,
+       "PAS": 63,
+       "VEL": 68,
+       "FIS": 73,
+       "RES": 71,
+       "DEF": 77,
+       "CAB": 74,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Kauã Pascini",
+      "LE",
+      66,
+      {
+       "ATQ": 60,
+       "FIN": 50,
+       "CTL": 60,
+       "PAS": 63,
+       "VEL": 70,
+       "FIS": 61,
+       "RES": 70,
+       "DEF": 64,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Tomás Pérez",
+      "VOL",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 63,
+       "CTL": 67,
+       "PAS": 71,
+       "VEL": 66,
+       "FIS": 70,
+       "RES": 79,
+       "DEF": 78,
+       "CAB": 67,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Alexsander",
+      "VOL",
+      73,
+      {
+       "ATQ": 67,
+       "FIN": 61,
+       "CTL": 67,
+       "PAS": 72,
+       "VEL": 68,
+       "FIS": 77,
+       "RES": 78,
+       "DEF": 78,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Cissé",
+      "PD",
+      66,
+      {
+       "ATQ": 66,
+       "FIN": 61,
+       "CTL": 69,
+       "PAS": 61,
+       "VEL": 72,
+       "FIS": 61,
+       "RES": 67,
+       "DEF": 48,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gustavo Scarpa",
+      "MEI",
+      77,
+      {
+       "ATQ": 80,
+       "FIN": 73,
+       "CTL": 82,
+       "PAS": 85,
+       "VEL": 79,
+       "FIS": 68,
+       "RES": 78,
+       "DEF": 55,
+       "CAB": 66,
+       "GOL": 26,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Dudu",
+      "PE",
+      74,
+      {
+       "ATQ": 77,
+       "FIN": 76,
+       "CTL": 77,
+       "PAS": 70,
+       "VEL": 80,
+       "FIS": 67,
+       "RES": 72,
+       "DEF": 55,
+       "CAB": 66,
+       "GOL": 26,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Cauã Soares",
+      "ATA",
+      64,
+      {
+       "ATQ": 70,
+       "FIN": 68,
+       "CTL": 64,
+       "PAS": 59,
+       "VEL": 67,
+       "FIS": 62,
+       "RES": 59,
+       "DEF": 38,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gabriel Delfim",
+      "GOL",
+      66,
+      {
+       "ATQ": 26,
+       "FIN": 20,
+       "CTL": 43,
+       "PAS": 54,
+       "VEL": 45,
+       "FIS": 65,
+       "RES": 58,
+       "DEF": 40,
+       "CAB": 45,
+       "GOL": 70,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Renan Lodi",
+      "LE",
+      75,
+      {
+       "ATQ": 66,
+       "FIN": 57,
+       "CTL": 73,
+       "PAS": 72,
+       "VEL": 79,
+       "FIS": 71,
+       "RES": 82,
+       "DEF": 78,
+       "CAB": 69,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Lyanco",
+      "ZAG",
+      73,
+      {
+       "ATQ": 50,
+       "FIN": 44,
+       "CTL": 65,
+       "PAS": 64,
+       "VEL": 66,
+       "FIS": 78,
+       "RES": 69,
+       "DEF": 75,
+       "CAB": 74,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Fred",
+      "MC",
+      73,
+      {
+       "ATQ": 74,
+       "FIN": 68,
+       "CTL": 71,
+       "PAS": 75,
+       "VEL": 73,
+       "FIS": 70,
+       "RES": 75,
+       "DEF": 68,
+       "CAB": 65,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Bernard",
+      "MEI",
+      73,
+      {
+       "ATQ": 77,
+       "FIN": 75,
+       "CTL": 78,
+       "PAS": 79,
+       "VEL": 75,
+       "FIS": 63,
+       "RES": 69,
+       "DEF": 50,
+       "CAB": 65,
+       "GOL": 27,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Cuello",
+      "PE",
+      74,
+      {
+       "ATQ": 77,
+       "FIN": 76,
+       "CTL": 77,
+       "PAS": 72,
+       "VEL": 78,
+       "FIS": 70,
+       "RES": 75,
+       "DEF": 50,
+       "CAB": 63,
+       "GOL": 28,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Cassierra",
+      "ATA",
+      72,
+      {
+       "ATQ": 76,
+       "FIN": 73,
+       "CTL": 75,
+       "PAS": 66,
+       "VEL": 71,
+       "FIS": 74,
+       "RES": 69,
+       "DEF": 45,
+       "CAB": 75,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Eduardo Domínguez"
+   },
+   {
+    "id": "botafogo",
+    "nome": "Botafogo",
+    "sigla": "BOT",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-4-2",
+    "estilo": "contra-ataque",
+    "elenco": [
+     [
+      "Gabriel Batista",
+      "GOL",
+      72,
+      {
+       "ATQ": 35,
+       "FIN": 28,
+       "CTL": 45,
+       "PAS": 57,
+       "VEL": 52,
+       "FIS": 64,
+       "RES": 62,
+       "DEF": 41,
+       "CAB": 55,
+       "GOL": 76,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Vitinho",
+      "LD",
+      73,
+      {
+       "ATQ": 67,
+       "FIN": 61,
+       "CTL": 73,
+       "PAS": 71,
+       "VEL": 74,
+       "FIS": 67,
+       "RES": 74,
+       "DEF": 69,
+       "CAB": 64,
+       "GOL": 26,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Justino",
+      "ZAG",
+      66,
+      {
+       "ATQ": 43,
+       "FIN": 43,
+       "CTL": 57,
+       "PAS": 64,
+       "VEL": 63,
+       "FIS": 66,
+       "RES": 66,
+       "DEF": 67,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Marçal",
+      "ZAG",
+      70,
+      {
+       "ATQ": 47,
+       "FIN": 46,
+       "CTL": 58,
+       "PAS": 63,
+       "VEL": 63,
+       "FIS": 76,
+       "RES": 68,
+       "DEF": 76,
+       "CAB": 74,
+       "GOL": 21,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Alex Telles",
+      "LE",
+      75,
+      {
+       "ATQ": 71,
+       "FIN": 60,
+       "CTL": 70,
+       "PAS": 72,
+       "VEL": 75,
+       "FIS": 71,
+       "RES": 77,
+       "DEF": 74,
+       "CAB": 64,
+       "GOL": 28,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Edenílson",
+      "MC",
+      71,
+      {
+       "ATQ": 68,
+       "FIN": 67,
+       "CTL": 74,
+       "PAS": 71,
+       "VEL": 66,
+       "FIS": 64,
+       "RES": 77,
+       "DEF": 69,
+       "CAB": 67,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Medina",
+      "MC",
+      76,
+      {
+       "ATQ": 72,
+       "FIN": 67,
+       "CTL": 75,
+       "PAS": 76,
+       "VEL": 74,
+       "FIS": 72,
+       "RES": 76,
+       "DEF": 68,
+       "CAB": 66,
+       "GOL": 26,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Huguinho",
+      "PD",
+      64,
+      {
+       "ATQ": 68,
+       "FIN": 60,
+       "CTL": 70,
+       "PAS": 58,
+       "VEL": 73,
+       "FIS": 56,
+       "RES": 62,
+       "DEF": 46,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Ziyech",
+      "MEI",
+      76,
+      {
+       "ATQ": 82,
+       "FIN": 74,
+       "CTL": 78,
+       "PAS": 77,
+       "VEL": 71,
+       "FIS": 67,
+       "RES": 74,
+       "DEF": 55,
+       "CAB": 68,
+       "GOL": 28,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Matheus Martins",
+      "PE",
+      74,
+      {
+       "ATQ": 76,
+       "FIN": 69,
+       "CTL": 81,
+       "PAS": 71,
+       "VEL": 76,
+       "FIS": 69,
+       "RES": 77,
+       "DEF": 54,
+       "CAB": 66,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Tiquinho Soares",
+      "ATA",
+      72,
+      {
+       "ATQ": 77,
+       "FIN": 75,
+       "CTL": 74,
+       "PAS": 68,
+       "VEL": 70,
+       "FIS": 69,
+       "RES": 67,
+       "DEF": 43,
+       "CAB": 73,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Cristhian Loor",
+      "GOL",
+      66,
+      {
+       "ATQ": 24,
+       "FIN": 22,
+       "CTL": 45,
+       "PAS": 48,
+       "VEL": 48,
+       "FIS": 64,
+       "RES": 55,
+       "DEF": 36,
+       "CAB": 50,
+       "GOL": 69,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Mateo Ponte",
+      "LD",
+      71,
+      {
+       "ATQ": 62,
+       "FIN": 57,
+       "CTL": 70,
+       "PAS": 66,
+       "VEL": 76,
+       "FIS": 64,
+       "RES": 75,
+       "DEF": 70,
+       "CAB": 66,
+       "GOL": 24,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Ferraresi",
+      "ZAG",
+      74,
+      {
+       "ATQ": 56,
+       "FIN": 46,
+       "CTL": 62,
+       "PAS": 67,
+       "VEL": 70,
+       "FIS": 77,
+       "RES": 73,
+       "DEF": 76,
+       "CAB": 80,
+       "GOL": 26,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Danilo",
+      "VOL",
+      76,
+      {
+       "ATQ": 70,
+       "FIN": 63,
+       "CTL": 72,
+       "PAS": 73,
+       "VEL": 71,
+       "FIS": 75,
+       "RES": 82,
+       "DEF": 77,
+       "CAB": 73,
+       "GOL": 27,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Montoro",
+      "MEI",
+      72,
+      {
+       "ATQ": 72,
+       "FIN": 71,
+       "CTL": 76,
+       "PAS": 80,
+       "VEL": 70,
+       "FIS": 66,
+       "RES": 67,
+       "DEF": 55,
+       "CAB": 61,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Júnior Santos",
+      "PD",
+      73,
+      {
+       "ATQ": 76,
+       "FIN": 75,
+       "CTL": 81,
+       "PAS": 69,
+       "VEL": 78,
+       "FIS": 66,
+       "RES": 72,
+       "DEF": 51,
+       "CAB": 65,
+       "GOL": 27,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Arthur Cabral",
+      "ATA",
+      73,
+      {
+       "ATQ": 81,
+       "FIN": 81,
+       "CTL": 72,
+       "PAS": 67,
+       "VEL": 74,
+       "FIS": 70,
+       "RES": 73,
+       "DEF": 44,
+       "CAB": 71,
+       "GOL": 24,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Tite"
+   },
+   {
+    "id": "bahia",
+    "nome": "Bahia",
+    "sigla": "BAH",
+    "cores": {
+     "principal": "#0057a8",
+     "secundaria": "#e30613"
+    },
+    "esquema": "4-3-3",
+    "estilo": "posse",
+    "elenco": [
+     [
+      "Ronaldo",
+      "GOL",
+      72,
+      {
+       "ATQ": 32,
+       "FIN": 31,
+       "CTL": 51,
+       "PAS": 56,
+       "VEL": 50,
+       "FIS": 66,
+       "RES": 65,
+       "DEF": 39,
+       "CAB": 56,
+       "GOL": 75,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Marcos Victor",
+      "LD",
+      69,
+      {
+       "ATQ": 60,
+       "FIN": 58,
+       "CTL": 63,
+       "PAS": 68,
+       "VEL": 73,
+       "FIS": 62,
+       "RES": 74,
+       "DEF": 65,
+       "CAB": 61,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "David Duarte",
+      "ZAG",
+      72,
+      {
+       "ATQ": 50,
+       "FIN": 43,
+       "CTL": 62,
+       "PAS": 66,
+       "VEL": 64,
+       "FIS": 74,
+       "RES": 74,
+       "DEF": 75,
+       "CAB": 77,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Marco Moreno",
+      "ZAG",
+      70,
+      {
+       "ATQ": 45,
+       "FIN": 42,
+       "CTL": 60,
+       "PAS": 65,
+       "VEL": 62,
+       "FIS": 74,
+       "RES": 69,
+       "DEF": 77,
+       "CAB": 72,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Luciano Juba",
+      "LE",
+      75,
+      {
+       "ATQ": 71,
+       "FIN": 57,
+       "CTL": 69,
+       "PAS": 70,
+       "VEL": 80,
+       "FIS": 71,
+       "RES": 78,
+       "DEF": 73,
+       "CAB": 65,
+       "GOL": 27,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Acevedo",
+      "VOL",
+      74,
+      {
+       "ATQ": 64,
+       "FIN": 62,
+       "CTL": 72,
+       "PAS": 73,
+       "VEL": 72,
+       "FIS": 73,
+       "RES": 80,
+       "DEF": 77,
+       "CAB": 70,
+       "GOL": 22,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Jean Lucas",
+      "MC",
+      75,
+      {
+       "ATQ": 75,
+       "FIN": 69,
+       "CTL": 80,
+       "PAS": 81,
+       "VEL": 71,
+       "FIS": 69,
+       "RES": 76,
+       "DEF": 70,
+       "CAB": 65,
+       "GOL": 28,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Rodrigo Nestor",
+      "MC",
+      73,
+      {
+       "ATQ": 70,
+       "FIN": 69,
+       "CTL": 75,
+       "PAS": 74,
+       "VEL": 73,
+       "FIS": 71,
+       "RES": 79,
+       "DEF": 71,
+       "CAB": 62,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Ademir",
+      "PD",
+      73,
+      {
+       "ATQ": 76,
+       "FIN": 69,
+       "CTL": 78,
+       "PAS": 71,
+       "VEL": 76,
+       "FIS": 69,
+       "RES": 73,
+       "DEF": 53,
+       "CAB": 63,
+       "GOL": 24,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Alejo Véliz",
+      "ATA",
+      72,
+      {
+       "ATQ": 80,
+       "FIN": 73,
+       "CTL": 75,
+       "PAS": 63,
+       "VEL": 75,
+       "FIS": 74,
+       "RES": 66,
+       "DEF": 43,
+       "CAB": 72,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Erick Pulga",
+      "PE",
+      74,
+      {
+       "ATQ": 74,
+       "FIN": 70,
+       "CTL": 76,
+       "PAS": 72,
+       "VEL": 80,
+       "FIS": 63,
+       "RES": 71,
+       "DEF": 56,
+       "CAB": 62,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Guido Herrera",
+      "GOL",
+      70,
+      {
+       "ATQ": 28,
+       "FIN": 28,
+       "CTL": 49,
+       "PAS": 58,
+       "VEL": 51,
+       "FIS": 67,
+       "RES": 63,
+       "DEF": 39,
+       "CAB": 52,
+       "GOL": 69,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Román Gómez",
+      "LD",
+      68,
+      {
+       "ATQ": 62,
+       "FIN": 50,
+       "CTL": 66,
+       "PAS": 69,
+       "VEL": 74,
+       "FIS": 63,
+       "RES": 71,
+       "DEF": 67,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Kanu",
+      "ZAG",
+      70,
+      {
+       "ATQ": 52,
+       "FIN": 44,
+       "CTL": 60,
+       "PAS": 64,
+       "VEL": 68,
+       "FIS": 72,
+       "RES": 68,
+       "DEF": 70,
+       "CAB": 74,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Caio Alexandre",
+      "VOL",
+      74,
+      {
+       "ATQ": 61,
+       "FIN": 63,
+       "CTL": 72,
+       "PAS": 78,
+       "VEL": 72,
+       "FIS": 74,
+       "RES": 74,
+       "DEF": 77,
+       "CAB": 68,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Everton Ribeiro",
+      "MEI",
+      75,
+      {
+       "ATQ": 76,
+       "FIN": 73,
+       "CTL": 80,
+       "PAS": 81,
+       "VEL": 71,
+       "FIS": 71,
+       "RES": 74,
+       "DEF": 59,
+       "CAB": 63,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Cristian Olivera",
+      "PE",
+      73,
+      {
+       "ATQ": 77,
+       "FIN": 68,
+       "CTL": 74,
+       "PAS": 68,
+       "VEL": 77,
+       "FIS": 63,
+       "RES": 76,
+       "DEF": 51,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Willian José",
+      "ATA",
+      72,
+      {
+       "ATQ": 78,
+       "FIN": 78,
+       "CTL": 74,
+       "PAS": 63,
+       "VEL": 71,
+       "FIS": 73,
+       "RES": 70,
+       "DEF": 47,
+       "CAB": 74,
+       "GOL": 25,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Rogério Ceni"
+   },
+   {
+    "id": "cruzeiro",
+    "nome": "Cruzeiro",
+    "sigla": "CRU",
+    "cores": {
+     "principal": "#1b3f9b",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-4-2",
+    "estilo": "intenso",
+    "elenco": [
+     [
+      "Otávio",
+      "GOL",
+      70,
+      {
+       "ATQ": 34,
+       "FIN": 25,
+       "CTL": 47,
+       "PAS": 55,
+       "VEL": 50,
+       "FIS": 64,
+       "RES": 58,
+       "DEF": 44,
+       "CAB": 52,
+       "GOL": 74,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "William",
+      "LD",
+      74,
+      {
+       "ATQ": 71,
+       "FIN": 59,
+       "CTL": 70,
+       "PAS": 73,
+       "VEL": 81,
+       "FIS": 72,
+       "RES": 80,
+       "DEF": 70,
+       "CAB": 64,
+       "GOL": 21,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Fabrício Bruno",
+      "ZAG",
+      76,
+      {
+       "ATQ": 51,
+       "FIN": 54,
+       "CTL": 70,
+       "PAS": 70,
+       "VEL": 67,
+       "FIS": 80,
+       "RES": 71,
+       "DEF": 80,
+       "CAB": 80,
+       "GOL": 27,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Villalba",
+      "ZAG",
+      72,
+      {
+       "ATQ": 47,
+       "FIN": 44,
+       "CTL": 59,
+       "PAS": 70,
+       "VEL": 66,
+       "FIS": 74,
+       "RES": 72,
+       "DEF": 75,
+       "CAB": 79,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Gabriel Rojas",
+      "LE",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 57,
+       "CTL": 66,
+       "PAS": 73,
+       "VEL": 77,
+       "FIS": 65,
+       "RES": 77,
+       "DEF": 69,
+       "CAB": 63,
+       "GOL": 26,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Lucas Romero",
+      "VOL",
+      76,
+      {
+       "ATQ": 68,
+       "FIN": 64,
+       "CTL": 74,
+       "PAS": 76,
+       "VEL": 68,
+       "FIS": 76,
+       "RES": 80,
+       "DEF": 80,
+       "CAB": 73,
+       "GOL": 30,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Zé Lucas",
+      "MC",
+      70,
+      {
+       "ATQ": 64,
+       "FIN": 66,
+       "CTL": 71,
+       "PAS": 72,
+       "VEL": 69,
+       "FIS": 65,
+       "RES": 76,
+       "DEF": 67,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Gerson",
+      "MC",
+      79,
+      {
+       "ATQ": 78,
+       "FIN": 70,
+       "CTL": 82,
+       "PAS": 82,
+       "VEL": 74,
+       "FIS": 73,
+       "RES": 78,
+       "DEF": 71,
+       "CAB": 69,
+       "GOL": 30,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Matheus Pereira",
+      "MEI",
+      80,
+      {
+       "ATQ": 82,
+       "FIN": 76,
+       "CTL": 88,
+       "PAS": 81,
+       "VEL": 80,
+       "FIS": 72,
+       "RES": 78,
+       "DEF": 59,
+       "CAB": 68,
+       "GOL": 31,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Arroyo",
+      "PD",
+      72,
+      {
+       "ATQ": 74,
+       "FIN": 70,
+       "CTL": 76,
+       "PAS": 71,
+       "VEL": 76,
+       "FIS": 62,
+       "RES": 74,
+       "DEF": 54,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Kaio Jorge",
+      "ATA",
+      78,
+      {
+       "ATQ": 81,
+       "FIN": 79,
+       "CTL": 80,
+       "PAS": 72,
+       "VEL": 79,
+       "FIS": 80,
+       "RES": 75,
+       "DEF": 51,
+       "CAB": 79,
+       "GOL": 32,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Cássio",
+      "GOL",
+      73,
+      {
+       "ATQ": 35,
+       "FIN": 25,
+       "CTL": 50,
+       "PAS": 58,
+       "VEL": 54,
+       "FIS": 66,
+       "RES": 63,
+       "DEF": 41,
+       "CAB": 56,
+       "GOL": 71,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Fagner",
+      "LD",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 56,
+       "CTL": 69,
+       "PAS": 73,
+       "VEL": 78,
+       "FIS": 68,
+       "RES": 76,
+       "DEF": 74,
+       "CAB": 68,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Jonathan Jesus",
+      "ZAG",
+      70,
+      {
+       "ATQ": 47,
+       "FIN": 42,
+       "CTL": 62,
+       "PAS": 63,
+       "VEL": 68,
+       "FIS": 73,
+       "RES": 65,
+       "DEF": 77,
+       "CAB": 72,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Lucas Silva",
+      "VOL",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 57,
+       "CTL": 65,
+       "PAS": 72,
+       "VEL": 63,
+       "FIS": 70,
+       "RES": 73,
+       "DEF": 77,
+       "CAB": 66,
+       "GOL": 26,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Wanderson",
+      "PE",
+      74,
+      {
+       "ATQ": 77,
+       "FIN": 72,
+       "CTL": 80,
+       "PAS": 68,
+       "VEL": 78,
+       "FIS": 68,
+       "RES": 74,
+       "DEF": 56,
+       "CAB": 65,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Sinisterra",
+      "PE",
+      75,
+      {
+       "ATQ": 81,
+       "FIN": 74,
+       "CTL": 82,
+       "PAS": 74,
+       "VEL": 83,
+       "FIS": 65,
+       "RES": 75,
+       "DEF": 52,
+       "CAB": 62,
+       "GOL": 25,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Bruno Rodrigues",
+      "ATA",
+      71,
+      {
+       "ATQ": 77,
+       "FIN": 76,
+       "CTL": 73,
+       "PAS": 60,
+       "VEL": 67,
+       "FIS": 71,
+       "RES": 65,
+       "DEF": 45,
+       "CAB": 72,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Artur Jorge"
+   },
+   {
+    "id": "fluminense",
+    "nome": "Fluminense",
+    "sigla": "FLU",
+    "cores": {
+     "principal": "#7a1f3d",
+     "secundaria": "#0b6b3a"
+    },
+    "esquema": "4-4-2",
+    "estilo": "posse",
+    "elenco": [
+     [
+      "Fábio",
+      "GOL",
+      74,
+      {
+       "ATQ": 34,
+       "FIN": 27,
+       "CTL": 52,
+       "PAS": 57,
+       "VEL": 53,
+       "FIS": 68,
+       "RES": 63,
+       "DEF": 43,
+       "CAB": 56,
+       "GOL": 73,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Guga",
+      "LD",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 55,
+       "CTL": 66,
+       "PAS": 70,
+       "VEL": 77,
+       "FIS": 67,
+       "RES": 73,
+       "DEF": 70,
+       "CAB": 66,
+       "GOL": 24,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Ignácio",
+      "ZAG",
+      72,
+      {
+       "ATQ": 49,
+       "FIN": 45,
+       "CTL": 65,
+       "PAS": 67,
+       "VEL": 65,
+       "FIS": 73,
+       "RES": 71,
+       "DEF": 75,
+       "CAB": 72,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Thiago Silva",
+      "ZAG",
+      77,
+      {
+       "ATQ": 57,
+       "FIN": 48,
+       "CTL": 68,
+       "PAS": 75,
+       "VEL": 70,
+       "FIS": 76,
+       "RES": 74,
+       "DEF": 78,
+       "CAB": 84,
+       "GOL": 30,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Renê",
+      "LE",
+      71,
+      {
+       "ATQ": 67,
+       "FIN": 54,
+       "CTL": 66,
+       "PAS": 71,
+       "VEL": 76,
+       "FIS": 64,
+       "RES": 77,
+       "DEF": 72,
+       "CAB": 61,
+       "GOL": 24,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Hércules",
+      "VOL",
+      73,
+      {
+       "ATQ": 61,
+       "FIN": 58,
+       "CTL": 69,
+       "PAS": 77,
+       "VEL": 65,
+       "FIS": 77,
+       "RES": 73,
+       "DEF": 75,
+       "CAB": 73,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Nonato",
+      "MC",
+      71,
+      {
+       "ATQ": 72,
+       "FIN": 65,
+       "CTL": 71,
+       "PAS": 74,
+       "VEL": 67,
+       "FIS": 71,
+       "RES": 72,
+       "DEF": 63,
+       "CAB": 60,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Savarino",
+      "PD",
+      75,
+      {
+       "ATQ": 77,
+       "FIN": 76,
+       "CTL": 82,
+       "PAS": 69,
+       "VEL": 83,
+       "FIS": 65,
+       "RES": 73,
+       "DEF": 52,
+       "CAB": 62,
+       "GOL": 28,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Ganso",
+      "MEI",
+      74,
+      {
+       "ATQ": 78,
+       "FIN": 77,
+       "CTL": 82,
+       "PAS": 79,
+       "VEL": 71,
+       "FIS": 68,
+       "RES": 73,
+       "DEF": 57,
+       "CAB": 64,
+       "GOL": 28,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Canobbio",
+      "PE",
+      74,
+      {
+       "ATQ": 80,
+       "FIN": 73,
+       "CTL": 82,
+       "PAS": 69,
+       "VEL": 82,
+       "FIS": 64,
+       "RES": 78,
+       "DEF": 50,
+       "CAB": 59,
+       "GOL": 26,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Hulk",
+      "ATA",
+      77,
+      {
+       "ATQ": 78,
+       "FIN": 80,
+       "CTL": 80,
+       "PAS": 66,
+       "VEL": 78,
+       "FIS": 81,
+       "RES": 73,
+       "DEF": 47,
+       "CAB": 74,
+       "GOL": 24,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Vitor Eudes",
+      "GOL",
+      66,
+      {
+       "ATQ": 27,
+       "FIN": 22,
+       "CTL": 43,
+       "PAS": 51,
+       "VEL": 46,
+       "FIS": 64,
+       "RES": 56,
+       "DEF": 37,
+       "CAB": 47,
+       "GOL": 63,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Samuel Xavier",
+      "LD",
+      70,
+      {
+       "ATQ": 65,
+       "FIN": 56,
+       "CTL": 67,
+       "PAS": 71,
+       "VEL": 77,
+       "FIS": 70,
+       "RES": 72,
+       "DEF": 71,
+       "CAB": 60,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Freytes",
+      "ZAG",
+      72,
+      {
+       "ATQ": 53,
+       "FIN": 47,
+       "CTL": 63,
+       "PAS": 64,
+       "VEL": 66,
+       "FIS": 77,
+       "RES": 74,
+       "DEF": 77,
+       "CAB": 72,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Martinelli",
+      "VOL",
+      74,
+      {
+       "ATQ": 66,
+       "FIN": 64,
+       "CTL": 73,
+       "PAS": 76,
+       "VEL": 68,
+       "FIS": 79,
+       "RES": 74,
+       "DEF": 73,
+       "CAB": 71,
+       "GOL": 22,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Lucho Acosta",
+      "MEI",
+      76,
+      {
+       "ATQ": 80,
+       "FIN": 75,
+       "CTL": 78,
+       "PAS": 83,
+       "VEL": 78,
+       "FIS": 67,
+       "RES": 73,
+       "DEF": 56,
+       "CAB": 67,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Soteldo",
+      "PE",
+      73,
+      {
+       "ATQ": 74,
+       "FIN": 73,
+       "CTL": 75,
+       "PAS": 68,
+       "VEL": 80,
+       "FIS": 66,
+       "RES": 77,
+       "DEF": 52,
+       "CAB": 63,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Cano",
+      "ATA",
+      73,
+      {
+       "ATQ": 77,
+       "FIN": 77,
+       "CTL": 75,
+       "PAS": 63,
+       "VEL": 71,
+       "FIS": 76,
+       "RES": 69,
+       "DEF": 49,
+       "CAB": 77,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Marcão"
+   },
+   {
+    "id": "athletico-pr",
+    "nome": "Athletico-PR",
+    "sigla": "CAP",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#111111"
+    },
+    "esquema": "4-3-3",
+    "estilo": "intenso",
+    "elenco": [
+     [
+      "Santos",
+      "GOL",
+      72,
+      {
+       "ATQ": 32,
+       "FIN": 27,
+       "CTL": 44,
+       "PAS": 60,
+       "VEL": 51,
+       "FIS": 64,
+       "RES": 61,
+       "DEF": 45,
+       "CAB": 53,
+       "GOL": 75,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gilberto",
+      "LD",
+      70,
+      {
+       "ATQ": 68,
+       "FIN": 58,
+       "CTL": 70,
+       "PAS": 71,
+       "VEL": 77,
+       "FIS": 67,
+       "RES": 72,
+       "DEF": 70,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Aguirre",
+      "ZAG",
+      71,
+      {
+       "ATQ": 52,
+       "FIN": 44,
+       "CTL": 62,
+       "PAS": 67,
+       "VEL": 64,
+       "FIS": 76,
+       "RES": 72,
+       "DEF": 78,
+       "CAB": 71,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Arthur Dias",
+      "ZAG",
+      70,
+      {
+       "ATQ": 49,
+       "FIN": 41,
+       "CTL": 59,
+       "PAS": 67,
+       "VEL": 65,
+       "FIS": 75,
+       "RES": 70,
+       "DEF": 77,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Benavídez",
+      "LE",
+      71,
+      {
+       "ATQ": 63,
+       "FIN": 57,
+       "CTL": 67,
+       "PAS": 71,
+       "VEL": 75,
+       "FIS": 68,
+       "RES": 75,
+       "DEF": 68,
+       "CAB": 61,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Luiz Gustavo",
+      "VOL",
+      72,
+      {
+       "ATQ": 63,
+       "FIN": 61,
+       "CTL": 68,
+       "PAS": 70,
+       "VEL": 68,
+       "FIS": 70,
+       "RES": 77,
+       "DEF": 72,
+       "CAB": 71,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Jadson",
+      "VOL",
+      70,
+      {
+       "ATQ": 61,
+       "FIN": 61,
+       "CTL": 63,
+       "PAS": 69,
+       "VEL": 66,
+       "FIS": 74,
+       "RES": 71,
+       "DEF": 76,
+       "CAB": 64,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "João Cruz",
+      "MC",
+      69,
+      {
+       "ATQ": 65,
+       "FIN": 62,
+       "CTL": 69,
+       "PAS": 72,
+       "VEL": 68,
+       "FIS": 68,
+       "RES": 72,
+       "DEF": 66,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Mendoza",
+      "PD",
+      72,
+      {
+       "ATQ": 76,
+       "FIN": 72,
+       "CTL": 73,
+       "PAS": 71,
+       "VEL": 74,
+       "FIS": 62,
+       "RES": 76,
+       "DEF": 51,
+       "CAB": 57,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Viveros",
+      "ATA",
+      72,
+      {
+       "ATQ": 78,
+       "FIN": 73,
+       "CTL": 76,
+       "PAS": 67,
+       "VEL": 70,
+       "FIS": 73,
+       "RES": 68,
+       "DEF": 42,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Leozinho",
+      "PE",
+      68,
+      {
+       "ATQ": 74,
+       "FIN": 66,
+       "CTL": 71,
+       "PAS": 62,
+       "VEL": 73,
+       "FIS": 58,
+       "RES": 66,
+       "DEF": 47,
+       "CAB": 54,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Mycael",
+      "GOL",
+      70,
+      {
+       "ATQ": 29,
+       "FIN": 25,
+       "CTL": 43,
+       "PAS": 57,
+       "VEL": 52,
+       "FIS": 67,
+       "RES": 61,
+       "DEF": 37,
+       "CAB": 53,
+       "GOL": 71,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Esquivel",
+      "LE",
+      70,
+      {
+       "ATQ": 64,
+       "FIN": 52,
+       "CTL": 69,
+       "PAS": 71,
+       "VEL": 72,
+       "FIS": 64,
+       "RES": 72,
+       "DEF": 69,
+       "CAB": 59,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Terán",
+      "ZAG",
+      69,
+      {
+       "ATQ": 49,
+       "FIN": 44,
+       "CTL": 61,
+       "PAS": 63,
+       "VEL": 63,
+       "FIS": 70,
+       "RES": 64,
+       "DEF": 71,
+       "CAB": 72,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Felipinho",
+      "VOL",
+      68,
+      {
+       "ATQ": 56,
+       "FIN": 57,
+       "CTL": 61,
+       "PAS": 69,
+       "VEL": 59,
+       "FIS": 68,
+       "RES": 68,
+       "DEF": 72,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Zapelli",
+      "MEI",
+      72,
+      {
+       "ATQ": 78,
+       "FIN": 69,
+       "CTL": 77,
+       "PAS": 79,
+       "VEL": 71,
+       "FIS": 62,
+       "RES": 72,
+       "DEF": 53,
+       "CAB": 64,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Portilla",
+      "MEI",
+      70,
+      {
+       "ATQ": 74,
+       "FIN": 70,
+       "CTL": 78,
+       "PAS": 78,
+       "VEL": 66,
+       "FIS": 62,
+       "RES": 68,
+       "DEF": 54,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Isaac",
+      "ATA",
+      67,
+      {
+       "ATQ": 72,
+       "FIN": 69,
+       "CTL": 65,
+       "PAS": 60,
+       "VEL": 64,
+       "FIS": 68,
+       "RES": 61,
+       "DEF": 36,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ]
+    ],
+    "tecnico": "Odair Hellmann"
+   },
+   {
+    "id": "bragantino",
+    "nome": "Bragantino",
+    "sigla": "RBB",
+    "cores": {
+     "principal": "#ffffff",
+     "secundaria": "#d6001c"
+    },
+    "esquema": "4-3-3",
+    "estilo": "intenso",
+    "elenco": [
+     [
+      "Cleiton",
+      "GOL",
+      73,
+      {
+       "ATQ": 31,
+       "FIN": 28,
+       "CTL": 46,
+       "PAS": 58,
+       "VEL": 55,
+       "FIS": 71,
+       "RES": 67,
+       "DEF": 40,
+       "CAB": 50,
+       "GOL": 74,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Ryan Augusto",
+      "LD",
+      66,
+      {
+       "ATQ": 62,
+       "FIN": 51,
+       "CTL": 60,
+       "PAS": 62,
+       "VEL": 70,
+       "FIS": 60,
+       "RES": 67,
+       "DEF": 62,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gustavo Marques",
+      "ZAG",
+      71,
+      {
+       "ATQ": 52,
+       "FIN": 45,
+       "CTL": 62,
+       "PAS": 68,
+       "VEL": 67,
+       "FIS": 72,
+       "RES": 72,
+       "DEF": 75,
+       "CAB": 78,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Guzmán Rodríguez",
+      "ZAG",
+      71,
+      {
+       "ATQ": 52,
+       "FIN": 45,
+       "CTL": 63,
+       "PAS": 68,
+       "VEL": 66,
+       "FIS": 70,
+       "RES": 67,
+       "DEF": 72,
+       "CAB": 77,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Juninho Capixaba",
+      "LE",
+      74,
+      {
+       "ATQ": 70,
+       "FIN": 58,
+       "CTL": 71,
+       "PAS": 74,
+       "VEL": 81,
+       "FIS": 73,
+       "RES": 82,
+       "DEF": 77,
+       "CAB": 64,
+       "GOL": 25,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Fabinho",
+      "VOL",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 60,
+       "CTL": 69,
+       "PAS": 70,
+       "VEL": 68,
+       "FIS": 71,
+       "RES": 79,
+       "DEF": 71,
+       "CAB": 72,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Matheus Fernandes",
+      "VOL",
+      72,
+      {
+       "ATQ": 65,
+       "FIN": 64,
+       "CTL": 68,
+       "PAS": 75,
+       "VEL": 67,
+       "FIS": 74,
+       "RES": 73,
+       "DEF": 72,
+       "CAB": 65,
+       "GOL": 24,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Eric Ramires",
+      "MC",
+      73,
+      {
+       "ATQ": 68,
+       "FIN": 67,
+       "CTL": 76,
+       "PAS": 79,
+       "VEL": 66,
+       "FIS": 71,
+       "RES": 75,
+       "DEF": 67,
+       "CAB": 69,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Lucas Barbosa",
+      "PD",
+      72,
+      {
+       "ATQ": 72,
+       "FIN": 73,
+       "CTL": 78,
+       "PAS": 73,
+       "VEL": 78,
+       "FIS": 66,
+       "RES": 76,
+       "DEF": 53,
+       "CAB": 62,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Eduardo Sasha",
+      "ATA",
+      72,
+      {
+       "ATQ": 80,
+       "FIN": 80,
+       "CTL": 71,
+       "PAS": 63,
+       "VEL": 70,
+       "FIS": 72,
+       "RES": 68,
+       "DEF": 45,
+       "CAB": 75,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Fernando",
+      "PE",
+      70,
+      {
+       "ATQ": 69,
+       "FIN": 65,
+       "CTL": 72,
+       "PAS": 71,
+       "VEL": 72,
+       "FIS": 65,
+       "RES": 71,
+       "DEF": 49,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Tiago Volpi",
+      "GOL",
+      72,
+      {
+       "ATQ": 30,
+       "FIN": 24,
+       "CTL": 45,
+       "PAS": 59,
+       "VEL": 49,
+       "FIS": 71,
+       "RES": 60,
+       "DEF": 43,
+       "CAB": 52,
+       "GOL": 74,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Vanderlan",
+      "LE",
+      70,
+      {
+       "ATQ": 63,
+       "FIN": 53,
+       "CTL": 67,
+       "PAS": 71,
+       "VEL": 70,
+       "FIS": 65,
+       "RES": 77,
+       "DEF": 72,
+       "CAB": 64,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Alix Vinicius",
+      "ZAG",
+      68,
+      {
+       "ATQ": 50,
+       "FIN": 41,
+       "CTL": 56,
+       "PAS": 64,
+       "VEL": 63,
+       "FIS": 71,
+       "RES": 64,
+       "DEF": 68,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Praxedes",
+      "MC",
+      70,
+      {
+       "ATQ": 71,
+       "FIN": 66,
+       "CTL": 72,
+       "PAS": 76,
+       "VEL": 65,
+       "FIS": 65,
+       "RES": 72,
+       "DEF": 69,
+       "CAB": 63,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gustavinho",
+      "MEI",
+      70,
+      {
+       "ATQ": 73,
+       "FIN": 72,
+       "CTL": 78,
+       "PAS": 77,
+       "VEL": 65,
+       "FIS": 64,
+       "RES": 69,
+       "DEF": 53,
+       "CAB": 61,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Wallace Yan",
+      "PD",
+      69,
+      {
+       "ATQ": 70,
+       "FIN": 68,
+       "CTL": 73,
+       "PAS": 65,
+       "VEL": 71,
+       "FIS": 63,
+       "RES": 66,
+       "DEF": 45,
+       "CAB": 56,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Isidro Pitta",
+      "ATA",
+      72,
+      {
+       "ATQ": 78,
+       "FIN": 76,
+       "CTL": 70,
+       "PAS": 64,
+       "VEL": 72,
+       "FIS": 69,
+       "RES": 66,
+       "DEF": 43,
+       "CAB": 74,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ]
+    ],
+    "tecnico": "Vagner Mancini"
+   },
+   {
+    "id": "chapecoense",
+    "nome": "Chapecoense",
+    "sigla": "CHA",
+    "cores": {
+     "principal": "#0a7a3e",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-3-3",
+    "estilo": "defensivo",
+    "elenco": [
+     [
+      "Anderson",
+      "GOL",
+      68,
+      {
+       "ATQ": 32,
+       "FIN": 21,
+       "CTL": 42,
+       "PAS": 57,
+       "VEL": 46,
+       "FIS": 65,
+       "RES": 60,
+       "DEF": 37,
+       "CAB": 46,
+       "GOL": 66,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Everton",
+      "LD",
+      66,
+      {
+       "ATQ": 61,
+       "FIN": 52,
+       "CTL": 61,
+       "PAS": 66,
+       "VEL": 68,
+       "FIS": 63,
+       "RES": 69,
+       "DEF": 64,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Eduardo Doma",
+      "ZAG",
+      66,
+      {
+       "ATQ": 43,
+       "FIN": 37,
+       "CTL": 58,
+       "PAS": 59,
+       "VEL": 62,
+       "FIS": 70,
+       "RES": 64,
+       "DEF": 67,
+       "CAB": 71,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Kauan",
+      "ZAG",
+      64,
+      {
+       "ATQ": 42,
+       "FIN": 41,
+       "CTL": 54,
+       "PAS": 60,
+       "VEL": 62,
+       "FIS": 63,
+       "RES": 61,
+       "DEF": 68,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Fernando",
+      "LE",
+      65,
+      {
+       "ATQ": 60,
+       "FIN": 51,
+       "CTL": 64,
+       "PAS": 61,
+       "VEL": 67,
+       "FIS": 59,
+       "RES": 73,
+       "DEF": 61,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Vinícius Balieiro",
+      "VOL",
+      67,
+      {
+       "ATQ": 60,
+       "FIN": 59,
+       "CTL": 65,
+       "PAS": 68,
+       "VEL": 65,
+       "FIS": 66,
+       "RES": 68,
+       "DEF": 70,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Camilo",
+      "MC",
+      68,
+      {
+       "ATQ": 62,
+       "FIN": 61,
+       "CTL": 69,
+       "PAS": 75,
+       "VEL": 64,
+       "FIS": 64,
+       "RES": 68,
+       "DEF": 63,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Giovanni Augusto",
+      "MEI",
+      68,
+      {
+       "ATQ": 70,
+       "FIN": 64,
+       "CTL": 71,
+       "PAS": 72,
+       "VEL": 64,
+       "FIS": 61,
+       "RES": 69,
+       "DEF": 51,
+       "CAB": 54,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Franco Rossi",
+      "PD",
+      66,
+      {
+       "ATQ": 67,
+       "FIN": 68,
+       "CTL": 67,
+       "PAS": 65,
+       "VEL": 71,
+       "FIS": 59,
+       "RES": 65,
+       "DEF": 44,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Túlio Eduardo",
+      "ATA",
+      66,
+      {
+       "ATQ": 74,
+       "FIN": 70,
+       "CTL": 67,
+       "PAS": 57,
+       "VEL": 63,
+       "FIS": 67,
+       "RES": 66,
+       "DEF": 42,
+       "CAB": 67,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Marcinho",
+      "PE",
+      68,
+      {
+       "ATQ": 71,
+       "FIN": 66,
+       "CTL": 75,
+       "PAS": 66,
+       "VEL": 76,
+       "FIS": 63,
+       "RES": 65,
+       "DEF": 48,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Rafael Santos",
+      "GOL",
+      65,
+      {
+       "ATQ": 28,
+       "FIN": 20,
+       "CTL": 44,
+       "PAS": 51,
+       "VEL": 46,
+       "FIS": 63,
+       "RES": 54,
+       "DEF": 37,
+       "CAB": 42,
+       "GOL": 66,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Bruno Pacheco",
+      "LE",
+      66,
+      {
+       "ATQ": 61,
+       "FIN": 51,
+       "CTL": 60,
+       "PAS": 64,
+       "VEL": 66,
+       "FIS": 61,
+       "RES": 69,
+       "DEF": 66,
+       "CAB": 61,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Rafael Thyere",
+      "ZAG",
+      67,
+      {
+       "ATQ": 49,
+       "FIN": 43,
+       "CTL": 61,
+       "PAS": 63,
+       "VEL": 59,
+       "FIS": 67,
+       "RES": 67,
+       "DEF": 70,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Yago Felipe",
+      "MC",
+      67,
+      {
+       "ATQ": 61,
+       "FIN": 60,
+       "CTL": 72,
+       "PAS": 73,
+       "VEL": 61,
+       "FIS": 67,
+       "RES": 73,
+       "DEF": 59,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Max",
+      "MEI",
+      64,
+      {
+       "ATQ": 65,
+       "FIN": 61,
+       "CTL": 71,
+       "PAS": 67,
+       "VEL": 63,
+       "FIS": 58,
+       "RES": 65,
+       "DEF": 46,
+       "CAB": 50,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Bolasie",
+      "PE",
+      68,
+      {
+       "ATQ": 69,
+       "FIN": 68,
+       "CTL": 70,
+       "PAS": 62,
+       "VEL": 73,
+       "FIS": 59,
+       "RES": 70,
+       "DEF": 48,
+       "CAB": 54,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Neto Pessoa",
+      "ATA",
+      66,
+      {
+       "ATQ": 71,
+       "FIN": 73,
+       "CTL": 65,
+       "PAS": 61,
+       "VEL": 69,
+       "FIS": 69,
+       "RES": 62,
+       "DEF": 40,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ]
+    ],
+    "tecnico": "Rafael Lacerda"
+   },
+   {
+    "id": "coritiba",
+    "nome": "Coritiba",
+    "sigla": "CFC",
+    "cores": {
+     "principal": "#00594c",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-3-3",
+    "estilo": "defensivo",
+    "elenco": [
+     [
+      "Pedro Rangel",
+      "GOL",
+      69,
+      {
+       "ATQ": 32,
+       "FIN": 25,
+       "CTL": 44,
+       "PAS": 58,
+       "VEL": 50,
+       "FIS": 64,
+       "RES": 62,
+       "DEF": 42,
+       "CAB": 50,
+       "GOL": 72,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Tinga",
+      "LD",
+      68,
+      {
+       "ATQ": 65,
+       "FIN": 52,
+       "CTL": 68,
+       "PAS": 65,
+       "VEL": 73,
+       "FIS": 64,
+       "RES": 76,
+       "DEF": 66,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Jacy",
+      "ZAG",
+      67,
+      {
+       "ATQ": 48,
+       "FIN": 43,
+       "CTL": 56,
+       "PAS": 60,
+       "VEL": 65,
+       "FIS": 67,
+       "RES": 65,
+       "DEF": 68,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Tiago Cóser",
+      "ZAG",
+      68,
+      {
+       "ATQ": 46,
+       "FIN": 46,
+       "CTL": 56,
+       "PAS": 63,
+       "VEL": 62,
+       "FIS": 73,
+       "RES": 63,
+       "DEF": 68,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Bruno Melo",
+      "LE",
+      66,
+      {
+       "ATQ": 61,
+       "FIN": 54,
+       "CTL": 64,
+       "PAS": 63,
+       "VEL": 72,
+       "FIS": 60,
+       "RES": 67,
+       "DEF": 65,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Sebastián Gómez",
+      "VOL",
+      70,
+      {
+       "ATQ": 64,
+       "FIN": 62,
+       "CTL": 67,
+       "PAS": 68,
+       "VEL": 64,
+       "FIS": 69,
+       "RES": 72,
+       "DEF": 70,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Fernando Sobral",
+      "MC",
+      69,
+      {
+       "ATQ": 68,
+       "FIN": 67,
+       "CTL": 70,
+       "PAS": 71,
+       "VEL": 66,
+       "FIS": 64,
+       "RES": 69,
+       "DEF": 68,
+       "CAB": 58,
+       "GOL": 22,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Josué",
+      "MEI",
+      70,
+      {
+       "ATQ": 75,
+       "FIN": 73,
+       "CTL": 76,
+       "PAS": 72,
+       "VEL": 71,
+       "FIS": 63,
+       "RES": 70,
+       "DEF": 48,
+       "CAB": 60,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Lavega",
+      "PD",
+      68,
+      {
+       "ATQ": 70,
+       "FIN": 65,
+       "CTL": 76,
+       "PAS": 62,
+       "VEL": 75,
+       "FIS": 62,
+       "RES": 70,
+       "DEF": 48,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Pedro Rocha",
+      "ATA",
+      70,
+      {
+       "ATQ": 75,
+       "FIN": 73,
+       "CTL": 74,
+       "PAS": 66,
+       "VEL": 67,
+       "FIS": 74,
+       "RES": 67,
+       "DEF": 45,
+       "CAB": 72,
+       "GOL": 21,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Breno Lopes",
+      "PE",
+      69,
+      {
+       "ATQ": 70,
+       "FIN": 70,
+       "CTL": 73,
+       "PAS": 70,
+       "VEL": 71,
+       "FIS": 59,
+       "RES": 73,
+       "DEF": 48,
+       "CAB": 54,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Pedro Morisco",
+      "GOL",
+      68,
+      {
+       "ATQ": 30,
+       "FIN": 25,
+       "CTL": 46,
+       "PAS": 55,
+       "VEL": 50,
+       "FIS": 67,
+       "RES": 58,
+       "DEF": 41,
+       "CAB": 52,
+       "GOL": 65,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "JP Chermont",
+      "LD",
+      66,
+      {
+       "ATQ": 60,
+       "FIN": 54,
+       "CTL": 64,
+       "PAS": 64,
+       "VEL": 68,
+       "FIS": 61,
+       "RES": 68,
+       "DEF": 65,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Maicon",
+      "ZAG",
+      68,
+      {
+       "ATQ": 47,
+       "FIN": 42,
+       "CTL": 62,
+       "PAS": 61,
+       "VEL": 59,
+       "FIS": 74,
+       "RES": 63,
+       "DEF": 68,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Vitor Tissi",
+      "MC",
+      66,
+      {
+       "ATQ": 61,
+       "FIN": 64,
+       "CTL": 71,
+       "PAS": 71,
+       "VEL": 63,
+       "FIS": 61,
+       "RES": 67,
+       "DEF": 61,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Vini Paulista",
+      "MC",
+      65,
+      {
+       "ATQ": 63,
+       "FIN": 58,
+       "CTL": 68,
+       "PAS": 65,
+       "VEL": 60,
+       "FIS": 63,
+       "RES": 70,
+       "DEF": 59,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Keno",
+      "PE",
+      68,
+      {
+       "ATQ": 71,
+       "FIN": 69,
+       "CTL": 73,
+       "PAS": 62,
+       "VEL": 70,
+       "FIS": 62,
+       "RES": 68,
+       "DEF": 45,
+       "CAB": 53,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Rodrigo Rodrigues",
+      "ATA",
+      66,
+      {
+       "ATQ": 68,
+       "FIN": 70,
+       "CTL": 66,
+       "PAS": 62,
+       "VEL": 68,
+       "FIS": 63,
+       "RES": 63,
+       "DEF": 38,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "tecnico": "Fernando Seabra"
+   },
+   {
+    "id": "gremio",
+    "nome": "Grêmio",
+    "sigla": "GRE",
+    "cores": {
+     "principal": "#0d80bf",
+     "secundaria": "#111111"
+    },
+    "esquema": "5-3-2",
+    "estilo": "defensivo",
+    "elenco": [
+     [
+      "Weverton",
+      "GOL",
+      75,
+      {
+       "ATQ": 33,
+       "FIN": 30,
+       "CTL": 50,
+       "PAS": 61,
+       "VEL": 56,
+       "FIS": 68,
+       "RES": 68,
+       "DEF": 44,
+       "CAB": 52,
+       "GOL": 73,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "João Pedro",
+      "LD",
+      70,
+      {
+       "ATQ": 67,
+       "FIN": 54,
+       "CTL": 68,
+       "PAS": 69,
+       "VEL": 72,
+       "FIS": 68,
+       "RES": 76,
+       "DEF": 67,
+       "CAB": 60,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Noriega",
+      "ZAG",
+      70,
+      {
+       "ATQ": 51,
+       "FIN": 42,
+       "CTL": 61,
+       "PAS": 68,
+       "VEL": 67,
+       "FIS": 70,
+       "RES": 68,
+       "DEF": 75,
+       "CAB": 77,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Gustavo Martins",
+      "ZAG",
+      70,
+      {
+       "ATQ": 47,
+       "FIN": 41,
+       "CTL": 59,
+       "PAS": 64,
+       "VEL": 67,
+       "FIS": 76,
+       "RES": 68,
+       "DEF": 74,
+       "CAB": 76,
+       "GOL": 24,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Wallace",
+      "ZAG",
+      66,
+      {
+       "ATQ": 41,
+       "FIN": 44,
+       "CTL": 53,
+       "PAS": 58,
+       "VEL": 57,
+       "FIS": 70,
+       "RES": 64,
+       "DEF": 71,
+       "CAB": 71,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Caio Paulista",
+      "LE",
+      71,
+      {
+       "ATQ": 64,
+       "FIN": 55,
+       "CTL": 72,
+       "PAS": 73,
+       "VEL": 77,
+       "FIS": 71,
+       "RES": 72,
+       "DEF": 69,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Villasanti",
+      "VOL",
+      74,
+      {
+       "ATQ": 61,
+       "FIN": 66,
+       "CTL": 74,
+       "PAS": 78,
+       "VEL": 68,
+       "FIS": 77,
+       "RES": 80,
+       "DEF": 79,
+       "CAB": 74,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Krovinovic",
+      "MC",
+      70,
+      {
+       "ATQ": 65,
+       "FIN": 67,
+       "CTL": 75,
+       "PAS": 70,
+       "VEL": 67,
+       "FIS": 64,
+       "RES": 71,
+       "DEF": 65,
+       "CAB": 63,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Nardoni",
+      "MC",
+      70,
+      {
+       "ATQ": 70,
+       "FIN": 63,
+       "CTL": 72,
+       "PAS": 75,
+       "VEL": 63,
+       "FIS": 68,
+       "RES": 74,
+       "DEF": 63,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Tetê",
+      "ATA",
+      72,
+      {
+       "ATQ": 73,
+       "FIN": 78,
+       "CTL": 70,
+       "PAS": 67,
+       "VEL": 72,
+       "FIS": 75,
+       "RES": 68,
+       "DEF": 44,
+       "CAB": 74,
+       "GOL": 25,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Carlos Vinícius",
+      "ATA",
+      75,
+      {
+       "ATQ": 81,
+       "FIN": 81,
+       "CTL": 75,
+       "PAS": 70,
+       "VEL": 77,
+       "FIS": 74,
+       "RES": 72,
+       "DEF": 49,
+       "CAB": 79,
+       "GOL": 25,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gabriel Grando",
+      "GOL",
+      68,
+      {
+       "ATQ": 25,
+       "FIN": 20,
+       "CTL": 46,
+       "PAS": 50,
+       "VEL": 51,
+       "FIS": 60,
+       "RES": 61,
+       "DEF": 37,
+       "CAB": 47,
+       "GOL": 69,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Marlon",
+      "LE",
+      70,
+      {
+       "ATQ": 61,
+       "FIN": 56,
+       "CTL": 66,
+       "PAS": 68,
+       "VEL": 74,
+       "FIS": 67,
+       "RES": 78,
+       "DEF": 69,
+       "CAB": 59,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Kannemann",
+      "ZAG",
+      70,
+      {
+       "ATQ": 51,
+       "FIN": 42,
+       "CTL": 63,
+       "PAS": 65,
+       "VEL": 63,
+       "FIS": 75,
+       "RES": 71,
+       "DEF": 72,
+       "CAB": 72,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Dodi",
+      "VOL",
+      70,
+      {
+       "ATQ": 62,
+       "FIN": 57,
+       "CTL": 66,
+       "PAS": 74,
+       "VEL": 62,
+       "FIS": 70,
+       "RES": 76,
+       "DEF": 74,
+       "CAB": 63,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Pavón",
+      "PD",
+      72,
+      {
+       "ATQ": 78,
+       "FIN": 68,
+       "CTL": 73,
+       "PAS": 66,
+       "VEL": 78,
+       "FIS": 67,
+       "RES": 75,
+       "DEF": 49,
+       "CAB": 58,
+       "GOL": 23,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Amuzu",
+      "PE",
+      72,
+      {
+       "ATQ": 72,
+       "FIN": 74,
+       "CTL": 74,
+       "PAS": 66,
+       "VEL": 79,
+       "FIS": 63,
+       "RES": 69,
+       "DEF": 49,
+       "CAB": 59,
+       "GOL": 25,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Braithwaite",
+      "ATA",
+      72,
+      {
+       "ATQ": 76,
+       "FIN": 78,
+       "CTL": 75,
+       "PAS": 64,
+       "VEL": 69,
+       "FIS": 76,
+       "RES": 67,
+       "DEF": 44,
+       "CAB": 75,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Luís Castro"
+   },
+   {
+    "id": "internacional",
+    "nome": "Internacional",
+    "sigla": "INT",
+    "cores": {
+     "principal": "#d71920",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "5-3-2",
+    "estilo": "defensivo",
+    "elenco": [
+     [
+      "Kauan Jesus",
+      "GOL",
+      66,
+      {
+       "ATQ": 25,
+       "FIN": 24,
+       "CTL": 41,
+       "PAS": 49,
+       "VEL": 45,
+       "FIS": 62,
+       "RES": 56,
+       "DEF": 39,
+       "CAB": 48,
+       "GOL": 66,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Aguirre",
+      "LD",
+      70,
+      {
+       "ATQ": 68,
+       "FIN": 55,
+       "CTL": 66,
+       "PAS": 69,
+       "VEL": 75,
+       "FIS": 65,
+       "RES": 71,
+       "DEF": 73,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Juninho",
+      "ZAG",
+      70,
+      {
+       "ATQ": 46,
+       "FIN": 41,
+       "CTL": 58,
+       "PAS": 61,
+       "VEL": 65,
+       "FIS": 73,
+       "RES": 66,
+       "DEF": 76,
+       "CAB": 77,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Mercado",
+      "ZAG",
+      70,
+      {
+       "ATQ": 48,
+       "FIN": 43,
+       "CTL": 60,
+       "PAS": 66,
+       "VEL": 65,
+       "FIS": 70,
+       "RES": 65,
+       "DEF": 76,
+       "CAB": 72,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Matheus Bahia",
+      "ZAG",
+      68,
+      {
+       "ATQ": 47,
+       "FIN": 39,
+       "CTL": 56,
+       "PAS": 60,
+       "VEL": 66,
+       "FIS": 67,
+       "RES": 68,
+       "DEF": 70,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Bernabei",
+      "LE",
+      74,
+      {
+       "ATQ": 67,
+       "FIN": 57,
+       "CTL": 68,
+       "PAS": 70,
+       "VEL": 78,
+       "FIS": 67,
+       "RES": 79,
+       "DEF": 77,
+       "CAB": 63,
+       "GOL": 27,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Bruno Gomes",
+      "VOL",
+      72,
+      {
+       "ATQ": 62,
+       "FIN": 63,
+       "CTL": 71,
+       "PAS": 72,
+       "VEL": 66,
+       "FIS": 77,
+       "RES": 75,
+       "DEF": 78,
+       "CAB": 69,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Thiago Maia",
+      "VOL",
+      71,
+      {
+       "ATQ": 62,
+       "FIN": 56,
+       "CTL": 65,
+       "PAS": 72,
+       "VEL": 66,
+       "FIS": 73,
+       "RES": 74,
+       "DEF": 77,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Villagra",
+      "MC",
+      71,
+      {
+       "ATQ": 67,
+       "FIN": 65,
+       "CTL": 74,
+       "PAS": 71,
+       "VEL": 64,
+       "FIS": 71,
+       "RES": 73,
+       "DEF": 70,
+       "CAB": 67,
+       "GOL": 21,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Vitinho",
+      "ATA",
+      72,
+      {
+       "ATQ": 76,
+       "FIN": 75,
+       "CTL": 72,
+       "PAS": 67,
+       "VEL": 69,
+       "FIS": 70,
+       "RES": 72,
+       "DEF": 44,
+       "CAB": 70,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Alerrandro",
+      "ATA",
+      72,
+      {
+       "ATQ": 77,
+       "FIN": 80,
+       "CTL": 69,
+       "PAS": 67,
+       "VEL": 72,
+       "FIS": 69,
+       "RES": 71,
+       "DEF": 42,
+       "CAB": 71,
+       "GOL": 23,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Rochet",
+      "GOL",
+      74,
+      {
+       "ATQ": 36,
+       "FIN": 29,
+       "CTL": 47,
+       "PAS": 60,
+       "VEL": 51,
+       "FIS": 72,
+       "RES": 61,
+       "DEF": 41,
+       "CAB": 53,
+       "GOL": 75,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Alisson",
+      "LD",
+      64,
+      {
+       "ATQ": 60,
+       "FIN": 48,
+       "CTL": 63,
+       "PAS": 62,
+       "VEL": 70,
+       "FIS": 62,
+       "RES": 68,
+       "DEF": 62,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Félix Torres",
+      "ZAG",
+      71,
+      {
+       "ATQ": 53,
+       "FIN": 47,
+       "CTL": 60,
+       "PAS": 63,
+       "VEL": 62,
+       "FIS": 72,
+       "RES": 70,
+       "DEF": 71,
+       "CAB": 73,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Bruno Henrique",
+      "VOL",
+      70,
+      {
+       "ATQ": 60,
+       "FIN": 62,
+       "CTL": 65,
+       "PAS": 68,
+       "VEL": 61,
+       "FIS": 73,
+       "RES": 76,
+       "DEF": 74,
+       "CAB": 67,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Alan Patrick",
+      "MEI",
+      77,
+      {
+       "ATQ": 79,
+       "FIN": 75,
+       "CTL": 80,
+       "PAS": 82,
+       "VEL": 72,
+       "FIS": 73,
+       "RES": 75,
+       "DEF": 54,
+       "CAB": 68,
+       "GOL": 30,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Carbonero",
+      "PE",
+      73,
+      {
+       "ATQ": 77,
+       "FIN": 73,
+       "CTL": 74,
+       "PAS": 68,
+       "VEL": 75,
+       "FIS": 69,
+       "RES": 70,
+       "DEF": 48,
+       "CAB": 62,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Sanabria",
+      "ATA",
+      72,
+      {
+       "ATQ": 80,
+       "FIN": 77,
+       "CTL": 74,
+       "PAS": 61,
+       "VEL": 70,
+       "FIS": 71,
+       "RES": 67,
+       "DEF": 47,
+       "CAB": 69,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Eduardo Baptista"
+   },
+   {
+    "id": "mirassol",
+    "nome": "Mirassol",
+    "sigla": "MIR",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#0a7a3e"
+    },
+    "esquema": "4-3-3",
+    "estilo": "contra-ataque",
+    "elenco": [
+     [
+      "Walter",
+      "GOL",
+      68,
+      {
+       "ATQ": 31,
+       "FIN": 20,
+       "CTL": 46,
+       "PAS": 53,
+       "VEL": 50,
+       "FIS": 61,
+       "RES": 62,
+       "DEF": 39,
+       "CAB": 49,
+       "GOL": 71,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Igor Formiga",
+      "LD",
+      68,
+      {
+       "ATQ": 62,
+       "FIN": 57,
+       "CTL": 65,
+       "PAS": 63,
+       "VEL": 70,
+       "FIS": 68,
+       "RES": 70,
+       "DEF": 64,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "João Victor",
+      "ZAG",
+      68,
+      {
+       "ATQ": 44,
+       "FIN": 42,
+       "CTL": 62,
+       "PAS": 66,
+       "VEL": 62,
+       "FIS": 70,
+       "RES": 70,
+       "DEF": 72,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Willian Machado",
+      "ZAG",
+      68,
+      {
+       "ATQ": 45,
+       "FIN": 41,
+       "CTL": 61,
+       "PAS": 65,
+       "VEL": 64,
+       "FIS": 73,
+       "RES": 64,
+       "DEF": 75,
+       "CAB": 69,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Reinaldo",
+      "LE",
+      72,
+      {
+       "ATQ": 68,
+       "FIN": 56,
+       "CTL": 72,
+       "PAS": 72,
+       "VEL": 73,
+       "FIS": 70,
+       "RES": 74,
+       "DEF": 68,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Denilson",
+      "VOL",
+      67,
+      {
+       "ATQ": 59,
+       "FIN": 59,
+       "CTL": 62,
+       "PAS": 65,
+       "VEL": 59,
+       "FIS": 67,
+       "RES": 71,
+       "DEF": 70,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Eduardo",
+      "MC",
+      68,
+      {
+       "ATQ": 65,
+       "FIN": 66,
+       "CTL": 69,
+       "PAS": 71,
+       "VEL": 66,
+       "FIS": 68,
+       "RES": 72,
+       "DEF": 65,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Wallisson",
+      "MC",
+      66,
+      {
+       "ATQ": 61,
+       "FIN": 60,
+       "CTL": 65,
+       "PAS": 69,
+       "VEL": 62,
+       "FIS": 61,
+       "RES": 71,
+       "DEF": 60,
+       "CAB": 60,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Fernandinho",
+      "PD",
+      67,
+      {
+       "ATQ": 71,
+       "FIN": 62,
+       "CTL": 70,
+       "PAS": 62,
+       "VEL": 70,
+       "FIS": 58,
+       "RES": 64,
+       "DEF": 47,
+       "CAB": 53,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Edson Carioca",
+      "ATA",
+      66,
+      {
+       "ATQ": 69,
+       "FIN": 67,
+       "CTL": 65,
+       "PAS": 61,
+       "VEL": 66,
+       "FIS": 69,
+       "RES": 62,
+       "DEF": 39,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Bruno Santos",
+      "PE",
+      66,
+      {
+       "ATQ": 68,
+       "FIN": 64,
+       "CTL": 70,
+       "PAS": 66,
+       "VEL": 75,
+       "FIS": 55,
+       "RES": 65,
+       "DEF": 41,
+       "CAB": 54,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Alex Muralha",
+      "GOL",
+      66,
+      {
+       "ATQ": 28,
+       "FIN": 25,
+       "CTL": 40,
+       "PAS": 51,
+       "VEL": 44,
+       "FIS": 59,
+       "RES": 59,
+       "DEF": 40,
+       "CAB": 44,
+       "GOL": 69,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Daniel Borges",
+      "LD",
+      65,
+      {
+       "ATQ": 58,
+       "FIN": 47,
+       "CTL": 61,
+       "PAS": 64,
+       "VEL": 69,
+       "FIS": 61,
+       "RES": 66,
+       "DEF": 64,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Lucas Oliveira",
+      "ZAG",
+      66,
+      {
+       "ATQ": 43,
+       "FIN": 38,
+       "CTL": 57,
+       "PAS": 62,
+       "VEL": 60,
+       "FIS": 66,
+       "RES": 66,
+       "DEF": 66,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Neto Moura",
+      "VOL",
+      66,
+      {
+       "ATQ": 54,
+       "FIN": 58,
+       "CTL": 64,
+       "PAS": 64,
+       "VEL": 58,
+       "FIS": 70,
+       "RES": 70,
+       "DEF": 67,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Chico Kim",
+      "MEI",
+      68,
+      {
+       "ATQ": 72,
+       "FIN": 68,
+       "CTL": 70,
+       "PAS": 74,
+       "VEL": 67,
+       "FIS": 59,
+       "RES": 64,
+       "DEF": 50,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Shaylon",
+      "MEI",
+      68,
+      {
+       "ATQ": 75,
+       "FIN": 68,
+       "CTL": 69,
+       "PAS": 71,
+       "VEL": 64,
+       "FIS": 59,
+       "RES": 65,
+       "DEF": 48,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Negueba",
+      "PE",
+      68,
+      {
+       "ATQ": 73,
+       "FIN": 63,
+       "CTL": 70,
+       "PAS": 69,
+       "VEL": 71,
+       "FIS": 61,
+       "RES": 66,
+       "DEF": 43,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ]
+    ],
+    "tecnico": "Rafael Guanaes"
+   },
+   {
+    "id": "remo",
+    "nome": "Remo",
+    "sigla": "REM",
+    "cores": {
+     "principal": "#0b1f5c",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-4-2",
+    "estilo": "defensivo",
+    "elenco": [
+     [
+      "Marcelo Rangel",
+      "GOL",
+      68,
+      {
+       "ATQ": 32,
+       "FIN": 26,
+       "CTL": 47,
+       "PAS": 51,
+       "VEL": 45,
+       "FIS": 63,
+       "RES": 58,
+       "DEF": 38,
+       "CAB": 48,
+       "GOL": 67,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Matheus Alexandre",
+      "LD",
+      65,
+      {
+       "ATQ": 62,
+       "FIN": 49,
+       "CTL": 65,
+       "PAS": 63,
+       "VEL": 66,
+       "FIS": 65,
+       "RES": 67,
+       "DEF": 64,
+       "CAB": 60,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Marllon",
+      "ZAG",
+      66,
+      {
+       "ATQ": 43,
+       "FIN": 41,
+       "CTL": 60,
+       "PAS": 60,
+       "VEL": 57,
+       "FIS": 71,
+       "RES": 64,
+       "DEF": 72,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Tchamba",
+      "ZAG",
+      65,
+      {
+       "ATQ": 45,
+       "FIN": 39,
+       "CTL": 59,
+       "PAS": 59,
+       "VEL": 62,
+       "FIS": 67,
+       "RES": 67,
+       "DEF": 68,
+       "CAB": 72,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Marlon",
+      "LE",
+      67,
+      {
+       "ATQ": 62,
+       "FIN": 56,
+       "CTL": 62,
+       "PAS": 67,
+       "VEL": 67,
+       "FIS": 60,
+       "RES": 71,
+       "DEF": 68,
+       "CAB": 57,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "José Welison",
+      "VOL",
+      65,
+      {
+       "ATQ": 53,
+       "FIN": 55,
+       "CTL": 65,
+       "PAS": 67,
+       "VEL": 62,
+       "FIS": 70,
+       "RES": 69,
+       "DEF": 66,
+       "CAB": 64,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Picco",
+      "MC",
+      66,
+      {
+       "ATQ": 67,
+       "FIN": 64,
+       "CTL": 68,
+       "PAS": 67,
+       "VEL": 61,
+       "FIS": 60,
+       "RES": 67,
+       "DEF": 63,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Yago Pikachu",
+      "PD",
+      69,
+      {
+       "ATQ": 70,
+       "FIN": 65,
+       "CTL": 71,
+       "PAS": 63,
+       "VEL": 73,
+       "FIS": 59,
+       "RES": 67,
+       "DEF": 50,
+       "CAB": 55,
+       "GOL": 23,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Zé Ricardo",
+      "MC",
+      65,
+      {
+       "ATQ": 59,
+       "FIN": 61,
+       "CTL": 68,
+       "PAS": 65,
+       "VEL": 58,
+       "FIS": 61,
+       "RES": 69,
+       "DEF": 61,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Jajá",
+      "PE",
+      67,
+      {
+       "ATQ": 69,
+       "FIN": 67,
+       "CTL": 71,
+       "PAS": 68,
+       "VEL": 70,
+       "FIS": 61,
+       "RES": 64,
+       "DEF": 46,
+       "CAB": 58,
+       "GOL": 21,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Gabriel Taliari",
+      "ATA",
+      67,
+      {
+       "ATQ": 73,
+       "FIN": 75,
+       "CTL": 65,
+       "PAS": 61,
+       "VEL": 69,
+       "FIS": 66,
+       "RES": 66,
+       "DEF": 42,
+       "CAB": 67,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Ivan",
+      "GOL",
+      64,
+      {
+       "ATQ": 24,
+       "FIN": 20,
+       "CTL": 39,
+       "PAS": 53,
+       "VEL": 43,
+       "FIS": 61,
+       "RES": 53,
+       "DEF": 35,
+       "CAB": 45,
+       "GOL": 62,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Marcelinho",
+      "LD",
+      64,
+      {
+       "ATQ": 60,
+       "FIN": 49,
+       "CTL": 59,
+       "PAS": 63,
+       "VEL": 64,
+       "FIS": 57,
+       "RES": 66,
+       "DEF": 62,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Zé Ivaldo",
+      "ZAG",
+      66,
+      {
+       "ATQ": 46,
+       "FIN": 38,
+       "CTL": 57,
+       "PAS": 59,
+       "VEL": 57,
+       "FIS": 67,
+       "RES": 64,
+       "DEF": 66,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Patrick",
+      "MC",
+      66,
+      {
+       "ATQ": 63,
+       "FIN": 60,
+       "CTL": 67,
+       "PAS": 72,
+       "VEL": 63,
+       "FIS": 65,
+       "RES": 66,
+       "DEF": 63,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Vitor Bueno",
+      "MEI",
+      68,
+      {
+       "ATQ": 74,
+       "FIN": 67,
+       "CTL": 74,
+       "PAS": 71,
+       "VEL": 67,
+       "FIS": 62,
+       "RES": 62,
+       "DEF": 45,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Alef Manga",
+      "PE",
+      66,
+      {
+       "ATQ": 66,
+       "FIN": 64,
+       "CTL": 67,
+       "PAS": 64,
+       "VEL": 68,
+       "FIS": 57,
+       "RES": 70,
+       "DEF": 45,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Gabriel Poveda",
+      "ATA",
+      65,
+      {
+       "ATQ": 70,
+       "FIN": 70,
+       "CTL": 64,
+       "PAS": 61,
+       "VEL": 62,
+       "FIS": 69,
+       "RES": 65,
+       "DEF": 38,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ]
+    ],
+    "tecnico": "Léo Condé"
+   },
+   {
+    "id": "vasco",
+    "nome": "Vasco",
+    "sigla": "VAS",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "esquema": "4-4-2",
+    "estilo": "equilibrado",
+    "elenco": [
+     [
+      "Léo Jardim",
+      "GOL",
+      76,
+      {
+       "ATQ": 39,
+       "FIN": 31,
+       "CTL": 54,
+       "PAS": 59,
+       "VEL": 53,
+       "FIS": 73,
+       "RES": 63,
+       "DEF": 50,
+       "CAB": 54,
+       "GOL": 73,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Paulo Henrique",
+      "LD",
+      72,
+      {
+       "ATQ": 66,
+       "FIN": 54,
+       "CTL": 67,
+       "PAS": 73,
+       "VEL": 74,
+       "FIS": 69,
+       "RES": 77,
+       "DEF": 71,
+       "CAB": 66,
+       "GOL": 24,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Robert Renan",
+      "ZAG",
+      70,
+      {
+       "ATQ": 52,
+       "FIN": 43,
+       "CTL": 58,
+       "PAS": 64,
+       "VEL": 64,
+       "FIS": 72,
+       "RES": 67,
+       "DEF": 70,
+       "CAB": 76,
+       "GOL": 22,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Carlos Cuesta",
+      "ZAG",
+      72,
+      {
+       "ATQ": 53,
+       "FIN": 47,
+       "CTL": 62,
+       "PAS": 65,
+       "VEL": 69,
+       "FIS": 71,
+       "RES": 70,
+       "DEF": 76,
+       "CAB": 75,
+       "GOL": 21,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Cuiabano",
+      "LE",
+      70,
+      {
+       "ATQ": 66,
+       "FIN": 59,
+       "CTL": 66,
+       "PAS": 70,
+       "VEL": 77,
+       "FIS": 63,
+       "RES": 76,
+       "DEF": 70,
+       "CAB": 59,
+       "GOL": 22,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Thiago Mendes",
+      "VOL",
+      72,
+      {
+       "ATQ": 66,
+       "FIN": 59,
+       "CTL": 72,
+       "PAS": 69,
+       "VEL": 67,
+       "FIS": 70,
+       "RES": 74,
+       "DEF": 74,
+       "CAB": 67,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Santiago Sosa",
+      "VOL",
+      70,
+      {
+       "ATQ": 60,
+       "FIN": 56,
+       "CTL": 68,
+       "PAS": 73,
+       "VEL": 65,
+       "FIS": 68,
+       "RES": 73,
+       "DEF": 69,
+       "CAB": 66,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Adson",
+      "PD",
+      71,
+      {
+       "ATQ": 72,
+       "FIN": 69,
+       "CTL": 77,
+       "PAS": 65,
+       "VEL": 74,
+       "FIS": 62,
+       "RES": 70,
+       "DEF": 50,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Lescano",
+      "MC",
+      67,
+      {
+       "ATQ": 67,
+       "FIN": 59,
+       "CTL": 72,
+       "PAS": 69,
+       "VEL": 65,
+       "FIS": 67,
+       "RES": 66,
+       "DEF": 59,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Andrés Gómez",
+      "PE",
+      73,
+      {
+       "ATQ": 76,
+       "FIN": 71,
+       "CTL": 77,
+       "PAS": 70,
+       "VEL": 80,
+       "FIS": 67,
+       "RES": 77,
+       "DEF": 48,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Colidio",
+      "ATA",
+      71,
+      {
+       "ATQ": 78,
+       "FIN": 78,
+       "CTL": 73,
+       "PAS": 65,
+       "VEL": 70,
+       "FIS": 75,
+       "RES": 64,
+       "DEF": 43,
+       "CAB": 73,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Daniel Fuzato",
+      "GOL",
+      68,
+      {
+       "ATQ": 32,
+       "FIN": 25,
+       "CTL": 47,
+       "PAS": 55,
+       "VEL": 47,
+       "FIS": 60,
+       "RES": 55,
+       "DEF": 38,
+       "CAB": 52,
+       "GOL": 72,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Lucas Piton",
+      "LE",
+      72,
+      {
+       "ATQ": 66,
+       "FIN": 60,
+       "CTL": 68,
+       "PAS": 69,
+       "VEL": 79,
+       "FIS": 66,
+       "RES": 76,
+       "DEF": 70,
+       "CAB": 66,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Saldivia",
+      "ZAG",
+      69,
+      {
+       "ATQ": 50,
+       "FIN": 40,
+       "CTL": 60,
+       "PAS": 65,
+       "VEL": 61,
+       "FIS": 73,
+       "RES": 71,
+       "DEF": 72,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Tchê Tchê",
+      "MC",
+      71,
+      {
+       "ATQ": 70,
+       "FIN": 67,
+       "CTL": 71,
+       "PAS": 78,
+       "VEL": 71,
+       "FIS": 66,
+       "RES": 76,
+       "DEF": 67,
+       "CAB": 63,
+       "GOL": 25,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Nuno Moreira",
+      "MEI",
+      72,
+      {
+       "ATQ": 76,
+       "FIN": 68,
+       "CTL": 73,
+       "PAS": 76,
+       "VEL": 74,
+       "FIS": 68,
+       "RES": 73,
+       "DEF": 51,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Hinestroza",
+      "PE",
+      72,
+      {
+       "ATQ": 75,
+       "FIN": 70,
+       "CTL": 74,
+       "PAS": 68,
+       "VEL": 74,
+       "FIS": 61,
+       "RES": 73,
+       "DEF": 48,
+       "CAB": 62,
+       "GOL": 24,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Brenner",
+      "ATA",
+      70,
+      {
+       "ATQ": 74,
+       "FIN": 77,
+       "CTL": 67,
+       "PAS": 62,
+       "VEL": 68,
+       "FIS": 72,
+       "RES": 70,
+       "DEF": 41,
+       "CAB": 67,
+       "GOL": 21,
+       "perso": "tranquilo"
+      }
+     ]
+    ],
+    "grande": true,
+    "tecnico": "Pedro Emanuel"
+   },
+   {
+    "id": "vitoria",
+    "nome": "Vitória",
+    "sigla": "VIT",
+    "cores": {
+     "principal": "#d71920",
+     "secundaria": "#111111"
+    },
+    "esquema": "4-3-3",
+    "estilo": "contra-ataque",
+    "elenco": [
+     [
+      "Lucas Arcanjo",
+      "GOL",
+      72,
+      {
+       "ATQ": 31,
+       "FIN": 26,
+       "CTL": 49,
+       "PAS": 58,
+       "VEL": 55,
+       "FIS": 64,
+       "RES": 66,
+       "DEF": 41,
+       "CAB": 50,
+       "GOL": 72,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Ramon",
+      "LD",
+      66,
+      {
+       "ATQ": 62,
+       "FIN": 54,
+       "CTL": 65,
+       "PAS": 67,
+       "VEL": 66,
+       "FIS": 61,
+       "RES": 71,
+       "DEF": 62,
+       "CAB": 58,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Cacá",
+      "ZAG",
+      68,
+      {
+       "ATQ": 47,
+       "FIN": 43,
+       "CTL": 61,
+       "PAS": 65,
+       "VEL": 62,
+       "FIS": 67,
+       "RES": 63,
+       "DEF": 72,
+       "CAB": 68,
+       "GOL": 21,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Brítez",
+      "ZAG",
+      68,
+      {
+       "ATQ": 45,
+       "FIN": 40,
+       "CTL": 57,
+       "PAS": 64,
+       "VEL": 66,
+       "FIS": 67,
+       "RES": 68,
+       "DEF": 75,
+       "CAB": 75,
+       "GOL": 22,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Luan Cândido",
+      "LE",
+      70,
+      {
+       "ATQ": 66,
+       "FIN": 58,
+       "CTL": 65,
+       "PAS": 66,
+       "VEL": 72,
+       "FIS": 69,
+       "RES": 77,
+       "DEF": 69,
+       "CAB": 64,
+       "GOL": 23,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Zé Vitor",
+      "VOL",
+      67,
+      {
+       "ATQ": 55,
+       "FIN": 53,
+       "CTL": 66,
+       "PAS": 67,
+       "VEL": 60,
+       "FIS": 69,
+       "RES": 71,
+       "DEF": 72,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Emmanuel Martínez",
+      "MC",
+      68,
+      {
+       "ATQ": 64,
+       "FIN": 66,
+       "CTL": 68,
+       "PAS": 72,
+       "VEL": 61,
+       "FIS": 64,
+       "RES": 72,
+       "DEF": 62,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Matheuzinho",
+      "MEI",
+      70,
+      {
+       "ATQ": 72,
+       "FIN": 70,
+       "CTL": 76,
+       "PAS": 75,
+       "VEL": 70,
+       "FIS": 65,
+       "RES": 65,
+       "DEF": 51,
+       "CAB": 60,
+       "GOL": 22,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Erick",
+      "PD",
+      70,
+      {
+       "ATQ": 71,
+       "FIN": 65,
+       "CTL": 75,
+       "PAS": 70,
+       "VEL": 78,
+       "FIS": 63,
+       "RES": 74,
+       "DEF": 49,
+       "CAB": 59,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Renê",
+      "ATA",
+      66,
+      {
+       "ATQ": 74,
+       "FIN": 68,
+       "CTL": 70,
+       "PAS": 59,
+       "VEL": 66,
+       "FIS": 65,
+       "RES": 60,
+       "DEF": 35,
+       "CAB": 70,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Tarzia",
+      "PE",
+      68,
+      {
+       "ATQ": 74,
+       "FIN": 70,
+       "CTL": 73,
+       "PAS": 65,
+       "VEL": 74,
+       "FIS": 64,
+       "RES": 67,
+       "DEF": 50,
+       "CAB": 55,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Thiago Couto",
+      "GOL",
+      66,
+      {
+       "ATQ": 23,
+       "FIN": 24,
+       "CTL": 45,
+       "PAS": 51,
+       "VEL": 45,
+       "FIS": 58,
+       "RES": 56,
+       "DEF": 38,
+       "CAB": 46,
+       "GOL": 68,
+       "perso": "profissional"
+      }
+     ],
+     [
+      "Jamerson",
+      "LE",
+      66,
+      {
+       "ATQ": 60,
+       "FIN": 50,
+       "CTL": 65,
+       "PAS": 62,
+       "VEL": 72,
+       "FIS": 62,
+       "RES": 70,
+       "DEF": 69,
+       "CAB": 62,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Camutanga",
+      "ZAG",
+      67,
+      {
+       "ATQ": 47,
+       "FIN": 40,
+       "CTL": 61,
+       "PAS": 61,
+       "VEL": 58,
+       "FIS": 67,
+       "RES": 69,
+       "DEF": 71,
+       "CAB": 71,
+       "GOL": 20,
+       "perso": "temperamental"
+      }
+     ],
+     [
+      "Baralhas",
+      "VOL",
+      67,
+      {
+       "ATQ": 58,
+       "FIN": 57,
+       "CTL": 64,
+       "PAS": 65,
+       "VEL": 60,
+       "FIS": 68,
+       "RES": 72,
+       "DEF": 73,
+       "CAB": 65,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Pochettino",
+      "MEI",
+      68,
+      {
+       "ATQ": 73,
+       "FIN": 65,
+       "CTL": 75,
+       "PAS": 72,
+       "VEL": 63,
+       "FIS": 60,
+       "RES": 62,
+       "DEF": 48,
+       "CAB": 54,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ],
+     [
+      "Marinho",
+      "PD",
+      69,
+      {
+       "ATQ": 72,
+       "FIN": 64,
+       "CTL": 74,
+       "PAS": 68,
+       "VEL": 73,
+       "FIS": 61,
+       "RES": 69,
+       "DEF": 50,
+       "CAB": 56,
+       "GOL": 20,
+       "perso": "veterano"
+      }
+     ],
+     [
+      "Renato Kayzer",
+      "ATA",
+      70,
+      {
+       "ATQ": 78,
+       "FIN": 74,
+       "CTL": 68,
+       "PAS": 59,
+       "VEL": 66,
+       "FIS": 68,
+       "RES": 67,
+       "DEF": 40,
+       "CAB": 71,
+       "GOL": 20,
+       "perso": "tranquilo"
+      }
+     ]
+    ],
+    "tecnico": "Jair Ventura"
+   }
+  ],
+  "B": [
+   {
+    "id": "juventude",
+    "nome": "Juventude",
+    "sigla": "JUV",
+    "cores": {
+     "principal": "#0a7a3e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 70
+   },
+   {
+    "id": "vila-nova",
+    "nome": "Vila Nova",
+    "sigla": "VIL",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 68
+   },
+   {
+    "id": "novorizontino",
+    "nome": "Novorizontino",
+    "sigla": "NOV",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#111111"
+    },
+    "nivel": 70
+   },
+   {
+    "id": "fortaleza",
+    "nome": "Fortaleza",
+    "sigla": "FOR",
+    "cores": {
+     "principal": "#0b3d91",
+     "secundaria": "#c8102e"
+    },
+    "nivel": 68
+   },
+   {
+    "id": "criciuma",
+    "nome": "Criciúma",
+    "sigla": "CRI",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#111111"
+    },
+    "nivel": 66
+   },
+   {
+    "id": "atletico-go",
+    "nome": "Atlético-GO",
+    "sigla": "ACG",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#111111"
+    },
+    "nivel": 68
+   },
+   {
+    "id": "crb",
+    "nome": "CRB",
+    "sigla": "CRB",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 67
+   },
+   {
+    "id": "sport",
+    "nome": "Sport",
+    "sigla": "SPT",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#111111"
+    },
+    "nivel": 68
+   },
+   {
+    "id": "operario-pr",
+    "nome": "Operário-PR",
+    "sigla": "OPE",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 66
+   },
+   {
+    "id": "goias",
+    "nome": "Goiás",
+    "sigla": "GOI",
+    "cores": {
+     "principal": "#0a7a3e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 69
+   },
+   {
+    "id": "sao-bernardo",
+    "nome": "São Bernardo",
+    "sigla": "SBE",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#111111"
+    },
+    "nivel": 68
+   },
+   {
+    "id": "nautico",
+    "nome": "Náutico",
+    "sigla": "NAU",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 65
+   },
+   {
+    "id": "ceara",
+    "nome": "Ceará",
+    "sigla": "CEA",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 66
+   },
+   {
+    "id": "athletic",
+    "nome": "Athletic",
+    "sigla": "ATH",
+    "cores": null,
+    "nivel": 68
+   },
+   {
+    "id": "londrina",
+    "nome": "Londrina",
+    "sigla": "LON",
+    "cores": null,
+    "nivel": 69
+   },
+   {
+    "id": "botafogo-sp",
+    "nome": "Botafogo-SP",
+    "sigla": "BSP",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 69
+   },
+   {
+    "id": "avai",
+    "nome": "Avaí",
+    "sigla": "AVA",
+    "cores": {
+     "principal": "#0b3d91",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 65
+   },
+   {
+    "id": "america-mg",
+    "nome": "América-MG",
+    "sigla": "AME",
+    "cores": {
+     "principal": "#0a7a3e",
+     "secundaria": "#111111"
+    },
+    "nivel": 65
+   },
+   {
+    "id": "cuiaba",
+    "nome": "Cuiabá",
+    "sigla": "CUI",
+    "cores": {
+     "principal": "#0a7a3e",
+     "secundaria": "#f2c200"
+    },
+    "nivel": 65
+   },
+   {
+    "id": "ponte-preta",
+    "nome": "Ponte Preta",
+    "sigla": "PON",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 68
+   }
+  ],
+  "C": [
+   {
+    "id": "amazonas",
+    "nome": "Amazonas",
+    "sigla": "AMA",
+    "cores": null,
+    "nivel": 64
+   },
+   {
+    "id": "anapolis",
+    "nome": "Anápolis",
+    "sigla": "ANA",
+    "cores": null,
+    "nivel": 59
+   },
+   {
+    "id": "barra",
+    "nome": "Barra",
+    "sigla": "BAR",
+    "cores": null,
+    "nivel": 60
+   },
+   {
+    "id": "botafogo-pb",
+    "nome": "Botafogo-PB",
+    "sigla": "BP",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 62
+   },
+   {
+    "id": "brusque",
+    "nome": "Brusque",
+    "sigla": "BRU",
+    "cores": null,
+    "nivel": 61
+   },
+   {
+    "id": "caxias",
+    "nome": "Caxias",
+    "sigla": "CAX",
+    "cores": null,
+    "nivel": 63
+   },
+   {
+    "id": "confianca",
+    "nome": "Confiança",
+    "sigla": "CON",
+    "cores": null,
+    "nivel": 62
+   },
+   {
+    "id": "ferroviaria",
+    "nome": "Ferroviária",
+    "sigla": "FER",
+    "cores": {
+     "principal": "#7a1f3d",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 64
+   },
+   {
+    "id": "figueirense",
+    "nome": "Figueirense",
+    "sigla": "FIG",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 64
+   },
+   {
+    "id": "floresta",
+    "nome": "Floresta",
+    "sigla": "FLO",
+    "cores": null,
+    "nivel": 64
+   },
+   {
+    "id": "guarani",
+    "nome": "Guarani",
+    "sigla": "GUA",
+    "cores": {
+     "principal": "#0a7a3e",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 61
+   },
+   {
+    "id": "inter-de-limeira",
+    "nome": "Inter de Limeira",
+    "sigla": "IDL",
+    "cores": null,
+    "nivel": 62
+   },
+   {
+    "id": "itabaiana",
+    "nome": "Itabaiana",
+    "sigla": "ITA",
+    "cores": null,
+    "nivel": 60
+   },
+   {
+    "id": "ituano",
+    "nome": "Ituano",
+    "sigla": "ITU",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#111111"
+    },
+    "nivel": 60
+   },
+   {
+    "id": "maranhao",
+    "nome": "Maranhão",
+    "sigla": "MAR",
+    "cores": null,
+    "nivel": 63
+   },
+   {
+    "id": "maringa",
+    "nome": "Maringá",
+    "sigla": "MAR",
+    "cores": null,
+    "nivel": 61
+   },
+   {
+    "id": "paysandu",
+    "nome": "Paysandu",
+    "sigla": "PAY",
+    "cores": {
+     "principal": "#3fa9f5",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 63
+   },
+   {
+    "id": "santa-cruz",
+    "nome": "Santa Cruz",
+    "sigla": "SC",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#c8102e"
+    },
+    "nivel": 59
+   },
+   {
+    "id": "volta-redonda",
+    "nome": "Volta Redonda",
+    "sigla": "VR",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#111111"
+    },
+    "nivel": 63
+   },
+   {
+    "id": "ypiranga",
+    "nome": "Ypiranga",
+    "sigla": "YPI",
+    "cores": null,
+    "nivel": 59
+   }
+  ],
+  "D": [
+   {
+    "id": "csa",
+    "nome": "CSA",
+    "sigla": "CSA",
+    "cores": {
+     "principal": "#0b3d91",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 57
+   },
+   {
+    "id": "abc",
+    "nome": "ABC",
+    "sigla": "ABC",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 54
+   },
+   {
+    "id": "retro",
+    "nome": "Retrô",
+    "sigla": "RET",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "tombense",
+    "nome": "Tombense",
+    "sigla": "TOM",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "independencia",
+    "nome": "Independência",
+    "sigla": "IND",
+    "cores": null,
+    "nivel": 54
+   },
+   {
+    "id": "galvez",
+    "nome": "Galvez",
+    "sigla": "GAL",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "asa",
+    "nome": "ASA",
+    "sigla": "ASA",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "cse",
+    "nome": "CSE",
+    "sigla": "CSE",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "trem",
+    "nome": "Trem",
+    "sigla": "TRE",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "oratorio",
+    "nome": "Oratório",
+    "sigla": "ORA",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "nacional-am",
+    "nome": "Nacional-AM",
+    "sigla": "NA",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "manaus",
+    "nome": "Manaus",
+    "sigla": "MAN",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "atletico-ba",
+    "nome": "Atlético-BA",
+    "sigla": "AB",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "jacuipense",
+    "nome": "Jacuipense",
+    "sigla": "JAC",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "porto-ba",
+    "nome": "Porto-BA",
+    "sigla": "PB",
+    "cores": null,
+    "nivel": 54
+   },
+   {
+    "id": "tirol",
+    "nome": "Tirol",
+    "sigla": "TIR",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "ferroviario",
+    "nome": "Ferroviário",
+    "sigla": "FER",
+    "cores": null,
+    "nivel": 54
+   },
+   {
+    "id": "maracana",
+    "nome": "Maracanã",
+    "sigla": "MAR",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "capital-df",
+    "nome": "Capital-DF",
+    "sigla": "CD",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "gama",
+    "nome": "Gama",
+    "sigla": "GAM",
+    "cores": null,
+    "nivel": 54
+   },
+   {
+    "id": "rio-branco-es",
+    "nome": "Rio Branco-ES",
+    "sigla": "RBE",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "vitoria-es",
+    "nome": "Vitória-ES",
+    "sigla": "VE",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "crac",
+    "nome": "CRAC",
+    "sigla": "CRA",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "abecat",
+    "nome": "Abecat",
+    "sigla": "ABE",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "inhumas",
+    "nome": "Inhumas",
+    "sigla": "INH",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "imperatriz",
+    "nome": "Imperatriz",
+    "sigla": "IMP",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "iape",
+    "nome": "IAPE",
+    "sigla": "IAP",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "primavera-mt",
+    "nome": "Primavera-MT",
+    "sigla": "PM",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "mixto",
+    "nome": "Mixto",
+    "sigla": "MIX",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "operario-ms",
+    "nome": "Operário-MS",
+    "sigla": "OM",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "pantanal",
+    "nome": "Pantanal",
+    "sigla": "PAN",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "betim",
+    "nome": "Betim",
+    "sigla": "BET",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "democrata-gv",
+    "nome": "Democrata-GV",
+    "sigla": "DG",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "uberlandia",
+    "nome": "Uberlândia",
+    "sigla": "UBE",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "tuna-luso",
+    "nome": "Tuna Luso",
+    "sigla": "TL",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "aguia-de-maraba",
+    "nome": "Águia de Marabá",
+    "sigla": "ADM",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "sousa",
+    "nome": "Sousa",
+    "sigla": "SOU",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "serra-branca",
+    "nome": "Serra Branca",
+    "sigla": "SB",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "azuriz",
+    "nome": "Azuriz",
+    "sigla": "AZU",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "sao-joseense",
+    "nome": "São Joseense",
+    "sigla": "SJ",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "cianorte",
+    "nome": "Cianorte",
+    "sigla": "CIA",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "maguary",
+    "nome": "Maguary",
+    "sigla": "MAG",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "decisao",
+    "nome": "Decisão",
+    "sigla": "DEC",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "piaui",
+    "nome": "Piauí",
+    "sigla": "PIA",
+    "cores": null,
+    "nivel": 54
+   },
+   {
+    "id": "fluminense-pi",
+    "nome": "Fluminense-PI",
+    "sigla": "FP",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "madureira",
+    "nome": "Madureira",
+    "sigla": "MAD",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "america-rj",
+    "nome": "América-RJ",
+    "sigla": "AR",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "sampaio-correa-rj",
+    "nome": "Sampaio Corrêa-RJ",
+    "sigla": "SCR",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "laguna",
+    "nome": "Laguna",
+    "sigla": "LAG",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "america-rn",
+    "nome": "América-RN",
+    "sigla": "AR",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "brasil-de-pelotas",
+    "nome": "Brasil de Pelotas",
+    "sigla": "BDP",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "sao-luiz",
+    "nome": "São Luiz",
+    "sigla": "SL",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "guarany-de-bage",
+    "nome": "Guarany de Bagé",
+    "sigla": "GDB",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "porto-velho",
+    "nome": "Porto Velho",
+    "sigla": "PV",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "guapore",
+    "nome": "Guaporé",
+    "sigla": "GUA",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "gas",
+    "nome": "GAS",
+    "sigla": "GAS",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "monte-roraima",
+    "nome": "Monte Roraima",
+    "sigla": "MR",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "joinville",
+    "nome": "Joinville",
+    "sigla": "JOI",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#111111"
+    },
+    "nivel": 54
+   },
+   {
+    "id": "santa-catarina",
+    "nome": "Santa Catarina",
+    "sigla": "SC",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "blumenau",
+    "nome": "Blumenau",
+    "sigla": "BLU",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "portuguesa",
+    "nome": "Portuguesa",
+    "sigla": "POR",
+    "cores": {
+     "principal": "#c8102e",
+     "secundaria": "#0a7a3e"
+    },
+    "nivel": 51
+   },
+   {
+    "id": "velo-clube",
+    "nome": "Velo Clube",
+    "sigla": "VC",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "noroeste",
+    "nome": "Noroeste",
+    "sigla": "NOR",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "xv-de-piracicaba",
+    "nome": "XV de Piracicaba",
+    "sigla": "XDP",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "lagarto",
+    "nome": "Lagarto",
+    "sigla": "LAG",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "sergipe",
+    "nome": "Sergipe",
+    "sigla": "SER",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "araguaina",
+    "nome": "Araguaína",
+    "sigla": "ARA",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "tocantinopolis",
+    "nome": "Tocantinópolis",
+    "sigla": "TOC",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "manauara",
+    "nome": "Manauara",
+    "sigla": "MAN",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "juazeirense",
+    "nome": "Juazeirense",
+    "sigla": "JUA",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "ceilandia",
+    "nome": "Ceilândia",
+    "sigla": "CEI",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "aparecidense",
+    "nome": "Aparecidense",
+    "sigla": "APA",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "goiatuba",
+    "nome": "Goiatuba",
+    "sigla": "GOI",
+    "cores": null,
+    "nivel": 54
+   },
+   {
+    "id": "sampaio-correa",
+    "nome": "Sampaio Corrêa",
+    "sigla": "SC",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#0a7a3e"
+    },
+    "nivel": 53
+   },
+   {
+    "id": "luverdense",
+    "nome": "Luverdense",
+    "sigla": "LUV",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "fc-cascavel",
+    "nome": "FC Cascavel",
+    "sigla": "FC",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "central",
+    "nome": "Central",
+    "sigla": "CEN",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "altos",
+    "nome": "Altos",
+    "sigla": "ALT",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "marica",
+    "nome": "Maricá",
+    "sigla": "MAR",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "sao-jose-rs",
+    "nome": "São José-RS",
+    "sigla": "SJR",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "marcilio-dias",
+    "nome": "Marcílio Dias",
+    "sigla": "MD",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "agua-santa",
+    "nome": "Água Santa",
+    "sigla": "AS",
+    "cores": null,
+    "nivel": 57
+   },
+   {
+    "id": "nova-iguacu",
+    "nome": "Nova Iguaçu",
+    "sigla": "NI",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "brasiliense",
+    "nome": "Brasiliense",
+    "sigla": "BRA",
+    "cores": {
+     "principal": "#f2c200",
+     "secundaria": "#0a7a3e"
+    },
+    "nivel": 51
+   },
+   {
+    "id": "pouso-alegre",
+    "nome": "Pouso Alegre",
+    "sigla": "PA",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "portuguesa-rj",
+    "nome": "Portuguesa-RJ",
+    "sigla": "PR",
+    "cores": null,
+    "nivel": 58
+   },
+   {
+    "id": "humaita",
+    "nome": "Humaitá",
+    "sigla": "HUM",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "sao-raimundo-rr",
+    "nome": "São Raimundo-RR",
+    "sigla": "SRR",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "iguatu",
+    "nome": "Iguatu",
+    "sigla": "IGU",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "uniao-rondonopolis",
+    "nome": "União Rondonópolis",
+    "sigla": "UR",
+    "cores": null,
+    "nivel": 52
+   },
+   {
+    "id": "real-noroeste",
+    "nome": "Real Noroeste",
+    "sigla": "RN",
+    "cores": null,
+    "nivel": 55
+   },
+   {
+    "id": "treze",
+    "nome": "Treze",
+    "sigla": "TRE",
+    "cores": {
+     "principal": "#111111",
+     "secundaria": "#ffffff"
+    },
+    "nivel": 58
+   },
+   {
+    "id": "atletico-ce",
+    "nome": "Atlético-CE",
+    "sigla": "AC",
+    "cores": null,
+    "nivel": 56
+   },
+   {
+    "id": "operario-vg",
+    "nome": "Operário-VG",
+    "sigla": "OV",
+    "cores": null,
+    "nivel": 53
+   },
+   {
+    "id": "moto-club",
+    "nome": "Moto Club",
+    "sigla": "MC",
+    "cores": null,
+    "nivel": 51
+   },
+   {
+    "id": "parnahyba",
+    "nome": "Parnahyba",
+    "sigla": "PAR",
+    "cores": null,
+    "nivel": 58
+   }
+  ]
+ },
+ "vagasDiretasCopa": [
+  "paysandu",
+  "ponte-preta",
+  "barra",
+  "confianca"
+ ],
+ "classicos": [
+  [
+   "corinthians",
+   "palmeiras"
+  ],
+  [
+   "corinthians",
+   "sao-paulo"
+  ],
+  [
+   "corinthians",
+   "santos"
+  ],
+  [
+   "palmeiras",
+   "sao-paulo"
+  ],
+  [
+   "palmeiras",
+   "santos"
+  ],
+  [
+   "sao-paulo",
+   "santos"
+  ],
+  [
+   "flamengo",
+   "fluminense"
+  ],
+  [
+   "flamengo",
+   "vasco"
+  ],
+  [
+   "flamengo",
+   "botafogo"
+  ],
+  [
+   "fluminense",
+   "vasco"
+  ],
+  [
+   "fluminense",
+   "botafogo"
+  ],
+  [
+   "vasco",
+   "botafogo"
+  ],
+  [
+   "atletico-mg",
+   "cruzeiro"
+  ],
+  [
+   "gremio",
+   "internacional"
+  ],
+  [
+   "bahia",
+   "vitoria"
+  ],
+  [
+   "athletico-pr",
+   "coritiba"
+  ]
+ ]
+}

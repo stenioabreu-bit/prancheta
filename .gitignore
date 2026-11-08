@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-tsc/
+*.tsbuildinfo
+.vite/
+coverage/
+
+# Pacote de teste com nomes reais e escudos oficiais: só para uso pessoal,
+# nunca vai para o repositório (ver seção 3.3 do briefing).
+packages/data/packs/teste-real/
+
+# Relatórios gerados pela calibração
+tools/calibrate/relatorios/

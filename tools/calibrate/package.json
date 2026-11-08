@@ -1,0 +1,13 @@
+{
+  "name": "@prancheta/calibrate",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "calibrar": "tsx src/calibrar.ts"
+  },
+  "dependencies": {
+    "@prancheta/data": "*",
+    "@prancheta/engine": "*"
+  }
+}

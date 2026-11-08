@@ -1,0 +1,24 @@
+{
+  "name": "prancheta",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*", "tools/*"],
+  "scripts": {
+    "dev": "npm run dev -w @prancheta/web",
+    "build": "npm run build -w @prancheta/web",
+    "test": "vitest run",
+    "typecheck": "tsc -b",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "calibrar": "npm run calibrar -w @prancheta/calibrate --",
+    "importar-prototipo": "npm run importar-prototipo -w @prancheta/data --",
+    "baixar-escudos": "npm run baixar-escudos -w @prancheta/data --"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "22.10.2",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  }
+}

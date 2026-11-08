@@ -1,0 +1,159 @@
+:root {
+  --fundo: #f4f2ee;
+  --painel: #ffffff;
+  --tinta: #141414;
+  --suave: #6b6760;
+  --linha: #e2ded6;
+  --destaque: #0b6b3a;
+  --gol: #0b6b3a;
+  --cartao: #b8860b;
+  --expulsao: #b3261e;
+  --f-titulo: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --f-texto: "IBM Plex Sans", system-ui, sans-serif;
+  --f-numero: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #121212;
+    --painel: #1c1c1c;
+    --tinta: #f1efe9;
+    --suave: #a29d94;
+    --linha: #2e2d2a;
+    --destaque: #4fbf7f;
+    --gol: #4fbf7f;
+    --cartao: #e0b84a;
+    --expulsao: #ef6b61;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--f-texto);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.pagina {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+}
+
+h1 {
+  font-family: var(--f-titulo);
+  font-size: 34px;
+  margin: 0;
+}
+
+.sobretitulo {
+  margin: 0;
+  color: var(--suave);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.painel {
+  background: var(--painel);
+  border: 1px solid var(--linha);
+  border-radius: 12px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--suave);
+}
+
+select,
+.botao {
+  min-height: 44px;
+  font: inherit;
+  border-radius: 8px;
+  border: 1px solid var(--linha);
+  background: var(--fundo);
+  color: var(--tinta);
+  padding: 0 10px;
+}
+
+.botao {
+  background: var(--destaque);
+  color: #fff;
+  border: 0;
+  font-weight: 600;
+}
+
+.botao:disabled {
+  opacity: 0.6;
+}
+
+.placar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-family: var(--f-titulo);
+  font-size: 18px;
+}
+
+.placar strong {
+  font-size: 36px;
+}
+
+.estatisticas {
+  margin: 0;
+  text-align: center;
+  color: var(--suave);
+  font-size: 13px;
+  font-family: var(--f-numero);
+}
+
+.narracao {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.evento {
+  font-size: 14px;
+}
+
+.minuto {
+  font-family: var(--f-numero);
+  color: var(--suave);
+  display: inline-block;
+  min-width: 2.6em;
+}
+
+.evento.gol {
+  color: var(--gol);
+  font-weight: 600;
+}
+
+.evento.amarelo {
+  color: var(--cartao);
+}
+
+.evento.vermelho {
+  color: var(--expulsao);
+  font-weight: 600;
+}

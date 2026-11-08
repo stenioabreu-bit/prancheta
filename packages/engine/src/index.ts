@@ -1,0 +1,9 @@
+export * from "./tipos";
+export * from "./rng";
+export * from "./constantes";
+export * from "./jogador";
+export * from "./clube";
+export * from "./partida";
+export * from "./simulacaoRapida";
+export * from "./liga";
+export { NARRACAO } from "./conteudo/narracao";

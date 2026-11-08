@@ -8,3 +8,4 @@ export * from "./partida";
 export * from "./simulacaoRapida";
 export * from "./liga";
 export { NARRACAO } from "./conteudo/narracao";
+export * from "./competicao";

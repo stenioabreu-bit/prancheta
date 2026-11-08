@@ -5,11 +5,12 @@ import { type Rng, limitar, poisson, sortearComPeso } from "./rng";
 import type { Clube, Jogador, Posicao } from "./tipos";
 
 /** Placar de um jogo não assistido, por Poisson sobre a diferença de força. */
-export function placarRapido(rng: Rng, casa: Clube, visitante: Clube): [number, number] {
+export function placarRapido(rng: Rng, casa: Clube, visitante: Clube, neutro = false): [number, number] {
   const { golsMandante, golsVisitante, escalaForca } = AJUSTES.simulacaoRapida;
   const diferenca = casa.forca - visitante.forca;
-  const lambdaCasa = golsMandante * Math.exp(diferenca / escalaForca);
-  const lambdaVisitante = golsVisitante * Math.exp(-diferenca / escalaForca);
+  const semMando = (golsMandante + golsVisitante) / 2;
+  const lambdaCasa = (neutro ? semMando : golsMandante) * Math.exp(diferenca / escalaForca);
+  const lambdaVisitante = (neutro ? semMando : golsVisitante) * Math.exp(-diferenca / escalaForca);
   return [poisson(rng, lambdaCasa), poisson(rng, lambdaVisitante)];
 }
 
@@ -23,8 +24,15 @@ interface Escalado {
 /**
  * Estatísticas individuais de um jogo simulado (gols, assistências, notas,
  * goleiros), para os rankings também contarem os jogos que o usuário não viu.
+ * Jogo de copa só conta os gols da copa, como no protótipo.
  */
-export function estatisticasRapidas(rng: Rng, clube: Clube, golsPro: number, golsContra: number): void {
+export function estatisticasRapidas(
+  rng: Rng,
+  clube: Clube,
+  golsPro: number,
+  golsContra: number,
+  copa = false,
+): void {
   const postos = ESQUEMA_POSTOS[clube.esquema];
   const escalados: Escalado[] = clube.titulares.map((id, i) => ({
     jogador: jogadorDoClube(clube, id),
@@ -34,7 +42,7 @@ export function estatisticasRapidas(rng: Rng, clube: Clube, golsPro: number, gol
   }));
   const deLinha = escalados.filter((e) => e.posto !== "GOL");
   for (const e of escalados) {
-    e.jogador.temporada.jogos++;
+    if (!copa) e.jogador.temporada.jogos++;
     e.jogador.semJogar = 0;
   }
   for (let k = 0; k < golsPro; k++) {
@@ -46,6 +54,10 @@ export function estatisticasRapidas(rng: Rng, clube: Clube, golsPro: number, gol
           (e.jogador.at.FIN / 60) ** AJUSTES.simulacaoRapida.expoenteFinalizador +
         (e.posto === "ZAG" ? 0.07 * (e.jogador.at.CAB / 60) ** 2 : 0),
     );
+    if (copa) {
+      autor.jogador.temporada.golsCopa++;
+      continue;
+    }
     autor.gols++;
     autor.jogador.temporada.gols++;
     if (rng.proximo() < 0.72) {
@@ -58,6 +70,7 @@ export function estatisticasRapidas(rng: Rng, clube: Clube, golsPro: number, gol
       garcom.jogador.temporada.assist++;
     }
   }
+  if (copa) return;
   const goleiro = escalados.find((e) => e.posto === "GOL");
   if (goleiro) {
     goleiro.jogador.temporada.golsSofridos += golsContra;

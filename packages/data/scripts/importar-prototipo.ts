@@ -147,8 +147,10 @@ const pacote: PacoteDados = {
   id: "teste-real",
   nome: "Brasileirão 2026 (teste pessoal, nomes reais)",
   ficticio: false,
-  temporada: 2027,
+  temporada: 2026,
   divisoes: { A: serieA, B: serieB, C: serieC, D: serieD },
+  // Os 4 clubes que o protótipo punha direto na 3ª fase da Copa do Brasil 2026.
+  vagasDiretasCopa: ["paysandu", "ponte-preta", "barra", "confianca"],
 };
 mkdirSync(PASTA_TESTE_REAL, { recursive: true });
 writeFileSync(join(PASTA_TESTE_REAL, "pacote.json"), `${JSON.stringify(pacote, null, 1)}\n`);

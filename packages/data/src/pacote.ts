@@ -1,6 +1,6 @@
-import type { ClubeDados } from "@prancheta/engine";
+import type { ClubeDados, Divisao } from "@prancheta/engine";
 
-export type Divisao = "A" | "B" | "C" | "D";
+export type { Divisao };
 
 /**
  * Pacote de dados: tudo que é nome, cor e elenco fica aqui, fora do motor.
@@ -15,8 +15,12 @@ export interface PacoteDados {
   nome: string;
   /** Pacote só com nomes e clubes inventados (pode ser distribuído). */
   ficticio: boolean;
+  /** Ano da primeira temporada. */
   temporada: number;
-  divisoes: Partial<Record<Divisao, ClubeDados[]>>;
+  /** Clubes de cada série, do mais forte ao mais fraco na lista de entrada (a D também define os grupos). */
+  divisoes: Record<Divisao, ClubeDados[]>;
+  /** Clubes com vaga direta na 3ª fase da Copa do Brasil da primeira temporada (até 4). */
+  vagasDiretasCopa: string[];
 }
 
 /** Id estável de clube a partir do nome: "Atlético-MG" → "atletico-mg". */

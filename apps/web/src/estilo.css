@@ -1670,3 +1670,55 @@ tr.me.pisca td {
     display: inline;
   }
 }
+.menu-inicial {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding-block: 32px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: radial-gradient(
+    circle at 50% 30%,
+    color-mix(in srgb, var(--accent) 22%, var(--bg)),
+    var(--bg) 70%
+  );
+}
+.menu-logo {
+  width: min(260px, 62vw);
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+.menu-titulo {
+  font-family: var(--f-display);
+  font-size: clamp(34px, 7vw, 56px);
+  margin: 0;
+  letter-spacing: .02em;
+  text-align: center;
+}
+.menu-opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: min(380px, 100%);
+}
+.menu-opcoes .btn.big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.menu-save {
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.85;
+  letter-spacing: 0;
+}
+.menu-aviso {
+  text-align: center;
+  margin: 0;
+}

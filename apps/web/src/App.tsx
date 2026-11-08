@@ -5,6 +5,7 @@ import { type Aba, useJogo, useLoja } from "./estado/loja";
 import { Clube } from "./telas/Clube";
 import { Elenco } from "./telas/Elenco";
 import { Inicio } from "./telas/Inicio";
+import { MenuInicial } from "./telas/MenuInicial";
 import { NovoJogo } from "./telas/NovoJogo";
 import { Partida } from "./telas/Partida";
 import { Tabela } from "./telas/Tabela";
@@ -90,6 +91,7 @@ function Tela() {
 export function App() {
   const pronto = useLoja((s) => s.pronto);
   const temJogo = useLoja((s) => !!s.jogo);
+  const tela = useLoja((s) => s.tela);
   const emPartida = useLoja((s) => s.emPartida);
   const iniciar = useLoja((s) => s.iniciar);
   useEffect(() => {
@@ -102,7 +104,15 @@ export function App() {
         Carregando…
       </p>
     );
-  if (!temJogo) {
+  if (tela === "menu") {
+    return (
+      <>
+        <MenuInicial />
+        <Aviso />
+      </>
+    );
+  }
+  if (!temJogo || tela === "novo") {
     return (
       <>
         <NovoJogo />

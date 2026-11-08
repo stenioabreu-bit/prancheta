@@ -72,7 +72,8 @@ export function indicarVenda(estado: EstadoJogo, jogadorId: string): string {
   const meu = estado.carreira.clubeId ? estado.temporada.clubes[estado.carreira.clubeId] : null;
   const j = meu?.jogadores.find((x) => x.id === jogadorId);
   if (!j) return "Jogador não encontrado.";
-  const lista = (estado.mercado.vendasIndicadas ??= []);
+  estado.mercado.vendasIndicadas ??= [];
+  const lista = estado.mercado.vendasIndicadas;
   if (lista.includes(jogadorId)) return `${j.nome} já está à venda.`;
   lista.push(jogadorId);
   return janelaAberta(estado.temporada.rodada)

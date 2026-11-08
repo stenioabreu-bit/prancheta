@@ -75,14 +75,20 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
       const compradores = [...t.divisoes.A.clubes, ...t.divisoes.B.clubes].filter(
         (id) => id !== meu.id && forcaDeMercado(estado, id) >= forcaDeMercado(estado, meu.id) * 0.4,
       );
-      const comprador = compradores.length ? t.clubes[sortear(rng, compradores)]!.nome : "um clube do exterior";
+      const comprador = compradores.length
+        ? t.clubes[sortear(rng, compradores)]!.nome
+        : "um clube do exterior";
       const oferta = Math.round(valorNoClube(estado, vendido, meu) * (0.75 + rng.proximo() * 0.45) * 10) / 10;
       enviarMensagem(c, rodada, {
         de: "Diretoria de futebol",
         assunto: `Proposta por ${vendido.nome}`,
         texto: `Achamos interessado: ${comprador} oferece ${formatarDinheiro(oferta)} por ${vendido.nome}. Fechamos?`,
         opcoes: [
-          { texto: "Vender", efeito: {}, mercado: { vender: { jogadorId: vendido.id, valor: oferta, comprador } } },
+          {
+            texto: "Vender",
+            efeito: {},
+            mercado: { vender: { jogadorId: vendido.id, valor: oferta, comprador } },
+          },
           { texto: "Recusar a proposta", efeito: {} },
         ],
       });

@@ -7,6 +7,7 @@ async function foto(page: Page, nome: string) {
 
 async function novoJogo(page: Page) {
   await page.goto("/");
+  await page.getByRole("button", { name: "Novo jogo" }).click();
   await page.getByLabel("Nome do técnico").fill("Teste");
   await page.getByRole("button", { name: /Corinthians/ }).click();
   await foto(page, "01-novo-jogo");
@@ -39,6 +40,7 @@ test("novo jogo, partida completa e o save sobrevive ao recarregar", async ({ pa
 
   await page.waitForTimeout(700); // save automático (400 ms)
   await page.reload();
+  await page.getByRole("button", { name: /Continuar/ }).click();
   await expect(page.locator(".top .sub")).toContainText("rodada 2/38");
 });
 

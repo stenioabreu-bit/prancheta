@@ -14,6 +14,9 @@ interface Loja {
   escudos: Record<string, string>;
   aba: Aba;
   emPartida: boolean;
+  /** Menu inicial, criação de carreira ou o jogo. */
+  tela: "menu" | "novo" | "jogo";
+  irParaTela(tela: "menu" | "novo" | "jogo"): void;
   aviso: string | null;
   iniciar(): Promise<void>;
   comecar(o: { pacoteId: string; tecnico: string; clubeId: string }): Promise<void>;
@@ -54,6 +57,10 @@ export const useLoja = create<Loja>((set, get) => ({
   escudos: {},
   aba: "inicio",
   emPartida: false,
+  tela: "menu",
+  irParaTela(tela) {
+    set({ tela });
+  },
   aviso: null,
 
   async iniciar() {
@@ -75,7 +82,7 @@ export const useLoja = create<Loja>((set, get) => ({
       clubeId,
     });
     await gravarConfig("pacoteDoJogo", pacoteId);
-    set({ jogo, escudos: urlsDosEscudos(escudos), aba: "inicio", versao: get().versao + 1 });
+    set({ jogo, escudos: urlsDosEscudos(escudos), aba: "inicio", tela: "jogo", versao: get().versao + 1 });
     await salvar(armazenamento, jogo);
   },
 
@@ -105,7 +112,7 @@ export const useLoja = create<Loja>((set, get) => ({
 
   async abandonar() {
     await apagarTudo(armazenamento);
-    set({ jogo: null, aba: "inicio", emPartida: false, versao: get().versao + 1 });
+    set({ jogo: null, tela: "menu", aba: "inicio", emPartida: false, versao: get().versao + 1 });
   },
 }));
 

@@ -145,7 +145,7 @@ export function NovoJogo() {
   return (
     <div className="carreira-nova">
       <header className="cn-topo">
-        <span className="marca">Prancheta</span>
+        <span className="marca">Projeto Prancheta</span>
         <span className="cn-passo">Nova carreira · temporada {pacote?.temporada ?? ""}</span>
         <label className="cn-base">
           <span className="small muted">Liga:</span>

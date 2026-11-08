@@ -402,6 +402,27 @@ export function substituir(m: Partida, lado: LadoPartida, saiId: string, entraId
   const entra = lado.banco.find((b) => b.jogador.id === entraId && !b.usado);
   if (!p || !entra || !podeSubstituir(m, lado)) return false;
   const sai = p.atual;
+  // Desfazer na mesma parada (quem sai acabou de entrar, o jogo não andou): não gasta troca nem parada.
+  const correcao =
+    sai.usado && sai.entrou === m.minuto && lado.saidos.length > 0 && !lado.saidos.includes(saiId);
+  if (correcao) {
+    entra.usado = true;
+    lado.banco = lado.banco.filter((b) => b !== entra);
+    sai.usado = false;
+    sai.entrou = 0;
+    lado.banco.push(sai);
+    entra.entrou = m.minuto;
+    p.atual = entra;
+    p.instrucao = null;
+    registrar(
+      m,
+      "substituicao",
+      `Correção no ${lado.clube.sigla}: entra ${entra.jogador.nome} no lugar de ${sai.jogador.nome}.`,
+      lado,
+      [entra.jogador.id, saiId],
+    );
+    return true;
+  }
   lado.saidos.push(saiId);
   entra.usado = true;
   lado.banco = lado.banco.filter((b) => b !== entra);

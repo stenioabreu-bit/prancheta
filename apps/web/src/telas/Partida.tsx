@@ -169,25 +169,25 @@ function Trocas({ m, aoFechar, aoMudar }: { m: PartidaDoMotor; aoFechar: () => v
         <>
           <h3>Quem entra?</h3>
           <div className="plist">
-            {lado.banco
-              .filter((b) => !b.usado)
-              .map((b) => (
-                <button
-                  key={b.jogador.id}
-                  type="button"
-                  className="prow"
-                  onClick={() => {
-                    substituir(m, lado, sai, b.jogador.id);
-                    setSai(null);
-                    aoMudar();
-                  }}
-                >
-                  <span className={`pos ${b.jogador.pos}`}>{b.jogador.pos}</span>
-                  <span className="nm">{b.jogador.nome}</span>
-                  <span className="muted small">{Math.round(b.cond)}%</span>
-                  <span className="ovr">{b.jogador.ovr}</span>
-                </button>
-              ))}
+            {[...lado.banco.filter((b) => !b.usado), ...lado.banco.filter((b) => b.usado)].map((b) => (
+              <button
+                key={b.jogador.id}
+                type="button"
+                className={b.usado ? "prow usado" : "prow"}
+                disabled={b.usado}
+                title={b.usado ? "Já substituído: não pode voltar" : undefined}
+                onClick={() => {
+                  substituir(m, lado, sai, b.jogador.id);
+                  setSai(null);
+                  aoMudar();
+                }}
+              >
+                <span className={`pos ${b.jogador.pos}`}>{b.jogador.pos}</span>
+                <span className="nm">{b.jogador.nome}</span>
+                <span className="muted small">{Math.round(b.cond)}%</span>
+                <span className="ovr">{b.jogador.ovr}</span>
+              </button>
+            ))}
           </div>
           <button type="button" className="btn" onClick={() => setSai(null)}>
             Voltar

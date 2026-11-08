@@ -55,6 +55,21 @@ describe("partida minuto a minuto", () => {
     }
   });
 
+  it("trocar quem acabou de entrar, na mesma parada, não gasta troca", () => {
+    const { casa, visitante, rng } = doisClubes();
+    const m = criarPartida(casa, visitante, { rng, usuarioId: casa.id });
+    const lado = m.casa;
+    for (let i = 0; i < 20; i++) passo(m);
+    const a = lado.emCampo.find((p) => p.posto !== "GOL")!.atual.jogador.id;
+    const [b, c] = lado.banco.filter((x) => !x.usado).map((x) => x.jogador.id);
+    expect(substituir(m, lado, a, b!)).toBe(true);
+    expect(substituir(m, lado, b!, c!)).toBe(true);
+    expect(lado.trocas).toBe(1);
+    expect(lado.paradas).toBe(1);
+    expect(lado.banco.find((x) => x.jogador.id === b)!.usado).toBe(false);
+    expect(lado.banco.find((x) => x.jogador.id === a)!.usado).toBe(true);
+  });
+
   it("limita a 5 trocas em 3 paradas; o intervalo não conta como parada", () => {
     const { casa, visitante, rng } = doisClubes();
     const m = criarPartida(casa, visitante, { rng, usuarioId: casa.id });

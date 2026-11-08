@@ -2229,3 +2229,10 @@ html[data-deitado] {
     overflow: visible;
   }
 }
+
+/* Substituído não volta: fica no banco em cinza. */
+.prow.usado {
+  opacity: 0.45;
+  filter: grayscale(1);
+  cursor: not-allowed;
+}

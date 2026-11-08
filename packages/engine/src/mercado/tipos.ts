@@ -54,6 +54,17 @@ export interface EstadoMercado {
   passagens: Passagem[];
   /** Jogadores do elenco que o técnico pediu para a diretoria negociar. */
   vendasIndicadas?: string[];
+  /** Pedidos do técnico para segurar jogador: a diretoria responde algumas rodadas depois. */
+  decisoesPendentes?: DecisaoPendente[];
+}
+
+export interface DecisaoPendente {
+  jogadorId: string;
+  valor: number;
+  comprador: string;
+  tendeAVender: boolean;
+  /** Rodada em que a diretoria dá a resposta. */
+  rodada: number;
 }
 
 /** O que uma resposta pode mexer no mercado (além do Efeito da carreira). */

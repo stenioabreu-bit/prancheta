@@ -6,7 +6,7 @@ import { divisaoDo } from "../competicao/temporada";
 import type { Divisao } from "../competicao/tipos";
 import { type Rng, limitar } from "../rng";
 import type { Clube, Jogador } from "../tipos";
-import type { EfeitoDeMercado, Indicacao } from "./tipos";
+import type { DecisaoPendente, EfeitoDeMercado, Indicacao } from "./tipos";
 import {
   PESO_DIVISAO_NO_MERCADO,
   type SetorDoMercado,
@@ -271,22 +271,59 @@ export function aplicarEfeitoDeMercado(estado: EstadoJogo, ef: EfeitoDeMercado, 
     const meu = estado.temporada.clubes[estado.carreira.clubeId!]!;
     const j = meu.jogadores.find((x) => x.id === ef.segurar!.jogadorId);
     if (j) {
-      const segura =
-        estado.carreira.diretoria >= 55 && (!ef.segurar.tendeAVender || rng.proximo() < f.ouvir / 100);
-      if (segura) {
-        reacoes.push(`A diretoria segurou ${j.nome}.`);
-        if (j.perso === "temperamental" || rng.proximo() < 0.4) {
-          j.moral = limitar(j.moral - 12, 0, 100);
-          reacoes.push(`${j.nome} ficou chateado por perder a chance.`);
-        } else {
-          j.moral = limitar(j.moral + 3, 0, 100);
-        }
-      } else {
-        vender(estado, j.id, ef.segurar.valor, ef.segurar.comprador);
-        reacoes.push(`A diretoria ignorou seu pedido e vendeu ${j.nome}.`);
-        f.ouvir = limitar(f.ouvir - 5, 0, 100);
-      }
+      estado.mercado.decisoesPendentes ??= [];
+      estado.mercado.decisoesPendentes.push({
+        ...ef.segurar,
+        rodada: estado.temporada.rodada + 2 + Math.floor(rng.proximo() * 2),
+      });
+      reacoes.push(`A diretoria vai analisar o caso de ${j.nome} e responde nas próximas rodadas.`);
     }
   }
   return reacoes;
+}
+
+/** Peso do jogador no time: titular com boas notas pesa mais na hora de segurar. */
+export function importanciaNoTime(clube: { titulares: string[] }, j: Jogador): number {
+  const media = j.temporada.qtdNotas ? j.temporada.somaNotas / j.temporada.qtdNotas : 6.3;
+  const titular = clube.titulares.includes(j.id) ? 1 : 0;
+  return titular * (0.5 + limitar((media - 6.2) / 1.2, 0, 1) * 0.5);
+}
+
+/** Resolve os pedidos de segurar que venceram nesta rodada; devolve os textos das respostas. */
+export function resolverDecisoesPendentes(estado: EstadoJogo, rng: Rng): { texto: string; bom: boolean }[] {
+  const m = estado.mercado;
+  const rodada = estado.temporada.rodada;
+  const saida: { texto: string; bom: boolean }[] = [];
+  const restantes: DecisaoPendente[] = [];
+  for (const d of m.decisoesPendentes ?? []) {
+    if (d.rodada > rodada) {
+      restantes.push(d);
+      continue;
+    }
+    const meu = estado.temporada.clubes[estado.carreira.clubeId!];
+    const j = meu?.jogadores.find((x) => x.id === d.jogadorId);
+    if (!meu || !j) continue;
+    const peso = importanciaNoTime(meu, j);
+    const chance =
+      (estado.carreira.diretoria >= 45 ? 0.35 : 0.15) +
+      peso * 0.5 +
+      (d.tendeAVender ? 0 : 0.2) +
+      m.financas.ouvir / 400;
+    if (rng.proximo() < chance) {
+      saida.push({
+        texto: `A diretoria analisou e decidiu manter ${j.nome}: é peça importante do time.`,
+        bom: true,
+      });
+      if (j.perso === "temperamental" && rng.proximo() < 0.5) j.moral = limitar(j.moral - 10, 0, 100);
+    } else {
+      vender(estado, j.id, d.valor, d.comprador);
+      m.financas.ouvir = limitar(m.financas.ouvir - 5, 0, 100);
+      saida.push({
+        texto: `Depois de analisar, a diretoria aceitou a proposta e vendeu ${j.nome}.`,
+        bom: false,
+      });
+    }
+  }
+  m.decisoesPendentes = restantes;
+  return saida;
 }

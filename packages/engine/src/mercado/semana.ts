@@ -8,6 +8,8 @@ import {
   avaliarIndicacao,
   buscarNoMercado,
   forcaDeMercado,
+  importanciaNoTime,
+  resolverDecisoesPendentes,
   transferir,
   valorNoClube,
 } from "./transferencias";
@@ -26,6 +28,13 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
   const rodada = t.rodada;
   const meu = c.clubeId ? t.clubes[c.clubeId]! : null;
 
+  for (const r of resolverDecisoesPendentes(estado, rng)) {
+    enviarMensagem(c, rodada, {
+      de: "Diretoria de futebol",
+      assunto: "Resposta da diretoria",
+      texto: r.texto,
+    });
+  }
   if (meu && janelaAberta(rodada)) {
     for (const ind of m.indicacoes.filter((i) => i.status === "pendente" && i.rodada <= rodada).slice(0, 2)) {
       const r = avaliarIndicacao(estado, ind, rng);
@@ -94,7 +103,11 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
       });
     }
     if (rng.proximo() < 0.25) {
-      const alvos = meu.jogadores.filter((j) => j.ovr >= 72).sort((a, b) => b.ovr - a.ovr);
+      // Diretoria criteriosa: não abre negociação de titular que está rendendo.
+      const alvos = meu.jogadores
+        .filter((j) => j.ovr >= 72 && importanciaNoTime(meu, j) < 0.75)
+        .filter((j) => !(m.decisoesPendentes ?? []).some((d) => d.jogadorId === j.id))
+        .sort((a, b) => b.ovr - a.ovr);
       const j = alvos[Math.floor(rng.proximo() * Math.min(6, alvos.length))];
       if (j) {
         const maiores = t.divisoes.A.clubes.filter(
@@ -106,7 +119,8 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
             : t.clubes[sortear(rng, maiores)]!.nome;
         const valor = valorNoClube(estado, j, meu);
         const oferta = Math.round(valor * (0.9 + rng.proximo() * 0.6) * 10) / 10;
-        const tende = m.financas.perfil === "economico" || oferta > valor * 1.2;
+        const tende =
+          importanciaNoTime(meu, j) < 0.5 && (m.financas.perfil === "economico" || oferta > valor * 1.2);
         enviarMensagem(c, rodada, {
           de: "Diretoria de futebol",
           assunto: `Proposta por ${j.nome}`,

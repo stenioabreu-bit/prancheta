@@ -115,6 +115,52 @@ function gerarDivisoes(): Record<Exclude<Divisao, "A">, ClubeDados[]> {
   return resultado;
 }
 
+const NOMES_TECNICOS = [
+  "Aurélio",
+  "Benedito",
+  "Caetano",
+  "Dalton",
+  "Everaldo",
+  "Fausto",
+  "Gervásio",
+  "Heitor",
+  "Ismael",
+  "Jonas",
+  "Laércio",
+  "Moacir",
+  "Nestor",
+  "Osmar",
+  "Péricles",
+  "Quirino",
+  "Romeu",
+  "Silvano",
+  "Tarcísio",
+  "Valdir",
+];
+const SOBRENOMES_TECNICOS = [
+  "Araripe",
+  "Bittencourt",
+  "Carvalhal",
+  "Damasceno",
+  "Esteves",
+  "Falcão",
+  "Guaraná",
+  "Holanda",
+  "Itaboraí",
+  "Jardim",
+  "Lisboa",
+  "Macedo",
+  "Nóbrega",
+  "Ourique",
+  "Paranhos",
+  "Quintela",
+  "Rangel",
+  "Sobral",
+  "Tavora",
+  "Uchoa",
+  "Valadares",
+];
+
 export function pacoteFicticio(): PacoteDados {
   const serieA: ClubeDados[] = SERIE_A.map(([nome, sigla, nivel]) => ({
     id: idDoClube(nome),
@@ -123,6 +169,13 @@ export function pacoteFicticio(): PacoteDados {
     nivel,
   }));
   const { B, C, D } = gerarDivisoes();
+  // Os 6 mais fortes da A são "de massa"; técnicos inventados para A e B.
+  serieA.forEach((c, i) => {
+    if (i < 6) c.grande = true;
+  });
+  [...serieA, ...B].forEach((c, i) => {
+    c.tecnico = `${NOMES_TECNICOS[i % NOMES_TECNICOS.length]} ${SOBRENOMES_TECNICOS[(i * 7) % SOBRENOMES_TECNICOS.length]}`;
+  });
   return {
     formato: 1,
     id: "ficticio",

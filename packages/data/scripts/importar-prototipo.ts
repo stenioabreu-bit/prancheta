@@ -42,6 +42,8 @@ interface DadosPrototipo {
   CORES_D: Record<string, [string, string]>;
   /** Pares pelas siglas antigas da Série A (COR, PAL...). */
   CLASSICOS: [string, string][];
+  TECNICOS_A: Record<string, string>;
+  GRANDES: string[];
 }
 
 function trecho(codigo: string, inicio: string, fim: string): string {
@@ -87,7 +89,8 @@ const script = html.slice(html.indexOf("<script>") + 8, html.lastIndexOf("</scri
 const codigo = `${trecho(script, "const DB = {", "/* ================= MOTOR")}
 ${trecho(script, "const SERIE_B", "const PALETA")}
 ${trecho(script, "const CLASSICOS", "function isClassico")}
-({ DB, SERIE_B, SERIE_C, SERIE_D, CORES_C, CORES_D, CLASSICOS });`;
+${trecho(script, "const TECNICOS_A", "const DIV_PESO")}
+({ DB, SERIE_B, SERIE_C, SERIE_D, CORES_C, CORES_D, CLASSICOS, TECNICOS_A, GRANDES });`;
 const dados = runInNewContext(codigo, {}) as DadosPrototipo;
 
 /**
@@ -116,6 +119,11 @@ const serieA: ClubeDados[] = dados.DB.teams.map((t) => {
     elenco: comAtributosDoPrototipo(elenco, t.id),
   };
   if (t.estadio) clube.estadio = t.estadio;
+  if (dados.GRANDES.includes(t.id)) clube.grande = true;
+  const tecnico = dados.TECNICOS_A[t.id];
+  if (tecnico) clube.tecnico = tecnico;
+  // O protótipo tinha o presidente do Corinthians como "econômico".
+  if (t.id === "COR") clube.perfilDiretoria = "economico";
   if (t.elenco) clube.titulares = t.xi as string[];
   return clube;
 });

@@ -1,3 +1,4 @@
+import type { EfeitoDeMercado } from "../mercado/tipos";
 import type { Bonus, Esquema, Jogador } from "../tipos";
 
 export type FuncaoComissao = "auxiliar" | "goleiros" | "ataque" | "defesa" | "fisico" | "base";
@@ -71,6 +72,8 @@ export interface Efeito {
 export interface OpcaoDeResposta {
   texto: string;
   efeito: Efeito;
+  /** Efeitos de mercado (contratar, vender, assumir clube...), aplicados pelo jogo. */
+  mercado?: EfeitoDeMercado;
 }
 
 export interface Mensagem {

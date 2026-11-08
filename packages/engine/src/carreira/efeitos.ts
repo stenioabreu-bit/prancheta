@@ -37,7 +37,12 @@ export function pendentes(carreira: EstadoCarreira): number {
  * Aplica um efeito e devolve as reações em texto. Temperamental sente mais a
  * bronca (×1,5); veterano sente menos (×0,7).
  */
-export function aplicarEfeito(carreira: EstadoCarreira, clube: Clube, rodada: number, ef: Efeito): string[] {
+export function aplicarEfeito(
+  carreira: EstadoCarreira,
+  clube: Clube | null,
+  rodada: number,
+  ef: Efeito,
+): string[] {
   const reacoes: string[] = [];
   if (ef.diretoria) {
     carreira.diretoria = limitar(carreira.diretoria + ef.diretoria, 0, 100);
@@ -47,7 +52,7 @@ export function aplicarEfeito(carreira: EstadoCarreira, clube: Clube, rodada: nu
     carreira.torcida = limitar(carreira.torcida + ef.torcida, 0, 100);
     reacoes.push(ef.torcida > 0 ? "A torcida curtiu nas redes." : "A torcida reagiu mal nas redes.");
   }
-  if (ef.elenco) {
+  if (ef.elenco && clube) {
     const e = ef.elenco;
     reacoes.push(
       e >= 3
@@ -61,7 +66,7 @@ export function aplicarEfeito(carreira: EstadoCarreira, clube: Clube, rodada: nu
       j.moral = limitar(j.moral + Math.round(e * peso), 0, 100);
     }
   }
-  if (ef.jogador) {
+  if (ef.jogador && clube) {
     const j = clube.jogadores.find((x) => x.id === ef.jogador!.id);
     if (j) {
       let d = ef.jogador.moral;
@@ -85,7 +90,7 @@ export function aplicarEfeito(carreira: EstadoCarreira, clube: Clube, rodada: nu
 /** Responde uma mensagem com opções; responder de novo não faz nada. */
 export function responderMensagem(
   carreira: EstadoCarreira,
-  clube: Clube,
+  clube: Clube | null,
   rodada: number,
   mensagemId: string,
   opcao: number,

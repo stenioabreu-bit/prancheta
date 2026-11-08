@@ -2,6 +2,7 @@ import type { ClubeDados } from "../clube";
 import {
   type EstadoTemporada,
   type ResumoTemporada,
+  divisaoDo,
   jogosDaRodada,
   novaTemporada,
   registrarPlacar,
@@ -10,21 +11,33 @@ import {
   virarTemporada,
 } from "../competicao/temporada";
 import type { Divisao, JogoAgendado } from "../competicao/tipos";
+import { semanaDoMercado } from "../mercado/semana";
+import { assumir, ficarDesempregado } from "../mercado/tecnico";
+import type { EstadoMercado } from "../mercado/tipos";
+import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
+import { PESO_DIVISAO_NO_MERCADO, PREMIO_COPA, orcamentoInicial } from "../mercado/valores";
 import { type Partida, criarPartida, encerrarPartida, jogarAteOFim } from "../partida";
 import { type Rng, criarRng, limitar } from "../rng";
 import { gerarGarotos } from "./base";
 import { distribuirFuncoes, gerarComissao } from "./comissao";
-import { ehClassico, metaDaTemporada, reagirAoConfrontoDaCopa, reagirAoJogoDaLiga } from "./diretoria";
-import { enviarMensagem } from "./efeitos";
+import {
+  ehClassico,
+  metaDaTemporada,
+  pontosEsperados,
+  reagirAoConfrontoDaCopa,
+  reagirAoJogoDaLiga,
+} from "./diretoria";
+import { enviarMensagem, responderMensagem } from "./efeitos";
 import { type ResumoDaRodada, semana } from "./semana";
 import type { EstadoCarreira } from "./tipos";
 import { bonusDoUsuario, reporDesfalques } from "./treino";
 
-/** Save completo: temporada (clubes, competições) + carreira do técnico. */
+/** Save completo: temporada (clubes, competições) + carreira do técnico + mercado. */
 export interface EstadoJogo {
   versao: 1;
   temporada: EstadoTemporada;
   carreira: EstadoCarreira;
+  mercado: EstadoMercado;
   /** O que o técnico fez na rodada em andamento (zera quando a rodada fecha). */
   rodadaAtual: ResumoDaRodada;
 }
@@ -59,16 +72,24 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
   });
   const clube = temporada.clubes[o.clubeId];
   if (!clube) throw new Error(`Clube ${o.clubeId} não está no pacote`);
+  const todos = Object.values(o.divisoes).flat();
+  const dadosDoClube = todos.find((c) => c.id === o.clubeId)!;
+  const grandes = todos.filter((c) => c.grande).map((c) => c.id);
+  const tecnicos: Record<string, string | null> = {};
+  for (const c of todos) tecnicos[c.id] = c.tecnico ?? null;
+  const tecnico = o.tecnico.trim();
+  tecnicos[o.clubeId] = tecnico;
+  const grande = grandes.includes(o.clubeId);
   const estado: EstadoJogo = {
     versao: 1,
     temporada,
     rodadaAtual: rodadaVazia(),
     carreira: {
-      tecnico: o.tecnico.trim(),
+      tecnico,
       clubeId: o.clubeId,
       diretoria: 62,
       torcida: 60,
-      reputacao: 45,
+      reputacao: grande ? 58 : 45,
       meta: metaDaTemporada(temporada, o.clubeId),
       comissao: { membros: [], funcoes: {} as EstadoCarreira["comissao"]["funcoes"] },
       treino: { foco: "equilibrado", intensidade: 1 },
@@ -85,6 +106,20 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
       avisoDeRisco: false,
       proximoId: 1,
     },
+    mercado: {
+      financas: {
+        orcamento: orcamentoInicial(divisaoDo(temporada, o.clubeId) ?? "D", grande),
+        divida: grande ? "muito alta" : "moderada",
+        perfil: dadosDoClube.perfilDiretoria ?? "normal",
+        ouvir: 50,
+      },
+      indicacoes: [],
+      tecnicos,
+      grandes,
+      vagas: [],
+      candidaturas: [],
+      passagens: [{ clubeId: o.clubeId, temporada: o.temporada, rodada: 0 }],
+    },
   };
   comRng(estado, (rng) => {
     const membros = gerarComissao(rng);
@@ -94,7 +129,7 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
   enviarMensagem(estado.carreira, 0, {
     de: "Presidência",
     assunto: "Boas-vindas e objetivos",
-    texto: `Professor, a meta da temporada é ${estado.carreira.meta.texto.toLowerCase()}. Contratações passam pela diretoria, então conte com o elenco e com a base. Montamos uma comissão técnica para você: defina quem cuida de cada área na aba Clube.`,
+    texto: `Professor, a meta da temporada é ${estado.carreira.meta.texto.toLowerCase()}. Contratações passam pela diretoria: indique quem você quer e nós decidimos com base nas finanças. Montamos uma comissão técnica para você: defina quem cuida de cada área na aba Clube.`,
   });
   return estado;
 }
@@ -126,12 +161,16 @@ export function iniciarPartida(estado: EstadoJogo): Partida {
   });
 }
 
-/** Fecha a partida do usuário: placar, histórico, reação da diretoria e o resto da rodada. */
+/**
+ * Fecha a partida do usuário: placar, histórico, reação da diretoria e da
+ * torcida, reputação e o resto da rodada.
+ */
 export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
   const jogo = proximoJogoDoUsuario(estado);
   if (!jogo) throw new Error("Não há jogo do usuário em aberto");
   const resultado = encerrarPartida(partida);
-  registrarPlacar(estado.temporada, jogo.id, [resultado.golsCasa, resultado.golsVisitante]);
+  const t = estado.temporada;
+  registrarPlacar(t, jogo.id, [resultado.golsCasa, resultado.golsVisitante]);
   const c = estado.carreira;
   const clubeId = c.clubeId!;
   const mandante = jogo.casa === clubeId;
@@ -140,11 +179,11 @@ export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
   const golsContra = mandante ? resultado.golsVisitante : resultado.golsCasa;
   const meuLado = partida.casa.ehUsuario ? partida.casa : partida.visitante;
   const r = estado.rodadaAtual;
-  r.titulares.push(...estado.temporada.clubes[clubeId]!.titulares);
+  r.titulares.push(...t.clubes[clubeId]!.titulares);
   r.jogaram.push(...meuLado.emCampo.map((p) => p.atual.jogador.id), ...meuLado.saidos);
   c.historico.push({
-    temporada: estado.temporada.temporada,
-    rodada: estado.temporada.rodada,
+    temporada: t.temporada,
+    rodada: t.rodada,
     competicao: jogo.competicao === "copa" ? "Copa do Brasil" : `Série ${jogo.competicao}`,
     adversario: adversarioId,
     mandante,
@@ -154,8 +193,12 @@ export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
   if (jogo.competicao !== "copa") {
     r.resultado = golsPro > golsContra ? "V" : golsPro === golsContra ? "E" : "D";
     r.classico = ehClassico(c, clubeId, adversarioId);
-    reagirAoJogoDaLiga(c, estado.temporada, adversarioId, mandante, golsPro, golsContra);
-    if (!c.clubeId) estado.temporada.usuarioId = null;
+    const pontos = golsPro > golsContra ? 3 : golsPro === golsContra ? 1 : 0;
+    const esperado = pontosEsperados(t.clubes[clubeId]!.forca, t.clubes[adversarioId]!.forca, mandante);
+    const peso = PESO_DIVISAO_NO_MERCADO[jogo.competicao] + 0.3;
+    c.reputacao = limitar(c.reputacao + (pontos - esperado) * 0.6 * peso, 0, 100);
+    reagirAoJogoDaLiga(c, t, adversarioId, mandante, golsPro, golsContra);
+    if (!c.clubeId) ficarDesempregado(estado, clubeId);
   }
   seguir(estado);
 }
@@ -177,8 +220,13 @@ function reagirACopa(estado: EstadoJogo, rodadaFechada: number) {
   if (!confronto) return;
   const adversario = confronto.a === c.clubeId ? confronto.b : confronto.a;
   const [ga, gb] = confronto.agregado ?? [0, 0];
-  const placar = `${confronto.a === c.clubeId ? ga : gb} x ${confronto.a === c.clubeId ? gb : ga}${confronto.penaltis ? ", nos pênaltis" : ""}`;
+  const souA = confronto.a === c.clubeId;
+  const placar = `${souA ? ga : gb} x ${souA ? gb : ga}${confronto.penaltis ? ", nos pênaltis" : ""}`;
   const passou = confronto.vencedor === c.clubeId;
+  if (passou) {
+    const f = estado.mercado.financas;
+    f.orcamento = Math.round((f.orcamento + (PREMIO_COPA[indice] ?? 0) * 0.5) * 10) / 10;
+  }
   reagirAoConfrontoDaCopa(
     c,
     estado.temporada,
@@ -192,7 +240,7 @@ function reagirACopa(estado: EstadoJogo, rodadaFechada: number) {
 
 /**
  * Simula os jogos da rodada que não são do usuário. Se o usuário ainda tem jogo
- * nesta rodada, para e espera; senão fecha a rodada e roda a semana.
+ * nesta rodada, para e espera; senão fecha a rodada e roda a semana (vestiário e mercado).
  */
 export function seguir(estado: EstadoJogo): void {
   const t = estado.temporada;
@@ -201,8 +249,30 @@ export function seguir(estado: EstadoJogo): void {
   simularRodada(t, pendente ? [pendente.id] : []);
   if (t.rodada === rodadaAntes) return;
   reagirACopa(estado, rodadaAntes);
-  comRng(estado, (rng) => semana(estado.carreira, t, estado.rodadaAtual, rng));
+  comRng(estado, (rng) => {
+    semana(estado.carreira, t, estado.rodadaAtual, rng);
+    semanaDoMercado(estado, rng);
+  });
   estado.rodadaAtual = rodadaVazia();
+}
+
+/** Responde uma mensagem da caixa: efeitos de vestiário e de mercado (inclusive assumir outro clube). */
+export function responder(estado: EstadoJogo, mensagemId: string, opcao: number): string[] {
+  const c = estado.carreira;
+  const mensagem = c.caixa.find((m) => m.id === mensagemId);
+  const escolhida = mensagem?.opcoes?.[opcao];
+  if (!mensagem || !escolhida || mensagem.resposta !== undefined) return [];
+  const clube = c.clubeId ? estado.temporada.clubes[c.clubeId]! : null;
+  const reacoes = responderMensagem(c, clube, estado.temporada.rodada, mensagemId, opcao);
+  const ef = escolhida.mercado;
+  if (!ef) return reacoes;
+  return comRng(estado, (rng) => {
+    if (ef.assumir) {
+      assumir(estado, ef.assumir, rng);
+      return [...reacoes, `Você assumiu o ${estado.temporada.clubes[ef.assumir]!.nome}.`];
+    }
+    return [...reacoes, ...aplicarEfeitoDeMercado(estado, ef, rng)];
+  });
 }
 
 export function fimDeTemporada(estado: EstadoJogo): boolean {
@@ -218,6 +288,7 @@ export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
   c.promessas = [];
   c.tonsRecentes = [];
   c.marcas = {};
+  estado.mercado.indicacoes = estado.mercado.indicacoes.filter((i) => i.status === "pendente");
   if (c.clubeId) {
     c.meta = metaDaTemporada(estado.temporada, c.clubeId);
     enviarMensagem(c, 0, {

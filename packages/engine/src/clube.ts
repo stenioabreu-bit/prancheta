@@ -29,6 +29,11 @@ export interface ClubeDados {
   titulares?: string[];
   /** Overall médio do elenco gerado (clubes sem elenco). */
   nivel?: number;
+  /** Clube de massa: mais orçamento, mais exigência, mais atração no mercado. */
+  grande?: boolean;
+  /** Técnico atual (só para clubes da IA). */
+  tecnico?: string;
+  perfilDiretoria?: "economico" | "normal";
 }
 
 const PALETA_GENERICA: readonly Cores[] = [

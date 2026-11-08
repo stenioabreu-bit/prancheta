@@ -27,19 +27,22 @@ export interface OpcaoDePacote {
   escudos: number;
 }
 
+/** Pacotes que já vêm no app e não dependem do IndexedDB. */
+export const OPCOES_EMBUTIDAS: OpcaoDePacote[] = PACOTE_REAL
+  ? [
+      {
+        id: ID_BRASILEIRAO,
+        nome: "Brasileirão 2026",
+        ficticio: false,
+        escudos: Object.keys(URLS_REAL).length,
+      },
+    ]
+  : [];
+
 export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
   const importados = await listarPacotes();
   return [
-    ...(PACOTE_REAL
-      ? [
-          {
-            id: ID_BRASILEIRAO,
-            nome: "Brasileirão 2026",
-            ficticio: false,
-            escudos: Object.keys(URLS_REAL).length,
-          },
-        ]
-      : []),
+    ...OPCOES_EMBUTIDAS,
     ...importados.map((p) => ({
       id: p.pacote.id,
       nome: p.pacote.nome,

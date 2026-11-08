@@ -5,6 +5,7 @@ import { Escudo } from "../componentes/basicos";
 import { useLoja } from "../estado/loja";
 import {
   type OpcaoDePacote,
+  OPCOES_EMBUTIDAS,
   carregarPacote,
   importarPasta,
   opcoesDePacote,
@@ -96,7 +97,7 @@ function Dossie({ o, divisao, rank, total }: { o: Opcao; divisao: Divisao; rank:
 export function NovoJogo() {
   const comecar = useLoja((s) => s.comecar);
   const avisar = useLoja((s) => s.avisar);
-  const [opcoes, setOpcoes] = useState<OpcaoDePacote[]>([]);
+  const [opcoes, setOpcoes] = useState<OpcaoDePacote[]>(OPCOES_EMBUTIDAS);
   const [pacoteId, setPacoteId] = useState<string>("");
   const [pacote, setPacote] = useState<PacoteDados | null>(null);
   const [tecnico, setTecnico] = useState("");

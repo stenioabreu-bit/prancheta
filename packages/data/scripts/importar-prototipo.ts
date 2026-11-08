@@ -40,6 +40,8 @@ interface DadosPrototipo {
   SERIE_D: string[];
   CORES_C: Record<string, [string, string]>;
   CORES_D: Record<string, [string, string]>;
+  /** Pares pelas siglas antigas da Série A (COR, PAL...). */
+  CLASSICOS: [string, string][];
 }
 
 function trecho(codigo: string, inicio: string, fim: string): string {
@@ -84,7 +86,8 @@ const html = readFileSync(caminho, "utf8");
 const script = html.slice(html.indexOf("<script>") + 8, html.lastIndexOf("</script>"));
 const codigo = `${trecho(script, "const DB = {", "/* ================= MOTOR")}
 ${trecho(script, "const SERIE_B", "const PALETA")}
-({ DB, SERIE_B, SERIE_C, SERIE_D, CORES_C, CORES_D });`;
+${trecho(script, "const CLASSICOS", "function isClassico")}
+({ DB, SERIE_B, SERIE_C, SERIE_D, CORES_C, CORES_D, CLASSICOS });`;
 const dados = runInNewContext(codigo, {}) as DadosPrototipo;
 
 /**
@@ -138,6 +141,13 @@ const serieD: ClubeDados[] = dados.SERIE_D.map((nome) => ({
   nivel: nivel(nome, 51, 58),
 }));
 
+/** Sigla antiga da Série A (COR) para o id novo (corinthians). */
+function idNovo(idAntigo: string): string {
+  const time = dados.DB.teams.find((t) => t.id === idAntigo);
+  if (!time) throw new Error(`Clássico com clube desconhecido: ${idAntigo}`);
+  return idDoClube(time.nome);
+}
+
 const ids = [serieA, serieB, serieC, serieD].flat().map((c) => c.id);
 const repetidos = ids.filter((id, i) => ids.indexOf(id) !== i);
 if (repetidos.length) throw new Error(`Ids de clube repetidos: ${repetidos.join(", ")}`);
@@ -151,6 +161,7 @@ const pacote: PacoteDados = {
   divisoes: { A: serieA, B: serieB, C: serieC, D: serieD },
   // Os 4 clubes que o protótipo punha direto na 3ª fase da Copa do Brasil 2026.
   vagasDiretasCopa: ["paysandu", "ponte-preta", "barra", "confianca"],
+  classicos: dados.CLASSICOS.map(([a, b]) => [idNovo(a), idNovo(b)] as [string, string]),
 };
 mkdirSync(PASTA_TESTE_REAL, { recursive: true });
 writeFileSync(join(PASTA_TESTE_REAL, "pacote.json"), `${JSON.stringify(pacote, null, 1)}\n`);

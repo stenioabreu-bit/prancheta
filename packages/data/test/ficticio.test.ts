@@ -1,4 +1,13 @@
-import { novaTemporada, simularRodada, temporadaEncerrada } from "@prancheta/engine";
+import {
+  fimDeTemporada,
+  novaTemporada,
+  novoJogo,
+  proximoJogoDoUsuario,
+  seguir,
+  simularPartidaDoUsuario,
+  simularRodada,
+  temporadaEncerrada,
+} from "@prancheta/engine";
 import { describe, expect, it } from "vitest";
 import { pacoteFicticio } from "../src";
 
@@ -30,5 +39,32 @@ describe("pacote fictício", () => {
     });
     while (estado.rodada < 38) simularRodada(estado);
     expect(temporadaEncerrada(estado)).toBe(true);
+  });
+});
+
+describe("carreira com o pacote fictício", () => {
+  it("clássicos apontam para clubes do pacote e a temporada de técnico termina", () => {
+    const pacote = pacoteFicticio();
+    const ids = new Set(
+      Object.values(pacote.divisoes)
+        .flat()
+        .map((c) => c.id),
+    );
+    expect(pacote.classicos.flat().every((id) => ids.has(id))).toBe(true);
+    const estado = novoJogo({
+      semente: 2,
+      temporada: pacote.temporada,
+      divisoes: pacote.divisoes,
+      vagasDiretasCopa: pacote.vagasDiretasCopa,
+      classicos: pacote.classicos,
+      tecnico: "Teste",
+      clubeId: pacote.divisoes.A[0]!.id,
+    });
+    let guarda = 0;
+    while (!fimDeTemporada(estado) && guarda++ < 200) {
+      if (proximoJogoDoUsuario(estado)) simularPartidaDoUsuario(estado);
+      else seguir(estado);
+    }
+    expect(fimDeTemporada(estado)).toBe(true);
   });
 });

@@ -21,6 +21,8 @@ export interface PacoteDados {
   divisoes: Record<Divisao, ClubeDados[]>;
   /** Clubes com vaga direta na 3ª fase da Copa do Brasil da primeira temporada (até 4). */
   vagasDiretasCopa: string[];
+  /** Pares de clássicos (ids): pesam mais para diretoria e torcida. */
+  classicos: [string, string][];
 }
 
 /** Id estável de clube a partir do nome: "Atlético-MG" → "atletico-mg". */

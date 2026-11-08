@@ -131,5 +131,15 @@ export function pacoteFicticio(): PacoteDados {
     temporada: 2026,
     divisoes: { A: serieA, B, C, D },
     vagasDiretasCopa: [C[0]!.id, C[1]!.id, D[0]!.id, D[1]!.id],
+    classicos: (
+      [
+        ["Atlético Pedra Alta", "Real Planalto"],
+        ["Grêmio Mar Bravo", "Porto Dourado"],
+        ["União Campo Dourado", "Aurora do Campo"],
+        ["Ipê Vermelho", "Vila Serena"],
+        ["Lagoa Funda", "Morro Verde"],
+        ["Carcará", "Sertão Bravo"],
+      ] as const
+    ).map(([a, b]) => [idDoClube(a), idDoClube(b)] as [string, string]),
   };
 }

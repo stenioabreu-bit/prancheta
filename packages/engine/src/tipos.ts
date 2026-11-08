@@ -82,6 +82,17 @@ export interface Jogador {
   /** Últimas 8 notas. */
   notas: number[];
   temporada: EstatisticasTemporada;
+  /** Overall de partida para a evolução no treino (o overall atual = base + evolução/3). */
+  ovrBase?: number;
+  /** Pontos de atributo ganhos no treino. */
+  evolucao?: number;
+  /** Teto de overall (garotos da base). */
+  potencial?: number;
+  idade?: number;
+  /** Veio da base do clube do usuário. */
+  daBase?: boolean;
+  /** Rodada do último pedido de minutos (para não repetir toda semana). */
+  ultimoPedido?: number;
 }
 
 export interface Cores {

@@ -77,7 +77,7 @@ function Prelecao({
   );
 }
 
-function Coletiva({ perguntas }: { perguntas: Pergunta[] }) {
+function Coletiva({ perguntas, aoConcluir }: { perguntas: Pergunta[]; aoConcluir?: () => void }) {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const [respostas, setRespostas] = useState<Record<number, string>>({});
@@ -100,7 +100,9 @@ function Coletiva({ perguntas }: { perguntas: Pergunta[] }) {
                 disabled={!clube}
                 onClick={() => {
                   const r = mexer((j) => responderColetiva(j.carreira, clube, j.temporada.rodada, p, k));
-                  setRespostas({ ...respostas, [i]: r.join(" ") });
+                  const novas = { ...respostas, [i]: r.join(" ") };
+                  setRespostas(novas);
+                  if (Object.keys(novas).length === perguntas.length) aoConcluir?.();
                 }}
               >
                 “{o.texto}”
@@ -242,6 +244,8 @@ export function Partida() {
   const [conselho] = useState(() =>
     conselhoAntes(jogo.carreira, adversario.clube, criarRng(jogo.temporada.rng)),
   );
+  const [coletivaAntesFeita, setColetivaAntesFeita] = useState(false);
+  const [coletivaDepoisFeita, setColetivaDepoisFeita] = useState(false);
   const [perguntasAntes] = useState(() => {
     const classico = ehClassico(jogo.carreira, eu.clube.id, adversario.clube.id);
     return coletivaAntes(
@@ -367,7 +371,7 @@ export function Partida() {
                 {perguntasAntes.length > 0 && (
                   <section className="panel stack">
                     <span className="eyebrow">Coletiva antes do jogo</span>
-                    <Coletiva perguntas={perguntasAntes} />
+                    <Coletiva perguntas={perguntasAntes} aoConcluir={() => setColetivaAntesFeita(true)} />
                   </section>
                 )}
                 <section className="panel stack">
@@ -408,7 +412,7 @@ export function Partida() {
                 {posJogo && posJogo.length > 0 && (
                   <section className="panel stack">
                     <span className="eyebrow">Coletiva</span>
-                    <Coletiva perguntas={posJogo} />
+                    <Coletiva perguntas={posJogo} aoConcluir={() => setColetivaDepoisFeita(true)} />
                   </section>
                 )}
               </div>
@@ -421,12 +425,16 @@ export function Partida() {
             <button
               type="button"
               className="btn primary"
+              disabled={perguntasAntes.length > 0 && !coletivaAntesFeita}
+              title={
+                perguntasAntes.length > 0 && !coletivaAntesFeita ? "Responda a coletiva primeiro" : undefined
+              }
               onClick={() => {
                 setFase("jogo");
                 setRodando(true);
               }}
             >
-              Começar o jogo
+              {perguntasAntes.length > 0 && !coletivaAntesFeita ? "Responda a coletiva" : "Começar o jogo"}
             </button>
           )}
           {fase === "jogo" && (
@@ -489,8 +497,13 @@ export function Partida() {
             </button>
           )}
           {fase === "pos" && (
-            <button type="button" className="btn primary" onClick={() => setEmPartida(false)}>
-              Voltar ao clube
+            <button
+              type="button"
+              className="btn primary"
+              disabled={!!posJogo?.length && !coletivaDepoisFeita}
+              onClick={() => setEmPartida(false)}
+            >
+              {posJogo?.length && !coletivaDepoisFeita ? "Responda a coletiva" : "Voltar ao clube"}
             </button>
           )}
         </div>

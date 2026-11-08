@@ -412,6 +412,7 @@ function Carreira() {
   const mexer = useLoja((s) => s.mexer);
   const avisar = useLoja((s) => s.avisar);
   const abandonar = useLoja((s) => s.abandonar);
+  const [confirmando, setConfirmando] = useState<"demissao" | "novo" | null>(null);
   const { carreira: c, mercado: m, temporada: t } = jogo;
   return (
     <div className="grade duas">
@@ -444,21 +445,22 @@ function Carreira() {
               type="button"
               className="btn"
               onClick={() => {
-                if (window.confirm("Pedir demissão? Sua reputação cai um pouco."))
-                  mexer((j) => pedirDemissao(j));
+                if (confirmando === "demissao") mexer((j) => pedirDemissao(j));
+                setConfirmando(confirmando === "demissao" ? null : "demissao");
               }}
             >
-              Pedir demissão
+              {confirmando === "demissao" ? "Confirmar: pedir demissão (reputação cai)" : "Pedir demissão"}
             </button>
           )}
           <button
             type="button"
             className="btn"
             onClick={() => {
-              if (window.confirm("Começar um jogo novo? O save atual será apagado.")) void abandonar();
+              if (confirmando === "novo") void abandonar();
+              else setConfirmando("novo");
             }}
           >
-            Novo jogo
+            {confirmando === "novo" ? "Confirmar: apagar o save e começar outro" : "Novo jogo"}
           </button>
         </div>
       </section>

@@ -15,7 +15,7 @@ import {
   forcaDoClube,
   instrucaoDoJogador,
 } from "@prancheta/engine";
-import { useState } from "react";
+import { type DragEvent, useState } from "react";
 import { Folha } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 
@@ -199,30 +199,55 @@ function FolhaDoPosto({ clube, indice, aoFechar }: { clube: Clube; indice: numbe
   );
 }
 
-const SETORES = ["D", "MD", "MO", "O"];
-const CORREDORES = ["E", "C", "D"];
 const LIMITE_DO_BANCO = 12;
 
 type Papel = { tipo: "titular"; indice: number } | { tipo: "banco" } | { tipo: "fora" };
+
+/** Props de arrastar e soltar: soltar um jogador sobre outro troca os dois de lugar. */
+function arrastavel(id: string, aoSoltar: (origem: string, destino: string) => void) {
+  return {
+    draggable: true,
+    onDragStart: (e: DragEvent) => e.dataTransfer.setData("text/plain", id),
+    onDragOver: (e: DragEvent) => e.preventDefault(),
+    onDrop: (e: DragEvent) => {
+      e.preventDefault();
+      const origem = e.dataTransfer.getData("text/plain");
+      if (origem && origem !== id) aoSoltar(origem, id);
+    },
+  };
+}
 
 /** Campo horizontal (ataca para a direita) com 4 setores × 3 corredores. */
 function CampoHorizontal({
   clube,
   selecionado,
   aoClicar,
-}: { clube: Clube; selecionado: string | null; aoClicar: (id: string) => void }) {
+  aoSoltar,
+}: {
+  clube: Clube;
+  selecionado: string | null;
+  aoClicar: (id: string) => void;
+  aoSoltar: (origem: string, destino: string) => void;
+}) {
   const postos = ESQUEMA_POSTOS[clube.esquema];
   return (
     <div className="campo-h" role="group" aria-label={`Escalação no ${clube.esquema}`}>
-      {SETORES.map((s, i) =>
-        CORREDORES.map((c, k) => (
-          <span key={s + c} className="zona" style={{ left: `${i * 25}%`, top: `${k * 33.34}%` }}>
-            {s + c}
-          </span>
-        )),
-      )}
-      <div className="area-h" />
-      <div className="meio-h" />
+      <div className="mk borda" />
+      <div className="mk meio" />
+      <div className="mk circulo" />
+      <div className="mk ponto-c" />
+      <div className="mk terco t1" />
+      <div className="mk terco t2" />
+      <div className="mk area esq" />
+      <div className="mk area dir" />
+      <div className="mk peq esq" />
+      <div className="mk peq dir" />
+      <div className="mk arco esq" />
+      <div className="mk arco dir" />
+      <div className="mk gol esq" />
+      <div className="mk gol dir" />
+      <div className="mk penalti esq" />
+      <div className="mk penalti dir" />
       {postos.map(([posto, x, y], i) => {
         const id = clube.titulares[i]!;
         const j = clube.jogadores.find((p) => p.id === id);
@@ -240,11 +265,22 @@ function CampoHorizontal({
             className={classes.filter(Boolean).join(" ")}
             style={{ left: `${5 + y * 0.9}%`, top: `${6 + x * 0.88}%` }}
             onClick={() => aoClicar(id)}
+            {...arrastavel(id, aoSoltar)}
             aria-label={`${posto}: ${j?.nome ?? "vazio"}`}
           >
             <span className="shirt">{j?.ovr ?? "?"}</span>
             <span className="lbl">{j?.nome.split(" ").slice(-1)[0] ?? "—"}</span>
             <span className="sp">{posto}</span>
+            {j && (
+              <span className="fad" title={`Condição ${Math.round(j.cond)}%`}>
+                <i
+                  style={{
+                    width: `${j.cond}%`,
+                    background: j.cond < 50 ? "var(--red)" : j.cond < 75 ? "var(--gold)" : undefined,
+                  }}
+                />
+              </span>
+            )}
           </button>
         );
       })}
@@ -258,9 +294,10 @@ function ListaDeJogadores(props: {
   clube: Clube;
   selecionado: string | null;
   aoClicar: (id: string) => void;
+  aoSoltar: (origem: string, destino: string) => void;
   aoMoverPraCa: (() => void) | null;
 }) {
-  const { titulo, ids, clube, selecionado, aoClicar, aoMoverPraCa } = props;
+  const { titulo, ids, clube, selecionado, aoClicar, aoSoltar, aoMoverPraCa } = props;
   return (
     <section className="panel lista-tatica">
       <div className="linha-entre">
@@ -281,6 +318,7 @@ function ListaDeJogadores(props: {
               type="button"
               className={selecionado === id ? "prow sel" : "prow"}
               onClick={() => aoClicar(id)}
+              {...arrastavel(id, aoSoltar)}
             >
               <span className={`pos ${j.pos}`}>{j.pos}</span>
               <span className="nm">
@@ -358,6 +396,11 @@ export function Tatica() {
     setSel(null);
   }
 
+  function soltar(origem: string, destino: string) {
+    trocar(origem, destino);
+    setSel(null);
+  }
+
   const selPapel = sel ? papel(sel) : null;
   const moverParaBanco =
     sel && selPapel?.tipo === "fora" && banco.length < LIMITE_DO_BANCO
@@ -418,11 +461,11 @@ export function Tatica() {
             Escalar automático
           </button>
         </div>
-        <CampoHorizontal clube={clube} selecionado={sel} aoClicar={clicar} />
+        <CampoHorizontal clube={clube} selecionado={sel} aoClicar={clicar} aoSoltar={soltar} />
         <p className="small muted" style={{ margin: 0 }}>
           {sel
             ? "Agora toque em quem vai trocar de lugar com ele."
-            : "Toque num jogador e depois em outro para trocar (campo, banco ou não relacionados)."}
+            : "Arraste um jogador sobre outro (ou toque em um e depois no outro) para trocar."}
         </p>
       </section>
       <div className="tatica-listas">
@@ -432,6 +475,7 @@ export function Tatica() {
           clube={clube}
           selecionado={sel}
           aoClicar={clicar}
+          aoSoltar={soltar}
           aoMoverPraCa={moverParaBanco}
         />
         <ListaDeJogadores
@@ -440,6 +484,7 @@ export function Tatica() {
           clube={clube}
           selecionado={sel}
           aoClicar={clicar}
+          aoSoltar={soltar}
           aoMoverPraCa={moverParaFora}
         />
       </div>

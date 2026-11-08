@@ -2060,3 +2060,133 @@ html[data-deitado] {
   font-weight: 700;
   margin-left: 6px;
 }
+
+/* Campo da prancheta no padrão de diagrama tático: listras, marcações oficiais e terços tracejados. */
+.campo-h {
+  background: repeating-linear-gradient(90deg, #2f855a 0 8.33%, #2a7a52 8.33% 16.66%);
+  border: 0;
+}
+.campo-h::before {
+  display: none;
+}
+.campo-h .mk {
+  position: absolute;
+  pointer-events: none;
+  border: 0 solid rgba(255, 255, 255, 0.9);
+}
+.campo-h .borda {
+  inset: 5% 4%;
+  border-width: 2px;
+}
+.campo-h .meio {
+  left: 50%;
+  top: 5%;
+  bottom: 5%;
+  border-left-width: 2px;
+}
+.campo-h .circulo {
+  left: 42%;
+  top: 37.9%;
+  width: 16%;
+  height: 24.2%;
+  border-width: 2px;
+  border-radius: 50%;
+}
+.campo-h .ponto-c,
+.campo-h .penalti {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.campo-h .ponto-c {
+  left: 50%;
+}
+.campo-h .penalti.esq {
+  left: 13.6%;
+}
+.campo-h .penalti.dir {
+  left: 86.4%;
+}
+.campo-h .terco {
+  top: 5%;
+  bottom: 5%;
+  border-left: 1.5px dashed rgba(255, 255, 255, 0.55);
+}
+.campo-h .terco.t1 {
+  left: 34.67%;
+}
+.campo-h .terco.t2 {
+  left: 65.33%;
+}
+.campo-h .area,
+.campo-h .peq {
+  border-width: 2px;
+}
+.campo-h .area {
+  top: 23.3%;
+  height: 53.4%;
+  width: 14.5%;
+}
+.campo-h .peq {
+  top: 37.9%;
+  height: 24.2%;
+  width: 4.8%;
+}
+.campo-h .area.esq,
+.campo-h .peq.esq {
+  left: 4%;
+  border-left-width: 0;
+}
+.campo-h .area.dir,
+.campo-h .peq.dir {
+  right: 4%;
+  border-right-width: 0;
+}
+.campo-h .arco {
+  top: 37.9%;
+  width: 16%;
+  height: 24.2%;
+  border-width: 2px;
+  border-radius: 50%;
+}
+.campo-h .arco.esq {
+  left: 5.6%;
+  clip-path: inset(0 0 0 80.6%);
+}
+.campo-h .arco.dir {
+  right: 5.6%;
+  clip-path: inset(0 80.6% 0 0);
+}
+.campo-h .gol {
+  top: 45.2%;
+  height: 9.6%;
+  width: 1.6%;
+  border-width: 2px;
+  background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.35) 0 2px, transparent 2px 4px);
+}
+.campo-h .gol.esq {
+  left: 2.4%;
+  border-right-width: 0;
+}
+.campo-h .gol.dir {
+  right: 2.4%;
+  border-left-width: 0;
+}
+.slot-h {
+  cursor: grab;
+}
+.slot-h .fad {
+  width: 34px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.slot-h .fad i {
+  display: block;
+  height: 100%;
+  background: #4cbb83;
+}

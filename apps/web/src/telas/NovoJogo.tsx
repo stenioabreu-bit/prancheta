@@ -159,12 +159,11 @@ export function NovoJogo() {
         </label>
         <label className="cn-importar">
           Importar
-          {/* @ts-expect-error atributo não padrão, suportado pelos navegadores */}
           <input
             type="file"
             hidden
             multiple
-            webkitdirectory=""
+            {...{ webkitdirectory: "" }}
             onChange={(e) => void importar(e.target.files)}
           />
         </label>

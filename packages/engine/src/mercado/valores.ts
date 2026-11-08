@@ -57,3 +57,20 @@ export const PREMIO_COPA: readonly number[] = [0.1, 0.15, 0.25, 0.4, 1.5, 2.5, 4
 export function exigenciaDoClube(divisao: Divisao, grande: boolean): number {
   return { A: 52, B: 38, C: 25, D: 12 }[divisao] + (grande ? 14 : 0);
 }
+
+/** Premiação (R$ mi) pela colocação final na divisão: [campeão, demais por posição...]; valores do jogo. */
+export const PREMIO_DIVISAO: Readonly<
+  Record<"A" | "B" | "C" | "D", { campeao: number; porPosicao: number; base: number }>
+> = {
+  A: { campeao: 48, porPosicao: 1.6, base: 12 },
+  B: { campeao: 8, porPosicao: 0.3, base: 2.5 },
+  C: { campeao: 3, porPosicao: 0.1, base: 0.8 },
+  D: { campeao: 1, porPosicao: 0.02, base: 0.2 },
+};
+
+/** Valor pela posição final (1 = campeão). Quanto melhor a colocação, maior o prêmio. */
+export function premioPorColocacao(divisao: "A" | "B" | "C" | "D", posicao: number, total: number): number {
+  const p = PREMIO_DIVISAO[divisao];
+  if (posicao === 1) return p.campeao;
+  return Math.round((p.base + p.porPosicao * Math.max(0, total - posicao)) * 10) / 10;
+}

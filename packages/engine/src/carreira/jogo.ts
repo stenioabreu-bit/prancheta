@@ -15,7 +15,13 @@ import { semanaDoMercado } from "../mercado/semana";
 import { assumir, ficarDesempregado } from "../mercado/tecnico";
 import type { EstadoMercado } from "../mercado/tipos";
 import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
-import { PESO_DIVISAO_NO_MERCADO, PREMIO_COPA, orcamentoInicial } from "../mercado/valores";
+import {
+  PESO_DIVISAO_NO_MERCADO,
+  PREMIO_COPA,
+  formatarDinheiro,
+  orcamentoInicial,
+  premioPorColocacao,
+} from "../mercado/valores";
 import { type Partida, criarPartida, encerrarPartida, jogarAteOFim } from "../partida";
 import { type Rng, criarRng, limitar } from "../rng";
 import { gerarGarotos } from "./base";
@@ -24,6 +30,7 @@ import {
   ehClassico,
   metaDaTemporada,
   pontosEsperados,
+  posicaoNaTabela,
   reagirAoConfrontoDaCopa,
   reagirAoJogoDaLiga,
 } from "./diretoria";
@@ -281,6 +288,7 @@ export function fimDeTemporada(estado: EstadoJogo): boolean {
 
 /** Vira a temporada; diretoria e torcida voltam para perto do meio e a meta é refeita. */
 export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
+  const premio = premiacaoDaTemporada(estado);
   const resumo = virarTemporada(estado.temporada);
   const c = estado.carreira;
   c.diretoria = limitar(Math.round(c.diretoria * 0.6 + 24), 30, 80);
@@ -296,6 +304,22 @@ export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
       assunto: `Temporada ${estado.temporada.temporada}`,
       texto: `Nova temporada, novos objetivos: ${c.meta.texto.toLowerCase()}.`,
     });
+    if (premio) {
+      enviarMensagem(c, 0, { de: "Financeiro", assunto: "Premiação da temporada", texto: premio });
+    }
   }
   return resumo;
+}
+
+/** Credita a premiação pela colocação do usuário na divisão (antes de virar a temporada). */
+function premiacaoDaTemporada(estado: EstadoJogo): string | null {
+  const id = estado.carreira.clubeId;
+  if (!id) return null;
+  const d = divisaoDo(estado.temporada, id);
+  const pos = posicaoNaTabela(estado.temporada, id);
+  if (!d || !pos) return null;
+  const valor = premioPorColocacao(d, pos, estado.temporada.divisoes[d].clubes.length);
+  const f = estado.mercado.financas;
+  f.orcamento = Math.round((f.orcamento + valor) * 10) / 10;
+  return `Pela ${pos}ª colocação na Série ${d}, o clube recebeu ${formatarDinheiro(valor)} de premiação.`;
 }

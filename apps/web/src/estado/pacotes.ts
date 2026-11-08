@@ -5,11 +5,11 @@ export const ID_FICTICIO = "ficticio";
 export const ID_BRASILEIRAO = "teste-real";
 
 // Pacote real (uso pessoal), embutido no build com os escudos baixados.
-const JSON_REAL = import.meta.glob<PacoteDados>("../../../packages/data/packs/teste-real/pacote.json", {
+const JSON_REAL = import.meta.glob<PacoteDados>("../../../../packages/data/packs/teste-real/pacote.json", {
   eager: true,
   import: "default",
 });
-const ESCUDOS_REAL = import.meta.glob<string>("../../../packages/data/packs/teste-real/escudos/*.png", {
+const ESCUDOS_REAL = import.meta.glob<string>("../../../../packages/data/packs/teste-real/escudos/*.png", {
   eager: true,
   query: "?url",
   import: "default",

@@ -67,6 +67,19 @@ export function forcaDeMercado(estado: EstadoJogo, clubeId: string): number {
 
 const LIMITE_DE_INDICACOES = 5;
 
+/** O técnico pede para a diretoria vender um jogador; ela procura comprador na janela. */
+export function indicarVenda(estado: EstadoJogo, jogadorId: string): string {
+  const meu = estado.carreira.clubeId ? estado.temporada.clubes[estado.carreira.clubeId] : null;
+  const j = meu?.jogadores.find((x) => x.id === jogadorId);
+  if (!j) return "Jogador não encontrado.";
+  const lista = (estado.mercado.vendasIndicadas ??= []);
+  if (lista.includes(jogadorId)) return `${j.nome} já está à venda.`;
+  lista.push(jogadorId);
+  return janelaAberta(estado.temporada.rodada)
+    ? `${j.nome} colocado à venda. A diretoria procura comprador.`
+    : `${j.nome} colocado à venda. As propostas chegam quando a janela abrir.`;
+}
+
 /** O técnico indica um jogador; a diretoria decide quando a janela estiver aberta. */
 export function indicar(estado: EstadoJogo, jogadorId: string): string {
   const m = estado.mercado;

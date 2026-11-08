@@ -52,6 +52,8 @@ export interface EstadoMercado {
   vagas: Vaga[];
   candidaturas: Candidatura[];
   passagens: Passagem[];
+  /** Jogadores do elenco que o técnico pediu para a diretoria negociar. */
+  vendasIndicadas?: string[];
 }
 
 /** O que uma resposta pode mexer no mercado (além do Efeito da carreira). */

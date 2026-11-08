@@ -12,6 +12,7 @@ import {
 } from "@prancheta/engine";
 import { Escudo, Forma, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
+import { Caixa } from "./Clube";
 
 function ProximoJogo() {
   const jogo = useJogo();
@@ -244,6 +245,39 @@ function Noticias() {
   );
 }
 
+/** Próximos jogos do clube (calendário de duas semanas do Portal). */
+function Calendario() {
+  const jogo = useJogo();
+  const t = jogo.temporada;
+  const meu = jogo.carreira.clubeId;
+  if (!meu) return null;
+  const proximos = Object.values(t.jogos)
+    .filter((j) => !j.placar && (j.casa === meu || j.visitante === meu))
+    .sort((a, b) => a.rodada - b.rodada || Number(b.meioDeSemana) - Number(a.meioDeSemana))
+    .slice(0, 4);
+  return (
+    <section className="panel stack">
+      <h3>Calendário</h3>
+      {proximos.length === 0 && <p className="vazio">Sem jogos marcados.</p>}
+      <ul className="lista-limpa">
+        {proximos.map((j) => {
+          const adv = t.clubes[j.casa === meu ? j.visitante : j.casa]!;
+          return (
+            <li key={j.id} className="cal-item">
+              <span className="cal-rod num">R{j.rodada + 1}</span>
+              <NomeClube clube={adv} tamanho={20} />
+              <span className="small muted">
+                {j.casa === meu ? "casa" : "fora"} ·{" "}
+                {j.competicao === "copa" ? "Copa" : `Série ${j.competicao}`}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
 export function Inicio() {
   const jogo = useJogo();
   const principal = fimDeTemporada(jogo) ? (
@@ -254,12 +288,16 @@ export function Inicio() {
     <ProximoJogo />
   );
   return (
-    <div className="grade lateral">
+    <div className="grade lateral portal">
       <div className="grade">
         {principal}
-        <Situacao />
+        <div className="grade duas">
+          <Calendario />
+          <Situacao />
+        </div>
+        <Noticias />
       </div>
-      <Noticias />
+      <Caixa />
     </div>
   );
 }

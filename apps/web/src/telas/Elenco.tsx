@@ -5,6 +5,7 @@ import {
   devolverABase,
   divisaoDo,
   formatarDinheiro,
+  indicarVenda,
   opcoesDeConversa,
   salario,
   setorDaPosicao,
@@ -147,6 +148,9 @@ function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: 
           </div>
         )}
       </div>
+      <button type="button" className="btn" onClick={() => avisar(mexer((jg) => indicarVenda(jg, j.id)))}>
+        Indicar venda à diretoria
+      </button>
       {j.daBase && !clube.titulares.includes(j.id) && (
         <button
           type="button"

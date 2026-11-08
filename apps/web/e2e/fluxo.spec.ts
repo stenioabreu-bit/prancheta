@@ -64,7 +64,7 @@ test("abas: elenco, tática, tabela e clube", async ({ page }) => {
   await page.getByRole("button", { name: "Fechar" }).click();
   await foto(page, "07-tatica");
 
-  await menu.getByRole("button", { name: /Tabela/ }).click();
+  await menu.getByRole("button", { name: /Competições/ }).click();
   await expect(page.locator("table")).toBeVisible();
   await page.getByRole("button", { name: "Série D" }).click();
   await expect(page.getByLabel("Grupo")).toBeVisible();
@@ -72,7 +72,6 @@ test("abas: elenco, tática, tabela e clube", async ({ page }) => {
   await foto(page, "08-tabela");
 
   await menu.getByRole("button", { name: /Clube/ }).click();
-  await expect(page.getByRole("heading", { name: "Caixa de mensagens" })).toBeVisible();
   await page.getByRole("button", { name: /^Mercado/ }).click();
   await page.getByRole("button", { name: "Indicar" }).first().click();
   await expect(page.getByRole("status")).toContainText("indicado");

@@ -11,11 +11,11 @@ import { Tabela } from "./telas/Tabela";
 import { Tatica } from "./telas/Tatica";
 
 const ABAS: { id: Aba; nome: string; dica: string }[] = [
-  { id: "inicio", nome: "Início", dica: "Próximo jogo" },
-  { id: "clube", nome: "Clube", dica: "Caixa e mercado" },
+  { id: "inicio", nome: "Portal", dica: "Caixa e jogos" },
+  { id: "clube", nome: "Clube", dica: "Mercado e equipe" },
   { id: "elenco", nome: "Elenco", dica: "Jogadores" },
   { id: "tatica", nome: "Tática", dica: "Escalação" },
-  { id: "tabela", nome: "Tabela", dica: "Classificação" },
+  { id: "tabela", nome: "Competições", dica: "Tabelas" },
 ];
 
 function Topo() {

@@ -148,7 +148,7 @@ export function NovoJogo() {
         <span className="marca">Prancheta</span>
         <span className="cn-passo">Nova carreira · temporada {pacote?.temporada ?? ""}</span>
         <label className="cn-base">
-          <span className="sr">Base de dados</span>
+          <span className="small muted">Liga:</span>
           <select value={pacoteId} onChange={(e) => setPacoteId(e.target.value)}>
             {opcoes.map((o) => (
               <option key={o.id} value={o.id}>

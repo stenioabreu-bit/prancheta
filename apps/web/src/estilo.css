@@ -1595,3 +1595,78 @@ tr.me.pisca td {
     top: 16px;
   }
 }
+.cn-base {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.item-caixa {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px 8px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  padding: 9px 2px;
+}
+.item-caixa .de {
+  grid-column: 1;
+  font-size: 12px;
+  color: var(--muted);
+}
+.item-caixa .tag {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+}
+.item-caixa.nova .assunto {
+  font-weight: 700;
+}
+.cal-item {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+}
+.cal-item:first-child {
+  border-top: 0;
+}
+.cal-rod {
+  font-size: 12px;
+  color: var(--muted);
+}
+/* FM26: navegação no topo no PC */
+@media (min-width: 960px) {
+  #app {
+    display: block;
+    max-width: 1280px;
+  }
+  .tabs {
+    position: sticky;
+    top: 0;
+    height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 6px 28px;
+    z-index: 6;
+    background: var(--bg);
+  }
+  .tabs .in {
+    flex-direction: row;
+    gap: 4px;
+    max-width: none;
+  }
+  .tabs button {
+    padding: 8px 14px;
+  }
+  .tabs button span {
+    display: none;
+  }
+  .tabs button span:has(.contador) {
+    display: inline;
+  }
+}

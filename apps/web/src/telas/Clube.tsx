@@ -17,90 +17,117 @@ import {
   indicar,
   janelaAberta,
   pedirDemissao,
-  pendentes,
   promover,
   proximaJanela,
   responder,
 } from "@prancheta/engine";
 import { useState } from "react";
-import { NomeClube } from "../componentes/basicos";
+import { Folha, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 import { LinhaJogador } from "./Elenco";
 
-type Secao = "caixa" | "mercado" | "treino" | "comissao" | "base" | "carreira";
+type Secao = "mercado" | "treino" | "comissao" | "base" | "carreira";
 
-function Caixa() {
+type FiltroCaixa = "todas" | "novas" | "tarefas" | "naoLidas";
+const FILTROS: { id: FiltroCaixa; nome: string }[] = [
+  { id: "todas", nome: "Todas" },
+  { id: "novas", nome: "Novas" },
+  { id: "tarefas", nome: "Tarefas" },
+  { id: "naoLidas", nome: "Não lidas" },
+];
+
+/** Caixa do Portal (padrão FM26): filtros, lista enxuta e o cartão da mensagem ao clicar. */
+export function Caixa() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
-  const [respostas, setRespostas] = useState<Record<string, string[]>>({});
+  const [filtro, setFiltro] = useState<FiltroCaixa>("todas");
   const [aberta, setAberta] = useState<string | null>(null);
-  const caixa = jogo.carreira.caixa;
+  const [reacoes, setReacoes] = useState<string[]>([]);
+  const rodada = jogo.temporada.rodada;
+  const lista = jogo.carreira.caixa.filter((m) => {
+    if (filtro === "novas") return m.rodada >= rodada - 1;
+    if (filtro === "tarefas") return !!m.opcoes && m.resposta === undefined;
+    if (filtro === "naoLidas") return !m.lida;
+    return true;
+  });
+  const m = jogo.carreira.caixa.find((x) => x.id === aberta);
   return (
     <section className="panel stack">
-      <h2>Caixa de mensagens</h2>
-      {caixa.length === 0 && <p className="vazio">Nenhuma mensagem.</p>}
+      <div className="linha-entre" style={{ flexWrap: "wrap" }}>
+        <h3>Caixa</h3>
+        <div className="filters" role="group" aria-label="Filtro da caixa">
+          {FILTROS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              className="chip"
+              aria-pressed={filtro === f.id}
+              onClick={() => setFiltro(f.id)}
+            >
+              {f.nome}
+            </button>
+          ))}
+        </div>
+      </div>
+      {lista.length === 0 && <p className="vazio">Nada aqui.</p>}
       <ul className="lista-limpa">
-        {caixa.map((m) => {
-          const pendente = !!m.opcoes && m.resposta === undefined;
-          const expandida = aberta === m.id || pendente;
+        {lista.slice(0, 30).map((x) => {
+          const tarefa = !!x.opcoes && x.resposta === undefined;
           return (
-            <li key={m.id} className={`msg${m.lida ? "" : " nova"}`}>
+            <li key={x.id}>
               <button
                 type="button"
-                className="linha-entre"
-                style={{ background: "none", border: 0, padding: 0, textAlign: "left" }}
-                aria-expanded={expandida}
+                className={x.lida ? "item-caixa" : "item-caixa nova"}
                 onClick={() => {
-                  setAberta(aberta === m.id ? null : m.id);
-                  if (!m.lida && !m.opcoes)
+                  setAberta(x.id);
+                  setReacoes([]);
+                  if (!x.lida && !x.opcoes)
                     mexer(() => {
-                      m.lida = true;
+                      x.lida = true;
                     });
                 }}
               >
-                <span>
-                  <span className="assunto">
-                    {!m.lida && <span className="ponto" aria-label="não lida" />}
-                    {m.assunto}
-                  </span>
-                  <span className="de">
-                    {" "}
-                    · {m.de} · rodada {m.rodada + 1}
-                  </span>
+                <span className="assunto">
+                  {!x.lida && <span className="ponto" aria-label="não lida" />}
+                  {x.assunto}
                 </span>
+                <span className="de">
+                  {x.de} · rodada {x.rodada + 1}
+                </span>
+                {tarefa && <span className="tag sus">Responder</span>}
               </button>
-              {expandida && (
-                <p className="small" style={{ margin: 0 }}>
-                  {m.texto}
-                </p>
-              )}
-              {pendente && (
-                <div className="stack" style={{ gap: 6 }}>
-                  {m.opcoes!.map((o, i) => (
-                    <button
-                      key={o.texto}
-                      type="button"
-                      className="btn"
-                      style={{ textAlign: "left" }}
-                      onClick={() =>
-                        setRespostas({ ...respostas, [m.id]: mexer((j) => responder(j, m.id, i)) })
-                      }
-                    >
-                      {o.texto}
-                    </button>
-                  ))}
-                </div>
-              )}
-              {m.resposta !== undefined && (
-                <div className="resposta">
-                  Você respondeu: <b>{m.opcoes?.[m.resposta]?.texto}</b>
-                  {respostas[m.id]?.length ? ` — ${respostas[m.id]!.join(" ")}` : ""}
-                </div>
-              )}
             </li>
           );
         })}
       </ul>
+      {m && (
+        <Folha titulo={m.assunto} aoFechar={() => setAberta(null)}>
+          <span className="de small muted">
+            {m.de} · rodada {m.rodada + 1}
+          </span>
+          <p style={{ margin: 0 }}>{m.texto}</p>
+          {m.opcoes && m.resposta === undefined && (
+            <div className="stack" style={{ gap: 6 }}>
+              {m.opcoes.map((o, i) => (
+                <button
+                  key={o.texto}
+                  type="button"
+                  className="btn"
+                  style={{ textAlign: "left" }}
+                  onClick={() => setReacoes(mexer((j) => responder(j, m.id, i)))}
+                >
+                  {o.texto}
+                </button>
+              ))}
+            </div>
+          )}
+          {m.resposta !== undefined && (
+            <div className="resposta">
+              Você respondeu: <b>{m.opcoes?.[m.resposta]?.texto}</b> {reacoes.join(" ")}
+            </div>
+          )}
+        </Folha>
+      )}
     </section>
   );
 }
@@ -492,7 +519,6 @@ function Carreira() {
 }
 
 const SECOES: { id: Secao; nome: string; precisaDeClube: boolean }[] = [
-  { id: "caixa", nome: "Caixa", precisaDeClube: false },
   { id: "mercado", nome: "Mercado", precisaDeClube: true },
   { id: "treino", nome: "Treino", precisaDeClube: true },
   { id: "comissao", nome: "Comissão", precisaDeClube: true },
@@ -502,11 +528,10 @@ const SECOES: { id: Secao; nome: string; precisaDeClube: boolean }[] = [
 
 export function Clube() {
   const jogo = useJogo();
-  const [secao, setSecao] = useState<Secao>("caixa");
+  const [secao, setSecao] = useState<Secao>("mercado");
   const temClube = !!jogo.carreira.clubeId;
-  const naoLidas = pendentes(jogo.carreira);
   const disponiveis = SECOES.filter((s) => temClube || !s.precisaDeClube);
-  const atual = disponiveis.some((s) => s.id === secao) ? secao : "caixa";
+  const atual = disponiveis.some((s) => s.id === secao) ? secao : "carreira";
   return (
     <>
       <div className="subabas" role="group" aria-label="Seções do clube">
@@ -519,11 +544,9 @@ export function Clube() {
             onClick={() => setSecao(s.id)}
           >
             {s.nome}
-            {s.id === "caixa" && naoLidas > 0 && <span className="contador">{naoLidas}</span>}
           </button>
         ))}
       </div>
-      {atual === "caixa" && <Caixa />}
       {atual === "mercado" && <Mercado />}
       {atual === "treino" && <Treino />}
       {atual === "comissao" && <Comissao />}

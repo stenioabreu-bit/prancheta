@@ -2190,6 +2190,19 @@ html[data-deitado] {
   height: 100%;
   background: #4cbb83;
 }
+/* No Portal móvel, cartões usam a largura inteira em vez de espremer valores. */
+@container app (max-width: 900px) {
+  .portal.grade.lateral,
+  .portal .grade.duas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .portal .kv {
+    grid-template-columns: minmax(96px, max-content) minmax(0, 1fr);
+  }
+  .portal .kv dd {
+    overflow-wrap: anywhere;
+  }
+}
 /* Em telas baixas (celular deitado), prioriza o gramado e rola o restante abaixo. */
 @container app (max-height: 620px) {
   .tatica-grade {

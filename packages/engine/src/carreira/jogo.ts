@@ -10,7 +10,7 @@ import {
   temporadaEncerrada,
   virarTemporada,
 } from "../competicao/temporada";
-import type { Divisao, JogoAgendado } from "../competicao/tipos";
+import type { Divisao, FormatoDivisao, JogoAgendado } from "../competicao/tipos";
 import { semanaDoMercado } from "../mercado/semana";
 import { assumir, ficarDesempregado } from "../mercado/tecnico";
 import type { EstadoMercado } from "../mercado/tipos";
@@ -55,6 +55,8 @@ export interface OpcoesNovoJogo {
   divisoes: Record<Divisao, ClubeDados[]>;
   vagasDiretasCopa: string[];
   classicos?: [string, string][];
+  formatos?: Partial<Record<Divisao, FormatoDivisao>>;
+  semCopa?: boolean;
   tecnico: string;
   clubeId: string;
 }
@@ -76,6 +78,8 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
     divisoes: o.divisoes,
     vagasDiretasCopa: o.vagasDiretasCopa,
     usuarioId: o.clubeId,
+    ...(o.formatos ? { formatos: o.formatos } : {}),
+    ...(o.semCopa ? { semCopa: true } : {}),
   });
   const clube = temporada.clubes[o.clubeId];
   if (!clube) throw new Error(`Clube ${o.clubeId} não está no pacote`);

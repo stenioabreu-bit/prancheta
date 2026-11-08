@@ -4,6 +4,7 @@ import {
   type Pergunta,
   TONS,
   type TomDeConversa,
+  chaveDoLogo,
   coletivaAntes,
   coletivaDepois,
   concluirPartida,
@@ -12,6 +13,7 @@ import {
   criarRng,
   ehClassico,
   iniciarPartida,
+  nomeDaCompeticao,
   passo,
   podeSubstituir,
   posicaoNaTabela,
@@ -315,7 +317,7 @@ export function Partida() {
   const competicao = jogoAgendado
     ? jogoAgendado.competicao === "copa"
       ? `Copa do Brasil · ${jogoAgendado.fase}`
-      : `Série ${jogoAgendado.competicao}`
+      : nomeDaCompeticao(jogo.temporada, jogoAgendado.competicao)
     : "";
 
   function simularAteOFim() {
@@ -346,7 +348,12 @@ export function Partida() {
             </div>
           </div>
           <div className="clock comp-rotulo">
-            {jogoAgendado && <LogoCompeticao competicao={jogoAgendado.competicao} tamanho={20} />}
+            {jogoAgendado && (
+              <LogoCompeticao
+                competicao={chaveDoLogo(jogo.temporada, jogoAgendado.competicao)}
+                tamanho={20}
+              />
+            )}
             {competicao} · {relogio}
           </div>
           <Estatisticas m={m} />

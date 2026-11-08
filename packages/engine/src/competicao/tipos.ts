@@ -67,6 +67,8 @@ export type RegraDeMovimento =
 
 export interface FormatoDivisao {
   divisao: Divisao;
+  /** ID permanente da competição (catálogo/logos), quando não for uma Série do Brasil. */
+  id?: string;
   nome: string;
   clubes: number;
   fases: Fase[];

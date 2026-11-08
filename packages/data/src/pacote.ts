@@ -1,4 +1,4 @@
-import type { ClubeDados, Divisao } from "@prancheta/engine";
+import type { ClubeDados, Divisao, FormatoDivisao } from "@prancheta/engine";
 
 export type { Divisao };
 
@@ -23,6 +23,10 @@ export interface PacoteDados {
   vagasDiretasCopa: string[];
   /** Pares de clássicos (ids): pesam mais para diretoria e torcida. */
   classicos: [string, string][];
+  /** Formatos próprios (liga estrangeira); divisões ausentes ficam vazias. */
+  formatos?: Partial<Record<Divisao, FormatoDivisao>>;
+  /** Liga sem Copa do Brasil. */
+  semCopa?: boolean;
 }
 
 /** Id estável de clube a partir do nome: "Atlético-MG" → "atletico-mg". */

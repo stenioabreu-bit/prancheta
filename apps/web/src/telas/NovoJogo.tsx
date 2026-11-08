@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Escudo } from "../componentes/basicos";
 import { useLoja } from "../estado/loja";
 import {
-  type OpcaoDePacote,
   OPCOES_EMBUTIDAS,
+  type OpcaoDePacote,
   carregarPacote,
   importarPasta,
   opcoesDePacote,
@@ -153,7 +153,8 @@ export function NovoJogo() {
         <section className="panel stack" aria-label="Ligas">
           {opcoes.length === 0 && (
             <p className="muted">
-              Nenhum pacote de liga está disponível nesta instalação. Importe uma pasta com pacote de dados autorizado.
+              Nenhum pacote de liga está disponível nesta instalação. Importe uma pasta com pacote de dados
+              autorizado.
             </p>
           )}
           {opcoes.map((o) => (
@@ -209,9 +210,9 @@ export function NovoJogo() {
       <div className="cn-corpo">
         <section className="cn-lista" aria-label="Clubes">
           <div className="seg" role="group" aria-label="Divisão">
-            {DIVISOES.map((d) => (
+            {DIVISOES.filter((d) => (pacote?.divisoes[d]?.length ?? 0) > 0).map((d) => (
               <button key={d} type="button" aria-pressed={divisao === d} onClick={() => setDivisao(d)}>
-                Série {d}
+                {pacote?.formatos?.[d]?.nome ?? `Série ${d}`}
               </button>
             ))}
           </div>

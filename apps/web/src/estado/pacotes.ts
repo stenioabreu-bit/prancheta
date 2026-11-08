@@ -18,6 +18,23 @@ const PACOTE_REAL = Object.values(JSON_REAL)[0] ?? null;
 const URLS_REAL: Record<string, string> = Object.fromEntries(
   Object.entries(ESCUDOS_REAL).map(([caminho, url]) => [caminho.split("/").pop()!.replace(".png", ""), url]),
 );
+// Ligas estrangeiras 2026 (geradas por tools/dados/gerar_pacotes_exterior.py), carregadas só quando escolhidas.
+const NOMES_EXTERIOR: Record<string, string> = {
+  "argentina-2026": "Argentina 2026",
+  "bolivia-2026": "Bolívia 2026",
+  "chile-2026": "Chile 2026",
+  "colombia-2026": "Colômbia 2026",
+  "equador-2026": "Equador 2026",
+  "paraguai-2026": "Paraguai 2026",
+  "peru-2026": "Peru 2026",
+  "uruguai-2026": "Uruguai 2026",
+  "venezuela-2026": "Venezuela 2026",
+};
+const JSON_EXTERIOR = import.meta.glob<PacoteDados>("../../../../packages/data/packs/*-2026/pacote.json", {
+  import: "default",
+});
+const carregadorExterior = (id: string) => JSON_EXTERIOR[`../../../../packages/data/packs/${id}/pacote.json`];
+
 export const PACOTE_PADRAO = PACOTE_REAL ? ID_BRASILEIRAO : ID_FICTICIO;
 
 export interface OpcaoDePacote {
@@ -29,13 +46,23 @@ export interface OpcaoDePacote {
 
 /** Pacotes que já vêm no app e não dependem do IndexedDB. */
 export const OPCOES_EMBUTIDAS: OpcaoDePacote[] = PACOTE_REAL
-  ? [{ id: ID_BRASILEIRAO, nome: "Brasileirão 2026", ficticio: false, escudos: Object.keys(URLS_REAL).length }]
+  ? [
+      {
+        id: ID_BRASILEIRAO,
+        nome: "Brasileirão 2026",
+        ficticio: false,
+        escudos: Object.keys(URLS_REAL).length,
+      },
+    ]
   : [];
 
 export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
   const importados = await listarPacotes();
   return [
     ...OPCOES_EMBUTIDAS,
+    ...Object.entries(NOMES_EXTERIOR)
+      .filter(([id]) => carregadorExterior(id))
+      .map(([id, nome]) => ({ id, nome, ficticio: false, escudos: 0 })),
     ...importados.map((p) => ({
       id: p.pacote.id,
       nome: p.pacote.nome,
@@ -47,6 +74,8 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
 
 export async function carregarPacote(id: string): Promise<PacoteImportado> {
   if (id === ID_BRASILEIRAO && PACOTE_REAL) return { pacote: PACOTE_REAL, escudos: URLS_REAL };
+  const exterior = carregadorExterior(id);
+  if (exterior) return { pacote: await exterior(), escudos: {} };
   if (id === ID_FICTICIO) return { pacote: pacoteFicticio(), escudos: {} };
   const p = await lerPacote(id);
   if (!p) throw new Error("Pacote não encontrado neste navegador. Importe a pasta de novo.");

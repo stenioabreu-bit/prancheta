@@ -1,8 +1,10 @@
 import {
   candidatar,
+  chaveDoLogo,
   divisaoDo,
   exigencia,
   fimDeTemporada,
+  nomeDaCompeticao,
   novaTemporadaDoJogo,
   posicaoNaTabela,
   proximoJogoDoUsuario,
@@ -41,11 +43,11 @@ function ProximoJogo() {
   const fora = t.clubes[proximo.visitante]!;
   const adversarioId = proximo.casa === meuId ? proximo.visitante : proximo.casa;
   const scout = relatorioDoAdversario(t, adversarioId, meuId);
-  const competicao = proximo.competicao === "copa" ? "Copa do Brasil" : `Série ${proximo.competicao}`;
+  const competicao = nomeDaCompeticao(t, proximo.competicao);
   return (
     <section className="panel stack">
       <span className="eyebrow comp-rotulo">
-        <LogoCompeticao competicao={proximo.competicao} tamanho={22} />
+        <LogoCompeticao competicao={chaveDoLogo(t, proximo.competicao)} tamanho={22} />
         {competicao} · {proximo.fase}
         {proximo.meioDeSemana ? " · meio de semana" : ""} · rodada {t.rodada + 1}
       </span>
@@ -105,20 +107,26 @@ function FimDaTemporada() {
       <span className="eyebrow">Temporada {t.temporada} encerrada</span>
       <h2>{subiu ? "Acesso conquistado!" : caiu ? "Rebaixado." : "Fim de temporada"}</h2>
       <dl className="kv">
-        {(["A", "B", "C", "D"] as const).map((d) => (
-          <Fragment key={d}>
+        {(["A", "B", "C", "D"] as const)
+          .filter((d) => t.divisoes[d].clubes.length > 0)
+          .map((d) => (
+            <Fragment key={d}>
+              <dt className="comp-rotulo">
+                <LogoCompeticao competicao={chaveDoLogo(t, d)} tamanho={20} />
+                {nomeDaCompeticao(t, d)}
+              </dt>
+              <dd>{nome(t.divisoes[d].campeao)}</dd>
+            </Fragment>
+          ))}
+        {!t.semCopa && (
+          <>
             <dt className="comp-rotulo">
-              <LogoCompeticao competicao={d} tamanho={20} />
-              Série {d}
+              <LogoCompeticao competicao="copa" tamanho={20} />
+              Copa do Brasil
             </dt>
-            <dd>{nome(t.divisoes[d].campeao)}</dd>
-          </Fragment>
-        ))}
-        <dt className="comp-rotulo">
-          <LogoCompeticao competicao="copa" tamanho={20} />
-          Copa do Brasil
-        </dt>
-        <dd>{nome(t.copa.campeao)}</dd>
+            <dd>{nome(t.copa.campeao)}</dd>
+          </>
+        )}
       </dl>
       <button type="button" className="btn primary big" onClick={() => mexer((j) => novaTemporadaDoJogo(j))}>
         Começar a temporada {t.temporada + 1}
@@ -209,8 +217,12 @@ function Situacao() {
             <span className={dentro ? "badge" : "muted"}>{dentro ? "dentro da meta" : "fora da meta"}</span>
           )}
         </dd>
-        <dt>Copa do Brasil</dt>
-        <dd>{copaTexto}</dd>
+        {!t.semCopa && (
+          <>
+            <dt>Copa do Brasil</dt>
+            <dd>{copaTexto}</dd>
+          </>
+        )}
         <dt>Últimos</dt>
         <dd>
           <Forma
@@ -274,9 +286,8 @@ function Calendario() {
               <span className="cal-rod num">R{j.rodada + 1}</span>
               <NomeClube clube={adv} tamanho={20} />
               <span className="small muted comp-rotulo">
-                <LogoCompeticao competicao={j.competicao} tamanho={16} />
-                {j.casa === meu ? "casa" : "fora"} ·{" "}
-                {j.competicao === "copa" ? "Copa" : `Série ${j.competicao}`}
+                <LogoCompeticao competicao={chaveDoLogo(t, j.competicao)} tamanho={16} />
+                {j.casa === meu ? "casa" : "fora"} · {nomeDaCompeticao(t, j.competicao)}
               </span>
             </li>
           );

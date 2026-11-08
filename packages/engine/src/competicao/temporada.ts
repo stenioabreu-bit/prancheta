@@ -38,6 +38,10 @@ export interface EstadoTemporada {
   vagasDiretasCopa: string[];
   usuarioId: string | null;
   historico: ResumoTemporada[];
+  /** Formatos próprios do pacote (ligas estrangeiras); ausente = Séries A–D de 2026. */
+  formatos?: Partial<Record<Divisao, FormatoDivisao>>;
+  /** Pacote sem Copa do Brasil. */
+  semCopa?: boolean;
 }
 
 export interface OpcoesNovaTemporada {
@@ -46,9 +50,30 @@ export interface OpcoesNovaTemporada {
   divisoes: Record<Divisao, ClubeDados[]>;
   vagasDiretasCopa: string[];
   usuarioId?: string | null;
+  formatos?: Partial<Record<Divisao, FormatoDivisao>>;
+  semCopa?: boolean;
 }
 
 const FORMATOS: Record<Divisao, FormatoDivisao> = FORMATOS_2026;
+
+/** Formato da divisão nesta temporada; divisão que o pacote não usa vira vazia. */
+export function formatoDe(estado: Pick<EstadoTemporada, "formatos">, d: Divisao): FormatoDivisao {
+  if (!estado.formatos) return FORMATOS[d];
+  return (
+    estado.formatos[d] ?? {
+      divisao: d,
+      nome: `Divisão ${d}`,
+      clubes: 0,
+      fases: [],
+      acesso: [],
+      rebaixamento: [],
+    }
+  );
+}
+
+function divisaoVazia(d: Divisao): EstadoDivisao {
+  return { divisao: d, clubes: [], fases: [], campeao: null, acesso: [], rebaixados: [], encerrada: true };
+}
 
 /** Roda `f` com o gerador do estado e guarda onde a sequência parou. */
 function comRng<T>(estado: EstadoTemporada, f: (rng: Rng) => T): T {
@@ -77,7 +102,11 @@ export function ranquear(estado: EstadoTemporada, ids: string[]): string[] {
 function montarCompeticoes(estado: EstadoTemporada, ordem: Record<Divisao, string[]>, rng: Rng) {
   estado.jogos = {};
   const ctx = contexto(estado, rng);
-  for (const d of DIVISOES) estado.divisoes[d] = iniciarDivisao(FORMATOS[d], ordem[d], ctx);
+  for (const d of DIVISOES) {
+    const f = formatoDe(estado, d);
+    estado.divisoes[d] = f.clubes === 0 ? divisaoVazia(d) : iniciarDivisao(f, ordem[d], ctx);
+  }
+  if (estado.semCopa) return;
   const ids = (d: Divisao) => estado.divisoes[d].clubes;
   estado.copa = montarCopa({
     serieA: ids("A"),
@@ -93,11 +122,10 @@ export function novaTemporada(opcoes: OpcoesNovaTemporada): EstadoTemporada {
   const clubes: Record<string, Clube> = {};
   const ordem = {} as Record<Divisao, string[]>;
   for (const d of DIVISOES) {
-    const lista = opcoes.divisoes[d];
-    if (lista.length !== FORMATOS[d].clubes) {
-      throw new Error(
-        `${FORMATOS[d].nome} precisa de ${FORMATOS[d].clubes} clubes; o pacote tem ${lista.length}`,
-      );
+    const lista = opcoes.divisoes[d] ?? [];
+    const f = formatoDe(opcoes, d);
+    if (lista.length !== f.clubes) {
+      throw new Error(`${f.nome} precisa de ${f.clubes} clubes; o pacote tem ${lista.length}`);
     }
     ordem[d] = lista.map((c) => c.id);
     for (const c of lista) clubes[c.id] = criarClube(c, rng);
@@ -114,6 +142,8 @@ export function novaTemporada(opcoes: OpcoesNovaTemporada): EstadoTemporada {
     vagasDiretasCopa: opcoes.vagasDiretasCopa,
     usuarioId: opcoes.usuarioId ?? null,
     historico: [],
+    ...(opcoes.formatos ? { formatos: opcoes.formatos } : {}),
+    ...(opcoes.semCopa ? { semCopa: true } : {}),
   };
   montarCompeticoes(estado, ordem, rng);
   estado.rng = rng.estado();
@@ -169,8 +199,10 @@ function fecharRodada(estado: EstadoTemporada): void {
   const rodada = estado.rodada;
   comRng(estado, (rng) => {
     const ctx = contexto(estado, rng);
-    fecharRodadaDaCopa(estado.copa, rodada, estado.jogos, rng, ctx.forca, (x) => ranquear(estado, x));
-    for (const d of DIVISOES) fecharRodadaDaDivisao(FORMATOS[d], estado.divisoes[d], rodada, ctx);
+    if (!estado.semCopa) {
+      fecharRodadaDaCopa(estado.copa, rodada, estado.jogos, rng, ctx.forca, (x) => ranquear(estado, x));
+    }
+    for (const d of DIVISOES) fecharRodadaDaDivisao(formatoDe(estado, d), estado.divisoes[d], rodada, ctx);
   });
   recuperarEntreRodadas(Object.values(estado.clubes));
   estado.rodada++;
@@ -206,8 +238,8 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
     D: [...div.C.rebaixados, ...fica("D")],
   };
   for (const d of DIVISOES) {
-    if (ordem[d].length !== FORMATOS[d].clubes) {
-      throw new Error(`${FORMATOS[d].nome} ficaria com ${ordem[d].length} clubes`);
+    if (ordem[d].length !== formatoDe(estado, d).clubes) {
+      throw new Error(`${formatoDe(estado, d).nome} ficaria com ${ordem[d].length} clubes`);
     }
   }
   // Vagas diretas na 3ª fase da próxima Copa: campeões e vices das Séries C e D.
@@ -237,4 +269,24 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
   }
   comRng(estado, (rng) => montarCompeticoes(estado, ordem, rng));
   return resumo;
+}
+
+/** Nome da competição para a interface: "Série A" no Brasil, nome da liga nos pacotes estrangeiros. */
+export function nomeDaCompeticao(estado: Pick<EstadoTemporada, "formatos">, c: Divisao | "copa"): string {
+  if (c === "copa") return "Copa do Brasil";
+  return estado.formatos ? formatoDe(estado, c).nome : `Série ${c}`;
+}
+
+/** Chave do logo: ID permanente da liga estrangeira, ou a própria competição do motor. */
+export function chaveDoLogo(estado: Pick<EstadoTemporada, "formatos">, c: Divisao | "copa"): string {
+  return (c !== "copa" && estado.formatos?.[c]?.id) || c;
+}
+
+/** Competições que existem nesta temporada (divisões com clubes e, se houver, a Copa). */
+export function competicoesAtivas(estado: EstadoTemporada): (Divisao | "copa")[] {
+  const lista: (Divisao | "copa")[] = (["A", "B", "C", "D"] as const).filter(
+    (d) => estado.divisoes[d].clubes.length > 0,
+  );
+  if (!estado.semCopa) lista.push("copa");
+  return lista;
 }

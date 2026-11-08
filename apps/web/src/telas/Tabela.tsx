@@ -4,8 +4,11 @@ import {
   type EstadoFaseMataMata,
   type EstadoJogo,
   type TipoDeRanking,
+  chaveDoLogo,
   classificacaoDoGrupo,
+  competicoesAtivas,
   divisaoDo,
+  nomeDaCompeticao,
   ranking,
 } from "@prancheta/engine";
 import { useState } from "react";
@@ -187,7 +190,7 @@ export function Tabela() {
     <div className="grade lateral">
       <section className="panel stack">
         <div className="filters" role="group" aria-label="Competição">
-          {(["A", "B", "C", "D", "copa"] as Competicao[]).map((c) => (
+          {(competicoesAtivas(t) as Competicao[]).map((c) => (
             <button
               key={c}
               type="button"
@@ -200,15 +203,15 @@ export function Tabela() {
               }}
             >
               <span className="comp-rotulo">
-                <LogoCompeticao competicao={c} tamanho={18} />
-                {c === "copa" ? "Copa do Brasil" : `Série ${c}`}
+                <LogoCompeticao competicao={chaveDoLogo(t, c)} tamanho={18} />
+                {nomeDaCompeticao(t, c)}
               </span>
             </button>
           ))}
         </div>
         <h2 className="comp-rotulo">
-          <LogoCompeticao competicao={competicao} tamanho={44} />
-          {competicao === "copa" ? "Copa do Brasil" : `Série ${competicao}`}
+          <LogoCompeticao competicao={chaveDoLogo(t, competicao)} tamanho={44} />
+          {nomeDaCompeticao(t, competicao)}
           {fase ? ` · ${fase.nome}` : ""}
         </h2>
         {fases.length > 1 && (

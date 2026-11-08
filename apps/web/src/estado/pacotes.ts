@@ -1,17 +1,21 @@
 import { type PacoteDados, pacoteFicticio } from "@prancheta/data";
-import pacoteRealJson from "../../../../packages/data/packs/teste-real/pacote.json";
 import { type PacoteImportado, guardarPacote, lerPacote, listarPacotes } from "./banco";
 
 export const ID_FICTICIO = "ficticio";
 export const ID_BRASILEIRAO = "teste-real";
 
 // Pacote real (uso pessoal), embutido no build com os escudos baixados.
+// O JSON é ignorado pelo Git por restrições de redistribuição; no Pages ele pode não existir.
+const JSON_REAL = import.meta.glob<PacoteDados>("../../../../packages/data/packs/teste-real/pacote.json", {
+  eager: true,
+  import: "default",
+});
 const ESCUDOS_REAL = import.meta.glob<string>("../../../../packages/data/packs/teste-real/escudos/*.png", {
   eager: true,
   query: "?url",
   import: "default",
 });
-const PACOTE_REAL: PacoteDados = pacoteRealJson as unknown as PacoteDados;
+const PACOTE_REAL = Object.values(JSON_REAL)[0] ?? null;
 const URLS_REAL: Record<string, string> = Object.fromEntries(
   Object.entries(ESCUDOS_REAL).map(([caminho, url]) => [caminho.split("/").pop()!.replace(".png", ""), url]),
 );
@@ -26,14 +30,7 @@ export interface OpcaoDePacote {
 
 /** Pacotes que já vêm no app e não dependem do IndexedDB. */
 export const OPCOES_EMBUTIDAS: OpcaoDePacote[] = PACOTE_REAL
-  ? [
-      {
-        id: ID_BRASILEIRAO,
-        nome: "Brasileirão 2026",
-        ficticio: false,
-        escudos: Object.keys(URLS_REAL).length,
-      },
-    ]
+  ? [{ id: ID_BRASILEIRAO, nome: "Brasileirão 2026", ficticio: false, escudos: Object.keys(URLS_REAL).length }]
   : [];
 
 export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {

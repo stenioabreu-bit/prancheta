@@ -151,12 +151,30 @@ export function NovoJogo() {
           <span className="cn-passo">Nova carreira · escolha a liga</span>
         </header>
         <section className="panel stack" aria-label="Ligas">
+          {opcoes.length === 0 && (
+            <p className="muted">
+              Nenhum pacote de liga está disponível nesta instalação. Importe uma pasta com pacote de dados autorizado.
+            </p>
+          )}
           {opcoes.map((o) => (
             <button key={o.id} type="button" className="btn primary big" onClick={() => setPacoteId(o.id)}>
               {o.nome}
             </button>
           ))}
-          {pacoteId && <p className="muted">Carregando…</p>}
+          {pacoteId ? (
+            <p className="muted">Carregando…</p>
+          ) : (
+            <label className="btn big">
+              Importar pacote autorizado
+              <input
+                type="file"
+                hidden
+                multiple
+                {...{ webkitdirectory: "" }}
+                onChange={(e) => void importar(e.target.files)}
+              />
+            </label>
+          )}
         </section>
       </div>
     );

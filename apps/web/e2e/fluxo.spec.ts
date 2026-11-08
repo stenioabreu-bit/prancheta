@@ -61,6 +61,7 @@ test("abas: elenco, tática, tabela e clube", async ({ page }) => {
   await page.getByLabel("Esquema").selectOption("4-4-2");
   await expect(page.getByRole("group", { name: "Escalação no 4-4-2" })).toBeVisible();
   await page.getByRole("button", { name: /^ATA:/ }).first().click();
+  await page.getByRole("button", { name: "Função e instruções" }).click();
   await expect(page.getByLabel("Função")).toBeVisible();
   await page.getByLabel("Função").selectOption("Pivô");
   await page.getByRole("button", { name: "Fechar" }).click();

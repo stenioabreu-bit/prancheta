@@ -1311,7 +1311,7 @@ tr.me.pisca td {
 }
 
 /* PC: menu lateral, duas colunas, folhas como janelas */
-@media (min-width: 960px) {
+@container app (min-width: 720px) {
   #app {
     max-width: 1200px;
     display: grid;
@@ -1585,7 +1585,7 @@ tr.me.pisca td {
   font-size: 13px;
   font-weight: 600;
 }
-@media (min-width: 960px) {
+@container app (min-width: 720px) {
   .cn-corpo {
     grid-template-columns: minmax(0, 1fr) 380px;
     align-items: start;
@@ -1640,7 +1640,7 @@ tr.me.pisca td {
   color: var(--muted);
 }
 /* FM26: navegação no topo no PC */
-@media (min-width: 960px) {
+@container app (min-width: 720px) {
   #app {
     display: block;
     max-width: 1280px;
@@ -1721,4 +1721,281 @@ tr.me.pisca td {
 .menu-aviso {
   text-align: center;
   margin: 0;
+}
+/* partida: campo e narração lado a lado, sem rolar a página */
+.match .wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.palco {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+}
+.palco .campo-wrap canvas {
+  max-height: 46cqh;
+  width: auto;
+  max-width: 100%;
+}
+.palco-lado {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.palco-lado .feed {
+  flex: 1;
+  min-height: 0;
+}
+.match .board {
+  padding-block: 8px;
+}
+.match .mstats {
+  margin-top: 4px;
+}
+/* tela inteira sem rolar: o app ocupa a janela e só as áreas internas rolam */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+#raiz {
+  container: app / size;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+}
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#app > main {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+.carreira-nova,
+.menu-inicial {
+  height: 100%;
+  min-height: 0;
+  overflow: auto;
+}
+/* celular em pé: o jogo já vem deitado (gira 90°) */
+html[data-deitado] {
+  #raiz {
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    width: 100dvh;
+    height: 100vw;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
+  }
+}
+@container app (min-width: 720px) {
+  .palco {
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .palco .campo-wrap {
+    justify-content: center;
+  }
+  .palco .campo-wrap canvas {
+    max-height: 70cqh;
+  }
+  #app {
+    display: flex;
+  }
+  .tabs {
+    position: static;
+  }
+  .top {
+    position: static;
+  }
+}
+/* tática horizontal */
+.tatica-grade {
+  display: grid;
+  gap: 12px;
+  align-items: start;
+}
+.tatica-listas {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+.lista-tatica {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.lista-tatica .plist {
+  max-height: 34cqh;
+  overflow: auto;
+}
+.prow.sel {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+.slot-h.sel .shirt {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+}
+.campo-h {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 105 / 68;
+  max-height: 62cqh;
+  border-radius: var(--r);
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pitch) 0 10%,
+    color-mix(in srgb, var(--pitch) 88%, #000) 10% 20%
+  );
+}
+.campo-h::before {
+  content: "";
+  position: absolute;
+  inset: 3%;
+  border: 2px solid var(--pitch-line);
+}
+.campo-h .zona {
+  position: absolute;
+  width: 25%;
+  height: 33.33%;
+  border-right: 1px dashed rgba(255, 255, 255, 0.25);
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+  font: 600 10px var(--f-mono);
+  color: rgba(255, 255, 255, 0.45);
+  padding: 3px 5px;
+}
+.campo-h .area-h {
+  position: absolute;
+  right: 3%;
+  top: 30%;
+  height: 40%;
+  width: 14%;
+  border: 2px solid var(--pitch-line);
+  border-right: 0;
+}
+.campo-h .meio-h {
+  position: absolute;
+  left: 50%;
+  top: 3%;
+  bottom: 3%;
+  border-left: 2px solid var(--pitch-line);
+}
+.slot-h {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  background: none;
+  border: 0;
+  padding: 0;
+  width: 70px;
+  z-index: 1;
+}
+.slot-h .shirt {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f5f5f2;
+  color: #111;
+  border: 2px solid #111;
+  display: grid;
+  place-items: center;
+  font: 700 14px var(--f-display);
+}
+.slot-h.gk .shirt {
+  background: #e8c547;
+}
+.slot-h.bad .shirt {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px var(--red);
+}
+.slot-h .lbl {
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.slot-h .sp {
+  font: 9px var(--f-mono);
+  color: rgba(255, 255, 255, 0.9);
+}
+@container app (min-width: 720px) {
+  .tatica-grade {
+    grid-template-columns: minmax(0, 1.6fr) minmax(200px, .8fr) minmax(200px, .8fr);
+  }
+  .tatica-ctrl {
+    max-height: calc(100cqh - 140px);
+    overflow: auto;
+  }
+}
+#app {
+  align-items: stretch;
+}
+.palco .campo-wrap canvas {
+  width: min(100%, calc(46cqh * 160 / 104));
+  height: auto;
+  max-height: none;
+  aspect-ratio: 160 / 104;
+}
+.lista-tatica .plist {
+  max-height: 26cqh;
+}
+@container app (min-width: 720px) {
+  .palco .campo-wrap canvas {
+    width: min(100%, calc(66cqh * 160 / 104));
+  }
+  .palco .campo-wrap {
+    justify-content: center;
+    align-items: center;
+  }
+}
+/* campo da partida ocupa o espaço que sobra, sem invadir o placar */
+.palco .campo-wrap {
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.palco .campo-wrap canvas {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@container app (max-height: 520px) {
+  .match .mstats,
+  .palco .campo-wrap .leg {
+    display: none;
+  }
+  .match .score .g {
+    font-size: 30px;
+  }
+  .match .score .t {
+    font-size: 16px;
+  }
+  .match .ctrl {
+    padding-block: 6px;
+  }
+  .match .ctrl .btn {
+    padding: 8px 4px;
+  }
 }

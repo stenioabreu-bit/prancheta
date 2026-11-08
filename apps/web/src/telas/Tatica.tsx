@@ -24,7 +24,7 @@ const MENTALIDADES = [
   { v: -1, nome: "Cautela" },
   { v: 0, nome: "Equilíbrio" },
   { v: 1, nome: "Ofensiva" },
-  { v: 2, nome: "Tudo ao ataque" },
+  { v: 2, nome: "Ataque total" },
 ];
 
 const NIVEIS_TATICOS: {
@@ -199,23 +199,47 @@ function FolhaDoPosto({ clube, indice, aoFechar }: { clube: Clube; indice: numbe
   );
 }
 
-export function Campo({ clube, aoEscolher }: { clube: Clube; aoEscolher?: (indice: number) => void }) {
+const SETORES = ["D", "MD", "MO", "O"];
+const CORREDORES = ["E", "C", "D"];
+const LIMITE_DO_BANCO = 12;
+
+type Papel = { tipo: "titular"; indice: number } | { tipo: "banco" } | { tipo: "fora" };
+
+/** Campo horizontal (ataca para a direita) com 4 setores × 3 corredores. */
+function CampoHorizontal({
+  clube,
+  selecionado,
+  aoClicar,
+}: { clube: Clube; selecionado: string | null; aoClicar: (id: string) => void }) {
   const postos = ESQUEMA_POSTOS[clube.esquema];
   return (
-    <div className="pitch" role="group" aria-label={`Escalação no ${clube.esquema}`}>
-      <div className="area" />
-      <div className="mid" />
-      <div className="circ" />
+    <div className="campo-h" role="group" aria-label={`Escalação no ${clube.esquema}`}>
+      {SETORES.map((s, i) =>
+        CORREDORES.map((c, k) => (
+          <span key={s + c} className="zona" style={{ left: `${i * 25}%`, top: `${k * 33.34}%` }}>
+            {s + c}
+          </span>
+        )),
+      )}
+      <div className="area-h" />
+      <div className="meio-h" />
       {postos.map(([posto, x, y], i) => {
-        const j = clube.jogadores.find((p) => p.id === clube.titulares[i]);
+        const id = clube.titulares[i]!;
+        const j = clube.jogadores.find((p) => p.id === id);
         const ruim = !j || !disponivel(j) || familiaridade(j, posto) < 0.85;
+        const classes = [
+          "slot-h",
+          posto === "GOL" ? "gk" : "",
+          ruim ? "bad" : "",
+          selecionado === id ? "sel" : "",
+        ];
         return (
           <button
             key={`${posto}-${x}-${y}`}
             type="button"
-            className={`slot${posto === "GOL" ? " gk" : ""}${ruim ? " bad" : ""}`}
-            style={{ left: `${x}%`, bottom: `${7 + y * 0.86}%` }}
-            onClick={() => aoEscolher?.(i)}
+            className={classes.filter(Boolean).join(" ")}
+            style={{ left: `${5 + y * 0.9}%`, top: `${6 + x * 0.88}%` }}
+            onClick={() => aoClicar(id)}
             aria-label={`${posto}: ${j?.nome ?? "vazio"}`}
           >
             <span className="shirt">{j?.ovr ?? "?"}</span>
@@ -228,62 +252,199 @@ export function Campo({ clube, aoEscolher }: { clube: Clube; aoEscolher?: (indic
   );
 }
 
+function ListaDeJogadores(props: {
+  titulo: string;
+  ids: string[];
+  clube: Clube;
+  selecionado: string | null;
+  aoClicar: (id: string) => void;
+  aoMoverPraCa: (() => void) | null;
+}) {
+  const { titulo, ids, clube, selecionado, aoClicar, aoMoverPraCa } = props;
+  return (
+    <section className="panel lista-tatica">
+      <div className="linha-entre">
+        <h3>{titulo}</h3>
+        {aoMoverPraCa && (
+          <button type="button" className="btn" onClick={aoMoverPraCa}>
+            Mover para cá
+          </button>
+        )}
+      </div>
+      <div className="plist">
+        {ids.map((id) => {
+          const j = clube.jogadores.find((p) => p.id === id);
+          if (!j) return null;
+          return (
+            <button
+              key={id}
+              type="button"
+              className={selecionado === id ? "prow sel" : "prow"}
+              onClick={() => aoClicar(id)}
+            >
+              <span className={`pos ${j.pos}`}>{j.pos}</span>
+              <span className="nm">
+                {j.nome} {!disponivel(j) && <span className="tag les">FORA</span>}
+              </span>
+              <span className="cond">
+                <i style={{ width: `${j.cond}%` }} />
+              </span>
+              <span className="ovr">{j.ovr}</span>
+            </button>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 export function Tatica() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
+  const [sel, setSel] = useState<string | null>(null);
   const [posto, setPosto] = useState<number | null>(null);
   const clubeId = jogo.carreira.clubeId;
   if (!clubeId) return <p className="vazio">Sem clube, sem prancheta.</p>;
   const clube = jogo.temporada.clubes[clubeId]!;
-  const entrosamento = Math.round(jogo.carreira.entrosamento[clube.esquema] ?? 45);
+  const naoTitulares = clube.jogadores
+    .filter((j) => !clube.titulares.includes(j.id))
+    .sort((a, b) => b.ovr - a.ovr);
+  const banco = (clube.reservas ?? naoTitulares.slice(0, LIMITE_DO_BANCO).map((j) => j.id)).filter(
+    (id) => !clube.titulares.includes(id) && clube.jogadores.some((j) => j.id === id),
+  );
+  const fora = naoTitulares.map((j) => j.id).filter((id) => !banco.includes(id));
+
+  const papel = (id: string): Papel => {
+    const i = clube.titulares.indexOf(id);
+    if (i >= 0) return { tipo: "titular", indice: i };
+    return banco.includes(id) ? { tipo: "banco" } : { tipo: "fora" };
+  };
+
+  function aplicar(novoBanco: string[]) {
+    clube.reservas = novoBanco;
+    clube.forca = forcaDoClube(clube);
+  }
+
+  function trocar(a: string, b: string) {
+    mexer(() => {
+      const pa = papel(a);
+      const pb = papel(b);
+      const lista = [...banco];
+      if (pa.tipo === "titular" && pb.tipo === "titular") {
+        clube.titulares[pa.indice] = b;
+        clube.titulares[pb.indice] = a;
+      } else if (pa.tipo === "titular" || pb.tipo === "titular") {
+        const titular = pa.tipo === "titular" ? a : b;
+        const outro = titular === a ? b : a;
+        const indice = (titular === a ? pa : pb) as { indice: number };
+        const papelOutro = titular === a ? pb : pa;
+        clube.titulares[indice.indice] = outro;
+        if (papelOutro.tipo === "banco") lista[lista.indexOf(outro)] = titular;
+      } else if (pa.tipo !== pb.tipo) {
+        const noBanco = pa.tipo === "banco" ? a : b;
+        const deFora = noBanco === a ? b : a;
+        lista[lista.indexOf(noBanco)] = deFora;
+      }
+      aplicar(lista);
+    });
+  }
+
+  function clicar(id: string) {
+    if (!sel) {
+      setSel(id);
+      return;
+    }
+    if (sel !== id) trocar(sel, id);
+    setSel(null);
+  }
+
+  const selPapel = sel ? papel(sel) : null;
+  const moverParaBanco =
+    sel && selPapel?.tipo === "fora" && banco.length < LIMITE_DO_BANCO
+      ? () => {
+          mexer(() => aplicar([...banco, sel]));
+          setSel(null);
+        }
+      : null;
+  const moverParaFora =
+    sel && selPapel?.tipo === "banco"
+      ? () => {
+          mexer(() => aplicar(banco.filter((x) => x !== sel)));
+          setSel(null);
+        }
+      : null;
 
   function mudarEsquema(esquema: Esquema) {
     mexer(() => {
       const nomes = clube.titulares.map((id) => clube.jogadores.find((j) => j.id === id)?.nome ?? "");
       clube.esquema = esquema;
       clube.titulares = escalarAutomatico(clube, esquema, nomes);
-      clube.forca = forcaDoClube(clube);
+      aplicar(banco.filter((id) => !clube.titulares.includes(id)));
     });
   }
+
   return (
-    <div className="grade duas">
-      <section className="panel stack">
-        <div className="linha-entre">
-          <h2>Escalação</h2>
-          <span className="small muted">entrosamento {entrosamento}%</span>
-        </div>
-        <div className="field">
-          <label htmlFor="esquema">Esquema</label>
+    <div className="tatica-grade">
+      <section className="panel stack tatica-campo">
+        <div className="linha-entre" style={{ flexWrap: "wrap" }}>
           <select
-            id="esquema"
+            aria-label="Esquema"
             value={clube.esquema}
             onChange={(e) => mudarEsquema(e.target.value as Esquema)}
+            style={{ width: "auto" }}
           >
             {ESQUEMAS.map((e) => (
               <option key={e}>{e}</option>
             ))}
           </select>
+          <span className="small muted">
+            entrosamento {Math.round(jogo.carreira.entrosamento[clube.esquema] ?? 45)}%
+          </span>
+          {selPapel?.tipo === "titular" && (
+            <button type="button" className="btn" onClick={() => setPosto(selPapel.indice)}>
+              Função e instruções
+            </button>
+          )}
+          <button
+            type="button"
+            className="btn"
+            onClick={() =>
+              mexer(() => {
+                clube.titulares = escalarAutomatico(clube, clube.esquema);
+                aplicar(banco.filter((id) => !clube.titulares.includes(id)));
+              })
+            }
+          >
+            Escalar automático
+          </button>
         </div>
-        <Campo clube={clube} aoEscolher={setPosto} />
+        <CampoHorizontal clube={clube} selecionado={sel} aoClicar={clicar} />
         <p className="small muted" style={{ margin: 0 }}>
-          Toque num jogador para trocar, definir a função e dar instruções. Contorno vermelho: fora de posição
-          ou indisponível.
+          {sel
+            ? "Agora toque em quem vai trocar de lugar com ele."
+            : "Toque num jogador e depois em outro para trocar (campo, banco ou não relacionados)."}
         </p>
-        <button
-          type="button"
-          className="btn"
-          onClick={() =>
-            mexer(() => {
-              clube.titulares = escalarAutomatico(clube, clube.esquema);
-              clube.forca = forcaDoClube(clube);
-            })
-          }
-        >
-          Escalar automaticamente
-        </button>
       </section>
-      <section className="panel stack">
-        <h2>Como o time joga</h2>
+      <div className="tatica-listas">
+        <ListaDeJogadores
+          titulo={`Banco · ${banco.length}/${LIMITE_DO_BANCO}`}
+          ids={banco}
+          clube={clube}
+          selecionado={sel}
+          aoClicar={clicar}
+          aoMoverPraCa={moverParaBanco}
+        />
+        <ListaDeJogadores
+          titulo="Não relacionados"
+          ids={fora}
+          clube={clube}
+          selecionado={sel}
+          aoClicar={clicar}
+          aoMoverPraCa={moverParaFora}
+        />
+      </div>
+      <section className="panel stack tatica-ctrl">
+        <h3>Como o time joga</h3>
         <ControlesTaticos
           tatica={clube.tatica}
           aoMudar={(t) =>

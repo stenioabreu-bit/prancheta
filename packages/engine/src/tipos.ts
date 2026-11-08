@@ -110,6 +110,8 @@ export interface Clube {
   jogadores: Jogador[];
   /** Ids dos titulares, na ordem das posições do esquema. */
   titulares: string[];
+  /** Banco escolhido pelo técnico (até 12); sem lista, todos os disponíveis ficam no banco. */
+  reservas?: string[];
   tatica: Tatica;
   instrucoes: Record<string, Partial<Instrucao>>;
   /** Média de overall dos titulares; usada nas expectativas e na simulação rápida. */

@@ -160,7 +160,12 @@ function montarLado(clube: Clube, lado: Lado, opcoes: OpcoesPartida): LadoPartid
     };
   });
   const reservas = clube.jogadores
-    .filter((j) => !clube.titulares.includes(j.id) && disponivel(j))
+    .filter(
+      (j) =>
+        !clube.titulares.includes(j.id) &&
+        disponivel(j) &&
+        (!ehUsuario || !clube.reservas || clube.reservas.includes(j.id)),
+    )
     .map((j) => emJogo(j, opcoes.rng));
   return {
     lado,

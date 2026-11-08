@@ -22,15 +22,18 @@ import {
 } from "@prancheta/engine";
 import { useEffect, useReducer, useRef, useState } from "react";
 import { Escudo, Folha } from "../componentes/basicos";
+import { ALTURA, CampoPixel, LARGURA } from "../componentes/campoPixel";
 import { useJogo, useLoja } from "../estado/loja";
 import { ControlesTaticos } from "./Tatica";
 
 type Fase = "pre" | "jogo" | "intervalo" | "pos";
 
+/** Escala da duração da animação de cada minuto no campo. */
 const VELOCIDADES = [
-  { nome: "Lento", ms: 700 },
-  { nome: "Normal", ms: 280 },
-  { nome: "Rápido", ms: 70 },
+  { nome: "Lenta", escala: 1.35 },
+  { nome: "Normal", escala: 0.85 },
+  { nome: "Rápida", escala: 0.45 },
+  { nome: "Turbo", escala: 0.12 },
 ];
 
 function meuLado(m: PartidaDoMotor): LadoPartida {
@@ -243,23 +246,46 @@ export function Partida() {
   });
   const [jogoAgendado] = useState(() => proximoJogoDoUsuario(jogo));
 
+  const tela = useRef<HTMLCanvasElement>(null);
+  const campo = useRef<CampoPixel | null>(null);
+  const escala = useRef(VELOCIDADES[velocidade]!.escala);
+  escala.current = VELOCIDADES[velocidade]!.escala;
+  useEffect(() => {
+    const ctx = tela.current?.getContext("2d");
+    if (!ctx) return;
+    campo.current = new CampoPixel(m, ctx);
+    campo.current.desenhar();
+    return () => campo.current?.parar();
+  }, [m]);
+
+  // Cada minuto: o motor avança, o campo anima os eventos novos e a narração acompanha.
   useEffect(() => {
     if (!rodando) return;
-    const id = setInterval(() => {
-      const r = passo(m);
-      if (r === "intervalo") {
-        setRodando(false);
-        setFase("intervalo");
-      } else if (r === "fim" || r === "encerrada") {
-        setRodando(false);
-        mexer((j) => concluirPartida(j, m));
-        setPosJogo(coletivaDepois(useLoja.getState().jogo!.carreira, m));
-        setFase("pos");
+    let ativo = true;
+    void (async () => {
+      while (ativo) {
+        const antes = m.eventos.length;
+        const r = passo(m);
+        redesenhar();
+        if (r === "intervalo") {
+          setRodando(false);
+          setFase("intervalo");
+          return;
+        }
+        if (r === "fim" || r === "encerrada") {
+          setRodando(false);
+          mexer((j) => concluirPartida(j, m));
+          setPosJogo(coletivaDepois(useLoja.getState().jogo!.carreira, m));
+          setFase("pos");
+          return;
+        }
+        await campo.current?.animar(m.eventos.slice(antes), escala.current);
       }
-      redesenhar();
-    }, VELOCIDADES[velocidade]!.ms);
-    return () => clearInterval(id);
-  }, [rodando, velocidade, m, mexer]);
+    })();
+    return () => {
+      ativo = false;
+    };
+  }, [rodando, m, mexer]);
 
   useEffect(() => {
     const f = feed.current;
@@ -313,92 +339,73 @@ export function Partida() {
           <Estatisticas m={m} />
         </div>
 
-        {fase === "pre" && (
-          <div className="feed pre-jogo">
-            <section className="panel stack">
-              <span className="eyebrow">Conselho de {conselho.de}</span>
-              <p style={{ margin: 0 }}>{conselho.texto}</p>
-            </section>
-            {perguntasAntes.length > 0 && (
-              <section className="panel stack">
-                <span className="eyebrow">Coletiva antes do jogo</span>
-                <Coletiva perguntas={perguntasAntes} />
-              </section>
-            )}
-            <section className="panel stack">
-              <span className="eyebrow">Preleção no vestiário</span>
-              <Prelecao m={m} momento="pre" aoFalar={redesenhar} />
-            </section>
-          </div>
-        )}
-
-        {(fase === "jogo" || fase === "intervalo") && (
-          <div className="feed" ref={feed} aria-live="polite">
-            {m.eventos.map((ev, i) => (
-              <div
-                key={`${ev.min}-${i}`}
-                className={`ev ${ev.tipo}${ev.tipo === "gol" && ev.lado !== eu.lado ? " op" : ""}`}
-              >
-                <span className="m">{ev.min}'</span>
-                <span className="t">{ev.texto}</span>
-              </div>
-            ))}
-            {fase === "intervalo" && (
-              <section className="panel stack">
-                <span className="eyebrow">Intervalo · {conselhoIntervalo(jogo.carreira, m).de}</span>
-                <p style={{ margin: 0 }}>{conselhoIntervalo(jogo.carreira, m).texto}</p>
-                {!falouNoIntervalo && <span className="eyebrow">Preleção</span>}
-                <Prelecao m={m} momento="intervalo" aoFalar={() => setFalouNoIntervalo(true)} />
-              </section>
-            )}
-          </div>
-        )}
-
-        {fase === "pos" && (
-          <div className="feed">
-            <section className="panel stack">
-              <span className="eyebrow">Conversa no vestiário</span>
-              <Prelecao m={m} momento="pos" aoFalar={redesenhar} />
-            </section>
-            {posJogo && posJogo.length > 0 && (
-              <section className="panel stack">
-                <span className="eyebrow">Coletiva</span>
-                <Coletiva perguntas={posJogo} />
-              </section>
-            )}
-          </div>
-        )}
-
-        <aside className="lado" aria-label="Seu time">
-          <section className="panel stack">
-            <h3>{eu.clube.nome}</h3>
-            <div className="plist">
-              {eu.emCampo.map((p) => (
-                <div
-                  key={p.atual.jogador.id}
-                  className="prow"
-                  style={{ gridTemplateColumns: "38px 1fr auto auto" }}
-                >
-                  <span className={`pos ${p.posto}`}>{p.posto}</span>
-                  <span className="nm" style={p.expulso ? { textDecoration: "line-through" } : undefined}>
-                    {p.atual.jogador.nome}
-                  </span>
-                  <span className="cond">
-                    <i
-                      style={{
-                        width: `${p.atual.cond}%`,
-                        background: p.atual.cond < 66 ? "var(--gold)" : undefined,
-                      }}
-                    />
-                  </span>
-                  <span className={`rating ${p.atual.nota >= 7 ? "hi" : p.atual.nota < 6 ? "lo" : ""}`}>
-                    {p.atual.nota.toFixed(1)}
-                  </span>
-                </div>
-              ))}
+        <div className="palco">
+          <div className="campo-wrap">
+            <canvas ref={tela} width={LARGURA} height={ALTURA} aria-label="Campo" />
+            <div className="leg">
+              <span>{m.casa.clube.sigla} casa</span>
+              <span>{m.visitante.clube.sigla} fora</span>
+              <small>marcador amarelo: seu time</small>
             </div>
-          </section>
-        </aside>
+          </div>
+          <div className="palco-lado">
+            {fase === "pre" && (
+              <div className="feed pre-jogo">
+                <section className="panel stack">
+                  <span className="eyebrow">Conselho de {conselho.de}</span>
+                  <p style={{ margin: 0 }}>{conselho.texto}</p>
+                </section>
+                {perguntasAntes.length > 0 && (
+                  <section className="panel stack">
+                    <span className="eyebrow">Coletiva antes do jogo</span>
+                    <Coletiva perguntas={perguntasAntes} />
+                  </section>
+                )}
+                <section className="panel stack">
+                  <span className="eyebrow">Preleção no vestiário</span>
+                  <Prelecao m={m} momento="pre" aoFalar={redesenhar} />
+                </section>
+              </div>
+            )}
+
+            {(fase === "jogo" || fase === "intervalo") && (
+              <div className="feed" ref={feed} aria-live="polite">
+                {m.eventos.map((ev, i) => (
+                  <div
+                    key={`${ev.min}-${i}`}
+                    className={`ev ${ev.tipo}${ev.tipo === "gol" && ev.lado !== eu.lado ? " op" : ""}`}
+                  >
+                    <span className="m">{ev.min}'</span>
+                    <span className="t">{ev.texto}</span>
+                  </div>
+                ))}
+                {fase === "intervalo" && (
+                  <section className="panel stack">
+                    <span className="eyebrow">Intervalo · {conselhoIntervalo(jogo.carreira, m).de}</span>
+                    <p style={{ margin: 0 }}>{conselhoIntervalo(jogo.carreira, m).texto}</p>
+                    {!falouNoIntervalo && <span className="eyebrow">Preleção</span>}
+                    <Prelecao m={m} momento="intervalo" aoFalar={() => setFalouNoIntervalo(true)} />
+                  </section>
+                )}
+              </div>
+            )}
+
+            {fase === "pos" && (
+              <div className="feed">
+                <section className="panel stack">
+                  <span className="eyebrow">Conversa no vestiário</span>
+                  <Prelecao m={m} momento="pos" aoFalar={redesenhar} />
+                </section>
+                {posJogo && posJogo.length > 0 && (
+                  <section className="panel stack">
+                    <span className="eyebrow">Coletiva</span>
+                    <Coletiva perguntas={posJogo} />
+                  </section>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
 
         <div className="ctrl">
           {fase === "pre" && (

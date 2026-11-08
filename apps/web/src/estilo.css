@@ -2190,3 +2190,29 @@ html[data-deitado] {
   height: 100%;
   background: #4cbb83;
 }
+/* Em telas baixas (celular deitado), prioriza o gramado e rola o restante abaixo. */
+@container app (max-height: 620px) {
+  .tatica-grade {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+  .tatica-campo,
+  .tatica-listas,
+  .tatica-ctrl {
+    grid-column: 1;
+    min-width: 0;
+  }
+  .campo-h {
+    max-height: none;
+  }
+  .tatica-listas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .lista-tatica .plist {
+    max-height: min(38cqh, 15rem);
+  }
+  .tatica-ctrl {
+    max-height: none;
+    overflow: visible;
+  }
+}

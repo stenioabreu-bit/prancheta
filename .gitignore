@@ -11,3 +11,5 @@ packages/data/packs/teste-real/
 
 # Relatórios gerados pela calibração
 tools/calibrate/relatorios/
+apps/web/e2e/fotos/
+apps/web/test-results/

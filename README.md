@@ -9,7 +9,8 @@ Jogo de técnico de futebol em texto, focado no futebol brasileiro. Web (PWA) pr
 | `packages/engine` | Motor em TypeScript puro (sem DOM): jogador, clube, escalação, partida minuto a minuto, simulação rápida, tabela e calendário. RNG com semente. |
 | `packages/data` | Pacotes de dados. O fictício vem no repositório; o de teste com nomes reais fica em `packs/teste-real/`, fora do git. |
 | `tools/calibrate` | Simula N temporadas e compara com o protótipo e com a referência do Brasileirão. |
-| `apps/web` | Interface React + Vite. O motor roda num Web Worker. |
+| `packages/save` | Save versionado com migrações, comprimido em gzip e gravado em dois slots alternados. |
+| `apps/web` | O site (React + Vite): celular com abas embaixo, PC com menu lateral. Save no IndexedDB. |
 
 ## Comandos
 
@@ -18,7 +19,8 @@ npm install
 npm test                 # Vitest (unitários + calibração estatística)
 npm run typecheck
 npm run lint
-npm run dev              # app em http://localhost:5173
+npm run dev              # o site em http://localhost:5173
+npm run e2e -w @prancheta/web   # fluxos no Playwright (celular e PC)
 npm run calibrar -- --temporadas 100 --prototipo <caminho do prancheta.html>
 ```
 

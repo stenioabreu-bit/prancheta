@@ -11,3 +11,4 @@ export { NARRACAO } from "./conteudo/narracao";
 export * from "./competicao";
 export * from "./carreira";
 export * from "./mercado";
+export { TONS, type Pergunta } from "./conteudo/vestiario";

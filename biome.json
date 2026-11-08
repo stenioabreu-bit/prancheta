@@ -19,10 +19,16 @@
       "style": {
         "noNonNullAssertion": "off",
         "noParameterAssign": "off"
+      },
+      "a11y": {
+        "useSemanticElements": "off"
       }
     }
   },
   "javascript": {
-    "formatter": { "quoteStyle": "double", "semicolons": "always" }
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always"
+    }
   }
 }

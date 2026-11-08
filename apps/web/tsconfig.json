@@ -10,5 +10,15 @@
     "emitDeclarationOnly": true
   },
   "include": ["src", "vite.config.ts"],
-  "references": [{ "path": "../../packages/engine" }, { "path": "../../packages/data" }]
+  "references": [
+    {
+      "path": "../../packages/engine"
+    },
+    {
+      "path": "../../packages/data"
+    },
+    {
+      "path": "../../packages/save"
+    }
+  ]
 }

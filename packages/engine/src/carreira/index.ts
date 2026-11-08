@@ -7,3 +7,4 @@ export * from "./vestiario";
 export * from "./diretoria";
 export * from "./semana";
 export * from "./jogo";
+export * from "./relatorios";

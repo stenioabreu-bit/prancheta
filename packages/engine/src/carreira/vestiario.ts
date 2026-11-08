@@ -319,7 +319,7 @@ export function coletivaDepois(carreira: EstadoCarreira, m: Partida): Pergunta[]
 
 export function responderColetiva(
   carreira: EstadoCarreira,
-  clube: Clube,
+  clube: Clube | null,
   rodada: number,
   pergunta: Pergunta,
   opcao: number,

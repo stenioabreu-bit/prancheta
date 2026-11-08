@@ -3,6 +3,7 @@
   "references": [
     { "path": "packages/engine" },
     { "path": "packages/data" },
+    { "path": "packages/save" },
     { "path": "tools/calibrate" },
     { "path": "apps/web" }
   ]

@@ -5,7 +5,6 @@ import { Escudo } from "../componentes/basicos";
 import { useLoja } from "../estado/loja";
 import {
   type OpcaoDePacote,
-  PACOTE_PADRAO,
   carregarPacote,
   importarPasta,
   opcoesDePacote,
@@ -98,7 +97,7 @@ export function NovoJogo() {
   const comecar = useLoja((s) => s.comecar);
   const avisar = useLoja((s) => s.avisar);
   const [opcoes, setOpcoes] = useState<OpcaoDePacote[]>([]);
-  const [pacoteId, setPacoteId] = useState(PACOTE_PADRAO);
+  const [pacoteId, setPacoteId] = useState<string>("");
   const [pacote, setPacote] = useState<PacoteDados | null>(null);
   const [tecnico, setTecnico] = useState("");
   const [divisao, setDivisao] = useState<Divisao>("A");
@@ -107,6 +106,7 @@ export function NovoJogo() {
 
   useEffect(() => void opcoesDePacote().then(setOpcoes), []);
   useEffect(() => {
+    if (!pacoteId) return;
     let ativo = true;
     void carregarPacote(pacoteId).then(({ pacote: p, escudos }) => {
       if (!ativo) return;
@@ -142,6 +142,24 @@ export function NovoJogo() {
   }
 
   const pode = tecnico.trim().length > 0 && !!escolhido && !comecando;
+  if (!pacoteId || !pacote) {
+    return (
+      <div className="carreira-nova">
+        <header className="cn-topo">
+          <span className="marca">Projeto Prancheta</span>
+          <span className="cn-passo">Nova carreira · escolha a liga</span>
+        </header>
+        <section className="panel stack" aria-label="Ligas">
+          {opcoes.map((o) => (
+            <button key={o.id} type="button" className="btn primary big" onClick={() => setPacoteId(o.id)}>
+              {o.nome}
+            </button>
+          ))}
+          {pacoteId && <p className="muted">Carregando…</p>}
+        </section>
+      </div>
+    );
+  }
   return (
     <div className="carreira-nova">
       <header className="cn-topo">

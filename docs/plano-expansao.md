@@ -65,5 +65,18 @@ Ordem: FC 26 → Transfermarkt completo → oGol/oficiais em amostra → compara
 - [x] `docs/relatorio-logos-competicoes.md`.
 - [ ] Pendentes: 10 estaduais, Bolívia, Paraguai, Peru (ver relatório). Telas de sorteio/histórico/premiação usam o componente quando existirem.
 
+## Próxima janela — colocar ligas e jogadores no jogo (ordem)
+Dados prontos (fora do git, em `dados/`): `auditoria-ogol.json` (438 clubes 2026, elencos com nome/nacionalidade/idade e ID oGol),
+`cobertura.json` (cruzamento oGol × Transfermarkt × FC 26), `FC26.csv`, `transfermarkt/`. Scripts em `tools/dados/`
+(`auditoria_ogol.py` refaz a varredura usando o cache `dados/ogol-cache`; `cobertura.py` refaz o cruzamento).
+1. Motor: `PacoteDados.divisoes` deixar de exigir A–D fixas → lista de divisões com formato próprio (`formatos2026.ts`).
+   Sem isso nenhuma liga estrangeira entra. Copa do Brasil só quando o pacote for do Brasil.
+2. Importador `packages/data/scripts/importar-ogol.ts`: lê `auditoria-ogol.json` + `cobertura.json` e gera um pacote por liga
+   (`packs/<pais>/pacote.json`), ID permanente = ID oGol. Atributos: FC 26 quando houver correspondência por nascimento;
+   senão pendente (não inventar). Começar pela Argentina (557 jogadores com FC 26).
+3. Tela "Novo jogo" já escolhe a liga primeiro (`apps/web/src/telas/NovoJogo.tsx`); cada pacote novo aparece lá.
+4. Fichas do oGol (nascimento/posição) para quem não casou com TM: decisão de coleta pendente com o usuário.
+5. Depois: estaduais, continentais e calendário em slots (etapas 6–11).
+
 ## Regras
 Reaproveitar o motor de fases; formatos em configuração; não remover nada; não criar clubes fictícios; dados pesquisados uma vez e salvos em arquivos estruturados; respostas e relatórios curtos.

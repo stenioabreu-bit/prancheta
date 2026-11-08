@@ -40,7 +40,6 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
           },
         ]
       : []),
-    { id: ID_FICTICIO, nome: "Liga fictícia", ficticio: true, escudos: 0 },
     ...importados.map((p) => ({
       id: p.pacote.id,
       nome: p.pacote.nome,

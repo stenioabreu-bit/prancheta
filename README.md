@@ -24,7 +24,7 @@ npm run e2e -w @prancheta/web   # fluxos no Playwright (celular e PC)
 npm run calibrar -- --temporadas 100 --prototipo <caminho do prancheta.html>
 ```
 
-## Pacote de teste com nomes reais (uso pessoal)
+## Pacote do Brasileirão 2026
 
 ```bash
 npm run importar-prototipo -- <caminho do prancheta.html>
@@ -33,4 +33,4 @@ npm run baixar-escudos
 
 O primeiro grava `packages/data/packs/teste-real/pacote.json` a partir do protótipo. O segundo baixa para
 `packs/teste-real/escudos/<id-do-clube>.png` os escudos listados em `packs/teste-real/escudos-fonte.json`.
-Nada disso entra no git: nomes reais e escudos oficiais não podem ser distribuídos com o jogo.
+O pacote e os escudos utilizados nesta versão fazem parte do projeto acadêmico sob a licença confirmada pelo autor.

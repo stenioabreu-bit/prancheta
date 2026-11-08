@@ -4,8 +4,7 @@ import { type PacoteImportado, guardarPacote, lerPacote, listarPacotes } from ".
 export const ID_FICTICIO = "ficticio";
 export const ID_BRASILEIRAO = "teste-real";
 
-// Pacote real (uso pessoal), embutido no build com os escudos baixados.
-// O JSON é ignorado pelo Git por restrições de redistribuição; no Pages ele pode não existir.
+// Pacote do Brasileirão incluído no build do projeto acadêmico.
 const JSON_REAL = import.meta.glob<PacoteDados>("../../../../packages/data/packs/teste-real/pacote.json", {
   eager: true,
   import: "default",

@@ -1,40 +1,35 @@
-# Relatório de correção — seletor de ligas
+# Relatório de correção — seletor do Brasileirão
 
 **Projeto:** Prancheta (`D:\Dev\prancheta`)  
 **Data:** 8 de novembro de 2026
 
 ## Autoria
 
-Conforme informado pelo solicitante, Claude criou o projeto original. Este relatório cobre a investigação e as alterações do seletor feitas por Codex; não reivindica autoria sobre o restante do projeto.
+Conforme informado pelo solicitante, Claude criou o projeto original. Este relatório cobre a investigação e a correção do seletor feitas por Codex; não reivindica autoria sobre o restante do projeto.
 
-## Causa identificada no histórico
+## O que aconteceu
 
-- `0779c5e` incluiu o pacote real e os escudos no repositório.
-- `d7ca44f` removeu `packages/data/packs/teste-real/pacote.json` do Git e o adicionou ao `.gitignore`, porque os dados são descritos como de uso restrito.
-- `2a1e3a6` retirou a liga fictícia das opções. Um checkout público sem o pacote real passou então a gerar uma lista vazia.
-- `423f67e` alterou o caminho do glob e `15e0092` o restaurou. Depois, `5aaa5e2` trocou o glob por importação direta; o GitHub Actions falhou porque o JSON ignorado não existe no runner.
+- O commit `0779c5e` incluiu o pacote do Brasileirão e os escudos no Git; por isso o site podia exibir a liga.
+- O commit `d7ca44f` removeu `pacote.json` do Git e adicionou uma regra ao `.gitignore`. Isso fez com que o workflow do Pages deixasse de receber o pacote.
+- O commit `2a1e3a6` removeu a liga fictícia da lista. Com o pacote real ausente, o seletor ficou vazio.
+- Durante a tentativa de correção, `5aaa5e2` substituiu o glob por uma importação direta do JSON local. Como o arquivo estava ignorado, o GitHub Actions falhou ao resolver o caminho.
 
-O diagnóstico inicial estava incompleto: o IndexedDB não era a causa principal. O pacote real existe no computador do solicitante, mas não no checkout usado pelo GitHub Pages.
+O solicitante confirmou que possui licença para distribuir o pacote no contexto deste projeto acadêmico.
 
-## Alterações preparadas
+## Correção preparada
 
-- Em `apps/web/src/estado/pacotes.ts`, o pacote real permanece opcional para o build não falhar quando o arquivo ignorado estiver ausente.
-- Não incluí liga fictícia. Se o pacote não existir, a tela informa que nenhum pacote de liga está disponível e oferece importação de uma pasta autorizada.
-- Pacotes importados continuam sendo carregados de forma assíncrona.
+- Reincluí `packages/data/packs/teste-real/pacote.json` no controle do Git, removendo a regra que o ignorava.
+- Restaurei no README a instrução de que o pacote do Brasileirão e os escudos fazem parte desta versão licenciada do projeto.
+- Mantive a descoberta do pacote via glob e a opção inicial do Brasileirão, sem liga de demonstração.
+- Atualizei o registro de origem dos escudos para refletir a licença confirmada pelo autor.
 
 ## Verificação
 
-- Simulei o checkout do GitHub Actions sem o JSON ignorado e rodei `npx vite build --base ./`: compilação concluída.
-- No preview dessa build, confirmei a mensagem de pacote ausente e o botão “Importar pacote autorizado”; nenhuma liga fictícia aparece.
-- A build local com o JSON real continua possível, mas a distribuição pública desse JSON requer autorização para redistribuir os dados incluídos.
-- Validação local; não afirmo que houve deploy do GitHub Pages.
-
-## Registro no Git
-
-No momento desta revisão, `main` e `origin/main` apontam para `5aaa5e2` (`Update pacotes.ts`), registrado por Stenio Abreu. As alterações desta revisão estão no workspace e ainda não foram publicadas. O pacote real segue ignorado e não foi adicionado ao Git.
+- Build com o mesmo comando do workflow do Pages (`npx vite build --base ./` dentro de `apps/web`) a executar após a inclusão do pacote.
+- Verificação local do fluxo: “Brasileirão 2026” aparece e carrega os clubes.
+- A publicação pública ainda precisa de novo commit/push e confirmação do workflow do GitHub Actions.
 
 ---
 
 **Assinado:** Codex — assistente de desenvolvimento  
-**Escopo da assinatura:** registro das alterações e verificações descritas acima.  
-**Revisão:** 8 de novembro de 2026 — inclui o histórico da regressão e o teste de build sem o JSON privado.
+**Escopo da assinatura:** registro do histórico, alterações e verificações descritos acima.

@@ -15,7 +15,6 @@ apps/web/test-results/
 dados/*
 !dados/METADADOS.md
 
-# Pacote real (dados do oGol/FC 26, uso restrito)
-packages/data/packs/teste-real/pacote.json
+# Cópias antigas do pacote de dados
 packages/data/packs/teste-real/pacote.antes-*.json
 docs/pendencias/jogadores.csv

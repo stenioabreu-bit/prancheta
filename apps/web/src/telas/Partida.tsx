@@ -21,6 +21,7 @@ import {
   substituir,
 } from "@prancheta/engine";
 import { useEffect, useReducer, useRef, useState } from "react";
+import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import { Escudo, Folha } from "../componentes/basicos";
 import { ALTURA, CampoPixel, LARGURA } from "../componentes/campoPixel";
 import { useJogo, useLoja } from "../estado/loja";
@@ -333,7 +334,8 @@ export function Partida() {
               {m.visitante.clube.nome}
             </div>
           </div>
-          <div className="clock">
+          <div className="clock comp-rotulo">
+            {jogoAgendado && <LogoCompeticao competicao={jogoAgendado.competicao} tamanho={20} />}
             {competicao} · {relogio}
           </div>
           <Estatisticas m={m} />

@@ -10,6 +10,8 @@ import {
   seguir,
   simularPartidaDoUsuario,
 } from "@prancheta/engine";
+import { Fragment } from "react";
+import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import { Escudo, Forma, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 import { Caixa } from "./Clube";
@@ -42,7 +44,8 @@ function ProximoJogo() {
   const competicao = proximo.competicao === "copa" ? "Copa do Brasil" : `Série ${proximo.competicao}`;
   return (
     <section className="panel stack">
-      <span className="eyebrow">
+      <span className="eyebrow comp-rotulo">
+        <LogoCompeticao competicao={proximo.competicao} tamanho={22} />
         {competicao} · {proximo.fase}
         {proximo.meioDeSemana ? " · meio de semana" : ""} · rodada {t.rodada + 1}
       </span>
@@ -102,15 +105,19 @@ function FimDaTemporada() {
       <span className="eyebrow">Temporada {t.temporada} encerrada</span>
       <h2>{subiu ? "Acesso conquistado!" : caiu ? "Rebaixado." : "Fim de temporada"}</h2>
       <dl className="kv">
-        <dt>Série A</dt>
-        <dd>{nome(t.divisoes.A.campeao)}</dd>
-        <dt>Série B</dt>
-        <dd>{nome(t.divisoes.B.campeao)}</dd>
-        <dt>Série C</dt>
-        <dd>{nome(t.divisoes.C.campeao)}</dd>
-        <dt>Série D</dt>
-        <dd>{nome(t.divisoes.D.campeao)}</dd>
-        <dt>Copa do Brasil</dt>
+        {(["A", "B", "C", "D"] as const).map((d) => (
+          <Fragment key={d}>
+            <dt className="comp-rotulo">
+              <LogoCompeticao competicao={d} tamanho={20} />
+              Série {d}
+            </dt>
+            <dd>{nome(t.divisoes[d].campeao)}</dd>
+          </Fragment>
+        ))}
+        <dt className="comp-rotulo">
+          <LogoCompeticao competicao="copa" tamanho={20} />
+          Copa do Brasil
+        </dt>
         <dd>{nome(t.copa.campeao)}</dd>
       </dl>
       <button type="button" className="btn primary big" onClick={() => mexer((j) => novaTemporadaDoJogo(j))}>
@@ -266,7 +273,8 @@ function Calendario() {
             <li key={j.id} className="cal-item">
               <span className="cal-rod num">R{j.rodada + 1}</span>
               <NomeClube clube={adv} tamanho={20} />
-              <span className="small muted">
+              <span className="small muted comp-rotulo">
+                <LogoCompeticao competicao={j.competicao} tamanho={16} />
                 {j.casa === meu ? "casa" : "fora"} ·{" "}
                 {j.competicao === "copa" ? "Copa" : `Série ${j.competicao}`}
               </span>

@@ -9,6 +9,7 @@ import {
   ranking,
 } from "@prancheta/engine";
 import { useState } from "react";
+import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import { Escudo, NomeClube } from "../componentes/basicos";
 import { useJogo } from "../estado/loja";
 
@@ -198,10 +199,18 @@ export function Tabela() {
                 setGrupoEscolhido(null);
               }}
             >
-              {c === "copa" ? "Copa do Brasil" : `Série ${c}`}
+              <span className="comp-rotulo">
+                <LogoCompeticao competicao={c} tamanho={18} />
+                {c === "copa" ? "Copa do Brasil" : `Série ${c}`}
+              </span>
             </button>
           ))}
         </div>
+        <h2 className="comp-rotulo">
+          <LogoCompeticao competicao={competicao} tamanho={44} />
+          {competicao === "copa" ? "Copa do Brasil" : `Série ${competicao}`}
+          {fase ? ` · ${fase.nome}` : ""}
+        </h2>
         {fases.length > 1 && (
           <div className="subabas" role="group" aria-label="Fase">
             {fases.map((f) => (

@@ -176,6 +176,10 @@ main {
   flex-direction: column;
   gap: 16px;
 }
+/* Em main com altura fixa, filhos com overflow (ex.: .subabas) encolhiam até sumir. */
+main > * {
+  flex-shrink: 0;
+}
 .tabs {
   position: fixed;
   left: 0;
@@ -606,19 +610,20 @@ h3 {
   display: flex;
   border: 1px solid var(--line);
   border-radius: 8px;
+  flex-wrap: wrap;
   overflow: hidden;
   background: var(--surface);
 }
+/* Sem espaço, as opções quebram em mais linhas em vez de cortar o texto; as divisórias
+   são sombras para aparecer também entre as linhas (a borda externa corta as das pontas). */
 .seg button {
-  flex: 1;
+  flex: 1 1 auto;
   border: 0;
   background: none;
-  padding: 8px 4px;
+  padding: 8px 6px;
   font-size: 13px;
-  border-left: 1px solid var(--line);
-}
-.seg button:first-child {
-  border-left: 0;
+  white-space: nowrap;
+  box-shadow: -1px 0 0 var(--line), 0 -1px 0 var(--line);
 }
 .seg button[aria-pressed="true"] {
   background: var(--ink);
@@ -1998,4 +2003,42 @@ html[data-deitado] {
   .match .ctrl .btn {
     padding: 8px 4px;
   }
+}
+
+/* Logos oficiais das competições: área fixa, imagem inteira sem deformar. */
+.logo-comp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+.logo-comp img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.logo-comp.fundo-escuro {
+  background: #14181a;
+  padding: 2px;
+}
+.comp-rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+/* No tema escuro, logos feitos para fundo claro ganham uma placa clara (a imagem não é alterada). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo-comp.fundo-claro {
+    background: #f4f6f2;
+    padding: 2px;
+  }
+}
+:root[data-theme="dark"] .logo-comp.fundo-claro {
+  background: #f4f6f2;
+  padding: 2px;
 }

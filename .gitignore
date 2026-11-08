@@ -10,3 +10,12 @@ coverage/
 tools/calibrate/relatorios/
 apps/web/e2e/fotos/
 apps/web/test-results/
+
+# Datasets externos (licença de redistribuição não confirmada)
+dados/*
+!dados/METADADOS.md
+
+# Pacote real (dados do oGol/FC 26, uso restrito)
+packages/data/packs/teste-real/pacote.json
+packages/data/packs/teste-real/pacote.antes-*.json
+docs/pendencias/jogadores.csv

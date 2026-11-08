@@ -1,18 +1,20 @@
 # Progresso da expansão
 
-- Concluída: planejamento (`docs/plano-expansao.md`); teste de viabilidade do Transfermarkt Datasets.
-- Atual: decisão sobre a fonte de jogadores fora da Série A, Argentina e Colômbia (ver pendências).
-- Próxima: etapa 1 — estrutura de dados de clubes e países.
-- Arquivos alterados: `docs/plano-expansao.md`, `docs/progresso.md`.
+- Concluída: planejamento; etapa 4a (auditoria de fontes de jogadores) — ver `docs/relatorio-cobertura-jogadores.md`.
+- Concluída: elencos 2026 (`tools/importar-elencos/`): 12.900 jogadores em 438 clubes; overall FC 26 em 1.727,
+  estimado no resto (`overall_fonte`). Nascimento, pé e altura pendentes (`docs/pendencias/jogadores.csv`).
+- Concluída: elencos reais no pacote teste-real (130 clubes A–D; 26 da D seguem com `nivel`).
+- Próxima: etapa 1 restante (país/UF/cidade dos clubes) e etapa 2 (clubes estaduais).
+- `packages/data/packs/teste-real/pacote.json` saiu do git (ignorado); a versão antiga continua no histórico.
+- Arquivos alterados: `.gitignore`, `docs/plano-expansao.md`, `docs/progresso.md`, `docs/relatorio-cobertura-jogadores.md`,
+  `dados/METADADOS.md`.
 
-## Resultado da viabilidade
-- Transfermarkt Datasets: licença CC0, download direto sem login
-  (`https://pub-e682421888d945d684bcae8890b0ec20.r2.dev/data/players.csv.gz`, `.../clubs.csv.gz`).
-  Dados até 06/07/2026 (atualização pausada). 50.149 jogadores.
-- Ligas sul-americanas cobertas: só BRA1 (Série A, ~706 jogadores), ARG1 (~954) e COL1.
-  Faltam Séries B–D, estaduais, Chile, Equador, Paraguai, Peru, Uruguai, Bolívia e Venezuela.
-- EA FC 26 (Kaggle): a busca não abre sem navegador/login; download exige conta e API key do Kaggle.
+## Resultado da auditoria
+- Datasets locais em `dados/` (fora do git): `FC26.csv`, `transfermarkt/`, `ogol-cache/`, `auditoria-ogol.json`, `cobertura.json`.
+- oGol tem elenco 2026 de todos os 438 clubes do escopo (12.905 jogadores). TM só cobre BRA1/ARG1/COL1 até 06/07/2026.
+  FC 26 (baixado da cópia pública no GitHub) cobre ARG/COL e clubes licenciados; a liga brasileira do FC 26 é fictícia.
+- Lacuna: 122 clubes pequenos (estaduais/Série D) com menos de 18 jogadores listados.
 
 ## Pendências
-- Fonte para jogadores das ligas não cobertas (Transfermarkt site bloqueia robô).
-- Credencial do Kaggle (kaggle.json) para baixar o FC 26, ou o usuário baixa o CSV manualmente.
+- Autorização/ritmo para baixar as fichas de jogador do oGol (termos não publicados, "todos os direitos reservados").
+- Conferir participantes do Goiano, Mato-Grossense e Sul-Mato-Grossense 2026 (varredura com ruído).

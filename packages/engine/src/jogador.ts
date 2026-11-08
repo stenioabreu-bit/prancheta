@@ -13,6 +13,14 @@ import {
 export type ExtrasJogador = Partial<Record<Atributo, number>> & {
   alt?: Posicao[];
   perso?: Personalidade;
+  /** Id permanente da base real (ex.: "og257494", do oGol). */
+  id?: string;
+  /** Nacionalidade, idade e potencial na temporada do pacote. */
+  nac?: string;
+  idade?: number;
+  pot?: number;
+  /** Origem do overall: "fc26", "pacote" ou estimado ("estimado-valor" | "estimado-clube" | "estimado-nivel"). */
+  fonte?: string;
 };
 
 /** Formato compacto do pacote de dados: ["Nome", "POS", OVR, { extras }]. */

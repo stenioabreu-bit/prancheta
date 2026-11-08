@@ -98,7 +98,7 @@ export function calendarioPontosCorridos(rng: Rng, ids: readonly string[]): Jogo
 export function recuperarEntreRodadas(clubes: Iterable<Clube>): void {
   for (const clube of clubes) {
     for (const j of clube.jogadores) {
-      j.cond = Math.min(100, j.cond + 38);
+      j.cond = Math.min(100, j.cond + 24);
       if (j.lesao > 0 && !j.recemLesionado) j.lesao--;
       j.recemLesionado = false;
       if (j.susp > 0 && j.cumprindoSuspensao) j.susp--;

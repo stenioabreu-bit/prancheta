@@ -137,7 +137,14 @@ function Trocas({ m, aoFechar, aoMudar }: { m: PartidaDoMotor; aoFechar: () => v
                   onClick={() => setSai(p.atual.jogador.id)}
                 >
                   <span className={`pos ${p.posto}`}>{p.posto}</span>
-                  <span className="nm">{p.atual.jogador.nome}</span>
+                  <span className={`nm${p.atual.amarelo ? " amarelado" : ""}`}>
+                    {p.atual.jogador.nome}
+                    {p.atual.lesionado && (
+                      <span className="cruz-lesao" title="Lesionado" aria-label="Lesionado">
+                        ✚
+                      </span>
+                    )}
+                  </span>
                   <span className="cond" aria-label={`Condição ${Math.round(p.atual.cond)}%`}>
                     <i
                       style={{
@@ -323,15 +330,15 @@ export function Partida() {
         <div className="board">
           <div className="score">
             <div className="t">
-              <Escudo clube={m.casa.clube} tamanho={30} />
-              {m.casa.clube.nome}
+              <Escudo clube={m.casa.clube} tamanho={56} />
+              <span>{m.casa.clube.nome}</span>
             </div>
             <div className="g num">
               {m.casa.est.gols} – {m.visitante.est.gols}
             </div>
             <div className="t">
-              <Escudo clube={m.visitante.clube} tamanho={30} />
-              {m.visitante.clube.nome}
+              <Escudo clube={m.visitante.clube} tamanho={56} />
+              <span>{m.visitante.clube.nome}</span>
             </div>
           </div>
           <div className="clock comp-rotulo">

@@ -590,7 +590,8 @@
       "pais": "BOL",
       "arquivo": "america-do-sul/division-profesional-bolivia.png",
       "status": "integrado",
-      "motivo": "Site da FBF (Bolívia) sem o logo da División Profesional; Wikipédia sem arquivo."
+      "motivo": "Site da FBF (Bolívia) sem o logo da División Profesional; Wikipédia sem arquivo.",
+      "sha256": "7e20c6fd4517981a5c771acf7242933dbb7fe90cb80db37988984efd310b3da0"
     },
     {
       "id": "primera-division-chile",
@@ -659,7 +660,8 @@
       "pais": "PRY",
       "arquivo": "america-do-sul/primera-division-paraguai.png",
       "status": "integrado",
-      "motivo": "Arquivo do Commons é 'trabalho próprio' de usuário (CC BY-SA); origem oficial não verificável."
+      "motivo": "Arquivo do Commons é 'trabalho próprio' de usuário (CC BY-SA); origem oficial não verificável.",
+      "sha256": "1ef005e9e420f68d0fcf805dc8b2491024eba734933423a68a5124ddd83cd78b"
     },
     {
       "id": "liga-1-peru",
@@ -668,7 +670,8 @@
       "pais": "PER",
       "arquivo": "america-do-sul/liga-1-peru.svg",
       "status": "integrado",
-      "motivo": "SVG do Commons vem de footylogos.com; site liga1.pe sem arquivo acessível."
+      "motivo": "SVG do Commons vem de footylogos.com; site liga1.pe sem arquivo acessível.",
+      "sha256": "26ce2eefe05876d95a5b51cea640f183e162aad26d107397e7900a1f42944180"
     },
     {
       "id": "primera-division-uruguai",

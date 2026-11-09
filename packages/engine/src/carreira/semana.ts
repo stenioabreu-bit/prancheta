@@ -1,3 +1,4 @@
+import { dataDoHorario } from "../competicao/calendario";
 import type { EstadoTemporada } from "../competicao/temporada";
 import { type Rng, limitar } from "../rng";
 import type { Clube } from "../tipos";
@@ -75,6 +76,7 @@ export function semana(carreira: EstadoCarreira, estado: EstadoTemporada, r: Res
   cobrarPromessas(carreira, clube, rodada, r);
 
   eventoAleatorio(carreira, clube, rodada, rng);
+  feriado(carreira, clube, rodada, estado.temporada);
   const treino = semanaDeTreino(carreira, clube, rng);
   const relato: string[] = treino.lesionados.map(
     (l) => `${l.nome} se machucou no treino e desfalca por ${l.rodadas} rodada(s).`,
@@ -312,4 +314,158 @@ function eventoAleatorio(carreira: EstadoCarreira, clube: Clube, rodada: number,
     assunto: ev.assunto,
     texto: `${ev.texto(alvo?.nome ?? "Um jogador")}${ruim ? " Só resultado em campo acalma o ambiente." : ""}`,
   });
+}
+
+/** Domingo de Páscoa (algoritmo de Meeus/Butcher), como "MM-DD". */
+function pascoa(ano: number): string {
+  const a = ano % 19,
+    b = Math.floor(ano / 100),
+    c = ano % 100;
+  const d = Math.floor(b / 4),
+    e = b % 4,
+    f = Math.floor((b + 8) / 25),
+    g = Math.floor((b - f + 1) / 3);
+  const h = (19 * a + b - d - g + 15) % 30,
+    i = Math.floor(c / 4),
+    k = c % 4;
+  const l = (32 + 2 * e + 2 * i - h - k) % 7,
+    m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const mes = Math.floor((h + l - 7 * m + 114) / 31),
+    dia = ((h + l - 7 * m + 114) % 31) + 1;
+  return `${String(mes).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
+}
+
+function somarDias(mmdd: string, ano: number, dias: number): string {
+  const d = new Date(Date.UTC(ano, Number(mmdd.slice(0, 2)) - 1, Number(mmdd.slice(3)) + dias));
+  return d.toISOString().slice(5, 10);
+}
+
+/** N-ésimo domingo do mês, como "MM-DD". */
+function domingo(ano: number, mes: number, n: number): string {
+  const primeiro = new Date(Date.UTC(ano, mes - 1, 1)).getUTCDay();
+  const dia = 1 + ((7 - primeiro) % 7) + (n - 1) * 7;
+  return `${String(mes).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
+}
+
+interface Feriado {
+  data: string;
+  de: string;
+  assunto: string;
+  texto: string;
+  moral: number;
+  torcida: number;
+}
+
+function feriadosDoAno(ano: number): Feriado[] {
+  const p = pascoa(ano);
+  return [
+    {
+      data: somarDias(p, ano, -47),
+      de: "Departamento de futebol",
+      assunto: "Carnaval",
+      texto:
+        "É Carnaval! A comissão liberou o elenco por uma noite, com toque de recolher. Juízo, rapaziada.",
+      moral: 4,
+      torcida: 1,
+    },
+    {
+      data: p,
+      de: "Presidência",
+      assunto: "Feliz Páscoa!",
+      texto:
+        "A diretoria distribuiu ovos de chocolate para o elenco e para os filhos dos funcionários. Feliz Páscoa!",
+      moral: 3,
+      torcida: 1,
+    },
+    {
+      data: "05-01",
+      de: "Presidência",
+      assunto: "Dia do Trabalhador",
+      texto:
+        "Homenagem aos funcionários do CT: roupeiros, cozinheiros, seguranças e jardineiros ganharam camisa autografada.",
+      moral: 2,
+      torcida: 1,
+    },
+    {
+      data: domingo(ano, 5, 2),
+      de: "Departamento de marketing",
+      assunto: "Dia das Mães",
+      texto: "Os jogadores entraram em campo com o nome das mães na camisa. A torcida aplaudiu de pé.",
+      moral: 3,
+      torcida: 3,
+    },
+    {
+      data: "06-12",
+      de: "Departamento de marketing",
+      assunto: "Dia dos Namorados",
+      texto: "Ação de Dia dos Namorados: casal de torcedores ganhou jantar com o capitão. As redes bombaram.",
+      moral: 1,
+      torcida: 3,
+    },
+    {
+      data: domingo(ano, 8, 2),
+      de: "Departamento de marketing",
+      assunto: "Dia dos Pais",
+      texto: "Os filhos dos jogadores entraram com o time no Dia dos Pais. Clima leve no vestiário.",
+      moral: 3,
+      torcida: 2,
+    },
+    {
+      data: "09-07",
+      de: "Presidência",
+      assunto: "Independência do Brasil",
+      texto: "Feriado da Independência: o clube fez treino aberto com a torcida no CT.",
+      moral: 2,
+      torcida: 3,
+    },
+    {
+      data: "10-12",
+      de: "Departamento de marketing",
+      assunto: "Dia das Crianças",
+      texto:
+        "Dia das Crianças: o elenco visitou um hospital infantil e distribuiu brinquedos. Ninguém saiu de lá igual.",
+      moral: 4,
+      torcida: 4,
+    },
+    {
+      data: "10-31",
+      de: "Imprensa",
+      assunto: "Halloween no CT",
+      texto:
+        "Alguém apareceu fantasiado de árbitro de vídeo no treino e assustou metade do elenco. Risada geral.",
+      moral: 2,
+      torcida: 1,
+    },
+    {
+      data: "12-25",
+      de: "Presidência",
+      assunto: "Feliz Natal!",
+      texto:
+        "A diretoria deseja um Feliz Natal a você, à comissão e a todo o elenco. Teve amigo secreto no CT e o goleiro tirou o roupeiro.",
+      moral: 5,
+      torcida: 2,
+    },
+    {
+      data: "12-31",
+      de: "Presidência",
+      assunto: "Feliz Ano Novo!",
+      texto: "Feliz Ano Novo! Que venha uma temporada de títulos. A diretoria conta com você.",
+      moral: 3,
+      torcida: 2,
+    },
+  ];
+}
+
+/** Mensagens comemorativas nas semanas de feriados famosos (com um pequeno ânimo no elenco). */
+function feriado(carreira: EstadoCarreira, clube: Clube, rodada: number, ano: number): void {
+  const domingoDaSemana = dataDoHorario(rodada, false);
+  const dias = Array.from({ length: 7 }, (_, i) =>
+    new Date(Date.parse(domingoDaSemana) - (6 - i) * 86_400_000).toISOString().slice(5, 10),
+  );
+  for (const f of feriadosDoAno(ano)) {
+    if (!dias.includes(f.data)) continue;
+    carreira.torcida = limitar(carreira.torcida + f.torcida, 0, 100);
+    for (const j of clube.jogadores) j.moral = limitar(j.moral + f.moral, 0, 100);
+    enviarMensagem(carreira, rodada, { de: f.de, assunto: f.assunto, texto: f.texto });
+  }
 }

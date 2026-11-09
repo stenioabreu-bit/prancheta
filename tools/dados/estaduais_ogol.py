@@ -4,6 +4,7 @@ import html, json, re, sys, time, urllib.request
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 aud = json.load(open(sys.argv[1], encoding="utf-8"))
+PREFIXO = sys.argv[3] if len(sys.argv) > 3 else "Estaduais|"
 LINHA = re.compile(
     r'<td class="date" >(\d{4}-\d\d-\d\d)</td><td>([^<]*)</td><td class="text home"><a href="/equipe/([^"?]+)[^"]*">(?:<b>)?([^<]+)'
     r'.*?<td class="result">(.*?)</td>.*?<td class="text away"><a href="/equipe/([^"?]+)[^"]*">(?:<b>)?([^<]+).*?<td class="phase">([^<]*)</td>',
@@ -11,7 +12,7 @@ LINHA = re.compile(
 )
 saida = {"fonte": "oGol (calendário de cada edição)", "obtido_em": time.strftime("%Y-%m-%d"), "estaduais": {}}
 for chave, comp in aud["competicoes"].items():
-    if not chave.startswith("Estaduais|"):
+    if not chave.startswith(PREFIXO):
         continue
     uf, ed = chave.split("|")[1], comp["edicoes"][0]
     jogos, vistos, pagina = [], set(), 1

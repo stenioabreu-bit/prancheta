@@ -1,4 +1,5 @@
 import type { ClubeDados } from "../clube";
+import type { FormatoContinental } from "../competicao/continental";
 import {
   type EstadoTemporada,
   type ResumoTemporada,
@@ -19,6 +20,7 @@ import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
 import {
   PESO_DIVISAO_NO_MERCADO,
   PREMIO_COPA,
+  PREMIO_POR_FASE,
   formatarDinheiro,
   orcamentoInicial,
   premioDaLiga,
@@ -60,6 +62,7 @@ export interface OpcoesNovoJogo {
   semCopa?: boolean;
   estaduais?: { uf: string; formato: FormatoDivisao; clubes: string[] }[];
   clubesExtras?: ClubeDados[];
+  continentais?: FormatoContinental[];
   tecnico: string;
   clubeId: string;
 }
@@ -85,6 +88,7 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
     ...(o.semCopa ? { semCopa: true } : {}),
     ...(o.estaduais ? { estaduais: o.estaduais } : {}),
     ...(o.clubesExtras ? { clubesExtras: o.clubesExtras } : {}),
+    ...(o.continentais ? { continentais: o.continentais } : {}),
   });
   const clube = temporada.clubes[o.clubeId];
   if (!clube) throw new Error(`Clube ${o.clubeId} não está no pacote`);
@@ -211,11 +215,10 @@ export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
     r.classico = ehClassico(c, clubeId, adversarioId);
     const pontos = golsPro > golsContra ? 3 : golsPro === golsContra ? 1 : 0;
     const esperado = pontosEsperados(t.clubes[clubeId]!.forca, t.clubes[adversarioId]!.forca, mandante);
-    const divisaoDoJogo = jogo.competicao.startsWith("est-")
-      ? (divisaoDo(t, clubeId) ?? "D")
-      : (jogo.competicao as Divisao);
-    const peso =
-      PESO_DIVISAO_NO_MERCADO[divisaoDoJogo] * (jogo.competicao.startsWith("est-") ? 0.5 : 1) + 0.3;
+    const serie = (["A", "B", "C", "D"] as const).find((d) => d === jogo.competicao);
+    const divisaoDoJogo = serie ?? divisaoDo(t, clubeId) ?? "D";
+    const fator = jogo.competicao.startsWith("est-") ? 0.5 : jogo.competicao.startsWith("cont-") ? 1.5 : 1;
+    const peso = PESO_DIVISAO_NO_MERCADO[divisaoDoJogo] * fator + 0.3;
     c.reputacao = limitar(c.reputacao + (pontos - esperado) * 0.6 * peso, 0, 100);
     reagirAoJogoDaLiga(c, t, adversarioId, mandante, golsPro, golsContra);
     if (!c.clubeId) ficarDesempregado(estado, clubeId);
@@ -228,6 +231,45 @@ export function simularPartidaDoUsuario(estado: EstadoJogo): void {
   const partida = iniciarPartida(estado);
   jogarAteOFim(partida);
   concluirPartida(estado, partida);
+}
+
+/** Paga a premiação continental por fase disputada (e pelo título) ao clube do usuário. */
+function premiarContinentais(estado: EstadoJogo) {
+  const c = estado.carreira;
+  const t = estado.temporada;
+  if (!c.clubeId) return;
+  for (const f of t.formatosContinentais ?? []) {
+    const est = t.continentais?.[f.id];
+    const tabela = PREMIO_POR_FASE[f.logo];
+    if (!est || !tabela) continue;
+    est.fases.forEach((fase, i) => {
+      const joga =
+        fase.tipo === "liga"
+          ? fase.grupos.some((g) => g.includes(c.clubeId!))
+          : fase.confrontos.some((x) => x.a === c.clubeId || x.b === c.clubeId);
+      const chave = `${t.temporada}:${f.id}:${fase.nome}`;
+      if (!joga || c.premiosPagos?.includes(chave)) return;
+      c.premiosPagos = [...(c.premiosPagos ?? []), chave];
+      const valor = tabela[i] ?? 0;
+      estado.mercado.financas.orcamento = Math.round((estado.mercado.financas.orcamento + valor) * 10) / 10;
+      enviarMensagem(c, t.rodada, {
+        de: "Financeiro",
+        assunto: `Premiação · ${f.nome}`,
+        texto: `Pela participação na ${fase.nome.toLowerCase()} da ${f.nome}, o clube recebeu ${formatarDinheiro(valor)}.`,
+      });
+    });
+    const chaveTitulo = `${t.temporada}:${f.id}:titulo`;
+    if (est.campeao === c.clubeId && !c.premiosPagos?.includes(chaveTitulo)) {
+      c.premiosPagos = [...(c.premiosPagos ?? []), chaveTitulo];
+      const valor = tabela.at(-1) ?? 0;
+      estado.mercado.financas.orcamento = Math.round((estado.mercado.financas.orcamento + valor) * 10) / 10;
+      enviarMensagem(c, t.rodada, {
+        de: "Presidência",
+        assunto: `Campeão da ${f.nome}!`,
+        texto: `Título continental e ${formatarDinheiro(valor)} de premiação no caixa. Obrigado, professor.`,
+      });
+    }
+  }
 }
 
 function reagirACopa(estado: EstadoJogo, rodadaFechada: number) {
@@ -269,6 +311,7 @@ export function seguir(estado: EstadoJogo): void {
   simularRodada(t, pendente ? [pendente.id] : []);
   if (t.rodada === rodadaAntes) return;
   reagirACopa(estado, rodadaAntes);
+  premiarContinentais(estado);
   comRng(estado, (rng) => {
     semana(estado.carreira, t, estado.rodadaAtual, rng);
     semanaDoMercado(estado, rng);

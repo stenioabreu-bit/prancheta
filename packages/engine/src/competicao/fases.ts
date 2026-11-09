@@ -19,7 +19,7 @@ export interface Agenda {
   meioDeSemana: boolean;
 }
 
-function agendar(
+export function agendar(
   agenda: Agenda,
   fase: string,
   grupo: number,
@@ -260,4 +260,29 @@ export function campanha(jogos: Iterable<JogoAgendado>, ids: readonly string[]):
 
 export function ordenarPorCampanha(ids: readonly string[], tabela: Tabela): string[] {
   return classificacao(ids, tabela);
+}
+
+/** Fase de liga com grupos e jogos definidos (tabela real): cada jogo conta no grupo do mandante. */
+export function montarFaseLigaComGrupos(
+  nome: string,
+  grupos: string[][],
+  jogos: readonly { data: string; casa: string; fora: string }[],
+  agenda: Agenda,
+): EstadoFaseLiga {
+  const grupoDe = new Map(grupos.flatMap((g, i) => g.map((id) => [id, i] as const)));
+  const semanas: number[] = [];
+  for (const j of jogos) {
+    const h = horarioDaData(j.data);
+    semanas.push(h.semana);
+    agendar(agenda, nome, grupoDe.get(j.casa) ?? 0, h, j.casa, j.fora);
+  }
+  return {
+    tipo: "liga",
+    nome,
+    grupos,
+    tabelas: grupos.map((g) => novaTabela(g)),
+    rodadaInicial: Math.min(...semanas),
+    rodadaFinal: Math.max(...semanas),
+    encerrada: false,
+  };
 }

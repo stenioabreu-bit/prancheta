@@ -10,7 +10,7 @@
  */
 import type { Rng } from "../rng";
 import { sortear } from "../rng";
-import { horarioDaData } from "./calendario";
+import { dataDoHorario, horarioDaData } from "./calendario";
 import { type Agenda, decidirConfronto, montarFaseMataMata, parear } from "./fases";
 import type { Chaveamento, EstadoFaseMataMata, JogoAgendado } from "./tipos";
 
@@ -83,6 +83,7 @@ export function abrirFaseDaCopa(
   jogos: Record<string, JogoAgendado>,
   rng: Rng,
   ranking: (ids: string[]) => string[],
+  semanaMin = 0,
 ): void {
   const fase = FASES_DA_COPA_2026[indice]!;
   const anterior = copa.fases[indice - 1];
@@ -95,7 +96,12 @@ export function abrirFaseDaCopa(
     montarFaseMataMata(
       { nome: fase.nome, idaEVolta: fase.datas.length === 2 },
       pares(fase, ordenados, rng),
-      fase.datas.map(horarioDaData),
+      fase.datas.map((d, k) => {
+        // Fase atrasada (adiamentos na anterior): a data que já passou vai para a primeira semana possível.
+        const h = horarioDaData(d);
+        const min = semanaMin + k;
+        return h.semana >= min ? h : { semana: min, meio: h.meio, data: dataDoHorario(min, h.meio) };
+      }),
       agenda,
       sorteioDeMando,
       fase.neutro,
@@ -122,5 +128,5 @@ export function fecharRodadaDaCopa(
     copa.vice = final.vencedor === final.a ? final.b : final.a;
     return;
   }
-  abrirFaseDaCopa(copa, copa.fases.length, jogos, rng, ranking);
+  abrirFaseDaCopa(copa, copa.fases.length, jogos, rng, ranking, rodada + 1);
 }

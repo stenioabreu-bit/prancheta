@@ -72,7 +72,7 @@ export type RegraDeMovimento =
   | { fase: string; posicao: "vencedores" };
 
 /** Competição de um jogo: Série, Copa do Brasil ou estadual ("est-UF"). */
-export type IdCompeticao = Divisao | "copa" | `est-${string}`;
+export type IdCompeticao = Divisao | "copa" | `est-${string}` | `cont-${string}`;
 
 export interface FormatoDivisao {
   divisao: Divisao;

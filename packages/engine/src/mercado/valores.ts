@@ -109,8 +109,10 @@ export const PREMIO_ESTADUAL_PADRAO = { campeao: 1, porPosicao: 0.04, base: 0.2 
 /** Prêmio por fase alcançada (R$ mi) das copas: nacional e continentais. */
 export const PREMIO_POR_FASE: Readonly<Record<string, readonly number[]>> = {
   "copa-do-brasil": PREMIO_COPA,
-  libertadores: [3, 4, 6, 9, 13, 20, 32],
-  "sul-americana": [1.2, 1.8, 2.5, 4, 6, 9, 14],
+  /** Por fase disputada: Fase 1, Fase 2, Fase 3, grupos, oitavas, quartas, semifinal, final (+ título). */
+  libertadores: [0.6, 0.8, 1.2, 6, 2.5, 3.5, 5.5, 13, 24],
+  /** 1ª fase, grupos, playoffs, oitavas, quartas, semifinal, final (+ título). */
+  "sul-americana": [0.4, 1.8, 0.8, 1.2, 1.8, 2.5, 5, 10],
 };
 
 /** Valor pela posição final em qualquer liga do catálogo. */

@@ -12,10 +12,18 @@ import {
   horarioDaData,
   ultimaSemanaAgendada,
 } from "./calendario";
+import {
+  type EstadoContinental,
+  type FormatoContinental,
+  fecharRodadaContinental,
+  iniciarContinental,
+  participantesContinental,
+} from "./continental";
 import { type EstadoCopa, abrirFaseDaCopa, fecharRodadaDaCopa, montarCopa } from "./copa";
 import { type ContextoCompeticao, faseDoEstado, fecharRodadaDaDivisao, iniciarDivisao } from "./divisao";
 import { registrarNaLiga } from "./fases";
 import { FORMATOS_2026 } from "./formatos2026";
+import type { EstadoFase } from "./tipos";
 import {
   DIVISOES,
   type Divisao,
@@ -60,6 +68,9 @@ export interface EstadoTemporada {
   /** Estaduais da temporada, por UF (competição "est-UF"). */
   estaduais?: Record<string, EstadoDivisao>;
   formatosEstaduais?: Record<string, FormatoDivisao>;
+  /** Libertadores e Sul-Americana (competições "cont-…"), na ordem em que fecham. */
+  continentais?: Record<string, EstadoContinental>;
+  formatosContinentais?: FormatoContinental[];
 }
 
 export interface OpcoesNovaTemporada {
@@ -73,6 +84,7 @@ export interface OpcoesNovaTemporada {
   /** Estaduais (formato com a tabela real) e clubes que só disputam estadual. */
   estaduais?: { uf: string; formato: FormatoDivisao; clubes: string[] }[];
   clubesExtras?: ClubeDados[];
+  continentais?: FormatoContinental[];
 }
 
 const FORMATOS: Record<Divisao, FormatoDivisao> = FORMATOS_2026;
@@ -138,6 +150,13 @@ function montarCompeticoes(estado: EstadoTemporada, ordem: Record<Divisao, strin
       if (ids.length >= 2) estado.estaduais[uf] = iniciarDivisao(f, ids, ctx);
     }
   }
+  if (estado.formatosContinentais) {
+    estado.continentais = {};
+    for (const f of estado.formatosContinentais) {
+      if (!participantesContinental(f).every((id) => estado.clubes[id])) continue;
+      estado.continentais[f.id] = iniciarContinental(f, { ...ctx, outras: estado.continentais });
+    }
+  }
   if (estado.semCopa) {
     resolverConflitos(estado);
     return;
@@ -184,6 +203,7 @@ export function novaTemporada(opcoes: OpcoesNovaTemporada): EstadoTemporada {
     ...(opcoes.estaduais?.length
       ? { formatosEstaduais: Object.fromEntries(opcoes.estaduais.map((e) => [e.uf, e.formato])) }
       : {}),
+    ...(opcoes.continentais?.length ? { formatosContinentais: opcoes.continentais } : {}),
   };
   montarCompeticoes(estado, ordem, rng);
   estado.rng = rng.estado();
@@ -210,9 +230,7 @@ export function registrarPlacar(estado: EstadoTemporada, jogoId: string, placar:
   if (jogo.placar) throw new Error(`Jogo ${jogoId} já tem placar`);
   jogo.placar = placar;
   if (jogo.competicao === "copa") return;
-  const divisao = divisaoDaCompeticao(estado, jogo.competicao);
-  if (!divisao) return;
-  const fase = faseDoEstado(divisao, jogo.fase);
+  const fase = fasesDaCompeticao(estado, jogo.competicao).find((f) => f.nome === jogo.fase);
   if (fase?.tipo === "liga") registrarNaLiga(fase, jogo);
 }
 
@@ -248,8 +266,12 @@ function fecharRodada(estado: EstadoTemporada): void {
     for (const [uf, div] of Object.entries(estado.estaduais ?? {})) {
       fecharRodadaDaDivisao(estado.formatosEstaduais![uf]!, div, rodada, ctx);
     }
+    for (const f of estado.formatosContinentais ?? []) {
+      const est = estado.continentais?.[f.id];
+      if (est) fecharRodadaContinental(f, est, rodada, { ...ctx, outras: estado.continentais! });
+    }
   });
-  resolverConflitos(estado);
+  resolverConflitos(estado, rodada + 1);
   recuperarEntreRodadas(Object.values(estado.clubes));
   estado.rodada++;
 }
@@ -260,6 +282,7 @@ export function temporadaEncerrada(estado: EstadoTemporada): boolean {
     estado.rodada > ultimaSemanaAgendada(estado.jogos) &&
     DIVISOES.every((d) => estado.divisoes[d].encerrada) &&
     Object.values(estado.estaduais ?? {}).every((e) => e.encerrada) &&
+    Object.values(estado.continentais ?? {}).every((e) => e.encerrada) &&
     (!!estado.semCopa || !!estado.copa.campeao)
   );
 }
@@ -340,14 +363,28 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
 
 /** Estado da competição de liga dona do jogo (Série ou estadual). */
 export function divisaoDaCompeticao(estado: EstadoTemporada, c: IdCompeticao): EstadoDivisao | null {
-  if (c === "copa") return null;
+  if (c === "copa" || c.startsWith("cont-")) return null;
   if (c.startsWith("est-")) return estado.estaduais?.[c.slice(4)] ?? null;
   return estado.divisoes[c as Divisao] ?? null;
 }
 
-/** Prioridade para manter a data: quem tem prioridade menor é que muda de dia. */
-function prioridade(c: IdCompeticao): number {
-  return c === "copa" ? 3 : c.startsWith("est-") ? 1 : 2;
+/** Fases de qualquer competição (Série, estadual, Copa ou continental). */
+export function fasesDaCompeticao(estado: EstadoTemporada, c: IdCompeticao): EstadoFase[] {
+  if (c === "copa") return estado.copa.fases;
+  if (c.startsWith("cont-")) return estado.continentais?.[c]?.fases ?? [];
+  return divisaoDaCompeticao(estado, c)?.fases ?? [];
+}
+
+/**
+ * Prioridade para manter a data (quem tem menos é que muda): continental > Copa > mata-mata de estadual >
+ * Série > 1ª fase de estadual.
+ */
+function prioridade(j: JogoAgendado): number {
+  const c = j.competicao;
+  if (c.startsWith("cont-")) return 5;
+  if (c === "copa") return 4;
+  if (c.startsWith("est-")) return j.fase === "1ª fase" ? 1 : 3;
+  return 2;
 }
 
 function somarDias(data: string, n: number): string {
@@ -360,42 +397,66 @@ function somarDias(data: string, n: number): string {
  * DESCANSO_MINIMO dias: move o de menor prioridade (estadual, depois Série, por último Copa) para o
  * próximo dia livre para os dois clubes, guardando a data original em `adiadoDe`.
  */
-export function resolverConflitos(estado: EstadoTemporada): number {
+export function resolverConflitos(estado: EstadoTemporada, aPartirDe = estado.rodada): number {
   let movidos = 0;
-  for (let volta = 0; volta < 50; volta++) {
-    const conflito = conflitosDeCalendario(estado.jogos).find((c) =>
-      c.jogos.some((id) => !estado.jogos[id]!.placar && estado.jogos[id]!.rodada >= estado.rodada),
+  const semSolucao = new Set<string>();
+  for (let volta = 0; volta < 2000; volta++) {
+    const conflito = conflitosDeCalendario(estado.jogos).find(
+      (c) =>
+        !semSolucao.has(c.jogos.join("|")) &&
+        c.jogos.some((id) => !estado.jogos[id]!.placar && estado.jogos[id]!.rodada >= aPartirDe),
     );
     if (!conflito) break;
-    const [a, b] = conflito.jogos.map((id) => estado.jogos[id]!) as [JogoAgendado, JogoAgendado];
-    const candidatos = [a, b].filter((j) => !j.placar && j.rodada >= estado.rodada);
-    const mover = candidatos.sort(
-      (x, y) => prioridade(x.competicao) - prioridade(y.competicao) || y.rodada - x.rodada,
-    )[0]!;
-    adiarParaDiaLivre(estado, mover);
-    movidos++;
+    const candidatos = conflito.jogos
+      .map((id) => estado.jogos[id]!)
+      .filter((j) => !j.placar && j.rodada >= aPartirDe)
+      .sort((x, y) => prioridade(x) - prioridade(y) || y.rodada - x.rodada);
+    if (candidatos.some((j) => adiarParaDiaLivre(estado, j, aPartirDe))) movidos++;
+    else semSolucao.add(conflito.jogos.join("|"));
   }
   return movidos;
 }
 
-function adiarParaDiaLivre(estado: EstadoTemporada, jogo: JogoAgendado): void {
+function adiarParaDiaLivre(
+  estado: EstadoTemporada,
+  jogo: JogoAgendado,
+  aPartirDe: number,
+  tentativa = 0,
+): boolean {
   const original = dataDoJogo(jogo);
   const outros = Object.values(estado.jogos).filter(
     (j) => j.id !== jogo.id && [j.casa, j.visitante].some((c) => c === jogo.casa || c === jogo.visitante),
   );
-  for (let n = 1; n <= 28; n++) {
+  // Mata-mata: a ida não passa da volta; se precisar, a volta é empurrada antes.
+  const fase = fasesDaCompeticao(estado, jogo.competicao).find((f) => f.nome === jogo.fase);
+  const volta =
+    fase?.tipo === "mataMata"
+      ? outros.find(
+          (j) =>
+            j.competicao === jogo.competicao &&
+            j.fase === jogo.fase &&
+            j.casa === jogo.visitante &&
+            j.visitante === jogo.casa &&
+            dataDoJogo(j) > original &&
+            !j.placar,
+        )
+      : undefined;
+  for (let n = 1; n <= 60; n++) {
     const data = somarDias(original, n);
+    if (volta && diasEntre(data, dataDoJogo(volta)) < DESCANSO_MINIMO + 1 && data <= dataDoJogo(volta)) {
+      if (tentativa < 2 && adiarParaDiaLivre(estado, volta, tentativa + 1))
+        return adiarParaDiaLivre(estado, jogo, tentativa + 1);
+      return false;
+    }
+    if (volta && data > dataDoJogo(volta)) return false;
     const h = horarioDaData(data);
-    if (h.semana < estado.rodada) continue;
-    const livre = outros.every(
-      (j) =>
-        diasEntre(dataDoJogo(j), data) >= DESCANSO_MINIMO &&
-        !(j.rodada === h.semana && j.meioDeSemana === h.meio),
-    );
+    if (h.semana < aPartirDe) continue;
+    const livre = outros.every((j) => diasEntre(dataDoJogo(j), data) >= DESCANSO_MINIMO);
     if (!livre) continue;
     adiar(estado, jogo.id, data);
-    return;
+    return true;
   }
+  return false;
 }
 
 /** Muda a data de um jogo (adiamento/reagendamento), mantendo o histórico e a fase coerente. */
@@ -407,37 +468,38 @@ export function adiar(estado: EstadoTemporada, jogoId: string, novaData: string)
   j.rodada = h.semana;
   j.meioDeSemana = h.meio;
   j.data = novaData;
-  const fase =
-    j.competicao === "copa"
-      ? estado.copa.fases.find((f) => f.nome === j.fase)
-      : divisaoDaCompeticao(estado, j.competicao)?.fases.find((f) => f.nome === j.fase);
+  const fase = fasesDaCompeticao(estado, j.competicao).find((f) => f.nome === j.fase);
   if (fase && fase.rodadaFinal < h.semana) fase.rodadaFinal = h.semana;
 }
 
 /** Nome da competição para a interface: "Série A" no Brasil, nome da liga nos pacotes estrangeiros. */
 export function nomeDaCompeticao(
-  estado: Pick<EstadoTemporada, "formatos" | "formatosEstaduais">,
+  estado: Pick<EstadoTemporada, "formatos" | "formatosEstaduais" | "formatosContinentais">,
   c: IdCompeticao,
 ): string {
   if (c === "copa") return "Copa do Brasil";
+  if (c.startsWith("cont-")) return estado.formatosContinentais?.find((f) => f.id === c)?.nome ?? c;
   if (c.startsWith("est-")) return estado.formatosEstaduais?.[c.slice(4)]?.nome ?? `Estadual ${c.slice(4)}`;
   return estado.formatos ? formatoDe(estado, c as Divisao).nome : `Série ${c}`;
 }
 
 /** Chave do logo: ID permanente da liga estrangeira, ou a própria competição do motor. */
 export function chaveDoLogo(
-  estado: Pick<EstadoTemporada, "formatos" | "formatosEstaduais">,
+  estado: Pick<EstadoTemporada, "formatos" | "formatosEstaduais" | "formatosContinentais">,
   c: IdCompeticao,
 ): string {
+  if (c.startsWith("cont-")) return estado.formatosContinentais?.find((f) => f.id === c)?.logo ?? c;
   if (c.startsWith("est-")) return estado.formatosEstaduais?.[c.slice(4)]?.id ?? c;
   return (c !== "copa" && estado.formatos?.[c as Divisao]?.id) || c;
 }
 
 /** Competições que existem nesta temporada (divisões com clubes e, se houver, a Copa). */
-export function competicoesAtivas(estado: EstadoTemporada): (Divisao | "copa")[] {
-  const lista: (Divisao | "copa")[] = (["A", "B", "C", "D"] as const).filter(
+export function competicoesAtivas(estado: EstadoTemporada): IdCompeticao[] {
+  const lista: IdCompeticao[] = (["A", "B", "C", "D"] as const).filter(
     (d) => estado.divisoes[d].clubes.length > 0,
   );
   if (!estado.semCopa) lista.push("copa");
+  for (const id of Object.keys(estado.continentais ?? {})) lista.push(id as IdCompeticao);
+  for (const uf of Object.keys(estado.estaduais ?? {}).sort()) lista.push(`est-${uf}`);
   return lista;
 }

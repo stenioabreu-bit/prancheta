@@ -269,3 +269,28 @@ tabela 2026 não publicada no oGol.
 - Mato-Grossense e Sul-Mato-Grossense: sem tabela 2026 publicada na fonte consultada.
 - Mata-matas dos estaduais: datas reais; confrontos dependem da campanha simulada.
 - Datas que precisaram ser reagendadas no jogo constam em `adiadoDe` de cada partida (ver relatório de validação).
+
+## Copas continentais (CONMEBOL)
+
+Fonte: tabelas reais 2026 no oGol (`dados/continentais-2026-jogos.json`). Confrontos da Pré e grupos reais; quem dependia de resultado é o vencedor simulado da fase anterior. Eliminados da Fase 3 da Libertadores entram nos grupos da Sul-Americana; 2º da Sul-Americana enfrenta 3º da Libertadores nos playoffs.
+
+### CONMEBOL Libertadores
+
+- Fase 1: ida e volta, 03/02, 12/02
+- Fase 2: ida e volta, 17/02, 26/02
+- Fase 3: ida e volta, 03/03, 12/03
+- Fase de grupos: 8 grupos de 4, 96 jogos de 07/04 a 28/05
+- Oitavas de final: ida e volta, 11/08, 25/08
+- Quartas de final: ida e volta, 08/09, 17/09
+- Semifinal: ida e volta, 14/10, 22/10
+- Final: jogo único, campo neutro, 28/11
+
+### CONMEBOL Sudamericana
+
+- 1ª fase: jogo único, 03/03
+- Fase de grupos: 8 grupos de 4, 96 jogos de 07/04 a 28/05
+- Playoffs: ida e volta, 21/07, 30/07
+- Oitavas de final: ida e volta, 11/08, 26/08
+- Quartas de final: ida e volta, 08/09, 17/09
+- Semifinal: ida e volta, 13/10, 21/10
+- Final: jogo único, campo neutro, 21/11

@@ -1,4 +1,4 @@
-import type { ClubeDados, Divisao, FormatoDivisao } from "@prancheta/engine";
+import type { ClubeDados, Divisao, FormatoContinental, FormatoDivisao } from "@prancheta/engine";
 
 export type { Divisao };
 
@@ -29,8 +29,10 @@ export interface PacoteDados {
   semCopa?: boolean;
   /** Estaduais com a tabela real (fase 1) e as datas dos mata-matas. */
   estaduais?: { uf: string; formato: FormatoDivisao; clubes: string[] }[];
-  /** Clubes que só disputam o estadual. */
+  /** Clubes fora das Séries (só estadual ou estrangeiros das copas continentais). */
   clubesExtras?: ClubeDados[];
+  /** Libertadores (com a Pré) e Sul-Americana com a tabela real. */
+  continentais?: FormatoContinental[];
 }
 
 /** Id estável de clube a partir do nome: "Atlético-MG" → "atletico-mg". */

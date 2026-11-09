@@ -50,3 +50,13 @@ Suíte completa: 104 testes passando (`npx vitest run`). Build do app ok.
 
 - 1ª fase dos estaduais com grupos (SP, MG, CE, GO, AM...) usa classificação em tabela única com os mesmos jogos reais; avançam tantos quanto entram no primeiro mata-mata.
 - 110 clubes disputam só o estadual; 76 deles têm menos de 16 jogadores encontrados nas fontes e o elenco foi completado com jogadores gerados marcados como `provisorio` (lista em `dados/estaduais-2026-resumo.json`).
+
+## Copas continentais (atualização)
+
+- Libertadores (Fase 1, 2 e 3 da Pré, 8 grupos, oitavas a final única) e Sul-Americana (1ª fase, 8 grupos, playoffs, oitavas a final única) com tabela real 2026.
+- 187 clubes fora das Séries no save do Brasileirão (estaduais + estrangeiros das continentais).
+- Prioridade de data: continental > Copa do Brasil > mata-mata de estadual > Série > 1ª fase de estadual. Regra de conflito: menos de 2 dias entre jogos do mesmo clube.
+- Teste de robustez: sementes 1, 2, 3, 5, 8 e 13, duas temporadas cada, zero conflitos e todas as competições encerradas.
+- Corrigido: reagendamento podia cair na semana que estava fechando; fase da Copa aberta com data já passada; ida empurrada para depois da volta.
+- Premiação continental paga por fase disputada e pelo título (`PREMIO_POR_FASE`).
+- Pendente: classificação automática para as continentais de 2027 em diante (hoje repete os participantes de 2026).

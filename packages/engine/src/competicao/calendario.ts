@@ -53,8 +53,8 @@ export interface ConflitoDeCalendario {
 }
 
 /**
- * Clubes com dois jogos no mesmo horário (semana + meio/fim de semana) ou com menos de DESCANSO_MINIMO dias
- * entre um jogo e o seguinte. Lista vazia = calendário válido.
+ * Clubes com dois jogos no mesmo dia ou com menos de DESCANSO_MINIMO dias entre um jogo e o seguinte.
+ * Lista vazia = calendário válido.
  */
 export function conflitosDeCalendario(jogos: Record<string, JogoAgendado>): ConflitoDeCalendario[] {
   const porClube = new Map<string, JogoAgendado[]>();
@@ -67,8 +67,7 @@ export function conflitosDeCalendario(jogos: Record<string, JogoAgendado>): Conf
     for (let i = 1; i < lista.length; i++) {
       const a = lista[i - 1]!;
       const b = lista[i]!;
-      const mesmoHorario = a.rodada === b.rodada && a.meioDeSemana === b.meioDeSemana;
-      if (mesmoHorario || diasEntre(dataDoJogo(a), dataDoJogo(b)) < DESCANSO_MINIMO) {
+      if (diasEntre(dataDoJogo(a), dataDoJogo(b)) < DESCANSO_MINIMO) {
         conflitos.push({ clube, semana: b.rodada, meioDeSemana: b.meioDeSemana, jogos: [a.id, b.id] });
       }
     }

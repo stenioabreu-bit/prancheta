@@ -82,6 +82,7 @@ export const useLoja = create<Loja>((set, get) => ({
       ...(pacote.semCopa ? { semCopa: true } : {}),
       ...(pacote.estaduais ? { estaduais: pacote.estaduais } : {}),
       ...(pacote.clubesExtras ? { clubesExtras: pacote.clubesExtras } : {}),
+      ...(pacote.continentais ? { continentais: pacote.continentais } : {}),
       tecnico,
       clubeId,
     });

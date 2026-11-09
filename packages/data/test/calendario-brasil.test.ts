@@ -1,6 +1,7 @@
 import {
   type EstadoTemporada,
   adiar,
+  classificacaoDoGrupo,
   conflitosDeCalendario,
   dataDoJogo,
   fimDeTemporada,
@@ -27,6 +28,7 @@ function nova(semente = 11): EstadoTemporada {
     vagasDiretasCopa: pacote.vagasDiretasCopa,
     estaduais: pacote.estaduais!,
     clubesExtras: pacote.clubesExtras!,
+    continentais: pacote.continentais!,
   });
 }
 
@@ -144,6 +146,7 @@ describe("carreira com estaduais", () => {
       vagasDiretasCopa: pacote.vagasDiretasCopa,
       estaduais: pacote.estaduais!,
       clubesExtras: pacote.clubesExtras!,
+      continentais: pacote.continentais!,
       tecnico: "Teste",
       clubeId: "palmeiras",
     });
@@ -158,5 +161,63 @@ describe("carreira com estaduais", () => {
     expect(comps.has("Campeonato Paulista")).toBe(true);
     novaTemporadaDoJogo(j);
     expect(j.temporada.temporada).toBe(2027);
+  });
+});
+
+describe("copas continentais 2026", () => {
+  const e = nova(21);
+  for (let g = 0; g < 80 && !temporadaEncerrada(e); g++) simularRodada(e);
+
+  it("Libertadores: Pré (3 fases), 8 grupos, mata-mata e final única", () => {
+    const lib = e.continentais!["cont-LIB"]!;
+    expect(lib.fases.map((f) => f.nome)).toEqual([
+      "Fase 1",
+      "Fase 2",
+      "Fase 3",
+      "Fase de grupos",
+      "Oitavas de final",
+      "Quartas de final",
+      "Semifinal",
+      "Final",
+    ]);
+    const grupos = lib.fases[3]!;
+    expect(grupos.tipo === "liga" && grupos.grupos.map((g) => g.length)).toEqual([4, 4, 4, 4, 4, 4, 4, 4]);
+    expect(lib.campeao).toBeTruthy();
+  });
+
+  it("Sul-Americana: 1ª fase, grupos, playoffs contra 3º da Libertadores, final", () => {
+    const sul = e.continentais!["cont-SUL"]!;
+    expect(sul.fases.map((f) => f.nome)).toEqual([
+      "1ª fase",
+      "Fase de grupos",
+      "Playoffs",
+      "Oitavas de final",
+      "Quartas de final",
+      "Semifinal",
+      "Final",
+    ]);
+    const lib = e.continentais!["cont-LIB"]!.fases[3]!;
+    const terceiros = lib.tipo === "liga" ? lib.grupos.map((_, g) => classificacaoDoGrupo(lib, g)[2]) : [];
+    const playoffs = sul.fases[2]!;
+    const doPlayoff = playoffs.tipo === "mataMata" ? playoffs.confrontos.map((c) => c.b) : [];
+    expect(new Set(doPlayoff)).toEqual(new Set(terceiros));
+    expect(sul.campeao).toBeTruthy();
+  });
+
+  it("clubes brasileiros nas copas continentais seguem sem conflito de calendário", () => {
+    expect(conflitosDeCalendario(e.jogos)).toEqual([]);
+  });
+});
+
+describe("robustez do calendário", () => {
+  it.each([1, 2, 3, 5, 8, 13])("semente %i: duas temporadas completas sem conflito", (semente) => {
+    const e = nova(semente);
+    jogarTudo(e);
+    expect(temporadaEncerrada(e)).toBe(true);
+    expect(conflitosDeCalendario(e.jogos)).toEqual([]);
+    virarTemporada(e);
+    jogarTudo(e);
+    expect(temporadaEncerrada(e)).toBe(true);
+    expect(conflitosDeCalendario(e.jogos)).toEqual([]);
   });
 });

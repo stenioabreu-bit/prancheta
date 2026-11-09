@@ -128,6 +128,8 @@ export interface EstadoCarreira {
   marcas: Record<string, number>;
   tonsRecentes: TomDeConversa[];
   historico: JogoDoHistorico[];
+  /** Prêmios continentais já pagos ("temporada:competição:fase"), para não pagar duas vezes. */
+  premiosPagos?: string[];
   /** Pares de clássicos do pacote (ids). */
   classicos: [string, string][];
   /** Já avisou que o cargo está em risco nesta má fase. */

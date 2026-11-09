@@ -8,8 +8,8 @@ import {
   chaveDoLogo,
   classificacaoDoGrupo,
   competicoesAtivas,
-  divisaoDaCompeticao,
   divisaoDo,
+  fasesDaCompeticao,
   nomeDaCompeticao,
   ranking,
 } from "@prancheta/engine";
@@ -174,8 +174,7 @@ export function Tabela() {
   const meu = jogo.carreira.clubeId;
   const minhaDivisao = (meu && divisaoDo(t, meu)) || "A";
   const [competicao, setCompeticao] = useState<Competicao>(minhaDivisao);
-  const fases: EstadoFase[] =
-    competicao === "copa" ? t.copa.fases : (divisaoDaCompeticao(t, competicao)?.fases ?? []);
+  const fases: EstadoFase[] = fasesDaCompeticao(t, competicao);
   const [faseEscolhida, setFaseEscolhida] = useState<string | null>(null);
   const fase = fases.find((f) => f.nome === faseEscolhida) ?? fases[fases.length - 1];
   const grupoDoUsuario =
@@ -188,7 +187,9 @@ export function Tabela() {
   const [grupoEscolhido, setGrupoEscolhido] = useState<number | null>(null);
   const grupo = grupoEscolhido ?? grupoDoUsuario;
   const divisaoDoRanking: Divisao =
-    competicao === "copa" || competicao.startsWith("est-") ? minhaDivisao : (competicao as Divisao);
+    competicao === "copa" || competicao.startsWith("est-") || competicao.startsWith("cont-")
+      ? minhaDivisao
+      : (competicao as Divisao);
 
   return (
     <div className="grade lateral">

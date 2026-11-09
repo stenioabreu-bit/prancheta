@@ -2325,3 +2325,12 @@ html[data-deitado] {
 .sumula .ic-gol {
   margin-right: 4px;
 }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn.escolhido:disabled {
+  opacity: 0.7;
+  outline: 1px solid var(--muted);
+}

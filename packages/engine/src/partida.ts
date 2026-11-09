@@ -76,7 +76,7 @@ export interface LadoPartida {
   saidos: string[];
   est: EstatisticasPartida;
   /** Efeito da última conversa da beira do campo (some no minuto `ate`). */
-  conversa?: { ate: number; desde: number; A: number; M: number; D: number };
+  conversa?: { ate: number; desde: number; A: number; M: number; D: number; grito?: GritoDaBeira };
 }
 
 export type TipoEvento =
@@ -900,6 +900,13 @@ export function encerrarPartida(m: Partida): ResultadoPartida {
   };
 }
 
+const etapa = (minuto: number) => (minuto <= 45 ? 1 : 2);
+
+/** Uma conversa por etapa (1º e 2º tempo). */
+export function podeGritar(m: Partida, lado: LadoPartida): boolean {
+  return !lado.conversa || etapa(lado.conversa.desde) !== etapa(m.minuto === 45 && m.intervaloFeito ? 46 : m.minuto);
+}
+
 export type GritoDaBeira = "incentivar" | "cobrar" | "acalmar";
 
 export const GRITOS: readonly { id: GritoDaBeira; texto: string; dica: string }[] = [
@@ -922,12 +929,11 @@ export const GRITOS: readonly { id: GritoDaBeira; texto: string; dica: string }[
 
 /**
  * Conversa da beira do campo durante o jogo: um empurrão de 15 minutos nas linhas e na moral.
- * Uma vez a cada 15 minutos; o efeito depende do placar (cobrar perdendo funciona melhor que ganhando).
+ * Uma vez por etapa; o efeito depende do placar (cobrar perdendo funciona melhor que ganhando).
  */
 export function gritarDaBeira(m: Partida, lado: LadoPartida, grito: GritoDaBeira): string {
   if (m.fase === "pre" || m.minuto >= 90) return "O jogo não está rolando.";
-  if (lado.conversa && m.minuto - lado.conversa.desde < 15)
-    return `O time ainda está digerindo a última conversa. Fale de novo a partir dos ${lado.conversa.desde + 15}'.`;
+  if (!podeGritar(m, lado)) return "Você já falou com o time nesta etapa.";
   const outro = lado === m.casa ? m.visitante : m.casa;
   const saldo = lado.est.gols - outro.est.gols;
   let efeito = { A: 0, M: 0, D: 0 };
@@ -955,7 +961,7 @@ export function gritarDaBeira(m: Partida, lado: LadoPartida, grito: GritoDaBeira
     M: lado.bonus.M + efeito.M,
     D: lado.bonus.D + efeito.D,
   };
-  lado.conversa = { ate: m.minuto + 15, desde: m.minuto, ...efeito };
+  lado.conversa = { ate: m.minuto + 15, desde: m.minuto, ...efeito, grito };
   for (const p of lado.emCampo) {
     const delta =
       grito === "cobrar" && moral < 0 && p.atual.jogador.perso === "temperamental" ? moral * 2 : moral;

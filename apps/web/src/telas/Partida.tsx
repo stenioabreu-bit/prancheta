@@ -3,6 +3,7 @@ import {
   type Partida as PartidaDoMotor,
   GRITOS,
   gritarDaBeira,
+  podeGritar,
   type Pergunta,
   type SituacaoDaFala,
   TONS,
@@ -552,17 +553,15 @@ export function Partida() {
               <button
                 key={g.id}
                 type="button"
-                className="btn"
+                className={`btn${eu.conversa?.grito === g.id && !podeGritar(m, eu) ? " escolhido" : ""}`}
                 style={{ textAlign: "left" }}
+                disabled={!podeGritar(m, eu)}
                 onClick={() => {
                   avisar(gritarDaBeira(m, eu, g.id));
                   redesenhar();
                 }}
               >
                 {g.texto}
-                <span className="small muted" style={{ display: "block" }}>
-                  {g.dica}
-                </span>
               </button>
             ))}
           </section>

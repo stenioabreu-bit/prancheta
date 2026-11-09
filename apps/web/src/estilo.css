@@ -2864,3 +2864,88 @@ body {
   padding: 8px 4px;
   font-size: 13px;
 }
+
+/* Pré-jogo enxuto + modal de escolha com fundo desfocado */
+.prejogo {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  padding: 6px 8px 6px 10px;
+  gap: 8px;
+}
+.prejogo-texto {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.prejogo .btn {
+  flex: none;
+  padding: 8px 12px;
+}
+.fechar-x {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface2);
+  color: var(--ink);
+  cursor: pointer;
+}
+.modal-desfocado {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(10, 10, 10, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: aparecer 0.2s ease-out;
+}
+.modal-simulacao {
+  position: relative;
+  width: min(440px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  padding: 24px 18px 18px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.modal-simulacao h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.modal-simulacao .fechar-x.canto {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.opcao-sim {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.prejogo-texto {
+  line-height: 1.2;
+}
+.prejogo-texto b {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.prejogo {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  margin-bottom: 8px;
+}

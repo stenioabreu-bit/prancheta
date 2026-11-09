@@ -58,6 +58,7 @@ export function PreJogo() {
   const setModo = useLoja((s) => s.setModoPartida);
   const setEmPartida = useLoja((s) => s.setEmPartida);
   const [rapida, setRapida] = useState(false);
+  const [escolher, setEscolher] = useState(false);
   const proximo = proximoJogoDoUsuario(jogo);
   if (!proximo && !rapida) return null;
   const t = jogo.temporada;
@@ -76,40 +77,74 @@ export function PreJogo() {
     <>
       {proximo && (
         <section className="prejogo" aria-label="Pré-jogo">
-          <div className="prejogo-info">
-            <LogoCompeticao competicao={chaveDoLogo(t, proximo.competicao)} tamanho={26} />
-            <div>
-              <b>
-                {t.clubes[proximo.casa]?.nome} x {t.clubes[proximo.visitante]?.nome}
-              </b>
-              <div className="small muted">
-                {nomeDaCompeticao(t, proximo.competicao)} · {dataPorExtenso(dataDoJogo(proximo))}
-              </div>
-              <div className="small">
-                {fora > 0 ? <span className="aviso-ruim">{fora} titular(es) indisponível(is) · </span> : null}
-                {cansados > 0 ? (
-                  <span className="aviso-medio">{cansados} titular(es) cansado(s)</span>
-                ) : (
-                  <span className="muted">Titulares descansados</span>
-                )}
-              </div>
-            </div>
+          <LogoCompeticao competicao={chaveDoLogo(t, proximo.competicao)} tamanho={22} />
+          <div className="prejogo-texto">
+            <b>
+              {t.clubes[proximo.casa]?.sigla} x {t.clubes[proximo.visitante]?.sigla}
+            </b>
+            <span className="small muted" style={{ display: "block" }}>
+              {dataPorExtenso(dataDoJogo(proximo))}
+              {fora > 0 ? ` · ${fora} fora` : ""}
+              {cansados > 0 ? ` · ${cansados} cansado(s)` : ""}
+            </span>
           </div>
-          <div className="prejogo-botoes">
-            <button type="button" className="btn primary" onClick={() => assistir("campo")}>
-              Simulação em campo
-            </button>
-            <button type="button" className="btn" onClick={() => assistir("texto")}>
-              Simulação em texto
-            </button>
-            <button type="button" className="btn" onClick={() => setRapida(true)}>
-              Simulação rápida
-            </button>
-            <button type="button" className="btn ghost" onClick={() => setPreJogo(false)}>
-              Voltar
-            </button>
-          </div>
+          <button type="button" className="btn primary" onClick={() => setEscolher(true)}>
+            Jogar
+          </button>
+          <button
+            type="button"
+            className="fechar-x"
+            aria-label="Sair do pré-jogo"
+            onClick={() => setPreJogo(false)}
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            </svg>
+          </button>
         </section>
+      )}
+      {proximo && escolher && !rapida && (
+        <div className="modal-desfocado" role="dialog" aria-modal="true" aria-label="Escolher simulação">
+          <div className="modal-simulacao">
+            <button
+              type="button"
+              className="fechar-x canto"
+              aria-label="Fechar"
+              onClick={() => setEscolher(false)}
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <LogoCompeticao competicao={chaveDoLogo(t, proximo.competicao)} tamanho={44} />
+            <h2>
+              {t.clubes[proximo.casa]?.nome} x {t.clubes[proximo.visitante]?.nome}
+            </h2>
+            <span className="small muted">
+              {nomeDaCompeticao(t, proximo.competicao)} · {dataPorExtenso(dataDoJogo(proximo))}
+            </span>
+            <span className="eyebrow" style={{ marginTop: 6 }}>
+              Como você quer jogar?
+            </span>
+            <button type="button" className="btn primary big opcao-sim" onClick={() => assistir("campo")}>
+              Simulação em campo
+              <span className="small">Assiste no campinho e mexe no time durante o jogo</span>
+            </button>
+            <button type="button" className="btn big opcao-sim" onClick={() => assistir("texto")}>
+              Simulação em texto
+              <span className="small muted">Mesma partida, só com a narração</span>
+            </button>
+            <button type="button" className="btn big opcao-sim" onClick={() => setRapida(true)}>
+              Simulação rápida
+              <span className="small muted">Resultado em 5 segundos, com súmula e estatísticas</span>
+            </button>
+          </div>
+        </div>
       )}
       {rapida && <SimulacaoRapida aoFechar={() => (setRapida(false), setPreJogo(false))} />}
     </>

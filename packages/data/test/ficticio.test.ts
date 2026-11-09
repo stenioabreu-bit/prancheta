@@ -37,7 +37,7 @@ describe("pacote fictício", () => {
       divisoes: pacote.divisoes,
       vagasDiretasCopa: pacote.vagasDiretasCopa,
     });
-    while (estado.rodada < 38) simularRodada(estado);
+    for (let g = 0; g < 120 && !temporadaEncerrada(estado); g++) simularRodada(estado);
     expect(temporadaEncerrada(estado)).toBe(true);
   });
 });

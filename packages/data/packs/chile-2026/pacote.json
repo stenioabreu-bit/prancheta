@@ -1,1 +1,2544 @@
-{"formato": 1, "id": "chile-2026", "nome": "Primera División 2026 (Chile)", "ficticio": false, "temporada": 2026, "divisoes": {"A": [{"id": "colo-colo", "nome": "Colo-Colo", "sigla": "COL", "elenco": [["Fernando De Paul", "GOL", 71, {"id": "og257494", "fonte": "fc26", "idade": 35, "nac": "Chile"}], ["Vozinha", "GOL", 71, {"id": "og291276", "fonte": "estimado-valor", "idade": 40, "nac": "Cabo Verde"}], ["Santiago Tapia Plá", "GOL", 64, {"id": "og2528670", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Claudio Aquino", "MEI", 77, {"id": "og142528", "fonte": "fc26", "idade": 35, "nac": "Argentina"}], ["Arturo Vidal", "MC", 73, {"id": "og35084", "fonte": "fc26", "idade": 39, "nac": "Chile"}], ["Javier Méndez", "ZAG", 72, {"id": "og386633", "fonte": "fc26", "idade": 31, "nac": "Uruguai"}], ["Javier Correa", "ATA", 72, {"id": "og150326", "fonte": "fc26", "idade": 34, "nac": "Argentina"}], ["Víctor Méndez", "VOL", 71, {"id": "og566995", "fonte": "fc26", "idade": 27, "nac": "Chile"}], ["Álvaro Madrid", "MC", 70, {"id": "og346478", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["Maxi Romero", "ATA", 70, {"id": "og450779", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["Tomás Alarcón", "VOL", 69, {"id": "og518913", "fonte": "fc26", "idade": 27, "nac": "Chile"}], ["Matías Fernández", "LD", 68, {"id": "og470146", "fonte": "fc26", "idade": 31, "nac": "Chile"}], ["Jeyson Rojas", "ZAG", 68, {"id": "og789014", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Jonathan Villagra", "ZAG", 68, {"id": "og781773", "fonte": "fc26", "idade": 25, "nac": "Chile"}], ["Erick Wiemberg", "LE", 68, {"id": "og432691", "fonte": "fc26", "idade": 32, "nac": "Chile"}], ["Diego Ulloa", "ZAG", 68, {"id": "og887180", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Vicente Perez", "MC", 68, {"id": "og3510078", "fonte": "estimado-clube", "idade": 30, "nac": "Espanha"}], ["Lautaro Pastrán", "ATA", 68, {"id": "og974059", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Bastián Silva", "MC", 66, {"id": "og851934", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Sebastian Vega", "MC", 66, {"id": "og2527003", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Marcos Bolados", "PD", 66, {"id": "og320210", "fonte": "fc26", "idade": 30, "nac": "Chile"}], ["Joaquín Sosa", "ZAG", 65, {"id": "og610540", "fonte": "estimado-valor", "idade": 24, "nac": "Uruguai"}], ["Benjamín Pérez", "ZAG", 64, {"id": "og2839729", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Bruno Torres", "ZAG", 64, {"id": "og2528676", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Alonso Olguín", "ZAG", 64, {"id": "og2528965", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Iván Román", "ZAG", 64, {"id": "og1057304", "fonte": "estimado-valor", "idade": 20, "nac": "Chile"}], ["Agustín Silva", "ZAG", 64, {"id": "og2528968", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Vicente Rivas", "ZAG", 64, {"id": "og3577855", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Matías Orellana", "ZAG", 64, {"id": "og2528966", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Rodrigo Catalán", "MC", 64, {"id": "og3532459", "fonte": "estimado-clube", "idade": 17, "nac": "Chile"}]]}, {"id": "univ-catolica", "nome": "Univ. Católica", "sigla": "UNI", "elenco": [["Martin Contreras", "GOL", 65, {"id": "og2492361", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Vicente Bernedo", "GOL", 64, {"id": "og688732", "fonte": "fc26", "idade": 25, "nac": "Chile"}], ["Matias Anaconda", "GOL", 63, {"id": "og3651807", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Agustín García Basso", "ZAG", 74, {"id": "og344450", "fonte": "fc26", "idade": 34, "nac": "Argentina"}], ["Fernando Zampedri", "ATA", 74, {"id": "og150174", "fonte": "fc26", "idade": 38, "nac": "Chile"}], ["Fernando Zuqui", "MC", 72, {"id": "og366635", "fonte": "fc26", "idade": 34, "nac": "Argentina"}], ["Branco Ampuero", "ZAG", 71, {"id": "og213717", "fonte": "fc26", "idade": 33, "nac": "Chile"}], ["Eugenio Mena", "LE", 71, {"id": "og154421", "fonte": "fc26", "idade": 38, "nac": "Chile"}], ["Gary Medel", "ZAG", 71, {"id": "og38549", "fonte": "fc26", "idade": 39, "nac": "Chile"}], ["Justo Giani", "MEI", 71, {"id": "og658757", "fonte": "fc26", "idade": 27, "nac": "Argentina"}], ["Bernardo Cerezo", "ZAG", 70, {"id": "og290007", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["Daniel González", "ZAG", 69, {"id": "og610122", "fonte": "fc26", "idade": 24, "nac": "Chile"}], ["Cristian Cuevas", "PE", 69, {"id": "og245561", "fonte": "fc26", "idade": 31, "nac": "Chile"}], ["Agustín Farías", "MC", 69, {"id": "og283336", "fonte": "estimado-valor", "idade": 38, "nac": "Chile"}], ["Jimmy Martínez", "MC", 69, {"id": "og424267", "fonte": "estimado-valor", "idade": 29, "nac": "Chile"}], ["Matías Palavecino", "MC", 69, {"id": "og610922", "fonte": "estimado-valor", "idade": 28, "nac": "Argentina"}], ["Tomás Astaburuaga", "ZAG", 68, {"id": "og319748", "fonte": "estimado-valor", "idade": 30, "nac": "Chile"}], ["Juan Díaz", "ZAG", 68, {"id": "og699153", "fonte": "estimado-valor", "idade": 28, "nac": "Argentina"}], ["Clemente Montes", "PE", 68, {"id": "og688728", "fonte": "fc26", "idade": 25, "nac": "Chile"}], ["Alfred Canales", "MC", 67, {"id": "og781573", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["Jhojan Valencia", "VOL", 67, {"id": "og460860", "fonte": "fc26", "idade": 30, "nac": "Colômbia"}], ["Diego Valencia", "ATA", 67, {"id": "og554247", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["Raimundo Vasquez", "ZAG", 65, {"id": "og3651912", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Nickolas Pino", "ZAG", 65, {"id": "og3563293", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Vasco Rodriguez", "MC", 65, {"id": "og3617937", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Milan Tudor", "ATA", 65, {"id": "og885973", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Nickolas Klimes", "ATA", 65, {"id": "og3626085", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Juan Francisco Rossel", "PE", 64, {"id": "og923152", "fonte": "fc26", "idade": 21, "nac": "Chile"}], ["Jeffrey Esparza", "ZAG", 63, {"id": "og3651562", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Francisco Daza", "ZAG", 63, {"id": "og2529036", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}]]}, {"id": "universidad-de-chile-2273", "nome": "Universidad de Chile", "sigla": "UNI", "elenco": [["Gabriel Castellón", "GOL", 72, {"id": "og245707", "fonte": "fc26", "idade": 33, "nac": "Chile"}], ["Cristopher Toselli", "GOL", 70, {"id": "og38544", "fonte": "fc26", "idade": 38, "nac": "Chile"}], ["José Alburquenque", "GOL", 63, {"id": "og3537394", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Charles Aránguiz", "MC", 74, {"id": "og85214", "fonte": "fc26", "idade": 37, "nac": "Chile"}], ["Juan Martín Lucero", "ATA", 73, {"id": "og364446", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina"}], ["Igor Lichnovsky", "ZAG", 72, {"id": "og187822", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Octavio Rivero", "ATA", 72, {"id": "og298744", "fonte": "fc26", "idade": 34, "nac": "Uruguai"}], ["Matías Zaldivia", "ZAG", 71, {"id": "og279943", "fonte": "fc26", "idade": 35, "nac": "Chile"}], ["Javier Altamirano", "MEI", 71, {"id": "og563950", "fonte": "fc26", "idade": 27, "nac": "Chile"}], ["Marcelo Díaz", "VOL", 71, {"id": "og85120", "fonte": "fc26", "idade": 39, "nac": "Chile"}], ["Eduardo Vargas", "ATA", 71, {"id": "og85223", "fonte": "estimado-valor", "idade": 36, "nac": "Chile"}], ["Fabián Hormazabal", "LD", 69, {"id": "og416340", "fonte": "fc26", "idade": 30, "nac": "Chile"}], ["Nicolás Ramírez", "ZAG", 68, {"id": "og416421", "fonte": "fc26", "idade": 29, "nac": "Chile"}], ["Israel Poblete", "MC", 68, {"id": "og415675", "fonte": "fc26", "idade": 31, "nac": "Chile"}], ["Diego Cofré", "ATA", 67, {"id": "og3566930", "fonte": "estimado-clube", "nac": "Chile"}], ["Maximiliano Guerrero", "PD", 67, {"id": "og597847", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["Nicolás Fernández", "LD", 66, {"id": "og553164", "fonte": "fc26", "idade": 27, "nac": "Chile"}], ["Marcelo Morales", "LE", 66, {"id": "og833537", "fonte": "fc26", "idade": 23, "nac": "Chile"}], ["Sergio Rozas", "ZAG", 65, {"id": "og3651982", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Cristobal Ulloa", "ZAG", 65, {"id": "og3559852", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Franco Fernandez", "ZAG", 65, {"id": "og3559851", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Héctor Canelo", "MC", 65, {"id": "og2573469", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Tobías Reinhart", "MC", 65, {"id": "og658814", "fonte": "fc26", "idade": 26, "nac": "Argentina"}], ["Lucas Hacicki", "MC", 65, {"id": "og3630136", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Franco Rivas", "MC", 65, {"id": "og3558112", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Gonzalo Reyna", "MEI", 64, {"id": "og2347641", "fonte": "fc26", "idade": 20, "nac": "Argentina"}], ["Andres Torres", "ZAG", 63, {"id": "og3651732", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Agustin Aldunate", "ZAG", 63, {"id": "og3652711", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Agustin Korn", "ZAG", 63, {"id": "og3547245", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Benjamin Garces", "ZAG", 63, {"id": "og3532093", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}]]}, {"id": "o-higgins-2280", "nome": "O´Higgins", "sigla": "OXX", "elenco": [["Jorge Peña", "GOL", 68, {"id": "og727495", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Diego Carreño", "GOL", 68, {"id": "og610129", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Omar Carabalí", "GOL", 68, {"id": "og475782", "fonte": "estimado-clube", "idade": 29, "nac": "Equador"}], ["Walter Bou", "ATA", 73, {"id": "og418409", "fonte": "fc26", "idade": 33, "nac": "Argentina"}], ["Miguel Brizuela", "ZAG", 70, {"id": "og734084", "fonte": "fc26", "idade": 29, "nac": "Argentina"}], ["Santiago Toloza", "MEI", 70, {"id": "og772409", "fonte": "fc26", "idade": 24, "nac": "Argentina"}], ["Bryan Rabello", "MC", 70, {"id": "og141743", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Juan Leiva", "MC", 70, {"id": "og269007", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Ignacio Schor", "PD", 70, {"id": "og881033", "fonte": "fc26", "idade": 26, "nac": "Argentina"}], ["Luis Pavez", "ZAG", 69, {"id": "og333484", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["Tomás Avilés", "ZAG", 69, {"id": "og965340", "fonte": "fc26", "idade": 22, "nac": "Argentina"}], ["Bastián Yáñez", "PE", 69, {"id": "og649682", "fonte": "fc26", "idade": 25, "nac": "Chile"}], ["Nicolás Garrido", "ZAG", 68, {"id": "og696496", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Alan Robledo", "ZAG", 68, {"id": "og602086", "fonte": "estimado-clube", "idade": 28, "nac": "Argentina"}], ["Felipe Ogaz", "MC", 68, {"id": "og952325", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Arnaldo Castillo", "ATA", 68, {"id": "og525581", "fonte": "estimado-clube", "idade": 29, "nac": "Paraguai"}], ["Esteban Moreira", "ATA", 68, {"id": "og789354", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Leandro Díaz", "ZAG", 67, {"id": "og638596", "fonte": "estimado-valor", "idade": 27, "nac": "Chile"}], ["Thiago Vecino", "ATA", 67, {"id": "og627324", "fonte": "estimado-valor", "idade": 27, "nac": "Uruguai"}], ["Felipe Faúndez", "ZAG", 66, {"id": "og1179479", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Cristián Morales", "ZAG", 66, {"id": "og1973713", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Gabriel Pinto", "MC", 66, {"id": "og1232611", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Martin Maturana", "MC", 66, {"id": "og1056689", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Joaquin Vasquez", "ATA", 66, {"id": "og3587737", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Rodrigo Godoy", "ATA", 66, {"id": "og1232613", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Joaquín Tapia", "ATA", 66, {"id": "og1232617", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Benjamín Rojas", "ZAG", 65, {"id": "og783825", "fonte": "estimado-valor", "idade": 25, "nac": "Chile"}], ["Benjamin Gaete", "ZAG", 64, {"id": "og3652329", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Ángel Solís", "ZAG", 64, {"id": "og2519463", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Juan Poblete", "ZAG", 64, {"id": "og2519480", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}]]}, {"id": "la-serena-2287", "nome": "La Serena", "sigla": "SER", "elenco": [["Federico Lanzillota", "GOL", 69, {"id": "og283320", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina"}], ["Eryin Sanhueza", "GOL", 68, {"id": "og439029", "fonte": "estimado-clube", "idade": 30, "nac": "Chile"}], ["José Tapia", "GOL", 68, {"id": "og960015", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Rafael Delgado", "LE", 71, {"id": "og264434", "fonte": "fc26", "idade": 36, "nac": "Argentina"}], ["Gonzalo Escalante", "MC", 71, {"id": "og328846", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina"}], ["Francis Mac Allister", "VOL", 70, {"id": "og513389", "fonte": "fc26", "idade": 31, "nac": "Argentina"}], ["Ángelo Henríquez", "ATA", 70, {"id": "og136116", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Matías Marín", "MEI", 69, {"id": "og556809", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["Diego Rubio", "ATA", 69, {"id": "og181524", "fonte": "fc26", "idade": 33, "nac": "Chile"}], ["Nicolás Stefanelli", "ATA", 69, {"id": "og415863", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina"}], ["Jeisson Vargas", "ATA", 69, {"id": "og438714", "fonte": "estimado-valor", "idade": 29, "nac": "Chile"}], ["Gabriel Roco", "ZAG", 68, {"id": "og3559843", "fonte": "estimado-clube", "nac": "Chile"}], ["Raul Zanini", "ZAG", 68, {"id": "og3640903", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina"}], ["Andrés Zanini", "ZAG", 68, {"id": "og560752", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina"}], ["Joaquín Gutiérrez", "ZAG", 68, {"id": "og708073", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Lucas Alarcón", "ZAG", 68, {"id": "og555410", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Cristian Michea", "MC", 68, {"id": "og3651681", "fonte": "estimado-clube", "nac": "Chile"}], ["Vicente Recasens", "MC", 68, {"id": "og3652621", "fonte": "estimado-clube", "nac": "Chile"}], ["Sebastián Díaz", "MC", 68, {"id": "og417304", "fonte": "estimado-valor", "idade": 30, "nac": "Chile"}], ["Máximo Hernández", "MC", 68, {"id": "og1268660", "fonte": "estimado-clube", "nac": "Chile"}], ["Felipe Chamorro", "MC", 68, {"id": "og787085", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Rodrigo Dubó", "ATA", 68, {"id": "og1232727", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Bastian Sandoval", "ATA", 68, {"id": "og3507533", "fonte": "estimado-clube", "nac": "Chile"}], ["Yerko Leiva", "MC", 67, {"id": "og383568", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Matías Pérez", "ZAG", 66, {"id": "og1522122", "fonte": "fc26", "idade": 21, "nac": "Chile"}], ["Fernando Dinamarca", "ZAG", 66, {"id": "og1232728", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Ángel Carvajal", "ZAG", 66, {"id": "og3507558", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Matías Pinto", "ZAG", 66, {"id": "og918900", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Joan Orellana", "MC", 66, {"id": "og1522788", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Alexander Oroz", "PD", 66, {"id": "og696497", "fonte": "fc26", "idade": 23, "nac": "Chile"}]]}, {"id": "everton", "nome": "Everton", "sigla": "EVE", "elenco": [["Ignacio González", "GOL", 69, {"id": "og104461", "fonte": "estimado-valor", "idade": 36, "nac": "Chile"}], ["Esteban Kirkman", "GOL", 68, {"id": "og955660", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Isaac Esquenazi", "GOL", 66, {"id": "og991622", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Ramiro González", "ZAG", 70, {"id": "og582748", "fonte": "estimado-valor", "idade": 35, "nac": "Argentina"}], ["Diego Oyarzún", "ZAG", 70, {"id": "og365523", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Joaquín Moya", "MC", 70, {"id": "og429018", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Alan Medina", "ATA", 70, {"id": "og649686", "fonte": "estimado-valor", "idade": 28, "nac": "Uruguai"}], ["Sebastián Sosa", "ATA", 70, {"id": "og247245", "fonte": "estimado-valor", "idade": 32, "nac": "Uruguai"}], ["Cristian Palacios", "ATA", 69, {"id": "og157704", "fonte": "estimado-valor", "idade": 36, "nac": "Uruguai"}], ["Christopher Barrera", "ZAG", 68, {"id": "og615953", "fonte": "estimado-clube", "idade": 28, "nac": "Chile"}], ["Hugo Magallanes", "ZAG", 68, {"id": "og702671", "fonte": "estimado-valor", "idade": 29, "nac": "Uruguai"}], ["Nicolás Baeza", "ZAG", 68, {"id": "og500220", "fonte": "estimado-clube", "idade": 29, "nac": "Chile"}], ["Lucas Soto", "MC", 68, {"id": "og863244", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Benjamín Berríos", "MC", 68, {"id": "og550253", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Josué Ovalle", "ATA", 68, {"id": "og836715", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Julián Alfaro", "ATA", 68, {"id": "og666555", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Óscar Opazo", "LD", 67, {"id": "og233035", "fonte": "fc26", "idade": 36, "nac": "Chile"}], ["Vicente Fernández", "ZAG", 67, {"id": "og595601", "fonte": "estimado-valor", "idade": 27, "nac": "Chile"}], ["Martín Guzmán", "ZAG", 66, {"id": "og2507348", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Vicente Vega", "ZAG", 66, {"id": "og1040458", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Byron Navarro", "ZAG", 66, {"id": "og990012", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Braian Martínez", "PE", 66, {"id": "og2516142", "fonte": "fc26", "idade": 27, "nac": "Argentina"}], ["Nicolás Montiel", "ATA", 66, {"id": "og1637910", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina"}], ["Emiliano Ramos", "ATA", 66, {"id": "og983980", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Valentín Vidal", "ZAG", 65, {"id": "og992605", "fonte": "fc26", "idade": 22, "nac": "Chile"}], ["Gustavo Charrupí", "MC", 64, {"id": "og1236379", "fonte": "estimado-valor", "idade": 22, "nac": "Colômbia"}], ["Ricardo Rebolledo", "MC", 64, {"id": "og3507175", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Ricardo Rojas", "MC", 64, {"id": "og3626111", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Santiago Reinoso", "MC", 64, {"id": "og3559689", "fonte": "estimado-clube", "idade": 17, "nac": "Chile"}], ["Amaro León", "MC", 64, {"id": "og3504860", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}]]}, {"id": "coquimbo-unido-2264", "nome": "Coquimbo Unido", "sigla": "COQ", "elenco": [["Diego Sánchez", "GOL", 70, {"id": "og231134", "fonte": "estimado-valor", "idade": 39, "nac": "Chile"}], ["Cristóbal Dorador", "GOL", 65, {"id": "og1523511", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Gonzalo Flores", "GOL", 64, {"id": "og833665", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Lucas Pratto", "ATA", 71, {"id": "og47630", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina"}], ["Alejandro Camargo", "MC", 70, {"id": "og123413", "fonte": "estimado-valor", "idade": 37, "nac": "Chile"}], ["Sebastián Galani", "MC", 70, {"id": "og456428", "fonte": "estimado-valor", "idade": 29, "nac": "Chile"}], ["Benjamín Gazzolo", "ZAG", 69, {"id": "og416371", "fonte": "estimado-valor", "idade": 29, "nac": "Chile"}], ["Francisco Salinas", "ZAG", 69, {"id": "og552996", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Juan Cornejo", "ZAG", 69, {"id": "og246356", "fonte": "estimado-valor", "idade": 36, "nac": "Chile"}], ["Sebastián Cabrera", "ZAG", 68, {"id": "og447809", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Manuel Fernández", "ZAG", 68, {"id": "og221519", "fonte": "estimado-valor", "idade": 37, "nac": "Uruguai"}], ["Salvador Cordero", "MC", 68, {"id": "og498281", "fonte": "estimado-valor", "idade": 30, "nac": "Chile"}], ["Nicolas Johansen", "ATA", 68, {"id": "og1018602", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["Guido Vadalá", "ATA", 68, {"id": "og450365", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina"}], ["Facundo Pons", "ATA", 68, {"id": "og657064", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina"}], ["Cristián Zavala", "ATA", 68, {"id": "og647553", "fonte": "estimado-valor", "idade": 27, "nac": "Chile"}], ["Alejandro Azocar", "ATA", 67, {"id": "og787379", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Luis Riveros", "ATA", 67, {"id": "og530380", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Elvis Hernández", "ZAG", 66, {"id": "og785421", "fonte": "estimado-valor", "idade": 27, "nac": "Chile"}], ["Benjamín Chandía", "ATA", 66, {"id": "og876447", "fonte": "estimado-valor", "idade": 23, "nac": "Chile"}], ["Lukas Soza", "ZAG", 65, {"id": "og449216", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Matías Zepeda", "MC", 65, {"id": "og1813417", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Joshua Latapiat", "MC", 65, {"id": "og3528497", "fonte": "estimado-clube", "idade": 21, "nac": "Estados Unidos"}], ["Diego Theza", "MC", 65, {"id": "og3645835", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Diego Chavez", "MC", 65, {"id": "og3535979", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Lucas Marin", "MC", 65, {"id": "og3614746", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Joaquin Zambra", "ZAG", 63, {"id": "og3652035", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Diego Delgado", "ZAG", 63, {"id": "og3614745", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Salvador Bizien", "ZAG", 63, {"id": "og3701801", "fonte": "estimado-clube", "idade": 17, "nac": "Chile"}], ["Pablo Rodríguez", "MC", 63, {"id": "og1577296", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}]]}, {"id": "nublense-9509", "nome": "Ñublense", "sigla": "NUB", "elenco": [["Nicola Pérez", "GOL", 72, {"id": "og85277", "fonte": "estimado-valor", "idade": 36, "nac": "Uruguai"}], ["Hernán Muñoz", "GOL", 68, {"id": "og416072", "fonte": "estimado-valor", "idade": 38, "nac": "Chile"}], ["Joaquin Torres", "GOL", 62, {"id": "og3652018", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Franco Calderón", "ZAG", 71, {"id": "og713992", "fonte": "fc26", "idade": 28, "nac": "Argentina"}], ["Lorenzo Reyes", "MC", 71, {"id": "og95498", "fonte": "estimado-valor", "idade": 35, "nac": "Chile"}], ["Gabriel Graciani", "ATA", 71, {"id": "og183144", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina"}], ["Felipe Campos", "ZAG", 70, {"id": "og245894", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Jovany Campusano", "ZAG", 70, {"id": "og259708", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Osvaldo Bosso", "ZAG", 70, {"id": "og245929", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Diego Céspedes", "ZAG", 67, {"id": "og590068", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Franco Rami", "ATA", 67, {"id": "og1238979", "fonte": "fc26", "idade": 23, "nac": "Argentina"}], ["Ignacio Jeraldino", "ATA", 67, {"id": "og281154", "fonte": "fc26", "idade": 30, "nac": "Chile"}], ["Felipe Reyes", "ZAG", 66, {"id": "og3559847", "fonte": "estimado-clube", "nac": "Chile"}], ["Pablo Calderón", "ZAG", 66, {"id": "og956304", "fonte": "estimado-clube", "idade": 28, "nac": "Argentina"}], ["Joaquín González", "ZAG", 66, {"id": "og859187", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Crisstofer Montecinos", "MC", 66, {"id": "og3290825", "fonte": "estimado-clube", "nac": "Chile"}], ["Martin Munoz", "MC", 66, {"id": "og3651934", "fonte": "estimado-clube", "nac": "Chile"}], ["Manuel Rivera", "MC", 66, {"id": "og459019", "fonte": "estimado-clube", "idade": 30, "nac": "Chile"}], ["Fernando Ovelar", "PD", 66, {"id": "og676624", "fonte": "fc26", "idade": 22, "nac": "Paraguai"}], ["Bastian Muñoz", "ATA", 66, {"id": "og3559849", "fonte": "estimado-clube", "nac": "Chile"}], ["Luis Pavez", "MC", 65, {"id": "og104430", "fonte": "estimado-clube", "idade": 38, "nac": "Chile"}], ["Matías Plaza", "MC", 65, {"id": "og702907", "fonte": "estimado-valor", "idade": 25, "nac": "Chile"}], ["Carlos Salomón", "ZAG", 64, {"id": "og612367", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Diego Sanhueza", "ZAG", 64, {"id": "og836700", "fonte": "estimado-valor", "idade": 24, "nac": "Chile"}], ["Christian Mansilla", "MC", 64, {"id": "og3542839", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Pablo Toledo", "ATA", 64, {"id": "og2513329", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Lucas Molina", "ATA", 64, {"id": "og1007118", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Giovanny Ávalos", "ATA", 64, {"id": "og1178111", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Alex Valdés", "ATA", 63, {"id": "og959564", "fonte": "estimado-valor", "idade": 24, "nac": "Chile"}], ["Esteban Calderón", "ATA", 63, {"id": "og1232612", "fonte": "estimado-valor", "idade": 22, "nac": "Chile"}]]}, {"id": "palestino-2266", "nome": "Palestino", "sigla": "PAL", "elenco": [["Sebastián Pérez", "GOL", 72, {"id": "og85841", "fonte": "estimado-valor", "idade": 36, "nac": "Chile"}], ["Renato Canto", "GOL", 63, {"id": "og3534282", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Maximiliano Mateluna", "GOL", 61, {"id": "og3555647", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Fernando Meza", "ZAG", 72, {"id": "og67582", "fonte": "fc26", "idade": 36, "nac": "Argentina"}], ["Joe Abrigo", "MEI", 72, {"id": "og322797", "fonte": "fc26", "idade": 31, "nac": "Chile"}], ["Bryan Carrasco", "PD", 71, {"id": "og118107", "fonte": "fc26", "idade": 35, "nac": "Chile"}], ["Sebastian Gallegos", "MC", 70, {"id": "og134676", "fonte": "estimado-valor", "idade": 34, "nac": "Uruguai"}], ["Jonathan Benitez", "PE", 69, {"id": "og282390", "fonte": "fc26", "idade": 35, "nac": "Argentina"}], ["Ronnie Fernández", "ATA", 69, {"id": "og233038", "fonte": "fc26", "idade": 35, "nac": "Chile"}], ["Dilan Zúñiga", "LE", 68, {"id": "og365969", "fonte": "fc26", "idade": 30, "nac": "Chile"}], ["Enzo Roco", "ZAG", 68, {"id": "og133094", "fonte": "fc26", "idade": 34, "nac": "Chile"}], ["Dylan Glaby", "VOL", 67, {"id": "og736986", "fonte": "fc26", "idade": 30, "nac": "Argentina"}], ["Marcelo Eggel", "MC", 67, {"id": "og963160", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["César Munder", "ATA", 67, {"id": "og545266", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["José Bizama", "LD", 66, {"id": "og416575", "fonte": "fc26", "idade": 32, "nac": "Chile"}], ["Ariel Martínez", "MC", 66, {"id": "og318210", "fonte": "fc26", "idade": 32, "nac": "Chile"}], ["Antonio Ceza", "ZAG", 65, {"id": "og867602", "fonte": "fc26", "idade": 23, "nac": "Chile"}], ["Nelson Da Silva", "ATA", 65, {"id": "og1008292", "fonte": "estimado-clube", "idade": 30, "nac": "Argentina"}], ["Simón Pinto", "ZAG", 63, {"id": "og2431831", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Mateo Cienfuegos", "ZAG", 63, {"id": "og2531103", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Joaquin Onate", "MC", 63, {"id": "og3652482", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Jairon Grueso", "ATA", 63, {"id": "og3651644", "fonte": "estimado-clube", "idade": 20, "nac": "Equador"}], ["Gonzalo Tapia", "ATA", 63, {"id": "og559011", "fonte": "fc26", "idade": 30, "nac": "Chile"}], ["Martín Araya", "ATA", 63, {"id": "og1057305", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Vicente Espinoza", "LD", 62, {"id": "og1184799", "fonte": "fc26", "idade": 22, "nac": "Chile"}], ["Vicente Silva", "ZAG", 61, {"id": "og3652480", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Gaspar Ruz", "ZAG", 61, {"id": "og3560395", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}], ["Jason León", "LE", 61, {"id": "og781635", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["Martin Cardenas", "MC", 61, {"id": "og3651630", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Christopher Salvo", "MC", 61, {"id": "og3651761", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}]]}, {"id": "audax-italiano-2260", "nome": "Audax Italiano", "sigla": "AUD", "elenco": [["Tomás Ahumada", "GOL", 67, {"id": "og702476", "fonte": "estimado-valor", "idade": 25, "nac": "Chile"}], ["Cristóbal Piña", "GOL", 62, {"id": "og1816047", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Pedro Garrido", "GOL", 61, {"id": "og883008", "fonte": "fc26", "idade": 23, "nac": "Chile"}], ["César Pinares", "MC", 71, {"id": "og152365", "fonte": "estimado-valor", "idade": 35, "nac": "Chile"}], ["Diego Coelho", "ATA", 71, {"id": "og554758", "fonte": "estimado-valor", "idade": 31, "nac": "Uruguai"}], ["Federico Mateos", "MC", 70, {"id": "og649680", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina"}], ["Rodrigo Cabral", "PE", 70, {"id": "og750103", "fonte": "fc26", "idade": 26, "nac": "Argentina"}], ["Marco Collao", "MC", 69, {"id": "og510576", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Nicolás Orellana", "MC", 69, {"id": "og390254", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["Ariel Uribe", "PD", 68, {"id": "og590946", "fonte": "fc26", "idade": 27, "nac": "Chile"}], ["Enzo Ferrario", "ZAG", 67, {"id": "og653402", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Marcelo Ortíz", "ZAG", 67, {"id": "og515199", "fonte": "fc26", "idade": 32, "nac": "Argentina"}], ["Oliver Rojas", "ZAG", 67, {"id": "og554250", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Franco Troyansky", "ATA", 67, {"id": "og502537", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina"}], ["Diego Monreal", "ZAG", 66, {"id": "og923145", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Cristóbal Muñoz", "ZAG", 66, {"id": "og595512", "fonte": "estimado-clube", "idade": 27, "nac": "Chile"}], ["Paolo Guajardo", "ATA", 66, {"id": "og861243", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Michael Fuentes", "ATA", 66, {"id": "og624006", "fonte": "estimado-clube", "idade": 28, "nac": "Chile"}], ["Raimundo Rebolledo", "ZAG", 65, {"id": "og451137", "fonte": "estimado-valor", "idade": 29, "nac": "Chile"}], ["Damián Pizarro", "ATA", 65, {"id": "og918932", "fonte": "fc26", "idade": 21, "nac": "Chile"}], ["Felipe Salomoni", "LE", 64, {"id": "og890911", "fonte": "fc26", "idade": 23, "nac": "Argentina"}], ["Tomás Cayuqueo", "ZAG", 64, {"id": "og3540211", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Byron Lamadrid", "MC", 64, {"id": "og3651980", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Italo Pasten", "MC", 64, {"id": "og3559854", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Tomás Leyton", "MC", 64, {"id": "og3318625", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Joel Ahumada", "ATA", 64, {"id": "og3503212", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Martín Valdés", "ATA", 64, {"id": "og1928541", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Martín Huamán", "ZAG", 62, {"id": "og2528804", "fonte": "estimado-clube", "idade": 18, "nac": "Peru"}], ["Martín González", "ZAG", 62, {"id": "og3562211", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Tomás González", "ZAG", 62, {"id": "og3536314", "fonte": "estimado-clube", "idade": 16, "nac": "Chile"}]]}, {"id": "univ-concepcion-2271", "nome": "Univ. Concepción", "sigla": "UNI", "elenco": [["Jorge Broun", "GOL", 73, {"id": "og37276", "fonte": "fc26", "idade": 40, "nac": "Argentina"}], ["Diego Matamala", "GOL", 66, {"id": "og871626", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["José Sanhueza", "GOL", 63, {"id": "og684885", "fonte": "estimado-valor", "idade": 25, "nac": "Chile"}], ["Cecílio Waterman", "ATA", 72, {"id": "og207689", "fonte": "estimado-valor", "idade": 35, "nac": "Panamá"}], ["Rogelio Funes Mori", "ZAG", 70, {"id": "og124429", "fonte": "fc26", "idade": 35, "nac": "México"}], ["Miguel Barbieri", "ZAG", 69, {"id": "og504755", "fonte": "fc26", "idade": 33, "nac": "Argentina"}], ["Facundo Mater", "MC", 69, {"id": "og542157", "fonte": "estimado-valor", "idade": 28, "nac": "Síria"}], ["Osvaldo González", "ZAG", 68, {"id": "og82508", "fonte": "estimado-valor", "idade": 42, "nac": "Chile"}], ["Cristopher Mesías", "MC", 68, {"id": "og585539", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Daniel Barrea", "PE", 68, {"id": "og970845", "fonte": "fc26", "idade": 25, "nac": "Argentina"}], ["Jorge Espejo", "ZAG", 67, {"id": "og736836", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Pablo Parra", "PE", 67, {"id": "og125793", "fonte": "fc26", "idade": 32, "nac": "Chile"}], ["Moisés González", "ZAG", 66, {"id": "og565979", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Bastián Ubal", "ZAG", 66, {"id": "og610123", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Matías Ruíz", "ZAG", 66, {"id": "og3571876", "fonte": "estimado-clube", "nac": "Chile"}], ["Giovanni Fernández", "ZAG", 66, {"id": "og3571875", "fonte": "estimado-clube", "nac": "Chile"}], ["Yerco Oyanedel", "ZAG", 66, {"id": "og555414", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Bryan Ogaz", "MC", 66, {"id": "og734958", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Martin Suazo", "MC", 66, {"id": "og3559856", "fonte": "estimado-clube", "nac": "Chile"}], ["Fernando Astudillo", "MC", 66, {"id": "og3571765", "fonte": "estimado-clube", "nac": "Chile"}], ["Rafael Villegas", "MC", 66, {"id": "og3571694", "fonte": "estimado-clube", "nac": "Chile"}], ["Lucas Muñoz", "MC", 66, {"id": "og3571695", "fonte": "estimado-clube", "nac": "Chile"}], ["Jeison Fuentealba", "MC", 66, {"id": "og895436", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Antonio Díaz", "LE", 65, {"id": "og555404", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["David Retamal", "ZAG", 64, {"id": "og1200106", "fonte": "fc26", "idade": 23, "nac": "Chile"}], ["Patricio Romero", "ZAG", 64, {"id": "og1500162", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Francisco Caniupan", "MC", 64, {"id": "og3638727", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Luis Rojas", "MC", 64, {"id": "og708083", "fonte": "estimado-valor", "idade": 24, "nac": "Chile"}], ["Adolfo Neira", "MC", 64, {"id": "og2519968", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Martin Figueroa", "ATA", 64, {"id": "og3639859", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}]]}, {"id": "deportes-limache-212896", "nome": "Deportes Limache", "sigla": "DEP", "elenco": [["Matías Bórquez", "GOL", 66, {"id": "og586943", "fonte": "estimado-clube", "idade": 28, "nac": "Chile"}], ["César", "GOL", 66, {"id": "og132360", "fonte": "estimado-clube", "idade": 34, "nac": "Brasil"}], ["Claudio González", "GOL", 65, {"id": "og280763", "fonte": "estimado-clube", "idade": 36, "nac": "Chile"}], ["Jean Meneses", "ATA", 74, {"id": "og257503", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Leonardo Valencia", "MC", 71, {"id": "og245904", "fonte": "estimado-valor", "idade": 35, "nac": "Chile"}], ["Gonzalo Sosa", "ATA", 71, {"id": "og264210", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina"}], ["Alfonso Parot", "ZAG", 70, {"id": "og85212", "fonte": "estimado-valor", "idade": 37, "nac": "Chile"}], ["Hugo Martínez", "VOL", 69, {"id": "og626027", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["César Fuentes", "VOL", 67, {"id": "og245559", "fonte": "fc26", "idade": 33, "nac": "Chile"}], ["Ramón Martínez", "MC", 67, {"id": "og460235", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Dylan Escobar", "LD", 66, {"id": "og726144", "fonte": "fc26", "idade": 25, "nac": "Chile"}], ["Yerko González", "ZAG", 66, {"id": "og711165", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Augusto Aguirre", "ZAG", 66, {"id": "og607174", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina"}], ["Marcelo Flores", "ZAG", 66, {"id": "og737003", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Giovanni Hernandez", "MC", 66, {"id": "og3559853", "fonte": "estimado-clube", "nac": "Chile"}], ["Martins Smith", "MC", 66, {"id": "og3533461", "fonte": "estimado-clube", "nac": "Chile"}], ["Misael Llantén", "MC", 66, {"id": "og544268", "fonte": "estimado-clube", "idade": 27, "nac": "Chile"}], ["Darío Martínez", "MC", 66, {"id": "og821850", "fonte": "estimado-clube", "idade": 24, "nac": "México"}], ["Tiago Galletto", "VOL", 66, {"id": "og787380", "fonte": "fc26", "idade": 24, "nac": "Uruguai"}], ["Daniel Castro", "ATA", 66, {"id": "og625156", "fonte": "estimado-clube", "idade": 32, "nac": "Chile"}], ["Carlos Morales", "ATA", 66, {"id": "og727745", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Marcos Arturia", "ATA", 65, {"id": "og626616", "fonte": "fc26", "idade": 28, "nac": "Argentina"}], ["Benjamín Molina", "ZAG", 64, {"id": "og997056", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Javier Rojas", "ZAG", 64, {"id": "og1521804", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Gonzalo Poblete", "MC", 64, {"id": "og2528149", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Vicente Vargas", "MC", 64, {"id": "og2739719", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Benjamin Guzmán", "ATA", 64, {"id": "og2508504", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Franco Orobio", "MC", 62, {"id": "og3641102", "fonte": "estimado-clube", "idade": 16, "nac": "Chile"}], ["Gonzalo Abán", "MC", 62, {"id": "og3317982", "fonte": "estimado-clube", "idade": 16, "nac": "Argentina"}], ["Franco Oyarzun", "MC", 62, {"id": "og3542844", "fonte": "estimado-clube", "idade": 16, "nac": "Chile"}]]}, {"id": "deportes-concepcion-2290", "nome": "Deportes Concepción", "sigla": "DEP", "elenco": [["Nicolás Araya", "GOL", 66, {"id": "og420029", "fonte": "estimado-clube", "idade": 27, "nac": "Chile"}], ["Nery Veloso", "GOL", 65, {"id": "og38554", "fonte": "estimado-clube", "idade": 39, "nac": "Chile"}], ["Benjamin Bizama", "GOL", 62, {"id": "og3617935", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Fausto Grillo", "ZAG", 70, {"id": "og415992", "fonte": "fc26", "idade": 33, "nac": "Argentina"}], ["Yonatan Rodríguez", "MC", 69, {"id": "og861965", "fonte": "estimado-valor", "idade": 33, "nac": "Uruguai"}], ["Jorge Henríquez", "MC", 69, {"id": "og431584", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Fernando Martínez", "MC", 68, {"id": "og415769", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["Misael Dávila", "MC", 68, {"id": "og118130", "fonte": "fc26", "idade": 35, "nac": "Chile"}], ["Joaquín Montecinos", "ATA", 68, {"id": "og408342", "fonte": "estimado-valor", "idade": 30, "nac": "Chile"}], ["Joaquin Larrivey", "ATA", 68, {"id": "og43443", "fonte": "estimado-valor", "idade": 42, "nac": "Argentina"}], ["Brayan Véjar", "LE", 67, {"id": "og335396", "fonte": "fc26", "idade": 31, "nac": "Chile"}], ["Norman Rodríguez", "ZAG", 67, {"id": "og729492", "fonte": "fc26", "idade": 28, "nac": "Uruguai"}], ["Sebastián Martínez", "MC", 67, {"id": "og241688", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Ariel Cáceres", "ZAG", 66, {"id": "og647649", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Diego Carrasco", "ZAG", 66, {"id": "og416357", "fonte": "estimado-clube", "idade": 31, "nac": "Chile"}], ["Fabrizio Manzo", "MC", 66, {"id": "og559622", "fonte": "estimado-clube", "idade": 28, "nac": "Chile"}], ["Tomás Carrillo", "MC", 66, {"id": "og3560393", "fonte": "estimado-clube", "nac": "Chile"}], ["Ethan Espinoza", "MC", 66, {"id": "og627345", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Claudio Toro", "MC", 66, {"id": "og3559846", "fonte": "estimado-clube", "nac": "Chile"}], ["Matías Cavalleri", "ATA", 66, {"id": "og620426", "fonte": "estimado-clube", "idade": 28, "nac": "Chile"}], ["Mario Sandoval", "MC", 65, {"id": "og213723", "fonte": "estimado-clube", "idade": 35, "nac": "Chile"}], ["Carlos Escobar", "ATA", 65, {"id": "og231042", "fonte": "estimado-clube", "idade": 36, "nac": "Chile"}], ["Aldrix Jara", "ATA", 65, {"id": "og730454", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Martín Ramírez", "ZAG", 64, {"id": "og1526655", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Dilan Varas", "ZAG", 64, {"id": "og3544769", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Mateo González", "ZAG", 64, {"id": "og2499937", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Nicolás Fuentes", "MC", 64, {"id": "og2516862", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Fernando Romero", "ATA", 64, {"id": "og514459", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Bastián Escobar", "ATA", 64, {"id": "og1179491", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Matias Ramirez", "ZAG", 62, {"id": "og3651659", "fonte": "estimado-clube", "idade": 18, "nac": "Chile"}]]}, {"id": "union-la-calera", "nome": "Unión La Calera", "sigla": "UNI", "elenco": [["Nicolás Avellaneda", "GOL", 69, {"id": "og336894", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina"}], ["Nelson Espinoza", "GOL", 67, {"id": "og369923", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["Samuel Cordova", "GOL", 65, {"id": "og3651945", "fonte": "estimado-clube", "nac": "Chile"}], ["Matías Campos", "ATA", 70, {"id": "og116300", "fonte": "estimado-valor", "idade": 35, "nac": "Chile"}], ["Bayron Oyarzo", "ATA", 69, {"id": "og422882", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["Kevin Méndez", "ATA", 69, {"id": "og374941", "fonte": "estimado-valor", "idade": 30, "nac": "Uruguai"}], ["Juan Salomoni", "ZAG", 68, {"id": "og1117139", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina"}], ["Christopher Díaz", "ZAG", 68, {"id": "og318514", "fonte": "estimado-valor", "idade": 30, "nac": "Chile"}], ["Rodrigo Pérez", "MC", 68, {"id": "og944730", "fonte": "estimado-valor", "idade": 30, "nac": "Uruguai"}], ["Sebastián Sáez", "ATA", 68, {"id": "og272570", "fonte": "estimado-valor", "idade": 41, "nac": "Argentina"}], ["Daniel Gutiérrez", "ZAG", 67, {"id": "og708074", "fonte": "fc26", "idade": 23, "nac": "Chile"}], ["Camilo Moya", "MC", 67, {"id": "og484764", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Cristián Gutiérrez", "ZAG", 66, {"id": "og451139", "fonte": "estimado-valor", "idade": 29, "nac": "Canadá"}], ["Carlo Villanueva", "MC", 66, {"id": "og541851", "fonte": "estimado-valor", "idade": 27, "nac": "Chile"}], ["Julio Nunez", "ZAG", 65, {"id": "og3651806", "fonte": "estimado-clube", "nac": "Chile"}], ["Marcos Alvarez", "ZAG", 65, {"id": "og3651968", "fonte": "estimado-clube", "nac": "Chile"}], ["Yonathan Andía", "ZAG", 65, {"id": "og624878", "fonte": "estimado-clube", "idade": 34, "nac": "Chile"}], ["Javier Saldias", "ZAG", 65, {"id": "og831816", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Pablo Valero", "MC", 65, {"id": "og3596394", "fonte": "estimado-clube", "nac": "Chile"}], ["Cristobal Lindermann", "MC", 65, {"id": "og3528233", "fonte": "estimado-clube", "nac": "Chile"}], ["Brian Ferreyra", "ATA", 65, {"id": "og840729", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina"}], ["Nicolás Palma", "ZAG", 64, {"id": "og846852", "fonte": "estimado-valor", "idade": 25, "nac": "Chile"}], ["Rodrigo Cáseres", "ZAG", 64, {"id": "og850426", "fonte": "fc26", "idade": 29, "nac": "Argentina"}], ["Valentino Torrente", "ZAG", 63, {"id": "og1817166", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina"}], ["Benjamin Caffaratti", "MC", 63, {"id": "og3649792", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina"}], ["Benjamín Argandona", "MC", 63, {"id": "og3519201", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina"}], ["Cristobal Orrego", "MC", 63, {"id": "og3652255", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Joan Cruz", "MC", 63, {"id": "og708835", "fonte": "estimado-valor", "idade": 23, "nac": "Chile"}], ["Francisco Pozzo", "ATA", 63, {"id": "og1242666", "fonte": "estimado-valor", "idade": 23, "nac": "Argentina"}], ["Javier Gandara", "ATA", 63, {"id": "og3701802", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}]]}, {"id": "huachipato-2265", "nome": "Huachipato", "sigla": "HUA", "elenco": [["Rodrigo Odriozola", "GOL", 69, {"id": "og89234", "fonte": "estimado-valor", "idade": 38, "nac": "Uruguai"}], ["Christian Bravo", "GOL", 63, {"id": "og1179476", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Ignacio Cruzat", "GOL", 61, {"id": "og3503944", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Lionel Altamirano", "ATA", 72, {"id": "og333069", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina"}], ["Cris Martínez", "ATA", 72, {"id": "og229077", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai"}], ["Rafael Caroca", "ZAG", 70, {"id": "og85218", "fonte": "estimado-valor", "idade": 37, "nac": "Chile"}], ["Claudio Sepúlveda", "MC", 70, {"id": "og245613", "fonte": "estimado-valor", "idade": 34, "nac": "Chile"}], ["Nicolás Vargas", "ZAG", 69, {"id": "og245560", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Ezequiel Cañete", "MC", 67, {"id": "og783504", "fonte": "fc26", "idade": 27, "nac": "Argentina"}], ["Maximiliano Rodríguez", "ATA", 66, {"id": "og647637", "fonte": "fc26", "idade": 26, "nac": "Chile"}], ["Sergio Núñez", "ATA", 66, {"id": "og819805", "fonte": "estimado-valor", "idade": 26, "nac": "Uruguai"}], ["Guillermo Guaiquil", "ZAG", 65, {"id": "og884875", "fonte": "estimado-clube", "idade": 23, "nac": "Chile"}], ["Cristián Toro", "ZAG", 65, {"id": "og722786", "fonte": "estimado-valor", "idade": 25, "nac": "Chile"}], ["José Castro", "ZAG", 65, {"id": "og857654", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Pablo Bohle", "MC", 65, {"id": "og3532460", "fonte": "estimado-clube", "nac": "Chile"}], ["Carlos Herrera", "MC", 65, {"id": "og649711", "fonte": "estimado-clube", "idade": 26, "nac": "Chile"}], ["Erik De los Santos", "MC", 65, {"id": "og689466", "fonte": "estimado-clube", "idade": 27, "nac": "Uruguai"}], ["Mario Briceño", "ATA", 65, {"id": "og415842", "fonte": "estimado-clube", "idade": 30, "nac": "Chile"}], ["Luciano Arriagada", "ATA", 65, {"id": "og627349", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Harold Antiñirre", "ATA", 65, {"id": "og730472", "fonte": "estimado-clube", "idade": 24, "nac": "Chile"}], ["Benjamin Mellado", "ZAG", 63, {"id": "og1820372", "fonte": "estimado-clube", "idade": 22, "nac": "Chile"}], ["Lucas Velásquez", "ZAG", 63, {"id": "og1179482", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Maximiliano Osorio", "ZAG", 63, {"id": "og3543349", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Kevin Altez", "MC", 63, {"id": "og983376", "fonte": "estimado-clube", "idade": 21, "nac": "Uruguai"}], ["Benjamín Ampuero", "MC", 63, {"id": "og1179483", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Antonio Perlaza", "ATA", 63, {"id": "og3636702", "fonte": "estimado-clube", "idade": 20, "nac": "Colômbia"}], ["Juan Figueroa", "ATA", 63, {"id": "og1183531", "fonte": "estimado-valor", "idade": 23, "nac": "Chile"}], ["Claudio Torres", "ATA", 63, {"id": "og857543", "fonte": "estimado-valor", "idade": 23, "nac": "Chile"}], ["Maicol León", "ZAG", 62, {"id": "og857406", "fonte": "estimado-valor", "idade": 23, "nac": "Chile"}], ["Benjamin Leiva", "ZAG", 61, {"id": "og3651690", "fonte": "estimado-clube", "idade": 17, "nac": "Chile"}]]}, {"id": "cobresal-2262", "nome": "Cobresal", "sigla": "COB", "elenco": [["Matías Olguín", "GOL", 66, {"id": "og640750", "fonte": "estimado-clube", "idade": 30, "nac": "Chile"}], ["Matias Vasquez", "GOL", 62, {"id": "og2624953", "fonte": "estimado-clube", "idade": 19, "nac": "Chile"}], ["Renato González", "GOL", 62, {"id": "og2528351", "fonte": "estimado-clube", "idade": 16, "nac": "Chile"}], ["José Tiznado", "ZAG", 70, {"id": "og424232", "fonte": "estimado-valor", "idade": 32, "nac": "Chile"}], ["Guillermo Pacheco", "ZAG", 70, {"id": "og253527", "fonte": "estimado-valor", "idade": 37, "nac": "Chile"}], ["Franco Bechtholdt", "ZAG", 69, {"id": "og310599", "fonte": "estimado-valor", "idade": 33, "nac": "Chile"}], ["Juan Fuentes", "MC", 69, {"id": "og372074", "fonte": "estimado-valor", "idade": 31, "nac": "Chile"}], ["César Yanis", "ATA", 68, {"id": "og789694", "fonte": "estimado-valor", "idade": 30, "nac": "Panamá"}], ["Christian Moreno", "ZAG", 67, {"id": "og510447", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina"}], ["Steffan Pino", "ATA", 67, {"id": "og546944", "fonte": "fc26", "idade": 32, "nac": "Chile"}], ["Franco Frías", "MEI", 67, {"id": "og847082", "fonte": "fc26", "idade": 24, "nac": "Argentina"}], ["Rodrigo Sandoval", "ZAG", 66, {"id": "og884231", "fonte": "estimado-clube", "idade": 25, "nac": "Chile"}], ["Antonio Castillo", "ZAG", 66, {"id": "og521619", "fonte": "estimado-clube", "idade": 27, "nac": "Chile"}], ["Esteban Valencia", "MC", 66, {"id": "og607711", "fonte": "estimado-clube", "idade": 27, "nac": "Chile"}], ["Bryan Carvallo", "MEI", 66, {"id": "og400450", "fonte": "fc26", "idade": 30, "nac": "Chile"}], ["Felipe Villagrán", "MC", 66, {"id": "og522180", "fonte": "estimado-clube", "idade": 29, "nac": "Chile"}], ["Mateo Espinoza", "ATA", 66, {"id": "og3563506", "fonte": "estimado-clube", "nac": "Chile"}], ["Facundo Vergara", "ATA", 66, {"id": "og3651950", "fonte": "estimado-clube", "nac": "Chile"}], ["Julián Brea", "ATA", 66, {"id": "og658792", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina"}], ["Janpol Morales", "ATA", 66, {"id": "og872099", "fonte": "estimado-clube", "idade": 28, "nac": "Panamá"}], ["Camilo Sepúlveda", "ATA", 66, {"id": "og3569164", "fonte": "estimado-clube", "nac": "Chile"}], ["Aaron Astudillo", "ZAG", 65, {"id": "og679469", "fonte": "estimado-valor", "idade": 26, "nac": "Chile"}], ["Vicente Torres", "ZAG", 64, {"id": "og2528350", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Axel Fuentes", "ZAG", 64, {"id": "og3530406", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Vicente Torres", "ZAG", 64, {"id": "og3563505", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Anibal Gajardo", "ZAG", 64, {"id": "og2521991", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Víctor Campos", "ZAG", 64, {"id": "og1179478", "fonte": "estimado-clube", "idade": 20, "nac": "Chile"}], ["Francisco Sepulveda", "MC", 64, {"id": "og3640885", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Benjamín Valenzuela", "MC", 64, {"id": "og2314214", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}], ["Matias Contreras", "MC", 64, {"id": "og1814104", "fonte": "estimado-clube", "idade": 21, "nac": "Chile"}]]}], "B": [], "C": [], "D": []}, "vagasDiretasCopa": [], "classicos": [], "semCopa": true, "formatos": {"A": {"divisao": "A", "id": "primera-division-chile", "nome": "Primera División 2026", "clubes": 16, "fases": [{"tipo": "liga", "nome": "Pontos corridos", "grupos": 1, "distribuicao": "unico", "turnos": 2, "avancamPorGrupo": 0}], "acesso": [], "rebaixamento": []}}}
+{
+  "formato": 1,
+  "id": "chile-2026",
+  "nome": "Primera División 2026 (Chile)",
+  "ficticio": false,
+  "temporada": 2026,
+  "divisoes": {
+    "A": [
+      {
+        "id": "colo-colo",
+        "nome": "Colo-Colo",
+        "sigla": "COL",
+        "elenco": [
+          ["Fernando De Paul", "GOL", 71, { "id": "og257494", "fonte": "fc26", "idade": 35, "nac": "Chile" }],
+          [
+            "Vozinha",
+            "GOL",
+            71,
+            { "id": "og291276", "fonte": "estimado-valor", "idade": 40, "nac": "Cabo Verde" }
+          ],
+          [
+            "Santiago Tapia Plá",
+            "GOL",
+            64,
+            { "id": "og2528670", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Claudio Aquino",
+            "MEI",
+            77,
+            { "id": "og142528", "fonte": "fc26", "idade": 35, "nac": "Argentina" }
+          ],
+          ["Arturo Vidal", "MC", 73, { "id": "og35084", "fonte": "fc26", "idade": 39, "nac": "Chile" }],
+          ["Javier Méndez", "ZAG", 72, { "id": "og386633", "fonte": "fc26", "idade": 31, "nac": "Uruguai" }],
+          [
+            "Javier Correa",
+            "ATA",
+            72,
+            { "id": "og150326", "fonte": "fc26", "idade": 34, "nac": "Argentina" }
+          ],
+          ["Víctor Méndez", "VOL", 71, { "id": "og566995", "fonte": "fc26", "idade": 27, "nac": "Chile" }],
+          [
+            "Álvaro Madrid",
+            "MC",
+            70,
+            { "id": "og346478", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          [
+            "Maxi Romero",
+            "ATA",
+            70,
+            { "id": "og450779", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          ["Tomás Alarcón", "VOL", 69, { "id": "og518913", "fonte": "fc26", "idade": 27, "nac": "Chile" }],
+          ["Matías Fernández", "LD", 68, { "id": "og470146", "fonte": "fc26", "idade": 31, "nac": "Chile" }],
+          [
+            "Jeyson Rojas",
+            "ZAG",
+            68,
+            { "id": "og789014", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Jonathan Villagra",
+            "ZAG",
+            68,
+            { "id": "og781773", "fonte": "fc26", "idade": 25, "nac": "Chile" }
+          ],
+          ["Erick Wiemberg", "LE", 68, { "id": "og432691", "fonte": "fc26", "idade": 32, "nac": "Chile" }],
+          [
+            "Diego Ulloa",
+            "ZAG",
+            68,
+            { "id": "og887180", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Vicente Perez",
+            "MC",
+            68,
+            { "id": "og3510078", "fonte": "estimado-clube", "idade": 30, "nac": "Espanha" }
+          ],
+          [
+            "Lautaro Pastrán",
+            "ATA",
+            68,
+            { "id": "og974059", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Bastián Silva",
+            "MC",
+            66,
+            { "id": "og851934", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Sebastian Vega",
+            "MC",
+            66,
+            { "id": "og2527003", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          ["Marcos Bolados", "PD", 66, { "id": "og320210", "fonte": "fc26", "idade": 30, "nac": "Chile" }],
+          [
+            "Joaquín Sosa",
+            "ZAG",
+            65,
+            { "id": "og610540", "fonte": "estimado-valor", "idade": 24, "nac": "Uruguai" }
+          ],
+          [
+            "Benjamín Pérez",
+            "ZAG",
+            64,
+            { "id": "og2839729", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Bruno Torres",
+            "ZAG",
+            64,
+            { "id": "og2528676", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Alonso Olguín",
+            "ZAG",
+            64,
+            { "id": "og2528965", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Iván Román",
+            "ZAG",
+            64,
+            { "id": "og1057304", "fonte": "estimado-valor", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Agustín Silva",
+            "ZAG",
+            64,
+            { "id": "og2528968", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Vicente Rivas",
+            "ZAG",
+            64,
+            { "id": "og3577855", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Matías Orellana",
+            "ZAG",
+            64,
+            { "id": "og2528966", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Rodrigo Catalán",
+            "MC",
+            64,
+            { "id": "og3532459", "fonte": "estimado-clube", "idade": 17, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "univ-catolica",
+        "nome": "Univ. Católica",
+        "sigla": "UNI",
+        "elenco": [
+          [
+            "Martin Contreras",
+            "GOL",
+            65,
+            { "id": "og2492361", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          ["Vicente Bernedo", "GOL", 64, { "id": "og688732", "fonte": "fc26", "idade": 25, "nac": "Chile" }],
+          [
+            "Matias Anaconda",
+            "GOL",
+            63,
+            { "id": "og3651807", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Agustín García Basso",
+            "ZAG",
+            74,
+            { "id": "og344450", "fonte": "fc26", "idade": 34, "nac": "Argentina" }
+          ],
+          [
+            "Fernando Zampedri",
+            "ATA",
+            74,
+            { "id": "og150174", "fonte": "fc26", "idade": 38, "nac": "Chile" }
+          ],
+          [
+            "Fernando Zuqui",
+            "MC",
+            72,
+            { "id": "og366635", "fonte": "fc26", "idade": 34, "nac": "Argentina" }
+          ],
+          ["Branco Ampuero", "ZAG", 71, { "id": "og213717", "fonte": "fc26", "idade": 33, "nac": "Chile" }],
+          ["Eugenio Mena", "LE", 71, { "id": "og154421", "fonte": "fc26", "idade": 38, "nac": "Chile" }],
+          ["Gary Medel", "ZAG", 71, { "id": "og38549", "fonte": "fc26", "idade": 39, "nac": "Chile" }],
+          ["Justo Giani", "MEI", 71, { "id": "og658757", "fonte": "fc26", "idade": 27, "nac": "Argentina" }],
+          [
+            "Bernardo Cerezo",
+            "ZAG",
+            70,
+            { "id": "og290007", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          ["Daniel González", "ZAG", 69, { "id": "og610122", "fonte": "fc26", "idade": 24, "nac": "Chile" }],
+          ["Cristian Cuevas", "PE", 69, { "id": "og245561", "fonte": "fc26", "idade": 31, "nac": "Chile" }],
+          [
+            "Agustín Farías",
+            "MC",
+            69,
+            { "id": "og283336", "fonte": "estimado-valor", "idade": 38, "nac": "Chile" }
+          ],
+          [
+            "Jimmy Martínez",
+            "MC",
+            69,
+            { "id": "og424267", "fonte": "estimado-valor", "idade": 29, "nac": "Chile" }
+          ],
+          [
+            "Matías Palavecino",
+            "MC",
+            69,
+            { "id": "og610922", "fonte": "estimado-valor", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Tomás Astaburuaga",
+            "ZAG",
+            68,
+            { "id": "og319748", "fonte": "estimado-valor", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Juan Díaz",
+            "ZAG",
+            68,
+            { "id": "og699153", "fonte": "estimado-valor", "idade": 28, "nac": "Argentina" }
+          ],
+          ["Clemente Montes", "PE", 68, { "id": "og688728", "fonte": "fc26", "idade": 25, "nac": "Chile" }],
+          ["Alfred Canales", "MC", 67, { "id": "og781573", "fonte": "fc26", "idade": 26, "nac": "Chile" }],
+          [
+            "Jhojan Valencia",
+            "VOL",
+            67,
+            { "id": "og460860", "fonte": "fc26", "idade": 30, "nac": "Colômbia" }
+          ],
+          ["Diego Valencia", "ATA", 67, { "id": "og554247", "fonte": "fc26", "idade": 26, "nac": "Chile" }],
+          [
+            "Raimundo Vasquez",
+            "ZAG",
+            65,
+            { "id": "og3651912", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Nickolas Pino",
+            "ZAG",
+            65,
+            { "id": "og3563293", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Vasco Rodriguez",
+            "MC",
+            65,
+            { "id": "og3617937", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Milan Tudor",
+            "ATA",
+            65,
+            { "id": "og885973", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Nickolas Klimes",
+            "ATA",
+            65,
+            { "id": "og3626085", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Juan Francisco Rossel",
+            "PE",
+            64,
+            { "id": "og923152", "fonte": "fc26", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Jeffrey Esparza",
+            "ZAG",
+            63,
+            { "id": "og3651562", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Francisco Daza",
+            "ZAG",
+            63,
+            { "id": "og2529036", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "universidad-de-chile-2273",
+        "nome": "Universidad de Chile",
+        "sigla": "UNI",
+        "elenco": [
+          [
+            "Gabriel Castellón",
+            "GOL",
+            72,
+            { "id": "og245707", "fonte": "fc26", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Cristopher Toselli",
+            "GOL",
+            70,
+            { "id": "og38544", "fonte": "fc26", "idade": 38, "nac": "Chile" }
+          ],
+          [
+            "José Alburquenque",
+            "GOL",
+            63,
+            { "id": "og3537394", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          ["Charles Aránguiz", "MC", 74, { "id": "og85214", "fonte": "fc26", "idade": 37, "nac": "Chile" }],
+          [
+            "Juan Martín Lucero",
+            "ATA",
+            73,
+            { "id": "og364446", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina" }
+          ],
+          [
+            "Igor Lichnovsky",
+            "ZAG",
+            72,
+            { "id": "og187822", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          ["Octavio Rivero", "ATA", 72, { "id": "og298744", "fonte": "fc26", "idade": 34, "nac": "Uruguai" }],
+          ["Matías Zaldivia", "ZAG", 71, { "id": "og279943", "fonte": "fc26", "idade": 35, "nac": "Chile" }],
+          [
+            "Javier Altamirano",
+            "MEI",
+            71,
+            { "id": "og563950", "fonte": "fc26", "idade": 27, "nac": "Chile" }
+          ],
+          ["Marcelo Díaz", "VOL", 71, { "id": "og85120", "fonte": "fc26", "idade": 39, "nac": "Chile" }],
+          [
+            "Eduardo Vargas",
+            "ATA",
+            71,
+            { "id": "og85223", "fonte": "estimado-valor", "idade": 36, "nac": "Chile" }
+          ],
+          ["Fabián Hormazabal", "LD", 69, { "id": "og416340", "fonte": "fc26", "idade": 30, "nac": "Chile" }],
+          ["Nicolás Ramírez", "ZAG", 68, { "id": "og416421", "fonte": "fc26", "idade": 29, "nac": "Chile" }],
+          ["Israel Poblete", "MC", 68, { "id": "og415675", "fonte": "fc26", "idade": 31, "nac": "Chile" }],
+          ["Diego Cofré", "ATA", 67, { "id": "og3566930", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Maximiliano Guerrero",
+            "PD",
+            67,
+            { "id": "og597847", "fonte": "fc26", "idade": 26, "nac": "Chile" }
+          ],
+          ["Nicolás Fernández", "LD", 66, { "id": "og553164", "fonte": "fc26", "idade": 27, "nac": "Chile" }],
+          ["Marcelo Morales", "LE", 66, { "id": "og833537", "fonte": "fc26", "idade": 23, "nac": "Chile" }],
+          [
+            "Sergio Rozas",
+            "ZAG",
+            65,
+            { "id": "og3651982", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Cristobal Ulloa",
+            "ZAG",
+            65,
+            { "id": "og3559852", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Franco Fernandez",
+            "ZAG",
+            65,
+            { "id": "og3559851", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Héctor Canelo",
+            "MC",
+            65,
+            { "id": "og2573469", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Tobías Reinhart",
+            "MC",
+            65,
+            { "id": "og658814", "fonte": "fc26", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Lucas Hacicki",
+            "MC",
+            65,
+            { "id": "og3630136", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Franco Rivas",
+            "MC",
+            65,
+            { "id": "og3558112", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Gonzalo Reyna",
+            "MEI",
+            64,
+            { "id": "og2347641", "fonte": "fc26", "idade": 20, "nac": "Argentina" }
+          ],
+          [
+            "Andres Torres",
+            "ZAG",
+            63,
+            { "id": "og3651732", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Agustin Aldunate",
+            "ZAG",
+            63,
+            { "id": "og3652711", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Agustin Korn",
+            "ZAG",
+            63,
+            { "id": "og3547245", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Benjamin Garces",
+            "ZAG",
+            63,
+            { "id": "og3532093", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "o-higgins-2280",
+        "nome": "O´Higgins",
+        "sigla": "OXX",
+        "elenco": [
+          [
+            "Jorge Peña",
+            "GOL",
+            68,
+            { "id": "og727495", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Diego Carreño",
+            "GOL",
+            68,
+            { "id": "og610129", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Omar Carabalí",
+            "GOL",
+            68,
+            { "id": "og475782", "fonte": "estimado-clube", "idade": 29, "nac": "Equador" }
+          ],
+          ["Walter Bou", "ATA", 73, { "id": "og418409", "fonte": "fc26", "idade": 33, "nac": "Argentina" }],
+          [
+            "Miguel Brizuela",
+            "ZAG",
+            70,
+            { "id": "og734084", "fonte": "fc26", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Santiago Toloza",
+            "MEI",
+            70,
+            { "id": "og772409", "fonte": "fc26", "idade": 24, "nac": "Argentina" }
+          ],
+          [
+            "Bryan Rabello",
+            "MC",
+            70,
+            { "id": "og141743", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          [
+            "Juan Leiva",
+            "MC",
+            70,
+            { "id": "og269007", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          ["Ignacio Schor", "PD", 70, { "id": "og881033", "fonte": "fc26", "idade": 26, "nac": "Argentina" }],
+          [
+            "Luis Pavez",
+            "ZAG",
+            69,
+            { "id": "og333484", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          ["Tomás Avilés", "ZAG", 69, { "id": "og965340", "fonte": "fc26", "idade": 22, "nac": "Argentina" }],
+          ["Bastián Yáñez", "PE", 69, { "id": "og649682", "fonte": "fc26", "idade": 25, "nac": "Chile" }],
+          [
+            "Nicolás Garrido",
+            "ZAG",
+            68,
+            { "id": "og696496", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Alan Robledo",
+            "ZAG",
+            68,
+            { "id": "og602086", "fonte": "estimado-clube", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Felipe Ogaz",
+            "MC",
+            68,
+            { "id": "og952325", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Arnaldo Castillo",
+            "ATA",
+            68,
+            { "id": "og525581", "fonte": "estimado-clube", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Esteban Moreira",
+            "ATA",
+            68,
+            { "id": "og789354", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Leandro Díaz",
+            "ZAG",
+            67,
+            { "id": "og638596", "fonte": "estimado-valor", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Thiago Vecino",
+            "ATA",
+            67,
+            { "id": "og627324", "fonte": "estimado-valor", "idade": 27, "nac": "Uruguai" }
+          ],
+          [
+            "Felipe Faúndez",
+            "ZAG",
+            66,
+            { "id": "og1179479", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Cristián Morales",
+            "ZAG",
+            66,
+            { "id": "og1973713", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Gabriel Pinto",
+            "MC",
+            66,
+            { "id": "og1232611", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Martin Maturana",
+            "MC",
+            66,
+            { "id": "og1056689", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Joaquin Vasquez",
+            "ATA",
+            66,
+            { "id": "og3587737", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Rodrigo Godoy",
+            "ATA",
+            66,
+            { "id": "og1232613", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Joaquín Tapia",
+            "ATA",
+            66,
+            { "id": "og1232617", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Benjamín Rojas",
+            "ZAG",
+            65,
+            { "id": "og783825", "fonte": "estimado-valor", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Benjamin Gaete",
+            "ZAG",
+            64,
+            { "id": "og3652329", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Ángel Solís",
+            "ZAG",
+            64,
+            { "id": "og2519463", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Juan Poblete",
+            "ZAG",
+            64,
+            { "id": "og2519480", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "la-serena-2287",
+        "nome": "La Serena",
+        "sigla": "SER",
+        "elenco": [
+          [
+            "Federico Lanzillota",
+            "GOL",
+            69,
+            { "id": "og283320", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Eryin Sanhueza",
+            "GOL",
+            68,
+            { "id": "og439029", "fonte": "estimado-clube", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "José Tapia",
+            "GOL",
+            68,
+            { "id": "og960015", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Rafael Delgado",
+            "LE",
+            71,
+            { "id": "og264434", "fonte": "fc26", "idade": 36, "nac": "Argentina" }
+          ],
+          [
+            "Gonzalo Escalante",
+            "MC",
+            71,
+            { "id": "og328846", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Francis Mac Allister",
+            "VOL",
+            70,
+            { "id": "og513389", "fonte": "fc26", "idade": 31, "nac": "Argentina" }
+          ],
+          [
+            "Ángelo Henríquez",
+            "ATA",
+            70,
+            { "id": "og136116", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          ["Matías Marín", "MEI", 69, { "id": "og556809", "fonte": "fc26", "idade": 26, "nac": "Chile" }],
+          ["Diego Rubio", "ATA", 69, { "id": "og181524", "fonte": "fc26", "idade": 33, "nac": "Chile" }],
+          [
+            "Nicolás Stefanelli",
+            "ATA",
+            69,
+            { "id": "og415863", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Jeisson Vargas",
+            "ATA",
+            69,
+            { "id": "og438714", "fonte": "estimado-valor", "idade": 29, "nac": "Chile" }
+          ],
+          ["Gabriel Roco", "ZAG", 68, { "id": "og3559843", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Raul Zanini",
+            "ZAG",
+            68,
+            { "id": "og3640903", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Andrés Zanini",
+            "ZAG",
+            68,
+            { "id": "og560752", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Joaquín Gutiérrez",
+            "ZAG",
+            68,
+            { "id": "og708073", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Lucas Alarcón",
+            "ZAG",
+            68,
+            { "id": "og555410", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          ["Cristian Michea", "MC", 68, { "id": "og3651681", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Vicente Recasens", "MC", 68, { "id": "og3652621", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Sebastián Díaz",
+            "MC",
+            68,
+            { "id": "og417304", "fonte": "estimado-valor", "idade": 30, "nac": "Chile" }
+          ],
+          ["Máximo Hernández", "MC", 68, { "id": "og1268660", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Felipe Chamorro",
+            "MC",
+            68,
+            { "id": "og787085", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Rodrigo Dubó",
+            "ATA",
+            68,
+            { "id": "og1232727", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          ["Bastian Sandoval", "ATA", 68, { "id": "og3507533", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Yerko Leiva",
+            "MC",
+            67,
+            { "id": "og383568", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          ["Matías Pérez", "ZAG", 66, { "id": "og1522122", "fonte": "fc26", "idade": 21, "nac": "Chile" }],
+          [
+            "Fernando Dinamarca",
+            "ZAG",
+            66,
+            { "id": "og1232728", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Ángel Carvajal",
+            "ZAG",
+            66,
+            { "id": "og3507558", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Matías Pinto",
+            "ZAG",
+            66,
+            { "id": "og918900", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Joan Orellana",
+            "MC",
+            66,
+            { "id": "og1522788", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          ["Alexander Oroz", "PD", 66, { "id": "og696497", "fonte": "fc26", "idade": 23, "nac": "Chile" }]
+        ]
+      },
+      {
+        "id": "everton",
+        "nome": "Everton",
+        "sigla": "EVE",
+        "elenco": [
+          [
+            "Ignacio González",
+            "GOL",
+            69,
+            { "id": "og104461", "fonte": "estimado-valor", "idade": 36, "nac": "Chile" }
+          ],
+          [
+            "Esteban Kirkman",
+            "GOL",
+            68,
+            { "id": "og955660", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Isaac Esquenazi",
+            "GOL",
+            66,
+            { "id": "og991622", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Ramiro González",
+            "ZAG",
+            70,
+            { "id": "og582748", "fonte": "estimado-valor", "idade": 35, "nac": "Argentina" }
+          ],
+          [
+            "Diego Oyarzún",
+            "ZAG",
+            70,
+            { "id": "og365523", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Joaquín Moya",
+            "MC",
+            70,
+            { "id": "og429018", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          [
+            "Alan Medina",
+            "ATA",
+            70,
+            { "id": "og649686", "fonte": "estimado-valor", "idade": 28, "nac": "Uruguai" }
+          ],
+          [
+            "Sebastián Sosa",
+            "ATA",
+            70,
+            { "id": "og247245", "fonte": "estimado-valor", "idade": 32, "nac": "Uruguai" }
+          ],
+          [
+            "Cristian Palacios",
+            "ATA",
+            69,
+            { "id": "og157704", "fonte": "estimado-valor", "idade": 36, "nac": "Uruguai" }
+          ],
+          [
+            "Christopher Barrera",
+            "ZAG",
+            68,
+            { "id": "og615953", "fonte": "estimado-clube", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Hugo Magallanes",
+            "ZAG",
+            68,
+            { "id": "og702671", "fonte": "estimado-valor", "idade": 29, "nac": "Uruguai" }
+          ],
+          [
+            "Nicolás Baeza",
+            "ZAG",
+            68,
+            { "id": "og500220", "fonte": "estimado-clube", "idade": 29, "nac": "Chile" }
+          ],
+          [
+            "Lucas Soto",
+            "MC",
+            68,
+            { "id": "og863244", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Benjamín Berríos",
+            "MC",
+            68,
+            { "id": "og550253", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Josué Ovalle",
+            "ATA",
+            68,
+            { "id": "og836715", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Julián Alfaro",
+            "ATA",
+            68,
+            { "id": "og666555", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          ["Óscar Opazo", "LD", 67, { "id": "og233035", "fonte": "fc26", "idade": 36, "nac": "Chile" }],
+          [
+            "Vicente Fernández",
+            "ZAG",
+            67,
+            { "id": "og595601", "fonte": "estimado-valor", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Martín Guzmán",
+            "ZAG",
+            66,
+            { "id": "og2507348", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Vicente Vega",
+            "ZAG",
+            66,
+            { "id": "og1040458", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Byron Navarro",
+            "ZAG",
+            66,
+            { "id": "og990012", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Braian Martínez",
+            "PE",
+            66,
+            { "id": "og2516142", "fonte": "fc26", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Nicolás Montiel",
+            "ATA",
+            66,
+            { "id": "og1637910", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina" }
+          ],
+          [
+            "Emiliano Ramos",
+            "ATA",
+            66,
+            { "id": "og983980", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          ["Valentín Vidal", "ZAG", 65, { "id": "og992605", "fonte": "fc26", "idade": 22, "nac": "Chile" }],
+          [
+            "Gustavo Charrupí",
+            "MC",
+            64,
+            { "id": "og1236379", "fonte": "estimado-valor", "idade": 22, "nac": "Colômbia" }
+          ],
+          [
+            "Ricardo Rebolledo",
+            "MC",
+            64,
+            { "id": "og3507175", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Ricardo Rojas",
+            "MC",
+            64,
+            { "id": "og3626111", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Santiago Reinoso",
+            "MC",
+            64,
+            { "id": "og3559689", "fonte": "estimado-clube", "idade": 17, "nac": "Chile" }
+          ],
+          [
+            "Amaro León",
+            "MC",
+            64,
+            { "id": "og3504860", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "coquimbo-unido-2264",
+        "nome": "Coquimbo Unido",
+        "sigla": "COQ",
+        "elenco": [
+          [
+            "Diego Sánchez",
+            "GOL",
+            70,
+            { "id": "og231134", "fonte": "estimado-valor", "idade": 39, "nac": "Chile" }
+          ],
+          [
+            "Cristóbal Dorador",
+            "GOL",
+            65,
+            { "id": "og1523511", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Gonzalo Flores",
+            "GOL",
+            64,
+            { "id": "og833665", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Lucas Pratto",
+            "ATA",
+            71,
+            { "id": "og47630", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina" }
+          ],
+          [
+            "Alejandro Camargo",
+            "MC",
+            70,
+            { "id": "og123413", "fonte": "estimado-valor", "idade": 37, "nac": "Chile" }
+          ],
+          [
+            "Sebastián Galani",
+            "MC",
+            70,
+            { "id": "og456428", "fonte": "estimado-valor", "idade": 29, "nac": "Chile" }
+          ],
+          [
+            "Benjamín Gazzolo",
+            "ZAG",
+            69,
+            { "id": "og416371", "fonte": "estimado-valor", "idade": 29, "nac": "Chile" }
+          ],
+          [
+            "Francisco Salinas",
+            "ZAG",
+            69,
+            { "id": "og552996", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Juan Cornejo",
+            "ZAG",
+            69,
+            { "id": "og246356", "fonte": "estimado-valor", "idade": 36, "nac": "Chile" }
+          ],
+          [
+            "Sebastián Cabrera",
+            "ZAG",
+            68,
+            { "id": "og447809", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Manuel Fernández",
+            "ZAG",
+            68,
+            { "id": "og221519", "fonte": "estimado-valor", "idade": 37, "nac": "Uruguai" }
+          ],
+          [
+            "Salvador Cordero",
+            "MC",
+            68,
+            { "id": "og498281", "fonte": "estimado-valor", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Nicolas Johansen",
+            "ATA",
+            68,
+            { "id": "og1018602", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Guido Vadalá",
+            "ATA",
+            68,
+            { "id": "og450365", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Facundo Pons",
+            "ATA",
+            68,
+            { "id": "og657064", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Cristián Zavala",
+            "ATA",
+            68,
+            { "id": "og647553", "fonte": "estimado-valor", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Alejandro Azocar",
+            "ATA",
+            67,
+            { "id": "og787379", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Luis Riveros",
+            "ATA",
+            67,
+            { "id": "og530380", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Elvis Hernández",
+            "ZAG",
+            66,
+            { "id": "og785421", "fonte": "estimado-valor", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Benjamín Chandía",
+            "ATA",
+            66,
+            { "id": "og876447", "fonte": "estimado-valor", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Lukas Soza",
+            "ZAG",
+            65,
+            { "id": "og449216", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Matías Zepeda",
+            "MC",
+            65,
+            { "id": "og1813417", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Joshua Latapiat",
+            "MC",
+            65,
+            { "id": "og3528497", "fonte": "estimado-clube", "idade": 21, "nac": "Estados Unidos" }
+          ],
+          [
+            "Diego Theza",
+            "MC",
+            65,
+            { "id": "og3645835", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Diego Chavez",
+            "MC",
+            65,
+            { "id": "og3535979", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Lucas Marin",
+            "MC",
+            65,
+            { "id": "og3614746", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Joaquin Zambra",
+            "ZAG",
+            63,
+            { "id": "og3652035", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Diego Delgado",
+            "ZAG",
+            63,
+            { "id": "og3614745", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Salvador Bizien",
+            "ZAG",
+            63,
+            { "id": "og3701801", "fonte": "estimado-clube", "idade": 17, "nac": "Chile" }
+          ],
+          [
+            "Pablo Rodríguez",
+            "MC",
+            63,
+            { "id": "og1577296", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "nublense-9509",
+        "nome": "Ñublense",
+        "sigla": "NUB",
+        "elenco": [
+          [
+            "Nicola Pérez",
+            "GOL",
+            72,
+            { "id": "og85277", "fonte": "estimado-valor", "idade": 36, "nac": "Uruguai" }
+          ],
+          [
+            "Hernán Muñoz",
+            "GOL",
+            68,
+            { "id": "og416072", "fonte": "estimado-valor", "idade": 38, "nac": "Chile" }
+          ],
+          [
+            "Joaquin Torres",
+            "GOL",
+            62,
+            { "id": "og3652018", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Franco Calderón",
+            "ZAG",
+            71,
+            { "id": "og713992", "fonte": "fc26", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Lorenzo Reyes",
+            "MC",
+            71,
+            { "id": "og95498", "fonte": "estimado-valor", "idade": 35, "nac": "Chile" }
+          ],
+          [
+            "Gabriel Graciani",
+            "ATA",
+            71,
+            { "id": "og183144", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Felipe Campos",
+            "ZAG",
+            70,
+            { "id": "og245894", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Jovany Campusano",
+            "ZAG",
+            70,
+            { "id": "og259708", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Osvaldo Bosso",
+            "ZAG",
+            70,
+            { "id": "og245929", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Diego Céspedes",
+            "ZAG",
+            67,
+            { "id": "og590068", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          ["Franco Rami", "ATA", 67, { "id": "og1238979", "fonte": "fc26", "idade": 23, "nac": "Argentina" }],
+          [
+            "Ignacio Jeraldino",
+            "ATA",
+            67,
+            { "id": "og281154", "fonte": "fc26", "idade": 30, "nac": "Chile" }
+          ],
+          ["Felipe Reyes", "ZAG", 66, { "id": "og3559847", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Pablo Calderón",
+            "ZAG",
+            66,
+            { "id": "og956304", "fonte": "estimado-clube", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Joaquín González",
+            "ZAG",
+            66,
+            { "id": "og859187", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Crisstofer Montecinos",
+            "MC",
+            66,
+            { "id": "og3290825", "fonte": "estimado-clube", "nac": "Chile" }
+          ],
+          ["Martin Munoz", "MC", 66, { "id": "og3651934", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Manuel Rivera",
+            "MC",
+            66,
+            { "id": "og459019", "fonte": "estimado-clube", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Fernando Ovelar",
+            "PD",
+            66,
+            { "id": "og676624", "fonte": "fc26", "idade": 22, "nac": "Paraguai" }
+          ],
+          ["Bastian Muñoz", "ATA", 66, { "id": "og3559849", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Luis Pavez",
+            "MC",
+            65,
+            { "id": "og104430", "fonte": "estimado-clube", "idade": 38, "nac": "Chile" }
+          ],
+          [
+            "Matías Plaza",
+            "MC",
+            65,
+            { "id": "og702907", "fonte": "estimado-valor", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Carlos Salomón",
+            "ZAG",
+            64,
+            { "id": "og612367", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Diego Sanhueza",
+            "ZAG",
+            64,
+            { "id": "og836700", "fonte": "estimado-valor", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Christian Mansilla",
+            "MC",
+            64,
+            { "id": "og3542839", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Pablo Toledo",
+            "ATA",
+            64,
+            { "id": "og2513329", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Lucas Molina",
+            "ATA",
+            64,
+            { "id": "og1007118", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Giovanny Ávalos",
+            "ATA",
+            64,
+            { "id": "og1178111", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Alex Valdés",
+            "ATA",
+            63,
+            { "id": "og959564", "fonte": "estimado-valor", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Esteban Calderón",
+            "ATA",
+            63,
+            { "id": "og1232612", "fonte": "estimado-valor", "idade": 22, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "palestino-2266",
+        "nome": "Palestino",
+        "sigla": "PAL",
+        "elenco": [
+          [
+            "Sebastián Pérez",
+            "GOL",
+            72,
+            { "id": "og85841", "fonte": "estimado-valor", "idade": 36, "nac": "Chile" }
+          ],
+          [
+            "Renato Canto",
+            "GOL",
+            63,
+            { "id": "og3534282", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Maximiliano Mateluna",
+            "GOL",
+            61,
+            { "id": "og3555647", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          ["Fernando Meza", "ZAG", 72, { "id": "og67582", "fonte": "fc26", "idade": 36, "nac": "Argentina" }],
+          ["Joe Abrigo", "MEI", 72, { "id": "og322797", "fonte": "fc26", "idade": 31, "nac": "Chile" }],
+          ["Bryan Carrasco", "PD", 71, { "id": "og118107", "fonte": "fc26", "idade": 35, "nac": "Chile" }],
+          [
+            "Sebastian Gallegos",
+            "MC",
+            70,
+            { "id": "og134676", "fonte": "estimado-valor", "idade": 34, "nac": "Uruguai" }
+          ],
+          [
+            "Jonathan Benitez",
+            "PE",
+            69,
+            { "id": "og282390", "fonte": "fc26", "idade": 35, "nac": "Argentina" }
+          ],
+          ["Ronnie Fernández", "ATA", 69, { "id": "og233038", "fonte": "fc26", "idade": 35, "nac": "Chile" }],
+          ["Dilan Zúñiga", "LE", 68, { "id": "og365969", "fonte": "fc26", "idade": 30, "nac": "Chile" }],
+          ["Enzo Roco", "ZAG", 68, { "id": "og133094", "fonte": "fc26", "idade": 34, "nac": "Chile" }],
+          ["Dylan Glaby", "VOL", 67, { "id": "og736986", "fonte": "fc26", "idade": 30, "nac": "Argentina" }],
+          [
+            "Marcelo Eggel",
+            "MC",
+            67,
+            { "id": "og963160", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "César Munder",
+            "ATA",
+            67,
+            { "id": "og545266", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          ["José Bizama", "LD", 66, { "id": "og416575", "fonte": "fc26", "idade": 32, "nac": "Chile" }],
+          ["Ariel Martínez", "MC", 66, { "id": "og318210", "fonte": "fc26", "idade": 32, "nac": "Chile" }],
+          ["Antonio Ceza", "ZAG", 65, { "id": "og867602", "fonte": "fc26", "idade": 23, "nac": "Chile" }],
+          [
+            "Nelson Da Silva",
+            "ATA",
+            65,
+            { "id": "og1008292", "fonte": "estimado-clube", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Simón Pinto",
+            "ZAG",
+            63,
+            { "id": "og2431831", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Mateo Cienfuegos",
+            "ZAG",
+            63,
+            { "id": "og2531103", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Joaquin Onate",
+            "MC",
+            63,
+            { "id": "og3652482", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Jairon Grueso",
+            "ATA",
+            63,
+            { "id": "og3651644", "fonte": "estimado-clube", "idade": 20, "nac": "Equador" }
+          ],
+          ["Gonzalo Tapia", "ATA", 63, { "id": "og559011", "fonte": "fc26", "idade": 30, "nac": "Chile" }],
+          [
+            "Martín Araya",
+            "ATA",
+            63,
+            { "id": "og1057305", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          ["Vicente Espinoza", "LD", 62, { "id": "og1184799", "fonte": "fc26", "idade": 22, "nac": "Chile" }],
+          [
+            "Vicente Silva",
+            "ZAG",
+            61,
+            { "id": "og3652480", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          [
+            "Gaspar Ruz",
+            "ZAG",
+            61,
+            { "id": "og3560395", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ],
+          ["Jason León", "LE", 61, { "id": "og781635", "fonte": "fc26", "idade": 26, "nac": "Chile" }],
+          [
+            "Martin Cardenas",
+            "MC",
+            61,
+            { "id": "og3651630", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Christopher Salvo",
+            "MC",
+            61,
+            { "id": "og3651761", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "audax-italiano-2260",
+        "nome": "Audax Italiano",
+        "sigla": "AUD",
+        "elenco": [
+          [
+            "Tomás Ahumada",
+            "GOL",
+            67,
+            { "id": "og702476", "fonte": "estimado-valor", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Cristóbal Piña",
+            "GOL",
+            62,
+            { "id": "og1816047", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          ["Pedro Garrido", "GOL", 61, { "id": "og883008", "fonte": "fc26", "idade": 23, "nac": "Chile" }],
+          [
+            "César Pinares",
+            "MC",
+            71,
+            { "id": "og152365", "fonte": "estimado-valor", "idade": 35, "nac": "Chile" }
+          ],
+          [
+            "Diego Coelho",
+            "ATA",
+            71,
+            { "id": "og554758", "fonte": "estimado-valor", "idade": 31, "nac": "Uruguai" }
+          ],
+          [
+            "Federico Mateos",
+            "MC",
+            70,
+            { "id": "og649680", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Rodrigo Cabral",
+            "PE",
+            70,
+            { "id": "og750103", "fonte": "fc26", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Marco Collao",
+            "MC",
+            69,
+            { "id": "og510576", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Nicolás Orellana",
+            "MC",
+            69,
+            { "id": "og390254", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          ["Ariel Uribe", "PD", 68, { "id": "og590946", "fonte": "fc26", "idade": 27, "nac": "Chile" }],
+          [
+            "Enzo Ferrario",
+            "ZAG",
+            67,
+            { "id": "og653402", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Marcelo Ortíz",
+            "ZAG",
+            67,
+            { "id": "og515199", "fonte": "fc26", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Oliver Rojas",
+            "ZAG",
+            67,
+            { "id": "og554250", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Franco Troyansky",
+            "ATA",
+            67,
+            { "id": "og502537", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Diego Monreal",
+            "ZAG",
+            66,
+            { "id": "og923145", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Cristóbal Muñoz",
+            "ZAG",
+            66,
+            { "id": "og595512", "fonte": "estimado-clube", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Paolo Guajardo",
+            "ATA",
+            66,
+            { "id": "og861243", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Michael Fuentes",
+            "ATA",
+            66,
+            { "id": "og624006", "fonte": "estimado-clube", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Raimundo Rebolledo",
+            "ZAG",
+            65,
+            { "id": "og451137", "fonte": "estimado-valor", "idade": 29, "nac": "Chile" }
+          ],
+          ["Damián Pizarro", "ATA", 65, { "id": "og918932", "fonte": "fc26", "idade": 21, "nac": "Chile" }],
+          [
+            "Felipe Salomoni",
+            "LE",
+            64,
+            { "id": "og890911", "fonte": "fc26", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Tomás Cayuqueo",
+            "ZAG",
+            64,
+            { "id": "og3540211", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Byron Lamadrid",
+            "MC",
+            64,
+            { "id": "og3651980", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Italo Pasten",
+            "MC",
+            64,
+            { "id": "og3559854", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Tomás Leyton",
+            "MC",
+            64,
+            { "id": "og3318625", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Joel Ahumada",
+            "ATA",
+            64,
+            { "id": "og3503212", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Martín Valdés",
+            "ATA",
+            64,
+            { "id": "og1928541", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Martín Huamán",
+            "ZAG",
+            62,
+            { "id": "og2528804", "fonte": "estimado-clube", "idade": 18, "nac": "Peru" }
+          ],
+          [
+            "Martín González",
+            "ZAG",
+            62,
+            { "id": "og3562211", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Tomás González",
+            "ZAG",
+            62,
+            { "id": "og3536314", "fonte": "estimado-clube", "idade": 16, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "univ-concepcion-2271",
+        "nome": "Univ. Concepción",
+        "sigla": "UNI",
+        "elenco": [
+          ["Jorge Broun", "GOL", 73, { "id": "og37276", "fonte": "fc26", "idade": 40, "nac": "Argentina" }],
+          [
+            "Diego Matamala",
+            "GOL",
+            66,
+            { "id": "og871626", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "José Sanhueza",
+            "GOL",
+            63,
+            { "id": "og684885", "fonte": "estimado-valor", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Cecílio Waterman",
+            "ATA",
+            72,
+            { "id": "og207689", "fonte": "estimado-valor", "idade": 35, "nac": "Panamá" }
+          ],
+          [
+            "Rogelio Funes Mori",
+            "ZAG",
+            70,
+            { "id": "og124429", "fonte": "fc26", "idade": 35, "nac": "México" }
+          ],
+          [
+            "Miguel Barbieri",
+            "ZAG",
+            69,
+            { "id": "og504755", "fonte": "fc26", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Facundo Mater",
+            "MC",
+            69,
+            { "id": "og542157", "fonte": "estimado-valor", "idade": 28, "nac": "Síria" }
+          ],
+          [
+            "Osvaldo González",
+            "ZAG",
+            68,
+            { "id": "og82508", "fonte": "estimado-valor", "idade": 42, "nac": "Chile" }
+          ],
+          [
+            "Cristopher Mesías",
+            "MC",
+            68,
+            { "id": "og585539", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          ["Daniel Barrea", "PE", 68, { "id": "og970845", "fonte": "fc26", "idade": 25, "nac": "Argentina" }],
+          [
+            "Jorge Espejo",
+            "ZAG",
+            67,
+            { "id": "og736836", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          ["Pablo Parra", "PE", 67, { "id": "og125793", "fonte": "fc26", "idade": 32, "nac": "Chile" }],
+          [
+            "Moisés González",
+            "ZAG",
+            66,
+            { "id": "og565979", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Bastián Ubal",
+            "ZAG",
+            66,
+            { "id": "og610123", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          ["Matías Ruíz", "ZAG", 66, { "id": "og3571876", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Giovanni Fernández", "ZAG", 66, { "id": "og3571875", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Yerco Oyanedel",
+            "ZAG",
+            66,
+            { "id": "og555414", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Bryan Ogaz",
+            "MC",
+            66,
+            { "id": "og734958", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          ["Martin Suazo", "MC", 66, { "id": "og3559856", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Fernando Astudillo", "MC", 66, { "id": "og3571765", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Rafael Villegas", "MC", 66, { "id": "og3571694", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Lucas Muñoz", "MC", 66, { "id": "og3571695", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Jeison Fuentealba",
+            "MC",
+            66,
+            { "id": "og895436", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          ["Antonio Díaz", "LE", 65, { "id": "og555404", "fonte": "fc26", "idade": 26, "nac": "Chile" }],
+          ["David Retamal", "ZAG", 64, { "id": "og1200106", "fonte": "fc26", "idade": 23, "nac": "Chile" }],
+          [
+            "Patricio Romero",
+            "ZAG",
+            64,
+            { "id": "og1500162", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Francisco Caniupan",
+            "MC",
+            64,
+            { "id": "og3638727", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Luis Rojas",
+            "MC",
+            64,
+            { "id": "og708083", "fonte": "estimado-valor", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Adolfo Neira",
+            "MC",
+            64,
+            { "id": "og2519968", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Martin Figueroa",
+            "ATA",
+            64,
+            { "id": "og3639859", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "deportes-limache-212896",
+        "nome": "Deportes Limache",
+        "sigla": "DEP",
+        "elenco": [
+          [
+            "Matías Bórquez",
+            "GOL",
+            66,
+            { "id": "og586943", "fonte": "estimado-clube", "idade": 28, "nac": "Chile" }
+          ],
+          ["César", "GOL", 66, { "id": "og132360", "fonte": "estimado-clube", "idade": 34, "nac": "Brasil" }],
+          [
+            "Claudio González",
+            "GOL",
+            65,
+            { "id": "og280763", "fonte": "estimado-clube", "idade": 36, "nac": "Chile" }
+          ],
+          [
+            "Jean Meneses",
+            "ATA",
+            74,
+            { "id": "og257503", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Leonardo Valencia",
+            "MC",
+            71,
+            { "id": "og245904", "fonte": "estimado-valor", "idade": 35, "nac": "Chile" }
+          ],
+          [
+            "Gonzalo Sosa",
+            "ATA",
+            71,
+            { "id": "og264210", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina" }
+          ],
+          [
+            "Alfonso Parot",
+            "ZAG",
+            70,
+            { "id": "og85212", "fonte": "estimado-valor", "idade": 37, "nac": "Chile" }
+          ],
+          ["Hugo Martínez", "VOL", 69, { "id": "og626027", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }],
+          ["César Fuentes", "VOL", 67, { "id": "og245559", "fonte": "fc26", "idade": 33, "nac": "Chile" }],
+          [
+            "Ramón Martínez",
+            "MC",
+            67,
+            { "id": "og460235", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          ["Dylan Escobar", "LD", 66, { "id": "og726144", "fonte": "fc26", "idade": 25, "nac": "Chile" }],
+          [
+            "Yerko González",
+            "ZAG",
+            66,
+            { "id": "og711165", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Augusto Aguirre",
+            "ZAG",
+            66,
+            { "id": "og607174", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Marcelo Flores",
+            "ZAG",
+            66,
+            { "id": "og737003", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          ["Giovanni Hernandez", "MC", 66, { "id": "og3559853", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Martins Smith", "MC", 66, { "id": "og3533461", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Misael Llantén",
+            "MC",
+            66,
+            { "id": "og544268", "fonte": "estimado-clube", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Darío Martínez",
+            "MC",
+            66,
+            { "id": "og821850", "fonte": "estimado-clube", "idade": 24, "nac": "México" }
+          ],
+          ["Tiago Galletto", "VOL", 66, { "id": "og787380", "fonte": "fc26", "idade": 24, "nac": "Uruguai" }],
+          [
+            "Daniel Castro",
+            "ATA",
+            66,
+            { "id": "og625156", "fonte": "estimado-clube", "idade": 32, "nac": "Chile" }
+          ],
+          [
+            "Carlos Morales",
+            "ATA",
+            66,
+            { "id": "og727745", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Marcos Arturia",
+            "ATA",
+            65,
+            { "id": "og626616", "fonte": "fc26", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Benjamín Molina",
+            "ZAG",
+            64,
+            { "id": "og997056", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Javier Rojas",
+            "ZAG",
+            64,
+            { "id": "og1521804", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Gonzalo Poblete",
+            "MC",
+            64,
+            { "id": "og2528149", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Vicente Vargas",
+            "MC",
+            64,
+            { "id": "og2739719", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Benjamin Guzmán",
+            "ATA",
+            64,
+            { "id": "og2508504", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Franco Orobio",
+            "MC",
+            62,
+            { "id": "og3641102", "fonte": "estimado-clube", "idade": 16, "nac": "Chile" }
+          ],
+          [
+            "Gonzalo Abán",
+            "MC",
+            62,
+            { "id": "og3317982", "fonte": "estimado-clube", "idade": 16, "nac": "Argentina" }
+          ],
+          [
+            "Franco Oyarzun",
+            "MC",
+            62,
+            { "id": "og3542844", "fonte": "estimado-clube", "idade": 16, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "deportes-concepcion-2290",
+        "nome": "Deportes Concepción",
+        "sigla": "DEP",
+        "elenco": [
+          [
+            "Nicolás Araya",
+            "GOL",
+            66,
+            { "id": "og420029", "fonte": "estimado-clube", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Nery Veloso",
+            "GOL",
+            65,
+            { "id": "og38554", "fonte": "estimado-clube", "idade": 39, "nac": "Chile" }
+          ],
+          [
+            "Benjamin Bizama",
+            "GOL",
+            62,
+            { "id": "og3617935", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Fausto Grillo",
+            "ZAG",
+            70,
+            { "id": "og415992", "fonte": "fc26", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Yonatan Rodríguez",
+            "MC",
+            69,
+            { "id": "og861965", "fonte": "estimado-valor", "idade": 33, "nac": "Uruguai" }
+          ],
+          [
+            "Jorge Henríquez",
+            "MC",
+            69,
+            { "id": "og431584", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          [
+            "Fernando Martínez",
+            "MC",
+            68,
+            { "id": "og415769", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          ["Misael Dávila", "MC", 68, { "id": "og118130", "fonte": "fc26", "idade": 35, "nac": "Chile" }],
+          [
+            "Joaquín Montecinos",
+            "ATA",
+            68,
+            { "id": "og408342", "fonte": "estimado-valor", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Joaquin Larrivey",
+            "ATA",
+            68,
+            { "id": "og43443", "fonte": "estimado-valor", "idade": 42, "nac": "Argentina" }
+          ],
+          ["Brayan Véjar", "LE", 67, { "id": "og335396", "fonte": "fc26", "idade": 31, "nac": "Chile" }],
+          [
+            "Norman Rodríguez",
+            "ZAG",
+            67,
+            { "id": "og729492", "fonte": "fc26", "idade": 28, "nac": "Uruguai" }
+          ],
+          [
+            "Sebastián Martínez",
+            "MC",
+            67,
+            { "id": "og241688", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Ariel Cáceres",
+            "ZAG",
+            66,
+            { "id": "og647649", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Diego Carrasco",
+            "ZAG",
+            66,
+            { "id": "og416357", "fonte": "estimado-clube", "idade": 31, "nac": "Chile" }
+          ],
+          [
+            "Fabrizio Manzo",
+            "MC",
+            66,
+            { "id": "og559622", "fonte": "estimado-clube", "idade": 28, "nac": "Chile" }
+          ],
+          ["Tomás Carrillo", "MC", 66, { "id": "og3560393", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Ethan Espinoza",
+            "MC",
+            66,
+            { "id": "og627345", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          ["Claudio Toro", "MC", 66, { "id": "og3559846", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Matías Cavalleri",
+            "ATA",
+            66,
+            { "id": "og620426", "fonte": "estimado-clube", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Mario Sandoval",
+            "MC",
+            65,
+            { "id": "og213723", "fonte": "estimado-clube", "idade": 35, "nac": "Chile" }
+          ],
+          [
+            "Carlos Escobar",
+            "ATA",
+            65,
+            { "id": "og231042", "fonte": "estimado-clube", "idade": 36, "nac": "Chile" }
+          ],
+          [
+            "Aldrix Jara",
+            "ATA",
+            65,
+            { "id": "og730454", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Martín Ramírez",
+            "ZAG",
+            64,
+            { "id": "og1526655", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Dilan Varas",
+            "ZAG",
+            64,
+            { "id": "og3544769", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Mateo González",
+            "ZAG",
+            64,
+            { "id": "og2499937", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Nicolás Fuentes",
+            "MC",
+            64,
+            { "id": "og2516862", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Fernando Romero",
+            "ATA",
+            64,
+            { "id": "og514459", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Bastián Escobar",
+            "ATA",
+            64,
+            { "id": "og1179491", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Matias Ramirez",
+            "ZAG",
+            62,
+            { "id": "og3651659", "fonte": "estimado-clube", "idade": 18, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "union-la-calera",
+        "nome": "Unión La Calera",
+        "sigla": "UNI",
+        "elenco": [
+          [
+            "Nicolás Avellaneda",
+            "GOL",
+            69,
+            { "id": "og336894", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Nelson Espinoza",
+            "GOL",
+            67,
+            { "id": "og369923", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          ["Samuel Cordova", "GOL", 65, { "id": "og3651945", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Matías Campos",
+            "ATA",
+            70,
+            { "id": "og116300", "fonte": "estimado-valor", "idade": 35, "nac": "Chile" }
+          ],
+          [
+            "Bayron Oyarzo",
+            "ATA",
+            69,
+            { "id": "og422882", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          [
+            "Kevin Méndez",
+            "ATA",
+            69,
+            { "id": "og374941", "fonte": "estimado-valor", "idade": 30, "nac": "Uruguai" }
+          ],
+          [
+            "Juan Salomoni",
+            "ZAG",
+            68,
+            { "id": "og1117139", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Christopher Díaz",
+            "ZAG",
+            68,
+            { "id": "og318514", "fonte": "estimado-valor", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Rodrigo Pérez",
+            "MC",
+            68,
+            { "id": "og944730", "fonte": "estimado-valor", "idade": 30, "nac": "Uruguai" }
+          ],
+          [
+            "Sebastián Sáez",
+            "ATA",
+            68,
+            { "id": "og272570", "fonte": "estimado-valor", "idade": 41, "nac": "Argentina" }
+          ],
+          ["Daniel Gutiérrez", "ZAG", 67, { "id": "og708074", "fonte": "fc26", "idade": 23, "nac": "Chile" }],
+          [
+            "Camilo Moya",
+            "MC",
+            67,
+            { "id": "og484764", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Cristián Gutiérrez",
+            "ZAG",
+            66,
+            { "id": "og451139", "fonte": "estimado-valor", "idade": 29, "nac": "Canadá" }
+          ],
+          [
+            "Carlo Villanueva",
+            "MC",
+            66,
+            { "id": "og541851", "fonte": "estimado-valor", "idade": 27, "nac": "Chile" }
+          ],
+          ["Julio Nunez", "ZAG", 65, { "id": "og3651806", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Marcos Alvarez", "ZAG", 65, { "id": "og3651968", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Yonathan Andía",
+            "ZAG",
+            65,
+            { "id": "og624878", "fonte": "estimado-clube", "idade": 34, "nac": "Chile" }
+          ],
+          [
+            "Javier Saldias",
+            "ZAG",
+            65,
+            { "id": "og831816", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          ["Pablo Valero", "MC", 65, { "id": "og3596394", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Cristobal Lindermann",
+            "MC",
+            65,
+            { "id": "og3528233", "fonte": "estimado-clube", "nac": "Chile" }
+          ],
+          [
+            "Brian Ferreyra",
+            "ATA",
+            65,
+            { "id": "og840729", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Nicolás Palma",
+            "ZAG",
+            64,
+            { "id": "og846852", "fonte": "estimado-valor", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Rodrigo Cáseres",
+            "ZAG",
+            64,
+            { "id": "og850426", "fonte": "fc26", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Valentino Torrente",
+            "ZAG",
+            63,
+            { "id": "og1817166", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina" }
+          ],
+          [
+            "Benjamin Caffaratti",
+            "MC",
+            63,
+            { "id": "og3649792", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina" }
+          ],
+          [
+            "Benjamín Argandona",
+            "MC",
+            63,
+            { "id": "og3519201", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina" }
+          ],
+          [
+            "Cristobal Orrego",
+            "MC",
+            63,
+            { "id": "og3652255", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Joan Cruz",
+            "MC",
+            63,
+            { "id": "og708835", "fonte": "estimado-valor", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Francisco Pozzo",
+            "ATA",
+            63,
+            { "id": "og1242666", "fonte": "estimado-valor", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Javier Gandara",
+            "ATA",
+            63,
+            { "id": "og3701802", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "huachipato-2265",
+        "nome": "Huachipato",
+        "sigla": "HUA",
+        "elenco": [
+          [
+            "Rodrigo Odriozola",
+            "GOL",
+            69,
+            { "id": "og89234", "fonte": "estimado-valor", "idade": 38, "nac": "Uruguai" }
+          ],
+          [
+            "Christian Bravo",
+            "GOL",
+            63,
+            { "id": "og1179476", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Ignacio Cruzat",
+            "GOL",
+            61,
+            { "id": "og3503944", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Lionel Altamirano",
+            "ATA",
+            72,
+            { "id": "og333069", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina" }
+          ],
+          [
+            "Cris Martínez",
+            "ATA",
+            72,
+            { "id": "og229077", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai" }
+          ],
+          [
+            "Rafael Caroca",
+            "ZAG",
+            70,
+            { "id": "og85218", "fonte": "estimado-valor", "idade": 37, "nac": "Chile" }
+          ],
+          [
+            "Claudio Sepúlveda",
+            "MC",
+            70,
+            { "id": "og245613", "fonte": "estimado-valor", "idade": 34, "nac": "Chile" }
+          ],
+          [
+            "Nicolás Vargas",
+            "ZAG",
+            69,
+            { "id": "og245560", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Ezequiel Cañete",
+            "MC",
+            67,
+            { "id": "og783504", "fonte": "fc26", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Maximiliano Rodríguez",
+            "ATA",
+            66,
+            { "id": "og647637", "fonte": "fc26", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Sergio Núñez",
+            "ATA",
+            66,
+            { "id": "og819805", "fonte": "estimado-valor", "idade": 26, "nac": "Uruguai" }
+          ],
+          [
+            "Guillermo Guaiquil",
+            "ZAG",
+            65,
+            { "id": "og884875", "fonte": "estimado-clube", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Cristián Toro",
+            "ZAG",
+            65,
+            { "id": "og722786", "fonte": "estimado-valor", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "José Castro",
+            "ZAG",
+            65,
+            { "id": "og857654", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          ["Pablo Bohle", "MC", 65, { "id": "og3532460", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Carlos Herrera",
+            "MC",
+            65,
+            { "id": "og649711", "fonte": "estimado-clube", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Erik De los Santos",
+            "MC",
+            65,
+            { "id": "og689466", "fonte": "estimado-clube", "idade": 27, "nac": "Uruguai" }
+          ],
+          [
+            "Mario Briceño",
+            "ATA",
+            65,
+            { "id": "og415842", "fonte": "estimado-clube", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Luciano Arriagada",
+            "ATA",
+            65,
+            { "id": "og627349", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Harold Antiñirre",
+            "ATA",
+            65,
+            { "id": "og730472", "fonte": "estimado-clube", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Benjamin Mellado",
+            "ZAG",
+            63,
+            { "id": "og1820372", "fonte": "estimado-clube", "idade": 22, "nac": "Chile" }
+          ],
+          [
+            "Lucas Velásquez",
+            "ZAG",
+            63,
+            { "id": "og1179482", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Maximiliano Osorio",
+            "ZAG",
+            63,
+            { "id": "og3543349", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Kevin Altez",
+            "MC",
+            63,
+            { "id": "og983376", "fonte": "estimado-clube", "idade": 21, "nac": "Uruguai" }
+          ],
+          [
+            "Benjamín Ampuero",
+            "MC",
+            63,
+            { "id": "og1179483", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Antonio Perlaza",
+            "ATA",
+            63,
+            { "id": "og3636702", "fonte": "estimado-clube", "idade": 20, "nac": "Colômbia" }
+          ],
+          [
+            "Juan Figueroa",
+            "ATA",
+            63,
+            { "id": "og1183531", "fonte": "estimado-valor", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Claudio Torres",
+            "ATA",
+            63,
+            { "id": "og857543", "fonte": "estimado-valor", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Maicol León",
+            "ZAG",
+            62,
+            { "id": "og857406", "fonte": "estimado-valor", "idade": 23, "nac": "Chile" }
+          ],
+          [
+            "Benjamin Leiva",
+            "ZAG",
+            61,
+            { "id": "og3651690", "fonte": "estimado-clube", "idade": 17, "nac": "Chile" }
+          ]
+        ]
+      },
+      {
+        "id": "cobresal-2262",
+        "nome": "Cobresal",
+        "sigla": "COB",
+        "elenco": [
+          [
+            "Matías Olguín",
+            "GOL",
+            66,
+            { "id": "og640750", "fonte": "estimado-clube", "idade": 30, "nac": "Chile" }
+          ],
+          [
+            "Matias Vasquez",
+            "GOL",
+            62,
+            { "id": "og2624953", "fonte": "estimado-clube", "idade": 19, "nac": "Chile" }
+          ],
+          [
+            "Renato González",
+            "GOL",
+            62,
+            { "id": "og2528351", "fonte": "estimado-clube", "idade": 16, "nac": "Chile" }
+          ],
+          [
+            "José Tiznado",
+            "ZAG",
+            70,
+            { "id": "og424232", "fonte": "estimado-valor", "idade": 32, "nac": "Chile" }
+          ],
+          [
+            "Guillermo Pacheco",
+            "ZAG",
+            70,
+            { "id": "og253527", "fonte": "estimado-valor", "idade": 37, "nac": "Chile" }
+          ],
+          [
+            "Franco Bechtholdt",
+            "ZAG",
+            69,
+            { "id": "og310599", "fonte": "estimado-valor", "idade": 33, "nac": "Chile" }
+          ],
+          [
+            "Juan Fuentes",
+            "MC",
+            69,
+            { "id": "og372074", "fonte": "estimado-valor", "idade": 31, "nac": "Chile" }
+          ],
+          [
+            "César Yanis",
+            "ATA",
+            68,
+            { "id": "og789694", "fonte": "estimado-valor", "idade": 30, "nac": "Panamá" }
+          ],
+          [
+            "Christian Moreno",
+            "ZAG",
+            67,
+            { "id": "og510447", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina" }
+          ],
+          ["Steffan Pino", "ATA", 67, { "id": "og546944", "fonte": "fc26", "idade": 32, "nac": "Chile" }],
+          ["Franco Frías", "MEI", 67, { "id": "og847082", "fonte": "fc26", "idade": 24, "nac": "Argentina" }],
+          [
+            "Rodrigo Sandoval",
+            "ZAG",
+            66,
+            { "id": "og884231", "fonte": "estimado-clube", "idade": 25, "nac": "Chile" }
+          ],
+          [
+            "Antonio Castillo",
+            "ZAG",
+            66,
+            { "id": "og521619", "fonte": "estimado-clube", "idade": 27, "nac": "Chile" }
+          ],
+          [
+            "Esteban Valencia",
+            "MC",
+            66,
+            { "id": "og607711", "fonte": "estimado-clube", "idade": 27, "nac": "Chile" }
+          ],
+          ["Bryan Carvallo", "MEI", 66, { "id": "og400450", "fonte": "fc26", "idade": 30, "nac": "Chile" }],
+          [
+            "Felipe Villagrán",
+            "MC",
+            66,
+            { "id": "og522180", "fonte": "estimado-clube", "idade": 29, "nac": "Chile" }
+          ],
+          ["Mateo Espinoza", "ATA", 66, { "id": "og3563506", "fonte": "estimado-clube", "nac": "Chile" }],
+          ["Facundo Vergara", "ATA", 66, { "id": "og3651950", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Julián Brea",
+            "ATA",
+            66,
+            { "id": "og658792", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Janpol Morales",
+            "ATA",
+            66,
+            { "id": "og872099", "fonte": "estimado-clube", "idade": 28, "nac": "Panamá" }
+          ],
+          ["Camilo Sepúlveda", "ATA", 66, { "id": "og3569164", "fonte": "estimado-clube", "nac": "Chile" }],
+          [
+            "Aaron Astudillo",
+            "ZAG",
+            65,
+            { "id": "og679469", "fonte": "estimado-valor", "idade": 26, "nac": "Chile" }
+          ],
+          [
+            "Vicente Torres",
+            "ZAG",
+            64,
+            { "id": "og2528350", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Axel Fuentes",
+            "ZAG",
+            64,
+            { "id": "og3530406", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Vicente Torres",
+            "ZAG",
+            64,
+            { "id": "og3563505", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Anibal Gajardo",
+            "ZAG",
+            64,
+            { "id": "og2521991", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Víctor Campos",
+            "ZAG",
+            64,
+            { "id": "og1179478", "fonte": "estimado-clube", "idade": 20, "nac": "Chile" }
+          ],
+          [
+            "Francisco Sepulveda",
+            "MC",
+            64,
+            { "id": "og3640885", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Benjamín Valenzuela",
+            "MC",
+            64,
+            { "id": "og2314214", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ],
+          [
+            "Matias Contreras",
+            "MC",
+            64,
+            { "id": "og1814104", "fonte": "estimado-clube", "idade": 21, "nac": "Chile" }
+          ]
+        ]
+      }
+    ],
+    "B": [],
+    "C": [],
+    "D": []
+  },
+  "vagasDiretasCopa": [],
+  "classicos": [],
+  "semCopa": true,
+  "formatos": {
+    "A": {
+      "divisao": "A",
+      "id": "primera-division-chile",
+      "nome": "Primera División 2026",
+      "clubes": 16,
+      "fases": [
+        {
+          "tipo": "liga",
+          "nome": "Pontos corridos",
+          "grupos": 1,
+          "distribuicao": "unico",
+          "turnos": 2,
+          "avancamPorGrupo": 0
+        }
+      ],
+      "acesso": [],
+      "rebaixamento": []
+    }
+  }
+}

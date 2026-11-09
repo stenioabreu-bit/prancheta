@@ -1,5 +1,6 @@
 import { type Tabela, classificacao, novaTabela, registrarResultado, rodadasTodosContraTodos } from "../liga";
 import { type Rng, embaralhar } from "../rng";
+import { type Horario, horarioDaData } from "./calendario";
 import type {
   Chaveamento,
   Confronto,
@@ -22,15 +23,18 @@ function agendar(
   agenda: Agenda,
   fase: string,
   grupo: number,
-  rodada: number,
+  quando: number | Horario,
   casa: string,
   visitante: string,
 ): string {
+  const h: Horario = typeof quando === "number" ? { semana: quando, meio: agenda.meioDeSemana } : quando;
+  const rodada = h.semana;
   const id = `${agenda.competicao}:${fase}:${grupo}:${rodada}:${casa}:${visitante}`;
   agenda.jogos[id] = {
     id,
     rodada,
-    meioDeSemana: agenda.meioDeSemana,
+    meioDeSemana: h.meio,
+    ...(h.data ? { data: h.data } : {}),
     competicao: agenda.competicao,
     fase,
     grupo,
@@ -73,7 +77,25 @@ export function montarFaseLiga(
   agenda: Agenda,
   rng: Rng,
 ): EstadoFaseLiga {
+  if (fase.jogos?.length) {
+    // Tabela real: confrontos e datas oficiais, classificação em grupo único.
+    const reais = fase.jogos.filter((j) => clubes.includes(j.casa) && clubes.includes(j.fora));
+    const horarios = reais.map((j) => horarioDaData(j.data));
+    reais.forEach((j, i) => agendar(agenda, fase.nome, 0, horarios[i]!, j.casa, j.fora));
+    const semanas = horarios.map((h) => h.semana);
+    return {
+      tipo: "liga",
+      nome: fase.nome,
+      grupos: [clubes.slice()],
+      tabelas: [novaTabela(clubes)],
+      rodadaInicial: Math.min(...semanas),
+      rodadaFinal: Math.max(...semanas),
+      encerrada: false,
+    };
+  }
   const grupos = distribuirEmGrupos(clubes, fase.grupos, fase.distribuicao);
+  const quando = (r: number): number | Horario =>
+    fase.datas?.[r] ? horarioDaData(fase.datas[r]!) : rodadaInicial + r;
   grupos.forEach((grupo, g) => {
     const turno = embaralhar(rng, rodadasTodosContraTodos(grupo));
     const rodadas =
@@ -81,7 +103,7 @@ export function montarFaseLiga(
         ? turno.concat(turno.map((r) => r.map((j) => ({ casa: j.visitante, visitante: j.casa }))))
         : turno;
     rodadas.forEach((jogos, r) => {
-      for (const j of jogos) agendar(agenda, fase.nome, g, rodadaInicial + r, j.casa, j.visitante);
+      for (const j of jogos) agendar(agenda, fase.nome, g, quando(r), j.casa, j.visitante);
     });
   });
   return {
@@ -89,8 +111,10 @@ export function montarFaseLiga(
     nome: fase.nome,
     grupos,
     tabelas: grupos.map((g) => novaTabela(g)),
-    rodadaInicial,
-    rodadaFinal: rodadaInicial + rodadasDaLiga(fase, clubes.length) - 1,
+    rodadaInicial: fase.datas?.length ? horarioDaData(fase.datas[0]!).semana : rodadaInicial,
+    rodadaFinal: fase.datas?.length
+      ? horarioDaData(fase.datas[rodadasDaLiga(fase, clubes.length) - 1] ?? fase.datas.at(-1)!).semana
+      : rodadaInicial + rodadasDaLiga(fase, clubes.length) - 1,
     encerrada: false,
   };
 }
@@ -140,14 +164,15 @@ export function cruzarGrupos(classificados: readonly string[][]): [string, strin
 export function montarFaseMataMata(
   fase: Pick<FaseMataMata, "nome" | "idaEVolta">,
   pares: readonly [string, string][],
-  /** Rodada do jogo único, ou da ida e da volta. */
-  rodadas: readonly number[],
+  /** Rodada (ou horário com data) do jogo único, ou da ida e da volta. */
+  rodadas: readonly (number | Horario)[],
   agenda: Agenda,
   /** Quem tem o mando da volta (ou do jogo único): o melhor da campanha, ou sorteio. */
   mandoFinal: (a: string, b: string) => string,
   neutro = false,
 ): EstadoFaseMataMata {
-  const [ida, volta] = rodadas as [number, number?];
+  const [ida, volta] = rodadas as [number | Horario, (number | Horario)?];
+  const semana = (q: number | Horario) => (typeof q === "number" ? q : q.semana);
   const confrontos: Confronto[] = pares.map(([a, b], i) => {
     const mandante = mandoFinal(a, b);
     const outro = mandante === a ? b : a;
@@ -165,8 +190,8 @@ export function montarFaseMataMata(
     tipo: "mataMata",
     nome: fase.nome,
     confrontos,
-    rodadaInicial: ida,
-    rodadaFinal: volta ?? ida,
+    rodadaInicial: semana(ida),
+    rodadaFinal: semana(volta ?? ida),
     encerrada: false,
   };
 }

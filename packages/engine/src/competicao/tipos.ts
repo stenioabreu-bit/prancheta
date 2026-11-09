@@ -33,6 +33,10 @@ export interface FaseLiga {
   turnos: 1 | 2;
   /** Quantos de cada grupo seguem para a próxima fase. */
   avancamPorGrupo: number;
+  /** Data real de cada rodada (AAAA-MM-DD), na ordem; sem ela, rodadas semanais seguidas. */
+  datas?: string[];
+  /** Confrontos reais com data (grupo único): substituem o todos-contra-todos gerado. */
+  jogos?: { data: string; casa: string; fora: string }[];
 }
 
 export interface FaseMataMata {
@@ -50,6 +54,8 @@ export interface FaseMataMata {
    * com a fase seguinte da mesma origem, então as duas correm nas mesmas rodadas.
    */
   terminal?: boolean;
+  /** Datas reais da ida e da volta (ou do jogo único). */
+  datas?: string[];
 }
 
 export type Fase = FaseLiga | FaseMataMata;
@@ -86,6 +92,10 @@ export interface JogoAgendado {
   rodada: number;
   /** Jogo de Copa acontece no meio da semana, antes da rodada da liga. */
   meioDeSemana: boolean;
+  /** Data real (AAAA-MM-DD). Sem ela, vale a data padrão do horário. */
+  data?: string;
+  /** Datas anteriores, quando o jogo foi adiado/reagendado. */
+  adiadoDe?: string[];
   competicao: Divisao | "copa";
   fase: string;
   /** Grupo da fase de liga ou índice do confronto do mata-mata. */

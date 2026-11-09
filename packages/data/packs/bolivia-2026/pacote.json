@@ -1,1 +1,2749 @@
-{"formato": 1, "id": "bolivia-2026", "nome": "División Profesional 2026 (Bolívia)", "ficticio": false, "temporada": 2026, "divisoes": {"A": [{"id": "bolivar", "nome": "Bolívar", "sigla": "BOL", "elenco": [["Carlos Lampe", "GOL", 72, {"id": "og71034", "fonte": "fc26", "idade": 39, "nac": "Bolívia"}], ["Diego Méndez", "GOL", 66, {"id": "og178891", "fonte": "estimado-clube", "idade": 34, "nac": "Bolívia"}], ["Alejandro Hidalgo", "GOL", 64, {"id": "og952618", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Martín Cauteruccio", "ATA", 75, {"id": "og100233", "fonte": "fc26", "idade": 39, "nac": "Uruguai"}], ["Damián Batallini", "PD", 71, {"id": "og500862", "fonte": "fc26", "idade": 30, "nac": "Argentina"}], ["Xavier Arreaga", "ZAG", 69, {"id": "og405741", "fonte": "fc26", "idade": 32, "nac": "Equador"}], ["Carlos Melgar", "MC", 69, {"id": "og537457", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Bruno Miranda", "ATA", 69, {"id": "og383532", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia"}], ["Patito Rodríguez", "ATA", 69, {"id": "og55817", "fonte": "estimado-valor", "idade": 36, "nac": "Argentina"}], ["José Sagredo", "ZAG", 68, {"id": "og187807", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Dairon Asprilla", "PE", 68, {"id": "og250565", "fonte": "fc26", "idade": 34, "nac": "Colômbia"}], ["Santiago Echeverría", "ZAG", 67, {"id": "og365605", "fonte": "fc26", "idade": 36, "nac": "Argentina"}], ["Leonel Justiniano", "VOL", 67, {"id": "og246301", "fonte": "fc26", "idade": 34, "nac": "Bolívia"}], ["Erwin Saavedra", "LD", 67, {"id": "og400563", "fonte": "fc26", "idade": 30, "nac": "Bolívia"}], ["Leonardo Zabala", "ZAG", 66, {"id": "og609913", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Jhon García", "MC", 66, {"id": "og556019", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Carlos Sejas", "MC", 66, {"id": "og922421", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Lucas Chávez", "ATA", 66, {"id": "og863420", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Jesús Sagredo", "ZAG", 65, {"id": "og258638", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Robson Matheus", "MC", 65, {"id": "og609918", "fonte": "fc26", "idade": 24, "nac": "Bolívia"}], ["Dorny Romero", "ATA", 65, {"id": "og702713", "fonte": "fc26", "idade": 28, "nac": "República Dominicana"}], ["Matias Galindo", "MC", 64, {"id": "og1031566", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Juan Marigua", "ZAG", 62, {"id": "og3520259", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Luis Paz", "LD", 62, {"id": "og1003850", "fonte": "fc26", "idade": 22, "nac": "Bolívia"}], ["Matias Espínoza", "ZAG", 62, {"id": "og2529390", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Fernando Mena", "ZAG", 62, {"id": "og2529382", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Said Herrera", "MC", 62, {"id": "og3650575", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia"}], ["Andy Toco", "MC", 62, {"id": "og2529075", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Luis Parada", "MC", 62, {"id": "og3377052", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia"}], ["Iker Menacho", "MC", 62, {"id": "og3650676", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia"}]]}, {"id": "always-ready", "nome": "Always Ready", "sigla": "ALW", "elenco": [["Alain Baroja", "GOL", 68, {"id": "og74962", "fonte": "estimado-valor", "idade": 37, "nac": "Venezuela"}], ["Nicolas Salazar", "GOL", 67, {"id": "og2529447", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Saidt Mustafá", "GOL", 66, {"id": "og401996", "fonte": "fc26", "idade": 36, "nac": "Bolívia"}], ["Alex Rambal", "ZAG", 70, {"id": "og359264", "fonte": "estimado-valor", "idade": 34, "nac": "Colômbia"}], ["Álvaro Quiroga", "MC", 69, {"id": "og515400", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia"}], ["Joel Amoroso", "MC", 69, {"id": "og442724", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina"}], ["Juan Godoy", "ATA", 69, {"id": "og860400", "fonte": "estimado-valor", "idade": 33, "nac": "Bolívia"}], ["Richet Gómez", "ZAG", 68, {"id": "og515424", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia"}], ["Luis Caicedo", "ZAG", 68, {"id": "og853643", "fonte": "estimado-valor", "idade": 29, "nac": "Equador"}], ["Fernando Saucedo", "MC", 68, {"id": "og85149", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Enrique Triverio", "ATA", 68, {"id": "og273270", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina"}], ["Matheus Rodriguez", "ZAG", 67, {"id": "og1330447", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["José Herrera", "ZAG", 67, {"id": "og781908", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Javier Uzeda", "MC", 67, {"id": "og609928", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Darío Torrico", "MC", 67, {"id": "og696960", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Ramon Carvalho", "MC", 67, {"id": "og474551", "fonte": "estimado-clube", "idade": 29, "nac": "Brasil"}], ["Carmelo Algarañaz", "ATA", 67, {"id": "og443956", "fonte": "estimado-valor", "idade": 30, "nac": "Bolívia"}], ["Edisson Restrepo", "ZAG", 66, {"id": "og625110", "fonte": "fc26", "idade": 29, "nac": "Colômbia"}], ["Nathan Tito", "MC", 65, {"id": "og2347520", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Nicolas Villarroel", "ZAG", 63, {"id": "og2494105", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia"}], ["José Ojeda", "ZAG", 63, {"id": "og2831049", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia"}], ["Kenyhiro Estrada", "ZAG", 63, {"id": "og2831046", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Matheus Rodríguez", "ZAG", 63, {"id": "og3587350", "fonte": "estimado-clube", "idade": 15, "nac": "Bolívia"}], ["Santiago Somoya", "ZAG", 63, {"id": "og2529383", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia"}], ["Matías Cuellar", "ZAG", 63, {"id": "og2831047", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia"}], ["Mario Ruiz", "MC", 63, {"id": "og3663392", "fonte": "estimado-clube", "idade": 16, "nac": "Bolívia"}], ["Héctor Galvis", "MC", 63, {"id": "og2529385", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Andru Gutierrez", "MC", 63, {"id": "og3626047", "fonte": "estimado-clube", "idade": 15, "nac": "Bolívia"}], ["Alexander Cespedes", "MC", 63, {"id": "og3569619", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Roberto Perez", "MC", 63, {"id": "og2830546", "fonte": "estimado-clube", "idade": 16, "nac": "Bolívia"}]]}, {"id": "the-strongest", "nome": "The Strongest", "sigla": "THE", "elenco": [["Rodrigo Banegas", "GOL", 67, {"id": "og490916", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Diego Valdivia", "GOL", 67, {"id": "og774549", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Sebastian Arismendi", "GOL", 65, {"id": "og2820623", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Adrián Jusino", "ZAG", 70, {"id": "og633449", "fonte": "estimado-valor", "idade": 34, "nac": "Bolívia"}], ["Jaime Arrascaita", "MC", 69, {"id": "og367617", "fonte": "estimado-valor", "idade": 33, "nac": "Bolívia"}], ["Henrique Pachu", "ATA", 69, {"id": "og480995", "fonte": "estimado-valor", "idade": 30, "nac": "Brasil"}], ["Pablo Pedraza", "ZAG", 68, {"id": "og187800", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia"}], ["Raúl Castro", "MC", 68, {"id": "og371897", "fonte": "estimado-valor", "idade": 37, "nac": "Bolívia"}], ["Martín Chiatti", "ZAG", 67, {"id": "og851939", "fonte": "estimado-clube", "idade": 33, "nac": "Argentina"}], ["Carlos Roca", "ZAG", 67, {"id": "og548734", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Jovani Welch", "MC", 67, {"id": "og720155", "fonte": "estimado-clube", "idade": 26, "nac": "Panamá"}], ["Kevin Romay", "MC", 67, {"id": "og504948", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia"}], ["Kevin Salvatierra", "MC", 67, {"id": "og636826", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Vi­ctor Cuellar", "MC", 67, {"id": "og783873", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Darwin Lom", "ATA", 67, {"id": "og789685", "fonte": "estimado-clube", "idade": 29, "nac": "Guatemala"}], ["Adrián Estacio", "ATA", 67, {"id": "og637582", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia"}], ["Fabricio Quaglio", "ATA", 67, {"id": "og899171", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Gabriel Sotomayor", "ATA", 67, {"id": "og696958", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Carlos Ventura", "ATA", 67, {"id": "og859095", "fonte": "estimado-valor", "idade": 29, "nac": "República Dominicana"}], ["Widen Saucedo", "LD", 65, {"id": "og557001", "fonte": "fc26", "idade": 29, "nac": "Bolívia"}], ["Yamil Portuncho", "ZAG", 65, {"id": "og2743972", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Dilan Saavedra", "MC", 65, {"id": "og1814116", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Santiago Melgar", "MC", 65, {"id": "og1814114", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Gerel Buezo", "MC", 65, {"id": "og858550", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Roy Ribertt", "MC", 65, {"id": "og2824234", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Elmar Albornoz", "MC", 65, {"id": "og3649833", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Pablo Tejerina", "MC", 65, {"id": "og3649832", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Hanibal Arrascaita", "ATA", 65, {"id": "og3612224", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Kevin Chacón", "ZAG", 63, {"id": "og3563130", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Santiago Arce", "VOL", 63, {"id": "og616113", "fonte": "fc26", "idade": 26, "nac": "Bolívia"}]]}, {"id": "guabira-2382", "nome": "Guabirá", "sigla": "GUA", "elenco": [["Manuel Ferrel", "GOL", 67, {"id": "og676078", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Jorge Araúz", "GOL", 67, {"id": "og400348", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Gastón Gómez", "GOL", 67, {"id": "og439689", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina"}], ["Milciades Portillo", "ZAG", 69, {"id": "og289560", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai"}], ["Carlos Áñez", "MC", 69, {"id": "og187798", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia"}], ["Thiago", "MC", 69, {"id": "og150032", "fonte": "estimado-valor", "idade": 41, "nac": "Brasil"}], ["Luciano Ursino", "MC", 69, {"id": "og181787", "fonte": "estimado-valor", "idade": 38, "nac": "Bolívia"}], ["Joaquín Barro", "ZAG", 67, {"id": "og744049", "fonte": "estimado-clube", "idade": 25, "nac": "Argentina"}], ["Andrés Moreno", "ZAG", 67, {"id": "og996422", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Sergio Gil", "ZAG", 67, {"id": "og515417", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Samuel Garzón", "MC", 67, {"id": "og561222", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Juan Parada", "MC", 67, {"id": "og1823690", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Rafinha", "MC", 67, {"id": "og255987", "fonte": "estimado-clube", "idade": 34, "nac": "Bolívia"}], ["Nicolas Masskooni", "MC", 67, {"id": "og1633768", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina"}], ["Denilso Fernandez", "MC", 67, {"id": "og1062070", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Pablo Luján", "MC", 67, {"id": "og774100", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Gustavo Peredo", "ATA", 67, {"id": "og605596", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Facundo Alarcón", "ATA", 67, {"id": "og1396178", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina"}], ["Makerlo Tellez", "ATA", 67, {"id": "og1169929", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Makerlo Melendez", "ATA", 67, {"id": "og3600191", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Víctor Ábrego", "ATA", 67, {"id": "og625329", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia"}], ["Milton Maciel", "MC", 66, {"id": "og630440", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Rafael Corrales", "ZAG", 65, {"id": "og1411350", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Jorge Flores", "LE", 65, {"id": "og277244", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Moain Joffre", "MC", 65, {"id": "og3630983", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Pablo Melgar", "MC", 65, {"id": "og3533971", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Moain Nacif", "MC", 65, {"id": "og3541824", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Yuto Nishizawa", "MC", 65, {"id": "og2530314", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Marco Antonio Pinto", "ATA", 65, {"id": "og2830756", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Asiel Paredes", "ATA", 65, {"id": "og1411263", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}]]}, {"id": "blooming-2381", "nome": "Blooming", "sigla": "BLO", "elenco": [["Braulio Uraezaña", "GOL", 69, {"id": "og400354", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia"}], ["Carlos Jiménez", "GOL", 67, {"id": "og679241", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Gustavo Almada", "GOL", 67, {"id": "og1005743", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia"}], ["Gabriel Valverde", "ZAG", 69, {"id": "og118383", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Danny Bejarano", "MC", 68, {"id": "og187805", "fonte": "estimado-valor", "idade": 32, "nac": "Bolívia"}], ["Matías Abisab", "MC", 68, {"id": "og262344", "fonte": "estimado-valor", "idade": 33, "nac": "Uruguai"}], ["Denilson Durán", "ZAG", 67, {"id": "og953732", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Juan Mercado", "ZAG", 67, {"id": "og537423", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Diago Giménez", "ZAG", 67, {"id": "og744052", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina"}], ["Julio Vila", "ZAG", 67, {"id": "og952678", "fonte": "estimado-clube", "idade": 30, "nac": "Argentina"}], ["Eduardo Álvarez", "ZAG", 67, {"id": "og708989", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Marc Enoumba", "ZAG", 67, {"id": "og696951", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["José María Carrasco", "ZAG", 67, {"id": "og501989", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Rafael Morales", "ZAG", 67, {"id": "og3637221", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Moisés Villarroel", "MC", 67, {"id": "og383528", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Roberto Hinojoza", "MC", 67, {"id": "og730715", "fonte": "estimado-clube", "idade": 27, "nac": "Colômbia"}], ["Richard Spenhay", "MC", 67, {"id": "og781052", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Mauricio Cabral", "ATA", 67, {"id": "og709060", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Miguel Villarroel", "ATA", 67, {"id": "og708996", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Cesar Menacho", "ATA", 67, {"id": "og651820", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Percy Loza", "ATA", 67, {"id": "og515429", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Mateo Ferreira", "MC", 65, {"id": "og2520336", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Juan González", "MC", 65, {"id": "og2520335", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Roberto Melgar", "MC", 65, {"id": "og2442411", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Luis Chávez", "MC", 65, {"id": "og2520334", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Héctor Suárez", "MC", 65, {"id": "og952619", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Guilmar Centella", "MC", 65, {"id": "og953745", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Santiago Castedo", "ATA", 65, {"id": "og2490022", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Eduardo Justiniano", "ATA", 65, {"id": "og952622", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Giovanni Cadore", "ATA", 65, {"id": "og2520328", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}]]}, {"id": "independiente-petrolero-2383", "nome": "Independiente Petrolero", "sigla": "IND", "elenco": [["Jhohan Gutiérrez", "GOL", 66, {"id": "og586053", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Jhunior Vera", "GOL", 66, {"id": "og1411340", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Leonel Duran", "GOL", 64, {"id": "og3626064", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Ronny Montero", "ZAG", 69, {"id": "og175222", "fonte": "estimado-valor", "idade": 35, "nac": "Bolívia"}], ["Ruddy Cardozo", "MC", 68, {"id": "og85143", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Gustavo Cristaldo", "MC", 68, {"id": "og85308", "fonte": "estimado-valor", "idade": 37, "nac": "Paraguai"}], ["Thomaz", "MC", 68, {"id": "og53385", "fonte": "estimado-valor", "idade": 40, "nac": "Brasil"}], ["Jonatan Cristaldo", "ATA", 68, {"id": "og36667", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina"}], ["Gilbert Álvarez", "ATA", 68, {"id": "og99285", "fonte": "estimado-valor", "idade": 34, "nac": "Bolívia"}], ["Luis Palma", "ZAG", 67, {"id": "og897041", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["Willie", "ATA", 67, {"id": "og274647", "fonte": "estimado-valor", "idade": 33, "nac": "Brasil"}], ["Lázaro Crescencio", "ZAG", 66, {"id": "og858570", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Eduardo", "ZAG", 66, {"id": "og824809", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["Luis Rodriguez", "ZAG", 66, {"id": "og609925", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Heber Leaños", "ZAG", 66, {"id": "og522454", "fonte": "estimado-clube", "idade": 36, "nac": "Bolívia"}], ["Roni", "ZAG", 66, {"id": "og693091", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["Stiven Vargas", "ZAG", 66, {"id": "og952699", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Jesus Moreno", "MC", 66, {"id": "og3639704", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Daniel Rojas", "MC", 66, {"id": "og556022", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Cristian Urdininea", "MC", 66, {"id": "og281710", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Moises", "MC", 66, {"id": "og1533132", "fonte": "estimado-clube", "idade": 24, "nac": "Brasil"}], ["Wilfredo Soleto", "MC", 66, {"id": "og629095", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Adelan", "MC", 66, {"id": "og723550", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["José Soria", "MC", 66, {"id": "og3571181", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Jefferson Carioca", "MC", 66, {"id": "og726515", "fonte": "estimado-clube", "idade": 24, "nac": "Brasil"}], ["Gean", "ATA", 66, {"id": "og1010011", "fonte": "estimado-clube", "idade": 23, "nac": "Brasil"}], ["Alan Mercado", "ATA", 66, {"id": "og385611", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Diego Navarro", "ATA", 66, {"id": "og279608", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Saúl Torres", "LD", 65, {"id": "og277242", "fonte": "fc26", "idade": 36, "nac": "Bolívia"}], ["Daniel Aponte", "ZAG", 64, {"id": "og952757", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}]]}, {"id": "aurora-2374", "nome": "Aurora", "sigla": "AUR", "elenco": [["Christian Chilo", "GOL", 66, {"id": "og280912", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia"}], ["Rubén Cordano", "GOL", 66, {"id": "og452816", "fonte": "fc26", "idade": 28, "nac": "Bolívia"}], ["Joel Terrazas", "GOL", 64, {"id": "og1372018", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Michael Rangel", "ATA", 69, {"id": "og252201", "fonte": "estimado-valor", "idade": 35, "nac": "Colômbia"}], ["Julián Velázquez", "ZAG", 68, {"id": "og136062", "fonte": "estimado-valor", "idade": 36, "nac": "Argentina"}], ["Jair Torrico", "ZAG", 68, {"id": "og147266", "fonte": "estimado-valor", "idade": 40, "nac": "Bolívia"}], ["Rodrigo Ramallo", "ATA", 68, {"id": "og216920", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Ivan Huayhuata", "ZAG", 67, {"id": "og258665", "fonte": "estimado-valor", "idade": 37, "nac": "Bolívia"}], ["Luis Barboza", "ZAG", 66, {"id": "og278621", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Santiago Carrasco", "ZAG", 66, {"id": "og532702", "fonte": "estimado-clube", "idade": 33, "nac": "México"}], ["José Córdova", "ZAG", 66, {"id": "og3545483", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Carlos Rey", "ZAG", 66, {"id": "og511344", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia"}], ["Iván Vidaurre", "MC", 66, {"id": "og279676", "fonte": "estimado-clube", "idade": 39, "nac": "Bolívia"}], ["Jose Amarilla", "MC", 66, {"id": "og2487637", "fonte": "estimado-clube", "idade": 39, "nac": "Argentina"}], ["Alfredo Amarilla", "MC", 66, {"id": "og952644", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai"}], ["Henry Vaca", "MC", 66, {"id": "og383533", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Harrison Mojica", "MC", 66, {"id": "og252169", "fonte": "estimado-clube", "idade": 33, "nac": "Colômbia"}], ["Ronaldo Sánchez", "MC", 66, {"id": "og501990", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Leandro Barro", "MC", 66, {"id": "og1552623", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina"}], ["Jaime Cornejo", "MC", 66, {"id": "og400351", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia"}], ["Junior Sánchez", "MEI", 66, {"id": "og472974", "fonte": "fc26", "idade": 34, "nac": "Bolívia"}], ["Miyhel Ortiz", "MC", 66, {"id": "og782880", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Enrique Troncoso", "MC", 66, {"id": "og845701", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Cristhian Abastoflor", "MC", 66, {"id": "og858582", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Mijael Peralta", "MC", 66, {"id": "og3630984", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Jefferson Ramos", "ATA", 66, {"id": "og781932", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia"}], ["Jhon Araujo", "ATA", 66, {"id": "og922410", "fonte": "estimado-clube", "nac": "Colômbia"}], ["John Araujo", "ATA", 66, {"id": "og967234", "fonte": "estimado-clube", "idade": 24, "nac": "Colômbia"}], ["Miguel Segovia", "ATA", 66, {"id": "og854236", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Alan Castro", "ATA", 66, {"id": "og1816753", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina"}]]}, {"id": "real-oruro-308110", "nome": "Real Oruro", "sigla": "REA", "elenco": [["Álex Arancibia", "GOL", 67, {"id": "og85135", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Israel Peña", "GOL", 66, {"id": "og860349", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Ronaldo Huanacota", "GOL", 64, {"id": "og1302824", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Leandro Corulo", "ZAG", 68, {"id": "og292222", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina"}], ["Denis Pinto", "ATA", 67, {"id": "og384091", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia"}], ["Daniel Castellón", "ZAG", 66, {"id": "og858528", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Carlos Chore", "ZAG", 66, {"id": "og709055", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Yhon Villegas", "ZAG", 66, {"id": "og710030", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Rivaldo Méndez", "ZAG", 66, {"id": "og1546931", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Joao Quiñonez", "ZAG", 66, {"id": "og646151", "fonte": "estimado-clube", "idade": 27, "nac": "Equador"}], ["Ademar Rivera", "MC", 66, {"id": "og2529444", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Carlos Carrasco", "MC", 66, {"id": "og3533965", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Hernán Tifner", "MC", 66, {"id": "og653629", "fonte": "estimado-clube", "idade": 30, "nac": "Argentina"}], ["Francisco Gatti", "MC", 66, {"id": "og840736", "fonte": "estimado-clube", "idade": 32, "nac": "Argentina"}], ["Raúl Ardaya", "MC", 66, {"id": "og879112", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Yhon Villegas", "ATA", 66, {"id": "og507266", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Alejando Barrón", "ATA", 66, {"id": "og562973", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Angel Quiñonez", "ATA", 66, {"id": "og581537", "fonte": "estimado-clube", "idade": 30, "nac": "Equador"}], ["Bryan Puma", "ATA", 66, {"id": "og3563125", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Yerco Vallejos", "ATA", 66, {"id": "og649432", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Edwin Rivera", "MC", 65, {"id": "og499093", "fonte": "estimado-clube", "idade": 37, "nac": "Bolívia"}], ["Alexis Bravo", "MC", 65, {"id": "og286887", "fonte": "estimado-clube", "idade": 42, "nac": "Argentina"}], ["Juan Montenegro", "PD", 65, {"id": "og537471", "fonte": "fc26", "idade": 29, "nac": "Bolívia"}], ["Yamil Calle", "ZAG", 64, {"id": "og2529441", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Rodrigo Ari", "ZAG", 64, {"id": "og3570064", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Reymar Balceras", "ZAG", 64, {"id": "og3517382", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Jose Lizarraga", "ZAG", 64, {"id": "og1633770", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Daniel Eid", "ZAG", 64, {"id": "og1302800", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Fabio Vargas", "MC", 64, {"id": "og1143280", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Carlos Zeballos", "MC", 64, {"id": "og3629374", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}]]}, {"id": "nacional-potosi-23446", "nome": "Nacional Potosí", "sigla": "NAC", "elenco": [["Elder Araúz", "GOL", 66, {"id": "og625332", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Pedro Galindo", "GOL", 64, {"id": "og187796", "fonte": "fc26", "idade": 31, "nac": "Bolívia"}], ["Jorge Mejia", "GOL", 64, {"id": "og708988", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Maicon Solís", "ATA", 69, {"id": "og502671", "fonte": "estimado-valor", "idade": 32, "nac": "Equador"}], ["Tommy Tobar", "ATA", 68, {"id": "og252044", "fonte": "estimado-valor", "idade": 39, "nac": "Colômbia"}], ["Maximiliano Núñez", "ATA", 68, {"id": "og76739", "fonte": "estimado-valor", "idade": 40, "nac": "Argentina"}], ["Luis Pavía", "PD", 66, {"id": "og512250", "fonte": "fc26", "idade": 27, "nac": "Bolívia"}], ["Andrés Torrico", "PE", 66, {"id": "og970720", "fonte": "fc26", "idade": 22, "nac": "Bolívia"}], ["Diego Hoyos", "MC", 66, {"id": "og175228", "fonte": "fc26", "idade": 34, "nac": "Bolívia"}], ["Pedro Azogue", "VOL", 65, {"id": "og136121", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Weslen Júnior", "ATA", 65, {"id": "og564899", "fonte": "estimado-valor", "idade": 26, "nac": "Brasil"}], ["Nelson Amarilla", "ZAG", 64, {"id": "og89030", "fonte": "estimado-clube", "idade": 39, "nac": "Paraguai"}], ["Sebastian Alvarez", "ZAG", 64, {"id": "og858526", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Oscar Baldomar", "LD", 64, {"id": "og443950", "fonte": "fc26", "idade": 30, "nac": "Bolívia"}], ["Juan Orellana", "ZAG", 64, {"id": "og452821", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Luis Demiquel", "LD", 64, {"id": "og694904", "fonte": "fc26", "idade": 26, "nac": "Bolívia"}], ["Rodrigo Ávila", "MC", 64, {"id": "og350603", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Juan Batista", "MC", 64, {"id": "og610147", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["Yesit Martínez", "MC", 64, {"id": "og858511", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Erick Cano", "MC", 64, {"id": "og640540", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Mirko Tomianovic", "ATA", 64, {"id": "og717089", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Willian Álvarez", "ATA", 64, {"id": "og537472", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Damián Villalba", "ATA", 64, {"id": "og896375", "fonte": "estimado-clube", "idade": 35, "nac": "Argentina"}], ["Mateo Abastoflor", "ATA", 64, {"id": "og609911", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Asaf Patzi", "MC", 62, {"id": "og1235050", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Jhojan Arce", "MC", 62, {"id": "og2529450", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Kevin Quiroz", "MC", 62, {"id": "og2543888", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Arnoldo Guanaile", "MC", 60, {"id": "og3663387", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia"}], ["Waldo Mollo", "MC", 60, {"id": "og3663393", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia"}], ["Kevin Bailaba", "MC", 60, {"id": "og3510568", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia"}]]}, {"id": "san-antonio-bulo-bulo-305479", "nome": "San Antonio Bulo Bulo", "sigla": "SAN", "elenco": [["Luca Giossa", "GOL", 65, {"id": "og819313", "fonte": "fc26", "idade": 26, "nac": "Uruguai"}], ["Leonardo Guzman", "GOL", 63, {"id": "og1056171", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Lucas Galarza", "GOL", 63, {"id": "og732693", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai"}], ["Cristhian Machado", "MC", 69, {"id": "og181446", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia"}], ["Francisco Rodríguez", "ZAG", 68, {"id": "og187801", "fonte": "estimado-valor", "idade": 32, "nac": "Bolívia"}], ["Ramiro Ballivián", "ZAG", 68, {"id": "og100667", "fonte": "estimado-valor", "idade": 34, "nac": "Bolívia"}], ["Hallyson", "ZAG", 67, {"id": "og440808", "fonte": "estimado-valor", "idade": 32, "nac": "Brasil"}], ["Adalid Terrazas", "MEI", 67, {"id": "og556023", "fonte": "fc26", "idade": 26, "nac": "Bolívia"}], ["Ronald Bustos", "LD", 64, {"id": "og858564", "fonte": "fc26", "idade": 22, "nac": "Bolívia"}], ["Saulo Guerra", "PD", 64, {"id": "og537473", "fonte": "fc26", "idade": 34, "nac": "Bolívia"}], ["João Pedro", "LE", 64, {"id": "og716264", "fonte": "fc26", "idade": 23, "nac": "Brasil"}], ["Wagner Vidal", "ZAG", 63, {"id": "og626875", "fonte": "estimado-clube", "idade": 28, "nac": "Brasil"}], ["Alonso Sánchez", "ZAG", 63, {"id": "og781898", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia"}], ["César Romero", "ZAG", 63, {"id": "og1025239", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Andy Campos", "MC", 63, {"id": "og3577866", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Juan Magallanes", "MC", 63, {"id": "og958818", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Agustín Univaso", "ATA", 63, {"id": "og896303", "fonte": "estimado-clube", "idade": 25, "nac": "Uruguai"}], ["Jonathan Perea", "ATA", 63, {"id": "og959426", "fonte": "estimado-clube", "idade": 25, "nac": "Colômbia"}], ["Carlos Preciado", "ATA", 63, {"id": "og1411347", "fonte": "estimado-clube", "idade": 30, "nac": "Colômbia"}], ["Alejandro Medina", "ATA", 63, {"id": "og628022", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Hugo Cardoso", "ATA", 63, {"id": "og726790", "fonte": "estimado-clube", "idade": 27, "nac": "Cabo Verde"}], ["Alexi Medina", "ATA", 63, {"id": "og928954", "fonte": "estimado-clube", "idade": 31, "nac": "Argentina"}], ["Rafael Menacho", "ATA", 63, {"id": "og884889", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Jaime Villamil", "LE", 62, {"id": "og537544", "fonte": "fc26", "idade": 34, "nac": "Bolívia"}], ["Sergio Villamil", "MC", 62, {"id": "og623999", "fonte": "fc26", "idade": 31, "nac": "Bolívia"}], ["Rodrigo Vargas", "ATA", 62, {"id": "og187812", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Alejandro Polo", "ZAG", 61, {"id": "og1003851", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Munir Montenegro", "MC", 61, {"id": "og2529446", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Diego Mercado", "MC", 61, {"id": "og2492750", "fonte": "estimado-clube", "idade": 20, "nac": "Colômbia"}], ["Cristian Rojas", "MC", 61, {"id": "og3569616", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}]]}, {"id": "universitario-de-vinto-224422", "nome": "Universitario de Vinto", "sigla": "UNI", "elenco": [["Bruno Poveda", "GOL", 65, {"id": "og934511", "fonte": "fc26", "idade": 23, "nac": "Bolívia"}], ["Jesús Careaga", "GOL", 64, {"id": "og537526", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Paolo García", "GOL", 64, {"id": "og952774", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Didí Torrico", "MC", 68, {"id": "og71047", "fonte": "estimado-valor", "idade": 38, "nac": "Bolívia"}], ["Andrés Llano", "ATA", 68, {"id": "og952683", "fonte": "estimado-valor", "idade": 34, "nac": "Colômbia"}], ["Hugo Dorrego", "MC", 66, {"id": "og326772", "fonte": "estimado-valor", "idade": 33, "nac": "Uruguai"}], ["Hernán Rodríguez", "MC", 65, {"id": "og406388", "fonte": "fc26", "idade": 30, "nac": "Bolívia"}], ["Ezequiel Straccia", "MC", 65, {"id": "og851429", "fonte": "estimado-valor", "idade": 35, "nac": "Argentina"}], ["Gustavo Visalla", "ZAG", 64, {"id": "og953734", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Víctor Machaca", "ZAG", 64, {"id": "og372156", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia"}], ["Agustin Jara", "ZAG", 64, {"id": "og514274", "fonte": "estimado-clube", "idade": 34, "nac": "Argentina"}], ["Diego Vargas", "ZAG", 64, {"id": "og879111", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Álvaro Cuestas", "ZAG", 64, {"id": "og952679", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Paolo Alcocer", "MC", 64, {"id": "og556016", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Marco Gomez", "MC", 64, {"id": "og3534377", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Daniel Camacho", "MC", 64, {"id": "og383529", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Sergio Pardo", "MC", 64, {"id": "og3535523", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Sergio Pardo", "MC", 64, {"id": "og897491", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Andrés Veizaga", "MC", 64, {"id": "og631757", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Fabio Gil", "MC", 64, {"id": "og2778035", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Guilder Cuellar", "MC", 64, {"id": "og1233505", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Joel Calicho", "MC", 64, {"id": "og952684", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["Brayan Calderón", "MC", 64, {"id": "og717094", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["José Pinto", "MC", 64, {"id": "og777198", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Pablo Peña", "MC", 64, {"id": "og3581779", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Lucas Suarez", "MC", 64, {"id": "og3538424", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Nicolás Barreto", "MC", 64, {"id": "og2828813", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Johan Gómez", "ATA", 64, {"id": "og706737", "fonte": "estimado-clube", "idade": 32, "nac": "Colômbia"}], ["José Abrego", "ATA", 64, {"id": "og2805249", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Felipe Pasadore", "ATA", 64, {"id": "og1376374", "fonte": "estimado-valor", "idade": 26, "nac": "Argentina"}]]}, {"id": "abb-226418", "nome": "ABB", "sigla": "ABB", "elenco": [["Aldair Riascos", "GOL", 62, {"id": "og2529435", "fonte": "estimado-valor", "idade": 31, "nac": "Peru"}], ["Jairo Cuéllar", "GOL", 62, {"id": "og636729", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Santiago Encinas", "GOL", 60, {"id": "og3598221", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Alejandro Bejarano", "MC", 68, {"id": "og95759", "fonte": "estimado-valor", "idade": 42, "nac": "Bolívia"}], ["Denilson Valda", "ZAG", 67, {"id": "og858512", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia"}], ["Alejandro Chumacero", "MC", 67, {"id": "og116786", "fonte": "estimado-valor", "idade": 35, "nac": "Bolívia"}], ["Juan Fajardo", "ATA", 67, {"id": "og3534374", "fonte": "estimado-valor", "idade": 30, "nac": "Colômbia"}], ["Jean Riascos", "ZAG", 66, {"id": "og2529434", "fonte": "estimado-valor", "idade": 34, "nac": "Equador"}], ["Layonel Figueroa", "MC", 66, {"id": "og676074", "fonte": "estimado-valor", "idade": 27, "nac": "Bolívia"}], ["Sebastián Reyes", "ZAG", 65, {"id": "og676068", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia"}], ["Denilson Gutiérrez", "ZAG", 64, {"id": "og952611", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia"}], ["Augusto Seimandi", "ZAG", 63, {"id": "og500461", "fonte": "fc26", "idade": 31, "nac": "Argentina"}], ["Carlos Jemio", "ZAG", 63, {"id": "og1302883", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia"}], ["José Briceño", "ATA", 63, {"id": "og708997", "fonte": "estimado-valor", "idade": 24, "nac": "Bolívia"}], ["Sebastián Claure", "ZAG", 62, {"id": "og865045", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia"}], ["Omar Preciado", "ZAG", 62, {"id": "og1068192", "fonte": "estimado-clube", "idade": 27, "nac": "Colômbia"}], ["Jhairo Flores", "ZAG", 62, {"id": "og3563121", "fonte": "estimado-clube", "nac": "Bolívia"}], ["Nessemon Biafri", "MC", 62, {"id": "og3650591", "fonte": "estimado-clube", "idade": 24, "nac": "Costa do Marfim"}], ["Pablo Vaca", "MC", 62, {"id": "og609915", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Jeffrey Minah", "MC", 62, {"id": "og3571178", "fonte": "estimado-clube", "idade": 23, "nac": "Gana"}], ["Rodderyk Perozo", "MC", 62, {"id": "og346006", "fonte": "estimado-clube", "idade": 32, "nac": "Venezuela"}], ["Chadrack Ngantsui", "ATA", 62, {"id": "og2749277", "fonte": "estimado-clube", "nac": "Congo"}], ["Jair Catuy", "ATA", 62, {"id": "og289223", "fonte": "estimado-clube", "idade": 34, "nac": "Panamá"}], ["Freddy Abastoflor", "ATA", 62, {"id": "og350552", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Esteban Condori", "ATA", 62, {"id": "og2529430", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Marco Salazar", "MC", 61, {"id": "og1062162", "fonte": "estimado-valor", "idade": 22, "nac": "Bolívia"}], ["Gary Rea", "ATA", 61, {"id": "og1232254", "fonte": "estimado-valor", "idade": 23, "nac": "Bolívia"}], ["Fabio Zamora", "ZAG", 60, {"id": "og1232532", "fonte": "estimado-valor", "idade": 19, "nac": "Bolívia"}], ["Dieu Le Veut Ebengue", "MC", 60, {"id": "og1118772", "fonte": "estimado-clube", "idade": 21, "nac": "Congo"}], ["Andrés Guillermo", "MC", 60, {"id": "og1814118", "fonte": "estimado-valor", "idade": 20, "nac": "Bolívia"}]]}, {"id": "oriente-petrolero-2375", "nome": "Oriente Petrolero", "sigla": "ORI", "elenco": [["Alejandro Torres", "GOL", 63, {"id": "og775491", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Joel Bernal", "GOL", 63, {"id": "og1003298", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Arnold Alba", "GOL", 63, {"id": "og3575314", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Joffre Escobar", "ATA", 68, {"id": "og324276", "fonte": "estimado-valor", "idade": 30, "nac": "Equador"}], ["Leonardo Vaca", "ATA", 67, {"id": "og400342", "fonte": "estimado-valor", "idade": 30, "nac": "Bolívia"}], ["Samuel Galindo", "MC", 66, {"id": "og85148", "fonte": "fc26", "idade": 34, "nac": "Bolívia"}], ["Julio Herrera", "MC", 65, {"id": "og624000", "fonte": "fc26", "idade": 27, "nac": "Bolívia"}], ["Jeferson Virreira", "ZAG", 64, {"id": "og443959", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia"}], ["Dieguito Rodriguez", "ZAG", 64, {"id": "og1235068", "fonte": "estimado-valor", "idade": 23, "nac": "Bolívia"}], ["Mizael Monteiro", "ZAG", 63, {"id": "og645938", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["Enrique Taborga", "ZAG", 63, {"id": "og967061", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Jorge Lovera", "ZAG", 63, {"id": "og537469", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Jamir Berdecio", "ZAG", 63, {"id": "og858523", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Francisco López", "ZAG", 63, {"id": "og2743572", "fonte": "estimado-valor", "idade": 25, "nac": "Uruguai"}], ["Diego Armando Rodríguez", "MC", 63, {"id": "og277435", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Pedro Siles", "MC", 63, {"id": "og367606", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Franz González", "MC", 63, {"id": "og556020", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Octavio Perdomo", "MC", 63, {"id": "og772262", "fonte": "estimado-clube", "idade": 26, "nac": "Uruguai"}], ["Matías Roskopf", "ATA", 63, {"id": "og383403", "fonte": "estimado-clube", "idade": 28, "nac": "Argentina"}], ["Nahuel Roldán", "ATA", 63, {"id": "og501785", "fonte": "estimado-clube", "idade": 27, "nac": "Uruguai"}], ["Eliaquim Mangala", "ZAG", 62, {"id": "og105444", "fonte": "estimado-clube", "idade": 35, "nac": "França"}], ["José Flores", "ATA", 62, {"id": "og609929", "fonte": "estimado-valor", "idade": 23, "nac": "Bolívia"}], ["Marcelo Moreno", "ATA", 62, {"id": "og32698", "fonte": "estimado-clube", "idade": 39, "nac": "Bolívia"}], ["Roberto Diez", "ZAG", 61, {"id": "og1430300", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Manuel Bonilla", "ZAG", 61, {"id": "og1062139", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Jhon Velasco", "ZAG", 61, {"id": "og879113", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Dico Roca", "LE", 61, {"id": "og559317", "fonte": "fc26", "idade": 30, "nac": "Bolívia"}], ["Rubem Anagua", "MC", 61, {"id": "og2442314", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Máximo Mamani", "MC", 61, {"id": "og1393762", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Juvenal Rojas", "MC", 61, {"id": "og1814113", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}]]}, {"id": "real-tomayapo-258677", "nome": "Real Tomayapo", "sigla": "REA", "elenco": [["Gonzalo Rehak", "GOL", 62, {"id": "og525152", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina"}], ["Carlos Adorno", "GOL", 62, {"id": "og556007", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Luis Cárdenas", "GOL", 61, {"id": "og175219", "fonte": "estimado-clube", "idade": 35, "nac": "Bolívia"}], ["Marvin Bejarano", "ZAG", 69, {"id": "og87409", "fonte": "estimado-valor", "idade": 38, "nac": "Bolívia"}], ["Rolando Blackburn", "ATA", 68, {"id": "og250632", "fonte": "estimado-valor", "idade": 36, "nac": "Panamá"}], ["Diego Wayar", "MC", 67, {"id": "og256609", "fonte": "estimado-valor", "idade": 33, "nac": "Bolívia"}], ["Ronald Cuéllar", "ATA", 66, {"id": "og705694", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia"}], ["Limberg Gutiérrez", "MC", 64, {"id": "og444276", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia"}], ["Lisandro Montenegro", "MC", 63, {"id": "og1059595", "fonte": "fc26", "idade": 23, "nac": "Argentina"}], ["Robson", "ZAG", 62, {"id": "og472985", "fonte": "estimado-clube", "idade": 34, "nac": "Brasil"}], ["Ricardo Suárez", "ZAG", 62, {"id": "og586559", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia"}], ["Cristhian Arabe", "MC", 62, {"id": "og372977", "fonte": "estimado-clube", "idade": 34, "nac": "Bolívia"}], ["Josue Mamani", "MC", 62, {"id": "og556021", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Mauricio Chajtur", "MC", 62, {"id": "og537468", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Alexis Ribera", "MC", 62, {"id": "og385613", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Mario Barbery", "MC", 62, {"id": "og609919", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Denilzon Ramallo", "MC", 62, {"id": "og952700", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Jhon Chavez", "MC", 62, {"id": "og3563924", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Nelson Orozco", "ATA", 62, {"id": "og734263", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Francisco Nouet", "ATA", 62, {"id": "og658835", "fonte": "estimado-valor", "idade": 28, "nac": "Argentina"}], ["Ruan Costa", "ATA", 62, {"id": "og761438", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["Alejandro Cervantes", "ATA", 62, {"id": "og892151", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["David Robles", "ZAG", 61, {"id": "og416240", "fonte": "estimado-clube", "idade": 35, "nac": "Paraguai"}], ["Gino Barbieri", "ZAG", 61, {"id": "og717755", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["Víctor Melgar", "MC", 61, {"id": "og147279", "fonte": "estimado-clube", "idade": 38, "nac": "Bolívia"}], ["Javier Guerra", "LD", 60, {"id": "og1003861", "fonte": "fc26", "idade": 22, "nac": "Bolívia"}], ["Bernardo Sivila", "MC", 60, {"id": "og3650605", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Vladimir Gálvez", "MC", 60, {"id": "og1179460", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Ramiro Eguez", "MC", 60, {"id": "og952756", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Celin Padilla", "MC", 60, {"id": "og1185908", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}]]}, {"id": "real-potosi-2376", "nome": "Real Potosí", "sigla": "REA", "elenco": [["Christian Martínez", "GOL", 65, {"id": "og757762", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina"}], ["Daniel Sandy", "GOL", 62, {"id": "og721191", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Juan Carvajal", "GOL", 62, {"id": "og2509642", "fonte": "estimado-clube", "idade": 30, "nac": "Colômbia"}], ["Fran Supayabe", "ZAG", 67, {"id": "og537424", "fonte": "estimado-valor", "idade": 30, "nac": "Bolívia"}], ["Luis Alí", "ATA", 67, {"id": "og504453", "fonte": "estimado-valor", "idade": 32, "nac": "Bolívia"}], ["Jeferson Rivas", "ATA", 66, {"id": "og545238", "fonte": "estimado-valor", "idade": 29, "nac": "Colômbia"}], ["Emerson Velasquez", "MC", 64, {"id": "og781106", "fonte": "estimado-valor", "idade": 27, "nac": "Bolívia"}], ["Hugo Rojas", "PD", 64, {"id": "og586050", "fonte": "fc26", "idade": 32, "nac": "Bolívia"}], ["Jose Alipaz", "ATA", 64, {"id": "og967246", "fonte": "estimado-valor", "idade": 24, "nac": "Bolívia"}], ["Saúl Severiche", "ZAG", 63, {"id": "og900268", "fonte": "estimado-valor", "idade": 24, "nac": "Bolívia"}], ["Juan Pablo Rioja", "ZAG", 62, {"id": "og367600", "fonte": "estimado-clube", "idade": 38, "nac": "Bolívia"}], ["Kevin Villegas", "ZAG", 62, {"id": "og3563119", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia"}], ["Gonzalo Añazgo", "ZAG", 62, {"id": "og849518", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina"}], ["Jairo Thomas", "MC", 62, {"id": "og706008", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Imanol Cárdenas", "MC", 62, {"id": "og662149", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Erlan Condori", "MC", 62, {"id": "og630955", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["John Eric", "MC", 62, {"id": "og811318", "fonte": "estimado-valor", "idade": 26, "nac": "Bolívia"}], ["Fernando Rodríguez", "MC", 62, {"id": "og500176", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Igor Soares", "MC", 62, {"id": "og445250", "fonte": "estimado-clube", "idade": 31, "nac": "Brasil"}], ["Lucas Gimenez", "MC", 62, {"id": "og764098", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina"}], ["Fabricio Suárez", "ATA", 62, {"id": "og1013777", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Vladimir Castellón", "ATA", 62, {"id": "og85151", "fonte": "estimado-clube", "idade": 37, "nac": "Bolívia"}], ["Maximiliano Gómez", "ATA", 62, {"id": "og651821", "fonte": "estimado-clube", "idade": 38, "nac": "Argentina"}], ["Yago Campos", "ATA", 62, {"id": "og1247765", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil"}], ["Anderson Brito", "MC", 61, {"id": "og1181775", "fonte": "estimado-valor", "idade": 21, "nac": "Bolívia"}], ["Cristian Lopez", "MC", 61, {"id": "og1303145", "fonte": "estimado-valor", "idade": 21, "nac": "Bolívia"}], ["Stiven Plaza", "ATA", 61, {"id": "og627311", "fonte": "estimado-valor", "idade": 27, "nac": "Equador"}], ["William Fernández", "ZAG", 60, {"id": "og3534332", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}], ["Williams Fernandez", "ZAG", 60, {"id": "og3575327", "fonte": "estimado-valor", "idade": 20, "nac": "Bolívia"}], ["Ariel Tomicha", "ZAG", 60, {"id": "og3571187", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}]]}, {"id": "gualberto-villarroel-296586", "nome": "Gualberto Villarroel", "sigla": "GUA", "elenco": [["Roberto Rivas", "GOL", 62, {"id": "og87228", "fonte": "fc26", "idade": 41, "nac": "Bolívia"}], ["Germán Arauz", "GOL", 61, {"id": "og840639", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia"}], ["David Akologo", "GOL", 61, {"id": "og881043", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Mijaíl Avilés", "MC", 70, {"id": "og79727", "fonte": "estimado-valor", "idade": 39, "nac": "Venezuela"}], ["Walter Araújo", "MC", 68, {"id": "og304105", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai"}], ["Joaquín Lencinas", "ZAG", 67, {"id": "og150310", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina"}], ["Aldair Mamani", "PD", 62, {"id": "og1411266", "fonte": "fc26", "idade": 21, "nac": "Bolívia"}], ["Fernando Aguilar", "ZAG", 61, {"id": "og676075", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Miguel Paredes", "MC", 61, {"id": "og383525", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Gonzalo Vaca", "MC", 61, {"id": "og958816", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Luis Serrano", "MC", 61, {"id": "og630956", "fonte": "fc26", "idade": 28, "nac": "Bolívia"}], ["Rodrigo Orihuela", "MC", 61, {"id": "og777197", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia"}], ["Carlos Ribera", "MC", 61, {"id": "og537498", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia"}], ["Luis Cruz", "MC", 61, {"id": "og3576290", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["José Vargas", "MC", 61, {"id": "og594631", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia"}], ["Alex Cáceres", "ATA", 61, {"id": "og436264", "fonte": "estimado-clube", "idade": 30, "nac": "Paraguai"}], ["Ronaldo Monteiro", "ATA", 61, {"id": "og452826", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia"}], ["Roler Ferrufino", "ATA", 61, {"id": "og556025", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Matheus Moresche", "ATA", 61, {"id": "og548318", "fonte": "estimado-clube", "idade": 28, "nac": "Brasil"}], ["Thomas Monterubianessi", "ATA", 61, {"id": "og2752275", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina"}], ["Moises Calero", "ATA", 61, {"id": "og631760", "fonte": "fc26", "idade": 28, "nac": "Bolívia"}], ["David Ribera", "ATA", 61, {"id": "og773304", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia"}], ["Sebastián Galindo", "ATA", 61, {"id": "og556018", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia"}], ["Luis Zeballos", "ATA", 61, {"id": "og609923", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia"}], ["Juan Goyeneche", "ATA", 61, {"id": "og1200256", "fonte": "estimado-clube", "idade": 25, "nac": "Argentina"}], ["Nicolás Landa", "ZAG", 60, {"id": "og500172", "fonte": "fc26", "idade": 30, "nac": "Bolívia"}], ["Guimer Justiniano", "ZAG", 60, {"id": "og380774", "fonte": "estimado-clube", "idade": 37, "nac": "Bolívia"}], ["Jhoni", "ZAG", 59, {"id": "og958313", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia"}], ["Edwin Pardo", "ZAG", 59, {"id": "og2471395", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia"}], ["Diego Saavedra", "MC", 59, {"id": "og2318370", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia"}]]}], "B": [], "C": [], "D": []}, "vagasDiretasCopa": [], "classicos": [], "semCopa": true, "formatos": {"A": {"divisao": "A", "id": "division-profesional-bolivia", "nome": "División Profesional 2026", "clubes": 16, "fases": [{"tipo": "liga", "nome": "Pontos corridos", "grupos": 1, "distribuicao": "unico", "turnos": 2, "avancamPorGrupo": 0}], "acesso": [], "rebaixamento": []}}}
+{
+  "formato": 1,
+  "id": "bolivia-2026",
+  "nome": "División Profesional 2026 (Bolívia)",
+  "ficticio": false,
+  "temporada": 2026,
+  "divisoes": {
+    "A": [
+      {
+        "id": "bolivar",
+        "nome": "Bolívar",
+        "sigla": "BOL",
+        "elenco": [
+          ["Carlos Lampe", "GOL", 72, { "id": "og71034", "fonte": "fc26", "idade": 39, "nac": "Bolívia" }],
+          [
+            "Diego Méndez",
+            "GOL",
+            66,
+            { "id": "og178891", "fonte": "estimado-clube", "idade": 34, "nac": "Bolívia" }
+          ],
+          [
+            "Alejandro Hidalgo",
+            "GOL",
+            64,
+            { "id": "og952618", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Martín Cauteruccio",
+            "ATA",
+            75,
+            { "id": "og100233", "fonte": "fc26", "idade": 39, "nac": "Uruguai" }
+          ],
+          [
+            "Damián Batallini",
+            "PD",
+            71,
+            { "id": "og500862", "fonte": "fc26", "idade": 30, "nac": "Argentina" }
+          ],
+          ["Xavier Arreaga", "ZAG", 69, { "id": "og405741", "fonte": "fc26", "idade": 32, "nac": "Equador" }],
+          ["Carlos Melgar", "MC", 69, { "id": "og537457", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          [
+            "Bruno Miranda",
+            "ATA",
+            69,
+            { "id": "og383532", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Patito Rodríguez",
+            "ATA",
+            69,
+            { "id": "og55817", "fonte": "estimado-valor", "idade": 36, "nac": "Argentina" }
+          ],
+          ["José Sagredo", "ZAG", 68, { "id": "og187807", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          [
+            "Dairon Asprilla",
+            "PE",
+            68,
+            { "id": "og250565", "fonte": "fc26", "idade": 34, "nac": "Colômbia" }
+          ],
+          [
+            "Santiago Echeverría",
+            "ZAG",
+            67,
+            { "id": "og365605", "fonte": "fc26", "idade": 36, "nac": "Argentina" }
+          ],
+          [
+            "Leonel Justiniano",
+            "VOL",
+            67,
+            { "id": "og246301", "fonte": "fc26", "idade": 34, "nac": "Bolívia" }
+          ],
+          ["Erwin Saavedra", "LD", 67, { "id": "og400563", "fonte": "fc26", "idade": 30, "nac": "Bolívia" }],
+          [
+            "Leonardo Zabala",
+            "ZAG",
+            66,
+            { "id": "og609913", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Jhon García",
+            "MC",
+            66,
+            { "id": "og556019", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Sejas",
+            "MC",
+            66,
+            { "id": "og922421", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Lucas Chávez",
+            "ATA",
+            66,
+            { "id": "og863420", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          ["Jesús Sagredo", "ZAG", 65, { "id": "og258638", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          ["Robson Matheus", "MC", 65, { "id": "og609918", "fonte": "fc26", "idade": 24, "nac": "Bolívia" }],
+          [
+            "Dorny Romero",
+            "ATA",
+            65,
+            { "id": "og702713", "fonte": "fc26", "idade": 28, "nac": "República Dominicana" }
+          ],
+          [
+            "Matias Galindo",
+            "MC",
+            64,
+            { "id": "og1031566", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Marigua",
+            "ZAG",
+            62,
+            { "id": "og3520259", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          ["Luis Paz", "LD", 62, { "id": "og1003850", "fonte": "fc26", "idade": 22, "nac": "Bolívia" }],
+          [
+            "Matias Espínoza",
+            "ZAG",
+            62,
+            { "id": "og2529390", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Fernando Mena",
+            "ZAG",
+            62,
+            { "id": "og2529382", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Said Herrera",
+            "MC",
+            62,
+            { "id": "og3650575", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia" }
+          ],
+          [
+            "Andy Toco",
+            "MC",
+            62,
+            { "id": "og2529075", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Parada",
+            "MC",
+            62,
+            { "id": "og3377052", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia" }
+          ],
+          [
+            "Iker Menacho",
+            "MC",
+            62,
+            { "id": "og3650676", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "always-ready",
+        "nome": "Always Ready",
+        "sigla": "ALW",
+        "elenco": [
+          [
+            "Alain Baroja",
+            "GOL",
+            68,
+            { "id": "og74962", "fonte": "estimado-valor", "idade": 37, "nac": "Venezuela" }
+          ],
+          ["Nicolas Salazar", "GOL", 67, { "id": "og2529447", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          ["Saidt Mustafá", "GOL", 66, { "id": "og401996", "fonte": "fc26", "idade": 36, "nac": "Bolívia" }],
+          [
+            "Alex Rambal",
+            "ZAG",
+            70,
+            { "id": "og359264", "fonte": "estimado-valor", "idade": 34, "nac": "Colômbia" }
+          ],
+          [
+            "Álvaro Quiroga",
+            "MC",
+            69,
+            { "id": "og515400", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Joel Amoroso",
+            "MC",
+            69,
+            { "id": "og442724", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina" }
+          ],
+          [
+            "Juan Godoy",
+            "ATA",
+            69,
+            { "id": "og860400", "fonte": "estimado-valor", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Richet Gómez",
+            "ZAG",
+            68,
+            { "id": "og515424", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Caicedo",
+            "ZAG",
+            68,
+            { "id": "og853643", "fonte": "estimado-valor", "idade": 29, "nac": "Equador" }
+          ],
+          [
+            "Fernando Saucedo",
+            "MC",
+            68,
+            { "id": "og85149", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          [
+            "Enrique Triverio",
+            "ATA",
+            68,
+            { "id": "og273270", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina" }
+          ],
+          [
+            "Matheus Rodriguez",
+            "ZAG",
+            67,
+            { "id": "og1330447", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "José Herrera",
+            "ZAG",
+            67,
+            { "id": "og781908", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Javier Uzeda",
+            "MC",
+            67,
+            { "id": "og609928", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Darío Torrico",
+            "MC",
+            67,
+            { "id": "og696960", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Ramon Carvalho",
+            "MC",
+            67,
+            { "id": "og474551", "fonte": "estimado-clube", "idade": 29, "nac": "Brasil" }
+          ],
+          [
+            "Carmelo Algarañaz",
+            "ATA",
+            67,
+            { "id": "og443956", "fonte": "estimado-valor", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Edisson Restrepo",
+            "ZAG",
+            66,
+            { "id": "og625110", "fonte": "fc26", "idade": 29, "nac": "Colômbia" }
+          ],
+          [
+            "Nathan Tito",
+            "MC",
+            65,
+            { "id": "og2347520", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Nicolas Villarroel",
+            "ZAG",
+            63,
+            { "id": "og2494105", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia" }
+          ],
+          [
+            "José Ojeda",
+            "ZAG",
+            63,
+            { "id": "og2831049", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia" }
+          ],
+          [
+            "Kenyhiro Estrada",
+            "ZAG",
+            63,
+            { "id": "og2831046", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Matheus Rodríguez",
+            "ZAG",
+            63,
+            { "id": "og3587350", "fonte": "estimado-clube", "idade": 15, "nac": "Bolívia" }
+          ],
+          [
+            "Santiago Somoya",
+            "ZAG",
+            63,
+            { "id": "og2529383", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia" }
+          ],
+          [
+            "Matías Cuellar",
+            "ZAG",
+            63,
+            { "id": "og2831047", "fonte": "estimado-clube", "idade": 17, "nac": "Bolívia" }
+          ],
+          [
+            "Mario Ruiz",
+            "MC",
+            63,
+            { "id": "og3663392", "fonte": "estimado-clube", "idade": 16, "nac": "Bolívia" }
+          ],
+          [
+            "Héctor Galvis",
+            "MC",
+            63,
+            { "id": "og2529385", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Andru Gutierrez",
+            "MC",
+            63,
+            { "id": "og3626047", "fonte": "estimado-clube", "idade": 15, "nac": "Bolívia" }
+          ],
+          [
+            "Alexander Cespedes",
+            "MC",
+            63,
+            { "id": "og3569619", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Roberto Perez",
+            "MC",
+            63,
+            { "id": "og2830546", "fonte": "estimado-clube", "idade": 16, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "the-strongest",
+        "nome": "The Strongest",
+        "sigla": "THE",
+        "elenco": [
+          [
+            "Rodrigo Banegas",
+            "GOL",
+            67,
+            { "id": "og490916", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Diego Valdivia",
+            "GOL",
+            67,
+            { "id": "og774549", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Sebastian Arismendi",
+            "GOL",
+            65,
+            { "id": "og2820623", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Adrián Jusino",
+            "ZAG",
+            70,
+            { "id": "og633449", "fonte": "estimado-valor", "idade": 34, "nac": "Bolívia" }
+          ],
+          [
+            "Jaime Arrascaita",
+            "MC",
+            69,
+            { "id": "og367617", "fonte": "estimado-valor", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Henrique Pachu",
+            "ATA",
+            69,
+            { "id": "og480995", "fonte": "estimado-valor", "idade": 30, "nac": "Brasil" }
+          ],
+          [
+            "Pablo Pedraza",
+            "ZAG",
+            68,
+            { "id": "og187800", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Raúl Castro",
+            "MC",
+            68,
+            { "id": "og371897", "fonte": "estimado-valor", "idade": 37, "nac": "Bolívia" }
+          ],
+          [
+            "Martín Chiatti",
+            "ZAG",
+            67,
+            { "id": "og851939", "fonte": "estimado-clube", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Carlos Roca",
+            "ZAG",
+            67,
+            { "id": "og548734", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Jovani Welch",
+            "MC",
+            67,
+            { "id": "og720155", "fonte": "estimado-clube", "idade": 26, "nac": "Panamá" }
+          ],
+          [
+            "Kevin Romay",
+            "MC",
+            67,
+            { "id": "og504948", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Kevin Salvatierra",
+            "MC",
+            67,
+            { "id": "og636826", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Vi­ctor Cuellar",
+            "MC",
+            67,
+            { "id": "og783873", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Darwin Lom",
+            "ATA",
+            67,
+            { "id": "og789685", "fonte": "estimado-clube", "idade": 29, "nac": "Guatemala" }
+          ],
+          [
+            "Adrián Estacio",
+            "ATA",
+            67,
+            { "id": "og637582", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia" }
+          ],
+          [
+            "Fabricio Quaglio",
+            "ATA",
+            67,
+            { "id": "og899171", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Gabriel Sotomayor",
+            "ATA",
+            67,
+            { "id": "og696958", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Ventura",
+            "ATA",
+            67,
+            { "id": "og859095", "fonte": "estimado-valor", "idade": 29, "nac": "República Dominicana" }
+          ],
+          ["Widen Saucedo", "LD", 65, { "id": "og557001", "fonte": "fc26", "idade": 29, "nac": "Bolívia" }],
+          [
+            "Yamil Portuncho",
+            "ZAG",
+            65,
+            { "id": "og2743972", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Dilan Saavedra",
+            "MC",
+            65,
+            { "id": "og1814116", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Santiago Melgar",
+            "MC",
+            65,
+            { "id": "og1814114", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Gerel Buezo",
+            "MC",
+            65,
+            { "id": "og858550", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Roy Ribertt",
+            "MC",
+            65,
+            { "id": "og2824234", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Elmar Albornoz",
+            "MC",
+            65,
+            { "id": "og3649833", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Pablo Tejerina",
+            "MC",
+            65,
+            { "id": "og3649832", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Hanibal Arrascaita",
+            "ATA",
+            65,
+            { "id": "og3612224", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Kevin Chacón",
+            "ZAG",
+            63,
+            { "id": "og3563130", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          ["Santiago Arce", "VOL", 63, { "id": "og616113", "fonte": "fc26", "idade": 26, "nac": "Bolívia" }]
+        ]
+      },
+      {
+        "id": "guabira-2382",
+        "nome": "Guabirá",
+        "sigla": "GUA",
+        "elenco": [
+          [
+            "Manuel Ferrel",
+            "GOL",
+            67,
+            { "id": "og676078", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Jorge Araúz",
+            "GOL",
+            67,
+            { "id": "og400348", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Gastón Gómez",
+            "GOL",
+            67,
+            { "id": "og439689", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Milciades Portillo",
+            "ZAG",
+            69,
+            { "id": "og289560", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai" }
+          ],
+          [
+            "Carlos Áñez",
+            "MC",
+            69,
+            { "id": "og187798", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia" }
+          ],
+          ["Thiago", "MC", 69, { "id": "og150032", "fonte": "estimado-valor", "idade": 41, "nac": "Brasil" }],
+          [
+            "Luciano Ursino",
+            "MC",
+            69,
+            { "id": "og181787", "fonte": "estimado-valor", "idade": 38, "nac": "Bolívia" }
+          ],
+          [
+            "Joaquín Barro",
+            "ZAG",
+            67,
+            { "id": "og744049", "fonte": "estimado-clube", "idade": 25, "nac": "Argentina" }
+          ],
+          [
+            "Andrés Moreno",
+            "ZAG",
+            67,
+            { "id": "og996422", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Sergio Gil",
+            "ZAG",
+            67,
+            { "id": "og515417", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Samuel Garzón",
+            "MC",
+            67,
+            { "id": "og561222", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Parada",
+            "MC",
+            67,
+            { "id": "og1823690", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Rafinha",
+            "MC",
+            67,
+            { "id": "og255987", "fonte": "estimado-clube", "idade": 34, "nac": "Bolívia" }
+          ],
+          [
+            "Nicolas Masskooni",
+            "MC",
+            67,
+            { "id": "og1633768", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Denilso Fernandez",
+            "MC",
+            67,
+            { "id": "og1062070", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Pablo Luján",
+            "MC",
+            67,
+            { "id": "og774100", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Gustavo Peredo",
+            "ATA",
+            67,
+            { "id": "og605596", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Facundo Alarcón",
+            "ATA",
+            67,
+            { "id": "og1396178", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Makerlo Tellez",
+            "ATA",
+            67,
+            { "id": "og1169929", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Makerlo Melendez",
+            "ATA",
+            67,
+            { "id": "og3600191", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Víctor Ábrego",
+            "ATA",
+            67,
+            { "id": "og625329", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Milton Maciel",
+            "MC",
+            66,
+            { "id": "og630440", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Rafael Corrales",
+            "ZAG",
+            65,
+            { "id": "og1411350", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          ["Jorge Flores", "LE", 65, { "id": "og277244", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          [
+            "Moain Joffre",
+            "MC",
+            65,
+            { "id": "og3630983", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Pablo Melgar",
+            "MC",
+            65,
+            { "id": "og3533971", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Moain Nacif",
+            "MC",
+            65,
+            { "id": "og3541824", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Yuto Nishizawa",
+            "MC",
+            65,
+            { "id": "og2530314", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Marco Antonio Pinto",
+            "ATA",
+            65,
+            { "id": "og2830756", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Asiel Paredes",
+            "ATA",
+            65,
+            { "id": "og1411263", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "blooming-2381",
+        "nome": "Blooming",
+        "sigla": "BLO",
+        "elenco": [
+          [
+            "Braulio Uraezaña",
+            "GOL",
+            69,
+            { "id": "og400354", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Jiménez",
+            "GOL",
+            67,
+            { "id": "og679241", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Gustavo Almada",
+            "GOL",
+            67,
+            { "id": "og1005743", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Gabriel Valverde",
+            "ZAG",
+            69,
+            { "id": "og118383", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          [
+            "Danny Bejarano",
+            "MC",
+            68,
+            { "id": "og187805", "fonte": "estimado-valor", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Matías Abisab",
+            "MC",
+            68,
+            { "id": "og262344", "fonte": "estimado-valor", "idade": 33, "nac": "Uruguai" }
+          ],
+          [
+            "Denilson Durán",
+            "ZAG",
+            67,
+            { "id": "og953732", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Mercado",
+            "ZAG",
+            67,
+            { "id": "og537423", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Diago Giménez",
+            "ZAG",
+            67,
+            { "id": "og744052", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Julio Vila",
+            "ZAG",
+            67,
+            { "id": "og952678", "fonte": "estimado-clube", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Eduardo Álvarez",
+            "ZAG",
+            67,
+            { "id": "og708989", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Marc Enoumba",
+            "ZAG",
+            67,
+            { "id": "og696951", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "José María Carrasco",
+            "ZAG",
+            67,
+            { "id": "og501989", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          ["Rafael Morales", "ZAG", 67, { "id": "og3637221", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Moisés Villarroel",
+            "MC",
+            67,
+            { "id": "og383528", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Roberto Hinojoza",
+            "MC",
+            67,
+            { "id": "og730715", "fonte": "estimado-clube", "idade": 27, "nac": "Colômbia" }
+          ],
+          [
+            "Richard Spenhay",
+            "MC",
+            67,
+            { "id": "og781052", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Mauricio Cabral",
+            "ATA",
+            67,
+            { "id": "og709060", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Miguel Villarroel",
+            "ATA",
+            67,
+            { "id": "og708996", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Cesar Menacho",
+            "ATA",
+            67,
+            { "id": "og651820", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Percy Loza",
+            "ATA",
+            67,
+            { "id": "og515429", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Mateo Ferreira",
+            "MC",
+            65,
+            { "id": "og2520336", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Juan González",
+            "MC",
+            65,
+            { "id": "og2520335", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Roberto Melgar",
+            "MC",
+            65,
+            { "id": "og2442411", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Chávez",
+            "MC",
+            65,
+            { "id": "og2520334", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Héctor Suárez",
+            "MC",
+            65,
+            { "id": "og952619", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Guilmar Centella",
+            "MC",
+            65,
+            { "id": "og953745", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Santiago Castedo",
+            "ATA",
+            65,
+            { "id": "og2490022", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Eduardo Justiniano",
+            "ATA",
+            65,
+            { "id": "og952622", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Giovanni Cadore",
+            "ATA",
+            65,
+            { "id": "og2520328", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "independiente-petrolero-2383",
+        "nome": "Independiente Petrolero",
+        "sigla": "IND",
+        "elenco": [
+          [
+            "Jhohan Gutiérrez",
+            "GOL",
+            66,
+            { "id": "og586053", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Jhunior Vera",
+            "GOL",
+            66,
+            { "id": "og1411340", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Leonel Duran",
+            "GOL",
+            64,
+            { "id": "og3626064", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Ronny Montero",
+            "ZAG",
+            69,
+            { "id": "og175222", "fonte": "estimado-valor", "idade": 35, "nac": "Bolívia" }
+          ],
+          [
+            "Ruddy Cardozo",
+            "MC",
+            68,
+            { "id": "og85143", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          [
+            "Gustavo Cristaldo",
+            "MC",
+            68,
+            { "id": "og85308", "fonte": "estimado-valor", "idade": 37, "nac": "Paraguai" }
+          ],
+          ["Thomaz", "MC", 68, { "id": "og53385", "fonte": "estimado-valor", "idade": 40, "nac": "Brasil" }],
+          [
+            "Jonatan Cristaldo",
+            "ATA",
+            68,
+            { "id": "og36667", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina" }
+          ],
+          [
+            "Gilbert Álvarez",
+            "ATA",
+            68,
+            { "id": "og99285", "fonte": "estimado-valor", "idade": 34, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Palma",
+            "ZAG",
+            67,
+            { "id": "og897041", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Willie",
+            "ATA",
+            67,
+            { "id": "og274647", "fonte": "estimado-valor", "idade": 33, "nac": "Brasil" }
+          ],
+          [
+            "Lázaro Crescencio",
+            "ZAG",
+            66,
+            { "id": "og858570", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Eduardo",
+            "ZAG",
+            66,
+            { "id": "og824809", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }
+          ],
+          [
+            "Luis Rodriguez",
+            "ZAG",
+            66,
+            { "id": "og609925", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Heber Leaños",
+            "ZAG",
+            66,
+            { "id": "og522454", "fonte": "estimado-clube", "idade": 36, "nac": "Bolívia" }
+          ],
+          ["Roni", "ZAG", 66, { "id": "og693091", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }],
+          [
+            "Stiven Vargas",
+            "ZAG",
+            66,
+            { "id": "og952699", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          ["Jesus Moreno", "MC", 66, { "id": "og3639704", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Daniel Rojas",
+            "MC",
+            66,
+            { "id": "og556022", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Cristian Urdininea",
+            "MC",
+            66,
+            { "id": "og281710", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Moises",
+            "MC",
+            66,
+            { "id": "og1533132", "fonte": "estimado-clube", "idade": 24, "nac": "Brasil" }
+          ],
+          [
+            "Wilfredo Soleto",
+            "MC",
+            66,
+            { "id": "og629095", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          ["Adelan", "MC", 66, { "id": "og723550", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }],
+          [
+            "José Soria",
+            "MC",
+            66,
+            { "id": "og3571181", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Jefferson Carioca",
+            "MC",
+            66,
+            { "id": "og726515", "fonte": "estimado-clube", "idade": 24, "nac": "Brasil" }
+          ],
+          ["Gean", "ATA", 66, { "id": "og1010011", "fonte": "estimado-clube", "idade": 23, "nac": "Brasil" }],
+          [
+            "Alan Mercado",
+            "ATA",
+            66,
+            { "id": "og385611", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Diego Navarro",
+            "ATA",
+            66,
+            { "id": "og279608", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          ["Saúl Torres", "LD", 65, { "id": "og277242", "fonte": "fc26", "idade": 36, "nac": "Bolívia" }],
+          [
+            "Daniel Aponte",
+            "ZAG",
+            64,
+            { "id": "og952757", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "aurora-2374",
+        "nome": "Aurora",
+        "sigla": "AUR",
+        "elenco": [
+          [
+            "Christian Chilo",
+            "GOL",
+            66,
+            { "id": "og280912", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia" }
+          ],
+          ["Rubén Cordano", "GOL", 66, { "id": "og452816", "fonte": "fc26", "idade": 28, "nac": "Bolívia" }],
+          [
+            "Joel Terrazas",
+            "GOL",
+            64,
+            { "id": "og1372018", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Michael Rangel",
+            "ATA",
+            69,
+            { "id": "og252201", "fonte": "estimado-valor", "idade": 35, "nac": "Colômbia" }
+          ],
+          [
+            "Julián Velázquez",
+            "ZAG",
+            68,
+            { "id": "og136062", "fonte": "estimado-valor", "idade": 36, "nac": "Argentina" }
+          ],
+          [
+            "Jair Torrico",
+            "ZAG",
+            68,
+            { "id": "og147266", "fonte": "estimado-valor", "idade": 40, "nac": "Bolívia" }
+          ],
+          [
+            "Rodrigo Ramallo",
+            "ATA",
+            68,
+            { "id": "og216920", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          [
+            "Ivan Huayhuata",
+            "ZAG",
+            67,
+            { "id": "og258665", "fonte": "estimado-valor", "idade": 37, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Barboza",
+            "ZAG",
+            66,
+            { "id": "og278621", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Santiago Carrasco",
+            "ZAG",
+            66,
+            { "id": "og532702", "fonte": "estimado-clube", "idade": 33, "nac": "México" }
+          ],
+          [
+            "José Córdova",
+            "ZAG",
+            66,
+            { "id": "og3545483", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Rey",
+            "ZAG",
+            66,
+            { "id": "og511344", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Iván Vidaurre",
+            "MC",
+            66,
+            { "id": "og279676", "fonte": "estimado-clube", "idade": 39, "nac": "Bolívia" }
+          ],
+          [
+            "Jose Amarilla",
+            "MC",
+            66,
+            { "id": "og2487637", "fonte": "estimado-clube", "idade": 39, "nac": "Argentina" }
+          ],
+          [
+            "Alfredo Amarilla",
+            "MC",
+            66,
+            { "id": "og952644", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Henry Vaca",
+            "MC",
+            66,
+            { "id": "og383533", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Harrison Mojica",
+            "MC",
+            66,
+            { "id": "og252169", "fonte": "estimado-clube", "idade": 33, "nac": "Colômbia" }
+          ],
+          [
+            "Ronaldo Sánchez",
+            "MC",
+            66,
+            { "id": "og501990", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Leandro Barro",
+            "MC",
+            66,
+            { "id": "og1552623", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Jaime Cornejo",
+            "MC",
+            66,
+            { "id": "og400351", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia" }
+          ],
+          ["Junior Sánchez", "MEI", 66, { "id": "og472974", "fonte": "fc26", "idade": 34, "nac": "Bolívia" }],
+          [
+            "Miyhel Ortiz",
+            "MC",
+            66,
+            { "id": "og782880", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Enrique Troncoso",
+            "MC",
+            66,
+            { "id": "og845701", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Cristhian Abastoflor",
+            "MC",
+            66,
+            { "id": "og858582", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Mijael Peralta",
+            "MC",
+            66,
+            { "id": "og3630984", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Jefferson Ramos",
+            "ATA",
+            66,
+            { "id": "og781932", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia" }
+          ],
+          ["Jhon Araujo", "ATA", 66, { "id": "og922410", "fonte": "estimado-clube", "nac": "Colômbia" }],
+          [
+            "John Araujo",
+            "ATA",
+            66,
+            { "id": "og967234", "fonte": "estimado-clube", "idade": 24, "nac": "Colômbia" }
+          ],
+          [
+            "Miguel Segovia",
+            "ATA",
+            66,
+            { "id": "og854236", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Alan Castro",
+            "ATA",
+            66,
+            { "id": "og1816753", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina" }
+          ]
+        ]
+      },
+      {
+        "id": "real-oruro-308110",
+        "nome": "Real Oruro",
+        "sigla": "REA",
+        "elenco": [
+          [
+            "Álex Arancibia",
+            "GOL",
+            67,
+            { "id": "og85135", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          [
+            "Israel Peña",
+            "GOL",
+            66,
+            { "id": "og860349", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Ronaldo Huanacota",
+            "GOL",
+            64,
+            { "id": "og1302824", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Leandro Corulo",
+            "ZAG",
+            68,
+            { "id": "og292222", "fonte": "estimado-valor", "idade": 37, "nac": "Argentina" }
+          ],
+          [
+            "Denis Pinto",
+            "ATA",
+            67,
+            { "id": "og384091", "fonte": "estimado-valor", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Daniel Castellón",
+            "ZAG",
+            66,
+            { "id": "og858528", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Chore",
+            "ZAG",
+            66,
+            { "id": "og709055", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Yhon Villegas",
+            "ZAG",
+            66,
+            { "id": "og710030", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Rivaldo Méndez",
+            "ZAG",
+            66,
+            { "id": "og1546931", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Joao Quiñonez",
+            "ZAG",
+            66,
+            { "id": "og646151", "fonte": "estimado-clube", "idade": 27, "nac": "Equador" }
+          ],
+          [
+            "Ademar Rivera",
+            "MC",
+            66,
+            { "id": "og2529444", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Carrasco",
+            "MC",
+            66,
+            { "id": "og3533965", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Hernán Tifner",
+            "MC",
+            66,
+            { "id": "og653629", "fonte": "estimado-clube", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Francisco Gatti",
+            "MC",
+            66,
+            { "id": "og840736", "fonte": "estimado-clube", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Raúl Ardaya",
+            "MC",
+            66,
+            { "id": "og879112", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Yhon Villegas",
+            "ATA",
+            66,
+            { "id": "og507266", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Alejando Barrón",
+            "ATA",
+            66,
+            { "id": "og562973", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Angel Quiñonez",
+            "ATA",
+            66,
+            { "id": "og581537", "fonte": "estimado-clube", "idade": 30, "nac": "Equador" }
+          ],
+          [
+            "Bryan Puma",
+            "ATA",
+            66,
+            { "id": "og3563125", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Yerco Vallejos",
+            "ATA",
+            66,
+            { "id": "og649432", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Edwin Rivera",
+            "MC",
+            65,
+            { "id": "og499093", "fonte": "estimado-clube", "idade": 37, "nac": "Bolívia" }
+          ],
+          [
+            "Alexis Bravo",
+            "MC",
+            65,
+            { "id": "og286887", "fonte": "estimado-clube", "idade": 42, "nac": "Argentina" }
+          ],
+          ["Juan Montenegro", "PD", 65, { "id": "og537471", "fonte": "fc26", "idade": 29, "nac": "Bolívia" }],
+          [
+            "Yamil Calle",
+            "ZAG",
+            64,
+            { "id": "og2529441", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Rodrigo Ari",
+            "ZAG",
+            64,
+            { "id": "og3570064", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Reymar Balceras",
+            "ZAG",
+            64,
+            { "id": "og3517382", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Jose Lizarraga",
+            "ZAG",
+            64,
+            { "id": "og1633770", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Daniel Eid",
+            "ZAG",
+            64,
+            { "id": "og1302800", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Fabio Vargas",
+            "MC",
+            64,
+            { "id": "og1143280", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Zeballos",
+            "MC",
+            64,
+            { "id": "og3629374", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "nacional-potosi-23446",
+        "nome": "Nacional Potosí",
+        "sigla": "NAC",
+        "elenco": [
+          [
+            "Elder Araúz",
+            "GOL",
+            66,
+            { "id": "og625332", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          ["Pedro Galindo", "GOL", 64, { "id": "og187796", "fonte": "fc26", "idade": 31, "nac": "Bolívia" }],
+          [
+            "Jorge Mejia",
+            "GOL",
+            64,
+            { "id": "og708988", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Maicon Solís",
+            "ATA",
+            69,
+            { "id": "og502671", "fonte": "estimado-valor", "idade": 32, "nac": "Equador" }
+          ],
+          [
+            "Tommy Tobar",
+            "ATA",
+            68,
+            { "id": "og252044", "fonte": "estimado-valor", "idade": 39, "nac": "Colômbia" }
+          ],
+          [
+            "Maximiliano Núñez",
+            "ATA",
+            68,
+            { "id": "og76739", "fonte": "estimado-valor", "idade": 40, "nac": "Argentina" }
+          ],
+          ["Luis Pavía", "PD", 66, { "id": "og512250", "fonte": "fc26", "idade": 27, "nac": "Bolívia" }],
+          ["Andrés Torrico", "PE", 66, { "id": "og970720", "fonte": "fc26", "idade": 22, "nac": "Bolívia" }],
+          ["Diego Hoyos", "MC", 66, { "id": "og175228", "fonte": "fc26", "idade": 34, "nac": "Bolívia" }],
+          ["Pedro Azogue", "VOL", 65, { "id": "og136121", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          [
+            "Weslen Júnior",
+            "ATA",
+            65,
+            { "id": "og564899", "fonte": "estimado-valor", "idade": 26, "nac": "Brasil" }
+          ],
+          [
+            "Nelson Amarilla",
+            "ZAG",
+            64,
+            { "id": "og89030", "fonte": "estimado-clube", "idade": 39, "nac": "Paraguai" }
+          ],
+          [
+            "Sebastian Alvarez",
+            "ZAG",
+            64,
+            { "id": "og858526", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          ["Oscar Baldomar", "LD", 64, { "id": "og443950", "fonte": "fc26", "idade": 30, "nac": "Bolívia" }],
+          [
+            "Juan Orellana",
+            "ZAG",
+            64,
+            { "id": "og452821", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          ["Luis Demiquel", "LD", 64, { "id": "og694904", "fonte": "fc26", "idade": 26, "nac": "Bolívia" }],
+          [
+            "Rodrigo Ávila",
+            "MC",
+            64,
+            { "id": "og350603", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Batista",
+            "MC",
+            64,
+            { "id": "og610147", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }
+          ],
+          [
+            "Yesit Martínez",
+            "MC",
+            64,
+            { "id": "og858511", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Erick Cano",
+            "MC",
+            64,
+            { "id": "og640540", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Mirko Tomianovic",
+            "ATA",
+            64,
+            { "id": "og717089", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Willian Álvarez",
+            "ATA",
+            64,
+            { "id": "og537472", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Damián Villalba",
+            "ATA",
+            64,
+            { "id": "og896375", "fonte": "estimado-clube", "idade": 35, "nac": "Argentina" }
+          ],
+          [
+            "Mateo Abastoflor",
+            "ATA",
+            64,
+            { "id": "og609911", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Asaf Patzi",
+            "MC",
+            62,
+            { "id": "og1235050", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Jhojan Arce",
+            "MC",
+            62,
+            { "id": "og2529450", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Kevin Quiroz",
+            "MC",
+            62,
+            { "id": "og2543888", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Arnoldo Guanaile",
+            "MC",
+            60,
+            { "id": "og3663387", "fonte": "estimado-clube", "idade": 18, "nac": "Bolívia" }
+          ],
+          [
+            "Waldo Mollo",
+            "MC",
+            60,
+            { "id": "og3663393", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia" }
+          ],
+          [
+            "Kevin Bailaba",
+            "MC",
+            60,
+            { "id": "og3510568", "fonte": "estimado-clube", "idade": 19, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "san-antonio-bulo-bulo-305479",
+        "nome": "San Antonio Bulo Bulo",
+        "sigla": "SAN",
+        "elenco": [
+          ["Luca Giossa", "GOL", 65, { "id": "og819313", "fonte": "fc26", "idade": 26, "nac": "Uruguai" }],
+          ["Leonardo Guzman", "GOL", 63, { "id": "og1056171", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Lucas Galarza",
+            "GOL",
+            63,
+            { "id": "og732693", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Cristhian Machado",
+            "MC",
+            69,
+            { "id": "og181446", "fonte": "estimado-valor", "idade": 36, "nac": "Bolívia" }
+          ],
+          [
+            "Francisco Rodríguez",
+            "ZAG",
+            68,
+            { "id": "og187801", "fonte": "estimado-valor", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Ramiro Ballivián",
+            "ZAG",
+            68,
+            { "id": "og100667", "fonte": "estimado-valor", "idade": 34, "nac": "Bolívia" }
+          ],
+          [
+            "Hallyson",
+            "ZAG",
+            67,
+            { "id": "og440808", "fonte": "estimado-valor", "idade": 32, "nac": "Brasil" }
+          ],
+          [
+            "Adalid Terrazas",
+            "MEI",
+            67,
+            { "id": "og556023", "fonte": "fc26", "idade": 26, "nac": "Bolívia" }
+          ],
+          ["Ronald Bustos", "LD", 64, { "id": "og858564", "fonte": "fc26", "idade": 22, "nac": "Bolívia" }],
+          ["Saulo Guerra", "PD", 64, { "id": "og537473", "fonte": "fc26", "idade": 34, "nac": "Bolívia" }],
+          ["João Pedro", "LE", 64, { "id": "og716264", "fonte": "fc26", "idade": 23, "nac": "Brasil" }],
+          [
+            "Wagner Vidal",
+            "ZAG",
+            63,
+            { "id": "og626875", "fonte": "estimado-clube", "idade": 28, "nac": "Brasil" }
+          ],
+          [
+            "Alonso Sánchez",
+            "ZAG",
+            63,
+            { "id": "og781898", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia" }
+          ],
+          [
+            "César Romero",
+            "ZAG",
+            63,
+            { "id": "og1025239", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Andy Campos",
+            "MC",
+            63,
+            { "id": "og3577866", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Magallanes",
+            "MC",
+            63,
+            { "id": "og958818", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Agustín Univaso",
+            "ATA",
+            63,
+            { "id": "og896303", "fonte": "estimado-clube", "idade": 25, "nac": "Uruguai" }
+          ],
+          [
+            "Jonathan Perea",
+            "ATA",
+            63,
+            { "id": "og959426", "fonte": "estimado-clube", "idade": 25, "nac": "Colômbia" }
+          ],
+          [
+            "Carlos Preciado",
+            "ATA",
+            63,
+            { "id": "og1411347", "fonte": "estimado-clube", "idade": 30, "nac": "Colômbia" }
+          ],
+          [
+            "Alejandro Medina",
+            "ATA",
+            63,
+            { "id": "og628022", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Hugo Cardoso",
+            "ATA",
+            63,
+            { "id": "og726790", "fonte": "estimado-clube", "idade": 27, "nac": "Cabo Verde" }
+          ],
+          [
+            "Alexi Medina",
+            "ATA",
+            63,
+            { "id": "og928954", "fonte": "estimado-clube", "idade": 31, "nac": "Argentina" }
+          ],
+          [
+            "Rafael Menacho",
+            "ATA",
+            63,
+            { "id": "og884889", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          ["Jaime Villamil", "LE", 62, { "id": "og537544", "fonte": "fc26", "idade": 34, "nac": "Bolívia" }],
+          ["Sergio Villamil", "MC", 62, { "id": "og623999", "fonte": "fc26", "idade": 31, "nac": "Bolívia" }],
+          ["Rodrigo Vargas", "ATA", 62, { "id": "og187812", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          [
+            "Alejandro Polo",
+            "ZAG",
+            61,
+            { "id": "og1003851", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Munir Montenegro",
+            "MC",
+            61,
+            { "id": "og2529446", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Diego Mercado",
+            "MC",
+            61,
+            { "id": "og2492750", "fonte": "estimado-clube", "idade": 20, "nac": "Colômbia" }
+          ],
+          [
+            "Cristian Rojas",
+            "MC",
+            61,
+            { "id": "og3569616", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "universitario-de-vinto-224422",
+        "nome": "Universitario de Vinto",
+        "sigla": "UNI",
+        "elenco": [
+          ["Bruno Poveda", "GOL", 65, { "id": "og934511", "fonte": "fc26", "idade": 23, "nac": "Bolívia" }],
+          [
+            "Jesús Careaga",
+            "GOL",
+            64,
+            { "id": "og537526", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Paolo García",
+            "GOL",
+            64,
+            { "id": "og952774", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Didí Torrico",
+            "MC",
+            68,
+            { "id": "og71047", "fonte": "estimado-valor", "idade": 38, "nac": "Bolívia" }
+          ],
+          [
+            "Andrés Llano",
+            "ATA",
+            68,
+            { "id": "og952683", "fonte": "estimado-valor", "idade": 34, "nac": "Colômbia" }
+          ],
+          [
+            "Hugo Dorrego",
+            "MC",
+            66,
+            { "id": "og326772", "fonte": "estimado-valor", "idade": 33, "nac": "Uruguai" }
+          ],
+          [
+            "Hernán Rodríguez",
+            "MC",
+            65,
+            { "id": "og406388", "fonte": "fc26", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Ezequiel Straccia",
+            "MC",
+            65,
+            { "id": "og851429", "fonte": "estimado-valor", "idade": 35, "nac": "Argentina" }
+          ],
+          [
+            "Gustavo Visalla",
+            "ZAG",
+            64,
+            { "id": "og953734", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Víctor Machaca",
+            "ZAG",
+            64,
+            { "id": "og372156", "fonte": "estimado-clube", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Agustin Jara",
+            "ZAG",
+            64,
+            { "id": "og514274", "fonte": "estimado-clube", "idade": 34, "nac": "Argentina" }
+          ],
+          ["Diego Vargas", "ZAG", 64, { "id": "og879111", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Álvaro Cuestas",
+            "ZAG",
+            64,
+            { "id": "og952679", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Paolo Alcocer",
+            "MC",
+            64,
+            { "id": "og556016", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Marco Gomez",
+            "MC",
+            64,
+            { "id": "og3534377", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Daniel Camacho",
+            "MC",
+            64,
+            { "id": "og383529", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Sergio Pardo",
+            "MC",
+            64,
+            { "id": "og3535523", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          ["Sergio Pardo", "MC", 64, { "id": "og897491", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Andrés Veizaga",
+            "MC",
+            64,
+            { "id": "og631757", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Fabio Gil",
+            "MC",
+            64,
+            { "id": "og2778035", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Guilder Cuellar",
+            "MC",
+            64,
+            { "id": "og1233505", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Joel Calicho",
+            "MC",
+            64,
+            { "id": "og952684", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "Brayan Calderón",
+            "MC",
+            64,
+            { "id": "og717094", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "José Pinto",
+            "MC",
+            64,
+            { "id": "og777198", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Pablo Peña",
+            "MC",
+            64,
+            { "id": "og3581779", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          ["Lucas Suarez", "MC", 64, { "id": "og3538424", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Nicolás Barreto",
+            "MC",
+            64,
+            { "id": "og2828813", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Johan Gómez",
+            "ATA",
+            64,
+            { "id": "og706737", "fonte": "estimado-clube", "idade": 32, "nac": "Colômbia" }
+          ],
+          [
+            "José Abrego",
+            "ATA",
+            64,
+            { "id": "og2805249", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Felipe Pasadore",
+            "ATA",
+            64,
+            { "id": "og1376374", "fonte": "estimado-valor", "idade": 26, "nac": "Argentina" }
+          ]
+        ]
+      },
+      {
+        "id": "abb-226418",
+        "nome": "ABB",
+        "sigla": "ABB",
+        "elenco": [
+          [
+            "Aldair Riascos",
+            "GOL",
+            62,
+            { "id": "og2529435", "fonte": "estimado-valor", "idade": 31, "nac": "Peru" }
+          ],
+          [
+            "Jairo Cuéllar",
+            "GOL",
+            62,
+            { "id": "og636729", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Santiago Encinas",
+            "GOL",
+            60,
+            { "id": "og3598221", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Alejandro Bejarano",
+            "MC",
+            68,
+            { "id": "og95759", "fonte": "estimado-valor", "idade": 42, "nac": "Bolívia" }
+          ],
+          [
+            "Denilson Valda",
+            "ZAG",
+            67,
+            { "id": "og858512", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Alejandro Chumacero",
+            "MC",
+            67,
+            { "id": "og116786", "fonte": "estimado-valor", "idade": 35, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Fajardo",
+            "ATA",
+            67,
+            { "id": "og3534374", "fonte": "estimado-valor", "idade": 30, "nac": "Colômbia" }
+          ],
+          [
+            "Jean Riascos",
+            "ZAG",
+            66,
+            { "id": "og2529434", "fonte": "estimado-valor", "idade": 34, "nac": "Equador" }
+          ],
+          [
+            "Layonel Figueroa",
+            "MC",
+            66,
+            { "id": "og676074", "fonte": "estimado-valor", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Sebastián Reyes",
+            "ZAG",
+            65,
+            { "id": "og676068", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Denilson Gutiérrez",
+            "ZAG",
+            64,
+            { "id": "og952611", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Augusto Seimandi",
+            "ZAG",
+            63,
+            { "id": "og500461", "fonte": "fc26", "idade": 31, "nac": "Argentina" }
+          ],
+          [
+            "Carlos Jemio",
+            "ZAG",
+            63,
+            { "id": "og1302883", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "José Briceño",
+            "ATA",
+            63,
+            { "id": "og708997", "fonte": "estimado-valor", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Sebastián Claure",
+            "ZAG",
+            62,
+            { "id": "og865045", "fonte": "estimado-clube", "idade": 27, "nac": "Bolívia" }
+          ],
+          [
+            "Omar Preciado",
+            "ZAG",
+            62,
+            { "id": "og1068192", "fonte": "estimado-clube", "idade": 27, "nac": "Colômbia" }
+          ],
+          ["Jhairo Flores", "ZAG", 62, { "id": "og3563121", "fonte": "estimado-clube", "nac": "Bolívia" }],
+          [
+            "Nessemon Biafri",
+            "MC",
+            62,
+            { "id": "og3650591", "fonte": "estimado-clube", "idade": 24, "nac": "Costa do Marfim" }
+          ],
+          [
+            "Pablo Vaca",
+            "MC",
+            62,
+            { "id": "og609915", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Jeffrey Minah",
+            "MC",
+            62,
+            { "id": "og3571178", "fonte": "estimado-clube", "idade": 23, "nac": "Gana" }
+          ],
+          [
+            "Rodderyk Perozo",
+            "MC",
+            62,
+            { "id": "og346006", "fonte": "estimado-clube", "idade": 32, "nac": "Venezuela" }
+          ],
+          ["Chadrack Ngantsui", "ATA", 62, { "id": "og2749277", "fonte": "estimado-clube", "nac": "Congo" }],
+          [
+            "Jair Catuy",
+            "ATA",
+            62,
+            { "id": "og289223", "fonte": "estimado-clube", "idade": 34, "nac": "Panamá" }
+          ],
+          [
+            "Freddy Abastoflor",
+            "ATA",
+            62,
+            { "id": "og350552", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Esteban Condori",
+            "ATA",
+            62,
+            { "id": "og2529430", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Marco Salazar",
+            "MC",
+            61,
+            { "id": "og1062162", "fonte": "estimado-valor", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Gary Rea",
+            "ATA",
+            61,
+            { "id": "og1232254", "fonte": "estimado-valor", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Fabio Zamora",
+            "ZAG",
+            60,
+            { "id": "og1232532", "fonte": "estimado-valor", "idade": 19, "nac": "Bolívia" }
+          ],
+          [
+            "Dieu Le Veut Ebengue",
+            "MC",
+            60,
+            { "id": "og1118772", "fonte": "estimado-clube", "idade": 21, "nac": "Congo" }
+          ],
+          [
+            "Andrés Guillermo",
+            "MC",
+            60,
+            { "id": "og1814118", "fonte": "estimado-valor", "idade": 20, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "oriente-petrolero-2375",
+        "nome": "Oriente Petrolero",
+        "sigla": "ORI",
+        "elenco": [
+          [
+            "Alejandro Torres",
+            "GOL",
+            63,
+            { "id": "og775491", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Joel Bernal",
+            "GOL",
+            63,
+            { "id": "og1003298", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Arnold Alba",
+            "GOL",
+            63,
+            { "id": "og3575314", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Joffre Escobar",
+            "ATA",
+            68,
+            { "id": "og324276", "fonte": "estimado-valor", "idade": 30, "nac": "Equador" }
+          ],
+          [
+            "Leonardo Vaca",
+            "ATA",
+            67,
+            { "id": "og400342", "fonte": "estimado-valor", "idade": 30, "nac": "Bolívia" }
+          ],
+          ["Samuel Galindo", "MC", 66, { "id": "og85148", "fonte": "fc26", "idade": 34, "nac": "Bolívia" }],
+          ["Julio Herrera", "MC", 65, { "id": "og624000", "fonte": "fc26", "idade": 27, "nac": "Bolívia" }],
+          [
+            "Jeferson Virreira",
+            "ZAG",
+            64,
+            { "id": "og443959", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Dieguito Rodriguez",
+            "ZAG",
+            64,
+            { "id": "og1235068", "fonte": "estimado-valor", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Mizael Monteiro",
+            "ZAG",
+            63,
+            { "id": "og645938", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }
+          ],
+          [
+            "Enrique Taborga",
+            "ZAG",
+            63,
+            { "id": "og967061", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Jorge Lovera",
+            "ZAG",
+            63,
+            { "id": "og537469", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Jamir Berdecio",
+            "ZAG",
+            63,
+            { "id": "og858523", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Francisco López",
+            "ZAG",
+            63,
+            { "id": "og2743572", "fonte": "estimado-valor", "idade": 25, "nac": "Uruguai" }
+          ],
+          [
+            "Diego Armando Rodríguez",
+            "MC",
+            63,
+            { "id": "og277435", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Pedro Siles",
+            "MC",
+            63,
+            { "id": "og367606", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Franz González",
+            "MC",
+            63,
+            { "id": "og556020", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Octavio Perdomo",
+            "MC",
+            63,
+            { "id": "og772262", "fonte": "estimado-clube", "idade": 26, "nac": "Uruguai" }
+          ],
+          [
+            "Matías Roskopf",
+            "ATA",
+            63,
+            { "id": "og383403", "fonte": "estimado-clube", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Nahuel Roldán",
+            "ATA",
+            63,
+            { "id": "og501785", "fonte": "estimado-clube", "idade": 27, "nac": "Uruguai" }
+          ],
+          [
+            "Eliaquim Mangala",
+            "ZAG",
+            62,
+            { "id": "og105444", "fonte": "estimado-clube", "idade": 35, "nac": "França" }
+          ],
+          [
+            "José Flores",
+            "ATA",
+            62,
+            { "id": "og609929", "fonte": "estimado-valor", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Marcelo Moreno",
+            "ATA",
+            62,
+            { "id": "og32698", "fonte": "estimado-clube", "idade": 39, "nac": "Bolívia" }
+          ],
+          [
+            "Roberto Diez",
+            "ZAG",
+            61,
+            { "id": "og1430300", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Manuel Bonilla",
+            "ZAG",
+            61,
+            { "id": "og1062139", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Jhon Velasco",
+            "ZAG",
+            61,
+            { "id": "og879113", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          ["Dico Roca", "LE", 61, { "id": "og559317", "fonte": "fc26", "idade": 30, "nac": "Bolívia" }],
+          [
+            "Rubem Anagua",
+            "MC",
+            61,
+            { "id": "og2442314", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Máximo Mamani",
+            "MC",
+            61,
+            { "id": "og1393762", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Juvenal Rojas",
+            "MC",
+            61,
+            { "id": "og1814113", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "real-tomayapo-258677",
+        "nome": "Real Tomayapo",
+        "sigla": "REA",
+        "elenco": [
+          [
+            "Gonzalo Rehak",
+            "GOL",
+            62,
+            { "id": "og525152", "fonte": "estimado-valor", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Carlos Adorno",
+            "GOL",
+            62,
+            { "id": "og556007", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Cárdenas",
+            "GOL",
+            61,
+            { "id": "og175219", "fonte": "estimado-clube", "idade": 35, "nac": "Bolívia" }
+          ],
+          [
+            "Marvin Bejarano",
+            "ZAG",
+            69,
+            { "id": "og87409", "fonte": "estimado-valor", "idade": 38, "nac": "Bolívia" }
+          ],
+          [
+            "Rolando Blackburn",
+            "ATA",
+            68,
+            { "id": "og250632", "fonte": "estimado-valor", "idade": 36, "nac": "Panamá" }
+          ],
+          [
+            "Diego Wayar",
+            "MC",
+            67,
+            { "id": "og256609", "fonte": "estimado-valor", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Ronald Cuéllar",
+            "ATA",
+            66,
+            { "id": "og705694", "fonte": "estimado-valor", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Limberg Gutiérrez",
+            "MC",
+            64,
+            { "id": "og444276", "fonte": "estimado-valor", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Lisandro Montenegro",
+            "MC",
+            63,
+            { "id": "og1059595", "fonte": "fc26", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Robson",
+            "ZAG",
+            62,
+            { "id": "og472985", "fonte": "estimado-clube", "idade": 34, "nac": "Brasil" }
+          ],
+          [
+            "Ricardo Suárez",
+            "ZAG",
+            62,
+            { "id": "og586559", "fonte": "estimado-clube", "idade": 33, "nac": "Bolívia" }
+          ],
+          [
+            "Cristhian Arabe",
+            "MC",
+            62,
+            { "id": "og372977", "fonte": "estimado-clube", "idade": 34, "nac": "Bolívia" }
+          ],
+          [
+            "Josue Mamani",
+            "MC",
+            62,
+            { "id": "og556021", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Mauricio Chajtur",
+            "MC",
+            62,
+            { "id": "og537468", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Alexis Ribera",
+            "MC",
+            62,
+            { "id": "og385613", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Mario Barbery",
+            "MC",
+            62,
+            { "id": "og609919", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Denilzon Ramallo",
+            "MC",
+            62,
+            { "id": "og952700", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Jhon Chavez",
+            "MC",
+            62,
+            { "id": "og3563924", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Nelson Orozco",
+            "ATA",
+            62,
+            { "id": "og734263", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Francisco Nouet",
+            "ATA",
+            62,
+            { "id": "og658835", "fonte": "estimado-valor", "idade": 28, "nac": "Argentina" }
+          ],
+          [
+            "Ruan Costa",
+            "ATA",
+            62,
+            { "id": "og761438", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }
+          ],
+          [
+            "Alejandro Cervantes",
+            "ATA",
+            62,
+            { "id": "og892151", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "David Robles",
+            "ZAG",
+            61,
+            { "id": "og416240", "fonte": "estimado-clube", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Gino Barbieri",
+            "ZAG",
+            61,
+            { "id": "og717755", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Víctor Melgar",
+            "MC",
+            61,
+            { "id": "og147279", "fonte": "estimado-clube", "idade": 38, "nac": "Bolívia" }
+          ],
+          ["Javier Guerra", "LD", 60, { "id": "og1003861", "fonte": "fc26", "idade": 22, "nac": "Bolívia" }],
+          [
+            "Bernardo Sivila",
+            "MC",
+            60,
+            { "id": "og3650605", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Vladimir Gálvez",
+            "MC",
+            60,
+            { "id": "og1179460", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Ramiro Eguez",
+            "MC",
+            60,
+            { "id": "og952756", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Celin Padilla",
+            "MC",
+            60,
+            { "id": "og1185908", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "real-potosi-2376",
+        "nome": "Real Potosí",
+        "sigla": "REA",
+        "elenco": [
+          [
+            "Christian Martínez",
+            "GOL",
+            65,
+            { "id": "og757762", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Daniel Sandy",
+            "GOL",
+            62,
+            { "id": "og721191", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Carvajal",
+            "GOL",
+            62,
+            { "id": "og2509642", "fonte": "estimado-clube", "idade": 30, "nac": "Colômbia" }
+          ],
+          [
+            "Fran Supayabe",
+            "ZAG",
+            67,
+            { "id": "og537424", "fonte": "estimado-valor", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Alí",
+            "ATA",
+            67,
+            { "id": "og504453", "fonte": "estimado-valor", "idade": 32, "nac": "Bolívia" }
+          ],
+          [
+            "Jeferson Rivas",
+            "ATA",
+            66,
+            { "id": "og545238", "fonte": "estimado-valor", "idade": 29, "nac": "Colômbia" }
+          ],
+          [
+            "Emerson Velasquez",
+            "MC",
+            64,
+            { "id": "og781106", "fonte": "estimado-valor", "idade": 27, "nac": "Bolívia" }
+          ],
+          ["Hugo Rojas", "PD", 64, { "id": "og586050", "fonte": "fc26", "idade": 32, "nac": "Bolívia" }],
+          [
+            "Jose Alipaz",
+            "ATA",
+            64,
+            { "id": "og967246", "fonte": "estimado-valor", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Saúl Severiche",
+            "ZAG",
+            63,
+            { "id": "og900268", "fonte": "estimado-valor", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Pablo Rioja",
+            "ZAG",
+            62,
+            { "id": "og367600", "fonte": "estimado-clube", "idade": 38, "nac": "Bolívia" }
+          ],
+          [
+            "Kevin Villegas",
+            "ZAG",
+            62,
+            { "id": "og3563119", "fonte": "estimado-clube", "idade": 28, "nac": "Colômbia" }
+          ],
+          [
+            "Gonzalo Añazgo",
+            "ZAG",
+            62,
+            { "id": "og849518", "fonte": "estimado-clube", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Jairo Thomas",
+            "MC",
+            62,
+            { "id": "og706008", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Imanol Cárdenas",
+            "MC",
+            62,
+            { "id": "og662149", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Erlan Condori",
+            "MC",
+            62,
+            { "id": "og630955", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "John Eric",
+            "MC",
+            62,
+            { "id": "og811318", "fonte": "estimado-valor", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Fernando Rodríguez",
+            "MC",
+            62,
+            { "id": "og500176", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Igor Soares",
+            "MC",
+            62,
+            { "id": "og445250", "fonte": "estimado-clube", "idade": 31, "nac": "Brasil" }
+          ],
+          [
+            "Lucas Gimenez",
+            "MC",
+            62,
+            { "id": "og764098", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Fabricio Suárez",
+            "ATA",
+            62,
+            { "id": "og1013777", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Vladimir Castellón",
+            "ATA",
+            62,
+            { "id": "og85151", "fonte": "estimado-clube", "idade": 37, "nac": "Bolívia" }
+          ],
+          [
+            "Maximiliano Gómez",
+            "ATA",
+            62,
+            { "id": "og651821", "fonte": "estimado-clube", "idade": 38, "nac": "Argentina" }
+          ],
+          [
+            "Yago Campos",
+            "ATA",
+            62,
+            { "id": "og1247765", "fonte": "estimado-clube", "idade": 25, "nac": "Brasil" }
+          ],
+          [
+            "Anderson Brito",
+            "MC",
+            61,
+            { "id": "og1181775", "fonte": "estimado-valor", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Cristian Lopez",
+            "MC",
+            61,
+            { "id": "og1303145", "fonte": "estimado-valor", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Stiven Plaza",
+            "ATA",
+            61,
+            { "id": "og627311", "fonte": "estimado-valor", "idade": 27, "nac": "Equador" }
+          ],
+          [
+            "William Fernández",
+            "ZAG",
+            60,
+            { "id": "og3534332", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ],
+          [
+            "Williams Fernandez",
+            "ZAG",
+            60,
+            { "id": "og3575327", "fonte": "estimado-valor", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Ariel Tomicha",
+            "ZAG",
+            60,
+            { "id": "og3571187", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ]
+        ]
+      },
+      {
+        "id": "gualberto-villarroel-296586",
+        "nome": "Gualberto Villarroel",
+        "sigla": "GUA",
+        "elenco": [
+          ["Roberto Rivas", "GOL", 62, { "id": "og87228", "fonte": "fc26", "idade": 41, "nac": "Bolívia" }],
+          [
+            "Germán Arauz",
+            "GOL",
+            61,
+            { "id": "og840639", "fonte": "estimado-clube", "idade": 31, "nac": "Bolívia" }
+          ],
+          [
+            "David Akologo",
+            "GOL",
+            61,
+            { "id": "og881043", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Mijaíl Avilés",
+            "MC",
+            70,
+            { "id": "og79727", "fonte": "estimado-valor", "idade": 39, "nac": "Venezuela" }
+          ],
+          [
+            "Walter Araújo",
+            "MC",
+            68,
+            { "id": "og304105", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Joaquín Lencinas",
+            "ZAG",
+            67,
+            { "id": "og150310", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina" }
+          ],
+          ["Aldair Mamani", "PD", 62, { "id": "og1411266", "fonte": "fc26", "idade": 21, "nac": "Bolívia" }],
+          [
+            "Fernando Aguilar",
+            "ZAG",
+            61,
+            { "id": "og676075", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Miguel Paredes",
+            "MC",
+            61,
+            { "id": "og383525", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Gonzalo Vaca",
+            "MC",
+            61,
+            { "id": "og958816", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          ["Luis Serrano", "MC", 61, { "id": "og630956", "fonte": "fc26", "idade": 28, "nac": "Bolívia" }],
+          [
+            "Rodrigo Orihuela",
+            "MC",
+            61,
+            { "id": "og777197", "fonte": "estimado-clube", "idade": 23, "nac": "Bolívia" }
+          ],
+          [
+            "Carlos Ribera",
+            "MC",
+            61,
+            { "id": "og537498", "fonte": "estimado-clube", "idade": 29, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Cruz",
+            "MC",
+            61,
+            { "id": "og3576290", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "José Vargas",
+            "MC",
+            61,
+            { "id": "og594631", "fonte": "estimado-clube", "idade": 30, "nac": "Bolívia" }
+          ],
+          [
+            "Alex Cáceres",
+            "ATA",
+            61,
+            { "id": "og436264", "fonte": "estimado-clube", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Ronaldo Monteiro",
+            "ATA",
+            61,
+            { "id": "og452826", "fonte": "estimado-clube", "idade": 28, "nac": "Bolívia" }
+          ],
+          [
+            "Roler Ferrufino",
+            "ATA",
+            61,
+            { "id": "og556025", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Matheus Moresche",
+            "ATA",
+            61,
+            { "id": "og548318", "fonte": "estimado-clube", "idade": 28, "nac": "Brasil" }
+          ],
+          [
+            "Thomas Monterubianessi",
+            "ATA",
+            61,
+            { "id": "og2752275", "fonte": "estimado-clube", "idade": 27, "nac": "Argentina" }
+          ],
+          ["Moises Calero", "ATA", 61, { "id": "og631760", "fonte": "fc26", "idade": 28, "nac": "Bolívia" }],
+          [
+            "David Ribera",
+            "ATA",
+            61,
+            { "id": "og773304", "fonte": "estimado-clube", "idade": 25, "nac": "Bolívia" }
+          ],
+          [
+            "Sebastián Galindo",
+            "ATA",
+            61,
+            { "id": "og556018", "fonte": "estimado-clube", "idade": 26, "nac": "Bolívia" }
+          ],
+          [
+            "Luis Zeballos",
+            "ATA",
+            61,
+            { "id": "og609923", "fonte": "estimado-clube", "idade": 24, "nac": "Bolívia" }
+          ],
+          [
+            "Juan Goyeneche",
+            "ATA",
+            61,
+            { "id": "og1200256", "fonte": "estimado-clube", "idade": 25, "nac": "Argentina" }
+          ],
+          ["Nicolás Landa", "ZAG", 60, { "id": "og500172", "fonte": "fc26", "idade": 30, "nac": "Bolívia" }],
+          [
+            "Guimer Justiniano",
+            "ZAG",
+            60,
+            { "id": "og380774", "fonte": "estimado-clube", "idade": 37, "nac": "Bolívia" }
+          ],
+          [
+            "Jhoni",
+            "ZAG",
+            59,
+            { "id": "og958313", "fonte": "estimado-clube", "idade": 22, "nac": "Bolívia" }
+          ],
+          [
+            "Edwin Pardo",
+            "ZAG",
+            59,
+            { "id": "og2471395", "fonte": "estimado-clube", "idade": 20, "nac": "Bolívia" }
+          ],
+          [
+            "Diego Saavedra",
+            "MC",
+            59,
+            { "id": "og2318370", "fonte": "estimado-clube", "idade": 21, "nac": "Bolívia" }
+          ]
+        ]
+      }
+    ],
+    "B": [],
+    "C": [],
+    "D": []
+  },
+  "vagasDiretasCopa": [],
+  "classicos": [],
+  "semCopa": true,
+  "formatos": {
+    "A": {
+      "divisao": "A",
+      "id": "division-profesional-bolivia",
+      "nome": "División Profesional 2026",
+      "clubes": 16,
+      "fases": [
+        {
+          "tipo": "liga",
+          "nome": "Pontos corridos",
+          "grupos": 1,
+          "distribuicao": "unico",
+          "turnos": 2,
+          "avancamPorGrupo": 0
+        }
+      ],
+      "acesso": [],
+      "rebaixamento": []
+    }
+  }
+}

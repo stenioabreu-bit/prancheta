@@ -69,9 +69,9 @@ describe("valores e janelas", () => {
     expect(valorDeMercado(j(75), "A")).toBeGreaterThan(valorDeMercado(j(75), "C"));
   });
 
-  it("janelas nas rodadas 0–3 e 17–21", () => {
-    expect([0, 3, 17, 21].every(janelaAberta)).toBe(true);
-    expect([4, 16, 22, 37].some(janelaAberta)).toBe(false);
+  it("janelas nas semanas da CBF: 05/01–03/03 e 20/07–11/09", () => {
+    expect([0, 8, 28, 35].every(janelaAberta)).toBe(true);
+    expect([9, 27, 36, 47].some(janelaAberta)).toBe(false);
   });
 });
 
@@ -161,8 +161,8 @@ describe("carreira do técnico", () => {
   it("desempregado, a temporada continua e aparecem vagas; dá para se candidatar", () => {
     const estado = jogo(7);
     pedirDemissao(estado);
-    avancar(estado, 6);
-    expect(estado.temporada.rodada).toBe(6);
+    avancar(estado, 16);
+    expect(estado.temporada.rodada).toBe(16);
     const vaga = estado.mercado.vagas[0];
     expect(vaga).toBeTruthy();
     expect(candidatar(estado, vaga!.clubeId)).toContain("Candidatura enviada");
@@ -180,7 +180,9 @@ describe("carreira do técnico", () => {
     expect(estado.mercado.passagens.map((p) => p.clubeId)).toEqual(["a8", destino]);
     expect(estado.mercado.vagas.some((v) => v.clubeId === "a8")).toBe(true);
     expect(estado.mercado.tecnicos[destino]).toBe("Fulano");
-    expect(proximoJogoDoUsuario(estado)?.competicao).toBeTruthy();
+    expect(
+      Object.values(estado.temporada.jogos).some((j) => j.casa === destino || j.visitante === destino),
+    ).toBe(true);
   });
 
   it("aceitar uma sondagem pela caixa troca de clube", () => {
@@ -204,8 +206,8 @@ describe("temporada inteira com mercado", () => {
   it("termina e é reproduzível", () => {
     const a = jogo(10);
     const b = jogo(10);
-    avancar(a, 38);
-    avancar(b, 38);
+    avancar(a, 99);
+    avancar(b, 99);
     expect(fimDeTemporada(a)).toBe(true);
     expect(a.carreira.noticias).toEqual(b.carreira.noticias);
     expect(a.mercado.financas).toEqual(b.mercado.financas);

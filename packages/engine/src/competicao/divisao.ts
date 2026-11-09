@@ -1,4 +1,5 @@
 import type { Rng } from "../rng";
+import { horarioDaData } from "./calendario";
 import {
   type Agenda,
   campanha,
@@ -132,7 +133,11 @@ function abrirFase(
     const ordenados = fase.chaveamento === "chave" ? entram : ordenarPorCampanha(entram, tabelaCampanha);
     pares = parear(ordenados, fase.chaveamento, ctx.rng);
   }
-  const rodadas = fase.idaEVolta ? [rodadaInicial, rodadaInicial + 1] : [rodadaInicial];
+  const rodadas = fase.datas?.length
+    ? fase.datas.map(horarioDaData)
+    : fase.idaEVolta
+      ? [rodadaInicial, rodadaInicial + 1]
+      : [rodadaInicial];
   divisao.fases.push(montarFaseMataMata(fase, pares, rodadas, agenda, mando));
 }
 

@@ -1,6 +1,6 @@
 /**
  * Copa do Brasil, conforme o REC da CBF de 2026: 126 clubes, 9 fases.
- * 1ª a 4ª fase e final em jogo único (empate: pênaltis); 5ª fase à semifinal em
+ * 1ª, 3ª e 4ª fase e final em jogo único (empate: pênaltis); 2ª fase e 5ª fase à semifinal em
  * ida e volta (saldo, depois pênaltis). A Série A entra na 5ª fase; 4 vagas
  * diretas (campeões de outras competições) entram na 3ª.
  *
@@ -10,28 +10,29 @@
  */
 import type { Rng } from "../rng";
 import { sortear } from "../rng";
+import { horarioDaData } from "./calendario";
 import { type Agenda, decidirConfronto, montarFaseMataMata, parear } from "./fases";
 import type { Chaveamento, EstadoFaseMataMata, JogoAgendado } from "./tipos";
 
 interface FaseDaCopa {
   nome: string;
-  /** Rodada(s) da temporada em cujo meio de semana a fase acontece. */
-  rodadas: readonly number[];
+  /** Datas oficiais (CBF, calendário 2026): jogo único ou ida e volta. */
+  datas: readonly string[];
   chaveamento: Chaveamento | "blocos";
   neutro?: boolean;
 }
 
-/** Datas encaixadas no calendário de 38 rodadas (as mesmas do protótipo). */
+/** Datas do calendário oficial da CBF de 2026 (datas 01 a 14 da Copa do Brasil). */
 export const FASES_DA_COPA_2026: readonly FaseDaCopa[] = [
-  { nome: "1ª fase", rodadas: [1], chaveamento: "melhorContraPior" },
-  { nome: "2ª fase", rodadas: [3], chaveamento: "sorteio" },
-  { nome: "3ª fase", rodadas: [5], chaveamento: "sorteio" },
-  { nome: "4ª fase", rodadas: [7], chaveamento: "sorteio" },
-  { nome: "5ª fase", rodadas: [10, 12], chaveamento: "blocos" },
-  { nome: "Oitavas de final", rodadas: [15, 17], chaveamento: "sorteio" },
-  { nome: "Quartas de final", rodadas: [21, 23], chaveamento: "sorteio" },
-  { nome: "Semifinal", rodadas: [27, 29], chaveamento: "chave" },
-  { nome: "Final", rodadas: [33], chaveamento: "chave", neutro: true },
+  { nome: "1ª fase", datas: ["2026-02-18"], chaveamento: "melhorContraPior" },
+  { nome: "2ª fase", datas: ["2026-02-25", "2026-03-04"], chaveamento: "sorteio" },
+  { nome: "3ª fase", datas: ["2026-03-11"], chaveamento: "sorteio" },
+  { nome: "4ª fase", datas: ["2026-03-18"], chaveamento: "sorteio" },
+  { nome: "5ª fase", datas: ["2026-04-22", "2026-05-13"], chaveamento: "blocos" },
+  { nome: "Oitavas de final", datas: ["2026-08-02", "2026-08-05"], chaveamento: "sorteio" },
+  { nome: "Quartas de final", datas: ["2026-08-26", "2026-09-02"], chaveamento: "sorteio" },
+  { nome: "Semifinal", datas: ["2026-11-01", "2026-11-08"], chaveamento: "chave" },
+  { nome: "Final", datas: ["2026-12-06"], chaveamento: "chave", neutro: true },
 ];
 
 export interface EstadoCopa {
@@ -92,9 +93,9 @@ export function abrirFaseDaCopa(
   const sorteioDeMando = (a: string, b: string) => sortear(rng, [a, b]);
   copa.fases.push(
     montarFaseMataMata(
-      { nome: fase.nome, idaEVolta: fase.rodadas.length === 2 },
+      { nome: fase.nome, idaEVolta: fase.datas.length === 2 },
       pares(fase, ordenados, rng),
-      fase.rodadas,
+      fase.datas.map(horarioDaData),
       agenda,
       sorteioDeMando,
       fase.neutro,

@@ -7,6 +7,7 @@ import {
   FASES_DA_COPA_2026,
   RODADAS_POR_TEMPORADA,
   faseDoEstado,
+  horarioDaData,
   jogosDaRodada,
   novaTemporada,
   proximoJogoDo,
@@ -34,7 +35,7 @@ function divisoesDeTeste(): Record<Divisao, ClubeDados[]> {
 
 function jogarTemporada(estado: EstadoTemporada) {
   let guarda = 0;
-  while (estado.rodada < RODADAS_POR_TEMPORADA && guarda++ < 100) simularRodada(estado);
+  while (!temporadaEncerrada(estado) && guarda++ < 120) simularRodada(estado);
 }
 
 function nova(semente = 1, usuarioId: string | null = null) {
@@ -114,14 +115,14 @@ describe("temporada completa (formatos 2026)", () => {
     expect(confrontos("2ª fase").every((c) => c.jogos.length === 2)).toBe(true);
   });
 
-  it("Copa do Brasil: 126 clubes, 9 fases, jogo único até a 4ª e na final", () => {
+  it("Copa do Brasil: 126 clubes, 9 fases, 2ª fase e 5ª à semi em ida e volta", () => {
     const participantes = new Set(Object.values(inicio.copa.entram).flat());
     expect(participantes.size).toBe(126);
     const fases = estado.copa.fases;
     expect(fases.map((f) => f.nome)).toEqual(FASES_DA_COPA_2026.map((f) => f.nome));
     expect(fases.map((f) => f.confrontos.length)).toEqual([14, 44, 24, 12, 16, 8, 4, 2, 1]);
     const legs = fases.map((f) => f.confrontos[0]!.jogos.length);
-    expect(legs).toEqual([1, 1, 1, 1, 2, 2, 2, 2, 1]);
+    expect(legs).toEqual([1, 2, 1, 1, 2, 2, 2, 2, 1]);
     const serieA = estado.divisoes.A.clubes;
     expect(fases[4]!.confrontos.flatMap((c) => [c.a, c.b]).filter((x) => serieA.includes(x))).toHaveLength(
       20,
@@ -130,10 +131,14 @@ describe("temporada completa (formatos 2026)", () => {
     expect(final.neutro).toBe(true);
   });
 
-  it("jogo de copa fica no meio da semana e vem antes da liga", () => {
-    const rodada1 = jogosDaRodada(inicio, 1);
-    expect(rodada1[0]!.competicao).toBe("copa");
-    expect(rodada1[0]!.meioDeSemana).toBe(true);
+  it("Copa e Série A nas datas oficiais da CBF, e a semana sai em ordem de data", () => {
+    const copa = Object.values(inicio.jogos).filter((j) => j.competicao === "copa");
+    expect(new Set(copa.map((j) => j.data))).toEqual(new Set(["2026-02-18"]));
+    const serieA = Object.values(inicio.jogos).filter((j) => j.competicao === "A");
+    expect(serieA.map((j) => j.data).sort()[0]).toBe("2026-01-28");
+    const semana = jogosDaRodada(inicio, horarioDaData("2026-03-15").semana);
+    const datas = semana.map((j) => j.data ?? "");
+    expect(datas).toEqual([...datas].sort());
   });
 
   it("é reproduzível com a mesma semente", () => {
@@ -181,12 +186,14 @@ describe("jogo do usuário", () => {
   it("fica fora da simulação da rodada até receber o placar", () => {
     const estado = nova(5, "d95");
     expect(Object.values(estado.copa.entram).flat()).toContain("d95");
+    for (let g = 0; g < 10 && !proximoJogoDo(estado, "a0"); g++) simularRodada(estado);
     const meu = proximoJogoDo(estado, "a0")!;
+    const semana = estado.rodada;
     simularRodada(estado, [meu.id]);
-    expect(estado.rodada).toBe(0);
+    expect(estado.rodada).toBe(semana);
     expect(estado.jogos[meu.id]!.placar).toBeNull();
     registrarPlacar(estado, meu.id, [2, 1]);
     simularRodada(estado);
-    expect(estado.rodada).toBe(1);
+    expect(estado.rodada).toBe(semana + 1);
   });
 });

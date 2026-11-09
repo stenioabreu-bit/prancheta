@@ -1,1 +1,2071 @@
-{"formato": 1, "id": "paraguai-2026", "nome": "División de Honor 2026 (Paraguai)", "ficticio": false, "temporada": 2026, "divisoes": {"A": [{"id": "cerro-porteno", "nome": "Cerro Porteño", "sigla": "CER", "elenco": [["Manuel Roffo", "GOL", 74, {"id": "og555985", "fonte": "fc26", "idade": 26, "nac": "Argentina"}], ["Gatito Fernández", "GOL", 71, {"id": "og87584", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai"}], ["Ángel Martínez", "GOL", 64, {"id": "og1234131", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Gustavo Velázquez", "ZAG", 73, {"id": "og299434", "fonte": "fc26", "idade": 35, "nac": "Paraguai"}], ["Agustín Almendra", "MC", 73, {"id": "og555994", "fonte": "fc26", "idade": 26, "nac": "Argentina"}], ["Pablo Vegetti", "ATA", 73, {"id": "og364638", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina"}], ["Cecilio Domínguez", "PE", 73, {"id": "og267097", "fonte": "fc26", "idade": 32, "nac": "Paraguai"}], ["Lucas Merolla", "ZAG", 72, {"id": "og504185", "fonte": "estimado-valor", "idade": 31, "nac": "Argentina"}], ["Ignacio Aliseda", "PE", 72, {"id": "og651218", "fonte": "fc26", "idade": 26, "nac": "Argentina"}], ["Iván Ramírez", "LD", 71, {"id": "og187899", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Juan Iturbe", "PD", 71, {"id": "og118521", "fonte": "fc26", "idade": 33, "nac": "Paraguai"}], ["Abel Luciatti", "ZAG", 70, {"id": "og202131", "fonte": "fc26", "idade": 33, "nac": "Argentina"}], ["Gastón Giménez", "VOL", 70, {"id": "og361524", "fonte": "fc26", "idade": 35, "nac": "Paraguai"}], ["Jonathan Torres", "ATA", 70, {"id": "og471553", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina"}], ["Fabricio Domínguez", "PD", 69, {"id": "og469880", "fonte": "fc26", "idade": 28, "nac": "Uruguai"}], ["Jorge Morel", "ZAG", 69, {"id": "og383418", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Piris da Motta", "VOL", 69, {"id": "og187898", "fonte": "fc26", "idade": 32, "nac": "Paraguai"}], ["Mateo Klimowicz", "MC", 69, {"id": "og594724", "fonte": "estimado-valor", "idade": 26, "nac": "Alemanha"}], ["Sergio Araújo", "ATA", 69, {"id": "og132411", "fonte": "fc26", "idade": 34, "nac": "Argentina"}], ["Santiago Mosquera", "ATA", 69, {"id": "og507019", "fonte": "estimado-valor", "idade": 31, "nac": "Colômbia"}], ["Blás Riveros", "LE", 68, {"id": "og383582", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Enzo Baez", "ATA", 68, {"id": "og3660536", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Guillermo Benítez", "LE", 67, {"id": "og500861", "fonte": "fc26", "idade": 32, "nac": "Argentina"}], ["Cristhian Paredes", "VOL", 67, {"id": "og452609", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Emilio Acosta", "ZAG", 66, {"id": "og1179499", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Rolando Mongelós", "ZAG", 66, {"id": "og1179505", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Emilio Acosta", "ZAG", 66, {"id": "og3573589", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Josué Servín", "ZAG", 66, {"id": "og2780690", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Víctor Sánchez", "ZAG", 66, {"id": "og3532165", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai"}], ["Fabrizio Peralta", "VOL", 66, {"id": "og708703", "fonte": "fc26", "idade": 24, "nac": "Paraguai"}]]}, {"id": "libertad", "nome": "Libertad", "sigla": "LIB", "elenco": [["Rodrigo Morínigo", "GOL", 71, {"id": "og613927", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Thiago Verardi", "GOL", 66, {"id": "og1056157", "fonte": "estimado-clube", "idade": 20, "nac": "Itália"}], ["Ángel González", "GOL", 58, {"id": "og761505", "fonte": "fc26", "idade": 23, "nac": "Paraguai"}], ["Matías Rojas", "PD", 74, {"id": "og409448", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Lorenzo Melgarejo", "PE", 74, {"id": "og89711", "fonte": "fc26", "idade": 36, "nac": "Paraguai"}], ["Nicolás Freire", "ZAG", 73, {"id": "og328768", "fonte": "fc26", "idade": 32, "nac": "Argentina"}], ["Matías Espinoza", "LE", 72, {"id": "og500057", "fonte": "fc26", "idade": 29, "nac": "Paraguai"}], ["Federico Carrizo", "MEI", 72, {"id": "og150199", "fonte": "fc26", "idade": 35, "nac": "Argentina"}], ["Robert Rojas", "LD", 71, {"id": "og552967", "fonte": "fc26", "idade": 30, "nac": "Paraguai"}], ["Álvaro Campuzano", "VOL", 71, {"id": "og470152", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Iván Franco", "PD", 71, {"id": "og624785", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Lucas Sanabria", "MEI", 70, {"id": "og545504", "fonte": "fc26", "idade": 27, "nac": "Paraguai"}], ["Luciano Nequecaur", "ATA", 70, {"id": "og364724", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina"}], ["Alan Benítez", "ZAG", 69, {"id": "og421228", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["Alexis Duarte", "ZAG", 69, {"id": "og556048", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Néstor Giménez", "ZAG", 69, {"id": "og538278", "fonte": "fc26", "idade": 29, "nac": "Paraguai"}], ["Agustín Manzur", "MC", 69, {"id": "og623763", "fonte": "estimado-valor", "idade": 26, "nac": "Palestina"}], ["Hugo Fernández", "MEI", 69, {"id": "og586139", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Hernesto Caballero", "VOL", 68, {"id": "og499349", "fonte": "fc26", "idade": 35, "nac": "Paraguai"}], ["Christian Martínez", "ATA", 68, {"id": "og931583", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai"}], ["Christian Martinez", "MC", 66, {"id": "og1179427", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Amin Molinas", "MC", 66, {"id": "og1238223", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Elvio Vera", "ATA", 66, {"id": "og952647", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Gustavo Aguilar", "ATA", 65, {"id": "og626033", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Rodrigo Villalba", "ATA", 65, {"id": "og999119", "fonte": "estimado-valor", "idade": 20, "nac": "Paraguai"}], ["Cesar Viancheto", "ZAG", 64, {"id": "og3658323", "fonte": "estimado-clube", "idade": 17, "nac": "Paraguai"}], ["Thiago Fernández", "ZAG", 64, {"id": "og1238218", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}], ["Elías Díaz", "ZAG", 64, {"id": "og2816227", "fonte": "estimado-clube", "idade": 17, "nac": "Paraguai"}], ["Cesar Recalde", "ZAG", 64, {"id": "og3515047", "fonte": "estimado-clube", "idade": 17, "nac": "Paraguai"}], ["Jose Meza", "ZAG", 64, {"id": "og3672160", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}]]}, {"id": "olimpia", "nome": "Olimpia", "sigla": "OLI", "elenco": [["Gastón Olveira", "GOL", 74, {"id": "og390473", "fonte": "fc26", "idade": 33, "nac": "Uruguai"}], ["Sebastián Lentinelly", "GOL", 68, {"id": "og500146", "fonte": "estimado-valor", "idade": 29, "nac": "Uruguai"}], ["Lucas Verza", "GOL", 60, {"id": "og1238949", "fonte": "fc26", "idade": 25, "nac": "Paraguai"}], ["Richard Sánchez", "MC", 75, {"id": "og501761", "fonte": "fc26", "idade": 30, "nac": "Paraguai"}], ["Gabriel Ávalos", "ATA", 75, {"id": "og279497", "fonte": "fc26", "idade": 36, "nac": "Paraguai"}], ["Braian Romero", "ATA", 74, {"id": "og449938", "fonte": "fc26", "idade": 35, "nac": "Argentina"}], ["Derlis González", "ATA", 73, {"id": "og181070", "fonte": "fc26", "idade": 32, "nac": "Paraguai"}], ["Iván Leguizamón", "PE", 72, {"id": "og928966", "fonte": "fc26", "idade": 24, "nac": "Paraguai"}], ["Raul Cáceres", "ZAG", 70, {"id": "og175334", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Richard Ortiz", "VOL", 70, {"id": "og118755", "fonte": "fc26", "idade": 36, "nac": "Paraguai"}], ["Mateo Gamarra", "ZAG", 69, {"id": "og655676", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Juanfer Alfaro", "MC", 69, {"id": "og705650", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["Sebastián Ferreira", "ATA", 69, {"id": "og452610", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Gustavo Vargas", "ZAG", 68, {"id": "og854242", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Aníbal Chalá", "LE", 68, {"id": "og378019", "fonte": "fc26", "idade": 30, "nac": "Equador"}], ["Alan Rodríguez", "ZAG", 68, {"id": "og556052", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Javier Dominguez", "MC", 68, {"id": "og699089", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Rubén Lezcano", "ATA", 68, {"id": "og931760", "fonte": "estimado-valor", "idade": 22, "nac": "Paraguai"}], ["Cesar Olmedo", "LD", 67, {"id": "og1054758", "fonte": "fc26", "idade": 23, "nac": "Paraguai"}], ["Juan Vera", "ZAG", 67, {"id": "og682115", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Esteban Matus", "ZAG", 67, {"id": "og952898", "fonte": "estimado-valor", "idade": 24, "nac": "Chile"}], ["Hugo Sandoval", "ATA", 67, {"id": "og626147", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai"}], ["Franco Alfonso", "PD", 67, {"id": "og1021344", "fonte": "fc26", "idade": 24, "nac": "Argentina"}], ["Romeo Benítez", "ATA", 67, {"id": "og854239", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Bryan Bentaberry", "ZAG", 66, {"id": "og535261", "fonte": "fc26", "idade": 29, "nac": "Uruguai"}], ["Alex Franco", "MC", 66, {"id": "og959800", "fonte": "fc26", "idade": 25, "nac": "Paraguai"}], ["Lucas Ramírez", "ZAG", 65, {"id": "og1521756", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Alexis Vargas", "ZAG", 65, {"id": "og1825643", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Paulo Riveros", "MC", 65, {"id": "og1179513", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Fernando Cardozo", "ATA", 65, {"id": "og556061", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}]]}, {"id": "guarani-2329", "nome": "Guaraní", "sigla": "GUA", "elenco": [["Gaspar Servio", "GOL", 70, {"id": "og233136", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina"}], ["Miguel Martínez", "GOL", 67, {"id": "og452547", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Gustavo Palacios", "GOL", 64, {"id": "og3632543", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Armando Méndez", "LD", 71, {"id": "og653867", "fonte": "fc26", "idade": 30, "nac": "Uruguai"}], ["Juan Manuel García", "ATA", 71, {"id": "og365602", "fonte": "fc26", "idade": 33, "nac": "Argentina"}], ["Fernando Fernández", "ATA", 70, {"id": "og383956", "fonte": "fc26", "idade": 34, "nac": "Paraguai"}], ["Jorge Recalde", "ATA", 69, {"id": "og273774", "fonte": "fc26", "idade": 34, "nac": "Paraguai"}], ["Diego Fernandez", "PE", 69, {"id": "og708701", "fonte": "fc26", "idade": 24, "nac": "Paraguai"}], ["Juan Daniel Pérez", "LD", 68, {"id": "og479066", "fonte": "fc26", "idade": 32, "nac": "Paraguai"}], ["Miguel Jacquet", "ZAG", 67, {"id": "og386010", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Leandro Allende", "ZAG", 67, {"id": "og856969", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina"}], ["Carlos Arrua", "MC", 67, {"id": "og699086", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Paul Riveros", "ZAG", 66, {"id": "og561848", "fonte": "fc26", "idade": 29, "nac": "Paraguai"}], ["Patricio Tanda", "MC", 65, {"id": "og772462", "fonte": "estimado-valor", "idade": 24, "nac": "Argentina"}], ["Matías López", "MC", 65, {"id": "og953819", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai"}], ["Jesús Llano", "MC", 65, {"id": "og774452", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Imanol Segovia", "ZAG", 64, {"id": "og772219", "fonte": "estimado-clube", "idade": 25, "nac": "Argentina"}], ["René Rodriguez", "ZAG", 64, {"id": "og953812", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai"}], ["Ángel Ibarra", "ZAG", 64, {"id": "og1461860", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Jonathan Espinola", "ZAG", 64, {"id": "og878429", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Carlos Rolón", "ZAG", 64, {"id": "og409440", "fonte": "estimado-clube", "idade": 34, "nac": "Paraguai"}], ["Luis Martínez", "MC", 64, {"id": "og854243", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Maximiliano Añasco", "PE", 64, {"id": "og953473", "fonte": "fc26", "idade": 25, "nac": "Uruguai"}], ["Ricardo Quiñónez", "ATA", 64, {"id": "og1226197", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai"}], ["Carlos Rappenecker", "ZAG", 62, {"id": "og3619170", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Javier Velazquez", "ZAG", 62, {"id": "og3517046", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Thiago Servín", "ZAG", 62, {"id": "og854237", "fonte": "fc26", "idade": 23, "nac": "Paraguai"}], ["Tadeo Sanabria", "MC", 62, {"id": "og3525441", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Thiago Romero", "ATA", 62, {"id": "og2700219", "fonte": "estimado-clube", "idade": 20, "nac": "Argentina"}], ["Alcides Barbotte", "LD", 61, {"id": "og854244", "fonte": "fc26", "idade": 24, "nac": "Paraguai"}]]}, {"id": "nacional", "nome": "Nacional", "sigla": "NAC", "elenco": [["Santiago Rojas", "GOL", 69, {"id": "og538274", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Gerardo Ortiz", "GOL", 66, {"id": "og85297", "fonte": "estimado-valor", "idade": 37, "nac": "Paraguai"}], ["Elias Villar", "GOL", 62, {"id": "og2707990", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai"}], ["Richard Prieto", "MC", 69, {"id": "og422010", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Roque Santa Cruz", "ATA", 69, {"id": "og2616", "fonte": "fc26", "idade": 45, "nac": "Paraguai"}], ["Ángel Cardozo", "MC", 68, {"id": "og289556", "fonte": "fc26", "idade": 32, "nac": "Paraguai"}], ["Gaona Lugo", "ATA", 68, {"id": "og132412", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai"}], ["Iván Valdez", "ATA", 68, {"id": "og502614", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai"}], ["Ignacio Bailone", "ATA", 67, {"id": "og380013", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina"}], ["Lucas González", "ATA", 67, {"id": "og734230", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Thomas Gutiérrez", "ZAG", 66, {"id": "og555430", "fonte": "estimado-valor", "idade": 26, "nac": "Venezuela"}], ["Fabrizio Jara", "MC", 66, {"id": "og904117", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Silvio Torales", "MC", 65, {"id": "og181068", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Roberto Ramírez", "MC", 65, {"id": "og786133", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Josué Colmán", "PE", 65, {"id": "og383414", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Gastón Benítez", "ZAG", 64, {"id": "og821002", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Juan Feliú", "ZAG", 64, {"id": "og890538", "fonte": "estimado-valor", "idade": 25, "nac": "Argentina"}], ["Carlos Espinola", "ZAG", 64, {"id": "og822552", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Cesar Ovelar", "MC", 64, {"id": "og2529137", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Hugo Benítez", "MC", 64, {"id": "og1238948", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai"}], ["Jordán Santacruz", "MC", 64, {"id": "og571144", "fonte": "estimado-clube", "idade": 30, "nac": "Paraguai"}], ["Juan Vargas", "MC", 64, {"id": "og827756", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Alejandro Samudio", "ATA", 64, {"id": "og952701", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Leandro Meza", "MC", 63, {"id": "og1060043", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Rodrigo Melgarejo", "ZAG", 62, {"id": "og708698", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Francisco Pumpido", "MC", 62, {"id": "og1634290", "fonte": "estimado-clube", "idade": 22, "nac": "México"}], ["Tobias Vega", "ATA", 62, {"id": "og3537660", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Santiago Vecca", "ATA", 60, {"id": "og3660604", "fonte": "estimado-clube", "idade": 14, "nac": "Paraguai"}], ["Matías Almeida", "ATA", 60, {"id": "og1001873", "fonte": "estimado-valor", "idade": 21, "nac": "Paraguai"}], ["Derlis Caballero", "ATA", 60, {"id": "og2752702", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}]]}, {"id": "sportivo-trinidense-2347", "nome": "Sportivo Trinidense", "sigla": "SPO", "elenco": [["Víctor Samudio", "GOL", 68, {"id": "og338061", "fonte": "estimado-valor", "idade": 39, "nac": "Paraguai"}], ["Matías Dufour", "GOL", 67, {"id": "og696865", "fonte": "estimado-valor", "idade": 27, "nac": "Uruguai"}], ["Alessandro Alfonso", "GOL", 60, {"id": "og3533826", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}], ["Bruno Valdez", "ZAG", 69, {"id": "og229129", "fonte": "fc26", "idade": 34, "nac": "Paraguai"}], ["Sergio Mendoza", "ZAG", 68, {"id": "og409454", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["Néstor Camacho", "MC", 68, {"id": "og87249", "fonte": "estimado-valor", "idade": 39, "nac": "Paraguai"}], ["Gustavo Viera", "MC", 68, {"id": "og302769", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai"}], ["Nicolás Maná", "MC", 67, {"id": "og328847", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina"}], ["Óscar Giménez", "ATA", 67, {"id": "og104111", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai"}], ["Clementino González", "ATA", 67, {"id": "og510065", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai"}], ["Diego Melgarejo", "ZAG", 66, {"id": "og499399", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["César Benítez", "ZAG", 66, {"id": "og85303", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai"}], ["Maximiliano Centurión", "ZAG", 66, {"id": "og711422", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["David Villalba", "ZAG", 65, {"id": "og970326", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Luis de la Cruz", "ZAG", 65, {"id": "og190430", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Ronaldo Báez", "ATA", 65, {"id": "og585195", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Armando Ruíz Díaz", "ZAG", 64, {"id": "og409555", "fonte": "estimado-valor", "idade": 33, "nac": "Paraguai"}], ["Agustín Da Silveira", "ZAG", 64, {"id": "og772552", "fonte": "estimado-valor", "idade": 25, "nac": "Uruguai"}], ["Nelson Gauto", "MC", 64, {"id": "og1035067", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Tomas Rayer", "MC", 64, {"id": "og1043093", "fonte": "estimado-valor", "idade": 24, "nac": "Argentina"}], ["Joel Román", "ATA", 64, {"id": "og499356", "fonte": "estimado-clube", "idade": 36, "nac": "Paraguai"}], ["Ronald Cornet", "ATA", 64, {"id": "og995813", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai"}], ["Fernando Román", "ZAG", 64, {"id": "og884888", "fonte": "fc26", "idade": 25, "nac": "Paraguai"}], ["Enzo González", "ATA", 64, {"id": "og3570456", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Axel Cañete", "ZAG", 63, {"id": "og1059679", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Faustino Barone", "ATA", 63, {"id": "og1061889", "fonte": "estimado-valor", "idade": 20, "nac": "Uruguai"}], ["Tobías Morinigo", "ZAG", 62, {"id": "og982085", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Enzo Gonzalez", "MC", 62, {"id": "og3660936", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Jorge Marcelino", "MC", 62, {"id": "og2520297", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Fabrizio Baruja", "MC", 62, {"id": "og1179508", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}]]}, {"id": "recoleta-2341", "nome": "Recoleta", "sigla": "REC", "elenco": [["Andrés Marsengo", "GOL", 63, {"id": "og772421", "fonte": "estimado-clube", "idade": 24, "nac": "Argentina"}], ["Nelson Ferreira", "GOL", 63, {"id": "og1234111", "fonte": "estimado-clube", "idade": 28, "nac": "Paraguai"}], ["Oscar Toledo", "GOL", 63, {"id": "og780101", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Alejandro Silva", "MC", 71, {"id": "og164522", "fonte": "estimado-valor", "idade": 37, "nac": "Uruguai"}], ["Iván Piris", "ZAG", 68, {"id": "og85298", "fonte": "estimado-valor", "idade": 37, "nac": "Paraguai"}], ["Dairon Mosquera", "ZAG", 68, {"id": "og269045", "fonte": "estimado-valor", "idade": 34, "nac": "Colômbia"}], ["Wilfrido Báez", "MC", 68, {"id": "og408394", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["Nicolás Marotta", "ZAG", 67, {"id": "og728874", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina"}], ["Luis Cardozo", "ZAG", 67, {"id": "og87591", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai"}], ["Aldo González", "MC", 67, {"id": "og955902", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Marcelo Medina", "ZAG", 66, {"id": "og1233892", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Marcelo Cañete", "MC", 66, {"id": "og153135", "fonte": "estimado-valor", "idade": 36, "nac": "Argentina"}], ["Richart Ortiz", "ATA", 66, {"id": "og952627", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai"}], ["Paul Charpentier", "ATA", 66, {"id": "og657569", "fonte": "estimado-valor", "idade": 26, "nac": "Argentina"}], ["Ronal Domínguez", "MC", 65, {"id": "og952642", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai"}], ["Julio Domínguez", "ZAG", 64, {"id": "og334015", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai"}], ["Claudio Garay", "MC", 64, {"id": "og436260", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Juan Franco", "MC", 64, {"id": "og964280", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Kevin Parzajuk", "ATA", 64, {"id": "og1024867", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Marcos Pereira", "ZAG", 63, {"id": "og2504807", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai"}], ["Lucas Monzón", "ZAG", 63, {"id": "og1303712", "fonte": "estimado-valor", "idade": 23, "nac": "Argentina"}], ["Fernando Galeano", "MC", 63, {"id": "og1183774", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Samuel Marcos", "ATA", 63, {"id": "og833501", "fonte": "estimado-clube", "idade": 23, "nac": "Brasil"}], ["Richard Ortiz", "ATA", 63, {"id": "og1183775", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai"}], ["Brahian Ferreira", "ATA", 63, {"id": "og2504804", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai"}], ["Facundo Echeguren", "ZAG", 62, {"id": "og1206802", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai"}], ["José Espínola", "ZAG", 62, {"id": "og2504808", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Juan Núñez", "ZAG", 62, {"id": "og228802", "fonte": "estimado-clube", "idade": 37, "nac": "Paraguai"}], ["Luis Mendoza", "ZAG", 62, {"id": "og1234149", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Carlos Vera", "MC", 62, {"id": "og87619", "fonte": "estimado-clube", "idade": 38, "nac": "Paraguai"}]]}, {"id": "rubio-nu-22757", "nome": "Rubio Ñú", "sigla": "RUB", "elenco": [["Carlos Servín", "GOL", 68, {"id": "og100240", "fonte": "estimado-valor", "idade": 39, "nac": "Paraguai"}], ["Franco Fragueda", "GOL", 64, {"id": "og663469", "fonte": "estimado-clube", "idade": 26, "nac": "Argentina"}], ["Tomás Canteros", "GOL", 60, {"id": "og833794", "fonte": "estimado-valor", "idade": 25, "nac": "Argentina"}], ["Rodrigo Rojas", "MC", 67, {"id": "og89007", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai"}], ["William Mendieta", "MEI", 67, {"id": "og135701", "fonte": "fc26", "idade": 37, "nac": "Paraguai"}], ["Tobías Leiva", "MC", 67, {"id": "og1393803", "fonte": "fc26", "idade": 22, "nac": "Argentina"}], ["Brian Blasi", "ZAG", 66, {"id": "og488472", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina"}], ["Cristian Núñez", "MC", 66, {"id": "og623802", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Pedro Báez", "ATA", 66, {"id": "og504204", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Rodi Ferreira", "ZAG", 65, {"id": "og383406", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Jorge González", "ZAG", 65, {"id": "og893084", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Elias Alfonso", "MC", 65, {"id": "og613894", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Rodrigo Ruiz Díaz", "ATA", 65, {"id": "og552971", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Pedro Alvarez", "ZAG", 64, {"id": "og599374", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai"}], ["Victor Cabanas", "ZAG", 64, {"id": "og1054763", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Marcelo Acosta", "MC", 64, {"id": "og855642", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Ezequiel Cardozo", "MC", 64, {"id": "og499651", "fonte": "estimado-clube", "idade": 33, "nac": "Argentina"}], ["Estiven Pérez", "ATA", 64, {"id": "og629158", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Santiago Frean", "MC", 63, {"id": "og64427", "fonte": "estimado-clube", "idade": 36, "nac": "Argentina"}], ["Sergio Fretes", "ATA", 63, {"id": "og641032", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Mariano Ramos", "ZAG", 62, {"id": "og2430511", "fonte": "estimado-clube", "idade": 22, "nac": "Argentina"}], ["Héctor Martínez", "ZAG", 62, {"id": "og2633329", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Carlos Giménez", "ZAG", 62, {"id": "og1390257", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Javier Vallejos", "ZAG", 62, {"id": "og1061751", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai"}], ["Pablo Ayala", "MC", 62, {"id": "og696608", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai"}], ["Aaron Páez", "ATA", 62, {"id": "og980894", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Mauricio Roldán", "ATA", 62, {"id": "og1179579", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina"}], ["Jose Ojeda", "MC", 60, {"id": "og3686690", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}], ["Lucas Torres", "MC", 60, {"id": "og3686691", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}], ["Octavio Alfonso", "MEI", 60, {"id": "og2506446", "fonte": "fc26", "idade": 20, "nac": "Paraguai"}]]}, {"id": "sportivo-ameliano-108830", "nome": "Sportivo Ameliano", "sigla": "SPO", "elenco": [["Edilson Avalos", "GOL", 64, {"id": "og3673505", "fonte": "estimado-clube", "idade": 24, "nac": "Argentina"}], ["Junior Balbuena", "GOL", 64, {"id": "og499395", "fonte": "estimado-clube", "idade": 32, "nac": "Paraguai"}], ["Ángel Sánchez", "GOL", 64, {"id": "og854322", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai"}], ["Julio González", "ZAG", 68, {"id": "og373918", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai"}], ["Walter Rodríguez", "MC", 67, {"id": "og438645", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Francisco Báez", "ZAG", 66, {"id": "og452595", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Fabián Franco", "ZAG", 66, {"id": "og566066", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Alberto Contrera", "MC", 66, {"id": "og175340", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai"}], ["Fredy Vera", "ATA", 66, {"id": "og523302", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Luis Ortiz", "MC", 65, {"id": "og687700", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Valentín Larralde", "MC", 65, {"id": "og824593", "fonte": "estimado-valor", "idade": 25, "nac": "Argentina"}], ["Estivel Moreira", "ATA", 65, {"id": "og649829", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Richard Torales", "ATA", 65, {"id": "og1171605", "fonte": "fc26", "idade": 25, "nac": "Paraguai"}], ["Hugo Benítez", "ZAG", 64, {"id": "og952705", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Abel Paredes", "LE", 64, {"id": "og569364", "fonte": "fc26", "idade": 29, "nac": "Paraguai"}], ["Miguel Benítez", "ZAG", 64, {"id": "og616163", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Tomás Lezcano", "ZAG", 64, {"id": "og952623", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai"}], ["Jonathan Benítez", "MC", 64, {"id": "og710916", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Luis Olmedo", "MC", 64, {"id": "og1177585", "fonte": "estimado-clube", "idade": 26, "nac": "Argentina"}], ["Nicolás Domínguez", "MC", 64, {"id": "og3524170", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Cristhian Ocampos", "ATA", 64, {"id": "og708099", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Bruno López", "ATA", 64, {"id": "og786116", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai"}], ["Ever Britez", "ATA", 64, {"id": "og3571204", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Ariel Ávalos", "ATA", 63, {"id": "og1933380", "fonte": "fc26", "idade": 21, "nac": "Paraguai"}], ["Luciano Suárez", "ZAG", 62, {"id": "og1226085", "fonte": "estimado-clube", "idade": 22, "nac": "Argentina"}], ["Carlos Favero", "ZAG", 62, {"id": "og2482297", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Thiago Bogado", "MC", 62, {"id": "og3640404", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai"}], ["Ronald Peralta", "MC", 62, {"id": "og2748061", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Raúl Cabral", "MEI", 62, {"id": "og1393752", "fonte": "fc26", "idade": 21, "nac": "Argentina"}], ["Marcelo Camargo", "MC", 62, {"id": "og1393749", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina"}]]}, {"id": "2-de-mayo-9718", "nome": "2 de Mayo", "sigla": "MAY", "elenco": [["Nicolás Rossi", "GOL", 64, {"id": "og487125", "fonte": "estimado-clube", "idade": 28, "nac": "Uruguai"}], ["Miguel Urquiza", "GOL", 64, {"id": "og1234147", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai"}], ["Mario Ramírez", "GOL", 64, {"id": "og1233925", "fonte": "estimado-clube", "idade": 33, "nac": "Paraguai"}], ["César Castro", "ZAG", 68, {"id": "og627667", "fonte": "estimado-valor", "idade": 33, "nac": "Paraguai"}], ["Pedro Sosa", "ZAG", 67, {"id": "og510525", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Alberto Espínola", "ZAG", 67, {"id": "og267535", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Pedro Delvalle", "ATA", 67, {"id": "og409478", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["Alexis Villalba", "ZAG", 65, {"id": "og644905", "fonte": "fc26", "idade": 28, "nac": "Paraguai"}], ["Brahian Ayala", "PE", 65, {"id": "og302771", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Jorge Sanguina", "ATA", 65, {"id": "og566315", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Tobías Cervera", "ATA", 65, {"id": "og996248", "fonte": "fc26", "idade": 24, "nac": "Síria"}], ["Matías Moya", "ATA", 65, {"id": "og543791", "fonte": "estimado-valor", "idade": 28, "nac": "Chile"}], ["Camilo Saiz", "ZAG", 64, {"id": "og153059", "fonte": "estimado-clube", "idade": 34, "nac": "Colômbia"}], ["Ángel Aguilera", "MC", 64, {"id": "og2537675", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Marcos Gómez", "MC", 64, {"id": "og572581", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["Fernando Cáceres", "MC", 64, {"id": "og492291", "fonte": "estimado-clube", "idade": 30, "nac": "Paraguai"}], ["Alfredo Machado", "ATA", 64, {"id": "og1234126", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Ulises Coronel", "ZAG", 63, {"id": "og552975", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Óscar Romero", "MC", 63, {"id": "og952712", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai"}], ["Alan Gómez", "ATA", 63, {"id": "og1067427", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai"}], ["César Ramírez", "ZAG", 62, {"id": "og953811", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai"}], ["Tobias Sanabria", "MC", 62, {"id": "og1054761", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai"}], ["Estifen Díaz", "MC", 62, {"id": "og1236494", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Alexis Fariña", "MC", 62, {"id": "og931738", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Félix Triñanes", "MC", 62, {"id": "og2345677", "fonte": "estimado-clube", "idade": 22, "nac": "Argentina"}], ["Tobías Portillo", "ATA", 62, {"id": "og969313", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Rodrigo Gómez", "LD", 60, {"id": "og2518951", "fonte": "fc26", "idade": 20, "nac": "Paraguai"}], ["Alan Fernández", "ZAG", 60, {"id": "og3537437", "fonte": "estimado-clube", "idade": 18, "nac": "Paraguai"}], ["Henry Riquelme", "MC", 60, {"id": "og2741750", "fonte": "estimado-valor", "idade": 19, "nac": "Paraguai"}], ["Alejandro Delgadillo", "MC", 60, {"id": "og3205739", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai"}]]}, {"id": "sportivo-luqueno-2335", "nome": "Sportivo Luqueño", "sigla": "SPO", "elenco": [["Nicolás Campisi", "GOL", 66, {"id": "og415905", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina"}], ["Francisco Mongelos", "GOL", 59, {"id": "og1067403", "fonte": "fc26", "idade": 21, "nac": "Paraguai"}], ["Ángel Espínola", "GOL", 59, {"id": "og1391672", "fonte": "fc26", "idade": 23, "nac": "Argentina"}], ["Walter González", "ATA", 68, {"id": "og415772", "fonte": "fc26", "idade": 31, "nac": "Paraguai"}], ["Óscar Ruiz", "MC", 67, {"id": "og175344", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Iván Maggi", "ATA", 67, {"id": "og747320", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina"}], ["Álvaro Martínez", "LE", 66, {"id": "og981819", "fonte": "fc26", "idade": 24, "nac": "Paraguai"}], ["Lautaro Comas", "PE", 66, {"id": "og500869", "fonte": "fc26", "idade": 31, "nac": "Argentina"}], ["Miguel Barreto", "ZAG", 65, {"id": "og715616", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai"}], ["Alexis Cantero", "ZAG", 65, {"id": "og953810", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai"}], ["Kevin Pereira", "PE", 65, {"id": "og682945", "fonte": "fc26", "idade": 22, "nac": "Paraguai"}], ["Fernando Benitez", "VOL", 64, {"id": "og750882", "fonte": "fc26", "idade": 27, "nac": "Paraguai"}], ["Tomás Muro", "PD", 64, {"id": "og956308", "fonte": "fc26", "idade": 24, "nac": "Argentina"}], ["Giovanni Bogado", "ATA", 64, {"id": "og544724", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai"}], ["Facundo Wiechniak", "ZAG", 63, {"id": "og1238940", "fonte": "estimado-valor", "idade": 24, "nac": "Argentina"}], ["Marcelo Pérez", "ATA", 63, {"id": "og710669", "fonte": "fc26", "idade": 25, "nac": "Paraguai"}], ["Lucas Morales", "ZAG", 62, {"id": "og772412", "fonte": "estimado-clube", "idade": 26, "nac": "Uruguai"}], ["Marcelo Jiménez", "ZAG", 62, {"id": "og822545", "fonte": "estimado-clube", "idade": 29, "nac": "Paraguai"}], ["Sebastián Maldonado", "LE", 62, {"id": "og869978", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Aldo Maíz", "MC", 62, {"id": "og626723", "fonte": "fc26", "idade": 26, "nac": "Paraguai"}], ["Jonathan Britez", "MC", 62, {"id": "og3514481", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Marcelo Ojeda", "MC", 61, {"id": "og1542213", "fonte": "estimado-valor", "idade": 22, "nac": "Paraguai"}], ["Jonathan Díaz", "ZAG", 60, {"id": "og2752700", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai"}], ["Santiago Ocampos", "LD", 60, {"id": "og610219", "fonte": "fc26", "idade": 24, "nac": "Paraguai"}], ["Fernando Bobadilla", "MC", 60, {"id": "og2752701", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai"}], ["Matías Riveros", "MC", 60, {"id": "og1935212", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai"}], ["Ángel Brizuela", "ZAG", 58, {"id": "og1205218", "fonte": "fc26", "idade": 22, "nac": "Paraguai"}], ["Axel Balbuena", "ZAG", 58, {"id": "og1179500", "fonte": "estimado-valor", "idade": 20, "nac": "Paraguai"}], ["Oliver López", "ZAG", 58, {"id": "og3533436", "fonte": "estimado-clube", "idade": 16, "nac": "Paraguai"}], ["Jonathan Ramos", "PE", 58, {"id": "og2514808", "fonte": "fc26", "idade": 19, "nac": "Paraguai"}]]}, {"id": "san-lorenzo-2346", "nome": "San Lorenzo", "sigla": "SAN", "elenco": [["Wilson Quiñonez", "GOL", 67, {"id": "og267090", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai"}], ["Luis Franco", "GOL", 63, {"id": "og696878", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Federico Cristóforo", "GOL", 62, {"id": "og344156", "fonte": "estimado-clube", "idade": 37, "nac": "Uruguai"}], ["Marcelo Ferreira", "ATA", 68, {"id": "og362008", "fonte": "estimado-valor", "idade": 33, "nac": "Paraguai"}], ["Iván Torres", "MC", 66, {"id": "og135342", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai"}], ["Bruno Piñatares", "MC", 66, {"id": "og250962", "fonte": "estimado-valor", "idade": 36, "nac": "Uruguai"}], ["Alex Álvarez", "ATA", 66, {"id": "og553900", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Ángel Benítez", "VOL", 65, {"id": "og374220", "fonte": "fc26", "idade": 30, "nac": "Paraguai"}], ["Cristian Colmán", "ATA", 65, {"id": "og409384", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai"}], ["José Doldán", "ZAG", 64, {"id": "og694623", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai"}], ["Luís Cáceres", "ZAG", 64, {"id": "og500139", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai"}], ["Federico Estigarribia", "ZAG", 63, {"id": "og1183732", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai"}], ["Teodoro Paredes", "ZAG", 63, {"id": "og229097", "fonte": "estimado-clube", "idade": 33, "nac": "Paraguai"}], ["Daniel Meza Montiel", "ZAG", 63, {"id": "og2344431", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina"}], ["Maximiliano Garcia", "ZAG", 63, {"id": "og1817731", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Axel Suárez", "MC", 63, {"id": "og1291335", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai"}], ["Jesús Ramírez", "MC", 63, {"id": "og3537436", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Héctor Villamayor", "MC", 63, {"id": "og780291", "fonte": "estimado-clube", "idade": 29, "nac": "Paraguai"}], ["Richard Ríos", "MC", 63, {"id": "og842405", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai"}], ["Matías Alfonso", "MC", 63, {"id": "og772386", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai"}], ["Bruno Machuca", "MC", 63, {"id": "og3581858", "fonte": "estimado-clube", "idade": 26, "nac": "Argentina"}], ["Edgar Balbuena", "MC", 63, {"id": "og1053896", "fonte": "estimado-clube", "idade": 32, "nac": "Paraguai"}], ["Daniel Meza", "MC", 63, {"id": "og3520027", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina"}], ["Kevin Fernández", "MC", 63, {"id": "og627838", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai"}], ["Elias Ortíz", "MC", 63, {"id": "og3509326", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Franco Aragón", "MC", 63, {"id": "og486933", "fonte": "estimado-clube", "idade": 32, "nac": "Argentina"}], ["Exequiel Salcedo", "MC", 63, {"id": "og3674161", "fonte": "estimado-clube", "nac": "Paraguai"}], ["Sandro Galeano", "ATA", 63, {"id": "og1563010", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai"}], ["Juan Villamayor", "ATA", 63, {"id": "og309743", "fonte": "estimado-clube", "idade": 33, "nac": "Paraguai"}], ["Cristhian Medina", "ATA", 63, {"id": "og1234108", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai"}]]}], "B": [], "C": [], "D": []}, "vagasDiretasCopa": [], "classicos": [], "semCopa": true, "formatos": {"A": {"divisao": "A", "id": "primera-division-paraguai", "nome": "División de Honor 2026", "clubes": 12, "fases": [{"tipo": "liga", "nome": "Pontos corridos", "grupos": 1, "distribuicao": "unico", "turnos": 2, "avancamPorGrupo": 0}], "acesso": [], "rebaixamento": []}}}
+{
+  "formato": 1,
+  "id": "paraguai-2026",
+  "nome": "División de Honor 2026 (Paraguai)",
+  "ficticio": false,
+  "temporada": 2026,
+  "divisoes": {
+    "A": [
+      {
+        "id": "cerro-porteno",
+        "nome": "Cerro Porteño",
+        "sigla": "CER",
+        "elenco": [
+          ["Manuel Roffo", "GOL", 74, { "id": "og555985", "fonte": "fc26", "idade": 26, "nac": "Argentina" }],
+          [
+            "Gatito Fernández",
+            "GOL",
+            71,
+            { "id": "og87584", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai" }
+          ],
+          [
+            "Ángel Martínez",
+            "GOL",
+            64,
+            { "id": "og1234131", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Gustavo Velázquez",
+            "ZAG",
+            73,
+            { "id": "og299434", "fonte": "fc26", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Agustín Almendra",
+            "MC",
+            73,
+            { "id": "og555994", "fonte": "fc26", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Pablo Vegetti",
+            "ATA",
+            73,
+            { "id": "og364638", "fonte": "estimado-valor", "idade": 38, "nac": "Argentina" }
+          ],
+          [
+            "Cecilio Domínguez",
+            "PE",
+            73,
+            { "id": "og267097", "fonte": "fc26", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Lucas Merolla",
+            "ZAG",
+            72,
+            { "id": "og504185", "fonte": "estimado-valor", "idade": 31, "nac": "Argentina" }
+          ],
+          [
+            "Ignacio Aliseda",
+            "PE",
+            72,
+            { "id": "og651218", "fonte": "fc26", "idade": 26, "nac": "Argentina" }
+          ],
+          ["Iván Ramírez", "LD", 71, { "id": "og187899", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }],
+          ["Juan Iturbe", "PD", 71, { "id": "og118521", "fonte": "fc26", "idade": 33, "nac": "Paraguai" }],
+          [
+            "Abel Luciatti",
+            "ZAG",
+            70,
+            { "id": "og202131", "fonte": "fc26", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Gastón Giménez",
+            "VOL",
+            70,
+            { "id": "og361524", "fonte": "fc26", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Jonathan Torres",
+            "ATA",
+            70,
+            { "id": "og471553", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Fabricio Domínguez",
+            "PD",
+            69,
+            { "id": "og469880", "fonte": "fc26", "idade": 28, "nac": "Uruguai" }
+          ],
+          ["Jorge Morel", "ZAG", 69, { "id": "og383418", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }],
+          [
+            "Piris da Motta",
+            "VOL",
+            69,
+            { "id": "og187898", "fonte": "fc26", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Mateo Klimowicz",
+            "MC",
+            69,
+            { "id": "og594724", "fonte": "estimado-valor", "idade": 26, "nac": "Alemanha" }
+          ],
+          [
+            "Sergio Araújo",
+            "ATA",
+            69,
+            { "id": "og132411", "fonte": "fc26", "idade": 34, "nac": "Argentina" }
+          ],
+          [
+            "Santiago Mosquera",
+            "ATA",
+            69,
+            { "id": "og507019", "fonte": "estimado-valor", "idade": 31, "nac": "Colômbia" }
+          ],
+          ["Blás Riveros", "LE", 68, { "id": "og383582", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }],
+          ["Enzo Baez", "ATA", 68, { "id": "og3660536", "fonte": "estimado-clube", "nac": "Paraguai" }],
+          [
+            "Guillermo Benítez",
+            "LE",
+            67,
+            { "id": "og500861", "fonte": "fc26", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Cristhian Paredes",
+            "VOL",
+            67,
+            { "id": "og452609", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Emilio Acosta",
+            "ZAG",
+            66,
+            { "id": "og1179499", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Rolando Mongelós",
+            "ZAG",
+            66,
+            { "id": "og1179505", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Emilio Acosta",
+            "ZAG",
+            66,
+            { "id": "og3573589", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Josué Servín",
+            "ZAG",
+            66,
+            { "id": "og2780690", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Víctor Sánchez",
+            "ZAG",
+            66,
+            { "id": "og3532165", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Fabrizio Peralta",
+            "VOL",
+            66,
+            { "id": "og708703", "fonte": "fc26", "idade": 24, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "libertad",
+        "nome": "Libertad",
+        "sigla": "LIB",
+        "elenco": [
+          [
+            "Rodrigo Morínigo",
+            "GOL",
+            71,
+            { "id": "og613927", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Thiago Verardi",
+            "GOL",
+            66,
+            { "id": "og1056157", "fonte": "estimado-clube", "idade": 20, "nac": "Itália" }
+          ],
+          [
+            "Ángel González",
+            "GOL",
+            58,
+            { "id": "og761505", "fonte": "fc26", "idade": 23, "nac": "Paraguai" }
+          ],
+          ["Matías Rojas", "PD", 74, { "id": "og409448", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }],
+          [
+            "Lorenzo Melgarejo",
+            "PE",
+            74,
+            { "id": "og89711", "fonte": "fc26", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Nicolás Freire",
+            "ZAG",
+            73,
+            { "id": "og328768", "fonte": "fc26", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Matías Espinoza",
+            "LE",
+            72,
+            { "id": "og500057", "fonte": "fc26", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Federico Carrizo",
+            "MEI",
+            72,
+            { "id": "og150199", "fonte": "fc26", "idade": 35, "nac": "Argentina" }
+          ],
+          ["Robert Rojas", "LD", 71, { "id": "og552967", "fonte": "fc26", "idade": 30, "nac": "Paraguai" }],
+          [
+            "Álvaro Campuzano",
+            "VOL",
+            71,
+            { "id": "og470152", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }
+          ],
+          ["Iván Franco", "PD", 71, { "id": "og624785", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }],
+          [
+            "Lucas Sanabria",
+            "MEI",
+            70,
+            { "id": "og545504", "fonte": "fc26", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Luciano Nequecaur",
+            "ATA",
+            70,
+            { "id": "og364724", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina" }
+          ],
+          [
+            "Alan Benítez",
+            "ZAG",
+            69,
+            { "id": "og421228", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Alexis Duarte",
+            "ZAG",
+            69,
+            { "id": "og556048", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Néstor Giménez",
+            "ZAG",
+            69,
+            { "id": "og538278", "fonte": "fc26", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Agustín Manzur",
+            "MC",
+            69,
+            { "id": "og623763", "fonte": "estimado-valor", "idade": 26, "nac": "Palestina" }
+          ],
+          [
+            "Hugo Fernández",
+            "MEI",
+            69,
+            { "id": "og586139", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Hernesto Caballero",
+            "VOL",
+            68,
+            { "id": "og499349", "fonte": "fc26", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Christian Martínez",
+            "ATA",
+            68,
+            { "id": "og931583", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Christian Martinez",
+            "MC",
+            66,
+            { "id": "og1179427", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Amin Molinas",
+            "MC",
+            66,
+            { "id": "og1238223", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Elvio Vera",
+            "ATA",
+            66,
+            { "id": "og952647", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Gustavo Aguilar",
+            "ATA",
+            65,
+            { "id": "og626033", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Rodrigo Villalba",
+            "ATA",
+            65,
+            { "id": "og999119", "fonte": "estimado-valor", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Cesar Viancheto",
+            "ZAG",
+            64,
+            { "id": "og3658323", "fonte": "estimado-clube", "idade": 17, "nac": "Paraguai" }
+          ],
+          [
+            "Thiago Fernández",
+            "ZAG",
+            64,
+            { "id": "og1238218", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ],
+          [
+            "Elías Díaz",
+            "ZAG",
+            64,
+            { "id": "og2816227", "fonte": "estimado-clube", "idade": 17, "nac": "Paraguai" }
+          ],
+          [
+            "Cesar Recalde",
+            "ZAG",
+            64,
+            { "id": "og3515047", "fonte": "estimado-clube", "idade": 17, "nac": "Paraguai" }
+          ],
+          [
+            "Jose Meza",
+            "ZAG",
+            64,
+            { "id": "og3672160", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "olimpia",
+        "nome": "Olimpia",
+        "sigla": "OLI",
+        "elenco": [
+          ["Gastón Olveira", "GOL", 74, { "id": "og390473", "fonte": "fc26", "idade": 33, "nac": "Uruguai" }],
+          [
+            "Sebastián Lentinelly",
+            "GOL",
+            68,
+            { "id": "og500146", "fonte": "estimado-valor", "idade": 29, "nac": "Uruguai" }
+          ],
+          ["Lucas Verza", "GOL", 60, { "id": "og1238949", "fonte": "fc26", "idade": 25, "nac": "Paraguai" }],
+          [
+            "Richard Sánchez",
+            "MC",
+            75,
+            { "id": "og501761", "fonte": "fc26", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Gabriel Ávalos",
+            "ATA",
+            75,
+            { "id": "og279497", "fonte": "fc26", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Braian Romero",
+            "ATA",
+            74,
+            { "id": "og449938", "fonte": "fc26", "idade": 35, "nac": "Argentina" }
+          ],
+          [
+            "Derlis González",
+            "ATA",
+            73,
+            { "id": "og181070", "fonte": "fc26", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Iván Leguizamón",
+            "PE",
+            72,
+            { "id": "og928966", "fonte": "fc26", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Raul Cáceres",
+            "ZAG",
+            70,
+            { "id": "og175334", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          ["Richard Ortiz", "VOL", 70, { "id": "og118755", "fonte": "fc26", "idade": 36, "nac": "Paraguai" }],
+          [
+            "Mateo Gamarra",
+            "ZAG",
+            69,
+            { "id": "og655676", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Juanfer Alfaro",
+            "MC",
+            69,
+            { "id": "og705650", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Sebastián Ferreira",
+            "ATA",
+            69,
+            { "id": "og452610", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Gustavo Vargas",
+            "ZAG",
+            68,
+            { "id": "og854242", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          ["Aníbal Chalá", "LE", 68, { "id": "og378019", "fonte": "fc26", "idade": 30, "nac": "Equador" }],
+          [
+            "Alan Rodríguez",
+            "ZAG",
+            68,
+            { "id": "og556052", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Javier Dominguez",
+            "MC",
+            68,
+            { "id": "og699089", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Rubén Lezcano",
+            "ATA",
+            68,
+            { "id": "og931760", "fonte": "estimado-valor", "idade": 22, "nac": "Paraguai" }
+          ],
+          ["Cesar Olmedo", "LD", 67, { "id": "og1054758", "fonte": "fc26", "idade": 23, "nac": "Paraguai" }],
+          [
+            "Juan Vera",
+            "ZAG",
+            67,
+            { "id": "og682115", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Esteban Matus",
+            "ZAG",
+            67,
+            { "id": "og952898", "fonte": "estimado-valor", "idade": 24, "nac": "Chile" }
+          ],
+          [
+            "Hugo Sandoval",
+            "ATA",
+            67,
+            { "id": "og626147", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Franco Alfonso",
+            "PD",
+            67,
+            { "id": "og1021344", "fonte": "fc26", "idade": 24, "nac": "Argentina" }
+          ],
+          [
+            "Romeo Benítez",
+            "ATA",
+            67,
+            { "id": "og854239", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Bryan Bentaberry",
+            "ZAG",
+            66,
+            { "id": "og535261", "fonte": "fc26", "idade": 29, "nac": "Uruguai" }
+          ],
+          ["Alex Franco", "MC", 66, { "id": "og959800", "fonte": "fc26", "idade": 25, "nac": "Paraguai" }],
+          [
+            "Lucas Ramírez",
+            "ZAG",
+            65,
+            { "id": "og1521756", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Alexis Vargas",
+            "ZAG",
+            65,
+            { "id": "og1825643", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Paulo Riveros",
+            "MC",
+            65,
+            { "id": "og1179513", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Fernando Cardozo",
+            "ATA",
+            65,
+            { "id": "og556061", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "guarani-2329",
+        "nome": "Guaraní",
+        "sigla": "GUA",
+        "elenco": [
+          [
+            "Gaspar Servio",
+            "GOL",
+            70,
+            { "id": "og233136", "fonte": "estimado-valor", "idade": 34, "nac": "Argentina" }
+          ],
+          [
+            "Miguel Martínez",
+            "GOL",
+            67,
+            { "id": "og452547", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Gustavo Palacios",
+            "GOL",
+            64,
+            { "id": "og3632543", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          ["Armando Méndez", "LD", 71, { "id": "og653867", "fonte": "fc26", "idade": 30, "nac": "Uruguai" }],
+          [
+            "Juan Manuel García",
+            "ATA",
+            71,
+            { "id": "og365602", "fonte": "fc26", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Fernando Fernández",
+            "ATA",
+            70,
+            { "id": "og383956", "fonte": "fc26", "idade": 34, "nac": "Paraguai" }
+          ],
+          ["Jorge Recalde", "ATA", 69, { "id": "og273774", "fonte": "fc26", "idade": 34, "nac": "Paraguai" }],
+          [
+            "Diego Fernandez",
+            "PE",
+            69,
+            { "id": "og708701", "fonte": "fc26", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Juan Daniel Pérez",
+            "LD",
+            68,
+            { "id": "og479066", "fonte": "fc26", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Miguel Jacquet",
+            "ZAG",
+            67,
+            { "id": "og386010", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Leandro Allende",
+            "ZAG",
+            67,
+            { "id": "og856969", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Carlos Arrua",
+            "MC",
+            67,
+            { "id": "og699086", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          ["Paul Riveros", "ZAG", 66, { "id": "og561848", "fonte": "fc26", "idade": 29, "nac": "Paraguai" }],
+          [
+            "Patricio Tanda",
+            "MC",
+            65,
+            { "id": "og772462", "fonte": "estimado-valor", "idade": 24, "nac": "Argentina" }
+          ],
+          [
+            "Matías López",
+            "MC",
+            65,
+            { "id": "og953819", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Jesús Llano",
+            "MC",
+            65,
+            { "id": "og774452", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Imanol Segovia",
+            "ZAG",
+            64,
+            { "id": "og772219", "fonte": "estimado-clube", "idade": 25, "nac": "Argentina" }
+          ],
+          [
+            "René Rodriguez",
+            "ZAG",
+            64,
+            { "id": "og953812", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Ángel Ibarra",
+            "ZAG",
+            64,
+            { "id": "og1461860", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Jonathan Espinola",
+            "ZAG",
+            64,
+            { "id": "og878429", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Carlos Rolón",
+            "ZAG",
+            64,
+            { "id": "og409440", "fonte": "estimado-clube", "idade": 34, "nac": "Paraguai" }
+          ],
+          ["Luis Martínez", "MC", 64, { "id": "og854243", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }],
+          [
+            "Maximiliano Añasco",
+            "PE",
+            64,
+            { "id": "og953473", "fonte": "fc26", "idade": 25, "nac": "Uruguai" }
+          ],
+          [
+            "Ricardo Quiñónez",
+            "ATA",
+            64,
+            { "id": "og1226197", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Carlos Rappenecker",
+            "ZAG",
+            62,
+            { "id": "og3619170", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Javier Velazquez",
+            "ZAG",
+            62,
+            { "id": "og3517046", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          ["Thiago Servín", "ZAG", 62, { "id": "og854237", "fonte": "fc26", "idade": 23, "nac": "Paraguai" }],
+          [
+            "Tadeo Sanabria",
+            "MC",
+            62,
+            { "id": "og3525441", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Thiago Romero",
+            "ATA",
+            62,
+            { "id": "og2700219", "fonte": "estimado-clube", "idade": 20, "nac": "Argentina" }
+          ],
+          [
+            "Alcides Barbotte",
+            "LD",
+            61,
+            { "id": "og854244", "fonte": "fc26", "idade": 24, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "nacional",
+        "nome": "Nacional",
+        "sigla": "NAC",
+        "elenco": [
+          [
+            "Santiago Rojas",
+            "GOL",
+            69,
+            { "id": "og538274", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Gerardo Ortiz",
+            "GOL",
+            66,
+            { "id": "og85297", "fonte": "estimado-valor", "idade": 37, "nac": "Paraguai" }
+          ],
+          [
+            "Elias Villar",
+            "GOL",
+            62,
+            { "id": "og2707990", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Richard Prieto",
+            "MC",
+            69,
+            { "id": "og422010", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Roque Santa Cruz",
+            "ATA",
+            69,
+            { "id": "og2616", "fonte": "fc26", "idade": 45, "nac": "Paraguai" }
+          ],
+          ["Ángel Cardozo", "MC", 68, { "id": "og289556", "fonte": "fc26", "idade": 32, "nac": "Paraguai" }],
+          [
+            "Gaona Lugo",
+            "ATA",
+            68,
+            { "id": "og132412", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Iván Valdez",
+            "ATA",
+            68,
+            { "id": "og502614", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Ignacio Bailone",
+            "ATA",
+            67,
+            { "id": "og380013", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Lucas González",
+            "ATA",
+            67,
+            { "id": "og734230", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Thomas Gutiérrez",
+            "ZAG",
+            66,
+            { "id": "og555430", "fonte": "estimado-valor", "idade": 26, "nac": "Venezuela" }
+          ],
+          [
+            "Fabrizio Jara",
+            "MC",
+            66,
+            { "id": "og904117", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Silvio Torales",
+            "MC",
+            65,
+            { "id": "og181068", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Roberto Ramírez",
+            "MC",
+            65,
+            { "id": "og786133", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          ["Josué Colmán", "PE", 65, { "id": "og383414", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }],
+          [
+            "Gastón Benítez",
+            "ZAG",
+            64,
+            { "id": "og821002", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Juan Feliú",
+            "ZAG",
+            64,
+            { "id": "og890538", "fonte": "estimado-valor", "idade": 25, "nac": "Argentina" }
+          ],
+          [
+            "Carlos Espinola",
+            "ZAG",
+            64,
+            { "id": "og822552", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Cesar Ovelar",
+            "MC",
+            64,
+            { "id": "og2529137", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Hugo Benítez",
+            "MC",
+            64,
+            { "id": "og1238948", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Jordán Santacruz",
+            "MC",
+            64,
+            { "id": "og571144", "fonte": "estimado-clube", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Juan Vargas",
+            "MC",
+            64,
+            { "id": "og827756", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Alejandro Samudio",
+            "ATA",
+            64,
+            { "id": "og952701", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Leandro Meza",
+            "MC",
+            63,
+            { "id": "og1060043", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Rodrigo Melgarejo",
+            "ZAG",
+            62,
+            { "id": "og708698", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Francisco Pumpido",
+            "MC",
+            62,
+            { "id": "og1634290", "fonte": "estimado-clube", "idade": 22, "nac": "México" }
+          ],
+          [
+            "Tobias Vega",
+            "ATA",
+            62,
+            { "id": "og3537660", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Santiago Vecca",
+            "ATA",
+            60,
+            { "id": "og3660604", "fonte": "estimado-clube", "idade": 14, "nac": "Paraguai" }
+          ],
+          [
+            "Matías Almeida",
+            "ATA",
+            60,
+            { "id": "og1001873", "fonte": "estimado-valor", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Derlis Caballero",
+            "ATA",
+            60,
+            { "id": "og2752702", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "sportivo-trinidense-2347",
+        "nome": "Sportivo Trinidense",
+        "sigla": "SPO",
+        "elenco": [
+          [
+            "Víctor Samudio",
+            "GOL",
+            68,
+            { "id": "og338061", "fonte": "estimado-valor", "idade": 39, "nac": "Paraguai" }
+          ],
+          [
+            "Matías Dufour",
+            "GOL",
+            67,
+            { "id": "og696865", "fonte": "estimado-valor", "idade": 27, "nac": "Uruguai" }
+          ],
+          [
+            "Alessandro Alfonso",
+            "GOL",
+            60,
+            { "id": "og3533826", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ],
+          ["Bruno Valdez", "ZAG", 69, { "id": "og229129", "fonte": "fc26", "idade": 34, "nac": "Paraguai" }],
+          [
+            "Sergio Mendoza",
+            "ZAG",
+            68,
+            { "id": "og409454", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Néstor Camacho",
+            "MC",
+            68,
+            { "id": "og87249", "fonte": "estimado-valor", "idade": 39, "nac": "Paraguai" }
+          ],
+          [
+            "Gustavo Viera",
+            "MC",
+            68,
+            { "id": "og302769", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Nicolás Maná",
+            "MC",
+            67,
+            { "id": "og328847", "fonte": "estimado-valor", "idade": 32, "nac": "Argentina" }
+          ],
+          [
+            "Óscar Giménez",
+            "ATA",
+            67,
+            { "id": "og104111", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Clementino González",
+            "ATA",
+            67,
+            { "id": "og510065", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Diego Melgarejo",
+            "ZAG",
+            66,
+            { "id": "og499399", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "César Benítez",
+            "ZAG",
+            66,
+            { "id": "og85303", "fonte": "estimado-valor", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Maximiliano Centurión",
+            "ZAG",
+            66,
+            { "id": "og711422", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "David Villalba",
+            "ZAG",
+            65,
+            { "id": "og970326", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Luis de la Cruz",
+            "ZAG",
+            65,
+            { "id": "og190430", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Ronaldo Báez",
+            "ATA",
+            65,
+            { "id": "og585195", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Armando Ruíz Díaz",
+            "ZAG",
+            64,
+            { "id": "og409555", "fonte": "estimado-valor", "idade": 33, "nac": "Paraguai" }
+          ],
+          [
+            "Agustín Da Silveira",
+            "ZAG",
+            64,
+            { "id": "og772552", "fonte": "estimado-valor", "idade": 25, "nac": "Uruguai" }
+          ],
+          [
+            "Nelson Gauto",
+            "MC",
+            64,
+            { "id": "og1035067", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Tomas Rayer",
+            "MC",
+            64,
+            { "id": "og1043093", "fonte": "estimado-valor", "idade": 24, "nac": "Argentina" }
+          ],
+          [
+            "Joel Román",
+            "ATA",
+            64,
+            { "id": "og499356", "fonte": "estimado-clube", "idade": 36, "nac": "Paraguai" }
+          ],
+          [
+            "Ronald Cornet",
+            "ATA",
+            64,
+            { "id": "og995813", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Fernando Román",
+            "ZAG",
+            64,
+            { "id": "og884888", "fonte": "fc26", "idade": 25, "nac": "Paraguai" }
+          ],
+          ["Enzo González", "ATA", 64, { "id": "og3570456", "fonte": "estimado-clube", "nac": "Paraguai" }],
+          [
+            "Axel Cañete",
+            "ZAG",
+            63,
+            { "id": "og1059679", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Faustino Barone",
+            "ATA",
+            63,
+            { "id": "og1061889", "fonte": "estimado-valor", "idade": 20, "nac": "Uruguai" }
+          ],
+          [
+            "Tobías Morinigo",
+            "ZAG",
+            62,
+            { "id": "og982085", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Enzo Gonzalez",
+            "MC",
+            62,
+            { "id": "og3660936", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Jorge Marcelino",
+            "MC",
+            62,
+            { "id": "og2520297", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Fabrizio Baruja",
+            "MC",
+            62,
+            { "id": "og1179508", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "recoleta-2341",
+        "nome": "Recoleta",
+        "sigla": "REC",
+        "elenco": [
+          [
+            "Andrés Marsengo",
+            "GOL",
+            63,
+            { "id": "og772421", "fonte": "estimado-clube", "idade": 24, "nac": "Argentina" }
+          ],
+          [
+            "Nelson Ferreira",
+            "GOL",
+            63,
+            { "id": "og1234111", "fonte": "estimado-clube", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Oscar Toledo",
+            "GOL",
+            63,
+            { "id": "og780101", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Alejandro Silva",
+            "MC",
+            71,
+            { "id": "og164522", "fonte": "estimado-valor", "idade": 37, "nac": "Uruguai" }
+          ],
+          [
+            "Iván Piris",
+            "ZAG",
+            68,
+            { "id": "og85298", "fonte": "estimado-valor", "idade": 37, "nac": "Paraguai" }
+          ],
+          [
+            "Dairon Mosquera",
+            "ZAG",
+            68,
+            { "id": "og269045", "fonte": "estimado-valor", "idade": 34, "nac": "Colômbia" }
+          ],
+          [
+            "Wilfrido Báez",
+            "MC",
+            68,
+            { "id": "og408394", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Nicolás Marotta",
+            "ZAG",
+            67,
+            { "id": "og728874", "fonte": "estimado-valor", "idade": 29, "nac": "Argentina" }
+          ],
+          [
+            "Luis Cardozo",
+            "ZAG",
+            67,
+            { "id": "og87591", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai" }
+          ],
+          [
+            "Aldo González",
+            "MC",
+            67,
+            { "id": "og955902", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Marcelo Medina",
+            "ZAG",
+            66,
+            { "id": "og1233892", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Marcelo Cañete",
+            "MC",
+            66,
+            { "id": "og153135", "fonte": "estimado-valor", "idade": 36, "nac": "Argentina" }
+          ],
+          [
+            "Richart Ortiz",
+            "ATA",
+            66,
+            { "id": "og952627", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Paul Charpentier",
+            "ATA",
+            66,
+            { "id": "og657569", "fonte": "estimado-valor", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Ronal Domínguez",
+            "MC",
+            65,
+            { "id": "og952642", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai" }
+          ],
+          [
+            "Julio Domínguez",
+            "ZAG",
+            64,
+            { "id": "og334015", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai" }
+          ],
+          [
+            "Claudio Garay",
+            "MC",
+            64,
+            { "id": "og436260", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Juan Franco",
+            "MC",
+            64,
+            { "id": "og964280", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Kevin Parzajuk",
+            "ATA",
+            64,
+            { "id": "og1024867", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Marcos Pereira",
+            "ZAG",
+            63,
+            { "id": "og2504807", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Lucas Monzón",
+            "ZAG",
+            63,
+            { "id": "og1303712", "fonte": "estimado-valor", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Fernando Galeano",
+            "MC",
+            63,
+            { "id": "og1183774", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Samuel Marcos",
+            "ATA",
+            63,
+            { "id": "og833501", "fonte": "estimado-clube", "idade": 23, "nac": "Brasil" }
+          ],
+          [
+            "Richard Ortiz",
+            "ATA",
+            63,
+            { "id": "og1183775", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Brahian Ferreira",
+            "ATA",
+            63,
+            { "id": "og2504804", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Facundo Echeguren",
+            "ZAG",
+            62,
+            { "id": "og1206802", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "José Espínola",
+            "ZAG",
+            62,
+            { "id": "og2504808", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Juan Núñez",
+            "ZAG",
+            62,
+            { "id": "og228802", "fonte": "estimado-clube", "idade": 37, "nac": "Paraguai" }
+          ],
+          [
+            "Luis Mendoza",
+            "ZAG",
+            62,
+            { "id": "og1234149", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Carlos Vera",
+            "MC",
+            62,
+            { "id": "og87619", "fonte": "estimado-clube", "idade": 38, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "rubio-nu-22757",
+        "nome": "Rubio Ñú",
+        "sigla": "RUB",
+        "elenco": [
+          [
+            "Carlos Servín",
+            "GOL",
+            68,
+            { "id": "og100240", "fonte": "estimado-valor", "idade": 39, "nac": "Paraguai" }
+          ],
+          [
+            "Franco Fragueda",
+            "GOL",
+            64,
+            { "id": "og663469", "fonte": "estimado-clube", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Tomás Canteros",
+            "GOL",
+            60,
+            { "id": "og833794", "fonte": "estimado-valor", "idade": 25, "nac": "Argentina" }
+          ],
+          [
+            "Rodrigo Rojas",
+            "MC",
+            67,
+            { "id": "og89007", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai" }
+          ],
+          [
+            "William Mendieta",
+            "MEI",
+            67,
+            { "id": "og135701", "fonte": "fc26", "idade": 37, "nac": "Paraguai" }
+          ],
+          ["Tobías Leiva", "MC", 67, { "id": "og1393803", "fonte": "fc26", "idade": 22, "nac": "Argentina" }],
+          [
+            "Brian Blasi",
+            "ZAG",
+            66,
+            { "id": "og488472", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Cristian Núñez",
+            "MC",
+            66,
+            { "id": "og623802", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Pedro Báez",
+            "ATA",
+            66,
+            { "id": "og504204", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Rodi Ferreira",
+            "ZAG",
+            65,
+            { "id": "og383406", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Jorge González",
+            "ZAG",
+            65,
+            { "id": "og893084", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Elias Alfonso",
+            "MC",
+            65,
+            { "id": "og613894", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Rodrigo Ruiz Díaz",
+            "ATA",
+            65,
+            { "id": "og552971", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Pedro Alvarez",
+            "ZAG",
+            64,
+            { "id": "og599374", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Victor Cabanas",
+            "ZAG",
+            64,
+            { "id": "og1054763", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Marcelo Acosta",
+            "MC",
+            64,
+            { "id": "og855642", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Ezequiel Cardozo",
+            "MC",
+            64,
+            { "id": "og499651", "fonte": "estimado-clube", "idade": 33, "nac": "Argentina" }
+          ],
+          [
+            "Estiven Pérez",
+            "ATA",
+            64,
+            { "id": "og629158", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Santiago Frean",
+            "MC",
+            63,
+            { "id": "og64427", "fonte": "estimado-clube", "idade": 36, "nac": "Argentina" }
+          ],
+          [
+            "Sergio Fretes",
+            "ATA",
+            63,
+            { "id": "og641032", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Mariano Ramos",
+            "ZAG",
+            62,
+            { "id": "og2430511", "fonte": "estimado-clube", "idade": 22, "nac": "Argentina" }
+          ],
+          [
+            "Héctor Martínez",
+            "ZAG",
+            62,
+            { "id": "og2633329", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Carlos Giménez",
+            "ZAG",
+            62,
+            { "id": "og1390257", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Javier Vallejos",
+            "ZAG",
+            62,
+            { "id": "og1061751", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Pablo Ayala",
+            "MC",
+            62,
+            { "id": "og696608", "fonte": "estimado-valor", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Aaron Páez",
+            "ATA",
+            62,
+            { "id": "og980894", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Mauricio Roldán",
+            "ATA",
+            62,
+            { "id": "og1179579", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina" }
+          ],
+          [
+            "Jose Ojeda",
+            "MC",
+            60,
+            { "id": "og3686690", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ],
+          [
+            "Lucas Torres",
+            "MC",
+            60,
+            { "id": "og3686691", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ],
+          [
+            "Octavio Alfonso",
+            "MEI",
+            60,
+            { "id": "og2506446", "fonte": "fc26", "idade": 20, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "sportivo-ameliano-108830",
+        "nome": "Sportivo Ameliano",
+        "sigla": "SPO",
+        "elenco": [
+          [
+            "Edilson Avalos",
+            "GOL",
+            64,
+            { "id": "og3673505", "fonte": "estimado-clube", "idade": 24, "nac": "Argentina" }
+          ],
+          [
+            "Junior Balbuena",
+            "GOL",
+            64,
+            { "id": "og499395", "fonte": "estimado-clube", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Ángel Sánchez",
+            "GOL",
+            64,
+            { "id": "og854322", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Julio González",
+            "ZAG",
+            68,
+            { "id": "og373918", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai" }
+          ],
+          [
+            "Walter Rodríguez",
+            "MC",
+            67,
+            { "id": "og438645", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Francisco Báez",
+            "ZAG",
+            66,
+            { "id": "og452595", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Fabián Franco",
+            "ZAG",
+            66,
+            { "id": "og566066", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Alberto Contrera",
+            "MC",
+            66,
+            { "id": "og175340", "fonte": "estimado-valor", "idade": 34, "nac": "Paraguai" }
+          ],
+          [
+            "Fredy Vera",
+            "ATA",
+            66,
+            { "id": "og523302", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Luis Ortiz",
+            "MC",
+            65,
+            { "id": "og687700", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Valentín Larralde",
+            "MC",
+            65,
+            { "id": "og824593", "fonte": "estimado-valor", "idade": 25, "nac": "Argentina" }
+          ],
+          [
+            "Estivel Moreira",
+            "ATA",
+            65,
+            { "id": "og649829", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Richard Torales",
+            "ATA",
+            65,
+            { "id": "og1171605", "fonte": "fc26", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Hugo Benítez",
+            "ZAG",
+            64,
+            { "id": "og952705", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          ["Abel Paredes", "LE", 64, { "id": "og569364", "fonte": "fc26", "idade": 29, "nac": "Paraguai" }],
+          [
+            "Miguel Benítez",
+            "ZAG",
+            64,
+            { "id": "og616163", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Tomás Lezcano",
+            "ZAG",
+            64,
+            { "id": "og952623", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Jonathan Benítez",
+            "MC",
+            64,
+            { "id": "og710916", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Luis Olmedo",
+            "MC",
+            64,
+            { "id": "og1177585", "fonte": "estimado-clube", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Nicolás Domínguez",
+            "MC",
+            64,
+            { "id": "og3524170", "fonte": "estimado-clube", "nac": "Paraguai" }
+          ],
+          [
+            "Cristhian Ocampos",
+            "ATA",
+            64,
+            { "id": "og708099", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Bruno López",
+            "ATA",
+            64,
+            { "id": "og786116", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Ever Britez",
+            "ATA",
+            64,
+            { "id": "og3571204", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          ["Ariel Ávalos", "ATA", 63, { "id": "og1933380", "fonte": "fc26", "idade": 21, "nac": "Paraguai" }],
+          [
+            "Luciano Suárez",
+            "ZAG",
+            62,
+            { "id": "og1226085", "fonte": "estimado-clube", "idade": 22, "nac": "Argentina" }
+          ],
+          [
+            "Carlos Favero",
+            "ZAG",
+            62,
+            { "id": "og2482297", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Thiago Bogado",
+            "MC",
+            62,
+            { "id": "og3640404", "fonte": "estimado-clube", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Ronald Peralta",
+            "MC",
+            62,
+            { "id": "og2748061", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          ["Raúl Cabral", "MEI", 62, { "id": "og1393752", "fonte": "fc26", "idade": 21, "nac": "Argentina" }],
+          [
+            "Marcelo Camargo",
+            "MC",
+            62,
+            { "id": "og1393749", "fonte": "estimado-clube", "idade": 21, "nac": "Argentina" }
+          ]
+        ]
+      },
+      {
+        "id": "2-de-mayo-9718",
+        "nome": "2 de Mayo",
+        "sigla": "MAY",
+        "elenco": [
+          [
+            "Nicolás Rossi",
+            "GOL",
+            64,
+            { "id": "og487125", "fonte": "estimado-clube", "idade": 28, "nac": "Uruguai" }
+          ],
+          [
+            "Miguel Urquiza",
+            "GOL",
+            64,
+            { "id": "og1234147", "fonte": "estimado-clube", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Mario Ramírez",
+            "GOL",
+            64,
+            { "id": "og1233925", "fonte": "estimado-clube", "idade": 33, "nac": "Paraguai" }
+          ],
+          [
+            "César Castro",
+            "ZAG",
+            68,
+            { "id": "og627667", "fonte": "estimado-valor", "idade": 33, "nac": "Paraguai" }
+          ],
+          [
+            "Pedro Sosa",
+            "ZAG",
+            67,
+            { "id": "og510525", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Alberto Espínola",
+            "ZAG",
+            67,
+            { "id": "og267535", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Pedro Delvalle",
+            "ATA",
+            67,
+            { "id": "og409478", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Alexis Villalba",
+            "ZAG",
+            65,
+            { "id": "og644905", "fonte": "fc26", "idade": 28, "nac": "Paraguai" }
+          ],
+          ["Brahian Ayala", "PE", 65, { "id": "og302771", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }],
+          [
+            "Jorge Sanguina",
+            "ATA",
+            65,
+            { "id": "og566315", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          ["Tobías Cervera", "ATA", 65, { "id": "og996248", "fonte": "fc26", "idade": 24, "nac": "Síria" }],
+          [
+            "Matías Moya",
+            "ATA",
+            65,
+            { "id": "og543791", "fonte": "estimado-valor", "idade": 28, "nac": "Chile" }
+          ],
+          [
+            "Camilo Saiz",
+            "ZAG",
+            64,
+            { "id": "og153059", "fonte": "estimado-clube", "idade": 34, "nac": "Colômbia" }
+          ],
+          [
+            "Ángel Aguilera",
+            "MC",
+            64,
+            { "id": "og2537675", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Marcos Gómez",
+            "MC",
+            64,
+            { "id": "og572581", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Fernando Cáceres",
+            "MC",
+            64,
+            { "id": "og492291", "fonte": "estimado-clube", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Alfredo Machado",
+            "ATA",
+            64,
+            { "id": "og1234126", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Ulises Coronel",
+            "ZAG",
+            63,
+            { "id": "og552975", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Óscar Romero",
+            "MC",
+            63,
+            { "id": "og952712", "fonte": "estimado-valor", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Alan Gómez",
+            "ATA",
+            63,
+            { "id": "og1067427", "fonte": "estimado-valor", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "César Ramírez",
+            "ZAG",
+            62,
+            { "id": "og953811", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Tobias Sanabria",
+            "MC",
+            62,
+            { "id": "og1054761", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Estifen Díaz",
+            "MC",
+            62,
+            { "id": "og1236494", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Alexis Fariña",
+            "MC",
+            62,
+            { "id": "og931738", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Félix Triñanes",
+            "MC",
+            62,
+            { "id": "og2345677", "fonte": "estimado-clube", "idade": 22, "nac": "Argentina" }
+          ],
+          [
+            "Tobías Portillo",
+            "ATA",
+            62,
+            { "id": "og969313", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          ["Rodrigo Gómez", "LD", 60, { "id": "og2518951", "fonte": "fc26", "idade": 20, "nac": "Paraguai" }],
+          [
+            "Alan Fernández",
+            "ZAG",
+            60,
+            { "id": "og3537437", "fonte": "estimado-clube", "idade": 18, "nac": "Paraguai" }
+          ],
+          [
+            "Henry Riquelme",
+            "MC",
+            60,
+            { "id": "og2741750", "fonte": "estimado-valor", "idade": 19, "nac": "Paraguai" }
+          ],
+          [
+            "Alejandro Delgadillo",
+            "MC",
+            60,
+            { "id": "og3205739", "fonte": "estimado-clube", "idade": 19, "nac": "Paraguai" }
+          ]
+        ]
+      },
+      {
+        "id": "sportivo-luqueno-2335",
+        "nome": "Sportivo Luqueño",
+        "sigla": "SPO",
+        "elenco": [
+          [
+            "Nicolás Campisi",
+            "GOL",
+            66,
+            { "id": "og415905", "fonte": "estimado-valor", "idade": 30, "nac": "Argentina" }
+          ],
+          [
+            "Francisco Mongelos",
+            "GOL",
+            59,
+            { "id": "og1067403", "fonte": "fc26", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Ángel Espínola",
+            "GOL",
+            59,
+            { "id": "og1391672", "fonte": "fc26", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Walter González",
+            "ATA",
+            68,
+            { "id": "og415772", "fonte": "fc26", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Óscar Ruiz",
+            "MC",
+            67,
+            { "id": "og175344", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Iván Maggi",
+            "ATA",
+            67,
+            { "id": "og747320", "fonte": "estimado-valor", "idade": 27, "nac": "Argentina" }
+          ],
+          [
+            "Álvaro Martínez",
+            "LE",
+            66,
+            { "id": "og981819", "fonte": "fc26", "idade": 24, "nac": "Paraguai" }
+          ],
+          ["Lautaro Comas", "PE", 66, { "id": "og500869", "fonte": "fc26", "idade": 31, "nac": "Argentina" }],
+          [
+            "Miguel Barreto",
+            "ZAG",
+            65,
+            { "id": "og715616", "fonte": "estimado-valor", "idade": 28, "nac": "Paraguai" }
+          ],
+          [
+            "Alexis Cantero",
+            "ZAG",
+            65,
+            { "id": "og953810", "fonte": "estimado-valor", "idade": 23, "nac": "Paraguai" }
+          ],
+          ["Kevin Pereira", "PE", 65, { "id": "og682945", "fonte": "fc26", "idade": 22, "nac": "Paraguai" }],
+          [
+            "Fernando Benitez",
+            "VOL",
+            64,
+            { "id": "og750882", "fonte": "fc26", "idade": 27, "nac": "Paraguai" }
+          ],
+          ["Tomás Muro", "PD", 64, { "id": "og956308", "fonte": "fc26", "idade": 24, "nac": "Argentina" }],
+          [
+            "Giovanni Bogado",
+            "ATA",
+            64,
+            { "id": "og544724", "fonte": "estimado-valor", "idade": 25, "nac": "Paraguai" }
+          ],
+          [
+            "Facundo Wiechniak",
+            "ZAG",
+            63,
+            { "id": "og1238940", "fonte": "estimado-valor", "idade": 24, "nac": "Argentina" }
+          ],
+          ["Marcelo Pérez", "ATA", 63, { "id": "og710669", "fonte": "fc26", "idade": 25, "nac": "Paraguai" }],
+          [
+            "Lucas Morales",
+            "ZAG",
+            62,
+            { "id": "og772412", "fonte": "estimado-clube", "idade": 26, "nac": "Uruguai" }
+          ],
+          [
+            "Marcelo Jiménez",
+            "ZAG",
+            62,
+            { "id": "og822545", "fonte": "estimado-clube", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Sebastián Maldonado",
+            "LE",
+            62,
+            { "id": "og869978", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }
+          ],
+          ["Aldo Maíz", "MC", 62, { "id": "og626723", "fonte": "fc26", "idade": 26, "nac": "Paraguai" }],
+          ["Jonathan Britez", "MC", 62, { "id": "og3514481", "fonte": "estimado-clube", "nac": "Paraguai" }],
+          [
+            "Marcelo Ojeda",
+            "MC",
+            61,
+            { "id": "og1542213", "fonte": "estimado-valor", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Jonathan Díaz",
+            "ZAG",
+            60,
+            { "id": "og2752700", "fonte": "estimado-clube", "idade": 21, "nac": "Paraguai" }
+          ],
+          [
+            "Santiago Ocampos",
+            "LD",
+            60,
+            { "id": "og610219", "fonte": "fc26", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Fernando Bobadilla",
+            "MC",
+            60,
+            { "id": "og2752701", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Matías Riveros",
+            "MC",
+            60,
+            { "id": "og1935212", "fonte": "estimado-clube", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Ángel Brizuela",
+            "ZAG",
+            58,
+            { "id": "og1205218", "fonte": "fc26", "idade": 22, "nac": "Paraguai" }
+          ],
+          [
+            "Axel Balbuena",
+            "ZAG",
+            58,
+            { "id": "og1179500", "fonte": "estimado-valor", "idade": 20, "nac": "Paraguai" }
+          ],
+          [
+            "Oliver López",
+            "ZAG",
+            58,
+            { "id": "og3533436", "fonte": "estimado-clube", "idade": 16, "nac": "Paraguai" }
+          ],
+          ["Jonathan Ramos", "PE", 58, { "id": "og2514808", "fonte": "fc26", "idade": 19, "nac": "Paraguai" }]
+        ]
+      },
+      {
+        "id": "san-lorenzo-2346",
+        "nome": "San Lorenzo",
+        "sigla": "SAN",
+        "elenco": [
+          [
+            "Wilson Quiñonez",
+            "GOL",
+            67,
+            { "id": "og267090", "fonte": "estimado-valor", "idade": 38, "nac": "Paraguai" }
+          ],
+          [
+            "Luis Franco",
+            "GOL",
+            63,
+            { "id": "og696878", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          [
+            "Federico Cristóforo",
+            "GOL",
+            62,
+            { "id": "og344156", "fonte": "estimado-clube", "idade": 37, "nac": "Uruguai" }
+          ],
+          [
+            "Marcelo Ferreira",
+            "ATA",
+            68,
+            { "id": "og362008", "fonte": "estimado-valor", "idade": 33, "nac": "Paraguai" }
+          ],
+          [
+            "Iván Torres",
+            "MC",
+            66,
+            { "id": "og135342", "fonte": "estimado-valor", "idade": 35, "nac": "Paraguai" }
+          ],
+          [
+            "Bruno Piñatares",
+            "MC",
+            66,
+            { "id": "og250962", "fonte": "estimado-valor", "idade": 36, "nac": "Uruguai" }
+          ],
+          [
+            "Alex Álvarez",
+            "ATA",
+            66,
+            { "id": "og553900", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          ["Ángel Benítez", "VOL", 65, { "id": "og374220", "fonte": "fc26", "idade": 30, "nac": "Paraguai" }],
+          [
+            "Cristian Colmán",
+            "ATA",
+            65,
+            { "id": "og409384", "fonte": "estimado-valor", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "José Doldán",
+            "ZAG",
+            64,
+            { "id": "og694623", "fonte": "estimado-valor", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Luís Cáceres",
+            "ZAG",
+            64,
+            { "id": "og500139", "fonte": "estimado-valor", "idade": 30, "nac": "Paraguai" }
+          ],
+          [
+            "Federico Estigarribia",
+            "ZAG",
+            63,
+            { "id": "og1183732", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Teodoro Paredes",
+            "ZAG",
+            63,
+            { "id": "og229097", "fonte": "estimado-clube", "idade": 33, "nac": "Paraguai" }
+          ],
+          [
+            "Daniel Meza Montiel",
+            "ZAG",
+            63,
+            { "id": "og2344431", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Maximiliano Garcia",
+            "ZAG",
+            63,
+            { "id": "og1817731", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          [
+            "Axel Suárez",
+            "MC",
+            63,
+            { "id": "og1291335", "fonte": "estimado-clube", "idade": 23, "nac": "Paraguai" }
+          ],
+          ["Jesús Ramírez", "MC", 63, { "id": "og3537436", "fonte": "estimado-clube", "nac": "Paraguai" }],
+          [
+            "Héctor Villamayor",
+            "MC",
+            63,
+            { "id": "og780291", "fonte": "estimado-clube", "idade": 29, "nac": "Paraguai" }
+          ],
+          [
+            "Richard Ríos",
+            "MC",
+            63,
+            { "id": "og842405", "fonte": "estimado-clube", "idade": 31, "nac": "Paraguai" }
+          ],
+          [
+            "Matías Alfonso",
+            "MC",
+            63,
+            { "id": "og772386", "fonte": "estimado-valor", "idade": 26, "nac": "Paraguai" }
+          ],
+          [
+            "Bruno Machuca",
+            "MC",
+            63,
+            { "id": "og3581858", "fonte": "estimado-clube", "idade": 26, "nac": "Argentina" }
+          ],
+          [
+            "Edgar Balbuena",
+            "MC",
+            63,
+            { "id": "og1053896", "fonte": "estimado-clube", "idade": 32, "nac": "Paraguai" }
+          ],
+          [
+            "Daniel Meza",
+            "MC",
+            63,
+            { "id": "og3520027", "fonte": "estimado-clube", "idade": 23, "nac": "Argentina" }
+          ],
+          [
+            "Kevin Fernández",
+            "MC",
+            63,
+            { "id": "og627838", "fonte": "estimado-clube", "idade": 27, "nac": "Paraguai" }
+          ],
+          ["Elias Ortíz", "MC", 63, { "id": "og3509326", "fonte": "estimado-clube", "nac": "Paraguai" }],
+          [
+            "Franco Aragón",
+            "MC",
+            63,
+            { "id": "og486933", "fonte": "estimado-clube", "idade": 32, "nac": "Argentina" }
+          ],
+          ["Exequiel Salcedo", "MC", 63, { "id": "og3674161", "fonte": "estimado-clube", "nac": "Paraguai" }],
+          [
+            "Sandro Galeano",
+            "ATA",
+            63,
+            { "id": "og1563010", "fonte": "estimado-clube", "idade": 24, "nac": "Paraguai" }
+          ],
+          [
+            "Juan Villamayor",
+            "ATA",
+            63,
+            { "id": "og309743", "fonte": "estimado-clube", "idade": 33, "nac": "Paraguai" }
+          ],
+          [
+            "Cristhian Medina",
+            "ATA",
+            63,
+            { "id": "og1234108", "fonte": "estimado-clube", "idade": 25, "nac": "Paraguai" }
+          ]
+        ]
+      }
+    ],
+    "B": [],
+    "C": [],
+    "D": []
+  },
+  "vagasDiretasCopa": [],
+  "classicos": [],
+  "semCopa": true,
+  "formatos": {
+    "A": {
+      "divisao": "A",
+      "id": "primera-division-paraguai",
+      "nome": "División de Honor 2026",
+      "clubes": 12,
+      "fases": [
+        {
+          "tipo": "liga",
+          "nome": "Pontos corridos",
+          "grupos": 1,
+          "distribuicao": "unico",
+          "turnos": 2,
+          "avancamPorGrupo": 0
+        }
+      ],
+      "acesso": [],
+      "rebaixamento": []
+    }
+  }
+}

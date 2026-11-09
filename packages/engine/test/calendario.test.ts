@@ -36,8 +36,8 @@ describe("calendário", () => {
   it("acha o primeiro horário livre de um grupo de clubes", () => {
     const estado = novaTemporada(pacoteDeTeste());
     const ids = estado.divisoes.A.clubes.slice(0, 2);
-    const semana = horarioLivre(estado.jogos, ids, 0, false);
-    expect(semana).toBeGreaterThan(ultimaSemanaAgendada(estado.jogos) - 1);
+    const primeira = Object.values(estado.jogos).find((j) => j.competicao === "A")!.rodada;
     expect(horarioLivre(estado.jogos, ids, 0, true)).toBe(0);
+    expect(horarioLivre(estado.jogos, ids, primeira, true)).not.toBe(primeira);
   });
 });

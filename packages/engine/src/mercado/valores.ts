@@ -1,10 +1,13 @@
 import type { Divisao } from "../competicao/tipos";
 import type { Jogador, Posicao } from "../tipos";
 
-/** Rodadas com janela de transferências aberta (pré-temporada e meio do ano). */
+/**
+ * Semanas com janela de registros aberta, pelo calendário da CBF de 2026:
+ * 05/01 a 03/03 (semanas 0–8) e 20/07 a 11/09 (semanas 28–35).
+ */
 export const JANELAS: readonly [number, number][] = [
-  [0, 3],
-  [17, 21],
+  [0, 8],
+  [28, 35],
 ];
 
 export function janelaAberta(rodada: number): boolean {

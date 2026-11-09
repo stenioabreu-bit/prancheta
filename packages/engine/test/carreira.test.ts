@@ -51,10 +51,15 @@ function jogo(semente = 1, clubeId = "a5") {
   });
 }
 
+/** Avança as semanas sem jogo do usuário (pré-temporada) até a próxima partida dele. */
+function ateOProximoJogo(estado: EstadoJogo) {
+  for (let g = 0; g < 60 && !proximoJogoDoUsuario(estado); g++) seguir(estado);
+}
+
 /** Joga a temporada inteira simulando os jogos do usuário no motor. */
 function jogarTemporada(estado: EstadoJogo) {
   let guarda = 0;
-  while (!fimDeTemporada(estado) && guarda++ < 200) {
+  while (!fimDeTemporada(estado) && guarda++ < 400) {
     if (proximoJogoDoUsuario(estado)) simularPartidaDoUsuario(estado);
     else seguir(estado);
   }
@@ -160,6 +165,7 @@ describe("decisões de vestiário", () => {
   it("preleção mexe na moral e repetir o mesmo tom perde força", () => {
     const estado = jogo(5);
     const medias: number[] = [];
+    ateOProximoJogo(estado);
     for (let i = 0; i < 4; i++) {
       const p = iniciarPartida(estado);
       medias.push(prelecao(p, estado.carreira, "pre", "motivar", criarRng(i)).media);
@@ -170,6 +176,7 @@ describe("decisões de vestiário", () => {
 
   it("coletiva depois do jogo tem de 1 a 3 perguntas", () => {
     const estado = jogo(6);
+    ateOProximoJogo(estado);
     const p = iniciarPartida(estado);
     while (passo(p) !== "fim") {
       /* joga até o fim */

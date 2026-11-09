@@ -626,8 +626,21 @@ function evoluirElencos(estado: EstadoTemporada, rng: Rng, resumo: ResumoTempora
     for (const j of clube.jogadores) {
       if (j.idade === undefined) continue;
       j.idade++;
-      const teto = j.potencial ?? (j.ovrBase ?? j.ovr) + 6;
-      const ganho = j.idade <= 21 ? inteiroEntre(rng, 1, 3) : j.idade <= 24 ? inteiroEntre(rng, 0, 2) : 0;
+      // Jovem que joga e joga bem dispara; nota média e minutos pesam muito na evolução do ano.
+      const jogos = j.temporada.jogos;
+      const nota = j.temporada.qtdNotas ? j.temporada.somaNotas / j.temporada.qtdNotas : 6.3;
+      const rendimento =
+        (jogos >= 25 ? 2 : jogos >= 12 ? 1 : 0) + (nota >= 7.2 ? 3 : nota >= 6.8 ? 2 : nota >= 6.5 ? 1 : 0);
+      const teto = (j.potencial ?? (j.ovrBase ?? j.ovr) + 8) + (nota >= 7.2 && jogos >= 20 ? 3 : 0);
+      const ganho =
+        j.idade <= 21
+          ? inteiroEntre(rng, 2, 4) + rendimento
+          : j.idade <= 24
+            ? inteiroEntre(rng, 1, 3) + Math.ceil(rendimento * 0.7)
+            : j.idade <= 27
+              ? Math.floor(rendimento / 2)
+              : 0;
+      if (j.potencial !== undefined && teto > j.potencial) j.potencial = teto;
       if (ganho > 0 && j.ovr < teto) {
         const g = Math.min(ganho, teto - j.ovr);
         j.ovrBase = (j.ovrBase ?? j.ovr) + g;

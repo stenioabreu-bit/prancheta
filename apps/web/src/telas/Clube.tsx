@@ -1,10 +1,4 @@
 import {
-  type Atributo,
-  COTACAO,
-  type FiltroDoMercado,
-  type Posicao,
-  moedaEmUso,
-  pedirAoOlheiro,
   NOME_DA_SITUACAO,
   folhaAnual,
   type Divisao,
@@ -32,164 +26,10 @@ import {
 import { useState } from "react";
 import { Folha, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
-import { FichaDoJogador, LinhaJogador, NOME_ATRIBUTO } from "./Elenco";
+import { FichaDoJogador, LinhaJogador } from "./Elenco";
+import { Olheiro } from "./Olheiro";
 
-const POSICOES_OLHEIRO: Posicao[] = ["GOL", "ZAG", "LD", "LE", "VOL", "MC", "MEI", "PD", "PE", "ATA"];
-const DESTAQUES: { atributo: Atributo | ""; nome: string }[] = [
-  { atributo: "", nome: "Qualquer perfil" },
-  { atributo: "VEL", nome: "Rápidos" },
-  { atributo: "FIN", nome: "Finalizadores" },
-  { atributo: "PAS", nome: "Bons passadores" },
-  { atributo: "CTL", nome: "Habilidosos" },
-  { atributo: "DEF", nome: "Bons marcadores" },
-  { atributo: "CAB", nome: "Fortes no alto" },
-  { atributo: "FIS", nome: "Fortes fisicamente" },
-  { atributo: "RES", nome: "Resistentes" },
-];
-
-/** Busca do olheiro: posição, perfil, faixa de preço (na moeda do jogo), idade e origem. */
-function Olheiro({ abrir }: { abrir: (id: string) => void }) {
-  const jogo = useJogo();
-  const mexer = useLoja((s) => s.mexer);
-  const avisar = useLoja((s) => s.avisar);
-  const moeda = moedaEmUso();
-  const [pos, setPos] = useState<Posicao | "">("ATA");
-  const [destaque, setDestaque] = useState<Atributo | "">("VEL");
-  const [minimo, setMinimo] = useState("1");
-  const [maximo, setMaximo] = useState("5");
-  const [idade, setIdade] = useState("");
-  const [origem, setOrigem] = useState<"todos" | "brasil" | "exterior">("todos");
-  const emEuro = (v: string) => (v.trim() ? Number(v.replace(",", ".")) / COTACAO[moeda] : undefined);
-  const pedir = () => {
-    const min = emEuro(minimo);
-    const max = emEuro(maximo);
-    const filtro: FiltroDoMercado = {
-      ...(pos ? { posicao: pos } : {}),
-      ...(destaque ? { atributo: destaque, atributoMinimo: 75 } : {}),
-      ...(min !== undefined ? { valorMinimo: min } : {}),
-      ...(max !== undefined ? { valorMaximo: max } : {}),
-      ...(idade ? { idadeMaxima: Number(idade) } : {}),
-      ...(origem !== "todos" ? { origem } : {}),
-    };
-    const perfil = DESTAQUES.find((d) => d.atributo === destaque)!.nome.toLowerCase();
-    const descricao = `${pos || "qualquer posição"}${destaque ? `, ${perfil}` : ""}${
-      min !== undefined || max !== undefined
-        ? `, ${min !== undefined ? formatarDinheiro(min) : "0"} a ${max !== undefined ? formatarDinheiro(max) : "sem teto"}`
-        : ""
-    }${idade ? `, até ${idade} anos` : ""}${origem === "exterior" ? ", no exterior" : origem === "brasil" ? ", no Brasil" : ""}`;
-    avisar(mexer((j) => pedirAoOlheiro(j, filtro, descricao)));
-  };
-  const pedidos = jogo.mercado.olheiro ?? [];
-  const clubeDe = (id: string) =>
-    Object.values(jogo.temporada.clubes).find((c) => c.jogadores.some((x) => x.id === id));
-  return (
-    <section className="panel stack">
-      <h3>Olheiro</h3>
-      <div className="row" style={{ flexWrap: "wrap" }}>
-        <select aria-label="Posição" value={pos} onChange={(e) => setPos(e.target.value as Posicao | "")}>
-          <option value="">Qualquer posição</option>
-          {POSICOES_OLHEIRO.map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </select>
-        <select
-          aria-label="Perfil"
-          value={destaque}
-          onChange={(e) => setDestaque(e.target.value as Atributo | "")}
-        >
-          {DESTAQUES.map((d) => (
-            <option key={d.nome} value={d.atributo}>
-              {d.nome}
-              {d.atributo ? ` (${NOME_ATRIBUTO[d.atributo]} 75+)` : ""}
-            </option>
-          ))}
-        </select>
-        <select
-          aria-label="Origem do olheiro"
-          value={origem}
-          onChange={(e) => setOrigem(e.target.value as typeof origem)}
-        >
-          <option value="todos">Brasil e exterior</option>
-          <option value="brasil">Só Brasil</option>
-          <option value="exterior">Só exterior</option>
-        </select>
-      </div>
-      <div className="row" style={{ flexWrap: "wrap" }}>
-        <label className="small muted">
-          De (mi {moeda})
-          <input
-            className="inp"
-            inputMode="decimal"
-            value={minimo}
-            onChange={(e) => setMinimo(e.target.value)}
-          />
-        </label>
-        <label className="small muted">
-          Até (mi {moeda})
-          <input
-            className="inp"
-            inputMode="decimal"
-            value={maximo}
-            onChange={(e) => setMaximo(e.target.value)}
-          />
-        </label>
-        <label className="small muted">
-          Idade máx.
-          <input
-            className="inp"
-            inputMode="numeric"
-            value={idade}
-            onChange={(e) => setIdade(e.target.value)}
-          />
-        </label>
-      </div>
-      <button type="button" className="btn primary" onClick={pedir}>
-        Mandar o olheiro procurar
-      </button>
-      {pedidos.map((p) => (
-        <div key={p.id} className="stack" style={{ gap: 4 }}>
-          <div className="small">
-            <b>{p.descricao}</b>{" "}
-            <span className="muted">
-              {p.resultado ? `· ${p.resultado.length} nomes` : `· relatório na rodada ${p.pronto + 1}`}
-            </span>
-          </div>
-          {p.resultado?.map((id) => {
-            const c = clubeDe(id);
-            const j = c?.jogadores.find((x) => x.id === id);
-            if (!c || !j) return null;
-            return (
-              <div key={id} className="prow" style={{ gridTemplateColumns: "38px 1fr auto" }}>
-                <span className={`pos ${j.pos}`}>{j.pos}</span>
-                <span style={{ minWidth: 0 }}>
-                  <button type="button" className="link nm" onClick={() => abrir(id)}>
-                    {j.nome}
-                  </button>
-                  <div className="meta">
-                    <NomeClube clube={c} tamanho={13} /> · {j.idade ? `${j.idade} anos · ` : ""}
-                    {destaqueDoJogador(j.at)}
-                  </div>
-                </span>
-                <span className="ovr">{j.ovr}</span>
-              </div>
-            );
-          })}
-        </div>
-      ))}
-    </section>
-  );
-}
-
-function destaqueDoJogador(at: Record<Atributo, number>): string {
-  const [a, v] = (Object.entries(at) as [Atributo, number][])
-    .filter(([k]) => k !== "GOL")
-    .sort((x, y) => y[1] - x[1])[0]!;
-  return `${NOME_ATRIBUTO[a]} ${v}`;
-}
-
-type Secao = "mercado" | "treino" | "comissao" | "base";
+type Secao = "mercado" | "olheiro" | "treino" | "comissao" | "base";
 
 type FiltroCaixa = "todas" | "novas" | "tarefas" | "naoLidas";
 const FILTROS: { id: FiltroCaixa; nome: string }[] = [
@@ -412,7 +252,6 @@ function Mercado() {
       </section>
       {ficha && <FichaDoJogador jogadorId={ficha} aoFechar={() => setFicha(null)} />}
       <div className="stack">
-        <Olheiro abrir={setFicha} />
         <section className="panel stack">
           <h3>Finanças</h3>
           <dl className="kv">
@@ -737,6 +576,7 @@ export function Carreira() {
 
 const SECOES: { id: Secao; nome: string; precisaDeClube: boolean }[] = [
   { id: "mercado", nome: "Mercado", precisaDeClube: true },
+  { id: "olheiro", nome: "Olheiro", precisaDeClube: true },
   { id: "treino", nome: "Treino", precisaDeClube: true },
   { id: "comissao", nome: "Comissão", precisaDeClube: true },
   { id: "base", nome: "Base", precisaDeClube: true },
@@ -765,6 +605,7 @@ export function Clube() {
         ))}
       </div>
       {atual === "mercado" && <Mercado />}
+      {atual === "olheiro" && <Olheiro />}
       {atual === "treino" && <Treino />}
       {atual === "comissao" && <Comissao />}
       {atual === "base" && <Base />}

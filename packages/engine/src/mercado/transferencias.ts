@@ -35,6 +35,7 @@ export interface FiltroDoMercado {
   valorMinimo?: number;
   valorMaximo?: number;
   idadeMaxima?: number;
+  idadeMinima?: number;
   /** Atributo em destaque (ex.: VEL para jogadores rápidos) e o mínimo exigido. */
   atributo?: Atributo;
   atributoMinimo?: number;
@@ -78,6 +79,7 @@ export function buscarNoMercado(estado: EstadoJogo, f: FiltroDoMercado = {}): It
       if (f.setor && setorDaPosicao(j.pos) !== f.setor) continue;
       if (f.posicao && j.pos !== f.posicao && !j.alt.includes(f.posicao)) continue;
       if (f.idadeMaxima !== undefined && (j.idade ?? 99) > f.idadeMaxima) continue;
+      if (f.idadeMinima !== undefined && (j.idade ?? 0) < f.idadeMinima) continue;
       if (f.atributo && j.at[f.atributo] < (f.atributoMinimo ?? 0)) continue;
       const valor = valorDeMercado(j, divisao ?? (estrangeiro ? "B" : "D"));
       if (f.valorMaximo !== undefined && valor > f.valorMaximo) continue;

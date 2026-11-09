@@ -558,6 +558,8 @@ export function Partida() {
                 disabled={!podeGritar(m, eu)}
                 onClick={() => {
                   avisar(gritarDaBeira(m, eu, g.id));
+                  setFolha(null);
+                  if (fase === "jogo") setRodando(true);
                   redesenhar();
                 }}
               >

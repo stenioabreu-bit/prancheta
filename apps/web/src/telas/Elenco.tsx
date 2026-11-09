@@ -59,12 +59,16 @@ export function LinhaJogador({
       <span style={{ minWidth: 0 }}>
         <div className="nm">
           {j.nome} {titular && <span className="tag xi">XI</span>}{" "}
-          {j.lesao > 0 && <span className="tag les">LES {j.lesao}</span>}{" "}
-          {j.susp > 0 && <span className="tag sus">SUSP</span>}
+          {j.lesao > 0 && (
+            <span className="tag les" title={`Lesionado por ${j.lesao} rodada(s)`}>
+              ✚ {j.lesao}
+            </span>
+          )}{" "}
+          {j.susp > 0 && <span className="cartao-susp" title={`Suspenso por ${j.susp} jogo(s)`} />}
         </div>
         <div className="meta">
           {extra ??
-            `${NOME_PERSONALIDADE[j.perso]} · moral ${j.moral} · ${j.temporada.jogos} j · ${j.temporada.gols} g`}
+            `${j.idade ? `${j.idade} anos · ` : ""}${NOME_PERSONALIDADE[j.perso]} · moral ${j.moral} · ${j.temporada.jogos} j · ${j.temporada.gols} g`}
         </div>
       </span>
       <span className="cond" title={`Condição ${j.cond}%`} aria-label={`Condição ${j.cond}%`}>

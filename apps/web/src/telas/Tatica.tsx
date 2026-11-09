@@ -6,6 +6,7 @@ import {
   FUNCOES,
   INSTRUCOES,
   type Instrucao,
+  type Jogador,
   type Nivel,
   type Posicao,
   type Tatica as TaticaDoClube,
@@ -184,7 +185,7 @@ function FolhaDoPosto({ clube, indice, aoFechar }: { clube: Clube; indice: numbe
             <span style={{ minWidth: 0 }}>
               <div className="nm">
                 {j.nome} {clube.titulares.includes(j.id) && <span className="tag xi">XI</span>}{" "}
-                {!disponivel(j) && <span className="tag les">FORA</span>}
+                <MotivoFora j={j} />
               </div>
               <div className="meta">
                 rende {Math.round(valor)} aqui · cond. {j.cond}%
@@ -202,6 +203,18 @@ function FolhaDoPosto({ clube, indice, aoFechar }: { clube: Clube; indice: numbe
 const LIMITE_DO_BANCO = 12;
 
 type Papel = { tipo: "titular"; indice: number } | { tipo: "banco" } | { tipo: "fora" };
+
+/** Por que o jogador está fora: cruz vermelha (lesão) ou cartão vermelho (suspensão). */
+function MotivoFora({ j }: { j: Jogador }) {
+  if (j.lesao > 0)
+    return (
+      <span className="tag les" title={`Lesionado por ${j.lesao} rodada(s)`}>
+        ✚ {j.lesao}
+      </span>
+    );
+  if (j.susp > 0) return <span className="cartao-susp" title={`Suspenso por ${j.susp} jogo(s)`} />;
+  return null;
+}
 
 /** Props de arrastar e soltar: soltar um jogador sobre outro troca os dois de lugar. */
 function arrastavel(id: string, aoSoltar: (origem: string, destino: string) => void) {
@@ -322,7 +335,7 @@ function ListaDeJogadores(props: {
             >
               <span className={`pos ${j.pos}`}>{j.pos}</span>
               <span className="nm">
-                {j.nome} {!disponivel(j) && <span className="tag les">FORA</span>}
+                {j.nome} <MotivoFora j={j} />
               </span>
               <span className="cond">
                 <i style={{ width: `${j.cond}%` }} />

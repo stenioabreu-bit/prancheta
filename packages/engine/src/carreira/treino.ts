@@ -57,11 +57,29 @@ export function treinarJogador(
   j.evolucao ??= 0;
   const atributo = sortear(rng, lista);
   const area = j.pos === "GOL" ? "goleiros" : areaDoAtributo(atributo);
-  const idade = j.daBase || j.perso === "jovem" ? 2 : j.perso === "veterano" ? 0.4 : 1;
+  // Idade pesa na evolução: garoto evolui rápido, veterano quase não; moral alta ajuda.
+  const anos = j.idade;
+  const idade =
+    anos !== undefined
+      ? anos <= 20
+        ? 2.3
+        : anos <= 23
+          ? 1.6
+          : anos <= 28
+            ? 1
+            : anos <= 31
+              ? 0.6
+              : 0.3
+      : j.daBase || j.perso === "jovem"
+        ? 2
+        : j.perso === "veterano"
+          ? 0.4
+          : 1;
+  const animo = 0.7 + j.moral / 200;
   const teto = j.potencial ?? j.ovrBase + 4;
   if (j.ovr >= teto) return false;
   const chance =
-    0.07 * [0.6, 1, 1.45][intensidade]! * (notaDaFuncao(carreira, area) / 13) * idade * multiplicador;
+    0.07 * [0.6, 1, 1.45][intensidade]! * (notaDaFuncao(carreira, area) / 13) * idade * animo * multiplicador;
   if (rng.proximo() >= chance) return false;
   j.at[atributo] = Math.min(95, j.at[atributo] + 1);
   j.evolucao++;
@@ -124,9 +142,17 @@ export function semanaDeTreino(carreira: EstadoCarreira, clube: Clube, rng: Rng)
 }
 
 /** Bônus do time do usuário no jogo: o do treino mais o entrosamento no esquema (±4% de 70 para cima/baixo). */
+/** Motivação do grupo: moral média do elenco (0–100). */
+export function motivacaoDoGrupo(clube: Clube): number {
+  const js = clube.jogadores;
+  return js.length ? Math.round(js.reduce((s, j) => s + j.moral, 0) / js.length) : 60;
+}
+
 export function bonusDoUsuario(carreira: EstadoCarreira, clube: Clube): Bonus {
   const e = carreira.entrosamento[clube.esquema] ?? 70;
-  const ef = ((e - 70) / 100) * 0.04;
+  // Grupo motivado rende mais, e rende ainda mais quando a tática está entrosada (sinergia).
+  const motivacao = (motivacaoDoGrupo(clube) - 60) / 100;
+  const ef = ((e - 70) / 100) * 0.04 + motivacao * 0.025 + Math.max(0, motivacao) * (e / 100) * 0.03;
   const b = carreira.bonus;
   return { A: b.A + ef, D: b.D + ef, M: b.M + ef, parada: b.parada };
 }

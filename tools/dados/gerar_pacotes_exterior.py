@@ -30,7 +30,15 @@ def elenco(jogadores):
     ordem = sorted(jogadores, key=lambda j: -(j["overall"] or 0))
     goleiros = [j for j in ordem if j["posicao"] == "GOL"][:3]
     linha = [j for j in ordem if j["posicao"] != "GOL"][: MAX_ELENCO - len(goleiros)]
-    return [[j["nome"], j["posicao"], int(j["overall"] or 60)] for j in goleiros + linha]
+    def extras(j):
+        e = {"id": j["id"], "fonte": j["overall_fonte"]}
+        if j.get("idade"):
+            e["idade"] = j["idade"]
+        if j.get("nacionalidade"):
+            e["nac"] = j["nacionalidade"]
+        return e
+
+    return [[j["nome"], j["posicao"], int(j["overall"] or 60), extras(j)] for j in goleiros + linha]
 
 
 dados = json.load(open(ORIGEM, encoding="utf-8"))["clubes"]

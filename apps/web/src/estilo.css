@@ -2236,3 +2236,15 @@ html[data-deitado] {
   filter: grayscale(1);
   cursor: not-allowed;
 }
+
+/* Suspenso: cartão vermelho ao lado do nome. */
+.cartao-susp {
+  display: inline-block;
+  width: 9px;
+  height: 13px;
+  background: #d62828;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+}

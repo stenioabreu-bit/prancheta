@@ -81,6 +81,7 @@ export function criarJogador(dados: JogadorDados, clubeId: string, indice: numbe
     semJogar: 0,
     notas: [],
     temporada: estatisticasZeradas(),
+    ...(extras.idade ? { idade: extras.idade } : {}),
   };
 }
 

@@ -258,6 +258,16 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
   for (const clube of Object.values(estado.clubes)) {
     for (const j of clube.jogadores) {
       j.temporada = estatisticasZeradas();
+      if (j.idade !== undefined) {
+        j.idade++;
+        // A partir dos 32, o físico cai um pouco a cada ano.
+        if (j.idade >= 32) {
+          j.at.VEL = Math.max(20, j.at.VEL - 2);
+          j.at.RES = Math.max(20, j.at.RES - 1);
+          j.ovrBase = (j.ovrBase ?? j.ovr) - 1;
+          j.ovr = Math.max(40, j.ovr - 1);
+        }
+      }
       j.cond = 100;
       j.lesao = 0;
       j.recemLesionado = false;

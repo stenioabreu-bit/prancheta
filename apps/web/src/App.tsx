@@ -1,4 +1,4 @@
-import { divisaoDo, pendentes } from "@prancheta/engine";
+import { divisaoDo, motivacaoDoGrupo, nomeDaCompeticao, pendentes } from "@prancheta/engine";
 import { useEffect } from "react";
 import { Aviso, Escudo, Medidor } from "./componentes/basicos";
 import { type Aba, useJogo, useLoja } from "./estado/loja";
@@ -34,13 +34,15 @@ function Topo() {
         <h1>{clube ? clube.nome : "Sem clube"}</h1>
         <div className="sub">
           {carreira.tecnico}
-          {divisao ? ` · Série ${divisao}` : " · desempregado"} · {temporada.temporada} · rodada {rodada}/38
+          {divisao ? ` · ${nomeDaCompeticao(temporada, divisao)}` : " · desempregado"} · {temporada.temporada}{" "}
+          · rodada {rodada}/38
         </div>
       </div>
       {clube && (
         <div className="stack" style={{ gap: 6 }}>
           <Medidor rotulo="Diretoria" valor={carreira.diretoria} />
           <Medidor rotulo="Torcida" valor={carreira.torcida} />
+          <Medidor rotulo="Grupo" valor={motivacaoDoGrupo(clube)} />
         </div>
       )}
     </header>

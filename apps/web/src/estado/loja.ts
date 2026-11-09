@@ -16,6 +16,11 @@ interface Loja {
   escudos: Record<string, string>;
   aba: Aba;
   emPartida: boolean;
+  /** Pré-jogo aberto: o técnico ajusta tática/elenco antes de escolher como assistir. */
+  preJogo: boolean;
+  modoPartida: "campo" | "texto";
+  setPreJogo(sim: boolean): void;
+  setModoPartida(modo: "campo" | "texto"): void;
   /** Menu inicial, criação de carreira ou o jogo. */
   tela: "menu" | "novo" | "jogo";
   irParaTela(tela: "menu" | "novo" | "jogo"): void;
@@ -59,6 +64,8 @@ export const useLoja = create<Loja>((set, get) => ({
   escudos: {},
   aba: "inicio",
   emPartida: false,
+  preJogo: false,
+  modoPartida: "campo",
   tela: "menu",
   irParaTela(tela) {
     set({ tela });
@@ -117,6 +124,12 @@ export const useLoja = create<Loja>((set, get) => ({
     avisoAgendado = setTimeout(() => set({ aviso: null }), 3500);
   },
 
+  setPreJogo(sim) {
+    set(sim ? { preJogo: true, aba: "tatica" } : { preJogo: false });
+  },
+  setModoPartida(modo) {
+    set({ modoPartida: modo });
+  },
   setEmPartida(sim) {
     set({ emPartida: sim });
   },

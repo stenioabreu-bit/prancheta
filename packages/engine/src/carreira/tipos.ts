@@ -128,6 +128,12 @@ export interface EstadoCarreira {
   caixa: Mensagem[];
   /** Títulos conquistados (sala de troféus). */
   titulos?: import("./titulos").Titulo[];
+  /** Quem subiu e quem caiu na última virada de temporada (popup até ser visto). */
+  acessos?: {
+    temporada: number;
+    divisoes: { nome: string; subiram: string[]; cairam: string[]; campeao: string | null }[];
+    visto: boolean;
+  };
   noticias: Noticia[];
   marcas: Record<string, number>;
   tonsRecentes: TomDeConversa[];

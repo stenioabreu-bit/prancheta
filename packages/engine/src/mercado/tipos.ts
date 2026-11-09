@@ -92,6 +92,8 @@ export interface EstadoMercado {
   basesFinanceiras?: Record<string, { valorElenco: number; orcamento: number }>;
   /** Buscas pedidas ao olheiro: ficam prontas numa rodada e viram relatório. */
   olheiro?: PedidoAoOlheiro[];
+  /** Empréstimos ativos (entrando e saindo do clube do técnico). */
+  emprestimos?: import("./emprestimos").Emprestimo[];
 }
 
 export interface PedidoAoOlheiro {

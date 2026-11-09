@@ -6,6 +6,11 @@ import {
   divisaoDo,
   formatarDinheiro,
   indicar,
+  DURACOES,
+  emprestarDoUsuario,
+  emprestimoDe,
+  pedirEmprestimoDoUsuario,
+  taxaDeEmprestimo,
   indicarVenda,
   nomeDaCompeticao,
   opcoesDeConversa,
@@ -169,6 +174,7 @@ export function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoF
           <Atributo key={a} nome={NOME_ATRIBUTO[a]} valor={j.at[a]} />
         ))}
       </div>
+      <Emprestimos jogadorId={j.id} meu={meu} />
       {!meu && (
         <button
           type="button"
@@ -264,5 +270,55 @@ export function Elenco() {
       </div>
       {aberto && <FichaDoJogador jogadorId={aberto} aoFechar={() => setAberto(null)} />}
     </section>
+  );
+}
+
+/** Empréstimo: pedir (jogador de outro clube) ou emprestar (do seu elenco) por 6 meses, 1 ou 2 anos. */
+function Emprestimos({ jogadorId, meu }: { jogadorId: string; meu: boolean }) {
+  const jogo = useJogo();
+  const mexer = useLoja((s) => s.mexer);
+  const avisar = useLoja((s) => s.avisar);
+  const atual = emprestimoDe(jogo, jogadorId);
+  const t = jogo.temporada;
+  if (atual) {
+    const semanas = atual.fim - (t.temporada * 52 + t.rodada);
+    return (
+      <p className="small muted" style={{ margin: 0 }}>
+        Emprestado{" "}
+        {atual.tipo === "entrada"
+          ? `pelo ${t.clubes[atual.origem]?.nome}`
+          : `ao ${t.clubes[atual.destino]?.nome}`}{" "}
+        · volta em {Math.max(0, semanas)} semana(s).
+      </p>
+    );
+  }
+  return (
+    <div className="stack" style={{ gap: 6 }}>
+      <span className="eyebrow">{meu ? "Emprestar" : "Pedir empréstimo"}</span>
+      <div className="seg-empr">
+        {DURACOES.map((d) => (
+          <button
+            key={d.id}
+            type="button"
+            className="btn"
+            onClick={() =>
+              avisar(
+                mexer((jg) =>
+                  meu
+                    ? emprestarDoUsuario(jg, jogadorId, d.id)
+                    : pedirEmprestimoDoUsuario(jg, jogadorId, d.id),
+                ),
+              )
+            }
+          >
+            {d.nome}
+            <span className="small muted" style={{ display: "block" }}>
+              {meu ? "recebe " : "taxa "}
+              {formatarDinheiro(taxaDeEmprestimo(jogo, jogadorId, d.id) * (meu ? 0.5 : 1))}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
   );
 }

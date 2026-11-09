@@ -1,3 +1,4 @@
+import { dataDaSemana, dataPorExtenso, rotuloDaPartida } from "../componentes/PreJogo";
 import {
   competicaoDoMomento,
   metasDaTemporada,
@@ -25,7 +26,7 @@ import { Caixa } from "./Clube";
 function ProximoJogo() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
-  const setEmPartida = useLoja((s) => s.setEmPartida);
+  const setPreJogo = useLoja((s) => s.setPreJogo);
   const t = jogo.temporada;
   const proximo = proximoJogoDoUsuario(jogo);
   const ida = proximo ? idaDoConfronto(jogo.temporada, proximo) : null;
@@ -33,7 +34,7 @@ function ProximoJogo() {
   if (!proximo) {
     return (
       <section className="panel stack">
-        <span className="eyebrow">Rodada {t.rodada + 1}</span>
+        <span className="eyebrow">Semana de {dataPorExtenso(dataDaSemana(t.rodada))}</span>
         <h2>Seu time não joga nesta rodada</h2>
         <p className="muted small" style={{ margin: 0 }}>
           A rodada segue com os outros jogos; o treino e o vestiário continuam na semana.
@@ -53,8 +54,7 @@ function ProximoJogo() {
     <section className="panel stack">
       <span className="eyebrow comp-rotulo">
         <LogoCompeticao competicao={chaveDoLogo(t, proximo.competicao)} tamanho={22} />
-        {competicao} · {proximo.fase}
-        {proximo.meioDeSemana ? " · meio de semana" : ""} · rodada {t.rodada + 1}
+        {competicao} · {rotuloDaPartida(t, proximo)} · {dataPorExtenso(dataDoJogo(proximo))}
       </span>
       <div className="fixture">
         <div className="stack" style={{ alignItems: "center", gap: 6 }}>
@@ -96,7 +96,7 @@ function ProximoJogo() {
         </dd>
       </dl>
       <div className="botoes">
-        <button type="button" className="btn primary big" onClick={() => setEmPartida(true)}>
+        <button type="button" className="btn primary big" onClick={() => setPreJogo(true)}>
           Ir para o jogo
         </button>
         <button type="button" className="btn" onClick={() => mexer((j) => simularPartidaDoUsuario(j))}>
@@ -253,7 +253,7 @@ function Noticias() {
               <li key={`${n.rodada}-${i}`} className={n.tipo}>
                 <div>
                   <div className="de">
-                    {n.de} · rodada {n.rodada + 1}
+                    {n.de} · {dataPorExtenso(dataDaSemana(n.rodada))}
                   </div>
                   <div className="small">{n.texto}</div>
                 </div>

@@ -17,6 +17,7 @@ import { semanaDoMercado } from "../mercado/semana";
 import { assumir, ficarDesempregado } from "../mercado/tecnico";
 import type { EstadoMercado } from "../mercado/tipos";
 import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
+import { type DuracaoEmprestimo, emprestarJogador, pedirEmprestimo } from "../mercado/emprestimos";
 import {
   completarFinancas,
   creditar,
@@ -246,10 +247,11 @@ export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
 }
 
 /** Joga a partida do usuário sem assistir (motor completo, sem pausas). */
-export function simularPartidaDoUsuario(estado: EstadoJogo): void {
+export function simularPartidaDoUsuario(estado: EstadoJogo): Partida {
   const partida = iniciarPartida(estado);
   jogarAteOFim(partida);
   concluirPartida(estado, partida);
+  return partida;
 }
 
 /** Paga a premiação continental por fase disputada (e pelo título) ao clube do usuário. */
@@ -390,6 +392,20 @@ export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
       ),
     );
   const anoQueFecha = estado.temporada.temporada;
+  {
+    const t = estado.temporada;
+    const nome = (id: string) => t.clubes[id]?.nome ?? id;
+    const divisoes = (["A", "B", "C", "D"] as const)
+      .filter((d) => t.divisoes[d]?.clubes.length)
+      .map((d) => ({
+        nome: nomeDaCompeticao(t, d),
+        subiram: (t.divisoes[d].acesso ?? []).map(nome),
+        cairam: (t.divisoes[d].rebaixados ?? []).map(nome),
+        campeao: t.divisoes[d].campeao ? nome(t.divisoes[d].campeao!) : null,
+      }))
+      .filter((x) => x.subiram.length || x.cairam.length || x.campeao);
+    if (divisoes.length) estado.carreira.acessos = { temporada: anoQueFecha, divisoes, visto: false };
+  }
   const resumo = virarTemporada(estado.temporada);
   let balanco: string | null = null;
   if (anterior && estado.carreira.clubeId === anterior) {
@@ -451,4 +467,16 @@ function premiacaoDaTemporada(estado: EstadoJogo): string | null {
   const valor = premioDaLiga(idLiga, pos, estado.temporada.divisoes[d].clubes.length);
   creditar(estado.mercado.financas, valor, `Premiação · ${pos}ª colocação`, estado.temporada.temporada, 0);
   return `Pela ${pos}ª colocação na ${nomeDaCompeticao(estado.temporada, d)}, o clube recebeu ${formatarDinheiro(valor)} de premiação.`;
+}
+
+export function verAcessos(estado: EstadoJogo): void {
+  if (estado.carreira.acessos) estado.carreira.acessos.visto = true;
+}
+
+/** Empréstimos pelo técnico (usam o sorteio do jogo). */
+export function pedirEmprestimoDoUsuario(estado: EstadoJogo, jogadorId: string, duracao: DuracaoEmprestimo): string {
+  return comRng(estado, (rng) => pedirEmprestimo(estado, jogadorId, duracao, rng));
+}
+export function emprestarDoUsuario(estado: EstadoJogo, jogadorId: string, duracao: DuracaoEmprestimo): string {
+  return comRng(estado, (rng) => emprestarJogador(estado, jogadorId, duracao, rng));
 }

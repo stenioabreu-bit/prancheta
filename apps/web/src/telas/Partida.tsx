@@ -222,7 +222,7 @@ function Trocas({ m, aoFechar, aoMudar }: { m: PartidaDoMotor; aoFechar: () => v
   );
 }
 
-function Estatisticas({ m }: { m: PartidaDoMotor }) {
+export function Estatisticas({ m }: { m: PartidaDoMotor }) {
   const total = m.posse.casa + m.posse.visitante;
   const posseCasa = total ? Math.round((100 * m.posse.casa) / total) : 50;
   const linhas: [string, string | number, string | number][] = [
@@ -257,6 +257,7 @@ export function Partida() {
   const [, redesenhar] = useReducer((x: number) => x + 1, 0);
   const [m] = useState(() => useLoja.getState().mexer((j) => iniciarPartida(j)));
   const [fase, setFase] = useState<Fase>("pre");
+  const modoPartida = useLoja((s) => s.modoPartida);
   const [rodando, setRodando] = useState(false);
   const [velocidade, setVelocidade] = useState(1);
   const [folha, setFolha] = useState<"trocas" | "prancheta" | null>(null);
@@ -366,7 +367,12 @@ export function Partida() {
   }
 
   return (
-    <div className={`match fase-${fase}`} role="dialog" aria-modal="true" aria-label="Partida">
+    <div
+      className={`match fase-${fase} modo-${modoPartida}`}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Partida"
+    >
       <div className="wrap">
         <div className="board">
           <div className="score">
@@ -604,7 +610,7 @@ export function Partida() {
 }
 
 /** Gols (com assistência) e cartões de um lado, embaixo do escudo no placar. */
-function Sumula({ m, lado }: { m: PartidaDoMotor; lado: "casa" | "visitante" }) {
+export function Sumula({ m, lado }: { m: PartidaDoMotor; lado: "casa" | "visitante" }) {
   const nome = (id: string | undefined) => {
     if (!id) return "";
     const todos = [...m.casa.clube.jogadores, ...m.visitante.clube.jogadores];

@@ -1,12 +1,8 @@
-import { Comemoracao } from "./componentes/Comemoracao";
+import { dataDaSemana, dataPorExtenso } from "./componentes/PreJogo";
+import { PreJogo } from "./componentes/PreJogo";
+import { Acessos, Comemoracao } from "./componentes/Comemoracao";
 import { Noticias } from "./telas/Noticias";
-import {
-  divisaoDo,
-  motivacaoDoGrupo,
-  nomeDaCompeticao,
-  pendentes,
-  semanasDaTemporada,
-} from "@prancheta/engine";
+import { divisaoDo, motivacaoDoGrupo, nomeDaCompeticao, pendentes } from "@prancheta/engine";
 import { useEffect } from "react";
 import { Aviso, Escudo, Medidor } from "./componentes/basicos";
 import { type Aba, useJogo, useLoja } from "./estado/loja";
@@ -34,8 +30,6 @@ function Topo() {
   const { carreira, temporada } = jogo;
   const clube = carreira.clubeId ? temporada.clubes[carreira.clubeId] : null;
   const divisao = clube ? divisaoDo(temporada, clube.id) : null;
-  const total = semanasDaTemporada(temporada);
-  const rodada = Math.min(temporada.rodada + 1, total);
   return (
     <header className="top">
       <div className="crestbox">
@@ -46,7 +40,7 @@ function Topo() {
         <div className="sub">
           {carreira.tecnico}
           {divisao ? ` · ${nomeDaCompeticao(temporada, divisao)}` : " · desempregado"} · {temporada.temporada}{" "}
-          · rodada {rodada}/{total}
+          · {dataPorExtenso(dataDaSemana(temporada.rodada))}
         </div>
       </div>
       {clube && (
@@ -108,6 +102,7 @@ export function App() {
   const temJogo = useLoja((s) => !!s.jogo);
   const tela = useLoja((s) => s.tela);
   const emPartida = useLoja((s) => s.emPartida);
+  const preJogo = useLoja((s) => s.preJogo);
   const iniciar = useLoja((s) => s.iniciar);
   useEffect(() => {
     void iniciar();
@@ -141,11 +136,13 @@ export function App() {
         <Topo />
         <Menu />
         <main>
+          {!emPartida && preJogo && <PreJogo />}
           <Tela />
         </main>
       </div>
       {emPartida && <Partida />}
       {!emPartida && <Comemoracao />}
+      {!emPartida && <Acessos />}
       <Aviso />
     </>
   );

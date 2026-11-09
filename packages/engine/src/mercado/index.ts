@@ -5,3 +5,4 @@ export * from "./tecnico";
 export * from "./semana";
 export * from "./financas";
 export * from "./olheiro";
+export * from "./emprestimos";

@@ -1,4 +1,4 @@
-import { formatarDinheiro, verTitulo } from "@prancheta/engine";
+import { formatarDinheiro, verAcessos, verTitulo } from "@prancheta/engine";
 import { useJogo, useLoja } from "../estado/loja";
 import { LogoCompeticao } from "./LogoCompeticao";
 import { Escudo } from "./basicos";
@@ -54,6 +54,48 @@ export function Comemoracao() {
           onClick={() => mexer((j) => verTitulo(j, titulo.temporada, titulo.competicao))}
         >
           Levantar a taça
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/** Fim de temporada: quem subiu e quem caiu em cada divisão. */
+export function Acessos() {
+  const jogo = useJogo();
+  const mexer = useLoja((s) => s.mexer);
+  const a = jogo.carreira.acessos;
+  const titulo = jogo.carreira.titulos?.find((x) => !x.visto);
+  if (!a || a.visto || titulo) return null;
+  return (
+    <div className="comemoracao" role="dialog" aria-modal="true" aria-label="Acessos e rebaixamentos">
+      <div className="comemoracao-card rapida-card acessos">
+        <span className="eyebrow">Fim da temporada {a.temporada}</span>
+        <h2>Acessos e rebaixamentos</h2>
+        <div className="acessos-lista">
+          {a.divisoes.map((d) => (
+            <section key={d.nome} className="acesso-div">
+              <h3>{d.nome}</h3>
+              {d.campeao && (
+                <p className="small">
+                  Campeão: <b>{d.campeao}</b>
+                </p>
+              )}
+              {d.subiram.length > 0 && (
+                <p className="small sobe">
+                  <span aria-hidden="true">▲</span> Subiram: {d.subiram.join(", ")}
+                </p>
+              )}
+              {d.cairam.length > 0 && (
+                <p className="small desce">
+                  <span aria-hidden="true">▼</span> Caíram: {d.cairam.join(", ")}
+                </p>
+              )}
+            </section>
+          ))}
+        </div>
+        <button type="button" className="btn primary big" onClick={() => mexer((j) => verAcessos(j))}>
+          Começar a nova temporada
         </button>
       </div>
     </div>

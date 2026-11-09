@@ -109,7 +109,8 @@ export function semanaDeTreino(carreira: EstadoCarreira, clube: Clube, rng: Rng)
       (foco === "recuperacao" ? 10 : 0) +
       (foco === "fisico" ? -4 : 0) +
       (fisico - 11);
-    j.cond = limitar(j.cond + delta, 30, 100);
+    // Treino puxado tira no máximo 5 de condição: o descanso da semana sempre compensa.
+    j.cond = limitar(j.cond + Math.max(-5, delta), 30, 100);
     if (foco === "recuperacao") j.moral = limitar(j.moral + 2, 0, 100);
     if (intensidade === 2 && (j.perso === "veterano" || j.perso === "temperamental"))
       j.moral = limitar(j.moral - 1, 0, 100);
@@ -161,6 +162,25 @@ export function bonusDoUsuario(carreira: EstadoCarreira, clube: Clube): Bonus {
 export function reporDesfalques(clube: Clube): { saiu: string; entrou: string }[] {
   const trocas: { saiu: string; entrou: string }[] = [];
   const postos = ESQUEMA_POSTOS[clube.esquema];
+  const voltas = (clube.substitutoDe ??= {});
+  // Titular que cumpriu suspensão ou se recuperou volta para o lugar de quem o substituiu.
+  for (const [reservaId, originalId] of Object.entries(voltas)) {
+    const original = clube.jogadores.find((x) => x.id === originalId);
+    const i = clube.titulares.indexOf(reservaId);
+    if (!original || i < 0 || clube.titulares.includes(originalId)) {
+      delete voltas[reservaId];
+      continue;
+    }
+    if (!disponivel(original)) continue;
+    clube.titulares[i] = originalId;
+    if (clube.reservas) {
+      clube.reservas = clube.reservas.filter((x) => x !== originalId);
+      if (clube.reservas.length < 12) clube.reservas.push(reservaId);
+    }
+    delete voltas[reservaId];
+    const reserva = clube.jogadores.find((x) => x.id === reservaId);
+    trocas.push({ saiu: reserva?.nome ?? "", entrou: original.nome });
+  }
   clube.titulares = clube.titulares.map((id, i) => {
     const j = clube.jogadores.find((x) => x.id === id);
     if (!j || disponivel(j)) return id;
@@ -170,6 +190,9 @@ export function reporDesfalques(clube: Clube): { saiu: string; entrou: string }[
     );
     if (!reserva) return id;
     trocas.push({ saiu: j.nome, entrou: reserva.nome });
+    voltas[reserva.id] = voltas[j.id] ?? j.id;
+    delete voltas[j.id];
+    clube.reservas = clube.reservas?.filter((x) => x !== reserva.id);
     return reserva.id;
   });
   return trocas;

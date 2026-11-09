@@ -1787,18 +1787,6 @@ body {
   min-height: 0;
   overflow: auto;
 }
-/* celular em pé: o jogo já vem deitado (gira 90°) */
-html[data-deitado] {
-  #raiz {
-    position: fixed;
-    top: 0;
-    left: 100vw;
-    width: 100dvh;
-    height: 100vw;
-    transform: rotate(90deg);
-    transform-origin: 0 0;
-  }
-}
 @container app (min-width: 720px) {
   .palco {
     grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
@@ -2357,16 +2345,19 @@ html[data-deitado] {
     max-height: 64px;
     overflow-y: auto;
   }
-  .tabs .in {
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .tabs .in::-webkit-scrollbar {
-    display: none;
-  }
   .tabs button {
-    flex: 0 0 auto;
-    min-width: 72px;
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 2px;
+  }
+  .tabs button b {
+    font-size: 12.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tabs button > span:not(:has(.contador)) {
+    display: none;
   }
 }
 .ic-bola {
@@ -2374,4 +2365,122 @@ html[data-deitado] {
   height: 11px;
   margin-right: 4px;
   vertical-align: -1px;
+}
+
+/* Celular em pé: tudo em uma coluna; o campo da partida ocupa a largura inteira. */
+@container app (orientation: portrait) and (max-width: 719px) {
+  .palco {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .palco .campo-wrap canvas {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    max-height: 34cqh;
+    object-fit: contain;
+  }
+  .match .score .g {
+    font-size: 34px;
+  }
+}
+
+.score .t {
+  align-self: start;
+}
+
+/* Celular deitado (tela baixa): placar enxuto para sobrar gramado. */
+@container app (max-height: 520px) {
+  .logo-placar {
+    padding: 3px;
+    border-radius: 8px;
+  }
+  .logo-placar .logo-comp {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .centro-placar {
+    gap: 0;
+  }
+  .centro-placar > .small {
+    display: none;
+  }
+  .relogio-placar {
+    font-size: 15px;
+  }
+  .sumula {
+    font-size: 10.5px;
+    line-height: 1.3;
+    max-height: 40px;
+    overflow-y: auto;
+  }
+  .match .score .t img,
+  .match .score .t svg.crest-svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* Campo da tática: marcações num quadro que gira 90° quando o campo fica em pé. */
+.campo-h .marcas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.campo-h.vertical {
+  aspect-ratio: 68 / 105;
+  max-height: none;
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+.campo-h.vertical .marcas {
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  width: calc(100% * 105 / 68);
+  height: calc(100% * 68 / 105);
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+.campo-h.vertical {
+  background: repeating-linear-gradient(0deg, #2b4a35 0 8.33%, #2f5039 8.33% 16.66%);
+}
+
+/* Celular deitado: cabeçalho e menu numa faixa fina para sobrar tela. */
+@container app (max-height: 520px) {
+  .top {
+    padding-block: 4px;
+  }
+  .top h1 {
+    font-size: 17px;
+  }
+  .top .sub {
+    font-size: 11px;
+  }
+  .top .crestbox img,
+  .top .crestbox svg {
+    width: 28px;
+    height: 28px;
+  }
+  .top .stack {
+    gap: 2px !important;
+  }
+  .tabs button {
+    padding-block: 6px;
+  }
+  .tabs button > span:not(:has(.contador)) {
+    display: none;
+  }
+  .campo-h {
+    max-height: 78cqh;
+  }
+}
+@media (max-width: 640px) {
+  .panel .row {
+    flex-wrap: wrap;
+  }
+  .panel .row > select,
+  .panel .row > label {
+    flex: 1 1 140px;
+    min-width: 0;
+  }
 }

@@ -16,7 +16,7 @@ import {
   forcaDoClube,
   instrucaoDoJogador,
 } from "@prancheta/engine";
-import { type DragEvent, useState } from "react";
+import { type DragEvent, useEffect, useState } from "react";
 import { Folha } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 
@@ -243,24 +243,31 @@ function CampoHorizontal({
   aoSoltar: (origem: string, destino: string) => void;
 }) {
   const postos = ESQUEMA_POSTOS[clube.esquema];
+  const emPe = useCelularEmPe();
   return (
-    <div className="campo-h" role="group" aria-label={`Escalação no ${clube.esquema}`}>
-      <div className="mk borda" />
-      <div className="mk meio" />
-      <div className="mk circulo" />
-      <div className="mk ponto-c" />
-      <div className="mk terco t1" />
-      <div className="mk terco t2" />
-      <div className="mk area esq" />
-      <div className="mk area dir" />
-      <div className="mk peq esq" />
-      <div className="mk peq dir" />
-      <div className="mk arco esq" />
-      <div className="mk arco dir" />
-      <div className="mk gol esq" />
-      <div className="mk gol dir" />
-      <div className="mk penalti esq" />
-      <div className="mk penalti dir" />
+    <div
+      className={`campo-h${emPe ? " vertical" : ""}`}
+      role="group"
+      aria-label={`Escalação no ${clube.esquema}`}
+    >
+      <div className="marcas">
+        <div className="mk borda" />
+        <div className="mk meio" />
+        <div className="mk circulo" />
+        <div className="mk ponto-c" />
+        <div className="mk terco t1" />
+        <div className="mk terco t2" />
+        <div className="mk area esq" />
+        <div className="mk area dir" />
+        <div className="mk peq esq" />
+        <div className="mk peq dir" />
+        <div className="mk arco esq" />
+        <div className="mk arco dir" />
+        <div className="mk gol esq" />
+        <div className="mk gol dir" />
+        <div className="mk penalti esq" />
+        <div className="mk penalti dir" />
+      </div>
       {postos.map(([posto, x, y], i) => {
         const id = clube.titulares[i]!;
         const j = clube.jogadores.find((p) => p.id === id);
@@ -276,7 +283,11 @@ function CampoHorizontal({
             key={`${posto}-${x}-${y}`}
             type="button"
             className={classes.filter(Boolean).join(" ")}
-            style={{ left: `${5 + y * 0.9}%`, top: `${6 + x * 0.88}%` }}
+            style={
+              emPe
+                ? { left: `${6 + x * 0.88}%`, top: `${92 - y * 0.86}%` }
+                : { left: `${5 + y * 0.9}%`, top: `${6 + x * 0.88}%` }
+            }
             onClick={() => aoClicar(id)}
             {...arrastavel(id, aoSoltar)}
             aria-label={`${posto}: ${j?.nome ?? "vazio"}`}
@@ -524,4 +535,18 @@ export function Tatica() {
       {posto !== null && <FolhaDoPosto clube={clube} indice={posto} aoFechar={() => setPosto(null)} />}
     </div>
   );
+}
+
+const CONSULTA_EM_PE = "(orientation: portrait) and (max-width: 719px)";
+
+/** Celular em pé: o campo da tática fica vertical (ataque para cima). Muda ao girar o aparelho. */
+function useCelularEmPe(): boolean {
+  const [emPe, setEmPe] = useState(() => window.matchMedia(CONSULTA_EM_PE).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(CONSULTA_EM_PE);
+    const mudar = () => setEmPe(mq.matches);
+    mq.addEventListener("change", mudar);
+    return () => mq.removeEventListener("change", mudar);
+  }, []);
+  return emPe;
 }

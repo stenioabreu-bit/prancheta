@@ -112,6 +112,8 @@ export interface Clube {
   jogadores: Jogador[];
   /** Ids dos titulares, na ordem das posições do esquema. */
   titulares: string[];
+  /** Reserva que entrou por desfalque → titular que volta ao lugar quando estiver disponível. */
+  substitutoDe?: Record<string, string>;
   /** Banco escolhido pelo técnico (até 12); sem lista, todos os disponíveis ficam no banco. */
   reservas?: string[];
   tatica: Tatica;

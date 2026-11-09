@@ -904,7 +904,10 @@ const etapa = (minuto: number) => (minuto <= 45 ? 1 : 2);
 
 /** Uma conversa por etapa (1º e 2º tempo). */
 export function podeGritar(m: Partida, lado: LadoPartida): boolean {
-  return !lado.conversa || etapa(lado.conversa.desde) !== etapa(m.minuto === 45 && m.intervaloFeito ? 46 : m.minuto);
+  return (
+    !lado.conversa ||
+    etapa(lado.conversa.desde) !== etapa(m.minuto === 45 && m.intervaloFeito ? 46 : m.minuto)
+  );
 }
 
 export type GritoDaBeira = "incentivar" | "cobrar" | "acalmar";

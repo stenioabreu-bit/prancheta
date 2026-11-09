@@ -1,8 +1,9 @@
 import {
   type LadoPartida,
   type Partida as PartidaDoMotor,
-  GRITOS,
-  gritarDaBeira,
+  CATEGORIAS_DE_CONVERSA,
+  type CategoriaDeConversa,
+  conversarComOTime,
   podeGritar,
   type Pergunta,
   type SituacaoDaFala,
@@ -547,26 +548,15 @@ export function Partida() {
       {folha === "trocas" && <Trocas m={m} aoFechar={() => setFolha(null)} aoMudar={redesenhar} />}
       {folha === "prancheta" && (
         <Folha titulo="Prancheta" aoFechar={() => setFolha(null)}>
-          <section className="stack" style={{ gap: 6 }}>
-            <h3>Falar com o time</h3>
-            {GRITOS.map((g) => (
-              <button
-                key={g.id}
-                type="button"
-                className={`btn${eu.conversa?.grito === g.id && !podeGritar(m, eu) ? " escolhido" : ""}`}
-                style={{ textAlign: "left" }}
-                disabled={!podeGritar(m, eu)}
-                onClick={() => {
-                  avisar(gritarDaBeira(m, eu, g.id));
-                  setFolha(null);
-                  if (fase === "jogo") setRodando(true);
-                  redesenhar();
-                }}
-              >
-                {g.texto}
-              </button>
-            ))}
-          </section>
+          <FalarComOTime
+            m={m}
+            aoFalar={(texto) => {
+              avisar(texto);
+              setFolha(null);
+              if (fase === "jogo") setRodando(true);
+              redesenhar();
+            }}
+          />
           <ControlesTaticos
             tatica={eu.tatica}
             aoMudar={(tatica) => {
@@ -618,5 +608,55 @@ function Sumula({ m, lado }: { m: PartidaDoMotor; lado: "casa" | "visitante" }) 
         </li>
       ))}
     </ul>
+  );
+}
+
+/** Falar com o time: escolhe a abordagem (categoria) e depois a fala. Uma conversa por etapa. */
+function FalarComOTime({ m, aoFalar }: { m: PartidaDoMotor; aoFalar: (texto: string) => void }) {
+  const eu = m.casa.ehUsuario ? m.casa : m.visitante;
+  const [categoria, setCategoria] = useState<CategoriaDeConversa | null>(null);
+  const pode = podeGritar(m, eu);
+  const atual = CATEGORIAS_DE_CONVERSA.find((c) => c.id === categoria);
+  return (
+    <section className="stack" style={{ gap: 8 }}>
+      <h3>Falar com o time</h3>
+      {eu.conversa?.fala && (
+        <div className={`resposta conversa-${eu.conversa.tom ?? "neutro"}`} role="status">
+          <b>“{eu.conversa.fala}”</b> {eu.conversa.feedback}
+        </div>
+      )}
+      {!pode && (
+        <p className="small muted" style={{ margin: 0 }}>
+          Nova conversa só na próxima etapa.
+        </p>
+      )}
+      <div className="filters" role="group" aria-label="Abordagem">
+        {CATEGORIAS_DE_CONVERSA.map((c) => (
+          <button
+            key={c.id}
+            type="button"
+            className="chip"
+            aria-pressed={categoria === c.id}
+            disabled={!pode}
+            onClick={() => setCategoria(c.id)}
+          >
+            {c.nome}
+          </button>
+        ))}
+      </div>
+      {atual &&
+        pode &&
+        atual.falas.map((fala) => (
+          <button
+            key={fala}
+            type="button"
+            className="btn"
+            style={{ textAlign: "left" }}
+            onClick={() => aoFalar(conversarComOTime(m, eu, atual.id, fala).texto)}
+          >
+            “{fala}”
+          </button>
+        ))}
+    </section>
   );
 }

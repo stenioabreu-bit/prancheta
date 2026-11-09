@@ -77,3 +77,35 @@ describe("metas por competição", () => {
     expect(gritarDaBeira(m, eu, "cobrar")).toContain("nesta etapa");
   });
 });
+
+describe("falar com o time", () => {
+  it("efeito depende do contexto e cai ao repetir a mesma abordagem", async () => {
+    const { conversarComOTime, iniciarPartida } = await import("@prancheta/engine");
+    const m = iniciarPartida(j);
+    const eu = m.casa.ehUsuario ? m.casa : m.visitante;
+    m.fase = "jogo";
+    m.minuto = 10;
+    const a0 = eu.bonus.A;
+    const r1 = conversarComOTime(m, eu, "motivacao", "Vamos pra cima, confiem!");
+    const ganho1 = eu.bonus.A - a0;
+    expect(ganho1).toBeGreaterThan(0);
+    expect(r1.texto.length).toBeGreaterThan(0);
+    m.minuto = 30;
+    eu.bonus = { ...eu.bonus, A: a0 };
+    m.minuto = 60;
+    const r2 = conversarComOTime(m, eu, "motivacao", "Vamos pra cima, confiem!");
+    expect(eu.bonus.A - a0).toBeLessThan(ganho1 + 1e-9);
+    expect(r2.tom).not.toBe("ruim");
+  });
+
+  it("cobrar time esgotado desgasta", async () => {
+    const { conversarComOTime, iniciarPartida } = await import("@prancheta/engine");
+    const m = iniciarPartida(j);
+    const eu = m.casa.ehUsuario ? m.casa : m.visitante;
+    m.fase = "jogo";
+    m.minuto = 70;
+    for (const p of eu.emCampo) p.atual.cond = 40;
+    const r = conversarComOTime(m, eu, "cobranca", "Acorda, time! Mais intensidade!");
+    expect(r.tom).toBe("ruim");
+  });
+});

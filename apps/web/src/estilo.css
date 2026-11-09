@@ -2484,3 +2484,14 @@ body {
     min-width: 0;
   }
 }
+
+.resposta.conversa-bom {
+  border-left: 3px solid var(--good);
+}
+.resposta.conversa-ruim {
+  border-left: 3px solid var(--red);
+}
+.chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

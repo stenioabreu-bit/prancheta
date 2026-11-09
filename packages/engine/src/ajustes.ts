@@ -34,11 +34,11 @@ export const AJUSTES = {
     basePesoPosicao: 0.1,
     expoenteFinalizador: 1,
     /** Chance de falta por minuto sem lance perigoso (~26 faltas por jogo). Protótipo: 0,13. */
-    chanceFalta: 0.32,
+    chanceFalta: 0.27,
     /** Chance de cartão numa falta (antes de temperamento, pressão e desarme). Protótipo: 0,11. */
-    chanceCartao: 0.21,
+    chanceCartao: 0.165,
     /** Fração dos cartões que já sai vermelho direto. Protótipo: 0,04. */
-    chanceVermelhoDireto: 0.015,
+    chanceVermelhoDireto: 0.01,
     /** Quem já tem amarelo se cuida: multiplica a chance de cartão dele. Protótipo: 1. */
     cautelaComAmarelo: 0.3,
     /** Posse: 0,5 + (meio do mandante − meio do visitante)/escala. Protótipo: 70. */

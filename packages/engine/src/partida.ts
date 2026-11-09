@@ -76,7 +76,21 @@ export interface LadoPartida {
   saidos: string[];
   est: EstatisticasPartida;
   /** Efeito da última conversa da beira do campo (some no minuto `ate`). */
-  conversa?: { ate: number; desde: number; A: number; M: number; D: number; grito?: GritoDaBeira };
+  conversa?: {
+    ate: number;
+    desde: number;
+    A: number;
+    M: number;
+    D: number;
+    categoria?: CategoriaDeConversa;
+    /** Redução (positivo) ou aumento (negativo) de faltas e cartões enquanto vale. */
+    disciplina?: number;
+    fala?: string;
+    feedback?: string;
+    tom?: "bom" | "neutro" | "ruim";
+  };
+  /** Quantas vezes cada abordagem já foi usada neste jogo (retornos decrescentes). */
+  conversasFeitas?: Partial<Record<CategoriaDeConversa, number>>;
 }
 
 export type TipoEvento =
@@ -731,7 +745,7 @@ export function passo(m: Partida): ResultadoDoPasso {
     if (rouboNaPressao > 0 && rng.proximo() < rouboNaPressao * 8) opcoes.push(["press", 0.5]);
     const tipo = sortearComPeso(rng, opcoes, (o) => o[1])[0];
     lance(m, atk, def, tipo, rAtk, rDef);
-  } else if (rng.proximo() < AJUSTES.partida.chanceFalta) {
+  } else if (rng.proximo() < AJUSTES.partida.chanceFalta * fatorDeDisciplina(def, m.minuto)) {
     const faltoso = escolherEmCampo(
       m,
       def,
@@ -746,6 +760,7 @@ export function passo(m: Partida): ResultadoDoPasso {
       AJUSTES.partida.chanceCartao *
       (f.amarelo ? AJUSTES.partida.cautelaComAmarelo : 1) *
       temperamento *
+      fatorDeDisciplina(def, m.minuto) *
       (def.tatica.pressao === 2 ? 1.25 : 1) *
       (1 + 0.4 * instrucao(def, faltoso).desarme);
     if (rng.proximo() < pCartao) {
@@ -910,71 +925,257 @@ export function podeGritar(m: Partida, lado: LadoPartida): boolean {
   );
 }
 
-export type GritoDaBeira = "incentivar" | "cobrar" | "acalmar";
+export type CategoriaDeConversa =
+  | "controle"
+  | "cobranca"
+  | "motivacao"
+  | "psicologico"
+  | "uniao"
+  | "concentracao";
 
-export const GRITOS: readonly { id: GritoDaBeira; texto: string; dica: string }[] = [
+export const CATEGORIAS_DE_CONVERSA: readonly {
+  id: CategoriaDeConversa;
+  nome: string;
+  falas: readonly string[];
+}[] = [
   {
-    id: "incentivar",
-    texto: 'Incentivar: "Vamos pra cima, confiem!"',
-    dica: "Mais ataque e moral por 15 minutos.",
+    id: "controle",
+    nome: "Controle",
+    falas: [
+      "Calma, toca a bola, segura o jogo.",
+      "Quero a bola no pé. Sem chutão!",
+      "Diminuam o ritmo e controlem a partida.",
+      "Mantenham as linhas próximas!",
+      "Não precisamos ter pressa. Trabalhem a jogada.",
+    ],
   },
   {
-    id: "cobrar",
-    texto: 'Cobrar: "Acorda, time! Mais intensidade!"',
-    dica: "Ataque e meio mais fortes; quem está mal pode sentir.",
+    id: "cobranca",
+    nome: "Cobrança",
+    falas: [
+      "Acorda, time! Mais intensidade!",
+      "Não quero erros bobos lá atrás!",
+      "Quero ver sangue nos olhos!",
+      "Cada um precisa cumprir sua função!",
+      "Precisamos de muito mais atitude!",
+      "Não podemos entregar essa partida!",
+    ],
   },
   {
-    id: "acalmar",
-    texto: 'Acalmar: "Calma, toca a bola, segura o jogo."',
-    dica: "Defesa mais firme e menos nervosismo.",
+    id: "motivacao",
+    nome: "Motivação",
+    falas: [
+      "Vamos pra cima, confiem!",
+      "Vocês são melhores que eles. Mostrem isso!",
+      "Joguem o futebol de vocês. Eu confio!",
+      "Quero ver vocês dando tudo em campo!",
+      "Ainda dá tempo! Vamos buscar esse resultado!",
+    ],
+  },
+  {
+    id: "psicologico",
+    nome: "Psicológico",
+    falas: [
+      "Calma, cabeça fria. Ainda temos muito jogo.",
+      "Não deixem a pressão atrapalhar vocês.",
+      "Erros acontecem. Concentrem-se na próxima jogada.",
+      "Vocês têm qualidade para resolver isso.",
+      "Não tenham medo de arriscar.",
+      "Esqueçam o que aconteceu e foquem no jogo.",
+    ],
+  },
+  {
+    id: "uniao",
+    nome: "União",
+    falas: [
+      "Aqui ninguém joga sozinho!",
+      "Joguem uns pelos outros!",
+      "Precisamos estar juntos até o último minuto!",
+      "Um ajuda o outro. É assim que vencemos!",
+      "Mostrem que somos um grupo unido!",
+      "Confiem nos seus companheiros!",
+    ],
+  },
+  {
+    id: "concentracao",
+    nome: "Concentração",
+    falas: [
+      "Quero atenção em cada lance!",
+      "Não podemos cometer erros bobos!",
+      "Mantenham o foco até o apito final!",
+      "Cuidado com os espaços na defesa!",
+      "Não deem oportunidades gratuitas!",
+      "Cabeça fria e atenção total!",
+    ],
   },
 ];
 
+/** Efeito base de cada abordagem (linhas por 15 minutos, moral, condição e disciplina). */
+const EFEITO_BASE: Record<
+  CategoriaDeConversa,
+  { A: number; M: number; D: number; moral: number; cond: number; disciplina: number }
+> = {
+  controle: { A: -0.02, M: 0.05, D: 0.03, moral: 1, cond: 3, disciplina: 0.2 },
+  cobranca: { A: 0.05, M: 0.04, D: 0.01, moral: 0, cond: -2, disciplina: -0.15 },
+  motivacao: { A: 0.05, M: 0.02, D: 0, moral: 6, cond: 0, disciplina: 0 },
+  psicologico: { A: 0.01, M: 0.02, D: 0.03, moral: 4, cond: 0, disciplina: 0.1 },
+  uniao: { A: 0.02, M: 0.04, D: 0.02, moral: 3, cond: 0, disciplina: 0.05 },
+  concentracao: { A: 0, M: 0.01, D: 0.06, moral: 0, cond: 0, disciplina: 0.3 },
+};
+
+/** Faltas e cartões do lado ficam mais ou menos frequentes enquanto a conversa vale. */
+function fatorDeDisciplina(lado: LadoPartida, minuto: number): number {
+  const c = lado.conversa;
+  return c && minuto < c.ate ? 1 - (c.disciplina ?? 0) : 1;
+}
+
+export interface ResultadoDaConversa {
+  texto: string;
+  /** Positivo, neutro ou negativo, para o tom do aviso. */
+  tom: "bom" | "neutro" | "ruim";
+}
+
 /**
- * Conversa da beira do campo durante o jogo: um empurrão de 15 minutos nas linhas e na moral.
- * Uma vez por etapa; o efeito depende do placar (cobrar perdendo funciona melhor que ganhando).
+ * Conversa da beira do campo: uma por etapa. O efeito depende do placar, da pressão do adversário, do
+ * cansaço e da moral do time em campo, e cai quando a mesma abordagem é repetida no jogo.
  */
-export function gritarDaBeira(m: Partida, lado: LadoPartida, grito: GritoDaBeira): string {
-  if (m.fase === "pre" || m.minuto >= 90) return "O jogo não está rolando.";
-  if (!podeGritar(m, lado)) return "Você já falou com o time nesta etapa.";
+export function conversarComOTime(
+  m: Partida,
+  lado: LadoPartida,
+  categoria: CategoriaDeConversa,
+  fala: string,
+): ResultadoDaConversa {
+  if (m.fase === "pre" || m.minuto >= 90) return { texto: "O jogo não está rolando.", tom: "neutro" };
+  if (!podeGritar(m, lado)) return { texto: "Você já falou com o time nesta etapa.", tom: "neutro" };
   const outro = lado === m.casa ? m.visitante : m.casa;
   const saldo = lado.est.gols - outro.est.gols;
-  let efeito = { A: 0, M: 0, D: 0 };
-  let moral = 0;
-  let resposta: string;
-  if (grito === "incentivar") {
-    efeito = { A: 0.06, M: 0.03, D: 0 };
-    moral = 5;
-    resposta = "O time cresce com o apoio e se solta.";
-  } else if (grito === "cobrar") {
-    const funciona = saldo <= 0;
-    efeito = funciona ? { A: 0.07, M: 0.05, D: -0.02 } : { A: 0.02, M: 0.02, D: 0 };
-    moral = funciona ? 2 : -4;
-    resposta = funciona
-      ? "A bronca acorda o time, que aperta a marcação lá em cima."
-      : "Cobrar ganhando irritou alguns jogadores.";
-  } else {
-    efeito = { A: -0.02, M: 0.03, D: 0.07 };
-    moral = 3;
-    resposta = "O time baixa a ansiedade e passa a tocar com calma.";
+  const emCampo = lado.emCampo;
+  const media = (f: (p: PostoEmCampo) => number) =>
+    emCampo.reduce((s, p) => s + f(p), 0) / Math.max(1, emCampo.length);
+  const moralMedia = media((p) => p.atual.moral);
+  const condMedia = media((p) => p.atual.cond);
+  const total = m.posse.casa + m.posse.visitante || 1;
+  const posseDoOutro = (lado === m.casa ? m.posse.visitante : m.posse.casa) / total;
+  const pressionado = posseDoOutro >= 0.58 || outro.est.chutes >= lado.est.chutes + 4;
+  const cansado = condMedia < 55;
+  const moralBaixa = moralMedia < 45;
+  const moralAlta = moralMedia > 82;
+
+  const base = EFEITO_BASE[categoria];
+  let mult = 1;
+  let moral = base.moral;
+  let cond = base.cond;
+  const notas: string[] = [];
+  if (saldo < 0) {
+    if (categoria === "motivacao") mult *= 1.3;
+    if (categoria === "cobranca") mult *= 1.2;
+    if (categoria === "controle") mult *= 0.6;
+  } else if (saldo > 0) {
+    if (categoria === "controle" || categoria === "concentracao") mult *= 1.3;
+    if (categoria === "motivacao") mult *= 0.8;
   }
+  if (pressionado && (categoria === "psicologico" || categoria === "controle")) {
+    mult *= 1.35;
+    moral += 2;
+  }
+  if (cansado) {
+    if (categoria === "cobranca") {
+      mult *= 0.5;
+      moral -= 3;
+      cond -= 3;
+      notas.push("cansado");
+    }
+    if (categoria === "controle") cond += 3;
+  }
+  if (moralBaixa) {
+    if (categoria === "motivacao" || categoria === "psicologico") {
+      mult *= 1.4;
+      moral += 3;
+    }
+    if (categoria === "cobranca") {
+      moral -= 6;
+      notas.push("abalado");
+    }
+  }
+  if (moralAlta && categoria === "motivacao") mult *= 0.4;
+
+  // Retornos decrescentes: a mesma abordagem no mesmo jogo rende cada vez menos (e cobrar demais desgasta).
+  lado.conversasFeitas ??= {};
+  const vezes = lado.conversasFeitas[categoria] ?? 0;
+  lado.conversasFeitas[categoria] = vezes + 1;
+  mult /= 1 + 0.7 * vezes;
+  if (vezes > 0) {
+    moral = moral > 0 ? moral / (1 + vezes) : moral;
+    if (categoria === "cobranca") {
+      moral -= 3 * vezes;
+      notas.push("repetida");
+    }
+  }
+
+  const limitar = (x: number) => Math.max(-0.08, Math.min(0.08, x));
+  const efeito = { A: limitar(base.A * mult), M: limitar(base.M * mult), D: limitar(base.D * mult) };
+  const disciplina = Math.max(-0.3, Math.min(0.35, base.disciplina * Math.min(mult, 1.3)));
   lado.bonus = {
     ...lado.bonus,
     A: lado.bonus.A + efeito.A,
     M: lado.bonus.M + efeito.M,
     D: lado.bonus.D + efeito.D,
   };
-  lado.conversa = { ate: m.minuto + 15, desde: m.minuto, ...efeito, grito };
-  for (const p of lado.emCampo) {
-    const delta =
-      grito === "cobrar" && moral < 0 && p.atual.jogador.perso === "temperamental" ? moral * 2 : moral;
-    p.atual.moral = Math.max(0, Math.min(100, p.atual.moral + delta));
+  lado.conversa = { ate: m.minuto + 15, desde: m.minuto, ...efeito, categoria, disciplina };
+  for (const p of emCampo) {
+    const temperamental = p.atual.jogador.perso === "temperamental";
+    const delta = moral < 0 && temperamental ? moral * 1.6 : moral;
+    p.atual.moral = Math.max(0, Math.min(100, p.atual.moral + Math.max(-10, Math.min(10, delta))));
+    p.atual.cond = Math.max(5, Math.min(100, p.atual.cond + cond));
   }
-  registrar(
-    m,
-    "neutro",
-    `Da beira do campo, o técnico do ${lado.clube.nome} chama o time. ${resposta}`,
-    lado,
-  );
-  return resposta;
+
+  const forca = (efeito.A + efeito.M + efeito.D) * 100 + moral;
+  const tom: ResultadoDaConversa["tom"] = moral < 0 || forca < 2 ? (moral < 0 ? "ruim" : "neutro") : "bom";
+  const FEEDBACK: Record<CategoriaDeConversa, [string, string, string]> = {
+    controle: [
+      "A equipe passou a tocar com calma e a controlar o ritmo.",
+      "O time tentou cadenciar, mas não mudou muito o jogo.",
+      "Pedir calma agora deixou o time sem reação.",
+    ],
+    cobranca: [
+      "Os jogadores responderam positivamente à cobrança.",
+      "A cobrança surtiu pouco efeito.",
+      notas.includes("cansado")
+        ? "Cobrar um time esgotado só aumentou o desgaste."
+        : "A cobrança parece ter causado desconforto em parte do elenco.",
+    ],
+    motivacao: [
+      "O elenco parece mais motivado após a conversa.",
+      "O time já estava confiante; a fala mudou pouco.",
+      "A tentativa de animar não pegou bem.",
+    ],
+    psicologico: [
+      "A equipe demonstrou maior tranquilidade.",
+      "Os jogadores ouviram, mas seguem tensos.",
+      "O recado não chegou: o time segue nervoso.",
+    ],
+    uniao: [
+      "O grupo se fechou: mais ajuda e cobertura entre eles.",
+      "Os jogadores se abraçaram, mas o jogo seguiu igual.",
+      "O pedido de união soou vazio para alguns.",
+    ],
+    concentracao: [
+      "Os jogadores parecem mais concentrados.",
+      "O time prestou atenção, mas segue disperso em alguns lances.",
+      "O excesso de cobrança por atenção travou o time.",
+    ],
+  };
+  const texto = FEEDBACK[categoria][tom === "bom" ? 0 : tom === "neutro" ? 1 : 2];
+  lado.conversa = { ...lado.conversa, fala, feedback: texto, tom };
+  registrar(m, "neutro", `Da beira do campo: "${fala}" ${texto}`, lado);
+  return { texto, tom };
+}
+
+/** Atalho compatível com a versão anterior (três falas). */
+export type GritoDaBeira = "incentivar" | "cobrar" | "acalmar";
+export function gritarDaBeira(m: Partida, lado: LadoPartida, grito: GritoDaBeira): string {
+  const categoria: CategoriaDeConversa =
+    grito === "incentivar" ? "motivacao" : grito === "cobrar" ? "cobranca" : "controle";
+  const fala = CATEGORIAS_DE_CONVERSA.find((c) => c.id === categoria)!.falas[0]!;
+  return conversarComOTime(m, lado, categoria, fala).texto;
 }

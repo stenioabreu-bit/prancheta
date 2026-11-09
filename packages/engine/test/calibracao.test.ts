@@ -121,13 +121,13 @@ describe("cartões no motor", () => {
   const temporadas = [11, 12].map((s) => temporada(s, "motor"));
   const jogos = temporadas.reduce((s, t) => s + t.placares.length, 0);
 
-  it("~5 amarelos e ~0,3 vermelho por jogo", () => {
+  it("~3 amarelos e ~0,2 vermelho por jogo (abaixo da média real, a pedido, para soar natural)", () => {
     const amarelos = temporadas.reduce((s, t) => s + t.amarelos, 0) / jogos;
     const vermelhos = temporadas.reduce((s, t) => s + t.vermelhos, 0) / jogos;
-    expect(amarelos).toBeGreaterThan(3.8);
-    expect(amarelos).toBeLessThan(5.8);
-    expect(vermelhos).toBeGreaterThan(0.15);
-    expect(vermelhos).toBeLessThan(0.45);
+    expect(amarelos).toBeGreaterThan(2.4);
+    expect(amarelos).toBeLessThan(4);
+    expect(vermelhos).toBeGreaterThan(0.05);
+    expect(vermelhos).toBeLessThan(0.35);
   });
 });
 

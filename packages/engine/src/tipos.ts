@@ -58,7 +58,7 @@ export interface EstatisticasTemporada {
   semSofrer: number;
   golsCopa: number;
   /** Jogos, gols e assistências por competição (id do motor: "A", "copa", "est-SP", "cont-LIB"...). */
-  porCompeticao?: Record<string, { jogos: number; gols: number; assist: number }>;
+  porCompeticao?: Record<string, EstatisticaDaCompeticao>;
 }
 
 export interface Jogador {
@@ -131,3 +131,14 @@ export interface Bonus {
 }
 
 export const BONUS_ZERO: Bonus = { A: 0, D: 0, M: 0, parada: 0 };
+
+/** Números de um jogador numa competição (rankings por competição). */
+export interface EstatisticaDaCompeticao {
+  jogos: number;
+  gols: number;
+  assist: number;
+  somaNotas?: number;
+  qtdNotas?: number;
+  golsSofridos?: number;
+  jogosNoGol?: number;
+}

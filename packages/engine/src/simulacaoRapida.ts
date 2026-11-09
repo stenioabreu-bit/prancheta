@@ -35,7 +35,7 @@ export function estatisticasRapidas(
   competicao?: string,
 ): void {
   const daCompeticao = (j: {
-    temporada: { porCompeticao?: Record<string, { jogos: number; gols: number; assist: number }> };
+    temporada: { porCompeticao?: Record<string, import("./tipos").EstatisticaDaCompeticao> };
   }) => {
     if (!competicao) return null;
     j.temporada.porCompeticao ??= {};
@@ -84,26 +84,49 @@ export function estatisticasRapidas(
       if (pcGarcom) pcGarcom.assist++;
     }
   }
-  if (copa) return;
+  const goleiroDaCompeticao = escalados.find((e) => e.posto === "GOL");
+  if (goleiroDaCompeticao) {
+    const pc = daCompeticao(goleiroDaCompeticao.jogador);
+    if (pc) {
+      pc.golsSofridos = (pc.golsSofridos ?? 0) + golsContra;
+      pc.jogosNoGol = (pc.jogosNoGol ?? 0) + 1;
+    }
+  }
+  const notaNaCompeticao = (e: (typeof escalados)[number], nota: number) => {
+    const pc = daCompeticao(e.jogador);
+    if (pc) {
+      pc.somaNotas = (pc.somaNotas ?? 0) + nota;
+      pc.qtdNotas = (pc.qtdNotas ?? 0) + 1;
+    }
+  };
+  if (copa) {
+    for (const e of escalados) notaNaCompeticao(e, notaRapida(e, golsPro, golsContra, 0));
+    return;
+  }
   const goleiro = escalados.find((e) => e.posto === "GOL");
   if (goleiro) {
     goleiro.jogador.temporada.golsSofridos += golsContra;
     goleiro.jogador.temporada.jogosNoGol++;
     if (!golsContra) goleiro.jogador.temporada.semSofrer++;
   }
-  const resultado = golsPro > golsContra ? 0.35 : golsPro < golsContra ? -0.35 : 0;
   for (const e of escalados) {
-    let nota =
-      6.3 +
-      resultado +
-      (e.jogador.ovr - 68) / 40 +
-      e.gols * 1.0 +
-      e.assist * 0.5 +
-      (rng.proximo() - 0.5) * 0.9;
-    if (e.posto === "GOL") nota += golsContra === 0 ? 0.5 : -0.25 * golsContra;
-    if (["ZAG", "LD", "LE", "VOL"].includes(e.posto) && golsContra === 0) nota += 0.3;
-    nota = limitar(Math.round(nota * 10) / 10, 4, 10);
+    const nota = notaRapida(e, golsPro, golsContra, (rng.proximo() - 0.5) * 0.9);
+    notaNaCompeticao(e, nota);
     e.jogador.temporada.somaNotas += nota;
     e.jogador.temporada.qtdNotas++;
   }
+}
+
+/** Nota do jogo rápido: resultado, overall, gols e assistências (o ruído vem de fora para não mexer no sorteio). */
+function notaRapida(
+  e: { jogador: { ovr: number }; posto: string; gols: number; assist: number },
+  golsPro: number,
+  golsContra: number,
+  ruido: number,
+): number {
+  const resultado = golsPro > golsContra ? 0.35 : golsPro < golsContra ? -0.35 : 0;
+  let nota = 6.3 + resultado + (e.jogador.ovr - 68) / 40 + e.gols * 1.0 + e.assist * 0.5 + ruido;
+  if (e.posto === "GOL") nota += golsContra === 0 ? 0.5 : -0.25 * golsContra;
+  if (["ZAG", "LD", "LE", "VOL"].includes(e.posto) && golsContra === 0) nota += 0.3;
+  return limitar(Math.round(nota * 10) / 10, 4, 10);
 }

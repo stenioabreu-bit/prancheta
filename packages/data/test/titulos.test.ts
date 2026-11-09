@@ -4,6 +4,7 @@ import {
   novaTemporadaDoJogo,
   novoJogo,
   proximoJogoDoUsuario,
+  rankingDaCompeticao,
   seguir,
   simularPartidaDoUsuario,
 } from "@prancheta/engine";
@@ -45,6 +46,13 @@ describe("títulos e ida e volta", () => {
         .filter(([, c]) => c.campeao === "flamengo")
         .map(([id]) => id),
     ];
+    for (const c of ["A", "est-SP", "copa"]) {
+      const r = rankingDaCompeticao(t, c, "gols", 5);
+      expect(r.length).toBeGreaterThan(0);
+      for (const l of r) expect(l.valor).toBe(l.jogador.temporada.porCompeticao![c]!.gols);
+    }
+    expect(rankingDaCompeticao(t, "A", "notas", 5).length).toBeGreaterThan(0);
+    expect(rankingDaCompeticao(t, "est-SP", "goleiros", 5).length).toBeGreaterThan(0);
     novaTemporadaDoJogo(j);
     const titulos = (j.carreira.titulos ?? []).filter((x) => x.temporada === 2026).map((x) => x.competicao);
     expect(new Set(titulos).size).toBe(titulos.length);

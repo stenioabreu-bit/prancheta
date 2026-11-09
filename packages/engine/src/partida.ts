@@ -877,6 +877,12 @@ export function encerrarPartida(m: Partida): ResultadoPartida {
         pc.jogos++;
         pc.gols += e.gols;
         pc.assist += e.assist;
+        pc.somaNotas = (pc.somaNotas ?? 0) + nota;
+        pc.qtdNotas = (pc.qtdNotas ?? 0) + 1;
+        if (lado.emCampo.find((p) => p.posto === "GOL")?.atual.jogador.id === j.id) {
+          pc.golsSofridos = (pc.golsSofridos ?? 0) + adversario.est.gols;
+          pc.jogosNoGol = (pc.jogosNoGol ?? 0) + 1;
+        }
       }
       if (!m.copa) {
         j.temporada.jogos++;

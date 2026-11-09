@@ -2248,3 +2248,15 @@ html[data-deitado] {
   margin-left: 4px;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
 }
+
+.tabela-hist {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.tabela-hist th,
+.tabela-hist td {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--line);
+}

@@ -32,7 +32,15 @@ export function estatisticasRapidas(
   golsPro: number,
   golsContra: number,
   copa = false,
+  competicao?: string,
 ): void {
+  const daCompeticao = (j: {
+    temporada: { porCompeticao?: Record<string, { jogos: number; gols: number; assist: number }> };
+  }) => {
+    if (!competicao) return null;
+    j.temporada.porCompeticao ??= {};
+    return (j.temporada.porCompeticao[competicao] ??= { jogos: 0, gols: 0, assist: 0 });
+  };
   const postos = ESQUEMA_POSTOS[clube.esquema];
   const escalados: Escalado[] = clube.titulares.map((id, i) => ({
     jogador: jogadorDoClube(clube, id),
@@ -43,6 +51,8 @@ export function estatisticasRapidas(
   const deLinha = escalados.filter((e) => e.posto !== "GOL");
   for (const e of escalados) {
     if (!copa) e.jogador.temporada.jogos++;
+    const pc = daCompeticao(e.jogador);
+    if (pc) pc.jogos++;
     e.jogador.semJogar = 0;
   }
   for (let k = 0; k < golsPro; k++) {
@@ -54,6 +64,8 @@ export function estatisticasRapidas(
           (e.jogador.at.FIN / 60) ** AJUSTES.simulacaoRapida.expoenteFinalizador +
         (e.posto === "ZAG" ? 0.07 * (e.jogador.at.CAB / 60) ** 2 : 0),
     );
+    const pcAutor = daCompeticao(autor.jogador);
+    if (pcAutor) pcAutor.gols++;
     if (copa) {
       autor.jogador.temporada.golsCopa++;
       continue;
@@ -68,6 +80,8 @@ export function estatisticasRapidas(
       );
       garcom.assist++;
       garcom.jogador.temporada.assist++;
+      const pcGarcom = daCompeticao(garcom.jogador);
+      if (pcGarcom) pcGarcom.assist++;
     }
   }
   if (copa) return;

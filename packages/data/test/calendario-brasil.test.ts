@@ -256,3 +256,34 @@ describe("classificação continental automática", () => {
     expect(conflitosDeCalendario(e.jogos)).toEqual([]);
   });
 });
+
+describe("histórico e evolução de várias temporadas", () => {
+  it("três temporadas: histórico por competição, aposentadorias, novatos e elencos completos", () => {
+    const e = nova(17);
+    const idades = new Map<string, number>();
+    for (const c of Object.values(e.clubes))
+      for (const j of c.jogadores) if (j.idade) idades.set(j.id, j.idade);
+    for (let ano = 0; ano < 3; ano++) {
+      jogarTudo(e);
+      expect(temporadaEncerrada(e)).toBe(true);
+      const r = virarTemporada(e);
+      const serieA = r.competicoes!.find((c) => c.id === "A")!;
+      expect(serieA.campeao).toBe(r.campeoes.A);
+      expect(serieA.vice).toBeTruthy();
+      expect(serieA.artilheiro!.valor).toBeGreaterThan(5);
+      expect(serieA.classificacao).toHaveLength(20);
+      expect(r.competicoes!.find((c) => c.id === "cont-LIB")!.campeao).toBeTruthy();
+      expect(r.competicoes!.find((c) => c.id === "est-SP")!.campeao).toBeTruthy();
+      expect(r.vagasContinentais!.libertadores.length).toBe(8);
+      expect(r.aposentados!.length).toBeGreaterThan(20);
+      expect(r.novatos!.length).toBeGreaterThan(20);
+      expect(conflitosDeCalendario(e.jogos)).toEqual([]);
+    }
+    expect(e.historico).toHaveLength(3);
+    for (const c of Object.values(e.clubes)) {
+      expect(c.jogadores.length).toBeGreaterThanOrEqual(16);
+      expect(c.titulares).toHaveLength(11);
+      for (const j of c.jogadores) if (idades.has(j.id)) expect(j.idade).toBe(idades.get(j.id)! + 3);
+    }
+  });
+});

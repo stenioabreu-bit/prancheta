@@ -178,6 +178,7 @@ export function iniciarPartida(estado: EstadoJogo): Partida {
     usuarioId: usuario.id,
     bonusUsuario: bonusDoUsuario(estado.carreira, usuario),
     copa: jogo.competicao === "copa",
+    competicao: jogo.competicao,
   });
 }
 
@@ -362,6 +363,15 @@ export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
     });
     if (premio) {
       enviarMensagem(c, 0, { de: "Financeiro", assunto: "Premiação da temporada", texto: premio });
+    }
+    const saiu = (resumo.aposentados ?? []).filter((x) => x.clubeId === c.clubeId);
+    const subiu = (resumo.novatos ?? []).filter((x) => x.clubeId === c.clubeId);
+    if (saiu.length || subiu.length) {
+      enviarMensagem(c, 0, {
+        de: "Departamento de futebol",
+        assunto: "Renovação do elenco",
+        texto: `${saiu.length ? `Penduraram as chuteiras: ${saiu.map((x) => `${x.nome} (${x.idade})`).join(", ")}. ` : ""}${subiu.length ? `Subiram da base: ${subiu.map((x) => x.nome).join(", ")}.` : ""}`,
+      });
     }
   }
   return resumo;

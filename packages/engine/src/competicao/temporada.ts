@@ -1,7 +1,7 @@
-import { type ClubeDados, criarClube } from "../clube";
-import { estatisticasZeradas } from "../jogador";
+import { type ClubeDados, criarClube, escalarAutomatico, forcaDoClube, gerarElenco } from "../clube";
+import { criarJogador, estatisticasZeradas } from "../jogador";
 import { recuperarEntreRodadas } from "../liga";
-import { type Rng, criarRng } from "../rng";
+import { type Rng, criarRng, inteiroEntre } from "../rng";
 import { estatisticasRapidas, placarRapido } from "../simulacaoRapida";
 import type { Clube } from "../tipos";
 import {
@@ -36,11 +36,39 @@ import {
 
 export const RODADAS_POR_TEMPORADA = 38;
 
+export interface DestaqueDaCompeticao {
+  jogadorId: string;
+  nome: string;
+  clubeId: string;
+  valor: number;
+}
+
+/** Registro de uma competição numa temporada (histórico de campeões e destaques). */
+export interface RegistroDeCompeticao {
+  id: IdCompeticao;
+  nome: string;
+  campeao: string | null;
+  vice: string | null;
+  artilheiro: DestaqueDaCompeticao | null;
+  assistencias: DestaqueDaCompeticao | null;
+  /** Classificação final da fase de liga principal (do 1º ao último). */
+  classificacao?: string[];
+  acesso?: string[];
+  rebaixados?: string[];
+}
+
 export interface ResumoTemporada {
   temporada: number;
   campeoes: Record<Divisao, string> & { copa: string };
   acesso: Record<Divisao, string[]>;
   rebaixados: Record<Divisao, string[]>;
+  /** Todas as competições da temporada, com campeão, vice, destaques e classificação. */
+  competicoes?: RegistroDeCompeticao[];
+  /** Quem pendurou as chuteiras e quem subiu para repor (geração procedural, só da 2ª temporada em diante). */
+  aposentados?: { jogadorId: string; nome: string; clubeId: string; idade: number }[];
+  novatos?: { jogadorId: string; nome: string; clubeId: string }[];
+  /** Brasileiros classificados para as copas continentais do ano seguinte. */
+  vagasContinentais?: { libertadores: string[]; sulAmericana: string[] };
 }
 
 /**
@@ -251,8 +279,8 @@ export function simularRodada(estado: EstadoTemporada, exceto: readonly string[]
       const placar = placarRapido(rng, casa, visitante, j.neutro);
       registrarPlacar(estado, j.id, placar);
       const copa = j.competicao === "copa";
-      estatisticasRapidas(rng, casa, placar[0], placar[1], copa);
-      estatisticasRapidas(rng, visitante, placar[1], placar[0], copa);
+      estatisticasRapidas(rng, casa, placar[0], placar[1], copa, j.competicao);
+      estatisticasRapidas(rng, visitante, placar[1], placar[0], copa, j.competicao);
     }
   });
   if (jogosDaRodada(estado).every((j) => j.placar)) fecharRodada(estado);
@@ -310,6 +338,7 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
     },
     acesso: { A: [], B: div.B.acesso, C: div.C.acesso, D: div.D.acesso },
     rebaixados: { A: div.A.rebaixados, B: div.B.rebaixados, C: div.C.rebaixados, D: [] },
+    competicoes: registrosDaTemporada(estado),
   };
   const fica = (d: Divisao) =>
     div[d].clubes.filter((id) => !div[d].acesso.includes(id) && !div[d].rebaixados.includes(id));
@@ -338,19 +367,12 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
   estado.historico.push(resumo);
   estado.temporada++;
   estado.rodada = 0;
+  resumo.aposentados = [];
+  resumo.novatos = [];
+  comRng(estado, (rng) => evoluirElencos(estado, rng, resumo));
   for (const clube of Object.values(estado.clubes)) {
     for (const j of clube.jogadores) {
       j.temporada = estatisticasZeradas();
-      if (j.idade !== undefined) {
-        j.idade++;
-        // A partir dos 32, o físico cai um pouco a cada ano.
-        if (j.idade >= 32) {
-          j.at.VEL = Math.max(20, j.at.VEL - 2);
-          j.at.RES = Math.max(20, j.at.RES - 1);
-          j.ovrBase = (j.ovrBase ?? j.ovr) - 1;
-          j.ovr = Math.max(40, j.ovr - 1);
-        }
-      }
       j.cond = 100;
       j.lesao = 0;
       j.recemLesionado = false;
@@ -373,6 +395,14 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
     estado.formatosContinentais = comRng(estado, (rng) =>
       proximasContinentais(estado.formatosContinentaisBase!, resultado, rng),
     );
+    const brasileirosEm = (id: string) =>
+      participantesContinental(estado.formatosContinentais!.find((f) => f.id === id)!).filter((x) =>
+        resultado.brasileiros.has(x),
+      );
+    resumo.vagasContinentais = {
+      libertadores: brasileirosEm("cont-LIB"),
+      sulAmericana: brasileirosEm("cont-SUL"),
+    };
   }
   comRng(estado, (rng) => montarCompeticoes(estado, ordem, rng));
   return resumo;
@@ -519,4 +549,139 @@ export function competicoesAtivas(estado: EstadoTemporada): IdCompeticao[] {
   for (const id of Object.keys(estado.continentais ?? {})) lista.push(id as IdCompeticao);
   for (const uf of Object.keys(estado.estaduais ?? {}).sort()) lista.push(`est-${uf}`);
   return lista;
+}
+
+function destaque(
+  estado: EstadoTemporada,
+  c: IdCompeticao,
+  campo: "gols" | "assist",
+): DestaqueDaCompeticao | null {
+  let melhor: DestaqueDaCompeticao | null = null;
+  for (const clube of Object.values(estado.clubes)) {
+    for (const j of clube.jogadores) {
+      const v = j.temporada.porCompeticao?.[c]?.[campo] ?? 0;
+      if (v > 0 && (!melhor || v > melhor.valor))
+        melhor = { jogadorId: j.id, nome: j.nome, clubeId: clube.id, valor: v };
+    }
+  }
+  return melhor;
+}
+
+function campeaoEVice(fases: EstadoFase[]): [string | null, string | null] {
+  const ultima = fases.at(-1);
+  if (!ultima) return [null, null];
+  if (ultima.tipo === "mataMata") {
+    const c = ultima.confrontos[0];
+    if (!c?.vencedor) return [null, null];
+    return [c.vencedor, c.vencedor === c.a ? c.b : c.a];
+  }
+  const t = classificacaoDoGrupo(ultima, 0);
+  return [t[0] ?? null, t[1] ?? null];
+}
+
+/** Monta o registro de cada competição disputada (antes de zerar as estatísticas da temporada). */
+export function registrosDaTemporada(estado: EstadoTemporada): RegistroDeCompeticao[] {
+  return competicoesAtivas(estado).map((c) => {
+    const fases = fasesDaCompeticao(estado, c);
+    const div = divisaoDaCompeticao(estado, c);
+    const liga = fases.find((f) => f.tipo === "liga");
+    const [campeaoFase, viceFase] = campeaoEVice(fases);
+    const campeao =
+      c === "copa"
+        ? estado.copa.campeao
+        : c.startsWith("cont-")
+          ? (estado.continentais?.[c]?.campeao ?? null)
+          : (div?.campeao ?? campeaoFase);
+    const vice =
+      c === "copa"
+        ? estado.copa.vice
+        : c.startsWith("cont-")
+          ? (estado.continentais?.[c]?.vice ?? null)
+          : viceFase;
+    return {
+      id: c,
+      nome: nomeDaCompeticao(estado, c),
+      campeao,
+      vice,
+      artilheiro: destaque(estado, c, "gols"),
+      assistencias: destaque(estado, c, "assist"),
+      ...(liga?.tipo === "liga" && liga.grupos.length === 1
+        ? { classificacao: classificacaoDoGrupo(liga, 0) }
+        : {}),
+      ...(div && !c.startsWith("est-") ? { acesso: div.acesso, rebaixados: div.rebaixados } : {}),
+    };
+  });
+}
+
+const ELENCO_MINIMO = 23;
+
+/**
+ * Virada do ano para todos os clubes: envelhece, evolui os jovens (até o potencial), faz os veteranos caírem,
+ * aposenta quem chegou ao fim da carreira e repõe o elenco com garotos gerados (só jogadores novos; os
+ * reais da base de 2026 nunca são inventados).
+ */
+function evoluirElencos(estado: EstadoTemporada, rng: Rng, resumo: ResumoTemporada): void {
+  for (const clube of Object.values(estado.clubes)) {
+    const saem: string[] = [];
+    for (const j of clube.jogadores) {
+      if (j.idade === undefined) continue;
+      j.idade++;
+      const teto = j.potencial ?? (j.ovrBase ?? j.ovr) + 6;
+      const ganho = j.idade <= 21 ? inteiroEntre(rng, 1, 3) : j.idade <= 24 ? inteiroEntre(rng, 0, 2) : 0;
+      if (ganho > 0 && j.ovr < teto) {
+        const g = Math.min(ganho, teto - j.ovr);
+        j.ovrBase = (j.ovrBase ?? j.ovr) + g;
+        j.ovr = Math.min(92, j.ovr + g);
+        for (const a of ["CTL", "PAS", "FIN", "DEF"] as const) j.at[a] = Math.min(95, j.at[a] + g);
+      }
+      if (j.idade >= 32) {
+        j.at.VEL = Math.max(20, j.at.VEL - 2);
+        j.at.RES = Math.max(20, j.at.RES - 1);
+        j.ovrBase = (j.ovrBase ?? j.ovr) - 1;
+        j.ovr = Math.max(40, j.ovr - 1);
+      }
+      const chance =
+        j.idade >= 38
+          ? 0.95
+          : j.idade >= 35
+            ? 0.3 + 0.2 * (j.idade - 35)
+            : j.idade >= 33 && j.ovr < 62
+              ? 0.3
+              : 0;
+      if (rng.proximo() < chance) saem.push(j.id);
+    }
+    for (const id of saem) {
+      const j = clube.jogadores.find((x) => x.id === id)!;
+      resumo.aposentados!.push({ jogadorId: id, nome: j.nome, clubeId: clube.id, idade: j.idade! });
+    }
+    if (!saem.length && clube.jogadores.length >= ELENCO_MINIMO) continue;
+    const posicoes = clube.jogadores.filter((x) => saem.includes(x.id)).map((x) => x.pos);
+    const alvo = Math.max(ELENCO_MINIMO, clube.jogadores.length);
+    clube.jogadores = clube.jogadores.filter((x) => !saem.includes(x.id));
+    const nivel =
+      Math.round(clube.jogadores.reduce((s, x) => s + x.ovr, 0) / Math.max(1, clube.jogadores.length)) - 6;
+    const gerados = gerarElenco(rng, nivel);
+    let k = 0;
+    while (clube.jogadores.length < alvo && k <= 40) {
+      const pos = posicoes.shift();
+      const modelo = gerados.find((g) => !pos || g[1] === pos) ?? gerados[k % gerados.length]!;
+      const indice = 9000 + estado.temporada * 10 + k++;
+      const novo = criarJogador(
+        [modelo[0], modelo[1], Math.max(45, nivel), { perso: "jovem" }],
+        clube.id,
+        indice,
+      );
+      novo.idade = inteiroEntre(rng, 17, 19);
+      novo.potencial = Math.min(88, novo.ovr + inteiroEntre(rng, 6, 16));
+      clube.jogadores.push(novo);
+      resumo.novatos!.push({ jogadorId: novo.id, nome: novo.nome, clubeId: clube.id });
+    }
+    clube.titulares = escalarAutomatico(
+      clube,
+      clube.esquema,
+      clube.titulares.filter((id) => !saem.includes(id)),
+    );
+    if (clube.reservas) clube.reservas = clube.reservas.filter((id) => !saem.includes(id));
+    clube.forca = forcaDoClube(clube);
+  }
 }

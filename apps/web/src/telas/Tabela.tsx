@@ -168,6 +168,44 @@ function Rankings({ jogo, divisao }: { jogo: EstadoJogo; divisao: Divisao }) {
   );
 }
 
+/** Campeões, vices e destaques da competição nas temporadas já jogadas. */
+function HistoricoDaCompeticao({ jogo, competicao }: { jogo: EstadoJogo; competicao: Competicao }) {
+  const t = jogo.temporada;
+  const nome = (id: string | null | undefined) => (id ? (t.clubes[id]?.nome ?? id) : "—");
+  const linhas = t.historico
+    .map((h) => ({ temporada: h.temporada, r: h.competicoes?.find((c) => c.id === competicao) }))
+    .filter((x) => x.r)
+    .reverse();
+  if (!linhas.length) return null;
+  return (
+    <section className="panel stack">
+      <h3>Histórico</h3>
+      <table className="tabela-hist">
+        <thead>
+          <tr>
+            <th>Ano</th>
+            <th>Campeão</th>
+            <th>Vice</th>
+            <th>Artilheiro</th>
+            <th>Assistências</th>
+          </tr>
+        </thead>
+        <tbody>
+          {linhas.map(({ temporada, r }) => (
+            <tr key={temporada}>
+              <td className="num">{temporada}</td>
+              <td>{nome(r!.campeao)}</td>
+              <td className="muted">{nome(r!.vice)}</td>
+              <td>{r!.artilheiro ? `${r!.artilheiro.nome} (${r!.artilheiro.valor})` : "—"}</td>
+              <td>{r!.assistencias ? `${r!.assistencias.nome} (${r!.assistencias.valor})` : "—"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}
+
 export function Tabela() {
   const jogo = useJogo();
   const t = jogo.temporada;
@@ -286,7 +324,10 @@ export function Tabela() {
           </div>
         )}
       </section>
-      <Rankings jogo={jogo} divisao={divisaoDoRanking} />
+      <div className="stack">
+        <Rankings jogo={jogo} divisao={divisaoDoRanking} />
+        <HistoricoDaCompeticao jogo={jogo} competicao={competicao} />
+      </div>
     </div>
   );
 }

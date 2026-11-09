@@ -84,7 +84,10 @@ Dados prontos (fora do git, em `dados/`): `auditoria-ogol.json` (438 clubes 2026
 - Feito: datas reais CBF (Séries, Copa), 25 estaduais com tabela real, reagendamento automático, testes (`docs/relatorio-validacao-calendario.md`).
 - Feito: Libertadores (com a Pré) e Sul-Americana com a tabela real 2026, playoffs Lib×Sul e premiação por fase.
 - Feito: classificação continental automática para 2027+ com redistribuição de vagas brasileiras.
-- Próximo: etapa 12 (evolução de clubes/jogadores/aposentadoria e geração de novos jogadores) e etapa 13 (histórico por competição); pendências MT/MS e tabela oficial das Séries.
+- Feito (etapa 12): evolução anual de todos os clubes (jovens sobem até o potencial, veteranos caem), aposentadoria (33+ fraco, 35+ por chance, 38 quase certa) e reposição com garotos gerados (elenco mínimo 23).
+- Feito (etapa 13): histórico por competição em cada temporada (campeão, vice, artilheiro, assistências, classificação, acesso/rebaixamento e vagas continentais), estatísticas por competição e tela de histórico em Competições.
+- Etapa 14: teste de três temporadas seguidas com tudo (estaduais, Séries, Copa, continentais) passando.
+- Pendências: MT/MS sem tabela, tabela oficial de confrontos das Séries, ligas estrangeiras dentro do mesmo save.
 
 ## Regras
 Reaproveitar o motor de fases; formatos em configuração; não remover nada; não criar clubes fictícios; dados pesquisados uma vez e salvos em arquivos estruturados; respostas e relatórios curtos.

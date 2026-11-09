@@ -110,6 +110,7 @@ export interface Partida {
   intervaloFeito: boolean;
   /** Jogo de copa não conta para as estatísticas da liga. */
   copa: boolean;
+  competicao?: string;
   eventos: EventoPartida[];
   casa: LadoPartida;
   visitante: LadoPartida;
@@ -122,6 +123,8 @@ export interface OpcoesPartida {
   usuarioId?: string | null;
   bonusUsuario?: Bonus;
   copa?: boolean;
+  /** Competição do jogo (para estatísticas por competição). */
+  competicao?: string;
 }
 
 function emJogo(j: Jogador, rng: Rng): JogadorEmJogo {
@@ -200,6 +203,7 @@ export function criarPartida(casa: Clube, visitante: Clube, opcoes: OpcoesPartid
     fase: "pre",
     intervaloFeito: false,
     copa: opcoes.copa ?? false,
+    ...(opcoes.competicao ? { competicao: opcoes.competicao } : {}),
     eventos: [],
     casa: montarLado(casa, "casa", opcoes),
     visitante: montarLado(visitante, "visitante", opcoes),
@@ -843,6 +847,13 @@ export function encerrarPartida(m: Partida): ResultadoPartida {
       const nota = notaFinal(m, e);
       j.notas.push(nota);
       if (j.notas.length > 8) j.notas.shift();
+      if (m.competicao) {
+        j.temporada.porCompeticao ??= {};
+        const pc = (j.temporada.porCompeticao[m.competicao] ??= { jogos: 0, gols: 0, assist: 0 });
+        pc.jogos++;
+        pc.gols += e.gols;
+        pc.assist += e.assist;
+      }
       if (!m.copa) {
         j.temporada.jogos++;
         j.temporada.gols += e.gols;

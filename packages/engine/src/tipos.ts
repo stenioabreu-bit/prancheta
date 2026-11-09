@@ -57,6 +57,8 @@ export interface EstatisticasTemporada {
   jogosNoGol: number;
   semSofrer: number;
   golsCopa: number;
+  /** Jogos, gols e assistências por competição (id do motor: "A", "copa", "est-SP", "cont-LIB"...). */
+  porCompeticao?: Record<string, { jogos: number; gols: number; assist: number }>;
 }
 
 export interface Jogador {

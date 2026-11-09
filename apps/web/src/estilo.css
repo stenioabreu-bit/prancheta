@@ -2700,3 +2700,31 @@ body {
   border-radius: 10px;
   background: var(--surface2);
 }
+
+/* Faixa de cores do time no placar (diferencia times de cores parecidas). */
+.nome-com-cor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.faixa-cor {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+  flex: none;
+}
+/* Antes do jogo: campo e números menores, sobra espaço para o conselho e a preleção. */
+.match.fase-pre .mstats {
+  display: none;
+}
+.match.fase-pre .palco .campo-wrap canvas {
+  max-height: 24cqh;
+}
+.match.fase-pre .palco .campo-wrap .leg {
+  display: none;
+}
+.faixa-cor.meu {
+  box-shadow: 0 0 0 2px #e8c547, 0 0 0 3px rgba(0, 0, 0, 0.35);
+}

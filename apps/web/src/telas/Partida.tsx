@@ -366,13 +366,20 @@ export function Partida() {
   }
 
   return (
-    <div className="match" role="dialog" aria-modal="true" aria-label="Partida">
+    <div className={`match fase-${fase}`} role="dialog" aria-modal="true" aria-label="Partida">
       <div className="wrap">
         <div className="board">
           <div className="score">
             <div className="t">
               <Escudo clube={m.casa.clube} tamanho={56} />
-              <span>{m.casa.clube.nome}</span>
+              <span className="nome-com-cor">
+                <i
+                  className={`faixa-cor${m.casa.ehUsuario ? " meu" : ""}`}
+                  style={corDoTime(m, "casa")}
+                  aria-hidden="true"
+                />
+                {m.casa.clube.nome}
+              </span>
               <Sumula m={m} lado="casa" />
             </div>
             <div className="centro-placar">
@@ -401,7 +408,14 @@ export function Partida() {
             </div>
             <div className="t">
               <Escudo clube={m.visitante.clube} tamanho={56} />
-              <span>{m.visitante.clube.nome}</span>
+              <span className="nome-com-cor">
+                <i
+                  className={`faixa-cor${m.visitante.ehUsuario ? " meu" : ""}`}
+                  style={corDoTime(m, "visitante")}
+                  aria-hidden="true"
+                />
+                {m.visitante.clube.nome}
+              </span>
               <Sumula m={m} lado="visitante" />
             </div>
           </div>
@@ -667,4 +681,14 @@ function FalarComOTime({ m, aoFalar }: { m: PartidaDoMotor; aoFalar: (texto: str
       ))}
     </section>
   );
+}
+
+/** Faixa de duas cores do time, como nos placares de TV. Cores iguais: o visitante aparece invertido. */
+function corDoTime(m: PartidaDoMotor, lado: "casa" | "visitante") {
+  const c = m.casa.clube.cores;
+  const v = m.visitante.clube.cores;
+  const iguais = c.principal.toLowerCase() === v.principal.toLowerCase();
+  const { principal, secundaria } = lado === "casa" ? c : v;
+  const [a, b] = lado === "visitante" && iguais ? [secundaria, principal] : [principal, secundaria];
+  return { background: `linear-gradient(90deg, ${a} 0 50%, ${b} 50% 100%)` };
 }

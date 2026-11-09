@@ -283,7 +283,9 @@ function CampoHorizontal({
           >
             <span className="shirt">{j?.ovr ?? "?"}</span>
             <span className="lbl">{j?.nome.split(" ").slice(-1)[0] ?? "—"}</span>
-            <span className="sp">{posto}</span>
+            <span className="sp">
+              {j ? (instrucaoDoJogador(clube, id, posto).funcao ?? FUNCOES[posto][0]![0]) : posto}
+            </span>
             {j && (
               <span className="fad" title={`Condição ${Math.round(j.cond)}%`}>
                 <i
@@ -457,7 +459,14 @@ export function Tatica() {
             entrosamento {Math.round(jogo.carreira.entrosamento[clube.esquema] ?? 45)}%
           </span>
           {selPapel?.tipo === "titular" && (
-            <button type="button" className="btn" onClick={() => setPosto(selPapel.indice)}>
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                setPosto(selPapel.indice);
+                setSel(null);
+              }}
+            >
               Função e instruções
             </button>
           )}

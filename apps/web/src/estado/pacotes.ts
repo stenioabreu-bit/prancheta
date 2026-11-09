@@ -19,16 +19,16 @@ const URLS_REAL: Record<string, string> = Object.fromEntries(
   Object.entries(ESCUDOS_REAL).map(([caminho, url]) => [caminho.split("/").pop()!.replace(".png", ""), url]),
 );
 // Ligas estrangeiras 2026 (geradas por tools/dados/gerar_pacotes_exterior.py), carregadas só quando escolhidas.
-const NOMES_EXTERIOR: Record<string, string> = {
-  "argentina-2026": "Argentina 2026",
-  "bolivia-2026": "Bolívia 2026",
-  "chile-2026": "Chile 2026",
-  "colombia-2026": "Colômbia 2026",
-  "equador-2026": "Equador 2026",
-  "paraguai-2026": "Paraguai 2026",
-  "peru-2026": "Peru 2026",
-  "uruguai-2026": "Uruguai 2026",
-  "venezuela-2026": "Venezuela 2026",
+const NOMES_EXTERIOR: Record<string, [string, string]> = {
+  "argentina-2026": ["Liga Profesional 2026", "primera-division-argentina"],
+  "bolivia-2026": ["División Profesional 2026", "division-profesional-bolivia"],
+  "chile-2026": ["Campeonato Nacional 2026", "primera-division-chile"],
+  "colombia-2026": ["Liga Primera A 2026", "primera-a-colombia"],
+  "equador-2026": ["LigaPro 2026", "serie-a-equador"],
+  "paraguai-2026": ["División de Honor 2026", "primera-division-paraguai"],
+  "peru-2026": ["Liga 1 2026", "liga-1-peru"],
+  "uruguai-2026": ["Liga AUF 2026", "primera-division-uruguai"],
+  "venezuela-2026": ["Liga FUTVE 2026", "primera-division-venezuela"],
 };
 const JSON_EXTERIOR = import.meta.glob<PacoteDados>("../../../../packages/data/packs/*-2026/pacote.json", {
   import: "default",
@@ -42,6 +42,8 @@ export interface OpcaoDePacote {
   nome: string;
   ficticio: boolean;
   escudos: number;
+  /** ID do logo da liga no manifesto. */
+  logo?: string;
 }
 
 /** Pacotes que já vêm no app e não dependem do IndexedDB. */
@@ -50,6 +52,7 @@ export const OPCOES_EMBUTIDAS: OpcaoDePacote[] = PACOTE_REAL
       {
         id: ID_BRASILEIRAO,
         nome: "Brasileirão 2026",
+        logo: "brasileirao-serie-a",
         ficticio: false,
         escudos: Object.keys(URLS_REAL).length,
       },
@@ -62,7 +65,7 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
     ...OPCOES_EMBUTIDAS,
     ...Object.entries(NOMES_EXTERIOR)
       .filter(([id]) => carregadorExterior(id))
-      .map(([id, nome]) => ({ id, nome, ficticio: false, escudos: 0 })),
+      .map(([id, [nome, logo]]) => ({ id, nome, logo, ficticio: false, escudos: 0 })),
     ...importados.map((p) => ({
       id: p.pacote.id,
       nome: p.pacote.nome,

@@ -1,3 +1,4 @@
+import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import type { PacoteDados } from "@prancheta/data";
 import { type Clube, type ClubeDados, type Divisao, criarClube, criarRng } from "@prancheta/engine";
 import { useEffect, useMemo, useState } from "react";
@@ -158,7 +159,8 @@ export function NovoJogo() {
             </p>
           )}
           {opcoes.map((o) => (
-            <button key={o.id} type="button" className="btn primary big" onClick={() => setPacoteId(o.id)}>
+            <button key={o.id} type="button" className="btn primary big btn-liga" onClick={() => setPacoteId(o.id)}>
+              {o.logo && <LogoCompeticao competicao={o.logo} tamanho={36} />}
               {o.nome}
             </button>
           ))}

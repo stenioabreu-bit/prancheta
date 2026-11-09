@@ -4,6 +4,7 @@ import {
   type ResumoTemporada,
   divisaoDo,
   jogosDaRodada,
+  nomeDaCompeticao,
   novaTemporada,
   registrarPlacar,
   simularRodada,
@@ -20,7 +21,7 @@ import {
   PREMIO_COPA,
   formatarDinheiro,
   orcamentoInicial,
-  premioPorColocacao,
+  premioDaLiga,
 } from "../mercado/valores";
 import { type Partida, criarPartida, encerrarPartida, jogarAteOFim } from "../partida";
 import { type Rng, criarRng, limitar } from "../rng";
@@ -322,8 +323,9 @@ function premiacaoDaTemporada(estado: EstadoJogo): string | null {
   const d = divisaoDo(estado.temporada, id);
   const pos = posicaoNaTabela(estado.temporada, id);
   if (!d || !pos) return null;
-  const valor = premioPorColocacao(d, pos, estado.temporada.divisoes[d].clubes.length);
+  const idLiga = estado.temporada.formatos?.[d]?.id ?? `brasileirao-serie-${d.toLowerCase()}`;
+  const valor = premioDaLiga(idLiga, pos, estado.temporada.divisoes[d].clubes.length);
   const f = estado.mercado.financas;
   f.orcamento = Math.round((f.orcamento + valor) * 10) / 10;
-  return `Pela ${pos}ª colocação na Série ${d}, o clube recebeu ${formatarDinheiro(valor)} de premiação.`;
+  return `Pela ${pos}ª colocação na ${nomeDaCompeticao(estado.temporada, d)}, o clube recebeu ${formatarDinheiro(valor)} de premiação.`;
 }

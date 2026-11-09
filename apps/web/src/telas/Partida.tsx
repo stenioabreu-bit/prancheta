@@ -2,6 +2,7 @@ import {
   type LadoPartida,
   type Partida as PartidaDoMotor,
   type Pergunta,
+  type SituacaoDaFala,
   TONS,
   type TomDeConversa,
   chaveDoLogo,
@@ -12,6 +13,7 @@ import {
   conselhoIntervalo,
   criarRng,
   ehClassico,
+  falaDoTom,
   iniciarPartida,
   nomeDaCompeticao,
   passo,
@@ -58,9 +60,27 @@ function Prelecao({
       </div>
     );
   }
+  const eu = m.casa.ehUsuario ? m.casa : m.visitante;
+  const outro = eu === m.casa ? m.visitante : m.casa;
+  const saldo = eu.est.gols - outro.est.gols;
+  const situacao: SituacaoDaFala =
+    momento === "pre"
+      ? "antes"
+      : momento === "pos"
+        ? saldo > 0
+          ? "vitoria"
+          : saldo < 0
+            ? "derrota"
+            : "empate"
+        : saldo > 0
+          ? "vencendo"
+          : saldo < 0
+            ? "perdendo"
+            : "empatando";
+  const semente = jogo.temporada.rodada * 31 + m.minuto;
   return (
     <div className="tones">
-      {(Object.keys(TONS) as TomDeConversa[]).map((tom) => (
+      {(Object.keys(TONS) as TomDeConversa[]).map((tom, i) => (
         <button
           key={tom}
           type="button"
@@ -72,7 +92,7 @@ function Prelecao({
           }}
         >
           <b>{TONS[tom].nome}</b>
-          <span>{TONS[tom].fala}</span>
+          <span>{falaDoTom(tom, situacao, semente + i)}</span>
         </button>
       ))}
     </div>

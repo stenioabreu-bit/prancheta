@@ -74,3 +74,46 @@ export function premioPorColocacao(divisao: "A" | "B" | "C" | "D", posicao: numb
   if (posicao === 1) return p.campeao;
   return Math.round((p.base + p.porPosicao * Math.max(0, total - posicao)) * 10) / 10;
 }
+
+/**
+ * Premiação por colocação (R$ mi) de cada competição de liga, pelo ID permanente do catálogo.
+ * Valores do jogo, na proporção do peso de cada liga. Copas por fase ficam em PREMIO_POR_FASE.
+ */
+export const PREMIO_POR_COMPETICAO: Readonly<
+  Record<string, { campeao: number; porPosicao: number; base: number }>
+> = {
+  "brasileirao-serie-a": PREMIO_DIVISAO.A,
+  "brasileirao-serie-b": PREMIO_DIVISAO.B,
+  "brasileirao-serie-c": PREMIO_DIVISAO.C,
+  "brasileirao-serie-d": PREMIO_DIVISAO.D,
+  "primera-division-argentina": { campeao: 14, porPosicao: 0.35, base: 3 },
+  "primera-a-colombia": { campeao: 6, porPosicao: 0.2, base: 1.5 },
+  "primera-division-chile": { campeao: 5, porPosicao: 0.18, base: 1.2 },
+  "primera-division-uruguai": { campeao: 4, porPosicao: 0.15, base: 1 },
+  "serie-a-equador": { campeao: 5, porPosicao: 0.18, base: 1.2 },
+  "primera-division-paraguai": { campeao: 4, porPosicao: 0.15, base: 1 },
+  "liga-1-peru": { campeao: 3.5, porPosicao: 0.12, base: 0.9 },
+  "division-profesional-bolivia": { campeao: 2.5, porPosicao: 0.08, base: 0.6 },
+  "primera-division-venezuela": { campeao: 2, porPosicao: 0.07, base: 0.5 },
+  "campeonato-paulista": { campeao: 5, porPosicao: 0.15, base: 1 },
+  "campeonato-carioca": { campeao: 4, porPosicao: 0.12, base: 0.8 },
+  "campeonato-mineiro": { campeao: 3, porPosicao: 0.1, base: 0.6 },
+  "campeonato-gaucho": { campeao: 3, porPosicao: 0.1, base: 0.6 },
+};
+/** Estadual sem valor próprio na tabela. */
+export const PREMIO_ESTADUAL_PADRAO = { campeao: 1, porPosicao: 0.04, base: 0.2 };
+
+/** Prêmio por fase alcançada (R$ mi) das copas: nacional e continentais. */
+export const PREMIO_POR_FASE: Readonly<Record<string, readonly number[]>> = {
+  "copa-do-brasil": PREMIO_COPA,
+  libertadores: [3, 4, 6, 9, 13, 20, 32],
+  "sul-americana": [1.2, 1.8, 2.5, 4, 6, 9, 14],
+};
+
+/** Valor pela posição final em qualquer liga do catálogo. */
+export function premioDaLiga(id: string, posicao: number, total: number): number {
+  const p =
+    PREMIO_POR_COMPETICAO[id] ?? (id.startsWith("campeonato-") ? PREMIO_ESTADUAL_PADRAO : PREMIO_DIVISAO.D);
+  if (posicao === 1) return p.campeao;
+  return Math.round((p.base + p.porPosicao * Math.max(0, total - posicao)) * 10) / 10;
+}

@@ -149,3 +149,247 @@ export const CONSELHO_INTERVALO = {
   faltaCapricho: "Estamos criando, falta caprichar. Mantém a pegada.",
   controlado: "Jogo controlado. Eu não mexeria muito.",
 };
+
+/* ---------- falas da preleção por momento e placar ---------- */
+
+export type SituacaoDaFala =
+  | "antes"
+  | "vencendo"
+  | "empatando"
+  | "perdendo"
+  | "vitoria"
+  | "empate"
+  | "derrota";
+
+const FALAS: Record<SituacaoDaFala, Record<TomDeConversa, string[]>> = {
+  antes: {
+    calmo: [
+      "Joguem o nosso jogo, sem afobação.",
+      "Cabeça fria. Fizemos o trabalho na semana, agora é executar.",
+      "Sem pressa: a bola vai chegar, confiem no plano.",
+    ],
+    motivar: [
+      "Eu confio em cada um de vocês. Vamos pra cima!",
+      "Hoje é dia de mostrar quem a gente é. Pra cima deles!",
+      "Olhem pro lado: esse grupo é forte. Vamos fazer história hoje.",
+    ],
+    cobrar: [
+      "Quero intensidade desde o primeiro minuto. Sem desculpa.",
+      "Semana passada não foi o suficiente. Hoje eu quero mais.",
+      "Quem não correr, sai. Simples assim.",
+    ],
+    elogiar: [
+      "A semana de treino foi excelente. Levem isso pro campo.",
+      "Vocês merecem estar aqui. Joguem com orgulho.",
+      "O trabalho de vocês tem sido impecável. Continuem assim.",
+    ],
+    semPressao: [
+      "Ninguém espera nada da gente hoje. Joguem soltos.",
+      "A pressão é toda deles. Divirtam-se lá dentro.",
+      "Esqueçam a tabela. É só mais um jogo de bola.",
+    ],
+    agressivo: [
+      "(batendo na prancheta) Hoje ninguém tira ponto da gente!",
+      "Entrem com sangue nos olhos. Dividida é nossa!",
+      "Eu quero raça! Quem amarelar não volta pro time.",
+    ],
+  },
+  vencendo: {
+    calmo: [
+      "Tá tudo sob controle. Mantenham a organização.",
+      "Não precisa inventar: segura a bola e administra.",
+      "Calma, o jogo é nosso. Só não dêem espaço.",
+    ],
+    motivar: [
+      "Tá dando certo! Vamos atrás do segundo, do terceiro!",
+      "Não tirem o pé. Quero sair daqui com goleada.",
+      "Esse é o time que eu quero ver. Mais 45 assim!",
+    ],
+    cobrar: [
+      "Tá ganhando, mas eu vi muita desatenção. Corrijam.",
+      "Placar engana: deixamos eles gostarem do jogo. Acordem.",
+      "Ninguém relaxa. Jogo só acaba no apito.",
+    ],
+    elogiar: [
+      "Primeiro tempo perfeito. Exatamente o que treinamos.",
+      "Que atuação! Continuem fazendo o simples.",
+      "Estou orgulhoso. Mais um tempo desse e é nosso.",
+    ],
+    semPressao: [
+      "O mais difícil já foi. Joguem leve.",
+      "Aproveitem: o jogo está na mão, sem stress.",
+      "Sem pressão, só curtam e não dêem bobeira.",
+    ],
+    agressivo: [
+      "Vencendo e jogando mal? Não aceito! Quero mais!",
+      "(chutando a garrafa) Isso foi sorte! Acordem!",
+      "Se continuar assim, a gente perde. Que vergonha!",
+    ],
+  },
+  empatando: {
+    calmo: [
+      "O jogo está aberto. Paciência que o gol sai.",
+      "Nada mudou: segue o plano e a chance aparece.",
+      "Calma. Um detalhe decide, e o detalhe vai ser nosso.",
+    ],
+    motivar: [
+      "Dá pra ganhar! Vamos buscar esse gol!",
+      "Esse jogo é nosso se a gente quiser mais que eles.",
+      "Um gol muda tudo. Acreditem!",
+    ],
+    cobrar: [
+      "Empate não serve. Quero mais agressividade.",
+      "Faltou coragem no primeiro tempo. Quero ver atitude.",
+      "Tá faltando vontade. Quero mais chute, mais infiltração.",
+    ],
+    elogiar: [
+      "Bom primeiro tempo, falta só caprichar no último passe.",
+      "Estamos melhores em campo. Continuem que vai sair.",
+      "Gostei da postura. Agora é ajustar a mira.",
+    ],
+    semPressao: [
+      "Um ponto fora não é ruim. Joguem tranquilos.",
+      "Sem desespero: o jogo vem pra gente.",
+      "Joguem soltos, sem medo de errar.",
+    ],
+    agressivo: [
+      "(batendo na mesa) Que primeiro tempo horrível! Acordem!",
+      "Isso é time de quem quer ganhar? Mostrem!",
+      "Vocês estão dormindo em campo. Chega!",
+    ],
+  },
+  perdendo: {
+    calmo: [
+      "Calma: temos tempo de sobra pra virar.",
+      "Ninguém entra em pânico. Um gol e o jogo muda.",
+      "Respirem. Joguem o nosso jogo e a virada vem.",
+    ],
+    motivar: [
+      "Ainda dá! Esse grupo já virou jogo pior.",
+      "45 minutos pra escrever uma virada. Bora!",
+      "Eu acredito na virada. Vocês acreditam?",
+    ],
+    cobrar: [
+      "Isso aqui não é o que a gente treinou. Quero mais!",
+      "Tô decepcionado. Vocês estão entregando o jogo.",
+      "Ou muda a postura, ou eu mudo o time.",
+    ],
+    elogiar: [
+      "O placar é injusto. Continuem jogando assim que vira.",
+      "Estamos jogando bem, só falta o gol. Insistam.",
+      "Não abaixem a cabeça: a atuação está boa.",
+    ],
+    semPressao: [
+      "Não tem mais nada a perder. Arrisquem tudo.",
+      "Esqueçam o placar. Joguem pela diversão.",
+      "Joguem soltos, o pior já aconteceu.",
+    ],
+    agressivo: [
+      "(batendo na prancheta) Que vergonha! Acordem!",
+      "Vocês estão humilhando essa camisa!",
+      "Quem não quiser jogar pode ficar aqui no vestiário!",
+    ],
+  },
+  vitoria: {
+    calmo: [
+      "Bom resultado. Pé no chão, semana que vem tem mais.",
+      "Vitória merecida. Agora descansem e recuperem.",
+      "Três pontos, sem euforia. Seguimos trabalhando.",
+    ],
+    motivar: [
+      "É isso! Esse é o caminho, vamos embalar!",
+      "Que vitória! Quero esse time em todos os jogos.",
+      "Comemorem: vocês mereceram cada ponto hoje.",
+    ],
+    cobrar: [
+      "Ganhamos, mas tem muita coisa pra corrigir.",
+      "Venceu, ok. Mas aquele segundo tempo não pode se repetir.",
+      "Não se iludam com o placar. Dá pra jogar muito mais.",
+    ],
+    elogiar: [
+      "Atuação de gala. Parabéns a cada um.",
+      "Exatamente o que eu pedi. Tô orgulhoso.",
+      "Vocês executaram o plano perfeitamente.",
+    ],
+    semPressao: [
+      "Aproveitem a folga, vocês merecem.",
+      "Curtam a vitória. Segunda-feira a gente pensa no próximo.",
+      "Leveza: ganhar assim fica fácil.",
+    ],
+    agressivo: [
+      "Ganhar jogando assim não me agrada! Quero mais!",
+      "Sorte não ganha campeonato. Acordem!",
+      "Vitória feia. Semana que vem ninguém dorme.",
+    ],
+  },
+  empate: {
+    calmo: [
+      "Um ponto é um ponto. Seguimos.",
+      "Empate justo. Vamos ver o que ajustar.",
+      "Sem drama: a temporada é longa.",
+    ],
+    motivar: [
+      "Faltou pouco! Na próxima a vitória vem.",
+      "Gostei da entrega. Vamos transformar isso em vitória.",
+      "Cabeça erguida, o time está no caminho.",
+    ],
+    cobrar: [
+      "Empatar aqui é perder dois pontos.",
+      "Faltou ambição. Não aceito jogar pelo empate.",
+      "Muita bola desperdiçada. Isso tem que mudar.",
+    ],
+    elogiar: [
+      "Postura boa, só faltou o gol.",
+      "Jogo difícil e vocês não se entregaram. Valeu.",
+      "Bom ponto contra um time forte.",
+    ],
+    semPressao: [
+      "Ponto fora não é ruim. Descansem.",
+      "Sem pressão: o empate tá de bom tamanho.",
+      "Esqueçam esse jogo e foquem no próximo.",
+    ],
+    agressivo: [
+      "Que apatia! Inaceitável!",
+      "(batendo a porta) Isso não é time de ponta!",
+      "Empate vergonhoso. Treino dobrado na semana.",
+    ],
+  },
+  derrota: {
+    calmo: [
+      "Dia ruim acontece. Vamos analisar com calma.",
+      "Cabeça fria. A gente se reergue no próximo.",
+      "Derrota dói, mas não define a temporada.",
+    ],
+    motivar: [
+      "Levantem a cabeça. Esse grupo é maior que essa derrota.",
+      "Isso vai servir de combustível. Vamos dar a volta.",
+      "Eu confio em vocês. Próximo jogo é resposta.",
+    ],
+    cobrar: [
+      "Inadmissível. Faltou tudo hoje.",
+      "Ninguém aqui jogou o que sabe. Quero explicações.",
+      "Isso aqui não é o que a gente treinou. Quero mais!",
+    ],
+    elogiar: [
+      "Perdemos, mas a entrega foi enorme.",
+      "Resultado injusto pelo que vocês jogaram.",
+      "Não tenho do que reclamar da postura de vocês.",
+    ],
+    semPressao: [
+      "Esqueçam isso. Página virada.",
+      "Ninguém esperava nada aqui. Bola pra frente.",
+      "Tirem um peso: a temporada continua.",
+    ],
+    agressivo: [
+      "(batendo na prancheta) Que vergonha! Acordem!",
+      "Vocês envergonharam essa camisa hoje!",
+      "Quem não quiser lutar, pode pedir pra sair!",
+    ],
+  },
+};
+
+/** Fala do tom conforme o momento/placar, variando pela semente. */
+export function falaDoTom(tom: TomDeConversa, situacao: SituacaoDaFala, semente: number): string {
+  const lista = FALAS[situacao][tom];
+  return lista[Math.abs(semente) % lista.length]!;
+}

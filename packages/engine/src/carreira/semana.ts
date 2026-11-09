@@ -74,6 +74,7 @@ export function semana(carreira: EstadoCarreira, estado: EstadoTemporada, r: Res
   const rodada = estado.rodada;
   cobrarPromessas(carreira, clube, rodada, r);
 
+  eventoAleatorio(carreira, clube, rodada, rng);
   const treino = semanaDeTreino(carreira, clube, rng);
   const relato: string[] = treino.lesionados.map(
     (l) => `${l.nome} se machucou no treino e desfalca por ${l.rodadas} rodada(s).`,
@@ -201,4 +202,114 @@ export function semana(carreira: EstadoCarreira, estado: EstadoTemporada, r: Res
       texto: `Subiram para o sub-20: ${novos.map((j) => `${j.nome} (${j.pos})`).join(" e ")}.`,
     });
   }
+}
+
+/* ---------- eventos aleatórios do clube ---------- */
+
+interface EventoDoClube {
+  de: string;
+  assunto: string;
+  texto: (alvo: string) => string;
+  diretoria: number;
+  torcida: number;
+  /** Mudança de moral de todo o elenco. */
+  moral: number;
+  /** Só o jogador citado. */
+  moralAlvo?: number;
+}
+
+const EVENTOS: readonly EventoDoClube[] = [
+  {
+    de: "Imprensa",
+    assunto: "Escândalo na diretoria",
+    texto: () =>
+      "Vazaram áudios do vice-presidente negociando comissão em transferências. A torcida protesta na porta do CT.",
+    diretoria: -8,
+    torcida: -10,
+    moral: -4,
+  },
+  {
+    de: "Presidência",
+    assunto: "Salários atrasados",
+    texto: () => "O clube atrasou o salário do mês. O elenco está insatisfeito e cobra explicações.",
+    diretoria: -4,
+    torcida: -3,
+    moral: -9,
+  },
+  {
+    de: "Imprensa",
+    assunto: "Jogador flagrado em festa",
+    texto: (a) =>
+      `${a} foi flagrado em uma festa de madrugada às vésperas do jogo. A diretoria pede punição.`,
+    diretoria: -5,
+    torcida: -6,
+    moral: -2,
+    moralAlvo: -15,
+  },
+  {
+    de: "Presidência",
+    assunto: "Crise política",
+    texto: () => "Conselheiros pedem o impeachment do presidente. O clima nos bastidores pesou.",
+    diretoria: -10,
+    torcida: -4,
+    moral: -3,
+  },
+  {
+    de: "Imprensa",
+    assunto: "Briga no treino",
+    texto: (a) => `${a} se desentendeu com um companheiro no treino. O vestiário ficou rachado.`,
+    diretoria: -3,
+    torcida: -2,
+    moral: -6,
+    moralAlvo: -10,
+  },
+  {
+    de: "Torcida organizada",
+    assunto: "Protesto no CT",
+    texto: () => "A organizada invadiu o treino e cobrou o elenco. Os jogadores ficaram abalados.",
+    diretoria: -2,
+    torcida: -8,
+    moral: -7,
+  },
+  {
+    de: "Presidência",
+    assunto: "Novo patrocinador",
+    texto: () => "Fechamos um patrocínio master. A diretoria está animada com o projeto.",
+    diretoria: 6,
+    torcida: 3,
+    moral: 3,
+  },
+  {
+    de: "Imprensa",
+    assunto: "Ídolo elogia o trabalho",
+    texto: () => "Um ídolo histórico do clube elogiou publicamente o seu trabalho. A torcida abraçou.",
+    diretoria: 2,
+    torcida: 8,
+    moral: 4,
+  },
+  {
+    de: "Presidência",
+    assunto: "Premiação extra prometida",
+    texto: () => "A diretoria prometeu bicho dobrado se o time vencer a próxima. O elenco se animou.",
+    diretoria: 1,
+    torcida: 0,
+    moral: 7,
+  },
+];
+
+/** Bastidores imprevisíveis: escândalos e boas notícias que mexem com diretoria, torcida e vestiário. */
+function eventoAleatorio(carreira: EstadoCarreira, clube: Clube, rodada: number, rng: Rng): void {
+  if (rodada < 2 || rng.proximo() >= 0.09) return;
+  const ev = EVENTOS[Math.floor(rng.proximo() * EVENTOS.length)]!;
+  const alvo = clube.jogadores[Math.floor(rng.proximo() * clube.jogadores.length)];
+  carreira.diretoria = limitar(carreira.diretoria + ev.diretoria, 0, 100);
+  carreira.torcida = limitar(carreira.torcida + ev.torcida, 0, 100);
+  for (const j of clube.jogadores) j.moral = limitar(j.moral + ev.moral, 0, 100);
+  if (alvo && ev.moralAlvo) alvo.moral = limitar(alvo.moral + ev.moralAlvo, 0, 100);
+  const ruim = ev.moral < 0 || ev.diretoria < 0;
+  enviarMensagem(carreira, rodada, {
+    de: ev.de,
+    assunto: ev.assunto,
+    texto: `${ev.texto(alvo?.nome ?? "Um jogador")}${ruim ? " Só resultado em campo acalma o ambiente." : ""}`,
+  });
 }

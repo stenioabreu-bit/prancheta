@@ -1,6 +1,8 @@
 import {
   type LadoPartida,
   type Partida as PartidaDoMotor,
+  GRITOS,
+  gritarDaBeira,
   type Pergunta,
   type SituacaoDaFala,
   TONS,
@@ -248,6 +250,7 @@ function Estatisticas({ m }: { m: PartidaDoMotor }) {
 export function Partida() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
+  const avisar = useLoja((s) => s.avisar);
   const setEmPartida = useLoja((s) => s.setEmPartida);
   const [, redesenhar] = useReducer((x: number) => x + 1, 0);
   const [m] = useState(() => useLoja.getState().mexer((j) => iniciarPartida(j)));
@@ -358,6 +361,7 @@ export function Partida() {
             <div className="t">
               <Escudo clube={m.casa.clube} tamanho={56} />
               <span>{m.casa.clube.nome}</span>
+              <Sumula m={m} lado="casa" />
             </div>
             <div className="centro-placar">
               {jogoAgendado && (
@@ -373,15 +377,11 @@ export function Partida() {
                 {m.casa.est.gols} – {m.visitante.est.gols}
               </div>
               <span className="relogio-placar num">{relogio}</span>
-              {fase !== "pre" && fase !== "pos" && fase !== "intervalo" && (
-                <span className="small muted">
-                  {m.minuto < 90 ? `faltam ${90 - m.minuto} min` : "acréscimos"}
-                </span>
-              )}
             </div>
             <div className="t">
               <Escudo clube={m.visitante.clube} tamanho={56} />
               <span>{m.visitante.clube.nome}</span>
+              <Sumula m={m} lado="visitante" />
             </div>
           </div>
           <Estatisticas m={m} />
@@ -546,6 +546,26 @@ export function Partida() {
       {folha === "trocas" && <Trocas m={m} aoFechar={() => setFolha(null)} aoMudar={redesenhar} />}
       {folha === "prancheta" && (
         <Folha titulo="Prancheta" aoFechar={() => setFolha(null)}>
+          <section className="stack" style={{ gap: 6 }}>
+            <h3>Falar com o time</h3>
+            {GRITOS.map((g) => (
+              <button
+                key={g.id}
+                type="button"
+                className="btn"
+                style={{ textAlign: "left" }}
+                onClick={() => {
+                  avisar(gritarDaBeira(m, eu, g.id));
+                  redesenhar();
+                }}
+              >
+                {g.texto}
+                <span className="small muted" style={{ display: "block" }}>
+                  {g.dica}
+                </span>
+              </button>
+            ))}
+          </section>
           <ControlesTaticos
             tatica={eu.tatica}
             aoMudar={(tatica) => {
@@ -556,5 +576,36 @@ export function Partida() {
         </Folha>
       )}
     </div>
+  );
+}
+
+/** Gols (com assistência) e cartões de um lado, embaixo do escudo no placar. */
+function Sumula({ m, lado }: { m: PartidaDoMotor; lado: "casa" | "visitante" }) {
+  const nome = (id: string | undefined) => {
+    if (!id) return "";
+    const todos = [...m.casa.clube.jogadores, ...m.visitante.clube.jogadores];
+    return todos.find((j) => j.id === id)?.nome ?? "";
+  };
+  const linhas = m.eventos.filter(
+    (e) => e.lado === lado && (e.tipo === "gol" || e.tipo === "amarelo" || e.tipo === "vermelho"),
+  );
+  if (!linhas.length) return null;
+  return (
+    <ul className="sumula">
+      {linhas.map((e, i) => (
+        <li key={`${e.min}-${i}`}>
+          <span aria-hidden="true" className={`ic-${e.tipo}`}>
+            {e.tipo === "gol" ? "⚽" : ""}
+          </span>
+          {nome(e.jogadores[0])} {e.min}'
+          {e.tipo === "gol" && e.jogadores[1] ? (
+            <span className="muted"> (Ass: {nome(e.jogadores[1])})</span>
+          ) : null}
+          {e.tipo !== "gol" && (
+            <span className="muted"> · {e.tipo === "amarelo" ? "amarelo" : "vermelho"}</span>
+          )}
+        </li>
+      ))}
+    </ul>
   );
 }

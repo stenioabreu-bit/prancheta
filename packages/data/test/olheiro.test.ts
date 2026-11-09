@@ -56,3 +56,24 @@ describe("mercado, olheiro e rankings", () => {
     if (treze) expect(Math.max(...treze.jogadores.map((x) => x.ovr))).toBeLessThan(75);
   });
 });
+
+describe("metas por competição", () => {
+  it("clube da Série A tem meta no estadual, na Série, na Copa e mostra o estadual como competição do momento", async () => {
+    const { metasDaTemporada, competicaoDoMomento, gritarDaBeira, iniciarPartida } = await import(
+      "@prancheta/engine"
+    );
+    const metas = metasDaTemporada(j.temporada, j.carreira);
+    const ids = metas.map((x) => x.competicao);
+    expect(ids).toContain("est-BA");
+    expect(ids).toContain("A");
+    expect(competicaoDoMomento(j.temporada, j.carreira)).toBe("est-BA");
+    const m = iniciarPartida(j);
+    const eu = m.casa.ehUsuario ? m.casa : m.visitante;
+    m.fase = "jogo";
+    m.minuto = 10;
+    const antes = eu.bonus.A;
+    gritarDaBeira(m, eu, "incentivar");
+    expect(eu.bonus.A).toBeGreaterThan(antes);
+    expect(gritarDaBeira(m, eu, "cobrar")).toContain("digerindo");
+  });
+});

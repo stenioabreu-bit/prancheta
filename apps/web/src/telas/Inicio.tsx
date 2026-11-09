@@ -1,4 +1,6 @@
 import {
+  competicaoDoMomento,
+  metasDaTemporada,
   candidatar,
   chaveDoLogo,
   dataDoJogo,
@@ -184,46 +186,33 @@ function Situacao() {
   const jogo = useJogo();
   const { carreira, temporada: t } = jogo;
   if (!carreira.clubeId) return null;
-  const jaJogou = carreira.historico.some(
-    (h) => h.temporada === t.temporada && !h.competicao.startsWith("Copa"),
-  );
-  const pos = jaJogou ? posicaoNaTabela(t, carreira.clubeId) : null;
-  const dentro = pos !== null && pos <= carreira.meta.posicao;
-  const copa = t.copa;
-  const ultimaFase = copa.fases[copa.fases.length - 1];
-  const naCopa = ultimaFase?.confrontos.some((c) => c.a === carreira.clubeId || c.b === carreira.clubeId);
-  const eliminado =
-    !naCopa &&
-    copa.fases.some((f) => f.confrontos.some((c) => c.a === carreira.clubeId || c.b === carreira.clubeId));
-  const copaTexto =
-    copa.campeao === carreira.clubeId
-      ? "Campeão!"
-      : naCopa
-        ? `Na ${ultimaFase!.nome.toLowerCase()}`
-        : eliminado
-          ? "Eliminado"
-          : (copa.entram[4] ?? []).includes(carreira.clubeId)
-            ? "Entra na 5ª fase"
-            : "Fora";
+  const metas = metasDaTemporada(t, carreira);
+  const agora = competicaoDoMomento(t, carreira);
+  const ordenadas = [
+    ...metas.filter((x) => x.competicao === agora),
+    ...metas.filter((x) => x.competicao !== agora),
+  ];
   return (
     <section className="panel stack">
       <span className="eyebrow">Temporada {t.temporada}</span>
       <dl className="kv">
-        <dt>Meta</dt>
-        <dd>{carreira.meta.texto}</dd>
-        <dt>Posição</dt>
-        <dd>
-          {pos ? `${pos}º` : "—"}{" "}
-          {pos !== null && (
-            <span className={dentro ? "badge" : "muted"}>{dentro ? "dentro da meta" : "fora da meta"}</span>
-          )}
-        </dd>
-        {!t.semCopa && (
-          <>
-            <dt>Copa do Brasil</dt>
-            <dd>{copaTexto}</dd>
-          </>
-        )}
+        {ordenadas.map((x) => (
+          <Fragment key={x.competicao}>
+            <dt>
+              {x.nome}
+              {x.competicao === agora ? <span className="small muted"> · agora</span> : null}
+            </dt>
+            <dd>
+              {x.texto}
+              <span className="small muted" style={{ display: "block" }}>
+                {x.situacao}{" "}
+                {x.ok !== null && (
+                  <span className={x.ok ? "badge" : "muted"}>{x.ok ? "dentro da meta" : "fora da meta"}</span>
+                )}
+              </span>
+            </dd>
+          </Fragment>
+        ))}
         <dt>Últimos</dt>
         <dd>
           <Forma

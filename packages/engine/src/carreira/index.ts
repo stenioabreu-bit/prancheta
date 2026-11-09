@@ -8,3 +8,4 @@ export * from "./diretoria";
 export * from "./semana";
 export * from "./jogo";
 export * from "./relatorios";
+export * from "./metas";

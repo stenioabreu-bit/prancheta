@@ -75,6 +75,8 @@ export interface LadoPartida {
   minutoDaUltimaParada: number | null;
   saidos: string[];
   est: EstatisticasPartida;
+  /** Efeito da última conversa da beira do campo (some no minuto `ate`). */
+  conversa?: { ate: number; desde: number; A: number; M: number; D: number };
 }
 
 export type TipoEvento =
@@ -648,6 +650,13 @@ export function passo(m: Partida): ResultadoDoPasso {
   const A = m.visitante;
   if (m.minuto === 1) registrar(m, "apito", `Rola a bola! ${H.clube.nome} x ${A.clube.nome}.`, null);
   if (m.minuto === 46) registrar(m, "apito", "Começa o segundo tempo.", null);
+  for (const lado of [H, A]) {
+    const c = lado.conversa;
+    if (c && m.minuto >= c.ate && c.A + c.M + c.D !== 0) {
+      lado.bonus = { ...lado.bonus, A: lado.bonus.A - c.A, M: lado.bonus.M - c.M, D: lado.bonus.D - c.D };
+      lado.conversa = { ...c, A: 0, M: 0, D: 0 };
+    }
+  }
   inteligenciaArtificial(m, H, A);
   inteligenciaArtificial(m, A, H);
   const mh = modificadoresTaticos(H.tatica);
@@ -889,4 +898,74 @@ export function encerrarPartida(m: Partida): ResultadoPartida {
     golsVisitante: A.est.gols,
     est: { casa: { ...H.est }, visitante: { ...A.est } },
   };
+}
+
+export type GritoDaBeira = "incentivar" | "cobrar" | "acalmar";
+
+export const GRITOS: readonly { id: GritoDaBeira; texto: string; dica: string }[] = [
+  {
+    id: "incentivar",
+    texto: 'Incentivar: "Vamos pra cima, confiem!"',
+    dica: "Mais ataque e moral por 15 minutos.",
+  },
+  {
+    id: "cobrar",
+    texto: 'Cobrar: "Acorda, time! Mais intensidade!"',
+    dica: "Ataque e meio mais fortes; quem está mal pode sentir.",
+  },
+  {
+    id: "acalmar",
+    texto: 'Acalmar: "Calma, toca a bola, segura o jogo."',
+    dica: "Defesa mais firme e menos nervosismo.",
+  },
+];
+
+/**
+ * Conversa da beira do campo durante o jogo: um empurrão de 15 minutos nas linhas e na moral.
+ * Uma vez a cada 15 minutos; o efeito depende do placar (cobrar perdendo funciona melhor que ganhando).
+ */
+export function gritarDaBeira(m: Partida, lado: LadoPartida, grito: GritoDaBeira): string {
+  if (m.fase === "pre" || m.minuto >= 90) return "O jogo não está rolando.";
+  if (lado.conversa && m.minuto - lado.conversa.desde < 15)
+    return `O time ainda está digerindo a última conversa. Fale de novo a partir dos ${lado.conversa.desde + 15}'.`;
+  const outro = lado === m.casa ? m.visitante : m.casa;
+  const saldo = lado.est.gols - outro.est.gols;
+  let efeito = { A: 0, M: 0, D: 0 };
+  let moral = 0;
+  let resposta: string;
+  if (grito === "incentivar") {
+    efeito = { A: 0.06, M: 0.03, D: 0 };
+    moral = 5;
+    resposta = "O time cresce com o apoio e se solta.";
+  } else if (grito === "cobrar") {
+    const funciona = saldo <= 0;
+    efeito = funciona ? { A: 0.07, M: 0.05, D: -0.02 } : { A: 0.02, M: 0.02, D: 0 };
+    moral = funciona ? 2 : -4;
+    resposta = funciona
+      ? "A bronca acorda o time, que aperta a marcação lá em cima."
+      : "Cobrar ganhando irritou alguns jogadores.";
+  } else {
+    efeito = { A: -0.02, M: 0.03, D: 0.07 };
+    moral = 3;
+    resposta = "O time baixa a ansiedade e passa a tocar com calma.";
+  }
+  lado.bonus = {
+    ...lado.bonus,
+    A: lado.bonus.A + efeito.A,
+    M: lado.bonus.M + efeito.M,
+    D: lado.bonus.D + efeito.D,
+  };
+  lado.conversa = { ate: m.minuto + 15, desde: m.minuto, ...efeito };
+  for (const p of lado.emCampo) {
+    const delta =
+      grito === "cobrar" && moral < 0 && p.atual.jogador.perso === "temperamental" ? moral * 2 : moral;
+    p.atual.moral = Math.max(0, Math.min(100, p.atual.moral + delta));
+  }
+  registrar(
+    m,
+    "neutro",
+    `Da beira do campo, o técnico do ${lado.clube.nome} chama o time. ${resposta}`,
+    lado,
+  );
+  return resposta;
 }

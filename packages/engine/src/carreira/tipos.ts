@@ -126,6 +126,8 @@ export interface EstadoCarreira {
   base: Jogador[];
   promessas: Promessa[];
   caixa: Mensagem[];
+  /** Títulos conquistados (sala de troféus). */
+  titulos?: import("./titulos").Titulo[];
   noticias: Noticia[];
   marcas: Record<string, number>;
   tonsRecentes: TomDeConversa[];

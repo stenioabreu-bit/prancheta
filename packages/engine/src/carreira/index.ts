@@ -9,3 +9,4 @@ export * from "./semana";
 export * from "./jogo";
 export * from "./relatorios";
 export * from "./metas";
+export * from "./titulos";

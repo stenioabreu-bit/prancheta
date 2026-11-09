@@ -915,7 +915,6 @@ export function encerrarPartida(m: Partida): ResultadoPartida {
   };
 }
 
-
 /** Uma conversa a cada 15 minutos. */
 export function podeGritar(m: Partida, lado: LadoPartida): boolean {
   return !lado.conversa || m.minuto - lado.conversa.desde >= 15;
@@ -1073,7 +1072,8 @@ export function conversarComOTime(
   fala: string,
 ): ResultadoDaConversa {
   if (m.fase === "pre" || m.minuto >= 90) return { texto: "O jogo não está rolando.", tom: "neutro" };
-  if (!podeGritar(m, lado)) return { texto: `Nova conversa a partir dos ${(lado.conversa?.desde ?? 0) + 15}'.`, tom: "neutro" };
+  if (!podeGritar(m, lado))
+    return { texto: `Nova conversa a partir dos ${(lado.conversa?.desde ?? 0) + 15}'.`, tom: "neutro" };
   const outro = lado === m.casa ? m.visitante : m.casa;
   const saldo = lado.est.gols - outro.est.gols;
   const emCampo = lado.emCampo;

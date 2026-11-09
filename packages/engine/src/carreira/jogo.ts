@@ -46,6 +46,7 @@ import {
   reagirAoJogoDaLiga,
 } from "./diretoria";
 import { enviarMensagem, responderMensagem } from "./efeitos";
+import { registrarTitulos } from "./titulos";
 import { type ResumoDaRodada, semana } from "./semana";
 import type { EstadoCarreira } from "./tipos";
 import { bonusDoUsuario, reporDesfalques } from "./treino";
@@ -335,6 +336,7 @@ export function seguir(estado: EstadoJogo): void {
   if (t.rodada === rodadaAntes) return;
   reagirACopa(estado, rodadaAntes);
   premiarContinentais(estado);
+  registrarTitulos(estado);
   const meuClube = estado.carreira.clubeId ? t.clubes[estado.carreira.clubeId] : null;
   if (meuClube) {
     completarFinancas(estado.mercado.financas, meuClube, divisaoDo(t, meuClube.id), t.temporada);
@@ -372,6 +374,7 @@ export function fimDeTemporada(estado: EstadoJogo): boolean {
 
 /** Vira a temporada; diretoria e torcida voltam para perto do meio e a meta é refeita. */
 export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
+  registrarTitulos(estado);
   const premio = premiacaoDaTemporada(estado);
   const anterior = estado.carreira.clubeId;
   const divisaoAntes = anterior ? divisaoDo(estado.temporada, anterior) : null;

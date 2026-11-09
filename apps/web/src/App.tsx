@@ -1,3 +1,4 @@
+import { Comemoracao } from "./componentes/Comemoracao";
 import { Noticias } from "./telas/Noticias";
 import {
   divisaoDo,
@@ -144,6 +145,7 @@ export function App() {
         </main>
       </div>
       {emPartida && <Partida />}
+      {!emPartida && <Comemoracao />}
       <Aviso />
     </>
   );

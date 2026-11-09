@@ -698,3 +698,17 @@ function evoluirElencos(estado: EstadoTemporada, rng: Rng, resumo: ResumoTempora
     clube.forca = forcaDoClube(clube);
   }
 }
+
+/** Jogo de volta de mata-mata: placar da ida (na ordem do jogo de volta) para mostrar o agregado. */
+export function idaDoConfronto(
+  estado: EstadoTemporada,
+  jogo: JogoAgendado,
+): { casa: string; visitante: string; placar: [number, number] } | null {
+  const fase = fasesDaCompeticao(estado, jogo.competicao).find((f) => f.nome === jogo.fase);
+  if (fase?.tipo !== "mataMata") return null;
+  const c = fase.confrontos[jogo.grupo];
+  if (!c || c.jogos.length < 2 || c.jogos[1] !== jogo.id) return null;
+  const ida = estado.jogos[c.jogos[0]!];
+  if (!ida?.placar) return null;
+  return { casa: ida.casa, visitante: ida.visitante, placar: ida.placar };
+}

@@ -1,6 +1,7 @@
 import {
   type LadoPartida,
   type Partida as PartidaDoMotor,
+  idaDoConfronto,
   GRUPOS_DE_FALA,
   conversarComOTime,
   podeGritar,
@@ -344,6 +345,16 @@ export function Partida() {
       : nomeDaCompeticao(jogo.temporada, jogoAgendado.competicao)
     : "";
 
+  const ida = jogoAgendado ? idaDoConfronto(jogo.temporada, jogoAgendado) : null;
+  const nomeCurto = (id: string) => jogo.temporada.clubes[id]?.sigla ?? id;
+  // Agregado na ordem do jogo de volta (casa x visitante).
+  const agregadoCasa = ida
+    ? m.casa.est.gols + (ida.casa === m.casa.clube.id ? ida.placar[0] : ida.placar[1])
+    : 0;
+  const agregadoFora = ida
+    ? m.visitante.est.gols + (ida.casa === m.visitante.clube.id ? ida.placar[0] : ida.placar[1])
+    : 0;
+
   function simularAteOFim() {
     setRodando(false);
     let guarda = 0;
@@ -378,6 +389,15 @@ export function Partida() {
                 {m.casa.est.gols} – {m.visitante.est.gols}
               </div>
               <span className="relogio-placar num">{relogio}</span>
+              {ida && (
+                <span className="small agregado">
+                  Ida: {nomeCurto(ida.casa)} {ida.placar[0]} x {ida.placar[1]} {nomeCurto(ida.visitante)} ·
+                  Agregado{" "}
+                  <b className="num">
+                    {agregadoCasa} x {agregadoFora}
+                  </b>
+                </span>
+              )}
             </div>
             <div className="t">
               <Escudo clube={m.visitante.clube} tamanho={56} />

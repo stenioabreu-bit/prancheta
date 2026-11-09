@@ -2600,3 +2600,103 @@ body {
 .olheiro .cartas-olheiro {
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
 }
+.agregado {
+  color: var(--muted);
+}
+.agregado b {
+  color: var(--ink);
+}
+
+/* Tela de campeão e sala de troféus */
+.comemoracao {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.72);
+  animation: aparecer 0.35s ease-out;
+}
+.comemoracao-card {
+  position: relative;
+  overflow: hidden;
+  width: min(420px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 28px 22px 22px;
+  border-radius: 18px;
+  background: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--gold) 35%, var(--surface)),
+    var(--surface) 70%
+  );
+  border: 1px solid color-mix(in srgb, var(--gold) 60%, var(--line));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.comemoracao-card h2 {
+  margin: 0;
+  font-size: 26px;
+}
+.comemoracao-card .kv {
+  width: 100%;
+  text-align: left;
+}
+.comemoracao-card .btn {
+  width: 100%;
+}
+.comemoracao .taca {
+  filter: drop-shadow(0 6px 14px rgba(217, 166, 70, 0.45));
+  animation: subir 0.6s ease-out;
+}
+.confete {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #d9a646 1.5px, transparent 2px),
+    radial-gradient(circle, #86ad90 1.5px, transparent 2px),
+    radial-gradient(circle, #ece4d3 1.2px, transparent 2px);
+  background-size: 60px 60px, 80px 80px, 50px 50px;
+  background-position: 0 0, 20px 30px, 35px 10px;
+  opacity: 0.35;
+  animation: cair 6s linear infinite;
+}
+@keyframes cair {
+  to {
+    background-position: 0 600px, 20px 630px, 35px 610px;
+  }
+}
+@keyframes subir {
+  from {
+    transform: translateY(18px) scale(0.85);
+    opacity: 0;
+  }
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confete,
+  .comemoracao .taca,
+  .comemoracao {
+    animation: none;
+  }
+}
+.trofeus {
+  display: grid;
+  gap: 8px;
+}
+.trofeu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface2);
+}

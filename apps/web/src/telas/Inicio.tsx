@@ -11,6 +11,7 @@ import {
   novaTemporadaDoJogo,
   posicaoNaTabela,
   proximoJogoDoUsuario,
+  idaDoConfronto,
   relatorioDoAdversario,
   seguir,
   simularPartidaDoUsuario,
@@ -27,6 +28,7 @@ function ProximoJogo() {
   const setEmPartida = useLoja((s) => s.setEmPartida);
   const t = jogo.temporada;
   const proximo = proximoJogoDoUsuario(jogo);
+  const ida = proximo ? idaDoConfronto(jogo.temporada, proximo) : null;
   const meuId = jogo.carreira.clubeId!;
   if (!proximo) {
     return (
@@ -66,6 +68,15 @@ function ProximoJogo() {
         </div>
       </div>
       <dl className="kv">
+        {ida && (
+          <>
+            <dt>Jogo de ida</dt>
+            <dd>
+              {jogo.temporada.clubes[ida.casa]?.nome} {ida.placar[0]} x {ida.placar[1]}{" "}
+              {jogo.temporada.clubes[ida.visitante]?.nome}
+            </dd>
+          </>
+        )}
         <dt>Adversário</dt>
         <dd>
           {scout.forca} · {scout.esquema}

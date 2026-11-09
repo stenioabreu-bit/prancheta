@@ -26,6 +26,8 @@ import {
 import { useState } from "react";
 import { Folha, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
+import { Taca } from "../componentes/Comemoracao";
+import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import { FichaDoJogador, LinhaJogador } from "./Elenco";
 import { Olheiro } from "./Olheiro";
 
@@ -503,8 +505,47 @@ export function Carreira() {
   const abandonar = useLoja((s) => s.abandonar);
   const [confirmando, setConfirmando] = useState<"demissao" | "novo" | null>(null);
   const { carreira: c, mercado: m, temporada: t } = jogo;
+  const premios = (m.financas.movimentos ?? []).filter(
+    (x) => x.descricao.startsWith("Premiação") || x.descricao.startsWith("Título"),
+  );
   return (
     <div className="grade duas">
+      <section className="panel stack">
+        <h2>Sala de troféus</h2>
+        {(c.titulos ?? []).length === 0 ? (
+          <p className="vazio">Nenhum título ainda.</p>
+        ) : (
+          <div className="trofeus">
+            {[...(c.titulos ?? [])].reverse().map((x) => (
+              <div key={`${x.temporada}-${x.competicao}`} className="trofeu">
+                <Taca tamanho={40} />
+                <LogoCompeticao competicao={x.logo} tamanho={28} />
+                <div style={{ minWidth: 0 }}>
+                  <b>{x.nome}</b>
+                  <div className="small muted">
+                    {x.temporada} · {x.clube} · {formatarDinheiro(x.premio)}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        <h3>Premiações recebidas</h3>
+        {premios.length === 0 ? (
+          <p className="vazio">Nenhuma premiação ainda.</p>
+        ) : (
+          <ul className="lista-limpa">
+            {premios.slice(0, 20).map((x, i) => (
+              <li key={`${x.temporada}-${x.rodada}-${i}`} className="stat-linha">
+                <span>
+                  {x.descricao} <span className="muted">· {x.temporada}</span>
+                </span>
+                <span className="badge">{formatarDinheiro(x.valor)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
       <section className="panel stack">
         <h2>Carreira</h2>
         <dl className="kv">

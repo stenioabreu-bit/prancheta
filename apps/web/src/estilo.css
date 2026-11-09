@@ -2593,3 +2593,10 @@ body {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+.carta-olheiro.observado {
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+.olheiro .cartas-olheiro {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+}

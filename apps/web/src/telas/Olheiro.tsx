@@ -105,6 +105,7 @@ export function Olheiro() {
   const [aberto, setAberto] = useState<number | null>(null);
   const emEuro = (v: string) => (v.trim() ? Number(v.replace(",", ".")) / COTACAO[moeda] : undefined);
   const pedidos = jogo.mercado.olheiro ?? [];
+  const indicados = new Set(jogo.mercado.indicacoes.map((i) => i.jogadorId));
   const relatorio = pedidos.find((p) => p.id === aberto) ?? pedidos.find((p) => p.resultado);
 
   const enviar = () => {
@@ -136,7 +137,7 @@ export function Olheiro() {
     Object.values(jogo.temporada.clubes).find((c) => c.jogadores.some((x) => x.id === id));
 
   return (
-    <div className="grade lateral olheiro">
+    <div className="stack olheiro">
       <section className="panel stack">
         <h2>Missão do olheiro</h2>
         <p className="small muted" style={{ margin: 0 }}>
@@ -189,10 +190,7 @@ export function Olheiro() {
         <button type="button" className="btn primary big" onClick={enviar}>
           Enviar olheiro
         </button>
-      </section>
-
-      <section className="panel stack">
-        <h2>Relatórios</h2>
+        <h3 style={{ marginTop: 12 }}>Relatórios</h3>
         {pedidos.length === 0 && <p className="vazio">Nenhuma missão ainda.</p>}
         <div className="filters" role="group" aria-label="Missões">
           {pedidos.map((p) => (
@@ -223,7 +221,7 @@ export function Olheiro() {
             if (!c || !j) return null;
             const valor = valorDeMercado(j, divisaoDo(jogo.temporada, c.id) ?? "B");
             return (
-              <article key={id} className="carta-olheiro">
+              <article key={id} className={`carta-olheiro${indicados.has(id) ? " observado" : ""}`}>
                 <header>
                   <span className="ovr-grande">{j.ovr}</span>
                   <span className={`pos ${j.pos}`}>{j.pos}</span>
@@ -248,8 +246,13 @@ export function Olheiro() {
                     </li>
                   ))}
                 </ul>
-                <button type="button" className="btn" onClick={() => avisar(mexer((jg) => indicar(jg, id)))}>
-                  Indicar à diretoria
+                <button
+                  type="button"
+                  className="btn"
+                  disabled={indicados.has(id)}
+                  onClick={() => avisar(mexer((jg) => indicar(jg, id)))}
+                >
+                  {indicados.has(id) ? "Em observação pela diretoria" : "Indicar à diretoria"}
                 </button>
               </article>
             );

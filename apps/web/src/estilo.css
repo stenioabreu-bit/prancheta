@@ -2728,3 +2728,39 @@ body {
 .faixa-cor.meu {
   box-shadow: 0 0 0 2px #e8c547, 0 0 0 3px rgba(0, 0, 0, 0.35);
 }
+
+/* Botões da partida em telas estreitas: cabem os cinco sem cortar texto. */
+@container app (max-width: 460px) {
+  .match .ctrl {
+    gap: 4px;
+    padding-inline: max(8px, env(safe-area-inset-left, 0px));
+  }
+  .match .ctrl .btn {
+    font-size: 11.5px;
+    letter-spacing: 0;
+    line-height: 1.15;
+    padding: 8px 2px;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+  .match .ctrl .btn:first-child {
+    flex: 1.2;
+  }
+}
+@container app (max-width: 340px) {
+  .match .ctrl .btn {
+    font-size: 10.5px;
+  }
+}
+@container app (max-width: 340px) {
+  .match .ctrl {
+    gap: 3px;
+  }
+  .match .ctrl .btn {
+    padding-inline: 1px;
+  }
+  .match .ctrl .btn:first-child {
+    flex: 1.1;
+  }
+}

@@ -588,8 +588,8 @@
       "nomeOficial": "División Profesional del Fútbol Boliviano",
       "categoria": "america-do-sul",
       "pais": "BOL",
-      "arquivo": null,
-      "status": "pendente",
+      "arquivo": "america-do-sul/division-profesional-bolivia.png",
+      "status": "integrado",
       "motivo": "Site da FBF (Bolívia) sem o logo da División Profesional; Wikipédia sem arquivo."
     },
     {

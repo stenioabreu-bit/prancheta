@@ -31,12 +31,13 @@ import { Olheiro } from "./Olheiro";
 
 type Secao = "mercado" | "olheiro" | "treino" | "comissao" | "base";
 
-type FiltroCaixa = "todas" | "novas" | "tarefas" | "naoLidas";
+type FiltroCaixa = "todas" | "novas" | "tarefas" | "naoLidas" | "arquivo";
 const FILTROS: { id: FiltroCaixa; nome: string }[] = [
   { id: "todas", nome: "Todas" },
   { id: "novas", nome: "Novas" },
   { id: "tarefas", nome: "Tarefas" },
   { id: "naoLidas", nome: "Não lidas" },
+  { id: "arquivo", nome: "Arquivo" },
 ];
 
 /** Caixa do Portal (padrão FM26): filtros, lista enxuta e o cartão da mensagem ao clicar. */
@@ -47,7 +48,12 @@ export function Caixa() {
   const [aberta, setAberta] = useState<string | null>(null);
   const [reacoes, setReacoes] = useState<string[]>([]);
   const rodada = jogo.temporada.rodada;
+  // Depois de duas rodadas a mensagem sai da caixa (fica no Arquivo), a não ser que ainda peça resposta.
+  const recente = (m: { rodada: number; opcoes?: unknown; resposta?: unknown }) =>
+    m.rodada >= rodada - 2 || (!!m.opcoes && m.resposta === undefined);
   const lista = jogo.carreira.caixa.filter((m) => {
+    if (filtro === "arquivo") return !recente(m);
+    if (!recente(m)) return false;
     if (filtro === "novas") return m.rodada >= rodada - 1;
     if (filtro === "tarefas") return !!m.opcoes && m.resposta === undefined;
     if (filtro === "naoLidas") return !m.lida;

@@ -228,7 +228,8 @@ function Situacao() {
 
 function Noticias() {
   const jogo = useJogo();
-  const noticias = jogo.carreira.noticias.slice(0, 12);
+  // No Portal ficam só as das duas últimas rodadas; a aba Notícias guarda todas.
+  const noticias = jogo.carreira.noticias.filter((n) => n.rodada >= jogo.temporada.rodada - 2).slice(0, 12);
   return (
     <section className="panel stack">
       <h3>Notícias</h3>

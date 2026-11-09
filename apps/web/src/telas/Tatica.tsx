@@ -404,6 +404,9 @@ export function Tatica() {
         const papelOutro = titular === a ? pb : pa;
         clube.titulares[indice.indice] = outro;
         if (papelOutro.tipo === "banco") lista[lista.indexOf(outro)] = titular;
+        // Titular que sai do time vai para o banco (banco cheio: ocupa a última vaga).
+        else if (lista.length < LIMITE_DO_BANCO) lista.push(titular);
+        else lista[lista.length - 1] = titular;
       } else if (pa.tipo !== pb.tipo) {
         const noBanco = pa.tipo === "banco" ? a : b;
         const deFora = noBanco === a ? b : a;

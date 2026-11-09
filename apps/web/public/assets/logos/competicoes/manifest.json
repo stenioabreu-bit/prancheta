@@ -657,8 +657,8 @@
       "nomeOficial": "División de Honor (Primera División)",
       "categoria": "america-do-sul",
       "pais": "PRY",
-      "arquivo": null,
-      "status": "pendente",
+      "arquivo": "america-do-sul/primera-division-paraguai.png",
+      "status": "integrado",
       "motivo": "Arquivo do Commons é 'trabalho próprio' de usuário (CC BY-SA); origem oficial não verificável."
     },
     {
@@ -666,8 +666,8 @@
       "nomeOficial": "Liga 1",
       "categoria": "america-do-sul",
       "pais": "PER",
-      "arquivo": null,
-      "status": "pendente",
+      "arquivo": "america-do-sul/liga-1-peru.svg",
+      "status": "integrado",
       "motivo": "SVG do Commons vem de footylogos.com; site liga1.pe sem arquivo acessível."
     },
     {

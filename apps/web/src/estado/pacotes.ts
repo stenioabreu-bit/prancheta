@@ -9,15 +9,22 @@ const JSON_REAL = import.meta.glob<PacoteDados>("../../../../packages/data/packs
   eager: true,
   import: "default",
 });
-const ESCUDOS_REAL = import.meta.glob<string>("../../../../packages/data/packs/teste-real/escudos/*.png", {
+const ESCUDOS = import.meta.glob<string>("../../../../packages/data/packs/*/escudos/*.{png,jpg,gif,svg,webp}", {
   eager: true,
   query: "?url",
   import: "default",
 });
+/** Escudos de um pacote: id do clube → URL. */
+function escudosDo(pacote: string): Record<string, string> {
+  const prefixo = `../../../../packages/data/packs/${pacote}/escudos/`;
+  return Object.fromEntries(
+    Object.entries(ESCUDOS)
+      .filter(([caminho]) => caminho.startsWith(prefixo))
+      .map(([caminho, url]) => [caminho.slice(prefixo.length).replace(/\.\w+$/, ""), url]),
+  );
+}
 const PACOTE_REAL = Object.values(JSON_REAL)[0] ?? null;
-const URLS_REAL: Record<string, string> = Object.fromEntries(
-  Object.entries(ESCUDOS_REAL).map(([caminho, url]) => [caminho.split("/").pop()!.replace(".png", ""), url]),
-);
+const URLS_REAL = escudosDo(ID_BRASILEIRAO);
 // Ligas estrangeiras 2026 (geradas por tools/dados/gerar_pacotes_exterior.py), carregadas só quando escolhidas.
 const NOMES_EXTERIOR: Record<string, [string, string]> = {
   "argentina-2026": ["Liga Profesional 2026", "primera-division-argentina"],
@@ -65,7 +72,7 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
     ...OPCOES_EMBUTIDAS,
     ...Object.entries(NOMES_EXTERIOR)
       .filter(([id]) => carregadorExterior(id))
-      .map(([id, [nome, logo]]) => ({ id, nome, logo, ficticio: false, escudos: 0 })),
+      .map(([id, [nome, logo]]) => ({ id, nome, logo, ficticio: false, escudos: Object.keys(escudosDo(id)).length })),
     ...importados.map((p) => ({
       id: p.pacote.id,
       nome: p.pacote.nome,
@@ -78,7 +85,7 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
 export async function carregarPacote(id: string): Promise<PacoteImportado> {
   if (id === ID_BRASILEIRAO && PACOTE_REAL) return { pacote: PACOTE_REAL, escudos: URLS_REAL };
   const exterior = carregadorExterior(id);
-  if (exterior) return { pacote: await exterior(), escudos: {} };
+  if (exterior) return { pacote: await exterior(), escudos: escudosDo(id) };
   if (id === ID_FICTICIO) return { pacote: pacoteFicticio(), escudos: {} };
   const p = await lerPacote(id);
   if (!p) throw new Error("Pacote não encontrado neste navegador. Importe a pasta de novo.");

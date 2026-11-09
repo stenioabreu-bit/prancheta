@@ -1,18 +1,18 @@
 :root {
-  --bg: #e9ece6;
-  --surface: #ffffff;
-  --surface2: #f4f6f2;
-  --ink: #14181a;
-  --muted: #5b645f;
-  --line: #d3d8d0;
-  --accent: #17603f;
-  --accent-ink: #ffffff;
-  --pitch: #2c7a4c;
-  --pitch-line: rgba(255, 255, 255, 0.55);
-  --gold: #a8761c;
-  --red: #b8322a;
-  --blue: #2a5f9e;
-  --good: #1f7a4a;
+  --bg: #e8e1d1;
+  --surface: #f4efe4;
+  --surface2: #ece5d6;
+  --ink: #1b1d1b;
+  --muted: #5e6359;
+  --line: #d2c9b6;
+  --accent: #24432f;
+  --accent-ink: #f1ead9;
+  --pitch: #2b4a35;
+  --pitch-line: rgba(241, 234, 217, 0.6);
+  --gold: #9a7535;
+  --red: #a3392f;
+  --blue: #3d5a6b;
+  --good: #2f5e3f;
   --f-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
   --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -20,38 +20,38 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1312;
-    --surface: #171c1a;
-    --surface2: #1d2321;
-    --ink: #e6ebe7;
-    --muted: #97a19b;
-    --line: #2a322f;
-    --accent: #4cbb83;
-    --accent-ink: #06120c;
-    --pitch: #1e5838;
-    --pitch-line: rgba(255, 255, 255, 0.38);
-    --gold: #d9a646;
-    --red: #e2645a;
-    --blue: #6b9fdc;
-    --good: #4cbb83;
+    --bg: #141414;
+    --surface: #1c1c1b;
+    --surface2: #242523;
+    --ink: #ece4d3;
+    --muted: #9a978c;
+    --line: #30312d;
+    --accent: #86ad90;
+    --accent-ink: #121412;
+    --pitch: #22392a;
+    --pitch-line: rgba(236, 228, 211, 0.4);
+    --gold: #c9a35e;
+    --red: #c7655a;
+    --blue: #869fac;
+    --good: #86ad90;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1312;
-  --surface: #171c1a;
-  --surface2: #1d2321;
-  --ink: #e6ebe7;
-  --muted: #97a19b;
-  --line: #2a322f;
-  --accent: #4cbb83;
-  --accent-ink: #06120c;
-  --pitch: #1e5838;
-  --pitch-line: rgba(255, 255, 255, 0.38);
-  --gold: #d9a646;
-  --red: #e2645a;
-  --blue: #6b9fdc;
-  --good: #4cbb83;
+  --bg: #141414;
+  --surface: #1c1c1b;
+  --surface2: #242523;
+  --ink: #ece4d3;
+  --muted: #9a978c;
+  --line: #30312d;
+  --accent: #86ad90;
+  --accent-ink: #121412;
+  --pitch: #22392a;
+  --pitch-line: rgba(236, 228, 211, 0.4);
+  --gold: #c9a35e;
+  --red: #c7655a;
+  --blue: #869fac;
+  --good: #86ad90;
   color-scheme: dark;
 }
 
@@ -344,7 +344,7 @@ h3 {
   background: var(--good);
 }
 .fp.E {
-  background: #8a8f8b;
+  background: #8f8b80;
 }
 .fp.D {
   background: var(--red);
@@ -566,7 +566,7 @@ h3 {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #f5f5f2;
+  background: #f1ead9;
   color: #111;
   border: 2px solid #111;
   display: grid;
@@ -1073,7 +1073,7 @@ td.z.z4 {
   grid-template-columns: 24px 1fr auto;
 }
 .campo-wrap {
-  background: #14361f;
+  background: #16241b;
   padding: 8px max(16px, env(safe-area-inset-right, 0px)) 6px max(16px, env(safe-area-inset-left, 0px));
   display: flex;
   flex-direction: column;
@@ -1092,7 +1092,7 @@ td.z.z4 {
 .campo-wrap .cap {
   font-family: var(--f-mono);
   font-size: 12px;
-  color: #e8f2ea;
+  color: #ece4d3;
   min-height: 2.6em;
   max-width: 640px;
   margin: 0 auto;
@@ -1126,7 +1126,7 @@ tr.me.pisca td {
   width: 100%;
   font-family: var(--f-mono);
   font-size: 12px;
-  color: #e8f2ea;
+  color: #ece4d3;
   align-items: center;
 }
 .campo-wrap .leg span {
@@ -1135,13 +1135,13 @@ tr.me.pisca td {
   gap: 5px;
 }
 .campo-wrap .leg small {
-  color: #9fc3a9;
+  color: #a9c2ae;
   font-size: 11px;
 }
 .campo-wrap .leg .kit {
   width: 12px;
   height: 12px;
-  border: 2px solid #0b1a10;
+  border: 2px solid #121a15;
   display: inline-block;
   border-radius: 2px;
 }
@@ -1911,7 +1911,7 @@ html[data-deitado] {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #f5f5f2;
+  background: #f1ead9;
   color: #111;
   border: 2px solid #111;
   display: grid;
@@ -2023,7 +2023,7 @@ html[data-deitado] {
   display: block;
 }
 .logo-comp.fundo-escuro {
-  background: #14181a;
+  background: #1b1d1b;
   padding: 2px;
 }
 .comp-rotulo {
@@ -2034,12 +2034,12 @@ html[data-deitado] {
 /* No tema escuro, logos feitos para fundo claro ganham uma placa clara (a imagem não é alterada). */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .logo-comp.fundo-claro {
-    background: #f4f6f2;
+    background: #f1ead9;
     padding: 2px;
   }
 }
 :root[data-theme="dark"] .logo-comp.fundo-claro {
-  background: #f4f6f2;
+  background: #f1ead9;
   padding: 2px;
 }
 
@@ -2063,7 +2063,7 @@ html[data-deitado] {
 
 /* Campo da prancheta no padrão de diagrama tático: listras, marcações oficiais e terços tracejados. */
 .campo-h {
-  background: repeating-linear-gradient(90deg, #2f855a 0 8.33%, #2a7a52 8.33% 16.66%);
+  background: repeating-linear-gradient(90deg, #2b4a35 0 8.33%, #2b4a35 8.33% 16.66%);
   border: 0;
 }
 .campo-h::before {
@@ -2188,7 +2188,7 @@ html[data-deitado] {
 .slot-h .fad i {
   display: block;
   height: 100%;
-  background: #4cbb83;
+  background: #86ad90;
 }
 /* No Portal móvel, cartões usam a largura inteira em vez de espremer valores. */
 @container app (max-width: 900px) {

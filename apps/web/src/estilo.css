@@ -804,7 +804,7 @@ td.z.z4 {
 }
 .tones {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
   gap: 8px;
 }
 .tone {
@@ -2333,4 +2333,45 @@ html[data-deitado] {
 .btn.escolhido:disabled {
   opacity: 0.7;
   outline: 1px solid var(--muted);
+}
+
+/* Mobile: placar compacto, menu com rolagem lateral. */
+@media (max-width: 640px) {
+  .logo-placar .logo-comp {
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .logo-placar {
+    padding: 4px;
+    border-radius: 9px;
+  }
+  .centro-placar > .small {
+    display: none;
+  }
+  .relogio-placar {
+    font-size: 16px;
+  }
+  .sumula {
+    font-size: 10.5px;
+    line-height: 1.35;
+    max-height: 64px;
+    overflow-y: auto;
+  }
+  .tabs .in {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs .in::-webkit-scrollbar {
+    display: none;
+  }
+  .tabs button {
+    flex: 0 0 auto;
+    min-width: 72px;
+  }
+}
+.ic-bola {
+  width: 11px;
+  height: 11px;
+  margin-right: 4px;
+  vertical-align: -1px;
 }

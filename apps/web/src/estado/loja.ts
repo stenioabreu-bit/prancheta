@@ -6,7 +6,7 @@ import { create } from "zustand";
 import { armazenamentoDoNavegador, gravarConfig, lerConfig } from "./banco";
 import { carregarPacote, urlsDosEscudos } from "./pacotes";
 
-export type Aba = "inicio" | "clube" | "elenco" | "tatica" | "tabela";
+export type Aba = "inicio" | "clube" | "elenco" | "tatica" | "tabela" | "noticias" | "carreira";
 
 interface Loja {
   pronto: boolean;

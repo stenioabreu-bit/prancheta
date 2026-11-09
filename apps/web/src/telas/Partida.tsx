@@ -595,9 +595,19 @@ function Sumula({ m, lado }: { m: PartidaDoMotor; lado: "casa" | "visitante" }) 
     <ul className="sumula">
       {linhas.map((e, i) => (
         <li key={`${e.min}-${i}`}>
-          <span aria-hidden="true" className={`ic-${e.tipo}`}>
-            {e.tipo === "gol" ? "⚽" : ""}
-          </span>
+          {e.tipo === "gol" ? (
+            <svg className="ic-bola" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" strokeWidth="1.5" />
+              <path d="M12 7.2l4.2 3-1.6 5h-5.2l-1.6-5z" fill="currentColor" />
+              <path
+                d="M12 7.2V2M16.2 10.2l4.9-1.7M14.6 15.2l3 4.3M9.4 15.2l-3 4.3M7.8 10.2L2.9 8.5"
+                stroke="currentColor"
+                strokeWidth="1.3"
+              />
+            </svg>
+          ) : (
+            <span aria-hidden="true" className={`ic-${e.tipo}`} />
+          )}
           {nome(e.jogadores[0])} {e.min}'
           {e.tipo === "gol" && e.jogadores[1] ? (
             <span className="muted"> (Ass: {nome(e.jogadores[1])})</span>

@@ -1,3 +1,4 @@
+import { Noticias } from "./telas/Noticias";
 import {
   divisaoDo,
   motivacaoDoGrupo,
@@ -8,7 +9,7 @@ import {
 import { useEffect } from "react";
 import { Aviso, Escudo, Medidor } from "./componentes/basicos";
 import { type Aba, useJogo, useLoja } from "./estado/loja";
-import { Clube } from "./telas/Clube";
+import { Carreira, Clube } from "./telas/Clube";
 import { Elenco } from "./telas/Elenco";
 import { Inicio } from "./telas/Inicio";
 import { MenuInicial } from "./telas/MenuInicial";
@@ -23,6 +24,8 @@ const ABAS: { id: Aba; nome: string; dica: string }[] = [
   { id: "elenco", nome: "Elenco", dica: "Jogadores" },
   { id: "tatica", nome: "Tática", dica: "Escalação" },
   { id: "tabela", nome: "Competições", dica: "Tabelas" },
+  { id: "noticias", nome: "Notícias", dica: "Matérias" },
+  { id: "carreira", nome: "Carreira", dica: "Histórico" },
 ];
 
 function Topo() {
@@ -94,6 +97,8 @@ function Tela() {
   if (aba === "elenco") return <Elenco />;
   if (aba === "tatica") return <Tatica />;
   if (aba === "tabela") return <Tabela />;
+  if (aba === "noticias") return <Noticias />;
+  if (aba === "carreira") return <Carreira />;
   return <Inicio />;
 }
 

@@ -189,7 +189,7 @@ function destaqueDoJogador(at: Record<Atributo, number>): string {
   return `${NOME_ATRIBUTO[a]} ${v}`;
 }
 
-type Secao = "mercado" | "treino" | "comissao" | "base" | "carreira";
+type Secao = "mercado" | "treino" | "comissao" | "base";
 
 type FiltroCaixa = "todas" | "novas" | "tarefas" | "naoLidas";
 const FILTROS: { id: FiltroCaixa; nome: string }[] = [
@@ -651,7 +651,7 @@ function Base() {
   );
 }
 
-function Carreira() {
+export function Carreira() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const avisar = useLoja((s) => s.avisar);
@@ -740,7 +740,6 @@ const SECOES: { id: Secao; nome: string; precisaDeClube: boolean }[] = [
   { id: "treino", nome: "Treino", precisaDeClube: true },
   { id: "comissao", nome: "Comissão", precisaDeClube: true },
   { id: "base", nome: "Base", precisaDeClube: true },
-  { id: "carreira", nome: "Carreira", precisaDeClube: false },
 ];
 
 export function Clube() {
@@ -748,7 +747,8 @@ export function Clube() {
   const [secao, setSecao] = useState<Secao>("mercado");
   const temClube = !!jogo.carreira.clubeId;
   const disponiveis = SECOES.filter((s) => temClube || !s.precisaDeClube);
-  const atual = disponiveis.some((s) => s.id === secao) ? secao : "carreira";
+  if (!temClube) return <Carreira />;
+  const atual = disponiveis.some((s) => s.id === secao) ? secao : "mercado";
   return (
     <>
       <div className="subabas" role="group" aria-label="Seções do clube">
@@ -768,7 +768,6 @@ export function Clube() {
       {atual === "treino" && <Treino />}
       {atual === "comissao" && <Comissao />}
       {atual === "base" && <Base />}
-      {atual === "carreira" && <Carreira />}
     </>
   );
 }

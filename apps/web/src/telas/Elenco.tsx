@@ -5,14 +5,16 @@ import {
   devolverABase,
   divisaoDo,
   formatarDinheiro,
+  indicar,
   indicarVenda,
+  nomeDaCompeticao,
   opcoesDeConversa,
   salario,
   setorDaPosicao,
   valorDeMercado,
 } from "@prancheta/engine";
 import { useState } from "react";
-import { Atributo, Folha } from "../componentes/basicos";
+import { Atributo, Folha, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 
 export const NOME_ATRIBUTO: Record<(typeof ATRIBUTOS)[number], string> = {
@@ -79,17 +81,20 @@ export function LinhaJogador({
   );
 }
 
-function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: () => void }) {
+/** Ficha de qualquer jogador: do seu elenco (conversa, venda) ou de outro clube (scout e indicação). */
+export function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: () => void }) {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const avisar = useLoja((s) => s.avisar);
   const [reacoes, setReacoes] = useState<string[]>([]);
-  const clube = jogo.temporada.clubes[jogo.carreira.clubeId!]!;
-  const j = clube.jogadores.find((x) => x.id === jogadorId);
-  if (!j) return null;
+  const clube = Object.values(jogo.temporada.clubes).find((c) => c.jogadores.some((x) => x.id === jogadorId));
+  const j = clube?.jogadores.find((x) => x.id === jogadorId);
+  if (!clube || !j) return null;
+  const meu = clube.id === jogo.carreira.clubeId;
+  const porCompeticao = Object.entries(j.temporada.porCompeticao ?? {});
   const media = j.temporada.qtdNotas ? (j.temporada.somaNotas / j.temporada.qtdNotas).toFixed(2) : "—";
   const promessa = jogo.carreira.promessas.find((p) => p.jogadorId === j.id && p.status === "aberta");
-  const valor = valorDeMercado(j, divisaoDo(jogo.temporada, clube.id));
+  const valor = valorDeMercado(j, divisaoDo(jogo.temporada, clube.id) ?? "B");
   return (
     <Folha titulo={j.nome} aoFechar={aoFechar}>
       <div className="row small muted" style={{ flexWrap: "wrap" }}>
@@ -104,6 +109,14 @@ function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: 
         </span>
       </div>
       <dl className="kv">
+        {!meu && (
+          <>
+            <dt>Clube</dt>
+            <dd>
+              <NomeClube clube={clube} tamanho={14} />
+            </dd>
+          </>
+        )}
         <dt>Moral</dt>
         <dd className="num">{j.moral}</dd>
         <dt>Condição</dt>
@@ -112,6 +125,31 @@ function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: 
         <dd>
           {j.temporada.jogos} jogos · {j.temporada.gols} gols · {j.temporada.assist} assist. · nota {media}
         </dd>
+        {porCompeticao.length > 0 && (
+          <>
+            <dt>Por competição</dt>
+            <dd>
+              {porCompeticao
+                .map(
+                  ([c, e]) =>
+                    `${nomeDaCompeticao(jogo.temporada, c as never)}: ${e.jogos} j, ${e.gols} g, ${e.assist} a`,
+                )
+                .join(" · ")}
+            </dd>
+          </>
+        )}
+        {j.notas.length > 0 && (
+          <>
+            <dt>Últimas notas</dt>
+            <dd className="num">{j.notas.map((n) => n.toFixed(1)).join("  ")}</dd>
+          </>
+        )}
+        {j.potencial !== undefined && (
+          <>
+            <dt>Potencial</dt>
+            <dd className="num">{j.potencial}</dd>
+          </>
+        )}
         <dt>Mercado</dt>
         <dd>
           {formatarDinheiro(valor)} · salário {formatarDinheiro(salario(j) / 1000)}/mês
@@ -131,31 +169,44 @@ function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: 
           <Atributo key={a} nome={NOME_ATRIBUTO[a]} valor={j.at[a]} />
         ))}
       </div>
-      <h3>Conversar</h3>
-      <div className="stack" style={{ gap: 6 }}>
-        {opcoesDeConversa(clube, j).map((o) => (
-          <button
-            key={o.assunto}
-            type="button"
-            className="btn"
-            style={{ textAlign: "left" }}
-            onClick={() =>
-              setReacoes(mexer((jg) => conversar(jg.carreira, clube, jg.temporada.rodada, j.id, o.assunto)))
-            }
-          >
-            {o.texto}
-          </button>
-        ))}
-        {reacoes.length > 0 && (
-          <div className="resposta" role="status">
-            {reacoes.join(" ")}
-          </div>
-        )}
-      </div>
-      <button type="button" className="btn" onClick={() => avisar(mexer((jg) => indicarVenda(jg, j.id)))}>
-        Indicar venda à diretoria
-      </button>
-      {j.daBase && !clube.titulares.includes(j.id) && (
+      {!meu && (
+        <button
+          type="button"
+          className="btn primary"
+          onClick={() => avisar(mexer((jg) => indicar(jg, j.id)))}
+        >
+          Indicar contratação à diretoria
+        </button>
+      )}
+      {meu && <h3>Conversar</h3>}
+      {meu && (
+        <div className="stack" style={{ gap: 6 }}>
+          {opcoesDeConversa(clube, j).map((o) => (
+            <button
+              key={o.assunto}
+              type="button"
+              className="btn"
+              style={{ textAlign: "left" }}
+              onClick={() =>
+                setReacoes(mexer((jg) => conversar(jg.carreira, clube, jg.temporada.rodada, j.id, o.assunto)))
+              }
+            >
+              {o.texto}
+            </button>
+          ))}
+          {reacoes.length > 0 && (
+            <div className="resposta" role="status">
+              {reacoes.join(" ")}
+            </div>
+          )}
+        </div>
+      )}
+      {meu && (
+        <button type="button" className="btn" onClick={() => avisar(mexer((jg) => indicarVenda(jg, j.id)))}>
+          Indicar venda à diretoria
+        </button>
+      )}
+      {meu && j.daBase && !clube.titulares.includes(j.id) && (
         <button
           type="button"
           className="btn"

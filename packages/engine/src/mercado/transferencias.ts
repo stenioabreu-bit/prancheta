@@ -5,7 +5,7 @@ import { escalarAutomatico, forcaDoClube } from "../clube";
 import { divisaoDo } from "../competicao/temporada";
 import type { Divisao } from "../competicao/tipos";
 import { type Rng, limitar } from "../rng";
-import type { Clube, Jogador } from "../tipos";
+import type { Atributo, Clube, Jogador, Posicao } from "../tipos";
 import { pagarContratacao, receberVenda } from "./financas";
 import type { DecisaoPendente, EfeitoDeMercado, Indicacao } from "./tipos";
 import {
@@ -22,15 +22,34 @@ import {
 export interface ItemDoMercado {
   jogador: Jogador;
   clube: Clube;
-  divisao: Divisao;
+  /** Série do clube; null para clubes de fora das Séries (exterior ou só estadual). */
+  divisao: Divisao | null;
   valor: number;
+  estrangeiro: boolean;
 }
 
 export interface FiltroDoMercado {
   divisao?: Divisao;
   setor?: SetorDoMercado;
+  posicao?: Posicao;
+  valorMinimo?: number;
   valorMaximo?: number;
+  idadeMaxima?: number;
+  /** Atributo em destaque (ex.: VEL para jogadores rápidos) e o mínimo exigido. */
+  atributo?: Atributo;
+  atributoMinimo?: number;
+  origem?: "brasil" | "exterior";
   limite?: number;
+}
+
+/** Clubes que não disputam Séries nem estaduais: estrangeiros das copas continentais. */
+export function clubesEstrangeiros(estado: EstadoJogo): Set<string> {
+  const t = estado.temporada;
+  const br = new Set<string>([
+    ...Object.values(t.divisoes).flatMap((d) => d.clubes),
+    ...Object.values(t.estaduais ?? {}).flatMap((e) => e.clubes),
+  ]);
+  return new Set(Object.keys(t.clubes).filter((id) => !br.has(id)));
 }
 
 export function clubeDoJogador(estado: EstadoJogo, jogadorId: string): Clube | null {
@@ -40,22 +59,30 @@ export function clubeDoJogador(estado: EstadoJogo, jogadorId: string): Clube | n
 }
 
 export function valorNoClube(estado: EstadoJogo, j: Jogador, clube: Clube): number {
-  return valorDeMercado(j, divisaoDo(estado.temporada, clube.id));
+  return valorDeMercado(j, divisaoDo(estado.temporada, clube.id) ?? "B");
 }
 
 /** Jogadores dos outros clubes, do maior overall para o menor. */
 export function buscarNoMercado(estado: EstadoJogo, f: FiltroDoMercado = {}): ItemDoMercado[] {
   const t = estado.temporada;
   const itens: ItemDoMercado[] = [];
+  const fora = clubesEstrangeiros(estado);
   for (const clube of Object.values(t.clubes)) {
     if (clube.id === estado.carreira.clubeId) continue;
     const divisao = divisaoDo(t, clube.id);
-    if (!divisao || (f.divisao && f.divisao !== divisao)) continue;
+    const estrangeiro = fora.has(clube.id);
+    if (f.divisao && f.divisao !== divisao) continue;
+    if (f.origem === "exterior" && !estrangeiro) continue;
+    if (f.origem === "brasil" && estrangeiro) continue;
     for (const j of clube.jogadores) {
       if (f.setor && setorDaPosicao(j.pos) !== f.setor) continue;
-      const valor = valorDeMercado(j, divisao);
+      if (f.posicao && j.pos !== f.posicao && !j.alt.includes(f.posicao)) continue;
+      if (f.idadeMaxima !== undefined && (j.idade ?? 99) > f.idadeMaxima) continue;
+      if (f.atributo && j.at[f.atributo] < (f.atributoMinimo ?? 0)) continue;
+      const valor = valorDeMercado(j, divisao ?? (estrangeiro ? "B" : "D"));
       if (f.valorMaximo !== undefined && valor > f.valorMaximo) continue;
-      itens.push({ jogador: j, clube, divisao, valor });
+      if (f.valorMinimo !== undefined && valor < f.valorMinimo) continue;
+      itens.push({ jogador: j, clube, divisao, valor, estrangeiro });
     }
   }
   return itens.sort((a, b) => b.jogador.ovr - a.jogador.ovr).slice(0, f.limite ?? 40);

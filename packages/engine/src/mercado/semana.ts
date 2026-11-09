@@ -1,3 +1,4 @@
+import { resolverOlheiro } from "./olheiro";
 import { enviarMensagem, publicarNoticia } from "../carreira/efeitos";
 import type { EstadoJogo } from "../carreira/jogo";
 import { forcaDoClube } from "../clube";
@@ -27,6 +28,7 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
   const m = estado.mercado;
   const rodada = t.rodada;
   const meu = c.clubeId ? t.clubes[c.clubeId]! : null;
+  resolverOlheiro(estado);
 
   for (const r of resolverDecisoesPendentes(estado, rng)) {
     enviarMensagem(c, rodada, {

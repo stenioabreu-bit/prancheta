@@ -1,4 +1,10 @@
 import {
+  type Atributo,
+  COTACAO,
+  type FiltroDoMercado,
+  type Posicao,
+  moedaEmUso,
+  pedirAoOlheiro,
   NOME_DA_SITUACAO,
   folhaAnual,
   type Divisao,
@@ -26,7 +32,162 @@ import {
 import { useState } from "react";
 import { Folha, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
-import { LinhaJogador } from "./Elenco";
+import { FichaDoJogador, LinhaJogador, NOME_ATRIBUTO } from "./Elenco";
+
+const POSICOES_OLHEIRO: Posicao[] = ["GOL", "ZAG", "LD", "LE", "VOL", "MC", "MEI", "PD", "PE", "ATA"];
+const DESTAQUES: { atributo: Atributo | ""; nome: string }[] = [
+  { atributo: "", nome: "Qualquer perfil" },
+  { atributo: "VEL", nome: "Rápidos" },
+  { atributo: "FIN", nome: "Finalizadores" },
+  { atributo: "PAS", nome: "Bons passadores" },
+  { atributo: "CTL", nome: "Habilidosos" },
+  { atributo: "DEF", nome: "Bons marcadores" },
+  { atributo: "CAB", nome: "Fortes no alto" },
+  { atributo: "FIS", nome: "Fortes fisicamente" },
+  { atributo: "RES", nome: "Resistentes" },
+];
+
+/** Busca do olheiro: posição, perfil, faixa de preço (na moeda do jogo), idade e origem. */
+function Olheiro({ abrir }: { abrir: (id: string) => void }) {
+  const jogo = useJogo();
+  const mexer = useLoja((s) => s.mexer);
+  const avisar = useLoja((s) => s.avisar);
+  const moeda = moedaEmUso();
+  const [pos, setPos] = useState<Posicao | "">("ATA");
+  const [destaque, setDestaque] = useState<Atributo | "">("VEL");
+  const [minimo, setMinimo] = useState("1");
+  const [maximo, setMaximo] = useState("5");
+  const [idade, setIdade] = useState("");
+  const [origem, setOrigem] = useState<"todos" | "brasil" | "exterior">("todos");
+  const emEuro = (v: string) => (v.trim() ? Number(v.replace(",", ".")) / COTACAO[moeda] : undefined);
+  const pedir = () => {
+    const min = emEuro(minimo);
+    const max = emEuro(maximo);
+    const filtro: FiltroDoMercado = {
+      ...(pos ? { posicao: pos } : {}),
+      ...(destaque ? { atributo: destaque, atributoMinimo: 75 } : {}),
+      ...(min !== undefined ? { valorMinimo: min } : {}),
+      ...(max !== undefined ? { valorMaximo: max } : {}),
+      ...(idade ? { idadeMaxima: Number(idade) } : {}),
+      ...(origem !== "todos" ? { origem } : {}),
+    };
+    const perfil = DESTAQUES.find((d) => d.atributo === destaque)!.nome.toLowerCase();
+    const descricao = `${pos || "qualquer posição"}${destaque ? `, ${perfil}` : ""}${
+      min !== undefined || max !== undefined
+        ? `, ${min !== undefined ? formatarDinheiro(min) : "0"} a ${max !== undefined ? formatarDinheiro(max) : "sem teto"}`
+        : ""
+    }${idade ? `, até ${idade} anos` : ""}${origem === "exterior" ? ", no exterior" : origem === "brasil" ? ", no Brasil" : ""}`;
+    avisar(mexer((j) => pedirAoOlheiro(j, filtro, descricao)));
+  };
+  const pedidos = jogo.mercado.olheiro ?? [];
+  const clubeDe = (id: string) =>
+    Object.values(jogo.temporada.clubes).find((c) => c.jogadores.some((x) => x.id === id));
+  return (
+    <section className="panel stack">
+      <h3>Olheiro</h3>
+      <div className="row" style={{ flexWrap: "wrap" }}>
+        <select aria-label="Posição" value={pos} onChange={(e) => setPos(e.target.value as Posicao | "")}>
+          <option value="">Qualquer posição</option>
+          {POSICOES_OLHEIRO.map((p) => (
+            <option key={p} value={p}>
+              {p}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label="Perfil"
+          value={destaque}
+          onChange={(e) => setDestaque(e.target.value as Atributo | "")}
+        >
+          {DESTAQUES.map((d) => (
+            <option key={d.nome} value={d.atributo}>
+              {d.nome}
+              {d.atributo ? ` (${NOME_ATRIBUTO[d.atributo]} 75+)` : ""}
+            </option>
+          ))}
+        </select>
+        <select
+          aria-label="Origem do olheiro"
+          value={origem}
+          onChange={(e) => setOrigem(e.target.value as typeof origem)}
+        >
+          <option value="todos">Brasil e exterior</option>
+          <option value="brasil">Só Brasil</option>
+          <option value="exterior">Só exterior</option>
+        </select>
+      </div>
+      <div className="row" style={{ flexWrap: "wrap" }}>
+        <label className="small muted">
+          De (mi {moeda})
+          <input
+            className="inp"
+            inputMode="decimal"
+            value={minimo}
+            onChange={(e) => setMinimo(e.target.value)}
+          />
+        </label>
+        <label className="small muted">
+          Até (mi {moeda})
+          <input
+            className="inp"
+            inputMode="decimal"
+            value={maximo}
+            onChange={(e) => setMaximo(e.target.value)}
+          />
+        </label>
+        <label className="small muted">
+          Idade máx.
+          <input
+            className="inp"
+            inputMode="numeric"
+            value={idade}
+            onChange={(e) => setIdade(e.target.value)}
+          />
+        </label>
+      </div>
+      <button type="button" className="btn primary" onClick={pedir}>
+        Mandar o olheiro procurar
+      </button>
+      {pedidos.map((p) => (
+        <div key={p.id} className="stack" style={{ gap: 4 }}>
+          <div className="small">
+            <b>{p.descricao}</b>{" "}
+            <span className="muted">
+              {p.resultado ? `· ${p.resultado.length} nomes` : `· relatório na rodada ${p.pronto + 1}`}
+            </span>
+          </div>
+          {p.resultado?.map((id) => {
+            const c = clubeDe(id);
+            const j = c?.jogadores.find((x) => x.id === id);
+            if (!c || !j) return null;
+            return (
+              <div key={id} className="prow" style={{ gridTemplateColumns: "38px 1fr auto" }}>
+                <span className={`pos ${j.pos}`}>{j.pos}</span>
+                <span style={{ minWidth: 0 }}>
+                  <button type="button" className="link nm" onClick={() => abrir(id)}>
+                    {j.nome}
+                  </button>
+                  <div className="meta">
+                    <NomeClube clube={c} tamanho={13} /> · {j.idade ? `${j.idade} anos · ` : ""}
+                    {destaqueDoJogador(j.at)}
+                  </div>
+                </span>
+                <span className="ovr">{j.ovr}</span>
+              </div>
+            );
+          })}
+        </div>
+      ))}
+    </section>
+  );
+}
+
+function destaqueDoJogador(at: Record<Atributo, number>): string {
+  const [a, v] = (Object.entries(at) as [Atributo, number][])
+    .filter(([k]) => k !== "GOL")
+    .sort((x, y) => y[1] - x[1])[0]!;
+  return `${NOME_ATRIBUTO[a]} ${v}`;
+}
 
 type Secao = "mercado" | "treino" | "comissao" | "base" | "carreira";
 
@@ -149,6 +310,8 @@ function Mercado() {
   const [setor, setSetor] = useState<SetorDoMercado | "TODOS">("TODOS");
   const [divisao, setDivisao] = useState<Divisao | "TODAS">("TODAS");
   const [teto, setTeto] = useState<number | null>(null);
+  const [origem, setOrigem] = useState<"todos" | "brasil" | "exterior">("todos");
+  const [ficha, setFicha] = useState<string | null>(null);
   const { mercado, temporada: t } = jogo;
   const f = mercado.financas;
   const aberta = janelaAberta(t.rodada);
@@ -157,6 +320,7 @@ function Mercado() {
     ...(setor !== "TODOS" ? { setor } : {}),
     ...(divisao !== "TODAS" ? { divisao } : {}),
     ...(teto !== null ? { valorMaximo: teto } : {}),
+    ...(origem !== "todos" ? { origem } : {}),
     limite: 40,
   });
   return (
@@ -200,6 +364,15 @@ function Mercado() {
             ))}
           </select>
           <select
+            aria-label="Origem"
+            value={origem}
+            onChange={(e) => setOrigem(e.target.value as typeof origem)}
+          >
+            <option value="todos">Brasil e exterior</option>
+            <option value="brasil">Só Brasil</option>
+            <option value="exterior">Só exterior</option>
+          </select>
+          <select
             aria-label="Valor máximo"
             value={teto ?? ""}
             onChange={(e) => setTeto(e.target.value ? Number(e.target.value) : null)}
@@ -213,13 +386,16 @@ function Mercado() {
           </select>
         </div>
         <div className="plist">
-          {itens.map(({ jogador, clube, divisao: d, valor }) => (
+          {itens.map(({ jogador, clube, divisao: d, valor, estrangeiro }) => (
             <div key={jogador.id} className="prow" style={{ gridTemplateColumns: "38px 1fr auto auto" }}>
               <span className={`pos ${jogador.pos}`}>{jogador.pos}</span>
               <span style={{ minWidth: 0 }}>
-                <div className="nm">{jogador.nome}</div>
+                <button type="button" className="link nm" onClick={() => setFicha(jogador.id)}>
+                  {jogador.nome}
+                </button>
                 <div className="meta">
-                  <NomeClube clube={clube} tamanho={13} /> · Série {d} · {formatarDinheiro(valor)}
+                  <NomeClube clube={clube} tamanho={13} /> ·{" "}
+                  {d ? `Série ${d}` : estrangeiro ? "Exterior" : "Estadual"} · {formatarDinheiro(valor)}
                 </div>
               </span>
               <span className="ovr">{jogador.ovr}</span>
@@ -234,66 +410,70 @@ function Mercado() {
           ))}
         </div>
       </section>
-      <section className="panel stack">
-        <h3>Finanças</h3>
-        <dl className="kv">
-          <dt>Orçamento p/ contratações</dt>
-          <dd>{formatarDinheiro(f.orcamento)}</dd>
-          {f.caixa !== undefined && (
+      {ficha && <FichaDoJogador jogadorId={ficha} aoFechar={() => setFicha(null)} />}
+      <div className="stack">
+        <Olheiro abrir={setFicha} />
+        <section className="panel stack">
+          <h3>Finanças</h3>
+          <dl className="kv">
+            <dt>Orçamento p/ contratações</dt>
+            <dd>{formatarDinheiro(f.orcamento)}</dd>
+            {f.caixa !== undefined && (
+              <>
+                <dt>Caixa</dt>
+                <dd>{formatarDinheiro(f.caixa)}</dd>
+                <dt>Dívida total</dt>
+                <dd>{formatarDinheiro(f.dividaTotal ?? 0)}</dd>
+                <dt>Receita anual</dt>
+                <dd>{formatarDinheiro(f.receitaAnual ?? 0)}</dd>
+                <dt>Folha anual</dt>
+                <dd>{formatarDinheiro(folhaAnual(t.clubes[jogo.carreira.clubeId!]!))}</dd>
+                <dt>Situação</dt>
+                <dd>{f.situacao ? NOME_DA_SITUACAO[f.situacao] : f.divida}</dd>
+                <dt>Valor do elenco (ref.)</dt>
+                <dd>
+                  {formatarDinheiro(f.valorElenco ?? 0)}
+                  {f.fonteValorElenco === "estimated" ? " (estimado)" : ""}
+                </dd>
+              </>
+            )}
+            <dt>Presidente</dt>
+            <dd>{f.perfil === "economico" ? "econômico" : "normal"}</dd>
+            <dt>Ouve o técnico</dt>
+            <dd>{f.ouvir}%</dd>
+          </dl>
+          <p className="small muted">
+            Caixa, dívida, receita e folha são estimativas do jogo, não dados oficiais do clube.
+          </p>
+          {(f.movimentos?.length ?? 0) > 0 && (
             <>
-              <dt>Caixa</dt>
-              <dd>{formatarDinheiro(f.caixa)}</dd>
-              <dt>Dívida total</dt>
-              <dd>{formatarDinheiro(f.dividaTotal ?? 0)}</dd>
-              <dt>Receita anual</dt>
-              <dd>{formatarDinheiro(f.receitaAnual ?? 0)}</dd>
-              <dt>Folha anual</dt>
-              <dd>{formatarDinheiro(folhaAnual(t.clubes[jogo.carreira.clubeId!]!))}</dd>
-              <dt>Situação</dt>
-              <dd>{f.situacao ? NOME_DA_SITUACAO[f.situacao] : f.divida}</dd>
-              <dt>Valor do elenco (ref.)</dt>
-              <dd>
-                {formatarDinheiro(f.valorElenco ?? 0)}
-                {f.fonteValorElenco === "estimated" ? " (estimado)" : ""}
-              </dd>
+              <h3>Movimentações</h3>
+              <ul className="lista-limpa">
+                {f.movimentos!.slice(0, 15).map((m, i) => (
+                  <li key={`${m.temporada}-${m.rodada}-${i}`} className="stat-linha">
+                    <span>
+                      {m.descricao} <span className="muted">· {m.temporada}</span>
+                    </span>
+                    <span className={m.valor >= 0 ? "badge" : "muted"}>{formatarDinheiro(m.valor)}</span>
+                  </li>
+                ))}
+              </ul>
             </>
           )}
-          <dt>Presidente</dt>
-          <dd>{f.perfil === "economico" ? "econômico" : "normal"}</dd>
-          <dt>Ouve o técnico</dt>
-          <dd>{f.ouvir}%</dd>
-        </dl>
-        <p className="small muted">
-          Caixa, dívida, receita e folha são estimativas do jogo, não dados oficiais do clube.
-        </p>
-        {(f.movimentos?.length ?? 0) > 0 && (
-          <>
-            <h3>Movimentações</h3>
-            <ul className="lista-limpa">
-              {f.movimentos!.slice(0, 15).map((m, i) => (
-                <li key={`${m.temporada}-${m.rodada}-${i}`} className="stat-linha">
-                  <span>
-                    {m.descricao} <span className="muted">· {m.temporada}</span>
-                  </span>
-                  <span className={m.valor >= 0 ? "badge" : "muted"}>{formatarDinheiro(m.valor)}</span>
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
-        <h3>Suas indicações</h3>
-        {mercado.indicacoes.length === 0 && <p className="vazio">Nenhuma ainda.</p>}
-        <ul className="lista-limpa">
-          {mercado.indicacoes.map((i) => (
-            <li key={i.jogadorId} className="stat-linha">
-              <span>
-                {i.nome} <span className="muted">· {t.clubes[i.clubeId]?.nome}</span>
-              </span>
-              <span className={i.status === "contratado" ? "badge" : "muted"}>{i.status}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
+          <h3>Suas indicações</h3>
+          {mercado.indicacoes.length === 0 && <p className="vazio">Nenhuma ainda.</p>}
+          <ul className="lista-limpa">
+            {mercado.indicacoes.map((i) => (
+              <li key={i.jogadorId} className="stat-linha">
+                <span>
+                  {i.nome} <span className="muted">· {t.clubes[i.clubeId]?.nome}</span>
+                </span>
+                <span className={i.status === "contratado" ? "badge" : "muted"}>{i.status}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </div>
   );
 }

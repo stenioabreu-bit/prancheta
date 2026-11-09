@@ -101,3 +101,38 @@ export function ranking(
     .sort((a, b) => (crescente ? a.valor - b.valor : b.valor - a.valor) || b.jogos - a.jogos)
     .slice(0, limite);
 }
+
+/** Tipos de ranking disponíveis por competição (fora das Séries só há gols e assistências por competição). */
+export function rankingsDaCompeticao(competicao: string): TipoDeRanking[] {
+  return ["A", "B", "C", "D"].includes(competicao)
+    ? ["gols", "assistencias", "goleiros", "notas"]
+    : ["gols", "assistencias"];
+}
+
+/** Ranking de qualquer competição: Séries usam a temporada da divisão; as demais, os números da competição. */
+export function rankingDaCompeticao(
+  estado: EstadoTemporada,
+  competicao: string,
+  tipo: TipoDeRanking,
+  limite = 20,
+): LinhaDeRanking[] {
+  if (["A", "B", "C", "D"].includes(competicao)) return ranking(estado, competicao as Divisao, tipo, limite);
+  if (tipo !== "gols" && tipo !== "assistencias") return [];
+  const ids = new Set<string>();
+  for (const j of Object.values(estado.jogos)) {
+    if (j.competicao !== competicao) continue;
+    ids.add(j.casa);
+    ids.add(j.visitante);
+  }
+  const linhas: LinhaDeRanking[] = [];
+  for (const id of ids) {
+    const clube = estado.clubes[id];
+    if (!clube) continue;
+    for (const j of clube.jogadores) {
+      const pc = j.temporada.porCompeticao?.[competicao];
+      const valor = tipo === "gols" ? pc?.gols : pc?.assist;
+      if (pc && valor) linhas.push({ jogador: j, clube, valor, jogos: pc.jogos });
+    }
+  }
+  return linhas.sort((a, b) => b.valor - a.valor || a.jogos - b.jogos).slice(0, limite);
+}

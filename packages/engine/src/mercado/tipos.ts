@@ -90,6 +90,17 @@ export interface EstadoMercado {
   decisoesPendentes?: DecisaoPendente[];
   /** Base financeira de 2026 por clube (valor do elenco e orçamento inicial, € mi). */
   basesFinanceiras?: Record<string, { valorElenco: number; orcamento: number }>;
+  /** Buscas pedidas ao olheiro: ficam prontas numa rodada e viram relatório. */
+  olheiro?: PedidoAoOlheiro[];
+}
+
+export interface PedidoAoOlheiro {
+  id: number;
+  descricao: string;
+  filtro: import("./transferencias").FiltroDoMercado;
+  pronto: number;
+  /** Ids dos jogadores encontrados (preenchido quando fica pronto). */
+  resultado?: string[];
 }
 
 export interface DecisaoPendente {

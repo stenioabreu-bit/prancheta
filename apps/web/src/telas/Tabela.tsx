@@ -11,7 +11,8 @@ import {
   divisaoDo,
   fasesDaCompeticao,
   nomeDaCompeticao,
-  ranking,
+  rankingDaCompeticao,
+  rankingsDaCompeticao,
 } from "@prancheta/engine";
 import { useState } from "react";
 import { LogoCompeticao } from "../componentes/LogoCompeticao";
@@ -126,15 +127,17 @@ function Confrontos({ jogo, fase }: { jogo: EstadoJogo; fase: EstadoFaseMataMata
   );
 }
 
-function Rankings({ jogo, divisao }: { jogo: EstadoJogo; divisao: Divisao }) {
-  const [tipo, setTipo] = useState<TipoDeRanking>("gols");
+function Rankings({ jogo, competicao }: { jogo: EstadoJogo; competicao: Competicao }) {
+  const [escolhido, setTipo] = useState<TipoDeRanking>("gols");
+  const tipos = rankingsDaCompeticao(competicao);
+  const tipo = tipos.includes(escolhido) ? escolhido : "gols";
   const config = RANKINGS.find((r) => r.id === tipo)!;
-  const linhas = ranking(jogo.temporada, divisao, tipo, 15);
+  const linhas = rankingDaCompeticao(jogo.temporada, competicao, tipo, 15);
   return (
     <section className="panel stack">
-      <h3>Rankings · Série {divisao}</h3>
+      <h3>Rankings · {nomeDaCompeticao(jogo.temporada, competicao)}</h3>
       <div className="filters" role="group" aria-label="Ranking">
-        {RANKINGS.map((r) => (
+        {RANKINGS.filter((r) => tipos.includes(r.id)).map((r) => (
           <button
             key={r.id}
             type="button"
@@ -224,10 +227,6 @@ export function Tabela() {
       : 0;
   const [grupoEscolhido, setGrupoEscolhido] = useState<number | null>(null);
   const grupo = grupoEscolhido ?? grupoDoUsuario;
-  const divisaoDoRanking: Divisao =
-    competicao === "copa" || competicao.startsWith("est-") || competicao.startsWith("cont-")
-      ? minhaDivisao
-      : (competicao as Divisao);
 
   return (
     <div className="grade lateral">
@@ -325,7 +324,7 @@ export function Tabela() {
         )}
       </section>
       <div className="stack">
-        <Rankings jogo={jogo} divisao={divisaoDoRanking} />
+        <Rankings jogo={jogo} competicao={competicao} />
         <HistoricoDaCompeticao jogo={jogo} competicao={competicao} />
       </div>
     </div>

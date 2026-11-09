@@ -70,6 +70,8 @@ export interface FormatoDivisao {
   /** ID permanente da competição (catálogo/logos), quando não for uma Série do Brasil. */
   id?: string;
   nome: string;
+  /** Semana de estreia no calendário (0 = primeira semana da temporada). */
+  inicio?: number;
   clubes: number;
   fases: Fase[];
   acesso: RegraDeMovimento[];

@@ -78,5 +78,10 @@ Dados prontos (fora do git, em `dados/`): `auditoria-ogol.json` (438 clubes 2026
 4. Fichas do oGol (nascimento/posição) para quem não casou com TM: decisão de coleta pendente com o usuário.
 5. Depois: estaduais, continentais e calendário em slots (etapas 6–11).
 
+## Calendário (feito em 2026-11-08)
+- `competicao/calendario.ts`: semanas × 2 horários (fim de semana / meio de semana), `conflitosDeCalendario`, `horarioLivre`.
+- Temporada termina quando não sobra jogo e todas as competições fecharam (sem 38 fixo); `FormatoDivisao.inicio` define a semana de estreia.
+- Próximo: estaduais nas semanas 0–11 (Séries com `inicio` depois), encaixando com `horarioLivre`; teste de conflito cobre o calendário inteiro.
+
 ## Regras
 Reaproveitar o motor de fases; formatos em configuração; não remover nada; não criar clubes fictícios; dados pesquisados uma vez e salvos em arquivos estruturados; respostas e relatórios curtos.

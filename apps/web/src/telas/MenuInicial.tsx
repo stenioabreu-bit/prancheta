@@ -1,3 +1,4 @@
+import { semanasDaTemporada } from "@prancheta/engine";
 import { useLoja } from "../estado/loja";
 import logo from "../imagens/logo.webp";
 
@@ -15,7 +16,7 @@ export function MenuInicial() {
             Continuar
             <span className="menu-save">
               {jogo.carreira.tecnico} · {clube?.nome ?? "sem clube"} · {jogo.temporada.temporada}, rodada{" "}
-              {Math.min(jogo.temporada.rodada + 1, 38)}
+              {Math.min(jogo.temporada.rodada + 1, semanasDaTemporada(jogo.temporada))}
             </span>
           </button>
         )}

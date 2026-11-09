@@ -4,6 +4,7 @@ import { recuperarEntreRodadas } from "../liga";
 import { type Rng, criarRng } from "../rng";
 import { estatisticasRapidas, placarRapido } from "../simulacaoRapida";
 import type { Clube } from "../tipos";
+import { ultimaSemanaAgendada } from "./calendario";
 import { type EstadoCopa, abrirFaseDaCopa, fecharRodadaDaCopa, montarCopa } from "./copa";
 import { type ContextoCompeticao, faseDoEstado, fecharRodadaDaDivisao, iniciarDivisao } from "./divisao";
 import { registrarNaLiga } from "./fases";
@@ -208,8 +209,18 @@ function fecharRodada(estado: EstadoTemporada): void {
   estado.rodada++;
 }
 
+/** Acabou quando todas as competições fecharam e não sobra jogo no calendário. */
 export function temporadaEncerrada(estado: EstadoTemporada): boolean {
-  return estado.rodada >= RODADAS_POR_TEMPORADA && DIVISOES.every((d) => estado.divisoes[d].encerrada);
+  return (
+    estado.rodada > ultimaSemanaAgendada(estado.jogos) &&
+    DIVISOES.every((d) => estado.divisoes[d].encerrada) &&
+    (!!estado.semCopa || !!estado.copa.campeao)
+  );
+}
+
+/** Semanas da temporada até agora (cresce quando fases de mata-mata são agendadas). */
+export function semanasDaTemporada(estado: EstadoTemporada): number {
+  return Math.max(ultimaSemanaAgendada(estado.jogos) + 1, estado.rodada);
 }
 
 /** Acesso e rebaixamento, nova tabela e calendário. Devolve o resumo da temporada que acabou. */

@@ -60,7 +60,7 @@ export function iniciarDivisao(
   };
   const primeira = formato.fases[0];
   if (primeira?.tipo !== "liga") throw new Error(`${formato.nome}: a primeira fase precisa ser de liga`);
-  divisao.fases.push(montarFaseLiga(primeira, ids, 0, agendaDa(divisao, ctx), ctx.rng));
+  divisao.fases.push(montarFaseLiga(primeira, ids, formato.inicio ?? 0, agendaDa(divisao, ctx), ctx.rng));
   return divisao;
 }
 

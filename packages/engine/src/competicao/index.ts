@@ -4,3 +4,4 @@ export * from "./fases";
 export * from "./divisao";
 export * from "./copa";
 export * from "./temporada";
+export * from "./calendario";

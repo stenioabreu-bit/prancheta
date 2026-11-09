@@ -192,7 +192,9 @@ export function reporDesfalques(clube: Clube): { saiu: string; entrou: string }[
     trocas.push({ saiu: j.nome, entrou: reserva.nome });
     voltas[reserva.id] = voltas[j.id] ?? j.id;
     delete voltas[j.id];
-    clube.reservas = clube.reservas?.filter((x) => x !== reserva.id);
+    // O titular desfalcado fica no banco (na partida só entra quem estiver disponível).
+    if (clube.reservas)
+      clube.reservas = [...clube.reservas.filter((x) => x !== reserva.id && x !== j.id), j.id];
     return reserva.id;
   });
   return trocas;

@@ -9,8 +9,13 @@ describe("desfalques e descanso", () => {
   it("titular suspenso sai e volta ao time quando cumpre a suspensão", () => {
     const titular = clube.jogadores.find((j) => j.id === clube.titulares[5])!;
     titular.susp = 1;
+    clube.reservas = clube.jogadores
+      .filter((x) => !clube.titulares.includes(x.id))
+      .slice(0, 10)
+      .map((x) => x.id);
     reporDesfalques(clube);
     expect(clube.titulares).not.toContain(titular.id);
+    expect(clube.reservas).toContain(titular.id);
     recuperarEntreRodadas([clube]);
     recuperarEntreRodadas([clube]);
     expect(titular.susp).toBe(0);

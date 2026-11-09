@@ -474,9 +474,17 @@ export function verAcessos(estado: EstadoJogo): void {
 }
 
 /** Empréstimos pelo técnico (usam o sorteio do jogo). */
-export function pedirEmprestimoDoUsuario(estado: EstadoJogo, jogadorId: string, duracao: DuracaoEmprestimo): string {
+export function pedirEmprestimoDoUsuario(
+  estado: EstadoJogo,
+  jogadorId: string,
+  duracao: DuracaoEmprestimo,
+): string {
   return comRng(estado, (rng) => pedirEmprestimo(estado, jogadorId, duracao, rng));
 }
-export function emprestarDoUsuario(estado: EstadoJogo, jogadorId: string, duracao: DuracaoEmprestimo): string {
+export function emprestarDoUsuario(
+  estado: EstadoJogo,
+  jogadorId: string,
+  duracao: DuracaoEmprestimo,
+): string {
   return comRng(estado, (rng) => emprestarJogador(estado, jogadorId, duracao, rng));
 }

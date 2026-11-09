@@ -15,7 +15,7 @@ describe("desfalques e descanso", () => {
       .map((x) => x.id);
     reporDesfalques(clube);
     expect(clube.titulares).not.toContain(titular.id);
-    expect(clube.reservas).toContain(titular.id);
+    expect(clube.reservas).not.toContain(titular.id);
     recuperarEntreRodadas([clube]);
     recuperarEntreRodadas([clube]);
     expect(titular.susp).toBe(0);

@@ -181,6 +181,11 @@ export function reporDesfalques(clube: Clube): { saiu: string; entrou: string }[
     const reserva = clube.jogadores.find((x) => x.id === reservaId);
     trocas.push({ saiu: reserva?.nome ?? "", entrou: original.nome });
   }
+  if (clube.reservas)
+    clube.reservas = clube.reservas.filter((id) => {
+      const x = clube.jogadores.find((y) => y.id === id);
+      return !x || disponivel(x);
+    });
   clube.titulares = clube.titulares.map((id, i) => {
     const j = clube.jogadores.find((x) => x.id === id);
     if (!j || disponivel(j)) return id;
@@ -192,9 +197,8 @@ export function reporDesfalques(clube: Clube): { saiu: string; entrou: string }[
     trocas.push({ saiu: j.nome, entrou: reserva.nome });
     voltas[reserva.id] = voltas[j.id] ?? j.id;
     delete voltas[j.id];
-    // O titular desfalcado fica no banco (na partida só entra quem estiver disponível).
-    if (clube.reservas)
-      clube.reservas = [...clube.reservas.filter((x) => x !== reserva.id && x !== j.id), j.id];
+    // Suspenso ou lesionado não pode ser titular nem ficar no banco: vai para os não relacionados.
+    if (clube.reservas) clube.reservas = clube.reservas.filter((x) => x !== reserva.id && x !== j.id);
     return reserva.id;
   });
   return trocas;

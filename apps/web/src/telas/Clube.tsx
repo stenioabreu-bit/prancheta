@@ -151,7 +151,7 @@ const SETORES: { id: SetorDoMercado | "TODOS"; nome: string }[] = [
   { id: "ATA", nome: "Ataque" },
 ];
 
-function Mercado() {
+export function Mercado() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const avisar = useLoja((s) => s.avisar);
@@ -160,6 +160,7 @@ function Mercado() {
   const [teto, setTeto] = useState<number | null>(null);
   const [origem, setOrigem] = useState<"todos" | "brasil" | "exterior">("todos");
   const [ficha, setFicha] = useState<string | null>(null);
+  const [busca, setBusca] = useState("");
   const { mercado, temporada: t } = jogo;
   const f = mercado.financas;
   const aberta = janelaAberta(t.rodada);
@@ -169,6 +170,7 @@ function Mercado() {
     ...(divisao !== "TODAS" ? { divisao } : {}),
     ...(teto !== null ? { valorMaximo: teto } : {}),
     ...(origem !== "todos" ? { origem } : {}),
+    ...(busca.trim().length >= 2 ? { nome: busca } : {}),
     limite: 40,
   });
   return (
@@ -182,6 +184,14 @@ function Mercado() {
               : `Janela fechada${proxima !== null ? ` · abre na rodada ${proxima + 1}` : ""}`}
           </span>
         </div>
+        <input
+          className="inp busca"
+          type="search"
+          placeholder="Buscar jogador pelo nome"
+          aria-label="Buscar jogador"
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+        />
         <p className="small muted" style={{ margin: 0 }}>
           Você indica; a diretoria decide com base no orçamento e responde na janela.
         </p>
@@ -261,52 +271,13 @@ function Mercado() {
       {ficha && <FichaDoJogador jogadorId={ficha} aoFechar={() => setFicha(null)} />}
       <div className="stack">
         <section className="panel stack">
-          <h3>Finanças</h3>
-          <dl className="kv">
-            <dt>Orçamento p/ contratações</dt>
-            <dd>{formatarDinheiro(f.orcamento)}</dd>
-            {f.caixa !== undefined && (
-              <>
-                <dt>Caixa</dt>
-                <dd>{formatarDinheiro(f.caixa)}</dd>
-                <dt>Dívida total</dt>
-                <dd>{formatarDinheiro(f.dividaTotal ?? 0)}</dd>
-                <dt>Receita anual</dt>
-                <dd>{formatarDinheiro(f.receitaAnual ?? 0)}</dd>
-                <dt>Folha anual</dt>
-                <dd>{formatarDinheiro(folhaAnual(t.clubes[jogo.carreira.clubeId!]!))}</dd>
-                <dt>Situação</dt>
-                <dd>{f.situacao ? NOME_DA_SITUACAO[f.situacao] : f.divida}</dd>
-                <dt>Valor do elenco (ref.)</dt>
-                <dd>
-                  {formatarDinheiro(f.valorElenco ?? 0)}
-                  {f.fonteValorElenco === "estimated" ? " (estimado)" : ""}
-                </dd>
-              </>
-            )}
-            <dt>Presidente</dt>
-            <dd>{f.perfil === "economico" ? "econômico" : "normal"}</dd>
-            <dt>Ouve o técnico</dt>
-            <dd>{f.ouvir}%</dd>
-          </dl>
-          <p className="small muted">
-            Caixa, dívida, receita e folha são estimativas do jogo, não dados oficiais do clube.
+          <h3>Orçamento para contratações</h3>
+          <p className="num" style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>
+            {formatarDinheiro(f.orcamento)}
           </p>
-          {(f.movimentos?.length ?? 0) > 0 && (
-            <>
-              <h3>Movimentações</h3>
-              <ul className="lista-limpa">
-                {f.movimentos!.slice(0, 15).map((m, i) => (
-                  <li key={`${m.temporada}-${m.rodada}-${i}`} className="stat-linha">
-                    <span>
-                      {m.descricao} <span className="muted">· {m.temporada}</span>
-                    </span>
-                    <span className={m.valor >= 0 ? "badge" : "muted"}>{formatarDinheiro(m.valor)}</span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
+          <p className="small muted" style={{ margin: 0 }}>
+            Detalhes em Mercado › Situação financeira.
+          </p>
           <h3>Suas indicações</h3>
           {mercado.indicacoes.length === 0 && <p className="vazio">Nenhuma ainda.</p>}
           <ul className="lista-limpa">
@@ -325,7 +296,7 @@ function Mercado() {
   );
 }
 
-function Treino() {
+export function Treino() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const c = jogo.carreira;
@@ -388,7 +359,7 @@ function Treino() {
   );
 }
 
-function Comissao() {
+export function Comissao() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const c = jogo.carreira;
@@ -455,7 +426,7 @@ function Comissao() {
   );
 }
 
-function Base() {
+export function Base() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const avisar = useLoja((s) => s.avisar);
@@ -657,5 +628,64 @@ export function Clube() {
       {atual === "comissao" && <Comissao />}
       {atual === "base" && <Base />}
     </>
+  );
+}
+
+/** Situação financeira do clube: orçamento, caixa, dívida, receita, folha e movimentações. */
+export function SituacaoFinanceira() {
+  const jogo = useJogo();
+  const { mercado, temporada: t } = jogo;
+  const f = mercado.financas;
+  return (
+    <div className="grade duas">
+      <section className="panel stack">
+        <h2>Situação financeira</h2>
+        <dl className="kv">
+          <dt>Orçamento p/ contratações</dt>
+          <dd>{formatarDinheiro(f.orcamento)}</dd>
+          {f.caixa !== undefined && (
+            <>
+              <dt>Caixa</dt>
+              <dd>{formatarDinheiro(f.caixa)}</dd>
+              <dt>Dívida total</dt>
+              <dd>{formatarDinheiro(f.dividaTotal ?? 0)}</dd>
+              <dt>Receita anual</dt>
+              <dd>{formatarDinheiro(f.receitaAnual ?? 0)}</dd>
+              <dt>Folha anual</dt>
+              <dd>{formatarDinheiro(folhaAnual(t.clubes[jogo.carreira.clubeId!]!))}</dd>
+              <dt>Situação</dt>
+              <dd>{f.situacao ? NOME_DA_SITUACAO[f.situacao] : f.divida}</dd>
+              <dt>Valor do elenco (ref.)</dt>
+              <dd>
+                {formatarDinheiro(f.valorElenco ?? 0)}
+                {f.fonteValorElenco === "estimated" ? " (estimado)" : ""}
+              </dd>
+            </>
+          )}
+          <dt>Presidente</dt>
+          <dd>{f.perfil === "economico" ? "econômico" : "normal"}</dd>
+          <dt>Ouve o técnico</dt>
+          <dd>{f.ouvir}%</dd>
+        </dl>
+        <p className="small muted">
+          Caixa, dívida, receita e folha são estimativas do jogo, não dados oficiais do clube.
+        </p>
+        {(f.movimentos?.length ?? 0) > 0 && (
+          <>
+            <h3>Movimentações</h3>
+            <ul className="lista-limpa">
+              {f.movimentos!.slice(0, 40).map((m, i) => (
+                <li key={`${m.temporada}-${m.rodada}-${i}`} className="stat-linha">
+                  <span>
+                    {m.descricao} <span className="muted">· {m.temporada}</span>
+                  </span>
+                  <span className={m.valor >= 0 ? "badge" : "muted"}>{formatarDinheiro(m.valor)}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    </div>
   );
 }

@@ -168,12 +168,14 @@ export function Olheiro() {
         <Chips rotulo="Idade" opcoes={IDADES} valor={idade} aoMudar={setIdade} />
         <span className="eyebrow">Região</span>
         <Chips rotulo="Região" opcoes={REGIOES} valor={regiao} aoMudar={setRegiao} />
-        <span className="eyebrow">Valor de mercado (mi {moeda})</span>
+        <span className="eyebrow">
+          Valor de mercado (em milhões de {moeda === "BRL" ? "R$" : moeda === "USD" ? "US$" : "€"})
+        </span>
         <div className="row">
           <input
             className="inp"
             inputMode="decimal"
-            placeholder="mínimo"
+            placeholder="mínimo, em milhões (ex.: 1)"
             aria-label="Valor mínimo"
             value={minimo}
             onChange={(e) => setMinimo(e.target.value)}
@@ -181,7 +183,7 @@ export function Olheiro() {
           <input
             className="inp"
             inputMode="decimal"
-            placeholder="máximo"
+            placeholder="máximo, em milhões (ex.: 5)"
             aria-label="Valor máximo"
             value={maximo}
             onChange={(e) => setMaximo(e.target.value)}

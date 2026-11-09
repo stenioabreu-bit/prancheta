@@ -40,6 +40,8 @@ export interface FiltroDoMercado {
   atributo?: Atributo;
   atributoMinimo?: number;
   origem?: "brasil" | "exterior";
+  /** Busca pelo nome (sem acento, parte do nome). */
+  nome?: string;
   limite?: number;
 }
 
@@ -76,6 +78,7 @@ export function buscarNoMercado(estado: EstadoJogo, f: FiltroDoMercado = {}): It
     if (f.origem === "exterior" && !estrangeiro) continue;
     if (f.origem === "brasil" && estrangeiro) continue;
     for (const j of clube.jogadores) {
+      if (f.nome && !semAcento(j.nome).includes(semAcento(f.nome))) continue;
       if (f.setor && setorDaPosicao(j.pos) !== f.setor) continue;
       if (f.posicao && j.pos !== f.posicao && !j.alt.includes(f.posicao)) continue;
       if (f.idadeMaxima !== undefined && (j.idade ?? 99) > f.idadeMaxima) continue;
@@ -361,4 +364,8 @@ export function resolverDecisoesPendentes(estado: EstadoJogo, rng: Rng): { texto
   }
   m.decisoesPendentes = restantes;
   return saida;
+}
+
+function semAcento(s: string): string {
+  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
 }

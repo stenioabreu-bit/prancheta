@@ -212,7 +212,20 @@ function MotivoFora({ j }: { j: Jogador }) {
         ✚ {j.lesao}
       </span>
     );
-  if (j.susp > 0) return <span className="cartao-susp" title={`Suspenso por ${j.susp} jogo(s)`} />;
+  if (j.susp > 0)
+    return (
+      <span className="tag susp" title={`Suspenso por ${j.susp} jogo(s)`}>
+        <span className="cartao-susp" /> suspenso
+      </span>
+    );
+  return null;
+}
+
+/** Por que o jogador não pode ser relacionado (titular ou banco), ou null se pode. */
+function motivoDeFora(j: Jogador): string | null {
+  if (j.susp > 0)
+    return `${j.nome} está suspenso (${j.susp} jogo${j.susp > 1 ? "s" : ""}) e não pode ser titular nem ficar no banco.`;
+  if (j.lesao > 0) return `${j.nome} está lesionado (${j.lesao} rodada(s)) e não pode ser relacionado.`;
   return null;
 }
 
@@ -285,7 +298,7 @@ function CampoHorizontal({
             className={classes.filter(Boolean).join(" ")}
             style={
               emPe
-                ? { left: `${6 + x * 0.88}%`, top: `${92 - y * 0.86}%` }
+                ? { left: `${6 + x * 0.88}%`, top: `${92 - y * 1.02}%` }
                 : { left: `${5 + y * 0.9}%`, top: `${6 + x * 0.88}%` }
             }
             onClick={() => aoClicar(id)}
@@ -365,6 +378,7 @@ function ListaDeJogadores(props: {
 export function Tatica() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
+  const avisar = useLoja((s) => s.avisar);
   const [sel, setSel] = useState<string | null>(null);
   const [posto, setPosto] = useState<number | null>(null);
   const clubeId = jogo.carreira.clubeId;
@@ -390,6 +404,20 @@ export function Tatica() {
   }
 
   function trocar(a: string, b: string) {
+    const pa0 = papel(a);
+    const pb0 = papel(b);
+    // Quem vai entrar no time ou no banco precisa estar disponível.
+    for (const [id, destino] of [
+      [a, pb0],
+      [b, pa0],
+    ] as const) {
+      const j = clube.jogadores.find((x) => x.id === id);
+      const motivo = j && destino.tipo !== "fora" ? motivoDeFora(j) : null;
+      if (motivo) {
+        avisar(motivo);
+        return;
+      }
+    }
     mexer(() => {
       const pa = papel(a);
       const pb = papel(b);
@@ -434,6 +462,13 @@ export function Tatica() {
   const moverParaBanco =
     sel && selPapel?.tipo === "fora" && banco.length < LIMITE_DO_BANCO
       ? () => {
+          const j = clube.jogadores.find((x) => x.id === sel);
+          const motivo = j ? motivoDeFora(j) : null;
+          if (motivo) {
+            avisar(motivo);
+            setSel(null);
+            return;
+          }
           mexer(() => aplicar([...banco, sel]));
           setSel(null);
         }

@@ -64,6 +64,7 @@ export function formatarDinheiro(milhoes: number, moeda: Moeda = moedaAtual): st
   const v = milhoes * COTACAO[moeda];
   const sinal = v < 0 ? "-" : "";
   const a = Math.abs(v);
+  if (a >= 1000) return `${sinal}${SIMBOLO[moeda]} ${(a / 1000).toFixed(2).replace(".", ",")} bi`;
   return a >= 1
     ? `${sinal}${SIMBOLO[moeda]} ${a.toFixed(1).replace(".", ",")} mi`
     : `${sinal}${SIMBOLO[moeda]} ${Math.round(a * 1000)} mil`;

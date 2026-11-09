@@ -9,11 +9,14 @@ const JSON_REAL = import.meta.glob<PacoteDados>("../../../../packages/data/packs
   eager: true,
   import: "default",
 });
-const ESCUDOS = import.meta.glob<string>("../../../../packages/data/packs/*/escudos/*.{png,jpg,gif,svg,webp}", {
-  eager: true,
-  query: "?url",
-  import: "default",
-});
+const ESCUDOS = import.meta.glob<string>(
+  "../../../../packages/data/packs/*/escudos/*.{png,jpg,gif,svg,webp}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+);
 /** Escudos de um pacote: id do clube → URL. */
 function escudosDo(pacote: string): Record<string, string> {
   const prefixo = `../../../../packages/data/packs/${pacote}/escudos/`;
@@ -72,7 +75,13 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
     ...OPCOES_EMBUTIDAS,
     ...Object.entries(NOMES_EXTERIOR)
       .filter(([id]) => carregadorExterior(id))
-      .map(([id, [nome, logo]]) => ({ id, nome, logo, ficticio: false, escudos: Object.keys(escudosDo(id)).length })),
+      .map(([id, [nome, logo]]) => ({
+        id,
+        nome,
+        logo,
+        ficticio: false,
+        escudos: Object.keys(escudosDo(id)).length,
+      })),
     ...importados.map((p) => ({
       id: p.pacote.id,
       nome: p.pacote.nome,

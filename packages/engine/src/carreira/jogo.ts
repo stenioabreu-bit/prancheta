@@ -18,6 +18,14 @@ import { assumir, ficarDesempregado } from "../mercado/tecnico";
 import type { EstadoMercado } from "../mercado/tipos";
 import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
 import {
+  completarFinancas,
+  creditar,
+  fecharAnoFinanceiro,
+  financasIniciais,
+  fluxoSemanal,
+} from "../mercado/financas";
+import type { Moeda } from "../mercado/valores";
+import {
   PESO_DIVISAO_NO_MERCADO,
   PREMIO_COPA,
   PREMIO_POR_FASE,
@@ -63,6 +71,10 @@ export interface OpcoesNovoJogo {
   estaduais?: { uf: string; formato: FormatoDivisao; clubes: string[] }[];
   clubesExtras?: ClubeDados[];
   continentais?: FormatoContinental[];
+  /** Base financeira de 2026 (€ mi) por id de clube. */
+  financas?: Record<string, { valorElenco: number; orcamento: number }>;
+  /** Moeda de exibição escolhida na criação da carreira. */
+  moeda?: Moeda;
   tecnico: string;
   clubeId: string;
 }
@@ -107,6 +119,7 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
     carreira: {
       tecnico,
       clubeId: o.clubeId,
+      moeda: o.moeda ?? "BRL",
       diretoria: 62,
       torcida: 60,
       reputacao: grande ? 58 : 45,
@@ -127,12 +140,16 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
       proximoId: 1,
     },
     mercado: {
-      financas: {
-        orcamento: orcamentoInicial(divisaoDo(temporada, o.clubeId) ?? "D", grande),
-        divida: grande ? "muito alta" : "moderada",
-        perfil: dadosDoClube.perfilDiretoria ?? "normal",
-        ouvir: 50,
-      },
+      financas: financasIniciais(
+        clube,
+        divisaoDo(temporada, o.clubeId),
+        o.financas?.[o.clubeId],
+        orcamentoInicial(divisaoDo(temporada, o.clubeId) ?? "D", grande),
+        dadosDoClube.perfilDiretoria ?? "normal",
+        50,
+        temporada.temporada,
+      ),
+      ...(o.financas ? { basesFinanceiras: o.financas } : {}),
       indicacoes: [],
       tecnicos,
       grandes,
@@ -252,7 +269,7 @@ function premiarContinentais(estado: EstadoJogo) {
       if (!joga || c.premiosPagos?.includes(chave)) return;
       c.premiosPagos = [...(c.premiosPagos ?? []), chave];
       const valor = tabela[i] ?? 0;
-      estado.mercado.financas.orcamento = Math.round((estado.mercado.financas.orcamento + valor) * 10) / 10;
+      creditar(estado.mercado.financas, valor, `Premiação · ${f.nome} (${fase.nome})`, t.temporada, t.rodada);
       enviarMensagem(c, t.rodada, {
         de: "Financeiro",
         assunto: `Premiação · ${f.nome}`,
@@ -263,7 +280,7 @@ function premiarContinentais(estado: EstadoJogo) {
     if (est.campeao === c.clubeId && !c.premiosPagos?.includes(chaveTitulo)) {
       c.premiosPagos = [...(c.premiosPagos ?? []), chaveTitulo];
       const valor = tabela.at(-1) ?? 0;
-      estado.mercado.financas.orcamento = Math.round((estado.mercado.financas.orcamento + valor) * 10) / 10;
+      creditar(estado.mercado.financas, valor, `Título · ${f.nome}`, t.temporada, t.rodada);
       enviarMensagem(c, t.rodada, {
         de: "Presidência",
         assunto: `Campeão da ${f.nome}!`,
@@ -287,8 +304,13 @@ function reagirACopa(estado: EstadoJogo, rodadaFechada: number) {
   const placar = `${souA ? ga : gb} x ${souA ? gb : ga}${confronto.penaltis ? ", nos pênaltis" : ""}`;
   const passou = confronto.vencedor === c.clubeId;
   if (passou) {
-    const f = estado.mercado.financas;
-    f.orcamento = Math.round((f.orcamento + (PREMIO_COPA[indice] ?? 0) * 0.5) * 10) / 10;
+    creditar(
+      estado.mercado.financas,
+      PREMIO_COPA[indice] ?? 0,
+      `Premiação · Copa do Brasil (${fases[indice]!.nome})`,
+      estado.temporada.temporada,
+      estado.temporada.rodada,
+    );
   }
   reagirAoConfrontoDaCopa(
     c,
@@ -313,6 +335,11 @@ export function seguir(estado: EstadoJogo): void {
   if (t.rodada === rodadaAntes) return;
   reagirACopa(estado, rodadaAntes);
   premiarContinentais(estado);
+  const meuClube = estado.carreira.clubeId ? t.clubes[estado.carreira.clubeId] : null;
+  if (meuClube) {
+    completarFinancas(estado.mercado.financas, meuClube, divisaoDo(t, meuClube.id), t.temporada);
+    fluxoSemanal(estado.mercado.financas, meuClube, t.temporada, rodadaAntes);
+  }
   comRng(estado, (rng) => {
     semana(estado.carreira, t, estado.rodadaAtual, rng);
     semanaDoMercado(estado, rng);
@@ -346,7 +373,38 @@ export function fimDeTemporada(estado: EstadoJogo): boolean {
 /** Vira a temporada; diretoria e torcida voltam para perto do meio e a meta é refeita. */
 export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
   const premio = premiacaoDaTemporada(estado);
+  const anterior = estado.carreira.clubeId;
+  const divisaoAntes = anterior ? divisaoDo(estado.temporada, anterior) : null;
+  const posicao = anterior ? posicaoNaTabela(estado.temporada, anterior) : null;
+  const totalNaLiga = divisaoAntes ? estado.temporada.divisoes[divisaoAntes].clubes.length : 0;
+  const continental =
+    !!anterior &&
+    Object.values(estado.temporada.continentais ?? {}).some((e) =>
+      e.fases.some((f) =>
+        f.tipo === "liga"
+          ? f.grupos.some((g) => g.includes(anterior))
+          : f.confrontos.some((x) => x.a === anterior || x.b === anterior),
+      ),
+    );
+  const anoQueFecha = estado.temporada.temporada;
   const resumo = virarTemporada(estado.temporada);
+  let balanco: string | null = null;
+  if (anterior && estado.carreira.clubeId === anterior) {
+    const clubeAtual = estado.temporada.clubes[anterior]!;
+    const divisaoDepois = divisaoDo(estado.temporada, anterior);
+    const ordem = ["A", "B", "C", "D"];
+    const mudou =
+      divisaoAntes && divisaoDepois
+        ? Math.sign(ordem.indexOf(divisaoAntes) - ordem.indexOf(divisaoDepois))
+        : 0;
+    completarFinancas(estado.mercado.financas, clubeAtual, divisaoDepois, anoQueFecha);
+    balanco = fecharAnoFinanceiro(estado.mercado.financas, clubeAtual, {
+      temporada: anoQueFecha,
+      mudouDeDivisao: mudou,
+      disputouContinental: continental,
+      colocacao: posicao && totalNaLiga > 1 ? (posicao - 1) / (totalNaLiga - 1) : null,
+    });
+  }
   const c = estado.carreira;
   c.diretoria = limitar(Math.round(c.diretoria * 0.6 + 24), 30, 80);
   c.torcida = limitar(Math.round(c.torcida * 0.6 + 24), 30, 80);
@@ -364,6 +422,8 @@ export function novaTemporadaDoJogo(estado: EstadoJogo): ResumoTemporada {
     if (premio) {
       enviarMensagem(c, 0, { de: "Financeiro", assunto: "Premiação da temporada", texto: premio });
     }
+    if (balanco)
+      enviarMensagem(c, 0, { de: "Financeiro", assunto: "Balanço financeiro do ano", texto: balanco });
     const saiu = (resumo.aposentados ?? []).filter((x) => x.clubeId === c.clubeId);
     const subiu = (resumo.novatos ?? []).filter((x) => x.clubeId === c.clubeId);
     if (saiu.length || subiu.length) {
@@ -386,7 +446,6 @@ function premiacaoDaTemporada(estado: EstadoJogo): string | null {
   if (!d || !pos) return null;
   const idLiga = estado.temporada.formatos?.[d]?.id ?? `brasileirao-serie-${d.toLowerCase()}`;
   const valor = premioDaLiga(idLiga, pos, estado.temporada.divisoes[d].clubes.length);
-  const f = estado.mercado.financas;
-  f.orcamento = Math.round((f.orcamento + valor) * 10) / 10;
+  creditar(estado.mercado.financas, valor, `Premiação · ${pos}ª colocação`, estado.temporada.temporada, 0);
   return `Pela ${pos}ª colocação na ${nomeDaCompeticao(estado.temporada, d)}, o clube recebeu ${formatarDinheiro(valor)} de premiação.`;
 }

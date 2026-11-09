@@ -109,6 +109,8 @@ export interface JogoDoHistorico {
 /** Tudo que é do técnico do usuário: clube, relações, comissão, treino, base e caixa de mensagens. */
 export interface EstadoCarreira {
   tecnico: string;
+  /** Moeda de exibição do dinheiro (o jogo guarda tudo em euro). */
+  moeda?: import("../mercado/valores").Moeda;
   /** null = desempregado. */
   clubeId: string | null;
   diretoria: number;

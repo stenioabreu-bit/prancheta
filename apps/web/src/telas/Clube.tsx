@@ -1,4 +1,6 @@
 import {
+  NOME_DA_SITUACAO,
+  folhaAnual,
   type Divisao,
   FOCOS,
   FUNCOES_COMISSAO,
@@ -203,7 +205,7 @@ function Mercado() {
             onChange={(e) => setTeto(e.target.value ? Number(e.target.value) : null)}
           >
             <option value="">Qualquer valor</option>
-            {[0.5, 1, 2, 5, 10].map((v) => (
+            {[0.1, 0.2, 0.5, 1, 2].map((v) => (
               <option key={v} value={v}>
                 até {formatarDinheiro(v)}
               </option>
@@ -235,15 +237,50 @@ function Mercado() {
       <section className="panel stack">
         <h3>Finanças</h3>
         <dl className="kv">
-          <dt>Orçamento</dt>
+          <dt>Orçamento p/ contratações</dt>
           <dd>{formatarDinheiro(f.orcamento)}</dd>
-          <dt>Dívida</dt>
-          <dd>{f.divida}</dd>
+          {f.caixa !== undefined && (
+            <>
+              <dt>Caixa</dt>
+              <dd>{formatarDinheiro(f.caixa)}</dd>
+              <dt>Dívida total</dt>
+              <dd>{formatarDinheiro(f.dividaTotal ?? 0)}</dd>
+              <dt>Receita anual</dt>
+              <dd>{formatarDinheiro(f.receitaAnual ?? 0)}</dd>
+              <dt>Folha anual</dt>
+              <dd>{formatarDinheiro(folhaAnual(t.clubes[jogo.carreira.clubeId!]!))}</dd>
+              <dt>Situação</dt>
+              <dd>{f.situacao ? NOME_DA_SITUACAO[f.situacao] : f.divida}</dd>
+              <dt>Valor do elenco (ref.)</dt>
+              <dd>
+                {formatarDinheiro(f.valorElenco ?? 0)}
+                {f.fonteValorElenco === "estimated" ? " (estimado)" : ""}
+              </dd>
+            </>
+          )}
           <dt>Presidente</dt>
           <dd>{f.perfil === "economico" ? "econômico" : "normal"}</dd>
           <dt>Ouve o técnico</dt>
           <dd>{f.ouvir}%</dd>
         </dl>
+        <p className="small muted">
+          Caixa, dívida, receita e folha são estimativas do jogo, não dados oficiais do clube.
+        </p>
+        {(f.movimentos?.length ?? 0) > 0 && (
+          <>
+            <h3>Movimentações</h3>
+            <ul className="lista-limpa">
+              {f.movimentos!.slice(0, 15).map((m, i) => (
+                <li key={`${m.temporada}-${m.rodada}-${i}`} className="stat-linha">
+                  <span>
+                    {m.descricao} <span className="muted">· {m.temporada}</span>
+                  </span>
+                  <span className={m.valor >= 0 ? "badge" : "muted"}>{formatarDinheiro(m.valor)}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <h3>Suas indicações</h3>
         {mercado.indicacoes.length === 0 && <p className="vazio">Nenhuma ainda.</p>}
         <ul className="lista-limpa">

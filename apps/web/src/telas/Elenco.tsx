@@ -114,7 +114,7 @@ function FichaDoJogador({ jogadorId, aoFechar }: { jogadorId: string; aoFechar: 
         </dd>
         <dt>Mercado</dt>
         <dd>
-          {formatarDinheiro(valor)} · salário R$ {salario(j)} mil
+          {formatarDinheiro(valor)} · salário {formatarDinheiro(salario(j) / 1000)}/mês
         </dd>
         {promessa && (
           <>

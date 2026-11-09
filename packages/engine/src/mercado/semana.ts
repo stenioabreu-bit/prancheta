@@ -13,7 +13,7 @@ import {
   transferir,
   valorNoClube,
 } from "./transferencias";
-import { formatarDinheiro, janelaAberta } from "./valores";
+import { arredondar, formatarDinheiro, janelaAberta } from "./valores";
 
 /**
  * Semana do mercado: com a janela aberta, a diretoria responde até 2 indicações,
@@ -49,7 +49,7 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
 
     if (m.financas.perfil === "economico" && rng.proximo() < 0.22) {
       const media = forcaDoClube(meu);
-      const alvos = buscarNoMercado(estado, { valorMaximo: 0.6, limite: 200 }).filter(
+      const alvos = buscarNoMercado(estado, { valorMaximo: 0.1, limite: 200 }).filter(
         (x) =>
           (x.divisao === "C" || x.divisao === "D") &&
           x.jogador.ovr >= media - 12 &&
@@ -87,7 +87,7 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
       const comprador = compradores.length
         ? t.clubes[sortear(rng, compradores)]!.nome
         : "um clube do exterior";
-      const oferta = Math.round(valorNoClube(estado, vendido, meu) * (0.75 + rng.proximo() * 0.45) * 10) / 10;
+      const oferta = arredondar(valorNoClube(estado, vendido, meu) * (0.75 + rng.proximo() * 0.45));
       enviarMensagem(c, rodada, {
         de: "Diretoria de futebol",
         assunto: `Proposta por ${vendido.nome}`,
@@ -118,7 +118,7 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
             ? "um clube do exterior"
             : t.clubes[sortear(rng, maiores)]!.nome;
         const valor = valorNoClube(estado, j, meu);
-        const oferta = Math.round(valor * (0.9 + rng.proximo() * 0.6) * 10) / 10;
+        const oferta = arredondar(valor * (0.9 + rng.proximo() * 0.6));
         const tende =
           importanciaNoTime(meu, j) < 0.5 && (m.financas.perfil === "economico" || oferta > valor * 1.2);
         enviarMensagem(c, rodada, {

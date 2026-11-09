@@ -6,9 +6,11 @@ import { divisaoDo } from "../competicao/temporada";
 import type { Divisao } from "../competicao/tipos";
 import { type Rng, limitar } from "../rng";
 import type { Clube, Jogador } from "../tipos";
+import { pagarContratacao, receberVenda } from "./financas";
 import type { DecisaoPendente, EfeitoDeMercado, Indicacao } from "./tipos";
 import {
   PESO_DIVISAO_NO_MERCADO,
+  arredondar,
   type SetorDoMercado,
   formatarDinheiro,
   janelaAberta,
@@ -129,8 +131,13 @@ export function contratar(estado: EstadoJogo, jogadorId: string, custo: number):
   const j = de?.jogadores.find((x) => x.id === jogadorId);
   if (!de || !meu || !j || de === meu) return null;
   transferir(j, de, meu);
-  const f = estado.mercado.financas;
-  f.orcamento = Math.max(0, Math.round((f.orcamento - custo) * 10) / 10);
+  pagarContratacao(
+    estado.mercado.financas,
+    custo,
+    j.nome,
+    estado.temporada.temporada,
+    estado.temporada.rodada,
+  );
   return j;
 }
 
@@ -139,8 +146,7 @@ export function vender(estado: EstadoJogo, jogadorId: string, valor: number, com
   const meu = estado.temporada.clubes[estado.carreira.clubeId!]!;
   const j = meu.jogadores.find((x) => x.id === jogadorId);
   if (!j) return;
-  const f = estado.mercado.financas;
-  f.orcamento = Math.round((f.orcamento + valor * (f.perfil === "economico" ? 0.25 : 0.5)) * 10) / 10;
+  receberVenda(estado.mercado.financas, valor, j.nome, estado.temporada.temporada, estado.temporada.rodada);
   const destino = Object.values(estado.temporada.clubes).find((c) => c.nome === comprador);
   if (destino) transferir(j, meu, destino);
   else {
@@ -185,7 +191,7 @@ export function avaliarIndicacao(estado: EstadoJogo, ind: Indicacao, rng: Rng): 
     };
   }
   const titular = de.titulares.includes(j.id);
-  const custo = Math.round(valorNoClube(estado, j, de) * (titular ? 1.25 : 1) * 10) / 10;
+  const custo = arredondar(valorNoClube(estado, j, de) * (titular ? 1.25 : 1));
   const minhaForca = forcaDeMercado(estado, meu.id);
   const forcaDele = forcaDeMercado(estado, de.id);
   const clubeVende = forcaDele > minhaForca * 1.2 ? 0.12 : titular ? 0.4 : 0.75;
@@ -196,7 +202,7 @@ export function avaliarIndicacao(estado: EstadoJogo, ind: Indicacao, rng: Rng): 
     ind.status = "recusada";
     const opcoes = buscarNoMercado(estado, {
       setor: setorDaPosicao(j.pos),
-      valorMaximo: Math.max(0.3, f.orcamento * 0.5),
+      valorMaximo: Math.max(0.05, f.orcamento * 0.5),
       limite: 60,
     })
       .filter((x) => Math.abs(x.jogador.ovr - j.ovr) <= 10)

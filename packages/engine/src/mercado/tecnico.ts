@@ -7,6 +7,7 @@ import { divisaoDo } from "../competicao/temporada";
 import { NOMES_COMISSAO, SOBRENOMES_COMISSAO } from "../conteudo/nomes";
 import { criarJogador } from "../jogador";
 import { type Rng, limitar, sortear } from "../rng";
+import { financasIniciais } from "./financas";
 import { exigenciaDoClube, formatarDinheiro, orcamentoInicial } from "./valores";
 
 export function nomeDeTecnicoFicticio(rng: Rng): string {
@@ -95,12 +96,15 @@ export function assumir(estado: EstadoJogo, clubeId: string, rng: Rng): void {
   m.indicacoes = [];
   const divisao = divisaoDo(t, clubeId) ?? "D";
   const grande = m.grandes.includes(clubeId);
-  m.financas = {
-    orcamento: orcamentoInicial(divisao, grande),
-    divida: grande ? "alta" : "moderada",
-    perfil: rng.proximo() < 0.5 ? "economico" : "normal",
-    ouvir: 50,
-  };
+  m.financas = financasIniciais(
+    clube,
+    divisao,
+    m.basesFinanceiras?.[clubeId],
+    orcamentoInicial(divisao, grande),
+    rng.proximo() < 0.5 ? "economico" : "normal",
+    50,
+    t.temporada,
+  );
   m.passagens.push({ clubeId, temporada: t.temporada, rodada: t.rodada });
   enviarMensagem(c, t.rodada, {
     de: "Presidência",

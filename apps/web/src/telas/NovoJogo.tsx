@@ -1,3 +1,4 @@
+import type { Moeda } from "@prancheta/engine";
 import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import type { PacoteDados } from "@prancheta/data";
 import { type Clube, type ClubeDados, type Divisao, criarClube, criarRng } from "@prancheta/engine";
@@ -102,6 +103,7 @@ export function NovoJogo() {
   const [pacoteId, setPacoteId] = useState<string>("");
   const [pacote, setPacote] = useState<PacoteDados | null>(null);
   const [tecnico, setTecnico] = useState("");
+  const [moeda, setMoeda] = useState<Moeda>("BRL");
   const [divisao, setDivisao] = useState<Divisao>("A");
   const [clubeId, setClubeId] = useState<string | null>(null);
   const [comecando, setComecando] = useState(false);
@@ -159,7 +161,12 @@ export function NovoJogo() {
             </p>
           )}
           {opcoes.map((o) => (
-            <button key={o.id} type="button" className="btn primary big btn-liga" onClick={() => setPacoteId(o.id)}>
+            <button
+              key={o.id}
+              type="button"
+              className="btn primary big btn-liga"
+              onClick={() => setPacoteId(o.id)}
+            >
               {o.logo && <LogoCompeticao competicao={o.logo} tamanho={36} />}
               {o.nome}
             </button>
@@ -266,6 +273,17 @@ export function NovoJogo() {
               maxLength={40}
               autoComplete="off"
             />
+            <label htmlFor="moeda">Moeda</label>
+            <select
+              id="moeda"
+              className="inp"
+              value={moeda}
+              onChange={(e) => setMoeda(e.target.value as Moeda)}
+            >
+              <option value="BRL">Real (R$)</option>
+              <option value="USD">Dólar (US$)</option>
+              <option value="EUR">Euro (€)</option>
+            </select>
             <button
               type="button"
               className="btn primary big"
@@ -273,7 +291,7 @@ export function NovoJogo() {
               onClick={async () => {
                 setComecando(true);
                 try {
-                  await comecar({ pacoteId, tecnico, clubeId: clubeId! });
+                  await comecar({ pacoteId, tecnico, clubeId: clubeId!, moeda });
                 } catch (e) {
                   avisar((e as Error).message);
                   setComecando(false);

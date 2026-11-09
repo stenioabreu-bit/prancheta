@@ -1,3 +1,5 @@
+import { FINANCAS_2026 } from "@prancheta/data";
+import { type Moeda, definirMoeda } from "@prancheta/engine";
 import { type EstadoJogo, novoJogo } from "@prancheta/engine";
 import { apagarTudo, carregar, salvar } from "@prancheta/save";
 import { create } from "zustand";
@@ -19,7 +21,7 @@ interface Loja {
   irParaTela(tela: "menu" | "novo" | "jogo"): void;
   aviso: string | null;
   iniciar(): Promise<void>;
-  comecar(o: { pacoteId: string; tecnico: string; clubeId: string }): Promise<void>;
+  comecar(o: { pacoteId: string; tecnico: string; clubeId: string; moeda: Moeda }): Promise<void>;
   /** Única porta de alteração do jogo: roda `f`, redesenha e agenda o save. */
   mexer<T>(f: (jogo: EstadoJogo) => T): T;
   irPara(aba: Aba): void;
@@ -65,11 +67,13 @@ export const useLoja = create<Loja>((set, get) => ({
 
   async iniciar() {
     const jogo = await carregar(armazenamento);
+    if (jogo) definirMoeda(jogo.carreira.moeda ?? "BRL");
     const escudos = jogo ? await escudosDoPacote(await lerConfig("pacoteDoJogo")) : {};
     set(jogo ? { jogo, escudos, pronto: true } : { pronto: true });
   },
 
-  async comecar({ pacoteId, tecnico, clubeId }) {
+  async comecar({ pacoteId, tecnico, clubeId, moeda }) {
+    definirMoeda(moeda);
     const { pacote, escudos } = await carregarPacote(pacoteId);
     const semente = crypto.getRandomValues(new Uint32Array(1))[0]!;
     const jogo = novoJogo({
@@ -83,6 +87,8 @@ export const useLoja = create<Loja>((set, get) => ({
       ...(pacote.estaduais ? { estaduais: pacote.estaduais } : {}),
       ...(pacote.clubesExtras ? { clubesExtras: pacote.clubesExtras } : {}),
       ...(pacote.continentais ? { continentais: pacote.continentais } : {}),
+      financas: FINANCAS_2026,
+      moeda,
       tecnico,
       clubeId,
     });

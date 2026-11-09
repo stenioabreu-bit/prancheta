@@ -359,22 +359,30 @@ export function Partida() {
               <Escudo clube={m.casa.clube} tamanho={56} />
               <span>{m.casa.clube.nome}</span>
             </div>
-            <div className="g num">
-              {m.casa.est.gols} – {m.visitante.est.gols}
+            <div className="centro-placar">
+              {jogoAgendado && (
+                <span className="logo-placar">
+                  <LogoCompeticao
+                    competicao={chaveDoLogo(jogo.temporada, jogoAgendado.competicao)}
+                    tamanho={52}
+                  />
+                </span>
+              )}
+              <span className="small muted">{competicao}</span>
+              <div className="g num">
+                {m.casa.est.gols} – {m.visitante.est.gols}
+              </div>
+              <span className="relogio-placar num">{relogio}</span>
+              {fase !== "pre" && fase !== "pos" && fase !== "intervalo" && (
+                <span className="small muted">
+                  {m.minuto < 90 ? `faltam ${90 - m.minuto} min` : "acréscimos"}
+                </span>
+              )}
             </div>
             <div className="t">
               <Escudo clube={m.visitante.clube} tamanho={56} />
               <span>{m.visitante.clube.nome}</span>
             </div>
-          </div>
-          <div className="clock comp-rotulo">
-            {jogoAgendado && (
-              <LogoCompeticao
-                competicao={chaveDoLogo(jogo.temporada, jogoAgendado.competicao)}
-                tamanho={20}
-              />
-            )}
-            {competicao} · {relogio}
           </div>
           <Estatisticas m={m} />
         </div>

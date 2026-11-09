@@ -2279,3 +2279,24 @@ html[data-deitado] {
   text-decoration: underline dotted;
   text-underline-offset: 3px;
 }
+
+.centro-placar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+.logo-placar {
+  display: grid;
+  place-items: center;
+  padding: 6px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+.relogio-placar {
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 700;
+}

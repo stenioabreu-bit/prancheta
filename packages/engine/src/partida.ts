@@ -915,14 +915,10 @@ export function encerrarPartida(m: Partida): ResultadoPartida {
   };
 }
 
-const etapa = (minuto: number) => (minuto <= 45 ? 1 : 2);
 
-/** Uma conversa por etapa (1º e 2º tempo). */
+/** Uma conversa a cada 15 minutos. */
 export function podeGritar(m: Partida, lado: LadoPartida): boolean {
-  return (
-    !lado.conversa ||
-    etapa(lado.conversa.desde) !== etapa(m.minuto === 45 && m.intervaloFeito ? 46 : m.minuto)
-  );
+  return !lado.conversa || m.minuto - lado.conversa.desde >= 15;
 }
 
 export type CategoriaDeConversa =
@@ -1010,6 +1006,37 @@ export const CATEGORIAS_DE_CONVERSA: readonly {
   },
 ];
 
+/** Falar com o time, versão enxuta: três intenções com três falas cada (cada fala usa uma abordagem). */
+export const GRUPOS_DE_FALA: readonly {
+  nome: string;
+  falas: readonly { texto: string; categoria: CategoriaDeConversa }[];
+}[] = [
+  {
+    nome: "Ir pra cima",
+    falas: [
+      { texto: "Vamos pra cima, confiem!", categoria: "motivacao" },
+      { texto: "Acorda, time! Mais intensidade!", categoria: "cobranca" },
+      { texto: "Não tenham medo de arriscar.", categoria: "psicologico" },
+    ],
+  },
+  {
+    nome: "Dominar o jogo",
+    falas: [
+      { texto: "Calma, toca a bola, segura o jogo.", categoria: "controle" },
+      { texto: "Joguem uns pelos outros!", categoria: "uniao" },
+      { texto: "Erros acontecem. Foquem na próxima jogada.", categoria: "psicologico" },
+    ],
+  },
+  {
+    nome: "Fechar a casinha",
+    falas: [
+      { texto: "Quero atenção em cada lance!", categoria: "concentracao" },
+      { texto: "Não quero erros bobos lá atrás!", categoria: "cobranca" },
+      { texto: "Precisamos estar juntos até o último minuto!", categoria: "uniao" },
+    ],
+  },
+];
+
 /** Efeito base de cada abordagem (linhas por 15 minutos, moral, condição e disciplina). */
 const EFEITO_BASE: Record<
   CategoriaDeConversa,
@@ -1036,7 +1063,7 @@ export interface ResultadoDaConversa {
 }
 
 /**
- * Conversa da beira do campo: uma por etapa. O efeito depende do placar, da pressão do adversário, do
+ * Conversa da beira do campo: uma a cada 15 minutos. O efeito depende do placar, da pressão do adversário, do
  * cansaço e da moral do time em campo, e cai quando a mesma abordagem é repetida no jogo.
  */
 export function conversarComOTime(
@@ -1046,7 +1073,7 @@ export function conversarComOTime(
   fala: string,
 ): ResultadoDaConversa {
   if (m.fase === "pre" || m.minuto >= 90) return { texto: "O jogo não está rolando.", tom: "neutro" };
-  if (!podeGritar(m, lado)) return { texto: "Você já falou com o time nesta etapa.", tom: "neutro" };
+  if (!podeGritar(m, lado)) return { texto: `Nova conversa a partir dos ${(lado.conversa?.desde ?? 0) + 15}'.`, tom: "neutro" };
   const outro = lado === m.casa ? m.visitante : m.casa;
   const saldo = lado.est.gols - outro.est.gols;
   const emCampo = lado.emCampo;

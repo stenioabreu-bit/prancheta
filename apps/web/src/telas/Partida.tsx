@@ -1,8 +1,7 @@
 import {
   type LadoPartida,
   type Partida as PartidaDoMotor,
-  CATEGORIAS_DE_CONVERSA,
-  type CategoriaDeConversa,
+  GRUPOS_DE_FALA,
   conversarComOTime,
   podeGritar,
   type Pergunta,
@@ -611,12 +610,10 @@ function Sumula({ m, lado }: { m: PartidaDoMotor; lado: "casa" | "visitante" }) 
   );
 }
 
-/** Falar com o time: escolhe a abordagem (categoria) e depois a fala. Uma conversa por etapa. */
+/** Falar com o time: três intenções, três falas cada. Uma conversa por etapa. */
 function FalarComOTime({ m, aoFalar }: { m: PartidaDoMotor; aoFalar: (texto: string) => void }) {
   const eu = m.casa.ehUsuario ? m.casa : m.visitante;
-  const [categoria, setCategoria] = useState<CategoriaDeConversa | null>(null);
   const pode = podeGritar(m, eu);
-  const atual = CATEGORIAS_DE_CONVERSA.find((c) => c.id === categoria);
   return (
     <section className="stack" style={{ gap: 8 }}>
       <h3>Falar com o time</h3>
@@ -627,36 +624,27 @@ function FalarComOTime({ m, aoFalar }: { m: PartidaDoMotor; aoFalar: (texto: str
       )}
       {!pode && (
         <p className="small muted" style={{ margin: 0 }}>
-          Nova conversa só na próxima etapa.
+          Nova conversa a partir dos {(eu.conversa?.desde ?? 0) + 15}'.
         </p>
       )}
-      <div className="filters" role="group" aria-label="Abordagem">
-        {CATEGORIAS_DE_CONVERSA.map((c) => (
-          <button
-            key={c.id}
-            type="button"
-            className="chip"
-            aria-pressed={categoria === c.id}
-            disabled={!pode}
-            onClick={() => setCategoria(c.id)}
-          >
-            {c.nome}
-          </button>
-        ))}
-      </div>
-      {atual &&
-        pode &&
-        atual.falas.map((fala) => (
-          <button
-            key={fala}
-            type="button"
-            className="btn"
-            style={{ textAlign: "left" }}
-            onClick={() => aoFalar(conversarComOTime(m, eu, atual.id, fala).texto)}
-          >
-            “{fala}”
-          </button>
-        ))}
+      {GRUPOS_DE_FALA.map((g) => (
+        <div key={g.nome} className="grupo-fala">
+          <span className="eyebrow">{g.nome}</span>
+          <div className="seg" role="group" aria-label={g.nome}>
+            {g.falas.map((f) => (
+              <button
+                key={f.texto}
+                type="button"
+                disabled={!pode}
+                className={eu.conversa?.fala === f.texto ? "on" : ""}
+                onClick={() => aoFalar(conversarComOTime(m, eu, f.categoria, f.texto).texto)}
+              >
+                {f.texto}
+              </button>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }

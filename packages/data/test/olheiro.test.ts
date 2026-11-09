@@ -74,7 +74,7 @@ describe("metas por competição", () => {
     const antes = eu.bonus.A;
     gritarDaBeira(m, eu, "incentivar");
     expect(eu.bonus.A).toBeGreaterThan(antes);
-    expect(gritarDaBeira(m, eu, "cobrar")).toContain("nesta etapa");
+    expect(gritarDaBeira(m, eu, "cobrar")).toContain("a partir dos 25");
   });
 });
 

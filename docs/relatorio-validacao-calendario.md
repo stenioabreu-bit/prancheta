@@ -60,3 +60,11 @@ Suíte completa: 104 testes passando (`npx vitest run`). Build do app ok.
 - Corrigido: reagendamento podia cair na semana que estava fechando; fase da Copa aberta com data já passada; ida empurrada para depois da volta.
 - Premiação continental paga por fase disputada e pelo título (`PREMIO_POR_FASE`).
 - Pendente: classificação automática para as continentais de 2027 em diante (hoje repete os participantes de 2026).
+
+## Classificação continental automática (2027 em diante)
+
+- Vagas brasileiras pelo resultado: campeão da Libertadores, campeão da Sul-Americana, campeão da Copa do Brasil e tabela da Série A, nessa ordem; quem já tem vaga libera a sua para o próximo da tabela.
+- Mesmo número de vagas por fase de 2026: 6 nos grupos da Libertadores, 2 na Fase 2, 6 nos grupos da Sul-Americana.
+- Estrangeiros mantêm as vagas de 2026 (as ligas deles não são simuladas no save do Brasileirão); campeão continental estrangeiro entra nos grupos da Libertadores.
+- Confrontos da Pré, 1ª fase da Sul-Americana e grupos sorteados de novo (potes na ordem de entrada), nas datas de 2026.
+- Teste: 2027 sem clube repetido entre as copas, G4 e campeões nos grupos, 6 brasileiros na Sul-Americana, temporada completa sem conflito.

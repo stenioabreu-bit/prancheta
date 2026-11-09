@@ -83,7 +83,8 @@ Dados prontos (fora do git, em `dados/`): `auditoria-ogol.json` (438 clubes 2026
 - Temporada termina quando não sobra jogo e todas as competições fecharam (sem 38 fixo); `FormatoDivisao.inicio` define a semana de estreia.
 - Feito: datas reais CBF (Séries, Copa), 25 estaduais com tabela real, reagendamento automático, testes (`docs/relatorio-validacao-calendario.md`).
 - Feito: Libertadores (com a Pré) e Sul-Americana com a tabela real 2026, playoffs Lib×Sul e premiação por fase.
-- Próximo: classificação continental automática (vagas por Série A/Copa/estrangeiras) e redistribuição; MT/MS; tabela oficial das Séries.
+- Feito: classificação continental automática para 2027+ com redistribuição de vagas brasileiras.
+- Próximo: etapa 12 (evolução de clubes/jogadores/aposentadoria e geração de novos jogadores) e etapa 13 (histórico por competição); pendências MT/MS e tabela oficial das Séries.
 
 ## Regras
 Reaproveitar o motor de fases; formatos em configuração; não remover nada; não criar clubes fictícios; dados pesquisados uma vez e salvos em arquivos estruturados; respostas e relatórios curtos.

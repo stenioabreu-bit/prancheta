@@ -6,3 +6,4 @@ export * from "./copa";
 export * from "./temporada";
 export * from "./calendario";
 export * from "./continental";
+export * from "./classificacaoContinental";

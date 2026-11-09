@@ -221,3 +221,38 @@ describe("robustez do calendário", () => {
     expect(conflitosDeCalendario(e.jogos)).toEqual([]);
   });
 });
+
+describe("classificação continental automática", () => {
+  it("2027: vagas brasileiras pelo resultado de 2026, sem repetir clube e com a temporada completa", () => {
+    const e = nova(7);
+    jogarTudo(e);
+    const ligaA = e.divisoes.A.fases[0]!;
+    const tabelaA = ligaA.tipo === "liga" ? classificacaoDoGrupo(ligaA, 0) : [];
+    const copa = e.copa.campeao!;
+    const campLib = e.continentais!["cont-LIB"]!.campeao!;
+    virarTemporada(e);
+    const lib = e.formatosContinentais!.find((f) => f.id === "cont-LIB")!;
+    const sul = e.formatosContinentais!.find((f) => f.id === "cont-SUL")!;
+    const grupos = (f: typeof lib) => f.fases.find((x) => x.nome === "Fase de grupos")!.grupos!.flat();
+    const pre2 = lib.fases.find((x) => x.nome === "Fase 2")!.pares!.flat();
+    const libTodos = [...grupos(lib), ...pre2, ...lib.fases[0]!.pares!.flat()].filter(
+      (x) => !x.includes(":"),
+    );
+    const sulTodos = [...grupos(sul), ...sul.fases[0]!.pares!.flat()].filter((x) => !x.includes(":"));
+    // Ninguém em duas copas nem duas vezes na mesma.
+    expect(new Set([...libTodos, ...sulTodos]).size).toBe(libTodos.length + sulTodos.length);
+    // Campeões e G4 da Série A nos grupos da Libertadores.
+    expect(grupos(lib)).toContain(copa);
+    expect(grupos(lib)).toContain(campLib);
+    for (const id of tabelaA.slice(0, 4)) expect(libTodos).toContain(id);
+    expect(grupos(lib)).toHaveLength(32);
+    expect(grupos(sul)).toHaveLength(32);
+    // Quem ficou logo atrás vai para a Sul-Americana.
+    const brSul = sulTodos.filter((x) => tabelaA.includes(x));
+    expect(brSul.length).toBe(6);
+    jogarTudo(e);
+    expect(temporadaEncerrada(e)).toBe(true);
+    expect(e.continentais!["cont-LIB"]!.campeao).toBeTruthy();
+    expect(conflitosDeCalendario(e.jogos)).toEqual([]);
+  });
+});

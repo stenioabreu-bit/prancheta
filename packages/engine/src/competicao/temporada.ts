@@ -12,6 +12,7 @@ import {
   horarioDaData,
   ultimaSemanaAgendada,
 } from "./calendario";
+import { proximasContinentais } from "./classificacaoContinental";
 import {
   type EstadoContinental,
   type FormatoContinental,
@@ -21,7 +22,7 @@ import {
 } from "./continental";
 import { type EstadoCopa, abrirFaseDaCopa, fecharRodadaDaCopa, montarCopa } from "./copa";
 import { type ContextoCompeticao, faseDoEstado, fecharRodadaDaDivisao, iniciarDivisao } from "./divisao";
-import { registrarNaLiga } from "./fases";
+import { classificacaoDoGrupo, registrarNaLiga } from "./fases";
 import { FORMATOS_2026 } from "./formatos2026";
 import type { EstadoFase } from "./tipos";
 import {
@@ -71,6 +72,8 @@ export interface EstadoTemporada {
   /** Libertadores e Sul-Americana (competições "cont-…"), na ordem em que fecham. */
   continentais?: Record<string, EstadoContinental>;
   formatosContinentais?: FormatoContinental[];
+  /** Tabela-base de 2026 (datas e vagas estrangeiras) para montar as copas dos anos seguintes. */
+  formatosContinentaisBase?: FormatoContinental[];
 }
 
 export interface OpcoesNovaTemporada {
@@ -356,6 +359,20 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
       j.amarelos = 0;
       j.semJogar = 0;
     }
+  }
+  if (estado.formatosContinentais) {
+    estado.formatosContinentaisBase ??= estado.formatosContinentais;
+    const ligaA = div.A.fases.find((f) => f.tipo === "liga");
+    const resultado = {
+      serieA: ligaA?.tipo === "liga" ? classificacaoDoGrupo(ligaA, 0) : div.A.clubes,
+      campeaoCopa: estado.semCopa ? null : estado.copa.campeao,
+      campeaoLibertadores: estado.continentais?.["cont-LIB"]?.campeao ?? null,
+      campeaoSulAmericana: estado.continentais?.["cont-SUL"]?.campeao ?? null,
+      brasileiros: new Set(DIVISOES.flatMap((d) => div[d].clubes)),
+    };
+    estado.formatosContinentais = comRng(estado, (rng) =>
+      proximasContinentais(estado.formatosContinentaisBase!, resultado, rng),
+    );
   }
   comRng(estado, (rng) => montarCompeticoes(estado, ordem, rng));
   return resumo;

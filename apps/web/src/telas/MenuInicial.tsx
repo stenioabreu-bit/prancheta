@@ -9,7 +9,7 @@ export function MenuInicial() {
   return (
     <div className="menu-inicial">
       <img className="menu-logo" src={logo} alt="" width={260} height={260} />
-      <h1 className="menu-titulo">Projeto Prancheta</h1>
+      <h1 className="menu-titulo">Projeto Prancheta 2027</h1>
       <nav className="menu-opcoes" aria-label="Menu inicial">
         {jogo && (
           <button type="button" className="btn primary big" onClick={() => irParaTela("jogo")}>

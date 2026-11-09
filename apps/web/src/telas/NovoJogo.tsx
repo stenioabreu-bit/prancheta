@@ -147,7 +147,7 @@ export function NovoJogo() {
     return (
       <div className="carreira-nova">
         <header className="cn-topo">
-          <span className="marca">Projeto Prancheta</span>
+          <span className="marca">PP27</span>
           <span className="cn-passo">Nova carreira · escolha a liga</span>
         </header>
         <section className="panel stack" aria-label="Ligas">
@@ -183,7 +183,7 @@ export function NovoJogo() {
   return (
     <div className="carreira-nova">
       <header className="cn-topo">
-        <span className="marca">Projeto Prancheta</span>
+        <span className="marca">PP27</span>
         <span className="cn-passo">Nova carreira · temporada {pacote?.temporada ?? ""}</span>
         <label className="cn-base">
           <span className="small muted">Liga:</span>

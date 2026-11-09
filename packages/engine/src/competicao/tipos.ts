@@ -71,8 +71,13 @@ export type RegraDeMovimento =
   /** Os vencedores de uma fase de mata-mata. */
   | { fase: string; posicao: "vencedores" };
 
+/** Competição de um jogo: Série, Copa do Brasil ou estadual ("est-UF"). */
+export type IdCompeticao = Divisao | "copa" | `est-${string}`;
+
 export interface FormatoDivisao {
   divisao: Divisao;
+  /** Competição própria (estaduais): os jogos usam este id em vez da Série. */
+  competicao?: IdCompeticao;
   /** ID permanente da competição (catálogo/logos), quando não for uma Série do Brasil. */
   id?: string;
   nome: string;
@@ -96,7 +101,7 @@ export interface JogoAgendado {
   data?: string;
   /** Datas anteriores, quando o jogo foi adiado/reagendado. */
   adiadoDe?: string[];
-  competicao: Divisao | "copa";
+  competicao: IdCompeticao;
   fase: string;
   /** Grupo da fase de liga ou índice do confronto do mata-mata. */
   grupo: number;
@@ -141,6 +146,8 @@ export type EstadoFase = EstadoFaseLiga | EstadoFaseMataMata;
 
 export interface EstadoDivisao {
   divisao: Divisao;
+  /** Competição dona dos jogos quando não é uma Série (ex.: "est-SP"). */
+  id?: IdCompeticao;
   clubes: string[];
   /** Fases já montadas, na ordem do formato. */
   fases: EstadoFase[];

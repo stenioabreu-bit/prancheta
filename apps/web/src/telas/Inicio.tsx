@@ -1,6 +1,7 @@
 import {
   candidatar,
   chaveDoLogo,
+  dataDoJogo,
   divisaoDo,
   exigencia,
   fimDeTemporada,
@@ -283,7 +284,9 @@ function Calendario() {
           const adv = t.clubes[j.casa === meu ? j.visitante : j.casa]!;
           return (
             <li key={j.id} className="cal-item">
-              <span className="cal-rod num">R{j.rodada + 1}</span>
+              <span className="cal-rod num">
+                {dataDoJogo(j).slice(8, 10)}/{dataDoJogo(j).slice(5, 7)}
+              </span>
               <NomeClube clube={adv} tamanho={20} />
               <span className="small muted comp-rotulo">
                 <LogoCompeticao competicao={chaveDoLogo(t, j.competicao)} tamanho={16} />

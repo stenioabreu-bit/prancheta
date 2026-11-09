@@ -81,7 +81,8 @@ Dados prontos (fora do git, em `dados/`): `auditoria-ogol.json` (438 clubes 2026
 ## Calendário (feito em 2026-11-08)
 - `competicao/calendario.ts`: semanas × 2 horários (fim de semana / meio de semana), `conflitosDeCalendario`, `horarioLivre`.
 - Temporada termina quando não sobra jogo e todas as competições fecharam (sem 38 fixo); `FormatoDivisao.inicio` define a semana de estreia.
-- Próximo: estaduais nas semanas 0–11 (Séries com `inicio` depois), encaixando com `horarioLivre`; teste de conflito cobre o calendário inteiro.
+- Feito: datas reais CBF (Séries, Copa), 25 estaduais com tabela real, reagendamento automático, testes (`docs/relatorio-validacao-calendario.md`).
+- Próximo: Libertadores/Pré/Sul-Americana nas datas do PDF; MT/MS quando houver tabela; tabela oficial de confrontos das Séries.
 
 ## Regras
 Reaproveitar o motor de fases; formatos em configuração; não remover nada; não criar clubes fictícios; dados pesquisados uma vez e salvos em arquivos estruturados; respostas e relatórios curtos.

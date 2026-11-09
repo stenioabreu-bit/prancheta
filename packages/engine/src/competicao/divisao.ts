@@ -1,5 +1,5 @@
 import type { Rng } from "../rng";
-import { horarioDaData } from "./calendario";
+import { type Horario, dataDoHorario, horarioDaData } from "./calendario";
 import {
   type Agenda,
   campanha,
@@ -29,11 +29,12 @@ export interface ContextoCompeticao {
 }
 
 function agendaDa(divisao: EstadoDivisao, ctx: ContextoCompeticao): Agenda {
-  return { competicao: divisao.divisao, jogos: ctx.jogos, meioDeSemana: false };
+  return { competicao: divisao.id ?? divisao.divisao, jogos: ctx.jogos, meioDeSemana: false };
 }
 
 function jogosDaDivisao(divisao: EstadoDivisao, ctx: ContextoCompeticao): JogoAgendado[] {
-  return Object.values(ctx.jogos).filter((j) => j.competicao === divisao.divisao);
+  const id = divisao.id ?? divisao.divisao;
+  return Object.values(ctx.jogos).filter((j) => j.competicao === id);
 }
 
 function campanhaDaDivisao(divisao: EstadoDivisao, ctx: ContextoCompeticao) {
@@ -52,6 +53,7 @@ export function iniciarDivisao(
 ): EstadoDivisao {
   const divisao: EstadoDivisao = {
     divisao: formato.divisao,
+    ...(formato.competicao ? { id: formato.competicao } : {}),
     clubes: ids.slice(),
     fases: [],
     campeao: null,
@@ -134,11 +136,17 @@ function abrirFase(
     pares = parear(ordenados, fase.chaveamento, ctx.rng);
   }
   const rodadas = fase.datas?.length
-    ? fase.datas.map(horarioDaData)
+    ? fase.datas.map((d, i) => naoAntesDe(horarioDaData(d), rodadaInicial + i))
     : fase.idaEVolta
       ? [rodadaInicial, rodadaInicial + 1]
       : [rodadaInicial];
   divisao.fases.push(montarFaseMataMata(fase, pares, rodadas, agenda, mando));
+}
+
+/** Data que já passou quando a fase abre (atraso de fase anterior) vai para a primeira semana possível. */
+function naoAntesDe(h: Horario, semana: number): Horario {
+  if (h.semana >= semana) return h;
+  return { semana, meio: h.meio, data: dataDoHorario(semana, h.meio) };
 }
 
 function avancamDe(formato: FormatoDivisao, nomeFase: string): number {

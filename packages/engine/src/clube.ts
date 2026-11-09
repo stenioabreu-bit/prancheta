@@ -29,6 +29,11 @@ export interface ClubeDados {
   titulares?: string[];
   /** Overall médio do elenco gerado (clubes sem elenco). */
   nivel?: number;
+  /**
+   * Elenco real incompleto (clube pequeno sem fontes): completa até este tamanho com jogadores gerados no
+   * `nivel`, marcados como provisórios. Só para clubes que disputam apenas o estadual.
+   */
+  completarAte?: number;
   /** Clube de massa: mais orçamento, mais exigência, mais atração no mercado. */
   grande?: boolean;
   /** Técnico atual (só para clubes da IA). */
@@ -162,7 +167,16 @@ export function gerarElenco(rng: Rng, nivel: number): JogadorDados[] {
 
 export function criarClube(dados: ClubeDados, rng: Rng): Clube {
   const h = hashTexto(dados.nome);
-  const elenco = dados.elenco ?? gerarElenco(rng, dados.nivel ?? 60);
+  let elenco = dados.elenco ?? gerarElenco(rng, dados.nivel ?? 60);
+  if (dados.elenco && dados.completarAte && elenco.length < dados.completarAte) {
+    const faltam = dados.completarAte - elenco.length;
+    elenco = [
+      ...elenco,
+      ...gerarElenco(rng, dados.nivel ?? 55)
+        .slice(0, faltam)
+        .map((j) => [j[0], j[1], j[2], { ...j[3], fonte: "provisorio" }] as const),
+    ];
+  }
   const jogadores = elenco.map((j, i) => criarJogador(j, dados.id, i));
   const esquema = dados.esquema ?? ESQUEMAS_GERADOS[h % ESQUEMAS_GERADOS.length]!;
   const estilo = dados.estilo ?? ESTILOS[(h >>> 3) % ESTILOS.length]!;

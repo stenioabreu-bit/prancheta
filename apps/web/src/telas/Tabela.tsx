@@ -3,10 +3,12 @@ import {
   type EstadoFase,
   type EstadoFaseMataMata,
   type EstadoJogo,
+  type IdCompeticao,
   type TipoDeRanking,
   chaveDoLogo,
   classificacaoDoGrupo,
   competicoesAtivas,
+  divisaoDaCompeticao,
   divisaoDo,
   nomeDaCompeticao,
   ranking,
@@ -16,7 +18,7 @@ import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import { Escudo, NomeClube } from "../componentes/basicos";
 import { useJogo } from "../estado/loja";
 
-type Competicao = Divisao | "copa";
+type Competicao = IdCompeticao;
 
 const RANKINGS: { id: TipoDeRanking; nome: string; formato: (v: number) => string }[] = [
   { id: "gols", nome: "Artilharia", formato: (v) => String(v) },
@@ -26,7 +28,7 @@ const RANKINGS: { id: TipoDeRanking; nome: string; formato: (v: number) => strin
 ];
 
 /** Cor da faixa à esquerda: acesso/libertadores (azul), sul-americana (verde), rebaixamento (vermelho). */
-function zona(competicao: Divisao, fase: string, pos: number, total: number): string {
+function zona(competicao: Competicao, fase: string, pos: number, total: number): string {
   if (competicao === "A")
     return pos <= 4 ? "g4" : pos <= 6 ? "g6" : pos <= 12 ? "sula" : pos > total - 4 ? "z4" : "";
   if (competicao === "B") return pos <= 4 ? "g4" : pos > total - 4 ? "z4" : "";
@@ -41,7 +43,7 @@ function TabelaDaFase({
   competicao,
   fase,
   grupo,
-}: { jogo: EstadoJogo; competicao: Divisao; fase: EstadoFase; grupo: number }) {
+}: { jogo: EstadoJogo; competicao: Competicao; fase: EstadoFase; grupo: number }) {
   if (fase.tipo !== "liga") return null;
   const t = jogo.temporada;
   const ordem = classificacaoDoGrupo(fase, grupo);
@@ -172,7 +174,8 @@ export function Tabela() {
   const meu = jogo.carreira.clubeId;
   const minhaDivisao = (meu && divisaoDo(t, meu)) || "A";
   const [competicao, setCompeticao] = useState<Competicao>(minhaDivisao);
-  const fases: EstadoFase[] = competicao === "copa" ? t.copa.fases : t.divisoes[competicao].fases;
+  const fases: EstadoFase[] =
+    competicao === "copa" ? t.copa.fases : (divisaoDaCompeticao(t, competicao)?.fases ?? []);
   const [faseEscolhida, setFaseEscolhida] = useState<string | null>(null);
   const fase = fases.find((f) => f.nome === faseEscolhida) ?? fases[fases.length - 1];
   const grupoDoUsuario =
@@ -184,30 +187,54 @@ export function Tabela() {
       : 0;
   const [grupoEscolhido, setGrupoEscolhido] = useState<number | null>(null);
   const grupo = grupoEscolhido ?? grupoDoUsuario;
-  const divisaoDoRanking = competicao === "copa" ? minhaDivisao : competicao;
+  const divisaoDoRanking: Divisao =
+    competicao === "copa" || competicao.startsWith("est-") ? minhaDivisao : (competicao as Divisao);
 
   return (
     <div className="grade lateral">
       <section className="panel stack">
         <div className="filters" role="group" aria-label="Competição">
-          {(competicoesAtivas(t) as Competicao[]).map((c) => (
-            <button
-              key={c}
-              type="button"
-              className="chip"
-              aria-pressed={competicao === c}
-              onClick={() => {
-                setCompeticao(c);
+          {competicoesAtivas(t)
+            .filter((c) => !c.startsWith("est-"))
+            .map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="chip"
+                aria-pressed={competicao === c}
+                onClick={() => {
+                  setCompeticao(c);
+                  setFaseEscolhida(null);
+                  setGrupoEscolhido(null);
+                }}
+              >
+                <span className="comp-rotulo">
+                  <LogoCompeticao competicao={chaveDoLogo(t, c)} tamanho={18} />
+                  {nomeDaCompeticao(t, c)}
+                </span>
+              </button>
+            ))}
+          {competicoesAtivas(t).some((c) => c.startsWith("est-")) && (
+            <select
+              aria-label="Estadual"
+              value={competicao.startsWith("est-") ? competicao : ""}
+              onChange={(e) => {
+                if (!e.target.value) return;
+                setCompeticao(e.target.value as Competicao);
                 setFaseEscolhida(null);
                 setGrupoEscolhido(null);
               }}
             >
-              <span className="comp-rotulo">
-                <LogoCompeticao competicao={chaveDoLogo(t, c)} tamanho={18} />
-                {nomeDaCompeticao(t, c)}
-              </span>
-            </button>
-          ))}
+              <option value="">Estaduais…</option>
+              {competicoesAtivas(t)
+                .filter((c) => c.startsWith("est-"))
+                .map((c) => (
+                  <option key={c} value={c}>
+                    {nomeDaCompeticao(t, c)}
+                  </option>
+                ))}
+            </select>
+          )}
         </div>
         <h2 className="comp-rotulo">
           <LogoCompeticao competicao={chaveDoLogo(t, competicao)} tamanho={44} />

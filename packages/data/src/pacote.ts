@@ -27,6 +27,10 @@ export interface PacoteDados {
   formatos?: Partial<Record<Divisao, FormatoDivisao>>;
   /** Liga sem Copa do Brasil. */
   semCopa?: boolean;
+  /** Estaduais com a tabela real (fase 1) e as datas dos mata-matas. */
+  estaduais?: { uf: string; formato: FormatoDivisao; clubes: string[] }[];
+  /** Clubes que só disputam o estadual. */
+  clubesExtras?: ClubeDados[];
 }
 
 /** Id estável de clube a partir do nome: "Atlético-MG" → "atletico-mg". */

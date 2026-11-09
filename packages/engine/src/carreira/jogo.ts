@@ -58,6 +58,8 @@ export interface OpcoesNovoJogo {
   classicos?: [string, string][];
   formatos?: Partial<Record<Divisao, FormatoDivisao>>;
   semCopa?: boolean;
+  estaduais?: { uf: string; formato: FormatoDivisao; clubes: string[] }[];
+  clubesExtras?: ClubeDados[];
   tecnico: string;
   clubeId: string;
 }
@@ -81,6 +83,8 @@ export function novoJogo(o: OpcoesNovoJogo): EstadoJogo {
     usuarioId: o.clubeId,
     ...(o.formatos ? { formatos: o.formatos } : {}),
     ...(o.semCopa ? { semCopa: true } : {}),
+    ...(o.estaduais ? { estaduais: o.estaduais } : {}),
+    ...(o.clubesExtras ? { clubesExtras: o.clubesExtras } : {}),
   });
   const clube = temporada.clubes[o.clubeId];
   if (!clube) throw new Error(`Clube ${o.clubeId} não está no pacote`);
@@ -196,7 +200,7 @@ export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
   c.historico.push({
     temporada: t.temporada,
     rodada: t.rodada,
-    competicao: jogo.competicao === "copa" ? "Copa do Brasil" : `Série ${jogo.competicao}`,
+    competicao: nomeDaCompeticao(t, jogo.competicao),
     adversario: adversarioId,
     mandante,
     golsPro,
@@ -207,7 +211,11 @@ export function concluirPartida(estado: EstadoJogo, partida: Partida): void {
     r.classico = ehClassico(c, clubeId, adversarioId);
     const pontos = golsPro > golsContra ? 3 : golsPro === golsContra ? 1 : 0;
     const esperado = pontosEsperados(t.clubes[clubeId]!.forca, t.clubes[adversarioId]!.forca, mandante);
-    const peso = PESO_DIVISAO_NO_MERCADO[jogo.competicao] + 0.3;
+    const divisaoDoJogo = jogo.competicao.startsWith("est-")
+      ? (divisaoDo(t, clubeId) ?? "D")
+      : (jogo.competicao as Divisao);
+    const peso =
+      PESO_DIVISAO_NO_MERCADO[divisaoDoJogo] * (jogo.competicao.startsWith("est-") ? 0.5 : 1) + 0.3;
     c.reputacao = limitar(c.reputacao + (pontos - esperado) * 0.6 * peso, 0, 100);
     reagirAoJogoDaLiga(c, t, adversarioId, mandante, golsPro, golsContra);
     if (!c.clubeId) ficarDesempregado(estado, clubeId);

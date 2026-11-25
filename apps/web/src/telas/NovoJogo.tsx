@@ -1,8 +1,9 @@
-import type { Moeda } from "@prancheta/engine";
-import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import type { PacoteDados } from "@prancheta/data";
+import type { Moeda, OrigemAtleta, Posicao, RitmoAtleta } from "@prancheta/engine";
+import { POSICOES } from "@prancheta/engine";
 import { type Clube, type ClubeDados, type Divisao, criarClube, criarRng } from "@prancheta/engine";
 import { useEffect, useMemo, useState } from "react";
+import { LogoCompeticao } from "../componentes/LogoCompeticao";
 import { Escudo } from "../componentes/basicos";
 import { useLoja } from "../estado/loja";
 import {
@@ -107,6 +108,10 @@ export function NovoJogo() {
   const [divisao, setDivisao] = useState<Divisao>("A");
   const [clubeId, setClubeId] = useState<string | null>(null);
   const [comecando, setComecando] = useState(false);
+  const [modo, setModo] = useState<"tecnico" | "jogador">("tecnico");
+  const [pos, setPos] = useState<Posicao>("ATA");
+  const [origem, setOrigem] = useState<OrigemAtleta>("base");
+  const [ritmo, setRitmo] = useState<RitmoAtleta>("jogo");
 
   useEffect(() => void opcoesDePacote().then(setOpcoes), []);
   useEffect(() => {
@@ -264,7 +269,15 @@ export function NovoJogo() {
             </div>
           )}
           <div className="cn-contrato">
-            <label htmlFor="tecnico">Nome do técnico</label>
+            <div className="seg" role="group" aria-label="Modo de jogo">
+              <button type="button" aria-pressed={modo === "tecnico"} onClick={() => setModo("tecnico")}>
+                Técnico
+              </button>
+              <button type="button" aria-pressed={modo === "jogador"} onClick={() => setModo("jogador")}>
+                Jogador
+              </button>
+            </div>
+            <label htmlFor="tecnico">{modo === "tecnico" ? "Nome do técnico" : "Nome do jogador"}</label>
             <input
               id="tecnico"
               className="inp"
@@ -273,6 +286,44 @@ export function NovoJogo() {
               maxLength={40}
               autoComplete="off"
             />
+            {modo === "jogador" && (
+              <>
+                <label htmlFor="pos">Posição</label>
+                <select
+                  id="pos"
+                  className="inp"
+                  value={pos}
+                  onChange={(e) => setPos(e.target.value as Posicao)}
+                >
+                  {POSICOES.map((p) => (
+                    <option key={p} value={p}>
+                      {p}
+                    </option>
+                  ))}
+                </select>
+                <label htmlFor="origem">Começo</label>
+                <select
+                  id="origem"
+                  className="inp"
+                  value={origem}
+                  onChange={(e) => setOrigem(e.target.value as OrigemAtleta)}
+                >
+                  <option value="base">Joia da base (17 anos, muito potencial)</option>
+                  <option value="profissional">Profissional (21 anos, mais pronto)</option>
+                </select>
+                <label htmlFor="ritmo">Ritmo</label>
+                <select
+                  id="ritmo"
+                  className="inp"
+                  value={ritmo}
+                  onChange={(e) => setRitmo(e.target.value as RitmoAtleta)}
+                >
+                  <option value="jogo">Jogo a jogo</option>
+                  <option value="decisivos">Só momentos decisivos</option>
+                  <option value="temporada">Temporada a temporada</option>
+                </select>
+              </>
+            )}
             <label htmlFor="moeda">Moeda</label>
             <select
               id="moeda"
@@ -291,7 +342,13 @@ export function NovoJogo() {
               onClick={async () => {
                 setComecando(true);
                 try {
-                  await comecar({ pacoteId, tecnico, clubeId: clubeId!, moeda });
+                  await comecar({
+                    pacoteId,
+                    tecnico,
+                    clubeId: clubeId!,
+                    moeda,
+                    ...(modo === "jogador" ? { atleta: { pos, origem, ritmo } } : {}),
+                  });
                 } catch (e) {
                   avisar((e as Error).message);
                   setComecando(false);

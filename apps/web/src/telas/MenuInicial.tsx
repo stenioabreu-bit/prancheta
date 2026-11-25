@@ -5,7 +5,8 @@ import logo from "../imagens/logo.webp";
 export function MenuInicial() {
   const jogo = useLoja((s) => s.jogo);
   const irParaTela = useLoja((s) => s.irParaTela);
-  const clube = jogo?.carreira.clubeId ? jogo.temporada.clubes[jogo.carreira.clubeId] : null;
+  const clubeId = jogo?.atleta ? jogo.atleta.contrato.clubeId : jogo?.carreira.clubeId;
+  const clube = jogo && clubeId ? jogo.temporada.clubes[clubeId] : null;
   return (
     <div className="menu-inicial">
       <img className="menu-logo" src={logo} alt="" width={260} height={260} />

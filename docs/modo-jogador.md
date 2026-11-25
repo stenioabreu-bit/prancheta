@@ -30,3 +30,16 @@ Tom: adulto, mas narrativo (sem conteúdo explícito).
 ## Ordem sugerida
 1. Estado do atleta e criação do jogador. 2. Motor de eventos com consequências agendadas + 30 eventos iniciais.
 3. Minutos e decisões em campo. 4. Os três ritmos de simulação. 5. Mercado/propostas/renovação. 6. Telas. 7. Testes.
+
+## Implementado (2026-11-25)
+- Engine em `packages/engine/src/atleta/`: `tipos.ts` (estado e vida), `motor.ts` (eventos declarativos, marcas com
+  prazo, consequências agendadas com chance, RNG do save), `partida.ts` (técnico decide titular/banco/fora; lances
+  com chance visível; placar rápido sem a parte do atleta + o que ele faz), `mercado.ts` (propostas na janela,
+  renovação, fim de contrato, seleção, aposentadoria e pós-carreira), `jogo.ts` (criação e `avancarAtleta` nos 3 ritmos).
+- Conteúdo: `packages/engine/src/conteudo/atleta.ts` (48 eventos; cadeias como festa → caso → gravidez → DNA/pensão,
+  balada → fotos → vídeo, faltar treino → técnico desconfiado → banco).
+- Tela: `apps/web/src/telas/Atleta.tsx` (Semana, Vida, Carreira, Comp, Notícias); modo Técnico/Jogador no Novo jogo.
+- Testes: `packages/engine/test/atleta.test.ts` (inclui carreira inteira até a aposentadoria e reprodutibilidade).
+
+Fica para depois: lances dentro do motor de partida completo (hoje usam a simulação rápida), virar técnico no
+pós-carreira, mais eventos.

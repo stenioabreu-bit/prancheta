@@ -60,6 +60,8 @@ export interface EstadoJogo {
   mercado: EstadoMercado;
   /** O que o técnico fez na rodada em andamento (zera quando a rodada fecha). */
   rodadaAtual: ResumoDaRodada;
+  /** Modo jogador: a carreira do atleta (ausente no modo técnico). */
+  atleta?: import("../atleta/tipos").EstadoAtleta;
 }
 
 export interface OpcoesNovoJogo {

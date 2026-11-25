@@ -15,6 +15,7 @@ import { NovoJogo } from "./telas/NovoJogo";
 import { Partida } from "./telas/Partida";
 import { Tabela } from "./telas/Tabela";
 import { Tatica } from "./telas/Tatica";
+import { AppAtleta } from "./telas/Atleta";
 
 interface GrupoDoMenu {
   id: string;
@@ -201,6 +202,7 @@ export function App() {
   const emPartida = useLoja((s) => s.emPartida);
   const preJogo = useLoja((s) => s.preJogo);
   const iniciar = useLoja((s) => s.iniciar);
+  const modoAtleta = useLoja((s) => !!s.jogo?.atleta);
   useEffect(() => {
     void iniciar();
   }, [iniciar]);
@@ -223,6 +225,14 @@ export function App() {
     return (
       <>
         <NovoJogo />
+        <Aviso />
+      </>
+    );
+  }
+  if (modoAtleta) {
+    return (
+      <>
+        <AppAtleta />
         <Aviso />
       </>
     );

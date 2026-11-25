@@ -1,6 +1,13 @@
 import { FINANCAS_2026 } from "@prancheta/data";
 import { type Moeda, definirMoeda } from "@prancheta/engine";
-import { type EstadoJogo, novoJogo } from "@prancheta/engine";
+import {
+  type EstadoJogo,
+  type OrigemAtleta,
+  type Posicao,
+  type RitmoAtleta,
+  novoJogo,
+  novoJogoAtleta,
+} from "@prancheta/engine";
 import { apagarTudo, carregar, salvar } from "@prancheta/save";
 import { create } from "zustand";
 import { armazenamentoDoNavegador, gravarConfig, lerConfig } from "./banco";
@@ -38,7 +45,14 @@ interface Loja {
   irParaTela(tela: "menu" | "novo" | "jogo"): void;
   aviso: string | null;
   iniciar(): Promise<void>;
-  comecar(o: { pacoteId: string; tecnico: string; clubeId: string; moeda: Moeda }): Promise<void>;
+  comecar(o: {
+    pacoteId: string;
+    tecnico: string;
+    clubeId: string;
+    moeda: Moeda;
+    /** Modo jogador: o nome vira o do atleta. */
+    atleta?: { pos: Posicao; origem: OrigemAtleta; ritmo: RitmoAtleta };
+  }): Promise<void>;
   /** Única porta de alteração do jogo: roda `f`, redesenha e agenda o save. */
   mexer<T>(f: (jogo: EstadoJogo) => T): T;
   irPara(aba: Aba): void;
@@ -91,11 +105,11 @@ export const useLoja = create<Loja>((set, get) => ({
     set(jogo ? { jogo, escudos, pronto: true } : { pronto: true });
   },
 
-  async comecar({ pacoteId, tecnico, clubeId, moeda }) {
+  async comecar({ pacoteId, tecnico, clubeId, moeda, atleta }) {
     definirMoeda(moeda);
     const { pacote, escudos } = await carregarPacote(pacoteId);
     const semente = crypto.getRandomValues(new Uint32Array(1))[0]!;
-    const jogo = novoJogo({
+    const base = {
       semente,
       temporada: pacote.temporada,
       divisoes: pacote.divisoes,
@@ -108,9 +122,11 @@ export const useLoja = create<Loja>((set, get) => ({
       ...(pacote.continentais ? { continentais: pacote.continentais } : {}),
       financas: FINANCAS_2026,
       moeda,
-      tecnico,
       clubeId,
-    });
+    };
+    const jogo = atleta
+      ? novoJogoAtleta({ ...base, nome: tecnico, ...atleta })
+      : novoJogo({ ...base, tecnico });
     await gravarConfig("pacoteDoJogo", pacoteId);
     set({ jogo, escudos: urlsDosEscudos(escudos), aba: "inicio", tela: "jogo", versao: get().versao + 1 });
     await salvar(armazenamento, jogo);

@@ -23,7 +23,7 @@ export interface Titulo {
   visto: boolean;
 }
 
-function campeoes(estado: EstadoJogo): [IdCompeticao, string | null, number][] {
+export function campeoes(estado: EstadoJogo): [IdCompeticao, string | null, number][] {
   const t = estado.temporada;
   const lista: [IdCompeticao, string | null, number][] = [];
   for (const d of ["A", "B", "C", "D"] as const) {

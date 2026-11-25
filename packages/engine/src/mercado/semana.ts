@@ -161,6 +161,7 @@ export function semanaDoMercado(estado: EstadoJogo, rng: Rng): void {
       const j = vendedor.jogadores.slice().sort((a, b) => b.ovr - a.ovr)[inteiroEntre(rng, 2, 8)];
       if (
         j &&
+        j.id !== estado.atleta?.jogadorId &&
         forcaDeMercado(estado, comprador.id) >= forcaDeMercado(estado, vendedor.id) * 0.8 &&
         rng.proximo() < 0.5
       ) {

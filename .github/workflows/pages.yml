@@ -18,6 +18,6 @@ jobs:
       - run: npm ci
       - run: npx vite build --base ./
         working-directory: apps/web
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with: { path: apps/web/dist }
       - uses: actions/deploy-pages@v4

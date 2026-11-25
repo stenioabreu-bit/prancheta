@@ -7,10 +7,14 @@ permissions:
   contents: read
   pages: write
   id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
 jobs:
-  publicar:
+  # Build e deploy em jobs separados: no mesmo job, o deploy procura o artefato
+  # logo depois do upload e às vezes não o encontra ("Found 0 artifact(s)").
+  build:
     runs-on: ubuntu-latest
-    environment: github-pages
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -20,4 +24,12 @@ jobs:
         working-directory: apps/web
       - uses: actions/upload-pages-artifact@v4
         with: { path: apps/web/dist }
-      - uses: actions/deploy-pages@v4
+  publicar:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

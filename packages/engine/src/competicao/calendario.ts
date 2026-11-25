@@ -12,13 +12,13 @@ export interface Horario {
   data?: string;
 }
 
-/** Segunda-feira da semana 0. Datas de outros anos usam o mesmo mês/dia (o calendário se repete). */
+/** Segunda-feira da semana 0 da primeira temporada disponível no jogo. */
 const INICIO = Date.UTC(2026, 0, 5);
 const DIA = 86_400_000;
 
 function diasDesdeInicio(data: string): number {
-  const [, m, d] = data.split("-").map(Number) as [number, number, number];
-  return Math.round((Date.UTC(2026, m - 1, d) - INICIO) / DIA);
+  const [a, m, d] = data.split("-").map(Number) as [number, number, number];
+  return Math.round((Date.UTC(a, m - 1, d) - INICIO) / DIA);
 }
 
 /** Converte a data real no horário do jogo (seg–qui = meio de semana; sex–dom = fim de semana). */

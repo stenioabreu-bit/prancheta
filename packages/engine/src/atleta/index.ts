@@ -12,3 +12,4 @@ export {
 export { salarioDeMercado } from "./mercado";
 export { decidirEscalacao, lancesPendentes } from "./partida";
 export * from "./jogo";
+export * from "./tecnico";

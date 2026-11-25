@@ -13,7 +13,12 @@ import {
   lancesPendentes,
   novoJogoAtleta,
   pendenciaDoAtleta,
+  propostasDeTecnico,
+  proximoJogoDoUsuario,
+  seguir,
+  simularPartidaDoUsuario,
   todosOsEventos,
+  virarTecnico,
 } from "../src";
 
 const TAMANHO: Record<Divisao, number> = { A: 20, B: 20, C: 20, D: 96 };
@@ -149,5 +154,52 @@ describe("modo jogador", () => {
     expect(a.aposentado).toBe(true);
     expect(a.posCarreira).toMatch(/pendurou as chuteiras/);
     expect(a.historico.length).toBeGreaterThan(10);
+
+    // Pós-carreira: vira técnico no mesmo mundo e o save segue no modo técnico.
+    const propostas = propostasDeTecnico(e);
+    expect(propostas.length).toBeGreaterThan(0);
+    expect(virarTecnico(e, "inexistente")).toBe(false);
+    expect(virarTecnico(e, propostas[0]!.clubeId)).toBe(true);
+    expect(a.virouTecnico).toBe(true);
+    expect(e.carreira.clubeId).toBe(propostas[0]!.clubeId);
+    expect(e.temporada.usuarioId).toBe(propostas[0]!.clubeId);
+    expect(e.carreira.tecnico).toBe(a.nome);
+    expect(e.mercado.tecnicos[propostas[0]!.clubeId]).toBe(a.nome);
+    for (const c of Object.values(e.temporada.clubes)) {
+      expect(c.jogadores.some((j) => j.id === a.jogadorId)).toBe(false);
+      expect(c.titulares).not.toContain(a.jogadorId);
+    }
+    expect(propostasDeTecnico(e)).toEqual([]);
+    // E a carreira de técnico anda normalmente.
+    const rodada = e.temporada.rodada;
+    for (let k = 0; k < 5; k++) {
+      if (proximoJogoDoUsuario(e)) simularPartidaDoUsuario(e);
+      seguir(e);
+    }
+    expect(e.temporada.rodada).toBeGreaterThan(rodada);
   }, 120_000);
+
+  it("os jogos do atleta rodam no motor de partida completo", () => {
+    const e = atleta(5);
+    jogarSemanas(e, 12);
+    const jogos = e.atleta!.ultimosJogos;
+    expect(jogos.length).toBeGreaterThan(0);
+    for (const g of jogos) {
+      expect(g.motor).toBe(true);
+      expect(g.posse).toBeGreaterThan(0);
+      // O placar final é o do motor sem as jogadas do atleta, mais o que ele decidiu.
+      expect(g.placar![0]).toBeGreaterThanOrEqual(g.golsBase[0]);
+      expect(g.placar![1]).toBeGreaterThanOrEqual(g.golsBase[1]);
+      const minutos = g.lances.map((l) => l.minuto);
+      expect(minutos).toEqual([...minutos].sort((x, y) => x - y));
+      for (const l of g.lances) {
+        if (g.minutos === 0) continue;
+        expect(l.minuto).toBeGreaterThan(g.entrou === 0 ? 0 : g.entrou - 1);
+      }
+      if (g.minutos === 0) expect(g.lances).toEqual([]);
+    }
+    // O resto do elenco recebeu números do motor.
+    const clube = clubeDoAtleta(e);
+    expect(clube.jogadores.some((j) => j.id !== "atleta" && j.temporada.jogos > 0)).toBe(true);
+  });
 });

@@ -41,5 +41,11 @@ Tom: adulto, mas narrativo (sem conteúdo explícito).
 - Tela: `apps/web/src/telas/Atleta.tsx` (Semana, Vida, Carreira, Comp, Notícias); modo Técnico/Jogador no Novo jogo.
 - Testes: `packages/engine/test/atleta.test.ts` (inclui carreira inteira até a aposentadoria e reprodutibilidade).
 
-Fica para depois: lances dentro do motor de partida completo (hoje usam a simulação rápida), virar técnico no
-pós-carreira, mais eventos.
+- Jogos do atleta no motor de partida completo (`montarJogo`): o técnico decide a escalação, o jogo roda minuto a
+  minuto, e as jogadas em que o atleta aparece (finalizações, passes, chances do adversário na zona dele, faltas)
+  viram os lances; os gols do motor que passaram por ele saem do placar-base e voltam pelas escolhas. O resto dos
+  elencos recebe os números do motor; a tela mostra os gols e expulsões do jogo junto com os lances.
+- Pós-carreira como técnico (`atleta/tecnico.ts`): até três convites (o clube onde mais jogou, se for ídolo, e
+  apostas menores; a licença de treinador amplia o alcance). Aceitando, o save segue no modo técnico.
+- +18 eventos em `conteudo/atletaExtras.ts` (pôquer → dívida → agiota, documentário, licença de técnico,
+  afilhado da base, salários atrasados, assalto, redes sociais etc.).

@@ -9,10 +9,21 @@ import type { EstadoJogo } from "../carreira/jogo";
 import { escalarAutomatico, forcaDoClube, melhorPara } from "../clube";
 import { fasesDaCompeticao, jogosDaRodada, nomeDaCompeticao, registrarPlacar } from "../competicao/temporada";
 import type { JogoAgendado } from "../competicao/tipos";
-import { ESQUEMA_POSTOS } from "../constantes";
+import { ESQUEMA_POSTOS, PESO_SETOR } from "../constantes";
 import { disponivel, familiaridade } from "../jogador";
+import {
+  type LadoPartida,
+  type Partida,
+  type PostoEmCampo,
+  type TipoLance,
+  criarPartida,
+  emJogo,
+  encerrarPartida,
+  passo,
+  substituir,
+} from "../partida";
 import { type Rng, inteiroEntre, limitar, sortearComPeso } from "../rng";
-import { estatisticasRapidas, placarRapido } from "../simulacaoRapida";
+import { estatisticasRapidas } from "../simulacaoRapida";
 import type { Clube, Jogador, Posicao } from "../tipos";
 import { type ContextoAtleta, marcaAtiva, mexerVida, noFeed } from "./motor";
 import type { Escalacao, JogoDoAtleta, LanceAtleta, OpcaoDeLance, TipoLanceAtleta } from "./tipos";
@@ -257,7 +268,111 @@ function ehDecisivo(estado: EstadoJogo, jogo: JogoAgendado): boolean {
   return ehClassico(estado.carreira, jogo.casa, jogo.visitante);
 }
 
-/** Monta o jogo do atleta: escalação, minutos, lances e o placar-base do time. */
+/** Qualidade da chance que o motor criou: pesa nas opções de finalização do lance. */
+const FATOR_DA_CHANCE: Record<TipoLance, number> = {
+  trama: 1,
+  cruz: 0.8,
+  contra: 1.25,
+  fora: 0.55,
+  indiv: 1,
+  parada: 0.75,
+  press: 1.2,
+};
+
+/** Opções que dependem da qualidade da chance (finalizar ou defender a finalização). */
+const OPCOES_DA_CHANCE = new Set([
+  "lancar",
+  "chutar",
+  "colocado",
+  "seguir",
+  "defora",
+  "carrinho",
+  "acompanhar",
+  "sair",
+  "ficar",
+]);
+
+const ATACANTES: readonly Posicao[] = ["ATA", "PD", "PE", "MEI"];
+
+/** Põe o atleta em campo no posto que ele joga melhor (no início ou como substituição). */
+function porEmCampo(m: Partida, lado: LadoPartida, j: Jogador, minuto: number): boolean {
+  if (lado.emCampo.some((p) => p.atual.jogador.id === j.id && !p.expulso)) return true;
+  let melhor: PostoEmCampo | null = null;
+  let valor = Number.NEGATIVE_INFINITY;
+  for (const p of lado.emCampo) {
+    if (p.expulso || (p.posto === "GOL") !== (j.pos === "GOL")) continue;
+    const v = familiaridade(j, p.posto) * 100 - p.atual.cond / 20 - p.atual.jogador.ovr / 10;
+    if (v > valor) {
+      valor = v;
+      melhor = p;
+    }
+  }
+  if (!melhor) return false;
+  if (!lado.banco.some((b) => b.jogador.id === j.id)) lado.banco.push(emJogo(j, m.rng));
+  if (minuto > 0 && substituir(m, lado, melhor.atual.jogador.id, j.id)) return true;
+  // Antes do apito (ou sem trocas sobrando): entra direto no lugar dele.
+  const entra = lado.banco.find((b) => b.jogador.id === j.id)!;
+  const sai = melhor.atual;
+  lado.banco = lado.banco.filter((b) => b !== entra);
+  if (minuto > 0) {
+    sai.usado = true;
+    entra.usado = true;
+    lado.saidos.push(sai.jogador.id);
+  }
+  lado.banco.push(sai);
+  entra.entrou = minuto;
+  melhor.atual = entra;
+  melhor.instrucao = null;
+  return true;
+}
+
+/** Tira o atleta de campo (no início, troca pelo melhor reserva; durante o jogo, substituição). */
+function tirarDeCampo(m: Partida, lado: LadoPartida, j: Jogador, minuto: number, ficaNoBanco: boolean): void {
+  const p = lado.emCampo.find((x) => x.atual.jogador.id === j.id && !x.expulso);
+  if (p) {
+    const opcoes = lado.banco.filter((b) => b.jogador.id !== j.id && !b.usado);
+    const sub = melhorPara(
+      opcoes.map((b) => b.jogador),
+      p.posto,
+    );
+    if (minuto > 0) {
+      if (sub) substituir(m, lado, j.id, sub.id);
+    } else if (sub) {
+      const e = opcoes.find((b) => b.jogador === sub)!;
+      lado.banco = lado.banco.filter((b) => b !== e);
+      lado.banco.push(p.atual);
+      p.atual = e;
+      p.instrucao = null;
+    }
+  }
+  if (minuto > 0) return;
+  if (!ficaNoBanco) lado.banco = lado.banco.filter((b) => b.jogador.id !== j.id);
+  else if (
+    !lado.banco.some((b) => b.jogador.id === j.id) &&
+    !lado.emCampo.some((x) => x.atual.jogador.id === j.id)
+  )
+    lado.banco.push(emJogo(j, m.rng));
+}
+
+function emCampo(lado: LadoPartida, j: Jogador): boolean {
+  return lado.emCampo.some((p) => p.atual.jogador.id === j.id && !p.expulso);
+}
+
+interface Candidato {
+  lance: LanceAtleta;
+  /** Gol do motor que passa a depender da decisão do atleta. */
+  golPro: boolean;
+  golContra: boolean;
+  /** Índice do evento de gol no motor (sai da narração quando o lance é do atleta). */
+  eventoGol: number;
+}
+
+/**
+ * Monta o jogo do atleta no motor de partida completo: o técnico decide a escalação, o jogo roda minuto
+ * a minuto com o atleta em campo, e as jogadas em que ele aparece (finalizações, passes, chances do
+ * adversário na zona dele, faltas) viram os lances que ele decide. Os gols do motor que passaram por
+ * ele saem do placar-base e voltam (ou não) pelas escolhas.
+ */
 export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta {
   const { estado, a, j, clube, rng } = c;
   const t = estado.temporada;
@@ -265,46 +380,150 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
   const adversario = t.clubes[mandante ? jogo.visitante : jogo.casa]!;
   const escalacao = decidirEscalacao(c);
   ajustarEscalacao(clube, j, escalacao === "titular");
-  let entrou = 0;
-  let minutos = 0;
+  // Plano do técnico: quando o atleta entra (banco) ou sai (titular cansado).
+  let entraAos = 0;
+  let saiAos = 90;
   if (escalacao === "titular") {
-    minutos =
+    saiAos =
       a.vida.forma < 40 || j.cond < 60
         ? inteiroEntre(rng, 55, 80)
         : rng.proximo() < 0.75
           ? 90
           : inteiroEntre(rng, 65, 85);
   } else if (escalacao === "banco" && rng.proximo() < 0.5 + (a.vida.tecnico - 50) / 150) {
-    entrou = inteiroEntre(rng, 55, 82);
-    minutos = 90 - entrou;
+    entraAos = inteiroEntre(rng, 55, 82);
   }
   const decisivo = ehDecisivo(estado, jogo);
-  const [gc, gv] = placarRapido(rng, t.clubes[jogo.casa]!, t.clubes[jogo.visitante]!, jogo.neutro);
-  let pro = mandante ? gc : gv;
-  const contra = mandante ? gv : gc;
-  // A parte do atleta sai do placar-base: ela volta pelos lances.
-  if (minutos > 0) {
-    let mantidos = 0;
-    for (let k = 0; k < pro; k++) if (rng.proximo() >= 0.24 * (minutos / 90)) mantidos++;
-    pro = mantidos;
+
+  const m = criarPartida(t.clubes[jogo.casa]!, t.clubes[jogo.visitante]!, {
+    rng,
+    copa: jogo.competicao === "copa",
+    competicao: jogo.competicao,
+  });
+  const lado = mandante ? m.casa : m.visitante;
+  const outro = mandante ? m.visitante : m.casa;
+  let ini = -1;
+  let fim = 90;
+  if (escalacao === "titular") {
+    if (porEmCampo(m, lado, j, 0)) ini = 0;
+  } else tirarDeCampo(m, lado, j, 0, entraAos > 0);
+  while (m.fase !== "fim") {
+    if (entraAos > 0 && ini < 0 && m.minuto === entraAos && porEmCampo(m, lado, j, m.minuto)) ini = m.minuto;
+    if (saiAos < 90 && ini >= 0 && m.minuto === saiAos && fim === 90) {
+      tirarDeCampo(m, lado, j, m.minuto, true);
+      if (!emCampo(lado, j)) fim = m.minuto;
+    }
+    passo(m);
   }
-  const lances: LanceAtleta[] = [];
-  if (minutos > 0) {
-    const ritmo = 1 + (a.vida.forma - 60) / 200 + (adversario.forca < clube.forca ? 0.1 : -0.05);
-    const n = Math.max(
-      1,
-      Math.round((LANCES_POR_JOGO[j.pos] * minutos * ritmo) / 90 + (rng.proximo() - 0.5)),
-    );
-    const pesos = Object.entries(PESOS_POR_POSICAO[j.pos]) as [TipoLanceAtleta, number][];
-    const minutosSorteados = Array.from({ length: n }, () =>
-      inteiroEntre(rng, Math.max(1, entrou + 1), Math.min(90, entrou + minutos)),
-    ).sort((x, y) => x - y);
-    for (const minuto of minutosSorteados) {
-      let [tipo] = sortearComPeso(rng, pesos, (p) => p[1]);
-      if (tipo === "provocacao" && marcaAtiva(a, "rixa-rival") && rng.proximo() < 0.3) tipo = "provocacao";
-      lances.push(novoLance(rng, tipo, j, a.vida.forma, minuto, decisivo));
+  for (const e of m.eventos) {
+    if (e.min > fim || e.min <= ini) continue;
+    if (
+      (e.tipo === "substituicao" && e.jogadores[1] === j.id) ||
+      (e.tipo === "vermelho" && e.jogadores[0] === j.id)
+    )
+      fim = e.min;
+  }
+  const minutos = ini >= 0 ? Math.max(1, fim - ini) : 0;
+  const entrou = ini > 0 ? ini : 0;
+
+  // Jogadas do motor em que o atleta aparece.
+  const candidatos: Candidato[] = [];
+  const pesoDefesa = j.pos === "GOL" ? 0.55 : PESO_SETOR[j.pos].d * 0.55;
+  const ev = m.eventos;
+  if (ini >= 0) {
+    for (let i = 0; i < ev.length; i++) {
+      const e = ev[i]!;
+      if (e.min <= ini || e.min > fim) continue;
+      const nosso = e.lado === lado.lado;
+      if (e.tipo === "lance" && e.lance) {
+        const gol = ev[i + 1]?.tipo === "gol";
+        const [quemChuta, quemCria] = e.jogadores;
+        let tipo: TipoLanceAtleta | null = null;
+        let fator = 1;
+        if (nosso && quemChuta === j.id) {
+          tipo = e.lance === "indiv" ? "drible" : "finalizacao";
+          // A chance que o motor transformou em gol era boa: a decisão certa quase sempre resolve.
+          fator = gol ? Math.max(1, FATOR_DA_CHANCE[e.lance]) * 1.9 : FATOR_DA_CHANCE[e.lance] * 1.15;
+        } else if (nosso && quemCria === j.id) {
+          tipo = "lancamento";
+          fator = gol ? 1.7 : 1;
+        } else if (!nosso && pesoDefesa > 0 && rng.proximo() < pesoDefesa) {
+          tipo = j.pos === "GOL" ? "saidaDoGol" : "carrinho";
+          fator = (2 - FATOR_DA_CHANCE[e.lance]) * (gol ? 0.85 : 1);
+        }
+        if (tipo) {
+          candidatos.push({
+            lance: novoLance(rng, tipo, j, a.vida.forma, e.min, decisivo, e.texto, fator),
+            golPro: nosso && gol,
+            golContra: !nosso && gol,
+            eventoGol: gol ? i + 1 : -1,
+          });
+        }
+        continue;
+      }
+      const falta =
+        e.tipo === "amarelo" || e.tipo === "vermelho" || (e.tipo === "neutro" && e.jogadores.length === 2);
+      if (!falta) continue;
+      if (nosso && e.jogadores[0] === j.id && j.pos !== "GOL") {
+        candidatos.push({
+          lance: novoLance(rng, "carrinho", j, a.vida.forma, e.min, decisivo),
+          golPro: false,
+          golContra: false,
+          eventoGol: -1,
+        });
+      } else if (!nosso && e.jogadores[1] === j.id) {
+        const tipo = ATACANTES.includes(j.pos) ? "simulacao" : "provocacao";
+        candidatos.push({
+          lance: novoLance(rng, tipo, j, a.vida.forma, e.min, decisivo),
+          golPro: false,
+          golContra: false,
+          eventoGol: -1,
+        });
+      }
     }
   }
+  // Quantos lances o atleta decide: os gols que passaram por ele sempre; o resto, sorteado até a cota.
+  const ritmo = 1 + (a.vida.forma - 60) / 200 + (adversario.forca < clube.forca ? 0.1 : -0.05);
+  const cota =
+    minutos > 0
+      ? Math.max(1, Math.round((LANCES_POR_JOGO[j.pos] * minutos * ritmo) / 90 + (rng.proximo() - 0.5)))
+      : 0;
+  const escolhidos = candidatos.filter((x) => x.golPro || x.golContra);
+  const outros = candidatos.filter((x) => !x.golPro && !x.golContra);
+  while (escolhidos.length < cota && outros.length) {
+    escolhidos.push(outros.splice(Math.floor(rng.proximo() * outros.length), 1)[0]!);
+  }
+  const lances = escolhidos.map((x) => x.lance);
+  // Pouca participação no motor: completa com lances de bastidor (provocação, drible, queda na área).
+  const pesosExtras = (Object.entries(PESOS_POR_POSICAO[j.pos]) as [TipoLanceAtleta, number][]).filter(
+    ([tipo]) => tipo === "provocacao" || tipo === "drible" || tipo === "simulacao",
+  );
+  for (let k = lances.length; k < cota && pesosExtras.length; k++) {
+    const [tipo] = sortearComPeso(rng, pesosExtras, (p) => p[1]);
+    const minuto = inteiroEntre(rng, ini + 1, fim);
+    lances.push(novoLance(rng, tipo, j, a.vida.forma, minuto, decisivo));
+  }
+  lances.sort((x, y) => x.minuto - y.minuto);
+  const golsTirados = new Set(escolhidos.filter((x) => x.eventoGol >= 0).map((x) => x.eventoGol));
+  const pro = lado.est.gols - escolhidos.filter((x) => x.golPro).length;
+  const contra = outro.est.gols - escolhidos.filter((x) => x.golContra).length;
+  const narracao = ev
+    .map((e, i) => ({ e, i }))
+    .filter(
+      ({ e, i }) =>
+        (e.tipo === "gol" && !golsTirados.has(i)) || (e.tipo === "vermelho" && e.jogadores[0] !== j.id),
+    )
+    .map(({ e }) => ({
+      min: e.min,
+      texto: e.texto.replace(/\s\d+ x \d+$/, ""),
+      nosso: e.lado === lado.lado,
+    }));
+
+  // O resto dos dois elencos recebe os números do motor; os do atleta vêm dos lances, em `fecharJogo`.
+  const copia = JSON.parse(JSON.stringify(j)) as Jogador;
+  encerrarPartida(m);
+  Object.assign(j, copia);
+
   return {
     jogoId: jogo.id,
     competicao: jogo.competicao,
@@ -323,6 +542,9 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
     vermelho: false,
     lesao: 0,
     extras: { nota: 0, golsDoTime: 0, golsContra: 0 },
+    motor: true,
+    narracao,
+    posse: lado.est.posse,
   };
 }
 
@@ -333,13 +555,20 @@ function novoLance(
   forma: number,
   minuto: number,
   decisivo: boolean,
+  texto?: string,
+  fator = 1,
 ): LanceAtleta {
   const textos = TEXTOS[tipo];
+  const opcoes = opcoesDoLance(tipo, j, forma);
+  if (fator !== 1)
+    for (const o of opcoes)
+      if (OPCOES_DA_CHANCE.has(o.id))
+        o.chance = Math.round(limitar(o.chance * fator, 0.03, 0.95) * 100) / 100;
   return {
     minuto,
     tipo,
-    texto: textos[Math.floor(rng.proximo() * textos.length)]!,
-    opcoes: opcoesDoLance(tipo, j, forma),
+    texto: texto ?? textos[Math.floor(rng.proximo() * textos.length)]!,
+    opcoes,
     decisivo: decisivo || minuto >= 78,
   };
 }
@@ -599,6 +828,30 @@ export function decidirLance(
   return l;
 }
 
+/** Estatísticas pela simulação rápida (jogos montados antes do motor completo, em saves antigos). */
+function estatisticasDoRestoRapidas(
+  c: ContextoAtleta,
+  golsDoAtleta: number,
+  pro: number,
+  contra: number,
+  copa: boolean,
+  competicao: string,
+  adversario: Clube,
+): void {
+  const { j, clube, rng } = c;
+  // Estatísticas do resto do time: o atleta sai do time no sorteio (os números dele vêm dos lances).
+  const idx = clube.titulares.indexOf(j.id);
+  const guardado = clube.titulares.slice();
+  if (idx >= 0) {
+    const livres = clube.jogadores.filter((x) => x.id !== j.id && !clube.titulares.includes(x.id));
+    const sub = melhorPara(livres, ESQUEMA_POSTOS[clube.esquema][idx]![0]);
+    if (sub) clube.titulares[idx] = sub.id;
+  }
+  estatisticasRapidas(rng, clube, Math.max(0, pro - golsDoAtleta), contra, copa, competicao);
+  clube.titulares = guardado;
+  estatisticasRapidas(rng, adversario, contra, pro, copa, competicao);
+}
+
 /** Fecha o jogo: placar, estatísticas (do atleta e do resto), nota, cartões, lesão e reação. */
 export function fecharJogo(c: ContextoAtleta, g: JogoDoAtleta): void {
   const { estado, a, j, clube, rng } = c;
@@ -611,17 +864,8 @@ export function fecharJogo(c: ContextoAtleta, g: JogoDoAtleta): void {
   registrarPlacar(t, jogo.id, g.mandante ? [pro, contra] : [contra, pro]);
   const copa = jogo.competicao === "copa";
   const adversario = t.clubes[g.adversarioId]!;
-  // Estatísticas do resto do time: o atleta sai do time no sorteio (os números dele vêm dos lances).
-  const idx = clube.titulares.indexOf(j.id);
-  const guardado = clube.titulares.slice();
-  if (idx >= 0) {
-    const livres = clube.jogadores.filter((x) => x.id !== j.id && !clube.titulares.includes(x.id));
-    const sub = melhorPara(livres, ESQUEMA_POSTOS[clube.esquema][idx]![0]);
-    if (sub) clube.titulares[idx] = sub.id;
-  }
-  estatisticasRapidas(rng, clube, Math.max(0, pro - g.gols), contra, copa, jogo.competicao);
-  clube.titulares = guardado;
-  estatisticasRapidas(rng, adversario, contra, pro, copa, jogo.competicao);
+  // No motor completo, os elencos já receberam os números da partida ao montar o jogo.
+  if (!g.motor) estatisticasDoRestoRapidas(c, g.gols, pro, contra, copa, jogo.competicao, adversario);
 
   if (g.minutos > 0) {
     const resultado = pro > contra ? 0.35 : pro < contra ? -0.35 : 0;

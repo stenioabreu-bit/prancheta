@@ -13,10 +13,6 @@ import {
   virarTemporada,
 } from "../competicao/temporada";
 import type { Divisao, FormatoDivisao, JogoAgendado } from "../competicao/tipos";
-import { semanaDoMercado } from "../mercado/semana";
-import { assumir, ficarDesempregado } from "../mercado/tecnico";
-import type { EstadoMercado } from "../mercado/tipos";
-import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
 import { type DuracaoEmprestimo, emprestarJogador, pedirEmprestimo } from "../mercado/emprestimos";
 import {
   completarFinancas,
@@ -25,6 +21,10 @@ import {
   financasIniciais,
   fluxoSemanal,
 } from "../mercado/financas";
+import { semanaDoMercado } from "../mercado/semana";
+import { assumir, ficarDesempregado } from "../mercado/tecnico";
+import type { EstadoMercado } from "../mercado/tipos";
+import { aplicarEfeitoDeMercado } from "../mercado/transferencias";
 import type { Moeda } from "../mercado/valores";
 import {
   PESO_DIVISAO_NO_MERCADO,
@@ -47,9 +47,9 @@ import {
   reagirAoJogoDaLiga,
 } from "./diretoria";
 import { enviarMensagem, responderMensagem } from "./efeitos";
-import { registrarTitulos } from "./titulos";
 import { type ResumoDaRodada, semana } from "./semana";
 import type { EstadoCarreira } from "./tipos";
+import { registrarTitulos } from "./titulos";
 import { bonusDoUsuario, reporDesfalques } from "./treino";
 
 /** Save completo: temporada (clubes, competições) + carreira do técnico + mercado. */

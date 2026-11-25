@@ -1,10 +1,10 @@
-import { devolverEmprestimos } from "./emprestimos";
-import { resolverOlheiro } from "./olheiro";
 import { enviarMensagem, publicarNoticia } from "../carreira/efeitos";
 import type { EstadoJogo } from "../carreira/jogo";
 import { forcaDoClube } from "../clube";
 import { divisaoDo } from "../competicao/temporada";
 import { type Rng, inteiroEntre, sortear } from "../rng";
+import { devolverEmprestimos } from "./emprestimos";
+import { resolverOlheiro } from "./olheiro";
 import { semanaDosTecnicos } from "./tecnico";
 import {
   avaliarIndicacao,

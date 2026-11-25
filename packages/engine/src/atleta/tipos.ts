@@ -162,6 +162,12 @@ export interface JogoDoAtleta {
   lesao: number;
   /** Nota extra dos lances e gols/sofridos que não são do atleta (pênalti do batedor, falha...). */
   extras: { nota: number; golsDoTime: number; golsContra: number };
+  /** Jogo rodado no motor de partida completo (o resto do elenco já recebeu os números dele). */
+  motor?: boolean;
+  /** Gols e expulsões do jogo que não passam pelo atleta (do motor de partida). */
+  narracao?: { min: number; texto: string; nosso: boolean }[];
+  /** Posse de bola do time do atleta (%), do motor. */
+  posse?: number;
 }
 
 export interface TemporadaDoAtleta {
@@ -216,5 +222,7 @@ export interface EstadoAtleta {
   aposentado: boolean;
   /** Texto do pós-carreira (quando aposenta). */
   posCarreira?: string;
+  /** Aposentado que virou técnico: o save segue no modo técnico. */
+  virouTecnico?: boolean;
   proximoId: number;
 }

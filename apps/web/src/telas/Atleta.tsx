@@ -20,8 +20,10 @@ import {
   nomeDaCompeticao,
   notaDaTemporada,
   pendenciaDoAtleta,
+  propostasDeTecnico,
   salarioSemanal,
   terminarJogoDoAtleta,
+  virarTecnico,
 } from "@prancheta/engine";
 import { useState } from "react";
 import { dataDaSemana, dataPorExtenso } from "../componentes/PreJogo";
@@ -153,6 +155,52 @@ function PlacarDoJogo({ g }: { g: JogoDoAtleta }) {
   );
 }
 
+/** Lances do atleta já decididos e, do motor, os gols e expulsões do resto do jogo até o minuto `ate`. */
+function LinhaDoTempo({ g, ate, comTexto }: { g: JogoDoAtleta; ate: number; comTexto: boolean }) {
+  const jogo = useJogo();
+  const { clube } = idadeEClube(jogo);
+  const adv = jogo.temporada.clubes[g.adversarioId]!;
+  const itens = [
+    ...g.lances
+      .filter((l) => l.escolha && l.resultado)
+      .map((l, i) => ({
+        min: l.minuto,
+        chave: `l${i}`,
+        classe: l.bom ? "bom" : "ruim",
+        corpo: comTexto ? (
+          <>
+            <span className="muted">{l.texto}</span> {l.resultado}
+          </>
+        ) : (
+          l.resultado
+        ),
+      })),
+    ...(g.narracao ?? [])
+      .filter((n) => n.min <= ate)
+      .map((n, i) => ({
+        min: n.min,
+        chave: `n${i}`,
+        classe: "motor",
+        corpo: (
+          <span className="muted">
+            {(n.nosso ? clube : adv).sigla} · {n.texto}
+          </span>
+        ),
+      })),
+  ].sort((x, y) => x.min - y.min);
+  if (!itens.length) return null;
+  return (
+    <ol className="lances">
+      {itens.map((x) => (
+        <li key={x.chave} className={x.classe}>
+          <span className="m">{x.min}'</span>
+          <span>{x.corpo}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 function JogoEmAndamento({ g }: { g: JogoDoAtleta }) {
   const mexer = useLoja((s) => s.mexer);
   const jogo = useJogo();
@@ -177,18 +225,7 @@ function JogoEmAndamento({ g }: { g: JogoDoAtleta }) {
               : `Você está ${ESCALACAO[g.escalacao]!.toLowerCase()}.`}
         </p>
       )}
-      <ol className="lances">
-        {g.lances
-          .filter((l) => l.escolha && l.resultado)
-          .map((l) => (
-            <li key={`${l.minuto}-${l.texto}`} className={l.bom ? "bom" : "ruim"}>
-              <span className="m">{l.minuto}'</span>
-              <span>
-                <span className="muted">{l.texto}</span> {l.resultado}
-              </span>
-            </li>
-          ))}
-      </ol>
+      <LinhaDoTempo g={g} ate={proximo ? proximo.minuto : 90} comTexto />
       {proximo && (
         <div className="lance-atual stack">
           <span className="eyebrow">
@@ -277,7 +314,8 @@ function ProximoCompromisso() {
 }
 
 function UltimoJogo() {
-  const a = useJogo().atleta!;
+  const jogo = useJogo();
+  const { a, clube } = idadeEClube(jogo);
   const g = a.ultimosJogos[0];
   if (!g) return null;
   return (
@@ -287,19 +325,48 @@ function UltimoJogo() {
         {g.nota !== undefined ? ` · nota ${g.nota.toFixed(1)}` : ""}
       </span>
       <PlacarDoJogo g={g} />
-      {g.lances.some((l) => l.resultado) && (
-        <ol className="lances">
-          {g.lances
-            .filter((l) => l.resultado)
-            .map((l) => (
-              <li key={`${l.minuto}-${l.texto}`} className={l.bom ? "bom" : "ruim"}>
-                <span className="m">{l.minuto}'</span>
-                <span>{l.resultado}</span>
-              </li>
-            ))}
-        </ol>
+      <LinhaDoTempo g={g} ate={90} comTexto={false} />
+      {g.posse !== undefined && (
+        <p className="small muted" style={{ margin: 0 }}>
+          Posse de bola do {clube.sigla}: {g.posse}%
+        </p>
       )}
     </section>
+  );
+}
+
+function PropostasDeTecnico() {
+  const jogo = useJogo();
+  const mexer = useLoja((s) => s.mexer);
+  const avisar = useLoja((s) => s.avisar);
+  const propostas = propostasDeTecnico(jogo);
+  if (!propostas.length) return null;
+  return (
+    <div className="stack" style={{ gap: 8 }}>
+      <h3 style={{ margin: 0 }}>Convites para ser técnico</h3>
+      <p className="small muted" style={{ margin: 0 }}>
+        Aceite um e a carreira continua no mesmo mundo, agora na beira do campo.
+      </p>
+      {propostas.map((p) => {
+        const clube = jogo.temporada.clubes[p.clubeId]!;
+        return (
+          <button
+            key={p.clubeId}
+            type="button"
+            className="btn opcao-dilema"
+            onClick={() => {
+              if (mexer((j) => virarTecnico(j, p.clubeId))) avisar(`Você é o novo técnico do ${p.nome}.`);
+            }}
+          >
+            <span className="row" style={{ gap: 8 }}>
+              <Escudo clube={clube} tamanho={22} />
+              <b>{p.nome}</b>
+            </span>
+            <span className="small muted">{p.motivo}</span>
+          </button>
+        );
+      })}
+    </div>
   );
 }
 
@@ -316,7 +383,8 @@ function Semana() {
         <span className="eyebrow">Pós-carreira</span>
         <h2>Fim de carreira</h2>
         <p style={{ margin: 0 }}>{a.posCarreira}</p>
-        <button type="button" className="btn primary big" onClick={() => void abandonar()}>
+        <PropostasDeTecnico />
+        <button type="button" className="btn big" onClick={() => void abandonar()}>
           Começar outro jogo
         </button>
       </section>

@@ -310,7 +310,7 @@ export function aplicarEfeito(c: ContextoAtleta, ef: EfeitoAtleta): void {
       c.estado.carreira,
       c.estado.temporada.rodada,
       "Imprensa",
-      ef.noticia.texto,
+      preencher(ef.noticia.texto, dadosBase(c)),
       ef.noticia.tipo,
     );
   }

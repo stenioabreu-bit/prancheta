@@ -10,8 +10,8 @@ import { pagarContratacao, receberVenda } from "./financas";
 import type { DecisaoPendente, EfeitoDeMercado, Indicacao } from "./tipos";
 import {
   PESO_DIVISAO_NO_MERCADO,
-  arredondar,
   type SetorDoMercado,
+  arredondar,
   formatarDinheiro,
   janelaAberta,
   proximaJanela,

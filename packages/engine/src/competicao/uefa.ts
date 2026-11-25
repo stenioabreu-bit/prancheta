@@ -1,4 +1,4 @@
-import { embaralhar, type Rng } from "../rng";
+import { type Rng, embaralhar } from "../rng";
 
 /** Cadastro mínimo e estável de um participante UEFA. */
 export interface ClubeUefa {
@@ -71,7 +71,11 @@ function criarNecessidades(participantes: readonly ClubeUefa[]): Necessidades {
   );
 }
 
-function totalContraAssociacao(contagens: ContagemPorAssociacao, clubeId: string, associacao: string): number {
+function totalContraAssociacao(
+  contagens: ContagemPorAssociacao,
+  clubeId: string,
+  associacao: string,
+): number {
   return contagens.get(clubeId)?.get(associacao) ?? 0;
 }
 
@@ -96,7 +100,11 @@ function podeEnfrentar(
   pares: ReadonlySet<string>,
   contagens: ContagemPorAssociacao,
 ): boolean {
-  if (casa.id === visitante.id || casa.associacao === visitante.associacao || pares.has(chave(casa.id, visitante.id))) {
+  if (
+    casa.id === visitante.id ||
+    casa.associacao === visitante.associacao ||
+    pares.has(chave(casa.id, visitante.id))
+  ) {
     return false;
   }
   if (
@@ -157,8 +165,10 @@ function candidatosDo(
   const candidatos: Candidato[] = [];
   for (const outro of livres) {
     if (outro.id === clube.id) continue;
-    if (podeEnfrentar(clube, outro, necessidades, poteDe, pares, contagens)) candidatos.push({ casa: clube, visitante: outro });
-    if (podeEnfrentar(outro, clube, necessidades, poteDe, pares, contagens)) candidatos.push({ casa: outro, visitante: clube });
+    if (podeEnfrentar(clube, outro, necessidades, poteDe, pares, contagens))
+      candidatos.push({ casa: clube, visitante: outro });
+    if (podeEnfrentar(outro, clube, necessidades, poteDe, pares, contagens))
+      candidatos.push({ casa: outro, visitante: clube });
   }
   return candidatos;
 }
@@ -225,7 +235,9 @@ export function sortearLigaUefa(participantes: readonly ClubeUefa[], rng: Rng): 
   if (new Set(participantes.map((c) => c.id)).size !== participantes.length) {
     throw new Error("Há clubes duplicados no sorteio UEFA");
   }
-  const ordenados = participantes.slice().sort((a, b) => b.coeficiente - a.coeficiente || a.id.localeCompare(b.id));
+  const ordenados = participantes
+    .slice()
+    .sort((a, b) => b.coeficiente - a.coeficiente || a.id.localeCompare(b.id));
   const potes = Array.from({ length: 4 }, (_, i) => ordenados.slice(i * 9, i * 9 + 9));
   const poteDe = new Map(ordenados.map((c, i) => [c.id, Math.floor(i / 9)]));
 
@@ -350,5 +362,9 @@ export function sortearPlayoffsUefa(classificacao: readonly string[], rng: Rng):
 /** Fatias da classificação usadas pelo mata-mata e pelo histórico. */
 export function destinosDaLigaUefa(classificacao: readonly string[]) {
   if (classificacao.length !== 36) throw new Error("A fase de liga UEFA precisa terminar com 36 clubes");
-  return { oitavasDiretas: classificacao.slice(0, 8), playoffs: classificacao.slice(8, 24), eliminados: classificacao.slice(24) };
+  return {
+    oitavasDiretas: classificacao.slice(0, 8),
+    playoffs: classificacao.slice(8, 24),
+    eliminados: classificacao.slice(24),
+  };
 }

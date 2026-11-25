@@ -42,7 +42,8 @@ export async function descomprimir(bytes: Uint8Array): Promise<string> {
 }
 
 export async function criarSave(estado: EstadoJogo, agora = Date.now()): Promise<Save> {
-  const clubeId = estado.atleta ? estado.atleta.contrato.clubeId : estado.carreira.clubeId;
+  const clubeId =
+    estado.atleta && !estado.atleta.virouTecnico ? estado.atleta.contrato.clubeId : estado.carreira.clubeId;
   const clube = clubeId ? (estado.temporada.clubes[clubeId]?.nome ?? null) : null;
   return {
     versao: VERSAO_DO_SAVE,

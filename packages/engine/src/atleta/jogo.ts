@@ -6,6 +6,7 @@ import { type EstadoJogo, type OpcoesNovoJogo, novoJogo } from "../carreira/jogo
 import { campeoes } from "../carreira/titulos";
 import { nomeDaCompeticao, simularRodada, temporadaEncerrada, virarTemporada } from "../competicao/temporada";
 import { EVENTOS_ATLETA } from "../conteudo/atleta";
+import { EVENTOS_ATLETA_EXTRAS } from "../conteudo/atletaExtras";
 import { criarJogador } from "../jogador";
 import { semanaDoMercado } from "../mercado/semana";
 import { nomeDeTecnicoFicticio } from "../mercado/tecnico";
@@ -37,7 +38,7 @@ import {
 } from "./partida";
 import type { EstadoAtleta, RitmoAtleta, RotinaAtleta } from "./tipos";
 
-registrarEventos(EVENTOS_ATLETA);
+registrarEventos([...EVENTOS_ATLETA, ...EVENTOS_ATLETA_EXTRAS]);
 
 export type OrigemAtleta = "base" | "profissional";
 
@@ -394,7 +395,10 @@ function virada(estado: EstadoJogo): void {
     a.numeros = { jogos: 0, gols: 0, assist: 0, somaNotas: 0, qtdNotas: 0 };
   });
   virarTemporada(t);
-  for (const ult of a.ultimosJogos) ult.lances = [];
+  for (const ult of a.ultimosJogos) {
+    ult.lances = [];
+    ult.narracao = [];
+  }
   comRng(estado, (c) => {
     if (a.idade >= 40 || (a.idade >= 36 && c.j.ovr < 58)) {
       aposentar(c);

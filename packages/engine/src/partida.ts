@@ -143,7 +143,7 @@ export interface OpcoesPartida {
   competicao?: string;
 }
 
-function emJogo(j: Jogador, rng: Rng): JogadorEmJogo {
+export function emJogo(j: Jogador, rng: Rng): JogadorEmJogo {
   return {
     jogador: j,
     cond: j.cond,

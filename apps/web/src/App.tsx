@@ -1,21 +1,21 @@
-import { dataDaSemana, dataPorExtenso } from "./componentes/PreJogo";
-import { PreJogo } from "./componentes/PreJogo";
-import { Acessos, Comemoracao } from "./componentes/Comemoracao";
-import { Noticias } from "./telas/Noticias";
 import { divisaoDo, motivacaoDoGrupo, nomeDaCompeticao, pendentes } from "@prancheta/engine";
 import { useEffect, useState } from "react";
+import { Acessos, Comemoracao } from "./componentes/Comemoracao";
+import { dataDaSemana, dataPorExtenso } from "./componentes/PreJogo";
+import { PreJogo } from "./componentes/PreJogo";
 import { Aviso, Escudo, Medidor } from "./componentes/basicos";
 import { type Aba, useJogo, useLoja } from "./estado/loja";
+import { AppAtleta } from "./telas/Atleta";
 import { Base, Carreira, Comissao, Mercado, SituacaoFinanceira, Treino } from "./telas/Clube";
-import { Olheiro } from "./telas/Olheiro";
 import { Elenco } from "./telas/Elenco";
 import { Inicio } from "./telas/Inicio";
 import { MenuInicial } from "./telas/MenuInicial";
+import { Noticias } from "./telas/Noticias";
 import { NovoJogo } from "./telas/NovoJogo";
+import { Olheiro } from "./telas/Olheiro";
 import { Partida } from "./telas/Partida";
 import { Tabela } from "./telas/Tabela";
 import { Tatica } from "./telas/Tatica";
-import { AppAtleta } from "./telas/Atleta";
 
 interface GrupoDoMenu {
   id: string;
@@ -202,7 +202,7 @@ export function App() {
   const emPartida = useLoja((s) => s.emPartida);
   const preJogo = useLoja((s) => s.preJogo);
   const iniciar = useLoja((s) => s.iniciar);
-  const modoAtleta = useLoja((s) => !!s.jogo?.atleta);
+  const modoAtleta = useLoja((s) => !!s.jogo?.atleta && !s.jogo.atleta.virouTecnico);
   useEffect(() => {
     void iniciar();
   }, [iniciar]);

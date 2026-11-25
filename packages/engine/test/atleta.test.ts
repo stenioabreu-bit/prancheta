@@ -7,12 +7,16 @@ import {
   type RitmoAtleta,
   avancarAtleta,
   clubeDoAtleta,
+  competicoesAtivas,
+  competicoesDoClube,
   decidirDilema,
+  dispensarResultado,
   escolherLance,
   jogadorDoAtleta,
   lancesPendentes,
   novoJogoAtleta,
   pendenciaDoAtleta,
+  propostasDaBase,
   propostasDeTecnico,
   proximoJogoDoUsuario,
   seguir,
@@ -130,7 +134,7 @@ describe("modo jogador", () => {
     expect(a.historico[0]!.jogos).toBeGreaterThanOrEqual(0);
   });
 
-  it("ritmo decisivos só para em dilema capital ou lance decisivo", () => {
+  it("ritmo decisivos para nos dilemas e só nos lances decisivos", () => {
     const e = atleta(13, "decisivos");
     const a = e.atleta!;
     for (let k = 0; k < 30; k++) {
@@ -138,7 +142,7 @@ describe("modo jogador", () => {
       if (p === "lances") {
         expect(lancesPendentes(a.jogo!).some((l) => l.decisivo)).toBe(true);
       }
-      if (p === "dilemas") expect(a.dilemas.some((d) => d.capital)).toBe(true);
+      if (p === "dilemas") expect(a.dilemas.length).toBeGreaterThan(0);
       responderTudo(e);
     }
     expect(pendenciaDoAtleta(e)).toBeTruthy();
@@ -201,5 +205,91 @@ describe("modo jogador", () => {
     // O resto do elenco recebeu números do motor.
     const clube = clubeDoAtleta(e);
     expect(clube.jogadores.some((j) => j.id !== "atleta" && j.temporada.jogos > 0)).toBe(true);
+  });
+
+  it("ligas do mundo jogam em paralelo e viram com a temporada", () => {
+    const mundo = ["ENG", "ESP"].map((codigo, k) => ({
+      id: `mundo-${codigo.toLowerCase()}`,
+      codigo,
+      nome: k ? "La Liga" : "Premier League",
+      pais: k ? "Espanha" : "Inglaterra",
+      nivel: 1,
+      clubes: Array.from({ length: 10 }, (_, i) => ({
+        id: `m-${codigo}-${i}`,
+        nome: `${codigo} FC ${i}`,
+        sigla: `${codigo.slice(0, 2)}${i}`,
+        nivel: 80 - i,
+      })),
+    }));
+    const e = novoJogoAtleta({
+      semente: 4,
+      temporada: 2026,
+      divisoes: divisoes(),
+      vagasDiretasCopa: ["c0", "c1", "d0", "d1"],
+      clubeId: "a5",
+      nome: "Zé Mundo",
+      pos: "ATA",
+      origem: "profissional",
+      ritmo: "temporada",
+      numero: 9,
+      pe: "esquerdo",
+      mundo,
+    });
+    expect(e.atleta!.numero).toBe(9);
+    expect(e.atleta!.pe).toBe("esquerdo");
+    expect(competicoesAtivas(e.temporada)).toEqual(
+      expect.arrayContaining(["est-mundo-eng", "est-mundo-esp"]),
+    );
+    expect(e.temporada.clubes["m-ENG-0"]!.jogadores.length).toBeGreaterThan(15);
+    const a = e.atleta!;
+    for (let k = 0; k < 200 && a.historico.length < 1 && !a.aposentado; k++) {
+      const p = avancarAtleta(e, 200);
+      if (p === "dilemas" || p === "lances") responderTudo(e);
+    }
+    expect(a.historico.length).toBe(1);
+    // A liga do mundo terminou com campeão e foi remontada para o ano novo.
+    expect(e.temporada.estaduais!["mundo-eng"]!.encerrada).toBe(false);
+    expect(Object.values(e.temporada.jogos).some((j) => j.competicao === "est-mundo-esp")).toBe(true);
+  }, 120_000);
+
+  it("propostas da base: três clubes diferentes com minutos previstos", () => {
+    const ds = divisoes();
+    const opcoes = [
+      ...ds.A.map((dados) => ({ dados, divisao: 1, liga: "Série A" })),
+      ...ds.B.map((dados) => ({ dados, divisao: 2, liga: "Série B" })),
+    ];
+    const p = propostasDaBase(opcoes, "ATA", 60, 77);
+    expect(p).toHaveLength(3);
+    expect(new Set(p.map((x) => x.clubeId)).size).toBe(3);
+    for (const x of p) {
+      expect(x.minutos).toBeGreaterThan(0);
+      expect(x.nivel).toBeGreaterThanOrEqual(1);
+      expect(x.nivel).toBeLessThanOrEqual(5);
+    }
+    // Mesma semente, mesmas propostas.
+    expect(propostasDaBase(opcoes, "ATA", 60, 77)).toEqual(p);
+  });
+
+  it("decisão mostra a chance de cada opção e guarda o cartão do resultado", () => {
+    const e = atleta(17);
+    const a = e.atleta!;
+    for (let k = 0; k < 60 && !a.dilemas.length; k++) {
+      if (a.jogo) responderTudo(e);
+      avancarAtleta(e);
+    }
+    const d = a.dilemas[0]!;
+    for (const o of d.opcoes) {
+      expect(o.chance).toBeGreaterThanOrEqual(0);
+      expect(o.chance).toBeLessThanOrEqual(1);
+    }
+    const texto = decidirDilema(e, d.id, 0);
+    expect(a.ultimoResultado?.texto).toBe(texto);
+    expect(a.ultimoResultado?.titulo).toBe(d.titulo);
+    for (const v of Object.values(a.ultimoResultado!.mudancas)) expect(v).not.toBe(0);
+    dispensarResultado(e);
+    expect(a.ultimoResultado).toBeNull();
+    // A tela de torneios acha a liga do clube com a posição.
+    const comps = competicoesDoClube(e, clubeDoAtleta(e).id);
+    expect(comps.find((c) => c.id === "A")?.resumo).toMatch(/º$/);
   });
 });

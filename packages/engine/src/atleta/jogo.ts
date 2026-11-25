@@ -25,9 +25,11 @@ import {
   noFeed,
   registrarEventos,
   resolverDilema,
+  resolverDilemaDetalhado,
   salarioSemanal,
   sortearEventosDaSemana,
 } from "./motor";
+import { type LigaDoMundo, adicionarLigasDoMundo } from "./mundo";
 import {
   decidirLance,
   escolhaAutomaticaDoLance,
@@ -36,7 +38,14 @@ import {
   lancesPendentes,
   montarJogo,
 } from "./partida";
-import type { EstadoAtleta, RitmoAtleta, RotinaAtleta } from "./tipos";
+import {
+  CAMPOS_VIDA,
+  type EstadoAtleta,
+  type PeDominante,
+  type ResultadoDaDecisao,
+  type RitmoAtleta,
+  type RotinaAtleta,
+} from "./tipos";
 
 registrarEventos([...EVENTOS_ATLETA, ...EVENTOS_ATLETA_EXTRAS]);
 
@@ -47,6 +56,18 @@ export interface OpcoesNovoAtleta extends Omit<OpcoesNovoJogo, "tecnico"> {
   pos: Posicao;
   origem: OrigemAtleta;
   ritmo?: RitmoAtleta;
+  /** Número da camisa (padrão 10). */
+  numero?: number;
+  pe?: PeDominante;
+  /** Ligas do mundo (pacote de mundo) jogadas em paralelo; códigos em `excluirLigas` ficam de fora. */
+  mundo?: readonly LigaDoMundo[];
+  excluirLigas?: string[];
+}
+
+/** Overall de estreia: não depende do clube (como numa carta de jogador). */
+export function ovrInicial(origem: OrigemAtleta, semente: number): number {
+  const rng = criarRng(semente ^ 0x51ed);
+  return origem === "base" ? inteiroEntre(rng, 62, 65) : inteiroEntre(rng, 67, 70);
 }
 
 const PERSONALIDADE_DA_ORIGEM: Record<OrigemAtleta, Personalidade> = {
@@ -79,9 +100,10 @@ export function novoJogoAtleta(o: OpcoesNovoAtleta): EstadoJogo {
     .flat()
     .find((c) => c.id === o.clubeId);
   estado.mercado.tecnicos[o.clubeId] = dados?.tecnico ?? nomeDeTecnicoFicticio(criarRng(o.semente ^ 0x5bd1));
+  if (o.mundo?.length) adicionarLigasDoMundo(estado, o.mundo, o.excluirLigas);
   const clube = estado.temporada.clubes[o.clubeId]!;
   const base = o.origem === "base";
-  const ovr = Math.round(limitar(clube.forca - (base ? 13 : 5), 45, 78));
+  const ovr = ovrInicial(o.origem, o.semente);
   const j = criarJogador([nome, o.pos, ovr, { perso: PERSONALIDADE_DA_ORIGEM[o.origem] }], clube.id, 0);
   j.id = "atleta";
   if (base) j.daBase = true;
@@ -94,6 +116,8 @@ export function novoJogoAtleta(o: OpcoesNovoAtleta): EstadoJogo {
     jogadorId: j.id,
     nome,
     pos: o.pos,
+    numero: limitar(Math.round(o.numero ?? 10), 1, 99),
+    pe: o.pe ?? "direito",
     idade,
     potencial,
     treinoAcumulado: 0,
@@ -150,24 +174,61 @@ export function novoJogoAtleta(o: OpcoesNovoAtleta): EstadoJogo {
 /** O que está esperando o usuário agora. */
 export type PendenciaAtleta = "dilemas" | "lances" | "jogo" | "semana" | "aposentado";
 
-function precisaDoUsuario(a: EstadoAtleta, capital: boolean, decisivo: boolean): boolean {
-  if (a.ritmo === "jogo") return true;
-  if (a.ritmo === "decisivos") return capital || decisivo;
-  return capital;
+/** Dilema pede o usuário: sempre no jogo a jogo e nos momentos decisivos; na temporada, só os capitais. */
+function dilemaPedeUsuario(a: EstadoAtleta, capital: boolean): boolean {
+  return a.ritmo !== "temporada" || capital;
+}
+
+/** Lance pede o usuário: todos no jogo a jogo; só os decisivos nos momentos decisivos; nenhum na temporada. */
+function lancePedeUsuario(a: EstadoAtleta, decisivo: boolean): boolean {
+  return a.ritmo === "jogo" || (a.ritmo === "decisivos" && decisivo);
 }
 
 export function pendenciaDoAtleta(estado: EstadoJogo): PendenciaAtleta {
   const a = estado.atleta!;
   if (a.aposentado) return "aposentado";
-  if (a.dilemas.some((d) => precisaDoUsuario(a, d.capital, false))) return "dilemas";
-  if (a.jogo && lancesPendentes(a.jogo).some((l) => precisaDoUsuario(a, false, l.decisivo))) return "lances";
+  if (a.dilemas.some((d) => dilemaPedeUsuario(a, d.capital))) return "dilemas";
+  if (a.jogo && lancesPendentes(a.jogo).some((l) => lancePedeUsuario(a, l.decisivo))) return "lances";
   if (a.jogo) return "jogo";
   return "semana";
 }
 
 /** Responde um dilema da semana. */
 export function decidirDilema(estado: EstadoJogo, dilemaId: string, opcao: number): string | null {
-  return comRng(estado, (c) => resolverDilema(c, dilemaId, opcao, executarAcao));
+  const a = estado.atleta!;
+  const antes = { ...a.vida };
+  const dinheiro = a.dinheiro;
+  const contrato = { ...a.contrato };
+  const r = comRng(estado, (c) => resolverDilemaDetalhado(c, dilemaId, opcao, executarAcao));
+  if (!r) return null;
+  const mudancas: ResultadoDaDecisao["mudancas"] = {};
+  for (const k of CAMPOS_VIDA) {
+    const d = Math.round(a.vida[k] - antes[k]);
+    if (d !== 0) mudancas[k] = d;
+  }
+  const mudouContrato =
+    a.contrato.clubeId !== contrato.clubeId ||
+    a.contrato.ate !== contrato.ate ||
+    a.contrato.salario !== contrato.salario;
+  a.ultimaMudanca = { ...(a.ultimaMudanca ?? {}), ...mudancas };
+  a.ultimoResultado = {
+    dilemaId,
+    titulo: r.dilema.titulo,
+    categoria: r.dilema.categoria,
+    escolha: r.escolha,
+    texto: r.texto,
+    certo: r.certo,
+    mudancas,
+    dinheiro: Math.round((a.dinheiro - dinheiro) * 1000) / 1000,
+    ...(mudouContrato ? { contrato: { ...a.contrato } } : {}),
+    futuro: r.futuro,
+  };
+  return r.texto;
+}
+
+/** Fecha o cartão da última decisão. */
+export function dispensarResultado(estado: EstadoJogo): void {
+  if (estado.atleta) estado.atleta.ultimoResultado = null;
 }
 
 /** Escolhe a opção de um lance do jogo em andamento. */
@@ -191,7 +252,7 @@ function resolverAutomaticos(estado: EstadoJogo, tudo: boolean): void {
   const a = estado.atleta!;
   comRng(estado, (c) => {
     for (const d of [...a.dilemas]) {
-      if (!tudo && precisaDoUsuario(a, d.capital, false)) continue;
+      if (!tudo && dilemaPedeUsuario(a, d.capital)) continue;
       if (tudo && d.capital) continue;
       resolverDilema(c, d.id, escolhaAutomatica(d, c), executarAcao);
     }
@@ -200,7 +261,7 @@ function resolverAutomaticos(estado: EstadoJogo, tudo: boolean): void {
     for (let i = 0; i < g.lances.length; i++) {
       const l = g.lances[i]!;
       if (l.escolha) continue;
-      if (!tudo && precisaDoUsuario(a, false, l.decisivo)) continue;
+      if (!tudo && lancePedeUsuario(a, l.decisivo)) continue;
       decidirLance(c, g, i, escolhaAutomaticaDoLance(l));
     }
   });
@@ -218,10 +279,10 @@ export function avancarAtleta(estado: EstadoJogo, limiteDeSemanas = 80): Pendenc
     if (a.aposentado) return "aposentado";
     resolverAutomaticos(estado, false);
     // Dilemas que sobraram e que o usuário deixou para trás: a semana não anda sem resposta.
-    if (a.dilemas.some((d) => precisaDoUsuario(a, d.capital, false))) return "dilemas";
+    if (a.dilemas.some((d) => dilemaPedeUsuario(a, d.capital))) return "dilemas";
     // Dilemas comuns que o usuário não respondeu no ritmo "jogo" já foram tratados acima.
     if (a.jogo) {
-      if (lancesPendentes(a.jogo).some((l) => precisaDoUsuario(a, false, l.decisivo))) return "lances";
+      if (lancesPendentes(a.jogo).some((l) => lancePedeUsuario(a, l.decisivo))) return "lances";
       comRng(estado, (c) => fecharJogo(c, a.jogo!));
       a.jogo = null;
       continue;
@@ -275,11 +336,14 @@ function fecharSemana(estado: EstadoJogo): boolean {
   }
   if (!a.aposentado) {
     comRng(estado, (c) => {
-      a.dilemas.push(...sortearEventosDaSemana(c));
+      a.dilemas.push(...sortearEventosDaSemana(c, 2, CHANCE_DE_EVENTO[a.ritmo]));
     });
   }
   return virou;
 }
+
+/** Chance de um evento comum na semana: menos histórias quando o jogo anda sozinho. */
+const CHANCE_DE_EVENTO: Record<RitmoAtleta, number> = { jogo: 0.55, decisivos: 0.3, temporada: 0.55 };
 
 const GASTO_DO_PADRAO = [0.25, 0.5, 0.95];
 const TREINO_DA_ROTINA = [0.4, 1, 1.7];

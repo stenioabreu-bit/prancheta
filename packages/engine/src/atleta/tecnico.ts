@@ -26,8 +26,9 @@ function alcanceDoNovoTecnico(estado: EstadoJogo): number {
   return 52 + licenca + (v.reputacao - 50) / 4 + (v.fama - 40) / 6 + (v.elenco - 50) / 10;
 }
 
-function elegivel(c: Clube): boolean {
-  return c.jogadores.length >= 16;
+/** Só clubes das divisões do pacote base: o modo técnico precisa da Série (finanças, metas). */
+function elegivel(estado: EstadoJogo, c: Clube): boolean {
+  return c.jogadores.length >= 16 && !!divisaoDo(estado.temporada, c.id);
 }
 
 /** Até três clubes chamam o recém-aposentado: o clube onde ele mais jogou (se gostam dele) e apostas menores. */
@@ -41,7 +42,7 @@ export function propostasDeTecnico(estado: EstadoJogo): PropostaDeTecnico[] {
   const [casa] = [...jogosPorClube.entries()].sort((x, y) => y[1] - x[1]);
   if (casa && casa[1] >= 40 && a.vida.reputacao >= 45) {
     const c = t.clubes[casa[0]];
-    if (c && elegivel(c))
+    if (c && elegivel(estado, c))
       r.push({
         clubeId: c.id,
         nome: c.nome,
@@ -52,7 +53,7 @@ export function propostasDeTecnico(estado: EstadoJogo): PropostaDeTecnico[] {
   // Ordem estável entre telas: sorteio pela semente do save, sem gastar o RNG do jogo.
   const rng = criarRng((t.rng ^ 0x7ec1) >>> 0);
   const candidatos = Object.values(t.clubes)
-    .filter((c) => elegivel(c) && !r.some((p) => p.clubeId === c.id) && c.forca <= alvo + 2)
+    .filter((c) => elegivel(estado, c) && !r.some((p) => p.clubeId === c.id) && c.forca <= alvo + 2)
     .map((c) => ({ c, nota: Math.abs(c.forca - alvo) + rng.proximo() * 6 }))
     .sort((x, y) => x.nota - y.nota);
   for (const { c } of candidatos) {

@@ -83,6 +83,8 @@ export interface FormatoDivisao {
   nome: string;
   /** Semana de estreia no calendário (0 = primeira semana da temporada). */
   inicio?: number;
+  /** Participantes fixos (ligas do mundo no modo jogador), quando a fase 1 não traz os jogos reais. */
+  participantes?: string[];
   clubes: number;
   fases: Fase[];
   acesso: RegraDeMovimento[];

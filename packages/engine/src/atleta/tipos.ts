@@ -69,6 +69,26 @@ export interface OpcaoDoDilema {
   texto: string;
   /** Prévia curta do que tende a mexer (sem revelar as consequências futuras). */
   dica?: string;
+  /** Chance de dar certo (0–1); 1 quando não há risco. */
+  chance?: number;
+}
+
+/** O que a última decisão do usuário causou (cartão de resultado). */
+export interface ResultadoDaDecisao {
+  dilemaId: string;
+  titulo: string;
+  categoria: CategoriaEvento;
+  escolha: string;
+  texto: string;
+  /** A opção arriscada deu certo (ou não havia risco). */
+  certo: boolean;
+  mudancas: Partial<Record<CampoVida, number>>;
+  /** Variação do patrimônio (€ mi). */
+  dinheiro: number;
+  /** Contrato novo (clube, salário, até) quando a decisão mudou o vínculo. */
+  contrato?: ContratoAtleta;
+  /** Consequências futuras foram plantadas. */
+  futuro: boolean;
 }
 
 /** Evento sorteado que espera a resposta do atleta. */
@@ -182,10 +202,15 @@ export interface TemporadaDoAtleta {
   titulos: string[];
 }
 
+export type PeDominante = "direito" | "esquerdo";
+
 export interface EstadoAtleta {
   jogadorId: string;
   nome: string;
   pos: Posicao;
+  /** Número da camisa e pé dominante (identidade; saves antigos não têm). */
+  numero?: number;
+  pe?: PeDominante;
   idade: number;
   /** Teto de overall (cresce com bom rendimento). */
   potencial: number;
@@ -222,6 +247,10 @@ export interface EstadoAtleta {
   aposentado: boolean;
   /** Texto do pós-carreira (quando aposenta). */
   posCarreira?: string;
+  /** Cartão da última decisão, até o usuário dispensar. */
+  ultimoResultado?: ResultadoDaDecisao | null;
+  /** Última variação de cada indicador (mostrada no Status). */
+  ultimaMudanca?: Partial<Record<CampoVida, number>>;
   /** Aposentado que virou técnico: o save segue no modo técnico. */
   virouTecnico?: boolean;
   proximoId: number;

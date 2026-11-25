@@ -569,7 +569,8 @@ function novoLance(
     tipo,
     texto: texto ?? textos[Math.floor(rng.proximo() * textos.length)]!,
     opcoes,
-    decisivo: decisivo || minuto >= 78,
+    // Lance decisivo = jogo grande (copa, mata-mata, clássico) ou o fim apertado de um jogo comum.
+    decisivo: decisivo || (minuto >= 85 && rng.proximo() < 0.15),
   };
 }
 

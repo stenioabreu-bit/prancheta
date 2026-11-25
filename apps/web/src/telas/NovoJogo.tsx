@@ -1,6 +1,5 @@
 import type { PacoteDados } from "@prancheta/data";
-import type { Moeda, OrigemAtleta, Posicao, RitmoAtleta } from "@prancheta/engine";
-import { POSICOES } from "@prancheta/engine";
+import type { Moeda } from "@prancheta/engine";
 import { type Clube, type ClubeDados, type Divisao, criarClube, criarRng } from "@prancheta/engine";
 import { useEffect, useMemo, useState } from "react";
 import { LogoCompeticao } from "../componentes/LogoCompeticao";
@@ -14,6 +13,7 @@ import {
   opcoesDePacote,
   urlsDosEscudos,
 } from "../estado/pacotes";
+import { CriarAtleta } from "./CriarAtleta";
 
 const DIVISOES: Divisao[] = ["A", "B", "C", "D"];
 
@@ -109,9 +109,6 @@ export function NovoJogo() {
   const [clubeId, setClubeId] = useState<string | null>(null);
   const [comecando, setComecando] = useState(false);
   const [modo, setModo] = useState<"tecnico" | "jogador">("tecnico");
-  const [pos, setPos] = useState<Posicao>("ATA");
-  const [origem, setOrigem] = useState<OrigemAtleta>("base");
-  const [ritmo, setRitmo] = useState<RitmoAtleta>("jogo");
 
   useEffect(() => void opcoesDePacote().then(setOpcoes), []);
   useEffect(() => {
@@ -199,6 +196,14 @@ export function NovoJogo() {
       <header className="cn-topo">
         <span className="marca">PP27</span>
         <span className="cn-passo">Nova carreira · temporada {pacote?.temporada ?? ""}</span>
+        <div className="seg cn-modo" role="group" aria-label="Modo de jogo">
+          <button type="button" aria-pressed={modo === "tecnico"} onClick={() => setModo("tecnico")}>
+            Técnico
+          </button>
+          <button type="button" aria-pressed={modo === "jogador"} onClick={() => setModo("jogador")}>
+            Jogador
+          </button>
+        </div>
         <label className="cn-base">
           <span className="small muted">Liga:</span>
           <select value={pacoteId} onChange={(e) => setPacoteId(e.target.value)}>
@@ -221,149 +226,106 @@ export function NovoJogo() {
         </label>
       </header>
 
-      <div className="cn-corpo">
-        <section className="cn-lista" aria-label="Clubes">
-          <div className="seg" role="group" aria-label="Divisão">
-            {DIVISOES.filter((d) => (pacote?.divisoes[d]?.length ?? 0) > 0).map((d) => (
-              <button key={d} type="button" aria-pressed={divisao === d} onClick={() => setDivisao(d)}>
-                {pacote?.formatos?.[d]?.nome ?? `Série ${d}`}
-              </button>
-            ))}
-          </div>
-          <div className="cn-grade">
-            {clubes.map((o) => (
-              <button
-                key={o.dados.id}
-                type="button"
-                className="cn-clube"
-                aria-pressed={clubeId === o.dados.id}
-                onClick={() => setClubeId(o.dados.id)}
-              >
-                <Escudo clube={o.clube} tamanho={40} />
-                <span className="cn-clube-nome">{o.dados.nome}</span>
-                <span
-                  className="cn-forca"
-                  style={{ ["--f" as string]: `${Math.max(0, (o.forca - 45) * 2.6)}%` }}
+      {modo === "jogador" ? (
+        <CriarAtleta key={pacoteId} pacote={pacote} pacoteId={pacoteId} />
+      ) : (
+        <div className="cn-corpo">
+          <section className="cn-lista" aria-label="Clubes">
+            <div className="seg" role="group" aria-label="Divisão">
+              {DIVISOES.filter((d) => (pacote?.divisoes[d]?.length ?? 0) > 0).map((d) => (
+                <button key={d} type="button" aria-pressed={divisao === d} onClick={() => setDivisao(d)}>
+                  {pacote?.formatos?.[d]?.nome ?? `Série ${d}`}
+                </button>
+              ))}
+            </div>
+            <div className="cn-grade">
+              {clubes.map((o) => (
+                <button
+                  key={o.dados.id}
+                  type="button"
+                  className="cn-clube"
+                  aria-pressed={clubeId === o.dados.id}
+                  onClick={() => setClubeId(o.dados.id)}
                 >
-                  <b className="num">{o.forca}</b>
-                </span>
-              </button>
-            ))}
-          </div>
-        </section>
+                  <Escudo clube={o.clube} tamanho={40} />
+                  <span className="cn-clube-nome">{o.dados.nome}</span>
+                  <span
+                    className="cn-forca"
+                    style={{ ["--f" as string]: `${Math.max(0, (o.forca - 45) * 2.6)}%` }}
+                  >
+                    <b className="num">{o.forca}</b>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </section>
 
-        <aside className="cn-lado">
-          {escolhido ? (
-            <Dossie
-              o={escolhido}
-              divisao={divisao}
-              rank={clubes.indexOf(escolhido) + 1}
-              total={clubes.length}
-            />
-          ) : (
-            <div className="dossie vazio-dossie">
-              <span className="eyebrow">Nenhum clube escolhido</span>
-              <p className="muted">
-                Escolha um clube na lista para ver elenco, força e o que a diretoria espera.
-              </p>
-            </div>
-          )}
-          <div className="cn-contrato">
-            <div className="seg" role="group" aria-label="Modo de jogo">
-              <button type="button" aria-pressed={modo === "tecnico"} onClick={() => setModo("tecnico")}>
-                Técnico
-              </button>
-              <button type="button" aria-pressed={modo === "jogador"} onClick={() => setModo("jogador")}>
-                Jogador
-              </button>
-            </div>
-            <label htmlFor="tecnico">{modo === "tecnico" ? "Nome do técnico" : "Nome do jogador"}</label>
-            <input
-              id="tecnico"
-              className="inp"
-              value={tecnico}
-              onChange={(e) => setTecnico(e.target.value)}
-              maxLength={40}
-              autoComplete="off"
-            />
-            {modo === "jogador" && (
-              <>
-                <label htmlFor="pos">Posição</label>
-                <select
-                  id="pos"
-                  className="inp"
-                  value={pos}
-                  onChange={(e) => setPos(e.target.value as Posicao)}
-                >
-                  {POSICOES.map((p) => (
-                    <option key={p} value={p}>
-                      {p}
-                    </option>
-                  ))}
-                </select>
-                <label htmlFor="origem">Começo</label>
-                <select
-                  id="origem"
-                  className="inp"
-                  value={origem}
-                  onChange={(e) => setOrigem(e.target.value as OrigemAtleta)}
-                >
-                  <option value="base">Joia da base (17 anos, muito potencial)</option>
-                  <option value="profissional">Profissional (21 anos, mais pronto)</option>
-                </select>
-                <label htmlFor="ritmo">Ritmo</label>
-                <select
-                  id="ritmo"
-                  className="inp"
-                  value={ritmo}
-                  onChange={(e) => setRitmo(e.target.value as RitmoAtleta)}
-                >
-                  <option value="jogo">Jogo a jogo</option>
-                  <option value="decisivos">Só momentos decisivos</option>
-                  <option value="temporada">Temporada a temporada</option>
-                </select>
-              </>
+          <aside className="cn-lado">
+            {escolhido ? (
+              <Dossie
+                o={escolhido}
+                divisao={divisao}
+                rank={clubes.indexOf(escolhido) + 1}
+                total={clubes.length}
+              />
+            ) : (
+              <div className="dossie vazio-dossie">
+                <span className="eyebrow">Nenhum clube escolhido</span>
+                <p className="muted">
+                  Escolha um clube na lista para ver elenco, força e o que a diretoria espera.
+                </p>
+              </div>
             )}
-            <label htmlFor="moeda">Moeda</label>
-            <select
-              id="moeda"
-              className="inp"
-              value={moeda}
-              onChange={(e) => setMoeda(e.target.value as Moeda)}
-            >
-              <option value="BRL">Real (R$)</option>
-              <option value="USD">Dólar (US$)</option>
-              <option value="EUR">Euro (€)</option>
-            </select>
-            <button
-              type="button"
-              className="btn primary big"
-              disabled={!pode}
-              onClick={async () => {
-                setComecando(true);
-                try {
-                  await comecar({
-                    pacoteId,
-                    tecnico,
-                    clubeId: clubeId!,
-                    moeda,
-                    ...(modo === "jogador" ? { atleta: { pos, origem, ritmo } } : {}),
-                  });
-                } catch (e) {
-                  avisar((e as Error).message);
-                  setComecando(false);
-                }
-              }}
-            >
-              {comecando
-                ? "Preparando…"
-                : escolhido
-                  ? `Assinar com o ${escolhido.dados.nome}`
-                  : "Assinar contrato"}
-            </button>
-          </div>
-        </aside>
-      </div>
+            <div className="cn-contrato">
+              <label htmlFor="tecnico">Nome do técnico</label>
+              <input
+                id="tecnico"
+                className="inp"
+                value={tecnico}
+                onChange={(e) => setTecnico(e.target.value)}
+                maxLength={40}
+                autoComplete="off"
+              />
+              <label htmlFor="moeda">Moeda</label>
+              <select
+                id="moeda"
+                className="inp"
+                value={moeda}
+                onChange={(e) => setMoeda(e.target.value as Moeda)}
+              >
+                <option value="BRL">Real (R$)</option>
+                <option value="USD">Dólar (US$)</option>
+                <option value="EUR">Euro (€)</option>
+              </select>
+              <button
+                type="button"
+                className="btn primary big"
+                disabled={!pode}
+                onClick={async () => {
+                  setComecando(true);
+                  try {
+                    await comecar({
+                      pacoteId,
+                      tecnico,
+                      clubeId: clubeId!,
+                      moeda,
+                    });
+                  } catch (e) {
+                    avisar((e as Error).message);
+                    setComecando(false);
+                  }
+                }}
+              >
+                {comecando
+                  ? "Preparando…"
+                  : escolhido
+                    ? `Assinar com o ${escolhido.dados.nome}`
+                    : "Assinar contrato"}
+              </button>
+            </div>
+          </aside>
+        </div>
+      )}
     </div>
   );
 }

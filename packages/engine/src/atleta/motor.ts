@@ -206,6 +206,9 @@ export function criarDilema(c: ContextoAtleta, def: DefEvento): DilemaAtleta | n
     opcoes: opcoes.map((o) => ({
       texto: preencher(o.texto, dados),
       ...(o.dica ? { dica: preencher(o.dica, dados) } : {}),
+      chance: o.sorte
+        ? Math.round(limitar(typeof o.sorte.p === "number" ? o.sorte.p : o.sorte.p(c), 0, 1) * 100) / 100
+        : 1,
     })),
     dados,
   };
@@ -215,7 +218,7 @@ export function criarDilema(c: ContextoAtleta, def: DefEvento): DilemaAtleta | n
  * Eventos da semana: primeiro as consequências agendadas que venceram (cada uma rola a sua chance);
  * depois, com ~55% de chance, um evento comum sorteado por peso entre os que valem agora.
  */
-export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2): DilemaAtleta[] {
+export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2, chance = 0.55): DilemaAtleta[] {
   const { a, rng } = c;
   const novos: DilemaAtleta[] = [];
   const restantes = [];
@@ -238,7 +241,7 @@ export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2): DilemaAtl
     }
   }
   a.agendadas = restantes;
-  if (novos.length < maximo && rng.proximo() < 0.55) {
+  if (novos.length < maximo && rng.proximo() < chance) {
     const candidatos = Object.values(EVENTOS).filter(
       (e) =>
         !e.agendado &&
@@ -323,6 +326,16 @@ export function resolverDilema(
   opcao: number,
   executar: ExecutarAcao,
 ): string | null {
+  return resolverDilemaDetalhado(c, dilemaId, opcao, executar)?.texto ?? null;
+}
+
+/** Responde um dilema e devolve o texto, se a aposta deu certo e o que plantou para o futuro. */
+export function resolverDilemaDetalhado(
+  c: ContextoAtleta,
+  dilemaId: string,
+  opcao: number,
+  executar: ExecutarAcao,
+): { texto: string; certo: boolean; futuro: boolean; dilema: DilemaAtleta; escolha: string } | null {
   const { a } = c;
   const dilema = a.dilemas.find((d) => d.id === dilemaId);
   const def = dilema ? EVENTOS[dilema.evento] : undefined;
@@ -332,11 +345,13 @@ export function resolverDilema(
   if (!o) return null;
   let efeito = o.efeito;
   let resultado = o.resultado;
+  let certo = true;
   if (o.sorte) {
     const p = typeof o.sorte.p === "number" ? o.sorte.p : o.sorte.p(c);
     if (c.rng.proximo() >= p) {
       efeito = o.sorte.senao.efeito;
       resultado = o.sorte.senao.resultado;
+      certo = false;
     }
   }
   a.dilemas = a.dilemas.filter((d) => d.id !== dilemaId);
@@ -353,7 +368,13 @@ export function resolverDilema(
   });
   if (a.escolhas.length > 400) a.escolhas.pop();
   noFeed(a, `${dilema.titulo}: ${texto}`, efeitoBom(efeito) ? "bom" : efeitoRuim(efeito) ? "ruim" : "info");
-  return texto;
+  return {
+    texto,
+    certo,
+    futuro: !!efeito.agendar?.length || !!efeito.marcar,
+    dilema,
+    escolha: dilema.opcoes[opcao]?.texto ?? o.texto,
+  };
 }
 
 function efeitoBom(ef: EfeitoAtleta): boolean {

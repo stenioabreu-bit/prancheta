@@ -3,6 +3,7 @@ import { type Moeda, definirMoeda } from "@prancheta/engine";
 import {
   type EstadoJogo,
   type OrigemAtleta,
+  type PeDominante,
   type Posicao,
   type RitmoAtleta,
   novoJogo,
@@ -11,7 +12,7 @@ import {
 import { apagarTudo, carregar, salvar } from "@prancheta/save";
 import { create } from "zustand";
 import { armazenamentoDoNavegador, gravarConfig, lerConfig } from "./banco";
-import { carregarPacote, urlsDosEscudos } from "./pacotes";
+import { PAIS_DO_PACOTE, carregarMundo, carregarPacote, urlsDosEscudos } from "./pacotes";
 
 export type Aba =
   | "inicio"
@@ -51,7 +52,15 @@ interface Loja {
     clubeId: string;
     moeda: Moeda;
     /** Modo jogador: o nome vira o do atleta. */
-    atleta?: { pos: Posicao; origem: OrigemAtleta; ritmo: RitmoAtleta };
+    atleta?: {
+      pos: Posicao;
+      origem: OrigemAtleta;
+      ritmo: RitmoAtleta;
+      numero?: number;
+      pe?: PeDominante;
+    };
+    /** Semente do save (o modo jogador sorteia as propostas da base com ela antes de começar). */
+    semente?: number;
   }): Promise<void>;
   /** Única porta de alteração do jogo: roda `f`, redesenha e agenda o save. */
   mexer<T>(f: (jogo: EstadoJogo) => T): T;
@@ -105,10 +114,11 @@ export const useLoja = create<Loja>((set, get) => ({
     set(jogo ? { jogo, escudos, pronto: true } : { pronto: true });
   },
 
-  async comecar({ pacoteId, tecnico, clubeId, moeda, atleta }) {
+  async comecar({ pacoteId, tecnico, clubeId, moeda, atleta, semente: sementeDada }) {
     definirMoeda(moeda);
     const { pacote, escudos } = await carregarPacote(pacoteId);
-    const semente = crypto.getRandomValues(new Uint32Array(1))[0]!;
+    const semente = sementeDada ?? crypto.getRandomValues(new Uint32Array(1))[0]!;
+    const mundo = atleta ? await carregarMundo() : null;
     const base = {
       semente,
       temporada: pacote.temporada,
@@ -125,7 +135,13 @@ export const useLoja = create<Loja>((set, get) => ({
       clubeId,
     };
     const jogo = atleta
-      ? novoJogoAtleta({ ...base, nome: tecnico, ...atleta })
+      ? novoJogoAtleta({
+          ...base,
+          nome: tecnico,
+          ...atleta,
+          ...(mundo ? { mundo: mundo.ligas } : {}),
+          excluirLigas: PAIS_DO_PACOTE[pacoteId] ? [PAIS_DO_PACOTE[pacoteId]!] : [],
+        })
       : novoJogo({ ...base, tecnico });
     await gravarConfig("pacoteDoJogo", pacoteId);
     set({ jogo, escudos: urlsDosEscudos(escudos), aba: "inicio", tela: "jogo", versao: get().versao + 1 });

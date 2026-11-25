@@ -49,3 +49,18 @@ Tom: adulto, mas narrativo (sem conteúdo explícito).
   apostas menores; a licença de treinador amplia o alcance). Aceitando, o save segue no modo técnico.
 - +18 eventos em `conteudo/atletaExtras.ts` (pôquer → dívida → agiota, documentário, licença de técnico,
   afilhado da base, salários atrasados, assalto, redes sociais etc.).
+
+## Estilo Copero e ligas do mundo (2026-11-25)
+- Criação: ficha (nome na camisa, número, pé, começo, posição no campo) e três **propostas da base** com
+  minutos previstos (`atleta/criacao.ts`); o OVR inicial não depende do clube.
+- Tela: carta com OVR e números da carreira, barra da temporada, faixa das competições e abas Decisão,
+  Torneios, Carreira (linha por idade até 40) e Status (indicadores com o efeito de cada um, valor, contrato,
+  galeria). Dilemas mostram a chance de cada opção; a resposta abre o cartão "A escolha deu certo/errado"
+  com o que mudou (`ultimoResultado`).
+- Ritmo "momentos decisivos" (padrão): para em todos os dilemas (menos frequentes) e só nos lances de jogos
+  grandes ou do fim apertado.
+- **Ligas do mundo** (só no modo jogador): `packages/data/packs/mundo/mundo.json`, gerado do EA FC 26 por
+  `tools/dados/gerar_mundo.py` (18 ligas: Inglaterra, Espanha, Itália, Alemanha e França com 2ª divisão,
+  Portugal, Países Baixos, Bélgica, Turquia, Escócia, Arábia Saudita, MLS, Argentina). Elas correm em paralelo
+  como os estaduais (`est-mundo-xxx`, `adicionarLigaParalela`), e os clubes entram nas propostas pelo mercado.
+  Convites de técnico continuam só com clubes do pacote base.

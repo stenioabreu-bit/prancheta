@@ -173,10 +173,9 @@ function montarCompeticoes(estado: EstadoTemporada, ordem: Record<Divisao, strin
   if (estado.formatosEstaduais) {
     estado.estaduais = {};
     for (const [uf, f] of Object.entries(estado.formatosEstaduais)) {
-      const participantes = (f.fases[0]?.tipo === "liga" ? (f.fases[0].jogos ?? []) : []).flatMap((j) => [
-        j.casa,
-        j.fora,
-      ]);
+      const participantes =
+        f.participantes ??
+        (f.fases[0]?.tipo === "liga" ? (f.fases[0].jogos ?? []) : []).flatMap((j) => [j.casa, j.fora]);
       const ids = [...new Set(participantes)].filter((id) => estado.clubes[id]);
       if (ids.length >= 2) estado.estaduais[uf] = iniciarDivisao(f, ids, ctx);
     }
@@ -406,6 +405,18 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
   }
   comRng(estado, (rng) => montarCompeticoes(estado, ordem, rng));
   return resumo;
+}
+
+/**
+ * Acrescenta uma liga que corre em paralelo às competições do pacote (as ligas do mundo no modo
+ * jogador). Fica guardada como os estaduais ("est-<chave>") e é remontada a cada temporada.
+ */
+export function adicionarLigaParalela(estado: EstadoTemporada, chave: string, formato: FormatoDivisao): void {
+  const ids = (formato.participantes ?? []).filter((id) => estado.clubes[id]);
+  if (ids.length < 2) return;
+  estado.formatosEstaduais = { ...(estado.formatosEstaduais ?? {}), [chave]: formato };
+  estado.estaduais ??= {};
+  estado.estaduais[chave] = comRng(estado, (rng) => iniciarDivisao(formato, ids, contexto(estado, rng)));
 }
 
 /** Estado da competição de liga dona do jogo (Série ou estadual). */

@@ -1,4 +1,5 @@
 import { type PacoteDados, pacoteFicticio } from "@prancheta/data";
+import type { PacoteDoMundo } from "@prancheta/engine";
 import { type PacoteImportado, guardarPacote, lerPacote, listarPacotes } from "./banco";
 
 export const ID_FICTICIO = "ficticio";
@@ -90,6 +91,19 @@ export async function opcoesDePacote(): Promise<OpcaoDePacote[]> {
     })),
   ];
 }
+
+// Ligas do mundo do modo jogador (gerado por tools/dados/gerar_mundo.py), carregado só ao criar um atleta.
+const JSON_MUNDO = import.meta.glob<PacoteDoMundo>("../../../../packages/data/packs/mundo/mundo.json", {
+  import: "default",
+});
+
+export async function carregarMundo(): Promise<PacoteDoMundo | null> {
+  const carregar = Object.values(JSON_MUNDO)[0];
+  return carregar ? await carregar() : null;
+}
+
+/** País do pacote base: a liga do mundo desse país fica de fora (já está no pacote). */
+export const PAIS_DO_PACOTE: Record<string, string> = { "argentina-2026": "ARG" };
 
 export async function carregarPacote(id: string): Promise<PacoteImportado> {
   if (id === ID_BRASILEIRAO && PACOTE_REAL) return { pacote: PACOTE_REAL, escudos: URLS_REAL };

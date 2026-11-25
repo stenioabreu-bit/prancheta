@@ -3046,3 +3046,672 @@ body {
 .row .grow {
   flex: 1;
 }
+
+/* ---------- Modo jogador: criação (ficha + propostas da base) ---------- */
+.cn-modo {
+  flex: 0 0 auto;
+}
+.ca {
+  max-width: 760px;
+  width: 100%;
+  margin: 16px auto 0;
+  gap: 18px;
+}
+.ca-linha {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.ca-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ca-nome {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid var(--line);
+  color: var(--ink);
+  font-family: var(--f-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 0;
+  width: 100%;
+}
+.ca-nome:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.ca-numero {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--line);
+}
+.ca-numero button {
+  background: none;
+  border: 0;
+  font-size: 22px;
+  width: 38px;
+  height: 38px;
+  color: var(--ink);
+}
+.ca-numero b {
+  font-family: var(--f-display);
+  font-size: 26px;
+  min-width: 42px;
+  text-align: center;
+}
+.ca-rotulo-pos b {
+  color: var(--accent);
+  margin-left: 6px;
+}
+.ca-gramado {
+  position: relative;
+  aspect-ratio: 2.1 / 1;
+  border-radius: var(--r);
+  border: 2px solid var(--pitch-line);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--pitch) 0 10%,
+    color-mix(in srgb, var(--pitch) 85%, #000) 10% 20%
+  );
+  overflow: hidden;
+}
+.ca-meio {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 2px solid var(--pitch-line);
+}
+.ca-area {
+  position: absolute;
+  top: 25%;
+  height: 50%;
+  width: 14%;
+  border: 2px solid var(--pitch-line);
+}
+.ca-area.esq {
+  left: -2px;
+}
+.ca-area.dir {
+  right: -2px;
+}
+.ca-posto {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 999px;
+  min-width: 46px;
+  height: 30px;
+  padding: 0 10px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 15px;
+  background: #111;
+  color: #f1ead9;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.ca-posto[aria-pressed="true"] {
+  background: #c6ef6b;
+  color: #111;
+}
+.ca-carta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+.ca-carta > div {
+  display: flex;
+  flex-direction: column;
+}
+.ca-ovr {
+  font-family: var(--f-display);
+  font-size: 40px;
+  line-height: 1;
+}
+.ca-titulo {
+  font-family: var(--f-display);
+  font-size: 30px;
+  margin: 0;
+}
+.ca-propostas {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.ca-proposta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.ca-proposta-clube {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.ca-proposta-clube > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ca-proposta-nome {
+  font-family: var(--f-display);
+  font-size: 22px;
+  line-height: 1.1;
+}
+.ca-proposta-lado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.ca-entrar {
+  border-radius: 999px;
+  border-width: 2px;
+  border-color: var(--ink);
+  white-space: nowrap;
+}
+.ca-nivel {
+  display: flex;
+  gap: 3px;
+}
+.ca-nivel i {
+  width: 14px;
+  height: 3px;
+  background: var(--line);
+}
+.ca-nivel i.on {
+  background: var(--ink);
+}
+.ca-minutos {
+  font-family: var(--f-display);
+  font-size: 20px;
+  font-weight: 700;
+}
+.ca-minutos small {
+  font-size: 12px;
+}
+
+/* ---------- Modo jogador: tela da carreira ---------- */
+.app-atleta main {
+  gap: 12px;
+}
+.at-topo {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+}
+.at-carta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+}
+.at-ovr {
+  font-family: var(--f-display);
+  font-size: 38px;
+  line-height: 1;
+  padding-bottom: 2px;
+  border-bottom: 3px solid currentColor;
+}
+.at-id {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.at-id b {
+  font-family: var(--f-display);
+  font-size: 20px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.at-id span {
+  font-size: 12px;
+  font-weight: 600;
+}
+.at-totais {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+}
+.at-totais div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.at-totais dd {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.at-totais dt {
+  font-size: 11px;
+}
+.at-barra {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.at-temporada {
+  font-family: var(--f-display);
+  font-size: 18px;
+  white-space: nowrap;
+}
+.at-progresso {
+  flex: 1;
+  height: 4px;
+  background: var(--line);
+  border-radius: 2px;
+  overflow: hidden;
+  max-width: 220px;
+}
+.at-progresso i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+}
+.at-icone {
+  background: none;
+  border: 0;
+  font-size: 18px;
+  color: var(--ink);
+}
+.at-progresso + .at-icone {
+  margin-left: auto;
+}
+.at-menu {
+  padding: 0;
+}
+.at-ritmos {
+  position: absolute;
+  right: 10px;
+  top: 100%;
+  z-index: 7;
+  width: min(320px, calc(100vw - 20px));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.at-ritmos button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 12px;
+  color: var(--ink);
+}
+.at-ritmos button[aria-pressed="true"] {
+  background: var(--surface2);
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+.at-faixa {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+.at-faixa b {
+  color: var(--ink);
+  margin-left: 4px;
+}
+.at-faixa .campeao b {
+  color: var(--gold);
+}
+.at-faixa .fora {
+  opacity: 0.6;
+}
+.at-historia {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+.at-historia h2 {
+  font-family: var(--f-display);
+  font-size: 24px;
+  line-height: 1.15;
+  margin: 0;
+}
+.at-historia h3,
+.at-historia p {
+  margin: 0;
+}
+.at-historia[data-categoria="carreira"] {
+  border-color: var(--gold);
+}
+.at-historia-topo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.at-tag {
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+.at-direita {
+  margin-left: auto;
+}
+.at-opcoes {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.at-opcao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
+  color: var(--ink);
+}
+.at-opcao:hover b {
+  text-decoration: underline;
+}
+.at-opcao-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.at-opcao-texto b {
+  font-size: 16px;
+}
+.at-chance {
+  display: flex;
+  flex: 0 0 112px;
+  height: 30px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.at-chance i {
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  flex-basis: 0;
+  color: #fff;
+}
+.at-chance .sim {
+  background: #2f8f4e;
+}
+.at-chance .nao {
+  background: #b83a3a;
+}
+.at-resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  border-radius: var(--r);
+  color: #111;
+}
+.at-resultado.certo {
+  background: #c6ef6b;
+}
+.at-resultado.errado {
+  background: #f0a08f;
+}
+.at-resultado h2 {
+  font-family: var(--f-display);
+  font-size: 34px;
+  line-height: 1;
+  margin: 0;
+}
+.at-resultado p {
+  margin: 0;
+}
+.at-resultado .eyebrow {
+  color: rgba(0, 0, 0, 0.6);
+}
+.at-resultado-titulo,
+.at-escolha {
+  font-weight: 600;
+}
+.at-efeitos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding-top: 10px;
+  border-top: 2px solid rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+}
+.at-efeitos b {
+  font-family: var(--f-display);
+  font-size: 18px;
+  margin-left: 4px;
+}
+.at-futuro {
+  font-weight: 700;
+}
+.at-continuar {
+  margin-top: 6px;
+  background: #111;
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.sobe {
+  color: var(--good);
+}
+.desce {
+  color: var(--red);
+}
+.at-resultado .sobe {
+  color: #14532d;
+}
+.at-resultado .desce {
+  color: #7f1d1d;
+}
+.at-tabela {
+  display: flex;
+  flex-direction: column;
+}
+.at-tabela li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+}
+.at-tabela li > :first-child {
+  width: 22px;
+  text-align: right;
+}
+.at-tabela li.eu {
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+.at-tabela li.eu .muted {
+  color: inherit;
+}
+.at-tabela li.salto {
+  border-top: 1px dashed var(--muted);
+}
+.at-link {
+  align-self: flex-start;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+.at-campeao {
+  color: var(--gold);
+}
+.at-carreira {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.at-carreira th {
+  text-align: left;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 4px 6px;
+}
+.at-carreira td {
+  padding: 7px 6px;
+  border-top: 1px solid var(--line);
+}
+.at-carreira tr.atual td {
+  background: var(--surface2);
+  font-weight: 600;
+}
+.at-carreira tr.futuro td {
+  color: var(--muted);
+  opacity: 0.5;
+}
+.at-badge {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+  padding: 1px 4px;
+}
+.at-trofeus {
+  color: var(--gold);
+  font-size: 12px;
+}
+.at-galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.at-trofeu {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.at-indicador {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.at-indicador p {
+  margin: 0;
+}
+.at-valor {
+  font-family: var(--f-display);
+  font-size: 22px;
+  margin-left: 8px;
+}
+.at-nivel-txt {
+  min-width: 48px;
+}
+.at-medidor {
+  position: relative;
+  height: 6px;
+  background: var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.at-medidor i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.at-medidor.ruim i {
+  background: var(--red);
+}
+.at-historia .at-veredito {
+  font-size: 40px;
+}
+.at-numeros {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0;
+}
+.at-numeros div {
+  display: flex;
+  flex-direction: column;
+}
+.at-numeros dd {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: 26px;
+  font-weight: 700;
+}
+.at-numeros dt {
+  font-size: 12px;
+  color: var(--muted);
+}
+.app-atleta .tabs button {
+  position: relative;
+}
+.app-atleta .tabs button > span[aria-hidden] {
+  font-size: 16px;
+  line-height: 1;
+}
+.app-atleta .tabs .contador {
+  position: absolute;
+  top: 4px;
+  right: calc(50% - 30px);
+}
+@media (max-width: 560px) {
+  .at-totais {
+    gap: 8px;
+  }
+  .at-totais dd {
+    font-size: 18px;
+  }
+  .at-ovr {
+    font-size: 30px;
+  }
+  .at-chance {
+    flex-basis: 92px;
+  }
+  .ca-proposta {
+    flex-direction: column;
+  }
+  .ca-proposta-lado {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

@@ -16,9 +16,18 @@ export interface Horario {
 const INICIO = Date.UTC(2026, 0, 5);
 const DIA = 86_400_000;
 
+// Caches: o calendário inteiro é conferido a cada rodada, com milhares de jogos.
+const DIAS_DA_DATA = new Map<string, number>();
+const DATA_DO_HORARIO = new Map<number, string>();
+
 function diasDesdeInicio(data: string): number {
-  const [a, m, d] = data.split("-").map(Number) as [number, number, number];
-  return Math.round((Date.UTC(a, m - 1, d) - INICIO) / DIA);
+  let dias = DIAS_DA_DATA.get(data);
+  if (dias === undefined) {
+    const [a, m, d] = data.split("-").map(Number) as [number, number, number];
+    dias = Math.round((Date.UTC(a, m - 1, d) - INICIO) / DIA);
+    DIAS_DA_DATA.set(data, dias);
+  }
+  return dias;
 }
 
 /** Converte a data real no horário do jogo (seg–qui = meio de semana; sex–dom = fim de semana). */
@@ -29,7 +38,13 @@ export function horarioDaData(data: string): Horario {
 
 /** Data padrão do horário: quarta no meio de semana, domingo no fim de semana. */
 export function dataDoHorario(semana: number, meio: boolean): string {
-  return new Date(INICIO + (semana * 7 + (meio ? 2 : 6)) * DIA).toISOString().slice(0, 10);
+  const chave = semana * 2 + (meio ? 1 : 0);
+  let data = DATA_DO_HORARIO.get(chave);
+  if (data === undefined) {
+    data = new Date(INICIO + (semana * 7 + (meio ? 2 : 6)) * DIA).toISOString().slice(0, 10);
+    DATA_DO_HORARIO.set(chave, data);
+  }
+  return data;
 }
 
 /** Data efetiva de um jogo (a registrada ou a padrão do horário). */
@@ -58,16 +73,22 @@ export interface ConflitoDeCalendario {
  */
 export function conflitosDeCalendario(jogos: Record<string, JogoAgendado>): ConflitoDeCalendario[] {
   const porClube = new Map<string, JogoAgendado[]>();
+  const dia = new Map<JogoAgendado, number>();
   for (const j of Object.values(jogos)) {
-    for (const clube of [j.casa, j.visitante]) porClube.set(clube, [...(porClube.get(clube) ?? []), j]);
+    dia.set(j, diasDesdeInicio(dataDoJogo(j)));
+    for (const clube of [j.casa, j.visitante]) {
+      const lista = porClube.get(clube);
+      if (lista) lista.push(j);
+      else porClube.set(clube, [j]);
+    }
   }
   const conflitos: ConflitoDeCalendario[] = [];
   for (const [clube, lista] of porClube) {
-    lista.sort((a, b) => dataDoJogo(a).localeCompare(dataDoJogo(b)));
+    lista.sort((a, b) => dia.get(a)! - dia.get(b)!);
     for (let i = 1; i < lista.length; i++) {
       const a = lista[i - 1]!;
       const b = lista[i]!;
-      if (diasEntre(dataDoJogo(a), dataDoJogo(b)) < DESCANSO_MINIMO) {
+      if (Math.abs(dia.get(a)! - dia.get(b)!) < DESCANSO_MINIMO) {
         conflitos.push({ clube, semana: b.rodada, meioDeSemana: b.meioDeSemana, jogos: [a.id, b.id] });
       }
     }

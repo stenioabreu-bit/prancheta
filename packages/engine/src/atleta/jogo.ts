@@ -7,6 +7,7 @@ import { simularRodada, temporadaEncerrada, virarTemporada } from "../competicao
 import { EVENTOS_ATLETA } from "../conteudo/atleta";
 import { EVENTOS_ATLETA_EXTRAS } from "../conteudo/atletaExtras";
 import { EVENTOS_ATLETA_MOMENTOS } from "../conteudo/atletaMomentos";
+import { VARIANTES_DO_ATLETA } from "../conteudo/atletaVariantes";
 import { EVENTOS_ATLETA_VIDA } from "../conteudo/atletaVida";
 import { criarJogador } from "../jogador";
 import { semanaDoMercado } from "../mercado/semana";
@@ -51,12 +52,10 @@ import {
   type RotinaAtleta,
 } from "./tipos";
 
-registrarEventos([
-  ...EVENTOS_ATLETA,
-  ...EVENTOS_ATLETA_EXTRAS,
-  ...EVENTOS_ATLETA_VIDA,
-  ...EVENTOS_ATLETA_MOMENTOS,
-]);
+registrarEventos(
+  [...EVENTOS_ATLETA, ...EVENTOS_ATLETA_EXTRAS, ...EVENTOS_ATLETA_VIDA, ...EVENTOS_ATLETA_MOMENTOS],
+  VARIANTES_DO_ATLETA,
+);
 
 /** Ações dos eventos: mercado e seleção. */
 const executar: ExecutarAcao = (c, ef, d) =>

@@ -3886,3 +3886,131 @@ body {
   color: var(--red);
   border-color: currentColor;
 }
+
+/* Modo jogador: relatório da aposentadoria (cor e efeito pelo patamar da carreira) */
+.at-adeus {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  --patamar: var(--line);
+  --patamar-forte: var(--ink);
+}
+.at-adeus.patamar-goat {
+  --patamar: #e2b34f;
+  --patamar-forte: #fff1c9;
+}
+.at-adeus.patamar-lenda {
+  --patamar: #c9a35e;
+  --patamar-forte: #f3d27a;
+}
+.at-adeus.patamar-idolo {
+  --patamar: #a9b4bd;
+  --patamar-forte: #e6edf2;
+}
+.at-adeus.patamar-craque {
+  --patamar: #b07a4a;
+  --patamar-forte: #f0c9a3;
+}
+.at-adeus-topo {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 22px 20px 18px;
+  border-radius: 16px;
+  border: 2px solid var(--patamar);
+  background: radial-gradient(
+    circle at 20% 0%,
+    color-mix(in srgb, var(--patamar) 40%, var(--surface)),
+    var(--surface) 75%
+  );
+}
+.at-adeus-topo > :not(.at-ouro-brilho):not(.confete) {
+  position: relative;
+  z-index: 1;
+}
+.at-adeus:not(.patamar-goat):not(.patamar-lenda) .at-ouro-brilho {
+  display: none;
+}
+.at-adeus .at-veredito {
+  margin: 0;
+  font-family: var(--f-display);
+  font-size: 46px;
+  line-height: 1.05;
+  color: var(--patamar-forte);
+  text-shadow: 0 2px 14px color-mix(in srgb, var(--patamar) 60%, transparent);
+}
+.at-adeus.patamar-goat .at-veredito {
+  font-size: 52px;
+  animation: ouro-pulsa 2.4s ease-in-out infinite;
+}
+@keyframes ouro-pulsa {
+  50% {
+    text-shadow: 0 0 26px rgba(255, 220, 130, 0.9);
+  }
+}
+.at-adeus-nome {
+  font-weight: 700;
+}
+.at-adeus-frase {
+  margin: 0;
+  max-width: 62ch;
+}
+.at-adeus-rotulos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.at-adeus-rotulos span {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--patamar);
+  color: var(--patamar-forte);
+  background: color-mix(in srgb, var(--patamar) 14%, transparent);
+}
+.at-adeus-bloco {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.at-meta {
+  display: grid;
+  grid-template-columns: 120px 1fr 80px;
+  align-items: center;
+  gap: 10px;
+}
+.at-meta-barra {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  overflow: hidden;
+}
+.at-meta-barra i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--patamar), var(--patamar-forte));
+}
+.at-adeus:not(.patamar-goat):not(.patamar-lenda):not(.patamar-idolo):not(.patamar-craque) .at-meta-barra i {
+  background: var(--good);
+}
+.at-trajetoria {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.at-trajetoria li {
+  display: grid;
+  grid-template-columns: 26px auto 1fr;
+  align-items: center;
+  gap: 8px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .at-adeus.patamar-goat .at-veredito {
+    animation: none;
+  }
+}

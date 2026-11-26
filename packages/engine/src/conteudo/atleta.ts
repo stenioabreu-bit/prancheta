@@ -1258,6 +1258,7 @@ export const EVENTOS_ATLETA: DefEvento[] = [
     texto:
       "O {clube0} quer você por {anos} anos, com salário de {salario0} por ano (hoje você ganha {atual}).",
     peso: 2,
+    maximo: 99,
     intervalo: 6,
     capital: true,
     montar: montarProposta,
@@ -1280,6 +1281,7 @@ export const EVENTOS_ATLETA: DefEvento[] = [
     texto:
       "Seu contrato acaba no fim da temporada. O {clube} oferece mais {anos} anos com salário de {salario} por ano.",
     peso: 40,
+    maximo: 99,
     intervalo: 30,
     capital: true,
     montar: montarRenovacao,
@@ -1341,6 +1343,7 @@ export const EVENTOS_ATLETA: DefEvento[] = [
     titulo: "Convocado para a seleção!",
     texto: "Seu nome foi anunciado na lista da seleção para a próxima Data FIFA.",
     peso: 4,
+    maximo: 99,
     intervalo: 14,
     capital: true,
     requer: { teste: (c) => podeSerConvocado(c.a, c.j) },

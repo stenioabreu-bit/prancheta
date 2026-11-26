@@ -724,8 +724,9 @@ function evoluirElencos(estado: EstadoTemporada, rng: Rng, resumo: ResumoTempora
         indice,
       );
       novo.idade = inteiroEntre(rng, 17, 19);
+      // Clube de elite também forma estrelas: o teto do garoto acompanha o nível do elenco.
       novo.potencial = Math.min(
-        88,
+        93,
         novo.ovr + inteiroEntre(rng, 3, 11) + (rng.proximo() < 0.12 ? inteiroEntre(rng, 4, 8) : 0),
       );
       clube.jogadores.push(novo);

@@ -24,3 +24,4 @@ export {
   torneioDoAno,
   verConquista,
 } from "./conquistas";
+export * from "./legado";

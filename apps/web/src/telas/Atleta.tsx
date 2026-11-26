@@ -20,6 +20,7 @@ import {
   formatarDinheiro,
   jogadorDoAtleta,
   lancesPendentes,
+  legadoDaCarreira,
   mudarRitmo,
   mudarRotina,
   nomeDaCompeticao,
@@ -610,67 +611,156 @@ function UltimoJogo() {
   );
 }
 
-function veredito(melhorOvr: number, gols: number, titulos: number, jogos: number, bolas = 0): string {
-  if (bolas > 0 || melhorOvr >= 88 || (melhorOvr >= 85 && titulos >= 8)) return "Lenda";
-  if (melhorOvr >= 82 || titulos >= 6) return "Ídolo";
-  if (melhorOvr >= 76 || gols >= 150 || jogos >= 450) return "Carreira sólida";
-  return "Jornada honesta";
-}
-
 function PosCarreira() {
   const jogo = useJogo();
   const mexer = useLoja((s) => s.mexer);
   const avisar = useLoja((s) => s.avisar);
   const abandonar = useLoja((s) => s.abandonar);
   const a = jogo.atleta!;
-  const total = totaisDaCarreira(jogo);
-  const melhor = Math.max(0, ...a.historico.map((h) => h.ovr));
+  const legado = legadoDaCarreira(jogo);
+  const n = legado.numeros;
+  const sala = salaDeTrofeus(jogo);
+  const estante = [...sala.titulos, ...sala.premios]
+    .sort((x, y) => y.peso - x.peso || y.temporadas.length - x.temporadas.length)
+    .slice(0, 8);
   const propostas = propostasDeTecnico(jogo);
-  const premios = (a.conquistas ?? []).filter((x) => x.tipo === "premio").length;
-  const bolas = (a.conquistas ?? []).filter((x) => x.chave === "bola-de-ouro").length;
+  const inicio = a.historico[0];
+  const fim = a.historico.at(-1);
+  const melhorBola = (a.bolaDeOuro ?? []).reduce((m, b) => Math.min(m, b.posicao), 99);
+  const topo = legado.patamar.id === "goat" || legado.patamar.id === "lenda";
   return (
-    <section className="at-historia">
-      <span className="eyebrow">Relatório da aposentadoria</span>
-      <h2 className="at-veredito">{veredito(melhor, total.gols, total.titulos, total.jogos, bolas)}</h2>
+    <section className={`at-adeus patamar-${legado.patamar.id}`} aria-label="Relatório da aposentadoria">
+      <header className="at-adeus-topo">
+        {topo && <div className="confete" aria-hidden="true" />}
+        <div className="at-ouro-brilho" aria-hidden="true" />
+        <span className="eyebrow">
+          Fim de carreira · {inicio?.temporada ?? ""}–{fim?.temporada ?? ""} · {a.historico[0]?.idade ?? ""}{" "}
+          aos {a.idade} anos
+        </span>
+        <span className="at-adeus-nome">
+          {a.nome} · #{a.numero ?? 10} {a.pos}
+        </span>
+        <h2 className="at-veredito">{legado.patamar.nome}</h2>
+        <p className="at-adeus-frase">{legado.patamar.frase}</p>
+        {legado.rotulos.length > 0 && (
+          <div className="at-adeus-rotulos">
+            {legado.rotulos.map((r) => (
+              <span key={r}>{r}</span>
+            ))}
+          </div>
+        )}
+      </header>
+
       <dl className="at-numeros">
         <div>
-          <dd className="num">{melhor}</dd>
+          <dd className="num">{n.melhorOvr}</dd>
           <dt>Melhor OVR</dt>
         </div>
         <div>
-          <dd className="num">{total.jogos}</dd>
+          <dd className="num">{n.jogos}</dd>
           <dt>Jogos</dt>
         </div>
         <div>
-          <dd className="num">{total.gols}</dd>
+          <dd className="num">{n.gols}</dd>
           <dt>Gols</dt>
         </div>
         <div>
-          <dd className="num">{total.assist}</dd>
+          <dd className="num">{n.assist}</dd>
           <dt>Assist.</dt>
         </div>
         <div>
-          <dd className="num">{total.titulos}</dd>
+          <dd className="num">{n.titulos}</dd>
           <dt>Títulos</dt>
         </div>
         <div>
-          <dd className="num">{premios}</dd>
+          <dd className="num">{n.premios}</dd>
           <dt>Prêmios</dt>
         </div>
         <div>
-          <dd className="num">{bolas}</dd>
+          <dd className="num">{n.bolas}</dd>
           <dt>Bolas de Ouro</dt>
+        </div>
+        <div>
+          <dd className="num">{melhorBola < 99 ? `${melhorBola}º` : "—"}</dd>
+          <dt>Melhor na Bola</dt>
         </div>
         <div>
           <dd className="num">{a.selecao?.jogos ?? a.convocacoes}</dd>
           <dt>Jogos na seleção</dt>
         </div>
       </dl>
-      <p>{a.posCarreira}</p>
+
+      <section className="stack at-adeus-bloco" aria-label="Rumo ao topo da história">
+        <div className="row" style={{ justifyContent: "space-between" }}>
+          <span className="eyebrow">Rumo ao topo da história</span>
+          <b className="num">{legado.pontos}%</b>
+        </div>
+        {legado.metas.map((m) => {
+          const f = m.rotulo === "Melhor overall" ? (m.valor - 70) / (m.meta - 70) : m.valor / m.meta;
+          return (
+            <div key={m.rotulo} className="at-meta">
+              <span className="small">{m.rotulo}</span>
+              <span className="at-meta-barra">
+                <i style={{ width: `${Math.round(Math.max(0, Math.min(1, f)) * 100)}%` }} />
+              </span>
+              <span className="small num">
+                {m.valor} / {m.meta}
+              </span>
+            </div>
+          );
+        })}
+        <p className="small muted" style={{ margin: 0 }}>
+          As metas são o patamar dos maiores jogadores da história: 800 gols, 8 Bolas de Ouro, 40 títulos e
+          uma Copa do Mundo.
+        </p>
+      </section>
+
+      {estante.length > 0 && (
+        <section className="stack at-adeus-bloco" aria-label="Estante">
+          <span className="eyebrow">Estante</span>
+          <ul className="lista-limpa at-estante">
+            {estante.map((t) => (
+              <li key={t.nome} className={`at-peca peso-${t.peso}`}>
+                <b>{t.nome}</b>
+                <span className="at-vezes num">×{t.temporadas.length}</span>
+                <span className="small muted">{t.temporadas.join(", ")}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <section className="stack at-adeus-bloco" aria-label="Trajetória">
+        <span className="eyebrow">Trajetória</span>
+        <ol className="lista-limpa at-trajetoria">
+          {legado.clubes.map((c) => {
+            const clube = jogo.temporada.clubes[c.clubeId];
+            return (
+              <li key={`${c.clubeId}-${c.de}`}>
+                {clube && <Escudo clube={clube} tamanho={22} />}
+                <b>{c.nome}</b>
+                <span className="small muted">
+                  {c.de === c.ate ? c.de : `${c.de}–${c.ate}`} · {c.jogos} jogos · {c.gols} gols
+                  {c.titulos ? ` · ${c.titulos} título${c.titulos > 1 ? "s" : ""}` : ""}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+        {legado.melhorTemporada && (
+          <p className="small" style={{ margin: 0 }}>
+            Melhor temporada: <b>{legado.melhorTemporada.temporada}</b> no {legado.melhorTemporada.clube},{" "}
+            {legado.melhorTemporada.gols} gols e {legado.melhorTemporada.assist} assistências
+            {legado.melhorTemporada.nota ? `, nota ${legado.melhorTemporada.nota.toFixed(2)}` : ""}.
+          </p>
+        )}
+      </section>
+
+      <p className="at-adeus-bloco">{a.posCarreira}</p>
       {propostas.length > 0 && (
-        <>
-          <h3>Convites para ser técnico</h3>
-          <p className="small muted">
+        <section className="stack at-adeus-bloco">
+          <h3 style={{ margin: 0 }}>Convites para ser técnico</h3>
+          <p className="small muted" style={{ margin: 0 }}>
             Aceite um e a carreira continua no mesmo mundo, agora na beira do campo.
           </p>
           <div className="at-opcoes">
@@ -697,7 +787,7 @@ function PosCarreira() {
               );
             })}
           </div>
-        </>
+        </section>
       )}
       <button type="button" className="btn big" onClick={() => void abandonar()}>
         Começar outro jogo

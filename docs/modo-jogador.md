@@ -99,3 +99,17 @@ Tom: adulto, mas narrativo (sem conteúdo explícito).
   leilão no máximo a cada temporada e meia e nunca logo depois de uma contratação.
 - Calibração com 50 carreiras simuladas (robô com perfis profissional, baladeiro, família e caótico):
   ~18 decisões por temporada no ritmo decisivos e ~125 eventos diferentes por carreira.
+
+## Aposentadoria com legado e menos repetição (2026-11-25)
+- **Legado** (`atleta/legado.ts`): patamar da carreira (Jornada honesta → Carreira sólida → Craque → Ídolo →
+  Lenda → O maior de todos os tempos, este com 90+ de overall e 5 Bolas de Ouro, ou 3 com 25 títulos), a
+  distância até o topo da história (800 gols, 8 Bolas de Ouro, 40 títulos, uma Copa do Mundo, overall 94),
+  rótulos da vida (ídolo de um clube, rodou o mundo, campeão do mundo, polêmico, pai de família,
+  endividado...), trajetória por clube, melhor temporada e frase de despedida.
+- **Tela da aposentadoria**: cor e efeito pelo patamar (dourado com brilho e confete para lenda e o maior de
+  todos os tempos, prata para ídolo, bronze para craque), estante, barras rumo ao topo e trajetória.
+- **Repetição**: evento comum sai no máximo duas vezes na carreira, ou uma vez por cena quando tem variações
+  (`conteudo/atletaVariantes.ts`, 30+ eventos com outras cenas, inclusive noite da Bola de Ouro, reencontro,
+  lista da Copa, marcos e leilão). Peso cai mais rápido a cada aparição.
+- Garotos gerados para repor elencos de elite podem ter teto até 93, então o mundo continua formando
+  estrelas depois que os craques do pacote se aposentam.

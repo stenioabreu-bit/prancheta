@@ -88,6 +88,20 @@ export interface CondicaoEvento {
   teste?: (c: ContextoAtleta) => boolean;
 }
 
+/** Outra cena do mesmo evento (as opções continuam as mesmas). */
+export interface VarianteDoEvento {
+  titulo?: string;
+  texto: string;
+}
+
+/**
+ * Quantas vezes um evento comum pode sair na carreira (sem `maximo` próprio): duas, ou uma por cena
+ * quando ele tem variações, para nunca repetir a mesma cena mais de duas vezes.
+ */
+function maximoNaCarreira(e: DefEvento): number {
+  return e.maximo ?? Math.max(2, 1 + (e.variantes?.length ?? 0));
+}
+
 export interface DefEvento {
   id: string;
   categoria: CategoriaEvento;
@@ -100,6 +114,10 @@ export interface DefEvento {
   /** Semanas mínimas entre duas aparições. */
   intervalo?: number;
   unico?: boolean;
+  /** Máximo de vezes na carreira (padrão 3 para os sorteados). */
+  maximo?: number;
+  /** Outras cenas, usadas da segunda vez em diante. */
+  variantes?: VarianteDoEvento[];
   requer?: CondicaoEvento;
   /** Preenche dados do texto ({chave}); `null` cancela o evento. */
   montar?: (c: ContextoAtleta) => Record<string, string | number> | null;
@@ -219,12 +237,16 @@ function dadosBase(c: ContextoAtleta): Record<string, string | number> {
 let EVENTOS: Record<string, DefEvento> = {};
 
 /** Registra o conteúdo (chamado pelo conteudo/atleta.ts). */
-export function registrarEventos(lista: readonly DefEvento[]): void {
+export function registrarEventos(
+  lista: readonly DefEvento[],
+  variantes: Record<string, VarianteDoEvento[]> = {},
+): void {
   EVENTOS = {};
   for (const e of lista) {
     if (EVENTOS[e.id]) throw new Error(`Evento repetido: ${e.id}`);
-    EVENTOS[e.id] = e;
+    EVENTOS[e.id] = variantes[e.id] ? { ...e, variantes: [...(e.variantes ?? []), ...variantes[e.id]!] } : e;
   }
+  for (const id of Object.keys(variantes)) if (!EVENTOS[id]) throw new Error(`Variante sem evento: ${id}`);
 }
 
 export function eventoAtleta(id: string): DefEvento | undefined {
@@ -248,12 +270,15 @@ export function criarDilema(
   const opcoes = def.opcoes.filter((o) => !o.so || o.so(c));
   if (!opcoes.length) return null;
   const a = c.a;
+  // Da segunda vez em diante, o evento chega com outra cena (quando houver).
+  const vez = a.vezes?.[def.id] ?? 0;
+  const variante = vez > 0 && def.variantes?.length ? def.variantes[(vez - 1) % def.variantes.length]! : null;
   return {
     id: `d${a.proximoId++}`,
     evento: def.id,
     semana: a.semana,
-    titulo: preencher(def.titulo, dados),
-    texto: preencher(def.texto, dados),
+    titulo: preencher(variante?.titulo ?? def.titulo, dados),
+    texto: preencher(variante?.texto ?? def.texto, dados),
     categoria: def.categoria,
     capital: !!def.capital,
     opcoes: opcoes.map((o) => ({
@@ -300,6 +325,7 @@ export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2, chance = 0
         !e.agendado &&
         (e.peso ?? 0) > 0 &&
         !(e.unico && a.ultimaVez[e.id] !== undefined) &&
+        (a.vezes?.[e.id] ?? 0) < maximoNaCarreira(e) &&
         a.semana - (a.ultimaVez[e.id] ?? -PARA_SEMPRE) >= (e.intervalo ?? 10) &&
         !a.dilemas.some((d) => d.evento === e.id) &&
         !novos.some((d) => d.evento === e.id) &&
@@ -312,7 +338,7 @@ export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2, chance = 0
         rng,
         candidatos,
         (e) =>
-          ((e.peso ?? 0) / (1 + 1.5 * (a.vezes?.[e.id] ?? 0))) * (recentes.includes(e.categoria) ? 0.35 : 1),
+          ((e.peso ?? 0) / (1 + 2.5 * (a.vezes?.[e.id] ?? 0))) * (recentes.includes(e.categoria) ? 0.35 : 1),
       );
       const d = criarDilema(c, def);
       if (d) {

@@ -31,8 +31,15 @@ import {
   virarTecnico,
 } from "../src";
 import { premiosDaTemporada, registrarTitulosDoAtleta } from "../src/atleta/conquistas";
+import { legadoDaCarreira } from "../src/atleta/legado";
 import { verificarMarcos } from "../src/atleta/marcos";
-import { type ContextoAtleta, bonusDeJogo, consumirEfeitosDeJogo } from "../src/atleta/motor";
+import {
+  type ContextoAtleta,
+  bonusDeJogo,
+  consumirEfeitosDeJogo,
+  criarDilema,
+  eventoAtleta,
+} from "../src/atleta/motor";
 
 const TAMANHO: Record<Divisao, number> = { A: 20, B: 20, C: 20, D: 96 };
 const NIVEL: Record<Divisao, number> = { A: 74, B: 67, C: 61, D: 54 };
@@ -472,6 +479,50 @@ describe("modo jogador", () => {
     expect(antigo.temporada.clubes["x-barcelona"]).toBeTruthy();
     // Rodar de novo não troca nada.
     expect(repararLigasDoMundo(antigo, [liga("Espanha")])).toBe(0);
+  });
+
+  it("evento repetido chega com outra cena", () => {
+    const e = atleta(17);
+    const c = ctx(e);
+    const def = eventoAtleta("balada")!;
+    const primeira = criarDilema(c, def)!;
+    e.atleta!.vezes = { balada: 1 };
+    const segunda = criarDilema(c, def)!;
+    expect(segunda.titulo).not.toBe(primeira.titulo);
+    expect(segunda.opcoes.map((o) => o.texto)).toEqual(primeira.opcoes.map((o) => o.texto));
+  });
+
+  it("legado: patamar e distância até o topo da história", () => {
+    const e = atleta(19);
+    const a = e.atleta!;
+    a.historico = Array.from({ length: 18 }, (_, i) => ({
+      temporada: 2026 + i,
+      clubeId: "a5",
+      idade: 17 + i,
+      ovr: 94,
+      jogos: 50,
+      gols: 45,
+      assist: 15,
+      nota: 7.9,
+      titulos: [],
+    }));
+    a.conquistas = Array.from({ length: 6 }, (_, i) => ({
+      id: `${2030 + i}:bola-de-ouro`,
+      tipo: "premio" as const,
+      chave: "bola-de-ouro",
+      nome: "Bola de Ouro",
+      temporada: 2030 + i,
+      clubeId: "a5",
+      clube: "Clube A5",
+      peso: 3 as const,
+      visto: true,
+    }));
+    const l = legadoDaCarreira(e);
+    expect(l.patamar.id).toBe("goat");
+    expect(l.numeros.gols).toBe(810);
+    expect(l.rotulos).toContain("Ídolo do Clube A5");
+    expect(l.pontos).toBeGreaterThan(50);
+    expect(l.clubes).toHaveLength(1);
   });
 });
 

@@ -507,6 +507,7 @@ export const EVENTOS_ATLETA_MOMENTOS: DefEvento[] = [
     texto:
       "A seleção divulgou a nova convocação, e a lista chegou por mensagem no seu celular. Você já jogou pela seleção, mas desta vez o seu nome não está lá.",
     peso: 3,
+    maximo: 6,
     intervalo: 40,
     requer: {
       teste: (c) =>
@@ -612,6 +613,7 @@ export const EVENTOS_ATLETA_MOMENTOS: DefEvento[] = [
     texto:
       "O médico do clube te deu o plano de recuperação. Seguindo à risca, você volta à lista de relacionados algumas semanas depois do que gostaria.",
     peso: 6,
+    maximo: 8,
     intervalo: 30,
     requer: { teste: (c) => c.j.lesao >= 3 },
     opcoes: [
@@ -657,6 +659,7 @@ export const EVENTOS_ATLETA_MOMENTOS: DefEvento[] = [
     texto:
       "Muitos jogos seguidos e as panturrilhas travam a cada pique. O GPS do treino mostra que você corre 15% menos do que no começo da temporada.",
     peso: 5,
+    maximo: 6,
     intervalo: 20,
     requer: { max: { forma: 45 } },
     opcoes: [

@@ -64,3 +64,38 @@ Tom: adulto, mas narrativo (sem conteúdo explícito).
   Portugal, Países Baixos, Bélgica, Turquia, Escócia, Arábia Saudita, MLS, Argentina). Elas correm em paralelo
   como os estaduais (`est-mundo-xxx`, `adicionarLigaParalela`), e os clubes entram nas propostas pelo mercado.
   Convites de técnico continuam só com clubes do pacote base.
+- Chances dos lances pela qualidade (`n(atributo)` de 45 a 95) e pela diferença entre o overall do atleta e a
+  força do adversário (até +40%). Para os gols não inflarem, só parte das chances desperdiçadas pelo motor e das
+  faltas sofridas vira lance, e um passe certo vira assistência em 65% das vezes. Calibração com o Flamengo:
+  ATA 92 ≈ 0,85 gol/jogo, ATA 80 ≈ 0,55.
+- Assédio dos grandes (`assedio` em `atleta/mercado.ts`): atleta cobiçado (80+, ou bem acima do time, ou
+  jovem 76+) recebe na janela um leilão com três gigantes e a contraproposta do clube; fora da janela, sondagens.
+
+## Vida completa, prêmios e sala de troféus (2026-11-25)
+- **Dia a dia e polêmicas** (`conteudo/atletaVida.ts`, ~55 eventos): café do CT, série até tarde, banheira de
+  gelo, churrasco de família, carona para o garoto da base, aulas de idioma e saudade de casa (no exterior),
+  aniversário na terça, multa a 160 km/h, ex que expõe conversas, flagra com a apresentadora, tatuagem no
+  rosto, post antigo, casa de apostas → proposta de cartão → operação da polícia, suplemento → antidoping,
+  briga na boate, blitz, chantagem, parças morando em casa, pai empresário, organizada na porta, pedido no
+  gramado, bebê nascendo no dia do jogo, ofensa racista na arquibancada etc.
+- **Momentos** (`conteudo/atletaMomentos.ts` + `atleta/marcos.ts`): marcos da carreira (estreia, primeiro
+  gol, hat-trick, gol 50/100/200..., jogo 100/250..., primeiro título, estreia na seleção), a semana antes de
+  um jogo grande (clássico, final, mata-mata, reencontro com ex-clube), Copa do Mundo e Copa América, a
+  cerimônia da Bola de Ouro, a volta da lesão, o impedimento que ninguém viu e o clube que te revelou.
+- **Escolhas que mudam o jogo**: marcas de jogo (`EFEITOS_DE_JOGO` em `motor.ts`: focado, estudou o rival,
+  descansado, inspirado, confiante, cansado, ressaca, pressionado, abalado, jogando no sacrifício) somam ou
+  tiram até 15% das chances de todos os lances; as de um jogo somem depois dele. O próximo jogo mostra os
+  efeitos ativos. Rotina ganhou a **folga** (família, descanso, noite, negócios).
+- **Menos repetição**: o peso de um evento cai a cada vez que ele sai, e o tema dos três últimos eventos
+  perde vez; chance semanal maior nos ritmos jogo a jogo (60%) e decisivos (45%).
+- **Conquistas** (`atleta/conquistas.ts`): títulos registrados na semana em que saem; no fim da temporada,
+  artilharia, rei das assistências, craque, seleção e revelação de cada campeonato, e os prêmios do mundo
+  (Bola de Ouro com ranking até o 30º, Chuteira de Ouro, Melhor Jovem, Luva de Ouro, Seleção do Ano, Gol do
+  Ano). O ranking pesa o prestígio da liga (grandes da Europa 1, outras elites e Série A 0,8, acesso 0,35–0,5)
+  e os títulos do clube. Torneios de seleções em anos de Copa (2026, 2030...) e Copa América (2028...).
+- **Tela**: aviso dourado a cada conquista (`AvisoDeConquista`, um por vez) e aba **Troféus** com a estante
+  de títulos e prêmios (×N e temporadas), a Bola de Ouro ano a ano, a seleção e os marcos.
+- **Mercado mais realista**: teto de salário (2,2× o de mercado), cada clube paga conforme a riqueza da liga,
+  leilão no máximo a cada temporada e meia e nunca logo depois de uma contratação.
+- Calibração com 50 carreiras simuladas (robô com perfis profissional, baladeiro, família e caótico):
+  ~18 decisões por temporada no ritmo decisivos e ~125 eventos diferentes por carreira.

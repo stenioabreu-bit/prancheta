@@ -3,7 +3,7 @@ import { criarJogador, estatisticasZeradas } from "../jogador";
 import { recuperarEntreRodadas } from "../liga";
 import { type Rng, criarRng, inteiroEntre } from "../rng";
 import { estatisticasRapidas, placarRapido } from "../simulacaoRapida";
-import type { Clube } from "../tipos";
+import type { Clube, Jogador } from "../tipos";
 import {
   DESCANSO_MINIMO,
   conflitosDeCalendario,
@@ -627,6 +627,28 @@ export function registrosDaTemporada(estado: EstadoTemporada): RegistroDeCompeti
 const ELENCO_MINIMO = 23;
 
 /**
+ * Teto natural de quem chega sem potencial (jogadores do pacote): sorteado uma vez, pela idade. A maioria
+ * dos garotos sobe alguns pontos; só uma minoria é joia de verdade. Sem isso o teto era "overall + 8"
+ * recalculado todo ano, e elencos cheios de garotos inflavam sem limite.
+ */
+function potencialNatural(j: Jogador, rng: Rng): number {
+  const idade = j.idade ?? 27;
+  const base = j.ovrBase ?? j.ovr;
+  const margem =
+    idade <= 19 ? inteiroEntre(rng, 3, 11) : idade <= 21 ? inteiroEntre(rng, 2, 8) : inteiroEntre(rng, 1, 4);
+  const joia = idade <= 21 && rng.proximo() < 0.12 ? inteiroEntre(rng, 4, 8) : 0;
+  return Math.min(92, Math.max(base, j.ovr) + margem + joia);
+}
+
+/** Queda anual do veterano: começa aos 30, pesa a partir dos 32 e acelera depois dos 34. */
+function quedaDoVeterano(idade: number, rng: Rng): number {
+  if (idade >= 34) return rng.proximo() < 0.4 ? 3 : 2;
+  if (idade >= 32) return rng.proximo() < 0.3 ? 2 : 1;
+  if (idade >= 30) return rng.proximo() < 0.3 ? 1 : 0;
+  return 0;
+}
+
+/**
  * Virada do ano para todos os clubes: envelhece, evolui os jovens (até o potencial), faz os veteranos caírem,
  * aposenta quem chegou ao fim da carreira e repõe o elenco com garotos gerados (só jogadores novos; os
  * reais da base de 2026 nunca são inventados).
@@ -642,27 +664,33 @@ function evoluirElencos(estado: EstadoTemporada, rng: Rng, resumo: ResumoTempora
       const nota = j.temporada.qtdNotas ? j.temporada.somaNotas / j.temporada.qtdNotas : 6.3;
       const rendimento =
         (jogos >= 25 ? 2 : jogos >= 12 ? 1 : 0) + (nota >= 7.2 ? 3 : nota >= 6.8 ? 2 : nota >= 6.5 ? 1 : 0);
-      const teto = (j.potencial ?? (j.ovrBase ?? j.ovr) + 8) + (nota >= 7.2 && jogos >= 20 ? 3 : 0);
+      if (j.idade <= 24) j.potencial ??= potencialNatural(j, rng);
+      // Temporada de destaque de um garoto empurra o teto, um ponto por ano.
+      if (j.potencial !== undefined && j.idade <= 23 && nota >= 7.2 && jogos >= 20)
+        j.potencial = Math.min(92, j.potencial + 1);
+      const teto = j.potencial ?? (j.ovrBase ?? j.ovr) + 2;
       const ganho =
         j.idade <= 21
-          ? inteiroEntre(rng, 2, 4) + rendimento
+          ? inteiroEntre(rng, 1, 3) + Math.ceil(rendimento / 2)
           : j.idade <= 24
-            ? inteiroEntre(rng, 1, 3) + Math.ceil(rendimento * 0.7)
+            ? inteiroEntre(rng, 0, 2) + Math.floor(rendimento / 2)
             : j.idade <= 27
-              ? Math.floor(rendimento / 2)
+              ? rendimento >= 4
+                ? 1
+                : 0
               : 0;
-      if (j.potencial !== undefined && teto > j.potencial) j.potencial = teto;
       if (ganho > 0 && j.ovr < teto) {
         const g = Math.min(ganho, teto - j.ovr);
         j.ovrBase = (j.ovrBase ?? j.ovr) + g;
         j.ovr = Math.min(92, j.ovr + g);
         for (const a of ["CTL", "PAS", "FIN", "DEF"] as const) j.at[a] = Math.min(95, j.at[a] + g);
       }
-      if (j.idade >= 32) {
-        j.at.VEL = Math.max(20, j.at.VEL - 2);
-        j.at.RES = Math.max(20, j.at.RES - 1);
-        j.ovrBase = (j.ovrBase ?? j.ovr) - 1;
-        j.ovr = Math.max(40, j.ovr - 1);
+      const queda = quedaDoVeterano(j.idade, rng);
+      if (queda > 0) {
+        j.at.VEL = Math.max(20, j.at.VEL - queda - 1);
+        j.at.RES = Math.max(20, j.at.RES - queda);
+        j.ovrBase = (j.ovrBase ?? j.ovr) - queda;
+        j.ovr = Math.max(40, j.ovr - queda);
       }
       const chance =
         j.idade >= 38
@@ -696,7 +724,10 @@ function evoluirElencos(estado: EstadoTemporada, rng: Rng, resumo: ResumoTempora
         indice,
       );
       novo.idade = inteiroEntre(rng, 17, 19);
-      novo.potencial = Math.min(88, novo.ovr + inteiroEntre(rng, 6, 16));
+      novo.potencial = Math.min(
+        88,
+        novo.ovr + inteiroEntre(rng, 3, 11) + (rng.proximo() < 0.12 ? inteiroEntre(rng, 4, 8) : 0),
+      );
       clube.jogadores.push(novo);
       resumo.novatos!.push({ jogadorId: novo.id, nome: novo.nome, clubeId: clube.id });
     }

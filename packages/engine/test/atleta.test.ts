@@ -9,8 +9,11 @@ import {
   clubeDoAtleta,
   competicoesAtivas,
   competicoesDoClube,
+  conquistasNaoVistas,
+  criarRng,
   decidirDilema,
   dispensarResultado,
+  efeitosDeJogo,
   escolherLance,
   jogadorDoAtleta,
   lancesPendentes,
@@ -19,11 +22,16 @@ import {
   propostasDaBase,
   propostasDeTecnico,
   proximoJogoDoUsuario,
+  salaDeTrofeus,
   seguir,
   simularPartidaDoUsuario,
   todosOsEventos,
+  verConquista,
   virarTecnico,
 } from "../src";
+import { premiosDaTemporada, registrarTitulosDoAtleta } from "../src/atleta/conquistas";
+import { verificarMarcos } from "../src/atleta/marcos";
+import { type ContextoAtleta, bonusDeJogo, consumirEfeitosDeJogo } from "../src/atleta/motor";
 
 const TAMANHO: Record<Divisao, number> = { A: 20, B: 20, C: 20, D: 96 };
 const NIVEL: Record<Divisao, number> = { A: 74, B: 67, C: 61, D: 54 };
@@ -292,4 +300,127 @@ describe("modo jogador", () => {
     const comps = competicoesDoClube(e, clubeDoAtleta(e).id);
     expect(comps.find((c) => c.id === "A")?.resumo).toMatch(/º$/);
   });
+
+  it("craque é assediado pelos grandes e converte mais as chances", () => {
+    const e = atleta(23, "temporada");
+    const a = e.atleta!;
+    const j = jogadorDoAtleta(e);
+    const d = 90 - j.ovr;
+    j.ovr = 90;
+    for (const k of Object.keys(j.at) as (keyof typeof j.at)[]) j.at[k] = Math.min(95, j.at[k] + d);
+    a.potencial = 90;
+    a.contrato.ate = 2035;
+    a.vida.tecnico = 70;
+    let leilao = null as null | (typeof a.dilemas)[number];
+    const chutes: number[] = [];
+    for (let k = 0; k < 300 && !leilao && a.historico.length < 1; k++) {
+      avancarAtleta(e, 1);
+      leilao = a.dilemas.find((x) => x.evento === "leilao") ?? null;
+      for (const g of a.ultimosJogos)
+        for (const l of g.lances) {
+          const c = l.opcoes.find((o) => o.id === "chutar");
+          if (c) chutes.push(c.chance);
+        }
+      if (!leilao) responderTudo(e);
+    }
+    expect(leilao).not.toBeNull();
+    expect(leilao!.opcoes).toHaveLength(4);
+    const salario = a.contrato.salario;
+    decidirDilema(e, leilao!.id, 3);
+    expect(a.contrato.salario).toBeGreaterThan(salario);
+    for (let k = 0; k < 300 && chutes.length < 8 && !a.aposentado; k++) {
+      responderTudo(e);
+      avancarAtleta(e, 1);
+      for (const g of a.ultimosJogos.splice(0))
+        for (const l of g.lances) {
+          const c = l.opcoes.find((o) => o.id === "chutar");
+          if (c) chutes.push(c.chance);
+        }
+    }
+    expect(chutes.length).toBeGreaterThan(0);
+    expect(chutes.reduce((s, x) => s + x, 0) / chutes.length).toBeGreaterThan(0.45);
+  }, 60_000);
+
+  it("título do clube vira conquista com aviso dourado e entra na sala de troféus", () => {
+    const e = atleta(7);
+    const c = ctx(e);
+    e.temporada.copa.campeao = c.clube.id;
+    const novas = registrarTitulosDoAtleta(c);
+    expect(novas).toHaveLength(1);
+    expect(novas[0]!.tipo).toBe("titulo");
+    expect(novas[0]!.peso).toBe(2);
+    // Não repete na semana seguinte.
+    expect(registrarTitulosDoAtleta(c)).toHaveLength(0);
+    expect(conquistasNaoVistas(e).map((x) => x.id)).toEqual([novas[0]!.id]);
+    verConquista(e, novas[0]!.id);
+    expect(conquistasNaoVistas(e)).toHaveLength(0);
+    const sala = salaDeTrofeus(e);
+    expect(sala.titulos).toHaveLength(1);
+    expect(sala.titulos[0]!.temporadas).toEqual([2026]);
+  });
+
+  it("temporada de craque rende artilharia, prêmio de craque e Bola de Ouro", () => {
+    const e = atleta(11);
+    const c = ctx(e);
+    c.j.ovr = 94;
+    c.j.temporada.porCompeticao = { A: { jogos: 36, gols: 48, assist: 15 } };
+    c.j.temporada.jogos = 36;
+    c.j.temporada.somaNotas = 36 * 8.4;
+    c.j.temporada.qtdNotas = 36;
+    const nomes = premiosDaTemporada(c).map((x) => x.chave);
+    expect(nomes).toContain("artilheiro:A");
+    expect(nomes).toContain("craque:A");
+    expect(nomes).toContain("bola-de-ouro");
+    expect(e.atleta!.bolaDeOuro![0]!.posicao).toBe(1);
+    // A cerimônia vira história na semana seguinte.
+    expect(e.atleta!.agendadas.some((x) => x.evento === "noite-bola-de-ouro")).toBe(true);
+  });
+
+  it("marcos da carreira viram momentos, um de cada vez e sem repetir", () => {
+    const e = atleta(13);
+    const c = ctx(e);
+    const a = e.atleta!;
+    a.numeros.jogos = 1;
+    a.numeros.gols = 1;
+    expect(verificarMarcos(c)?.evento).toBe("marco-estreia");
+    expect(verificarMarcos(c)?.evento).toBe("marco-primeiro-gol");
+    expect(verificarMarcos(c)).toBeNull();
+    a.numeros.gols = 50;
+    const d = verificarMarcos(c);
+    expect(d?.evento).toBe("marco-gols");
+    expect(d?.titulo).toBe("Gol número 50");
+  });
+
+  it("as escolhas da semana mexem no próximo jogo e somem depois dele", () => {
+    const e = atleta(15);
+    const a = e.atleta!;
+    a.marcas.focado = a.semana + 2;
+    a.marcas.confiante = a.semana + 3;
+    a.marcas.ressaca = a.semana + 2;
+    expect(
+      efeitosDeJogo(a)
+        .map((x) => x.id)
+        .sort(),
+    ).toEqual(["confiante", "focado", "ressaca"]);
+    expect(bonusDeJogo(a)).toBeCloseTo(0.02);
+    consumirEfeitosDeJogo(a);
+    expect(efeitosDeJogo(a).map((x) => x.id)).toEqual(["confiante"]);
+  });
+
+  it("leilões em série não inflam o salário além do teto", () => {
+    const e = atleta(23, "temporada");
+    const a = e.atleta!;
+    const j = jogadorDoAtleta(e);
+    j.ovr = 92;
+    a.contrato.ate = 2040;
+    for (let k = 0; k < 400 && a.historico.length < 4 && !a.aposentado; k++) {
+      avancarAtleta(e, 400);
+      for (const d of [...a.dilemas]) decidirDilema(e, d.id, d.evento === "leilao" ? 3 : 0);
+    }
+    expect(a.contrato.salario).toBeLessThan(60);
+  }, 120_000);
 });
+
+function ctx(e: EstadoJogo): ContextoAtleta {
+  return { estado: e, a: e.atleta!, j: jogadorDoAtleta(e), clube: clubeDoAtleta(e), rng: criarRng(1) };
+}

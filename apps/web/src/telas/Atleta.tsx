@@ -15,6 +15,7 @@ import {
   decidirDilema,
   decidirEscalacao,
   dispensarResultado,
+  efeitosDeJogo,
   escolherLance,
   formatarDinheiro,
   jogadorDoAtleta,
@@ -26,22 +27,25 @@ import {
   pendenciaDoAtleta,
   progressoDaTemporada,
   propostasDeTecnico,
+  salaDeTrofeus,
   salarioSemanal,
   terminarJogoDoAtleta,
   valorDoAtleta,
   virarTecnico,
 } from "@prancheta/engine";
 import { useState } from "react";
+import { AvisoDeConquista, SalaDeTrofeus } from "../componentes/ConquistasDoAtleta";
 import { dataDaSemana, dataPorExtenso } from "../componentes/PreJogo";
 import { Escudo } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 
-type AbaAtleta = "decisao" | "torneios" | "carreira" | "status";
+type AbaAtleta = "decisao" | "torneios" | "carreira" | "trofeus" | "status";
 
 const ABAS: { id: AbaAtleta; nome: string; icone: string }[] = [
   { id: "decisao", nome: "Decisão", icone: "⚡" },
-  { id: "torneios", nome: "Torneios", icone: "🏆" },
+  { id: "torneios", nome: "Torneios", icone: "▦" },
   { id: "carreira", nome: "Carreira", icone: "☰" },
+  { id: "trofeus", nome: "Troféus", icone: "🏆" },
   { id: "status", nome: "Status", icone: "◎" },
 ];
 
@@ -127,6 +131,10 @@ const CATEGORIA: Record<string, string> = {
   vestiario: "Vestiário",
   saude: "Saúde",
   carreira: "Carreira",
+  rotina: "Dia a dia",
+  polemica: "Polêmica",
+  marco: "Marco da carreira",
+  selecao: "Seleção",
 };
 
 function dados(jogo: EstadoJogo) {
@@ -555,7 +563,25 @@ function ProximoCompromisso() {
           {provavel === "titular" ? "Provável titular" : ESCALACAO[provavel]}
         </span>
       </div>
+      <EfeitosDoJogo />
     </section>
+  );
+}
+
+/** Marcas da semana que mexem nas chances dos lances do próximo jogo. */
+function EfeitosDoJogo() {
+  const a = useJogo().atleta!;
+  const efeitos = efeitosDeJogo(a);
+  if (!efeitos.length) return null;
+  return (
+    <div className="at-efeitos" aria-label="Efeitos no próximo jogo">
+      {efeitos.map((e) => (
+        <span key={e.id} className={e.valor > 0 ? "bom" : "ruim"}>
+          {e.nome} {e.valor > 0 ? "+" : "−"}
+          {Math.round(Math.abs(e.valor) * 100)}% nos lances
+        </span>
+      ))}
+    </div>
   );
 }
 
@@ -581,8 +607,8 @@ function UltimoJogo() {
   );
 }
 
-function veredito(melhorOvr: number, gols: number, titulos: number, jogos: number): string {
-  if (melhorOvr >= 88 || (melhorOvr >= 85 && titulos >= 8)) return "Lenda";
+function veredito(melhorOvr: number, gols: number, titulos: number, jogos: number, bolas = 0): string {
+  if (bolas > 0 || melhorOvr >= 88 || (melhorOvr >= 85 && titulos >= 8)) return "Lenda";
   if (melhorOvr >= 82 || titulos >= 6) return "Ídolo";
   if (melhorOvr >= 76 || gols >= 150 || jogos >= 450) return "Carreira sólida";
   return "Jornada honesta";
@@ -597,10 +623,12 @@ function PosCarreira() {
   const total = totaisDaCarreira(jogo);
   const melhor = Math.max(0, ...a.historico.map((h) => h.ovr));
   const propostas = propostasDeTecnico(jogo);
+  const premios = (a.conquistas ?? []).filter((x) => x.tipo === "premio").length;
+  const bolas = (a.conquistas ?? []).filter((x) => x.chave === "bola-de-ouro").length;
   return (
     <section className="at-historia">
       <span className="eyebrow">Relatório da aposentadoria</span>
-      <h2 className="at-veredito">{veredito(melhor, total.gols, total.titulos, total.jogos)}</h2>
+      <h2 className="at-veredito">{veredito(melhor, total.gols, total.titulos, total.jogos, bolas)}</h2>
       <dl className="at-numeros">
         <div>
           <dd className="num">{melhor}</dd>
@@ -623,8 +651,16 @@ function PosCarreira() {
           <dt>Títulos</dt>
         </div>
         <div>
-          <dd className="num">{a.convocacoes}</dd>
-          <dt>Seleção</dt>
+          <dd className="num">{premios}</dd>
+          <dt>Prêmios</dt>
+        </div>
+        <div>
+          <dd className="num">{bolas}</dd>
+          <dt>Bolas de Ouro</dt>
+        </div>
+        <div>
+          <dd className="num">{a.selecao?.jogos ?? a.convocacoes}</dd>
+          <dt>Jogos na seleção</dt>
         </div>
       </dl>
       <p>{a.posCarreira}</p>
@@ -697,7 +733,7 @@ function Decisao() {
               const h = a.historico.at(-1);
               if (h)
                 avisar(
-                  `Temporada ${h.temporada}: ${h.jogos} jogos, ${h.gols} gols, ${h.assist} assistências${h.nota ? `, nota ${h.nota.toFixed(2)}` : ""}${h.titulos.length ? ` · ${h.titulos.join(", ")}` : ""}`,
+                  `Temporada ${h.temporada}: ${h.jogos} jogos, ${h.gols} gols, ${h.assist} assistências${h.nota ? `, nota ${h.nota.toFixed(2)}` : ""}${h.titulos.length ? ` · ${h.titulos.join(", ")}` : ""}${h.premios?.length ? ` · ${h.premios.join(", ")}` : ""}`,
                 );
             }
           }}
@@ -824,6 +860,12 @@ function Carreira() {
                             <span className="at-trofeus" title={h.titulos.join(", ")}>
                               {" "}
                               🏆 {h.titulos.length}
+                            </span>
+                          )}
+                          {(h.premios?.length ?? 0) > 0 && (
+                            <span className="at-trofeus" title={h.premios!.join(", ")}>
+                              {" "}
+                              🏅 {h.premios!.length}
                             </span>
                           )}
                         </span>
@@ -964,7 +1006,10 @@ function Status() {
   const { a, clube } = dados(jogo);
   const sal = salarioSemanal(a);
   const fixos = a.gastosFixos.reduce((s, g) => s + g.porSemana, 0);
-  const titulos = a.historico.flatMap((h) => h.titulos.map((t) => `${t} ${h.temporada}`));
+  const sala = salaDeTrofeus(jogo);
+  const galeria = [...sala.titulos, ...sala.premios]
+    .sort((x, y) => y.peso - x.peso || y.temporadas.length - x.temporadas.length)
+    .slice(0, 8);
   return (
     <div className="stack">
       <section className="panel stack">
@@ -981,10 +1026,11 @@ function Status() {
           <dd className={a.dinheiro < 0 ? "neg" : undefined}>{formatarDinheiro(a.dinheiro)}</dd>
         </dl>
         <div className="at-galeria">
-          {titulos.length ? (
-            titulos.map((t) => (
-              <span key={t} className="at-trofeu">
-                🏆 {t}
+          {galeria.length ? (
+            galeria.map((t) => (
+              <span key={t.nome} className="at-trofeu">
+                {t.nome}
+                {t.temporadas.length > 1 ? ` ×${t.temporadas.length}` : ""}
               </span>
             ))
           ) : (
@@ -1015,9 +1061,26 @@ function Status() {
           nomes={["Simples", "Confortável", "Ostentação"]}
           onChange={(v) => mexer((j) => mudarRotina(j, { padrao: v }))}
         />
+        <div className="stack" style={{ gap: 4 }}>
+          <span className="small muted">Folga</span>
+          <div className="seg" role="group" aria-label="Folga">
+            {(["Família", "Descanso", "Noite", "Negócios"] as const).map((nome, i) => (
+              <button
+                key={nome}
+                type="button"
+                aria-pressed={(a.rotina.folga ?? 1) === i}
+                onClick={() => mexer((j) => mudarRotina(j, { folga: i as 0 | 1 | 2 | 3 }))}
+              >
+                {nome}
+              </button>
+            ))}
+          </div>
+        </div>
         <p className="small muted" style={{ margin: 0 }}>
           Treino intenso acelera a evolução e a forma, mas cansa, afasta da família e machuca mais. Ostentação
-          dá moral e fama, custa caro e puxa os vícios.
+          dá moral e fama, custa caro e puxa os vícios. Na folga, a família aproxima de casa, o descanso deixa
+          a forma em dia, a noite dá moral e fama mas pode deixar você de ressaca no jogo, e os negócios
+          rendem dinheiro e seguidores.
         </p>
       </section>
       <section className="panel">
@@ -1059,8 +1122,10 @@ export function AppAtleta() {
         {aba === "decisao" && <Decisao />}
         {aba === "torneios" && <Torneios />}
         {aba === "carreira" && <Carreira />}
+        {aba === "trofeus" && <SalaDeTrofeus />}
         {aba === "status" && <Status />}
       </main>
+      <AvisoDeConquista />
       <nav className="tabs" aria-label="Seções">
         <div className="in">
           {ABAS.map((x) => (

@@ -286,4 +286,22 @@ describe("histórico e evolução de várias temporadas", () => {
       for (const j of c.jogadores) if (idades.has(j.id)) expect(j.idade).toBe(idades.get(j.id)! + 3);
     }
   });
+
+  it("cinco temporadas: elencos cheios de garotos não inflam a força dos clubes", () => {
+    const e = nova(23);
+    const mediaDaA = () => {
+      const ids = e.divisoes.A.clubes;
+      return ids.reduce((s, id) => s + e.clubes[id]!.forca, 0) / ids.length;
+    };
+    const maiorForca = () => Math.max(...Object.values(e.clubes).map((c) => c.forca));
+    const media0 = mediaDaA();
+    const maior0 = maiorForca();
+    for (let ano = 0; ano < 5; ano++) {
+      jogarTudo(e);
+      virarTemporada(e);
+    }
+    expect(mediaDaA()).toBeLessThan(media0 + 3);
+    expect(mediaDaA()).toBeGreaterThan(media0 - 3);
+    expect(maiorForca()).toBeLessThan(maior0 + 4);
+  }, 60_000);
 });

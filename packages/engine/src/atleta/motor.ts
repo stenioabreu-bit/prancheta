@@ -29,7 +29,9 @@ export type AcaoEspecial =
   | "convocacao"
   | "aposentar"
   | "adiarAposentadoria"
-  | "reconciliar";
+  | "reconciliar"
+  | "valorizar"
+  | "torneio";
 
 export interface EfeitoAtleta {
   vida?: Partial<Record<CampoVida, number>>;
@@ -48,6 +50,10 @@ export interface EfeitoAtleta {
   /** Gasto fixo em fração do salário semanal, por `semanas` (ausente = para sempre). */
   gastoFixo?: { motivo: string; fracao: number; semanas?: number };
   lesao?: number;
+  /** Semanas a menos de lesão (recuperação acelerada). */
+  recuperar?: number;
+  /** Jogos de suspensão (punição da Justiça Desportiva, do clube...). */
+  suspensao?: number;
   treino?: number;
   acao?: AcaoEspecial;
   /** Opção (0, 1, 2) para ações que escolhem entre clubes. */
@@ -106,6 +112,44 @@ export function marcaAtiva(a: EstadoAtleta, marca: string): boolean {
   return (a.marcas[marca] ?? -1) >= a.semana;
 }
 
+/**
+ * Marcas que mexem no próximo jogo: somam (ou tiram) chance em todos os lances. As de `umJogo`
+ * somem depois que o atleta entra em campo; as outras duram o prazo da marca.
+ */
+export const EFEITOS_DE_JOGO: Record<string, { nome: string; valor: number; umJogo: boolean }> = {
+  focado: { nome: "Focado", valor: 0.05, umJogo: true },
+  "estudou-rival": { nome: "Estudou o rival", valor: 0.04, umJogo: true },
+  descansado: { nome: "Descansado", valor: 0.03, umJogo: true },
+  inspirado: { nome: "Inspirado", valor: 0.07, umJogo: true },
+  confiante: { nome: "Confiante", valor: 0.05, umJogo: false },
+  cansado: { nome: "Cansado", valor: -0.04, umJogo: true },
+  ressaca: { nome: "De ressaca", valor: -0.08, umJogo: true },
+  pressionado: { nome: "Pressionado", valor: -0.04, umJogo: true },
+  abalado: { nome: "Abalado", valor: -0.05, umJogo: false },
+  dor: { nome: "Jogando no sacrifício", valor: -0.06, umJogo: false },
+};
+
+/** Efeitos ativos para o próximo jogo (para a tela e para os lances). */
+export function efeitosDeJogo(a: EstadoAtleta): { id: string; nome: string; valor: number }[] {
+  return Object.entries(EFEITOS_DE_JOGO)
+    .filter(([id]) => marcaAtiva(a, id))
+    .map(([id, e]) => ({ id, nome: e.nome, valor: e.valor }));
+}
+
+/** Soma dos efeitos de jogo, limitada. */
+export function bonusDeJogo(a: EstadoAtleta): number {
+  return limitar(
+    efeitosDeJogo(a).reduce((s, e) => s + e.valor, 0),
+    -0.15,
+    0.12,
+  );
+}
+
+/** Depois de entrar em campo, as marcas de um jogo só acabam. */
+export function consumirEfeitosDeJogo(a: EstadoAtleta): void {
+  for (const [id, e] of Object.entries(EFEITOS_DE_JOGO)) if (e.umJogo) delete a.marcas[id];
+}
+
 export function clubeDoAtleta(estado: EstadoJogo): Clube {
   const a = estado.atleta!;
   const clube = estado.temporada.clubes[a.contrato.clubeId];
@@ -154,7 +198,12 @@ function vale(c: ContextoAtleta, r: CondicaoEvento | undefined): boolean {
 }
 
 function preencher(texto: string, dados: Record<string, string | number>): string {
-  return texto.replace(/\{(\w+)\}/g, (_, k: string) => String(dados[k] ?? `{${k}}`));
+  return texto
+    .replace(/\{(\w+)\}/g, (_, k: string) => String(dados[k] ?? `{${k}}`))
+    .replace(
+      /(^|[.!?]\s+|[“"]\s*)(o|a) (técnico|treinador)/g,
+      (_, p: string, art: string, resto: string) => `${p}${art.toUpperCase()} ${resto}`,
+    );
 }
 
 function dadosBase(c: ContextoAtleta): Record<string, string | number> {
@@ -187,11 +236,15 @@ export function todosOsEventos(): DefEvento[] {
 }
 
 /** Cria o dilema do evento (ou nada, se não couber agora). */
-export function criarDilema(c: ContextoAtleta, def: DefEvento): DilemaAtleta | null {
+export function criarDilema(
+  c: ContextoAtleta,
+  def: DefEvento,
+  fixos: Record<string, string | number> = {},
+): DilemaAtleta | null {
   if (!vale(c, def.requer)) return null;
   const extra = def.montar ? def.montar(c) : {};
   if (extra === null) return null;
-  const dados = { ...dadosBase(c), ...extra };
+  const dados = { ...dadosBase(c), ...fixos, ...extra };
   const opcoes = def.opcoes.filter((o) => !o.so || o.so(c));
   if (!opcoes.length) return null;
   const a = c.a;
@@ -237,7 +290,7 @@ export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2, chance = 0
     const d = criarDilema(c, def);
     if (d) {
       novos.push(d);
-      a.ultimaVez[def.id] = a.semana;
+      contarEvento(a, def);
     }
   }
   a.agendadas = restantes;
@@ -253,15 +306,30 @@ export function sortearEventosDaSemana(c: ContextoAtleta, maximo = 2, chance = 0
         vale(c, e.requer),
     );
     if (candidatos.length) {
-      const def = sortearComPeso(rng, candidatos, (e) => e.peso ?? 0);
+      // Quanto mais um evento já saiu, menos ele sai; e o tema dos últimos eventos perde vez.
+      const recentes = a.recentes ?? [];
+      const def = sortearComPeso(
+        rng,
+        candidatos,
+        (e) =>
+          ((e.peso ?? 0) / (1 + 1.5 * (a.vezes?.[e.id] ?? 0))) * (recentes.includes(e.categoria) ? 0.35 : 1),
+      );
       const d = criarDilema(c, def);
       if (d) {
         novos.push(d);
-        a.ultimaVez[def.id] = a.semana;
+        contarEvento(a, def);
       }
     }
   }
   return novos;
+}
+
+/** Registra que o evento saiu (intervalo, contagem e tema recente). */
+export function contarEvento(a: EstadoAtleta, def: DefEvento): void {
+  a.ultimaVez[def.id] = a.semana;
+  a.vezes ??= {};
+  a.vezes[def.id] = (a.vezes[def.id] ?? 0) + 1;
+  a.recentes = [def.categoria, ...(a.recentes ?? [])].slice(0, 3);
 }
 
 /** Opção que o jogo escolhe sozinho: a marcada como `auto`, senão a primeira. */
@@ -306,6 +374,11 @@ export function aplicarEfeito(c: ContextoAtleta, ef: EfeitoAtleta): void {
   if (ef.lesao) {
     j.lesao = Math.max(j.lesao, ef.lesao);
     j.recemLesionado = true;
+  }
+  if (ef.recuperar && j.lesao > 0) j.lesao = Math.max(1, j.lesao - ef.recuperar);
+  if (ef.suspensao) {
+    j.susp = Math.max(j.susp, ef.suspensao);
+    j.cumprindoSuspensao = false;
   }
   if (ef.treino) a.treinoAcumulado = Math.max(0, a.treinoAcumulado + ef.treino);
   if (ef.noticia) {

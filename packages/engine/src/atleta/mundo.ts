@@ -103,6 +103,27 @@ export function adicionarLigasDoMundo(
   }
 }
 
+const GRANDES_LIGAS = ["mundo-eng", "mundo-esp", "mundo-ita", "mundo-ger", "mundo-fra"];
+
+/**
+ * Prestígio da liga em que o clube joga (0,35–1): as cinco grandes da Europa no topo, as outras
+ * primeiras divisões e a Série A do pacote logo abaixo, as divisões de acesso embaixo.
+ */
+export function prestigioDaLiga(estado: EstadoJogo, clubeId: string): number {
+  const div = divisaoDo(estado.temporada, clubeId);
+  if (div) return div === "A" ? 0.8 : div === "B" ? 0.5 : 0.35;
+  const liga = ligaDoMundoDoClube(estado, clubeId);
+  if (!liga) return 0.6;
+  if (GRANDES_LIGAS.includes(liga.chave)) return 1;
+  return /\d$/.test(liga.chave) ? 0.5 : 0.8;
+}
+
+/** Quanto o clube consegue pagar em relação ao salário de mercado (0,5–1,3). */
+export function riquezaDoClube(estado: EstadoJogo, clube: { id: string; forca: number }): number {
+  const p = prestigioDaLiga(estado, clube.id);
+  return Math.min(1.3, Math.max(0.5, 0.4 + p * 0.4 + (clube.forca - 70) / 40));
+}
+
 /** Liga do mundo de um clube (para mostrar país e nível nas propostas). */
 export function ligaDoMundoDoClube(
   estado: EstadoJogo,

@@ -85,6 +85,11 @@ Dados prontos (fora do git, em `dados/`): `auditoria-ogol.json` (438 clubes 2026
 - Feito: Libertadores (com a Pré) e Sul-Americana com a tabela real 2026, playoffs Lib×Sul e premiação por fase.
 - Feito: classificação continental automática para 2027+ com redistribuição de vagas brasileiras.
 - Feito (etapa 12): evolução anual de todos os clubes (jovens sobem até o potencial, veteranos caem), aposentadoria (33+ fraco, 35+ por chance, 38 quase certa) e reposição com garotos gerados (elenco mínimo 23).
+- Ajuste (2026-11-25): jogador do pacote sem potencial ganha um teto sorteado uma vez, pela idade (até 24 anos;
+  ~12% dos garotos são joias), em vez de "overall + 8" recalculado todo ano. Destaque até 23 anos sobe o teto em
+  1 ponto por temporada; o salto anual dos jovens caiu (até +6) e a queda começa aos 30. Antes, os elencos de ~55
+  do pacote (metade garotos) levavam a média da Série A de 73 para 83 em cinco anos; agora fica estável
+  (teste "cinco temporadas" em `packages/data/test/calendario-brasil.test.ts`).
 - Feito (etapa 13): histórico por competição em cada temporada (campeão, vice, artilheiro, assistências, classificação, acesso/rebaixamento e vagas continentais), estatísticas por competição e tela de histórico em Competições.
 - Etapa 14: teste de três temporadas seguidas com tudo (estaduais, Séries, Copa, continentais) passando.
 - Pendências: MT/MS sem tabela, tabela oficial de confrontos das Séries, ligas estrangeiras dentro do mesmo save.

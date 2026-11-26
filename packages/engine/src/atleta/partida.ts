@@ -25,7 +25,14 @@ import {
 import { type Rng, inteiroEntre, limitar, sortearComPeso } from "../rng";
 import { estatisticasRapidas } from "../simulacaoRapida";
 import type { Clube, Jogador, Posicao } from "../tipos";
-import { type ContextoAtleta, marcaAtiva, mexerVida, noFeed } from "./motor";
+import {
+  type ContextoAtleta,
+  bonusDeJogo,
+  consumirEfeitosDeJogo,
+  marcaAtiva,
+  mexerVida,
+  noFeed,
+} from "./motor";
 import type { Escalacao, JogoDoAtleta, LanceAtleta, OpcaoDeLance, TipoLanceAtleta } from "./tipos";
 
 /** Próximo jogo do clube do atleta ainda sem placar na semana atual. */
@@ -169,6 +176,14 @@ const TEXTOS: Record<TipoLanceAtleta, string[]> = {
   ],
 };
 
+/** Forma usada nas chances dos lances: a física mais os efeitos da semana (cada 1% de efeito = 5 pontos). */
+function formaNoJogo(a: ContextoAtleta["a"]): number {
+  return a.vida.forma + bonusDeJogo(a) * 500;
+}
+
+/** 0–1 pelo atributo, mais aberto em cima (45 = 0, 95 = 1): craque converte bem mais que um mediano. */
+const n = (v: number) => limitar((v - 45) / 50, 0, 1);
+
 function opcoesDoLance(tipo: TipoLanceAtleta, j: Jogador, forma: number): OpcaoDeLance[] {
   const at = j.at;
   const f = (forma - 50) / 500;
@@ -176,19 +191,19 @@ function opcoesDoLance(tipo: TipoLanceAtleta, j: Jogador, forma: number): OpcaoD
   switch (tipo) {
     case "finalizacao":
       return [
-        { id: "chutar", texto: "Chutar de primeira", chance: r(0.08 + 0.3 * q(at.FIN)) },
+        { id: "chutar", texto: "Chutar de primeira", chance: r(0.05 + 0.65 * n(at.FIN)) },
         {
           id: "colocado",
           texto: "Ajeitar e bater colocado",
-          chance: r(0.06 + 0.32 * q((at.FIN + at.CTL) / 2)),
+          chance: r(0.04 + 0.66 * n((at.FIN + at.CTL) / 2)),
         },
-        { id: "passar", texto: "Passar para o companheiro", chance: r(0.15 + 0.3 * q(at.PAS)) },
+        { id: "passar", texto: "Passar para o companheiro", chance: r(0.2 + 0.6 * n(at.PAS)) },
       ];
     case "drible":
       return [
-        { id: "driblar", texto: "Partir para cima", chance: r(0.2 + 0.5 * q((at.CTL + at.VEL) / 2)) },
+        { id: "driblar", texto: "Partir para cima", chance: r(0.2 + 0.65 * n((at.CTL + at.VEL) / 2)) },
         { id: "tocar", texto: "Tocar de lado", chance: r(0.92) },
-        { id: "firula", texto: "Caneta de efeito", chance: r(0.1 + 0.35 * q(at.CTL)) },
+        { id: "firula", texto: "Caneta de efeito", chance: r(0.1 + 0.55 * n(at.CTL)) },
       ];
     case "provocacao":
       return [
@@ -198,34 +213,34 @@ function opcoesDoLance(tipo: TipoLanceAtleta, j: Jogador, forma: number): OpcaoD
     case "simulacao":
       return [
         { id: "cavar", texto: "Cair e cavar o pênalti", chance: r(0.38) },
-        { id: "seguir", texto: "Seguir em pé e finalizar", chance: r(0.06 + 0.25 * q(at.FIN)) },
+        { id: "seguir", texto: "Seguir em pé e finalizar", chance: r(0.04 + 0.5 * n(at.FIN)) },
       ];
     case "carrinho":
       return [
-        { id: "carrinho", texto: "Dar o carrinho", chance: r(0.3 + 0.5 * q(at.DEF)) },
+        { id: "carrinho", texto: "Dar o carrinho", chance: r(0.3 + 0.6 * n(at.DEF)) },
         {
           id: "acompanhar",
           texto: "Acompanhar sem fazer falta",
-          chance: r(0.25 + 0.45 * q((at.DEF + at.VEL) / 2)),
+          chance: r(0.25 + 0.6 * n((at.DEF + at.VEL) / 2)),
         },
         { id: "tatica", texto: "Falta tática", chance: r(0.97) },
       ];
     case "saidaDoGol":
       return [
-        { id: "sair", texto: "Sair do gol", chance: r(0.3 + 0.5 * q(at.GOL)) },
-        { id: "ficar", texto: "Ficar na linha", chance: r(0.25 + 0.45 * q(at.GOL)) },
+        { id: "sair", texto: "Sair do gol", chance: r(0.3 + 0.62 * n(at.GOL)) },
+        { id: "ficar", texto: "Ficar na linha", chance: r(0.25 + 0.65 * n(at.GOL)) },
       ];
     case "penalti":
       return [
-        { id: "canto", texto: "Bater no canto", chance: r(0.68 + 0.18 * q(at.FIN)) },
-        { id: "cavadinha", texto: "Cavadinha", chance: r(0.52 + 0.2 * q(at.CTL)) },
+        { id: "canto", texto: "Bater no canto", chance: r(0.68 + 0.27 * n(at.FIN)) },
+        { id: "cavadinha", texto: "Cavadinha", chance: r(0.5 + 0.35 * n(at.CTL)) },
         { id: "batedor", texto: "Deixar para o batedor oficial", chance: r(0.75) },
       ];
     case "lancamento":
       return [
-        { id: "lancar", texto: "Lançamento longo", chance: r(0.15 + 0.45 * q(at.PAS)) },
+        { id: "lancar", texto: "Lançamento longo", chance: r(0.15 + 0.65 * n(at.PAS)) },
         { id: "curto", texto: "Toque curto", chance: r(0.9) },
-        { id: "defora", texto: "Arriscar de fora", chance: r(0.03 + 0.15 * q(at.FIN)) },
+        { id: "defora", texto: "Arriscar de fora", chance: r(0.03 + 0.3 * n(at.FIN)) },
       ];
   }
 }
@@ -394,6 +409,8 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
     entraAos = inteiroEntre(rng, 55, 82);
   }
   const decisivo = ehDecisivo(estado, jogo);
+  // Foco, ressaca, confiança...: as escolhas da semana pesam nas chances de todos os lances.
+  const formaJogo = formaNoJogo(a);
 
   const m = criarPartida(t.clubes[jogo.casa]!, t.clubes[jogo.visitante]!, {
     rng,
@@ -426,7 +443,8 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
   const minutos = ini >= 0 ? Math.max(1, fim - ini) : 0;
   const entrou = ini > 0 ? ini : 0;
 
-  // Jogadas do motor em que o atleta aparece.
+  // Jogadas do motor em que o atleta aparece. Contra um time bem mais fraco, um craque resolve muito mais.
+  const vantagem = limitar(1 + (j.ovr - adversario.forca) / 40, 0.75, 1.4);
   const candidatos: Candidato[] = [];
   const pesoDefesa = j.pos === "GOL" ? 0.55 : PESO_SETOR[j.pos].d * 0.55;
   const ev = m.eventos;
@@ -440,20 +458,23 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
         const [quemChuta, quemCria] = e.jogadores;
         let tipo: TipoLanceAtleta | null = null;
         let fator = 1;
+        // Chance que o motor desperdiçou vira lance só às vezes: as opções de um craque convertem
+        // bem, então lances demais inflariam os gols.
+        if (!gol && nosso && quemChuta === j.id && rng.proximo() < 0.6) continue;
         if (nosso && quemChuta === j.id) {
           tipo = e.lance === "indiv" ? "drible" : "finalizacao";
           // A chance que o motor transformou em gol era boa: a decisão certa quase sempre resolve.
-          fator = gol ? Math.max(1, FATOR_DA_CHANCE[e.lance]) * 1.9 : FATOR_DA_CHANCE[e.lance] * 1.15;
+          fator = gol ? Math.max(1, FATOR_DA_CHANCE[e.lance]) * 1.2 : FATOR_DA_CHANCE[e.lance] * 0.85;
         } else if (nosso && quemCria === j.id) {
           tipo = "lancamento";
-          fator = gol ? 1.7 : 1;
+          fator = gol ? 1.4 : 1;
         } else if (!nosso && pesoDefesa > 0 && rng.proximo() < pesoDefesa) {
           tipo = j.pos === "GOL" ? "saidaDoGol" : "carrinho";
           fator = (2 - FATOR_DA_CHANCE[e.lance]) * (gol ? 0.85 : 1);
         }
         if (tipo) {
           candidatos.push({
-            lance: novoLance(rng, tipo, j, a.vida.forma, e.min, decisivo, e.texto, fator),
+            lance: novoLance(rng, tipo, j, formaJogo, e.min, decisivo, e.texto, fator * vantagem),
             golPro: nosso && gol,
             golContra: !nosso && gol,
             eventoGol: gol ? i + 1 : -1,
@@ -466,15 +487,16 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
       if (!falta) continue;
       if (nosso && e.jogadores[0] === j.id && j.pos !== "GOL") {
         candidatos.push({
-          lance: novoLance(rng, "carrinho", j, a.vida.forma, e.min, decisivo),
+          lance: novoLance(rng, "carrinho", j, formaJogo, e.min, decisivo, undefined, vantagem),
           golPro: false,
           golContra: false,
           eventoGol: -1,
         });
-      } else if (!nosso && e.jogadores[1] === j.id) {
+      } else if (!nosso && e.jogadores[1] === j.id && rng.proximo() < 0.5) {
+        // Falta sofrida: às vezes dá para cair ou seguir, mas o chute depois do contato é meia-chance.
         const tipo = ATACANTES.includes(j.pos) ? "simulacao" : "provocacao";
         candidatos.push({
-          lance: novoLance(rng, tipo, j, a.vida.forma, e.min, decisivo),
+          lance: novoLance(rng, tipo, j, formaJogo, e.min, decisivo, undefined, 0.55 * vantagem),
           golPro: false,
           golContra: false,
           eventoGol: -1,
@@ -498,10 +520,11 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
   const pesosExtras = (Object.entries(PESOS_POR_POSICAO[j.pos]) as [TipoLanceAtleta, number][]).filter(
     ([tipo]) => tipo === "provocacao" || tipo === "drible" || tipo === "simulacao",
   );
-  for (let k = lances.length; k < cota && pesosExtras.length; k++) {
+  // São meias-chances: finalizar depois de um lance desses vale menos que uma chance criada pelo time.
+  for (let k = lances.length; k < cota - 1 && pesosExtras.length; k++) {
     const [tipo] = sortearComPeso(rng, pesosExtras, (p) => p[1]);
     const minuto = inteiroEntre(rng, ini + 1, fim);
-    lances.push(novoLance(rng, tipo, j, a.vida.forma, minuto, decisivo));
+    lances.push(novoLance(rng, tipo, j, formaJogo, minuto, decisivo, undefined, 0.6 * vantagem));
   }
   lances.sort((x, y) => x.minuto - y.minuto);
   const golsTirados = new Set(escolhidos.filter((x) => x.eventoGol >= 0).map((x) => x.eventoGol));
@@ -626,11 +649,15 @@ export function decidirLance(
       }
       break;
     case "passar":
-      if (ok) {
+      if (ok && rng.proximo() < 0.65) {
         g.assist++;
         ex.nota += 0.55;
         mexerVida(a, "elenco", 1);
         txt = "Passe açucarado, o companheiro só empurrou. Assistência!";
+      } else if (ok) {
+        ex.nota += 0.15;
+        mexerVida(a, "elenco", 0.5);
+        txt = "Passe perfeito, mas o companheiro isolou.";
       } else {
         ex.nota -= 0.1;
         txt = "O passe foi interceptado.";
@@ -643,6 +670,7 @@ export function decidirLance(
         if (rng.proximo() < 0.15 + 0.25 * q(j.at.FIN)) {
           g.gols++;
           ex.nota += 0.9;
+          if (rng.proximo() < 0.3) a.numeros.golacos = (a.numeros.golacos ?? 0) + 1;
           txt = "Deixou o marcador no chão e bateu cruzado. GOL!";
         } else txt = "Passou pelo marcador e a jogada morreu na zaga.";
       } else {
@@ -693,7 +721,7 @@ export function decidirLance(
       if (ok) {
         mexerVida(a, "reputacao", -1);
         txt = "O juiz marcou pênalti!";
-        const p = novoLance(rng, "penalti", j, a.vida.forma, l.minuto, l.decisivo);
+        const p = novoLance(rng, "penalti", j, formaNoJogo(a), l.minuto, l.decisivo);
         g.lances.splice(indice + 1, 0, p);
       } else {
         mexerVida(a, "reputacao", -3);
@@ -718,6 +746,7 @@ export function decidirLance(
         g.gols++;
         ex.nota += 0.7;
         if (o.id === "cavadinha") {
+          a.numeros.golacos = (a.numeros.golacos ?? 0) + 1;
           mexerVida(a, "fama", 5);
           mexerVida(a, "torcida", 3);
         }
@@ -808,6 +837,7 @@ export function decidirLance(
         g.gols++;
         ex.nota += 1.1;
         mexerVida(a, "fama", 3);
+        a.numeros.golacos = (a.numeros.golacos ?? 0) + 1;
         txt = "Chute de fora da área no ângulo. GOLAÇO!";
       } else {
         ex.nota -= 0.1;
@@ -919,6 +949,8 @@ export function fecharJogo(c: ContextoAtleta, g: JogoDoAtleta): void {
     mexerVida(a, "fama", g.gols * (g.decisivo ? 0.9 : 0.4) + g.assist * 0.2 + (nota >= 8 ? 0.5 : 0));
     mexerVida(a, "moral", (nota - 6.5) * 1.2 + (pro > contra ? 1.5 : pro < contra ? -1.5 : 0));
     mexerVida(a, "forma", -g.minutos / 60);
+    if (g.gols >= 3) a.hatTricks = (a.hatTricks ?? 0) + 1;
+    consumirEfeitosDeJogo(a);
   } else {
     j.semJogar++;
     mexerVida(a, "moral", g.escalacao === "banco" ? -1.5 : g.escalacao === "fora" ? -3 : -0.5);

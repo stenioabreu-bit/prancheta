@@ -3,7 +3,7 @@ import { publicarNoticia } from "../carreira/efeitos";
 import { divisaoDo } from "../competicao/temporada";
 import { transferir } from "../mercado/transferencias";
 import { arredondar, formatarDinheiro, janelaAberta, salario } from "../mercado/valores";
-import { type Rng, limitar, sortearComPeso } from "../rng";
+import { type Rng, limitar, poisson, sortearComPeso } from "../rng";
 import type { Clube, Jogador } from "../tipos";
 import {
   type ContextoAtleta,
@@ -13,7 +13,17 @@ import {
   mexerVida,
   noFeed,
 } from "./motor";
+import { prestigioDaLiga, riquezaDoClube } from "./mundo";
 import type { DilemaAtleta, EstadoAtleta } from "./tipos";
+
+/**
+ * Teto das ofertas: no máximo ~2,2× o salário de mercado (ou 15% acima do atual). Sem teto, leilões e
+ * propostas em série compunham o salário até valores absurdos.
+ */
+function noTeto(c: ContextoAtleta, sal: number): number {
+  const teto = Math.max(c.a.contrato.salario, salarioDeMercado(c.j, c.a.vida.fama) * 2.2);
+  return arredondar(Math.min(sal, teto));
+}
 
 /** Salário anual de mercado (€ mi) pelo overall, com a fama pesando. */
 export function salarioDeMercado(j: Jogador, fama: number): number {
@@ -49,14 +59,15 @@ export function clubesInteressados(c: ContextoAtleta, quantos: number, rng: Rng 
 /** Proposta de transferência na janela (dados para o texto e para aceitar). */
 export function montarProposta(c: ContextoAtleta): Record<string, string | number> | null {
   const { estado, j, a, rng } = c;
-  if (!janelaAberta(estado.temporada.rodada)) return null;
+  if (!janelaAberta(estado.temporada.rodada) || marcaAtiva(a, "recem-contratado")) return null;
   // Proposta de verdade: clube do mesmo porte ou maior (ou um pouco menor, se o atleta não joga) e salário melhor.
   const reserva = j.temporada.jogos < 5 && a.semana > 15;
   const [clube] = clubesInteressados(c, 1, rng, c.clube.forca - (reserva ? 8 : 3));
   if (!clube) return null;
-  const sal = arredondar(
+  const sal = noTeto(
+    c,
     Math.max(
-      a.contrato.salario * (1.1 + rng.proximo() * 0.4),
+      a.contrato.salario * (1.1 + rng.proximo() * 0.3),
       salarioDeMercado(j, a.vida.fama) * (1 + (clube.forca - j.ovr) / 40 + rng.proximo() * 0.3),
     ),
   );
@@ -89,6 +100,102 @@ export function montarRenovacao(c: ContextoAtleta): Record<string, string | numb
     Math.max(a.contrato.salario, salarioDeMercado(j, a.vida.fama) * (0.95 + rng.proximo() * 0.2)),
   );
   return { sal, salario: formatarDinheiro(sal), anos: 2 + Math.floor(rng.proximo() * 3) };
+}
+
+/** O atleta é cobiçado: craque, ou muito melhor que o próprio time, ou jovem que estourou. */
+export function ehCobicado(c: ContextoAtleta): boolean {
+  const { j, a, clube } = c;
+  // Depois dos 31, os gigantes não disputam mais o jogador (propostas comuns continuam).
+  if (a.idade > 31) return false;
+  return j.ovr >= 80 || (j.ovr >= 72 && j.ovr >= clube.forca + 4) || (a.idade <= 22 && j.ovr >= 76);
+}
+
+/** Os maiores clubes acima do atual (no mundo, se houver), do mais forte para o mais fraco. */
+function gigantes(c: ContextoAtleta): Clube[] {
+  const { estado, clube, j } = c;
+  const todos = Object.values(estado.temporada.clubes)
+    .filter((x) => x.id !== clube.id && x.jogadores.length >= 16 && x.forca >= clube.forca - 2)
+    .sort((x, y) => y.forca - x.forca);
+  // Com as ligas do mundo, só a elite (80+); sem elas, os maiores do pacote.
+  const elite = todos.filter((x) => x.forca >= Math.min(j.ovr - 8, 80));
+  return (elite.length >= 3 ? elite : todos).slice(0, 12);
+}
+
+/** Leilão na janela: três gigantes disputam o atleta, cada um com o seu salário. */
+export function montarLeilao(c: ContextoAtleta): Record<string, string | number> | null {
+  const { a, j, rng, clube } = c;
+  const pool = gigantes(c);
+  if (pool.length < 2) return null;
+  const dados: Record<string, string | number> = {};
+  const escolhidos: Clube[] = [];
+  while (escolhidos.length < 3 && pool.length) {
+    const x = sortearComPeso(
+      rng,
+      pool,
+      (k) => Math.max(1, k.forca - 70) ** 2 * prestigioDaLiga(c.estado, k.id) ** 2,
+    );
+    escolhidos.push(x);
+    pool.splice(pool.indexOf(x), 1);
+  }
+  escolhidos.forEach((x, i) => {
+    // Cada clube paga o que pode: um gigante europeu cobre qualquer um, um clube médio, nem tanto.
+    const riqueza = riquezaDoClube(c.estado, x);
+    const sal = noTeto(
+      c,
+      Math.max(
+        a.contrato.salario * (1.05 + rng.proximo() * 0.25) * Math.min(1, riqueza),
+        salarioDeMercado(j, a.vida.fama) *
+          (1.1 + (x.forca - clube.forca) / 30 + rng.proximo() * 0.3) *
+          riqueza,
+      ),
+    );
+    dados[`clubeId${i}`] = x.id;
+    dados[`clube${i}`] = x.nome;
+    dados[`sal${i}`] = sal;
+    dados[`salario${i}`] = formatarDinheiro(sal);
+  });
+  if (escolhidos.length < 3) {
+    dados.clubeId2 = dados.clubeId1!;
+    dados.clube2 = dados.clube1!;
+    dados.sal2 = dados.sal1!;
+    dados.salario2 = dados.salario1!;
+  }
+  const melhor = Math.max(Number(dados.sal0), Number(dados.sal1), Number(dados.sal2));
+  dados.contraproposta = noTeto(
+    c,
+    Math.max(a.contrato.salario * 1.05, melhor * 0.8 * Math.min(1, riquezaDoClube(c.estado, clube))),
+  );
+  dados.contrapropostaTxt = formatarDinheiro(Number(dados.contraproposta));
+  dados.anos = 4;
+  return dados;
+}
+
+/**
+ * Assédio dos grandes: na janela, chance semanal de um leilão (uma vez por janela); fora dela,
+ * sondagens na imprensa que inflam a fama e distraem. Devolve o dilema do leilão, se houver.
+ */
+export function assedio(c: ContextoAtleta, criar: () => DilemaAtleta | null): DilemaAtleta | null {
+  const { estado, a, j, rng } = c;
+  if (!ehCobicado(c) || a.dilemas.some((d) => d.evento === "leilao" || d.evento === "proposta")) return null;
+  const pressao = limitar(0.12 + (j.ovr - 80) * 0.025 + (a.vida.fama - 50) / 300, 0.06, 0.5);
+  if (janelaAberta(estado.temporada.rodada)) {
+    // No máximo um leilão a cada temporada e meia, e não logo depois de uma contratação.
+    if (marcaAtiva(a, "leilao") || marcaAtiva(a, "recem-contratado") || rng.proximo() >= pressao) return null;
+    const d = criar();
+    if (d) a.marcas.leilao = a.semana + 75;
+    return d;
+  }
+  if (marcaAtiva(a, "sondado") || rng.proximo() >= pressao / 3) return null;
+  const [alvo] = gigantes(c);
+  if (!alvo) return null;
+  a.marcas.sondado = a.semana + 6;
+  mexerVida(a, "fama", 1.5);
+  mexerVida(a, "moral", 1);
+  mexerVida(a, "tecnico", -1);
+  const texto = `O ${alvo.nome} sonda ${a.nome}: o empresário foi visto com dirigentes do clube.`;
+  noFeed(a, texto, "info");
+  publicarNoticia(estado.carreira, estado.temporada.rodada, "Mercado", texto, "info");
+  return null;
 }
 
 /** Fim de contrato: três clubes oferecem vínculo (sempre há ao menos opções mais modestas). */
@@ -127,6 +234,7 @@ function mudarDeClube(c: ContextoAtleta, clubeId: string, sal: number, anos: num
   a.vida.torcida = 50 + Math.round((a.vida.fama - 50) / 4);
   mexerVida(a, "moral", 8);
   if (aumento >= 1.5) a.marcas["contrato-grande"] = a.semana + 30;
+  a.marcas["recem-contratado"] = a.semana + 40;
   a.marcas["sem-renovacao"] = -1;
   a.marcas["renovacao-tratada"] = -1;
   const div = divisaoDo(estado.temporada, clubeId);
@@ -151,7 +259,7 @@ export function executarAcao(c: ContextoAtleta, ef: EfeitoAtleta, dilema: Dilema
     case "pedirMais": {
       const p = 0.25 + a.vida.empresario / 200 + a.vida.fama / 400;
       if (rng.proximo() < p) {
-        return `O empresário apertou e eles cederam. ${mudarDeClube(c, String(d.clubeId0), arredondar(Number(d.sal0) * 1.2), anos)}`;
+        return `O empresário apertou e eles cederam. ${mudarDeClube(c, String(d.clubeId0), noTeto(c, Number(d.sal0) * 1.2), anos)}`;
       }
       mexerVida(a, "empresario", -4);
       return `O ${d.clube0} achou demais e retirou a proposta.`;
@@ -177,9 +285,27 @@ export function executarAcao(c: ContextoAtleta, ef: EfeitoAtleta, dilema: Dilema
       const i = ef.indice ?? 0;
       return mudarDeClube(c, String(d[`clubeId${i}`]), Number(d[`sal${i}`]), anos);
     }
-    case "convocacao":
+    case "valorizar": {
+      const sal = Number(d.contraproposta);
+      a.contrato.salario = Math.max(a.contrato.salario, sal);
+      a.contrato.ate = Math.max(a.contrato.ate, estado.temporada.temporada + 3);
+      a.marcas["renovacao-tratada"] = a.semana + 60;
+      a.marcas["sem-renovacao"] = -1;
+      mexerVida(a, "torcida", 6);
+      mexerVida(a, "empresario", 4);
+      return `O ${c.clube.nome} cobriu: renovado até ${a.contrato.ate} por ${formatarDinheiro(a.contrato.salario)} por ano. A torcida fez festa.`;
+    }
+    case "convocacao": {
       a.convocacoes++;
-      return `Convocado pela ${a.convocacoes}ª vez. A família assistiu ao anúncio na TV.`;
+      a.marcas.selecao = a.semana + 60;
+      a.selecao ??= { jogos: 0, gols: 0 };
+      const sel = a.selecao;
+      const jogos = rng.proximo() < 0.35 + (c.j.ovr - 74) / 30 ? 2 : 1;
+      const gols = Math.min(3, poisson(rng, golsPorJogoNaSelecao(c.j) * jogos));
+      sel.jogos += jogos;
+      sel.gols += gols;
+      return `Convocado pela ${a.convocacoes}ª vez: ${jogos} jogo${jogos > 1 ? "s" : ""}${gols ? ` e ${gols} gol${gols > 1 ? "s" : ""}` : ""} na Data FIFA. A família assistiu pela TV.`;
+    }
     case "aposentar":
       aposentar(c);
       return a.posCarreira ?? "Fim de carreira.";
@@ -205,7 +331,11 @@ export function aposentar(c: ContextoAtleta): void {
   a.jogo = null;
   const jogos = a.historico.reduce((s, h) => s + h.jogos, 0);
   const gols = a.historico.reduce((s, h) => s + h.gols, 0);
-  const titulos = a.historico.flatMap((h) => h.titulos).length;
+  const titulos = a.conquistas
+    ? a.conquistas.filter((x) => x.tipo === "titulo").length
+    : a.historico.flatMap((h) => h.titulos).length;
+  const bolas = (a.conquistas ?? []).filter((x) => x.chave === "bola-de-ouro").length;
+  const premios = (a.conquistas ?? []).filter((x) => x.tipo === "premio").length;
   const v = a.vida;
   const destino =
     v.reputacao >= 65 && v.elenco >= 55
@@ -219,13 +349,31 @@ export function aposentar(c: ContextoAtleta): void {
             : v.familia >= 60
               ? "Foi cuidar da família e de uma escolinha de futebol na cidade natal."
               : "Saiu de cena discretamente; aparece de vez em quando em jogos festivos.";
-  a.posCarreira = `${a.nome} pendurou as chuteiras aos ${a.idade} anos: ${jogos} jogos, ${gols} gols e ${titulos} título${titulos === 1 ? "" : "s"}, com patrimônio de ${formatarDinheiro(a.dinheiro)}. ${destino}`;
+  a.posCarreira = `${a.nome} pendurou as chuteiras aos ${a.idade} anos: ${jogos} jogos, ${gols} gols e ${titulos} título${titulos === 1 ? "" : "s"}${premios ? `, ${premios} prêmio${premios === 1 ? "" : "s"} individua${premios === 1 ? "l" : "is"}${bolas ? ` (${bolas} Bola${bolas > 1 ? "s" : ""} de Ouro)` : ""}` : ""}, com patrimônio de ${formatarDinheiro(a.dinheiro)}. ${destino}`;
   publicarNoticia(estado.carreira, estado.temporada.rodada, "Imprensa", a.posCarreira, "info");
   noFeed(a, a.posCarreira, "info");
+}
+
+/** Média de gols por jogo do atleta pela seleção (pela posição e pelo nível). */
+export function golsPorJogoNaSelecao(j: Jogador): number {
+  const base: Record<string, number> = {
+    ATA: 0.5,
+    PD: 0.36,
+    PE: 0.36,
+    MEI: 0.3,
+    MC: 0.14,
+    VOL: 0.07,
+    ZAG: 0.06,
+    LD: 0.05,
+    LE: 0.05,
+    GOL: 0,
+  };
+  return (base[j.pos] ?? 0.1) * (j.ovr / 84) ** 3;
 }
 
 /** Condição base de jogo para o atleta jogar na seleção (evento de convocação). */
 export function podeSerConvocado(a: EstadoAtleta, j: Jogador): boolean {
   const nota = j.notas.length ? j.notas.reduce((s, x) => s + x, 0) / j.notas.length : 6;
+  if (marcaAtiva(a, "aposentou-selecao")) return false;
   return j.ovr >= 74 && a.vida.fama >= 50 && nota >= 6.6 && limitar(a.vida.forma, 0, 100) >= 45;
 }

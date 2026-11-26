@@ -3,18 +3,22 @@ import { type EstadoJogo, type OpcoesNovoJogo, novoJogo } from "../carreira/jogo
  * Modo jogador: criação do atleta (um `Jogador` a mais num clube real) e o avanço da carreira
  * nos três ritmos — semana a semana, só nos momentos decisivos, ou temporada a temporada.
  */
-import { campeoes } from "../carreira/titulos";
-import { nomeDaCompeticao, simularRodada, temporadaEncerrada, virarTemporada } from "../competicao/temporada";
+import { simularRodada, temporadaEncerrada, virarTemporada } from "../competicao/temporada";
 import { EVENTOS_ATLETA } from "../conteudo/atleta";
 import { EVENTOS_ATLETA_EXTRAS } from "../conteudo/atletaExtras";
+import { EVENTOS_ATLETA_MOMENTOS } from "../conteudo/atletaMomentos";
+import { EVENTOS_ATLETA_VIDA } from "../conteudo/atletaVida";
 import { criarJogador } from "../jogador";
 import { semanaDoMercado } from "../mercado/semana";
 import { nomeDeTecnicoFicticio } from "../mercado/tecnico";
 import { criarRng, inteiroEntre, limitar } from "../rng";
 import type { Personalidade, Posicao } from "../tipos";
-import { aposentar, executarAcao, salarioDeMercado } from "./mercado";
+import { disputarTorneio, premiosDaTemporada, registrarTitulosDoAtleta } from "./conquistas";
+import { listaDoTorneio, semanaDeJogoGrande, verificarMarcos } from "./marcos";
+import { aposentar, assedio, executarAcao, salarioDeMercado } from "./mercado";
 import {
   type ContextoAtleta,
+  type ExecutarAcao,
   clubeDoAtleta,
   criarDilema,
   escolhaAutomatica,
@@ -47,7 +51,16 @@ import {
   type RotinaAtleta,
 } from "./tipos";
 
-registrarEventos([...EVENTOS_ATLETA, ...EVENTOS_ATLETA_EXTRAS]);
+registrarEventos([
+  ...EVENTOS_ATLETA,
+  ...EVENTOS_ATLETA_EXTRAS,
+  ...EVENTOS_ATLETA_VIDA,
+  ...EVENTOS_ATLETA_MOMENTOS,
+]);
+
+/** Ações dos eventos: mercado e seleção. */
+const executar: ExecutarAcao = (c, ef, d) =>
+  ef.acao === "torneio" ? disputarTorneio(c, ef, d) : executarAcao(c, ef, d);
 
 export type OrigemAtleta = "base" | "profissional";
 
@@ -122,7 +135,7 @@ export function novoJogoAtleta(o: OpcoesNovoAtleta): EstadoJogo {
     potencial,
     treinoAcumulado: 0,
     ritmo: o.ritmo ?? "jogo",
-    rotina: { treino: 1, padrao: 1 },
+    rotina: { treino: 1, padrao: 1, folga: 1 },
     vida: {
       moral: 65,
       forma: 70,
@@ -154,6 +167,13 @@ export function novoJogoAtleta(o: OpcoesNovoAtleta): EstadoJogo {
     numeros: { jogos: 0, gols: 0, assist: 0, somaNotas: 0, qtdNotas: 0 },
     titulos: [],
     convocacoes: 0,
+    selecao: { jogos: 0, gols: 0 },
+    conquistas: [],
+    bolaDeOuro: [],
+    marcos: [],
+    vezes: {},
+    recentes: [],
+    hatTricks: 0,
     aposentado: false,
     proximoId: 1,
   };
@@ -199,7 +219,7 @@ export function decidirDilema(estado: EstadoJogo, dilemaId: string, opcao: numbe
   const antes = { ...a.vida };
   const dinheiro = a.dinheiro;
   const contrato = { ...a.contrato };
-  const r = comRng(estado, (c) => resolverDilemaDetalhado(c, dilemaId, opcao, executarAcao));
+  const r = comRng(estado, (c) => resolverDilemaDetalhado(c, dilemaId, opcao, executar));
   if (!r) return null;
   const mudancas: ResultadoDaDecisao["mudancas"] = {};
   for (const k of CAMPOS_VIDA) {
@@ -254,7 +274,7 @@ function resolverAutomaticos(estado: EstadoJogo, tudo: boolean): void {
     for (const d of [...a.dilemas]) {
       if (!tudo && dilemaPedeUsuario(a, d.capital)) continue;
       if (tudo && d.capital) continue;
-      resolverDilema(c, d.id, escolhaAutomatica(d, c), executarAcao);
+      resolverDilema(c, d.id, escolhaAutomatica(d, c), executar);
     }
     const g = a.jogo;
     if (!g) return;
@@ -283,8 +303,12 @@ export function avancarAtleta(estado: EstadoJogo, limiteDeSemanas = 80): Pendenc
     // Dilemas comuns que o usuário não respondeu no ritmo "jogo" já foram tratados acima.
     if (a.jogo) {
       if (lancesPendentes(a.jogo).some((l) => lancePedeUsuario(a, l.decisivo))) return "lances";
-      comRng(estado, (c) => fecharJogo(c, a.jogo!));
-      a.jogo = null;
+      comRng(estado, (c) => {
+        fecharJogo(c, a.jogo!);
+        a.jogo = null;
+        const marco = verificarMarcos(c);
+        if (marco) a.dilemas.push(marco);
+      });
       continue;
     }
     const clube = clubeDoAtleta(estado);
@@ -313,6 +337,9 @@ export function terminarJogoDoAtleta(estado: EstadoJogo): void {
       if (!l.escolha) decidirLance(c, g, i, escolhaAutomaticaDoLance(l));
     });
     fecharJogo(c, g);
+    a.jogo = null;
+    const marco = verificarMarcos(c);
+    if (marco) a.dilemas.push(marco);
   });
   a.jogo = null;
 }
@@ -328,7 +355,10 @@ function fecharSemana(estado: EstadoJogo): boolean {
     semanaDoMercado(estado, rng);
     t.rng = rng.estado();
   }
-  comRng(estado, (c) => semanaDaVida(c));
+  comRng(estado, (c) => {
+    semanaDaVida(c);
+    registrarTitulosDoAtleta(c);
+  });
   let virou = false;
   if (temporadaEncerrada(t)) {
     virada(estado);
@@ -337,13 +367,19 @@ function fecharSemana(estado: EstadoJogo): boolean {
   if (!a.aposentado) {
     comRng(estado, (c) => {
       a.dilemas.push(...sortearEventosDaSemana(c, 2, CHANCE_DE_EVENTO[a.ritmo]));
+      // Craque: os grandes não largam do pé (leilão na janela, sondagens fora dela).
+      const leilao = assedio(c, () => criarDilema(c, eventoAtleta("leilao")!));
+      if (leilao) a.dilemas.push(leilao);
+      // Momentos que não são sorteados: jogo grande na semana, lista da Copa, marcos.
+      for (const d of [semanaDeJogoGrande(c), listaDoTorneio(c), verificarMarcos(c)])
+        if (d && !a.dilemas.some((x) => x.evento === d.evento)) a.dilemas.push(d);
     });
   }
   return virou;
 }
 
 /** Chance de um evento comum na semana: menos histórias quando o jogo anda sozinho. */
-const CHANCE_DE_EVENTO: Record<RitmoAtleta, number> = { jogo: 0.55, decisivos: 0.3, temporada: 0.55 };
+const CHANCE_DE_EVENTO: Record<RitmoAtleta, number> = { jogo: 0.6, decisivos: 0.45, temporada: 0.55 };
 
 const GASTO_DO_PADRAO = [0.25, 0.5, 0.95];
 const TREINO_DA_ROTINA = [0.4, 1, 1.7];
@@ -364,8 +400,9 @@ function semanaDaVida(c: ContextoAtleta): void {
     }
   }
   const r = a.rotina;
+  const folga = r.folga ?? 1;
   a.treinoAcumulado += TREINO_DA_ROTINA[r.treino]! * (j.lesao > 0 ? 0.2 : 1) * (1 - a.vida.vicios / 200);
-  const alvoForma = 58 + r.treino * 8 - a.vida.vicios / 5 - (j.lesao > 0 ? 15 : 0);
+  const alvoForma = 58 + r.treino * 8 - a.vida.vicios / 5 - (j.lesao > 0 ? 15 : 0) + [1, 4, -5, -1][folga]!;
   mexerVida(a, "forma", (alvoForma - a.vida.forma) * 0.18);
   mexerVida(
     a,
@@ -375,7 +412,21 @@ function semanaDaVida(c: ContextoAtleta): void {
   mexerVida(a, "moral", [-0.6, 0.2, 0.8][r.padrao]! + (55 - a.vida.moral) * 0.06);
   // A fama puxa para o tamanho do jogador; o resto volta devagar para o meio.
   mexerVida(a, "fama", r.padrao * 0.2 + (limitar((j.ovr - 52) * 2.2, 5, 95) - a.vida.fama) * 0.03);
-  mexerVida(a, "vicios", r.padrao === 2 ? 0.6 : -0.4);
+  mexerVida(a, "vicios", (r.padrao === 2 ? 0.6 : -0.4) + (folga === 2 ? 0.5 : 0));
+  // Folga: família, descanso, noite ou negócios (patrocínios e redes sociais).
+  if (folga === 0) {
+    mexerVida(a, "familia", 1.2);
+    mexerVida(a, "moral", 0.2);
+  } else if (folga === 2) {
+    mexerVida(a, "moral", 0.8);
+    mexerVida(a, "fama", 0.25);
+    mexerVida(a, "familia", -0.5);
+    if (rng.proximo() < 0.12) a.marcas.ressaca = a.semana + 1;
+  } else if (folga === 3) {
+    a.dinheiro += sal * 0.04 * (0.5 + a.vida.fama / 100);
+    mexerVida(a, "fama", 0.35);
+    mexerVida(a, "familia", -0.4);
+  }
   mexerVida(a, "tecnico", (55 - a.vida.tecnico) * 0.06);
   mexerVida(a, "torcida", (55 - a.vida.torcida) * 0.04);
   mexerVida(a, "reputacao", (55 - a.vida.reputacao) * 0.015);
@@ -397,10 +448,11 @@ function virada(estado: EstadoJogo): void {
   const t = estado.temporada;
   comRng(estado, (c) => {
     const { j, clube, rng } = c;
-    const titulos: string[] = [];
-    for (const [comp, campeao] of campeoes(estado)) {
-      if (campeao === clube.id) titulos.push(nomeDaCompeticao(t, comp));
-    }
+    registrarTitulosDoAtleta(c);
+    const titulos = (a.conquistas ?? [])
+      .filter((x) => x.tipo === "titulo" && x.temporada === t.temporada)
+      .map((x) => x.nome);
+    const premios = premiosDaTemporada(c).map((x) => x.nome);
     const n = a.numeros;
     const nota = n.qtdNotas ? Math.round((n.somaNotas / n.qtdNotas) * 100) / 100 : null;
     a.historico.push({
@@ -413,12 +465,8 @@ function virada(estado: EstadoJogo): void {
       assist: n.assist,
       nota,
       titulos,
+      ...(premios.length ? { premios } : {}),
     });
-    if (titulos.length) {
-      mexerVida(a, "fama", 6 * titulos.length);
-      mexerVida(a, "moral", 8);
-      noFeed(a, `Campeão: ${titulos.join(", ")}!`, "bom");
-    }
     // Evolução: idade, treino acumulado, minutos e notas; vícios atrapalham; depois dos 31, cai.
     a.idade++;
     const rendimento =

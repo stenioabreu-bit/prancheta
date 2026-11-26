@@ -53,6 +53,8 @@ export interface RotinaAtleta {
   treino: 0 | 1 | 2;
   /** 0 simples, 1 confortável, 2 ostentação. */
   padrao: 0 | 1 | 2;
+  /** Folga: 0 família, 1 descanso, 2 noite, 3 negócios e redes (saves antigos não têm). */
+  folga?: 0 | 1 | 2 | 3;
 }
 
 /** Consequência agendada: dispara um evento numa semana futura, com uma chance. */
@@ -116,7 +118,11 @@ export type CategoriaEvento =
   | "empresario"
   | "vestiario"
   | "saude"
-  | "carreira";
+  | "carreira"
+  | "rotina"
+  | "polemica"
+  | "marco"
+  | "selecao";
 
 export interface RegistroDeEscolha {
   semana: number;
@@ -200,9 +206,38 @@ export interface TemporadaDoAtleta {
   assist: number;
   nota: number | null;
   titulos: string[];
+  /** Prêmios individuais da temporada. */
+  premios?: string[];
 }
 
 export type PeDominante = "direito" | "esquerdo";
+
+/** Título do clube ou prêmio individual; aparece na sala de troféus e num aviso dourado até ser visto. */
+export interface ConquistaAtleta {
+  id: string;
+  tipo: "titulo" | "premio";
+  /** Competição (títulos) ou id do prêmio ("bola-de-ouro", "artilheiro:A"...). */
+  chave: string;
+  nome: string;
+  temporada: number;
+  clubeId: string;
+  clube: string;
+  /** Chave do logo da competição (títulos). */
+  logo?: string;
+  /** "27 gols", "1º de 30 no ranking"... */
+  detalhe?: string;
+  /** 1 comum, 2 grande, 3 histórico (Bola de Ouro, Copa do Mundo, continental). */
+  peso: 1 | 2 | 3;
+  visto: boolean;
+}
+
+/** Colocação do atleta na Bola de Ouro de uma temporada. */
+export interface ColocacaoNaBola {
+  temporada: number;
+  posicao: number;
+  vencedor: string;
+  vencedorClube: string;
+}
 
 export interface EstadoAtleta {
   jogadorId: string;
@@ -240,10 +275,20 @@ export interface EstadoAtleta {
   feed: { semana: number; texto: string; tipo: "bom" | "ruim" | "info" }[];
   historico: TemporadaDoAtleta[];
   /** Números da temporada em andamento (todas as competições). */
-  numeros: { jogos: number; gols: number; assist: number; somaNotas: number; qtdNotas: number };
+  numeros: {
+    jogos: number;
+    gols: number;
+    assist: number;
+    somaNotas: number;
+    qtdNotas: number;
+    /** Gols bonitos da temporada (de fora, caneta, cavadinha): concorrem ao Gol do Ano. */
+    golacos?: number;
+  };
   /** Títulos já contados na temporada ("temporada:competição"). */
   titulos: string[];
   convocacoes: number;
+  /** Jogos e gols pela seleção (saves antigos não têm). */
+  selecao?: { jogos: number; gols: number };
   aposentado: boolean;
   /** Texto do pós-carreira (quando aposenta). */
   posCarreira?: string;
@@ -251,6 +296,18 @@ export interface EstadoAtleta {
   ultimoResultado?: ResultadoDaDecisao | null;
   /** Última variação de cada indicador (mostrada no Status). */
   ultimaMudanca?: Partial<Record<CampoVida, number>>;
+  /** Títulos e prêmios individuais (saves antigos não têm). */
+  conquistas?: ConquistaAtleta[];
+  /** Colocações na Bola de Ouro (só quando entrou no top 30). */
+  bolaDeOuro?: ColocacaoNaBola[];
+  /** Marcos da carreira já comemorados ("primeiro-gol", "gols-100"...). */
+  marcos?: string[];
+  /** Quantas vezes cada evento já saiu (para variar as histórias). */
+  vezes?: Record<string, number>;
+  /** Categorias dos últimos eventos (para não repetir o tema). */
+  recentes?: string[];
+  /** Hat-tricks na carreira. */
+  hatTricks?: number;
   /** Aposentado que virou técnico: o save segue no modo técnico. */
   virouTecnico?: boolean;
   proximoId: number;

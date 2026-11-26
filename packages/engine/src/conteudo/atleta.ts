@@ -1,4 +1,10 @@
-import { montarLivre, montarProposta, montarRenovacao, podeSerConvocado } from "../atleta/mercado";
+import {
+  montarLeilao,
+  montarLivre,
+  montarProposta,
+  montarRenovacao,
+  podeSerConvocado,
+} from "../atleta/mercado";
 /**
  * Eventos do modo jogador. Cada evento tem gatilho (`requer`), texto com {marcadores} e opções;
  * as opções mexem na vida na hora e agendam consequências (`agendar`) que viram outros eventos depois.
@@ -609,7 +615,7 @@ export const EVENTOS_ATLETA: DefEvento[] = [
     titulo: "Seu pai foi internado",
     texto: "Seu pai foi internado na cidade natal, a mil quilômetros. Tem jogo no fim de semana.",
     peso: 2,
-    intervalo: 60,
+    intervalo: 150,
     opcoes: [
       {
         texto: "Viajar e perder o jogo",
@@ -1284,6 +1290,28 @@ export const EVENTOS_ATLETA: DefEvento[] = [
         texto: "Recusar e testar o mercado",
         efeito: { acao: "recusarRenovacao", vida: { torcida: -4 } },
         resultado: "",
+      },
+    ],
+  },
+  {
+    id: "leilao",
+    categoria: "carreira",
+    titulo: "Os gigantes batem na porta",
+    texto:
+      "O telefone do seu empresário não para. {clube0} oferece {salario0} por ano, {clube1} chega a {salario1} e {clube2} fala em {salario2}, todos por {anos} anos. O {clube} diz que cobre com {contrapropostaTxt} por ano se você ficar.",
+    agendado: true,
+    capital: true,
+    montar: montarLeilao,
+    opcoes: [
+      { texto: "Assinar com o {clube0}", efeito: { acao: "assinarLivre", indice: 0 }, resultado: "" },
+      { texto: "Assinar com o {clube1}", efeito: { acao: "assinarLivre", indice: 1 }, resultado: "" },
+      { texto: "Assinar com o {clube2}", efeito: { acao: "assinarLivre", indice: 2 }, resultado: "" },
+      {
+        texto: "Ficar e aceitar a renovação do {clube}",
+        dica: "Salário maior e a torcida do seu lado",
+        efeito: { acao: "valorizar" },
+        resultado: "",
+        auto: true,
       },
     ],
   },

@@ -3,7 +3,9 @@ export {
   type ContextoAtleta,
   type DefEvento,
   type DefOpcao,
+  EFEITOS_DE_JOGO,
   clubeDoAtleta,
+  efeitosDeJogo,
   jogadorDoAtleta,
   marcaAtiva,
   salarioSemanal,
@@ -16,3 +18,9 @@ export * from "./tecnico";
 export * from "./mundo";
 export * from "./criacao";
 export * from "./painel";
+export {
+  conquistasNaoVistas,
+  salaDeTrofeus,
+  torneioDoAno,
+  verConquista,
+} from "./conquistas";

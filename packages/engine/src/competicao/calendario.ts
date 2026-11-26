@@ -52,6 +52,21 @@ export function dataDoJogo(j: Pick<JogoAgendado, "rodada" | "meioDeSemana" | "da
   return j.data ?? dataDoHorario(j.rodada, j.meioDeSemana);
 }
 
+/** Ano do calendário-modelo: toda temporada reusa as datas de 2026 (a semana 0 é 05/01/2026). */
+export const ANO_DO_CALENDARIO = 2026;
+
+/**
+ * Data do calendário-modelo levada para o ano da temporada, para mostrar na tela. Anda semanas inteiras
+ * (o domingo de jogo continua domingo), então fica a no máximo 3 dias da mesma data do calendário.
+ */
+export function dataNaTemporada(data: string, temporada: number): string {
+  const anos = temporada - ANO_DO_CALENDARIO;
+  if (!anos) return data;
+  const semanas = Math.round((anos * 365.2425) / 7);
+  const [a, m, d] = data.split("-").map(Number) as [number, number, number];
+  return new Date(Date.UTC(a, m - 1, d + semanas * 7)).toISOString().slice(0, 10);
+}
+
 /** Dias entre duas datas AAAA-MM-DD. */
 export function diasEntre(a: string, b: string): number {
   return Math.abs(diasDesdeInicio(a) - diasDesdeInicio(b));

@@ -1,5 +1,5 @@
 import { FINANCAS_2026 } from "@prancheta/data";
-import { type Moeda, definirMoeda } from "@prancheta/engine";
+import { type Moeda, definirMoeda, repararLigasDoMundo } from "@prancheta/engine";
 import {
   type EstadoJogo,
   type OrigemAtleta,
@@ -110,6 +110,11 @@ export const useLoja = create<Loja>((set, get) => ({
   async iniciar() {
     const jogo = await carregar(armazenamento);
     if (jogo) definirMoeda(jogo.carreira.moeda ?? "BRL");
+    // Saves antigos do modo jogador: clube da liga do mundo confundido com um do pacote de mesmo nome.
+    if (jogo?.atleta && Object.keys(jogo.temporada.estaduais ?? {}).some((k) => k.startsWith("mundo-"))) {
+      const mundo = await carregarMundo();
+      if (mundo && repararLigasDoMundo(jogo, mundo.ligas) > 0) await salvar(armazenamento, jogo);
+    }
     const escudos = jogo ? await escudosDoPacote(await lerConfig("pacoteDoJogo")) : {};
     set(jogo ? { jogo, escudos, pronto: true } : { pronto: true });
   },

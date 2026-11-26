@@ -300,7 +300,9 @@ function CartaoDoDilema({ d, restantes }: { d: DilemaAtleta; restantes: number }
   return (
     <article className="at-historia" data-categoria={d.categoria}>
       <div className="at-historia-topo">
-        <span className="at-tag">{dataPorExtenso(dataDaSemana(jogo.temporada.rodada))}</span>
+        <span className="at-tag">
+          {dataPorExtenso(dataDaSemana(jogo.temporada.rodada), jogo.temporada.temporada)}
+        </span>
         <span className="small">
           {CATEGORIA[d.categoria] ?? d.categoria}
           {d.capital ? " · decisão importante" : ""}
@@ -539,7 +541,7 @@ function ProximoCompromisso() {
   if (!proximo) {
     return (
       <section className="panel stack">
-        <span className="eyebrow">Semana de {dataPorExtenso(dataDaSemana(t.rodada))}</span>
+        <span className="eyebrow">Semana de {dataPorExtenso(dataDaSemana(t.rodada), t.temporada)}</span>
         <p className="muted" style={{ margin: 0 }}>
           Sem jogo marcado para o {clube.nome}. Treinos e vida seguem.
         </p>
@@ -551,7 +553,8 @@ function ProximoCompromisso() {
   return (
     <section className="panel stack">
       <span className="eyebrow">
-        Próximo jogo · {nomeDaCompeticao(t, proximo.competicao)} · {dataPorExtenso(dataDoJogo(proximo))}
+        Próximo jogo · {nomeDaCompeticao(t, proximo.competicao)} ·{" "}
+        {dataPorExtenso(dataDoJogo(proximo), t.temporada)}
       </span>
       <div className="row">
         <Escudo clube={adv} tamanho={28} />

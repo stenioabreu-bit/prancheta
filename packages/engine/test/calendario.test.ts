@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   conflitosDeCalendario,
+  dataNaTemporada,
   horarioLivre,
   novaTemporada,
   simularRodada,
@@ -39,5 +40,16 @@ describe("calendário", () => {
     const primeira = Object.values(estado.jogos).find((j) => j.competicao === "A")!.rodada;
     expect(horarioLivre(estado.jogos, ids, 0, true)).toBe(0);
     expect(horarioLivre(estado.jogos, ids, primeira, true)).not.toBe(primeira);
+  });
+
+  it("datas do calendário-modelo vão para o ano da temporada no mesmo dia da semana", () => {
+    expect(dataNaTemporada("2026-09-27", 2026)).toBe("2026-09-27");
+    for (const temporada of [2027, 2028, 2031, 2045]) {
+      const data = dataNaTemporada("2026-09-27", temporada);
+      expect(data.slice(0, 4)).toBe(String(temporada));
+      expect(new Date(`${data}T00:00:00Z`).getUTCDay()).toBe(0);
+      const alvo = Date.UTC(temporada, 8, 27);
+      expect(Math.abs(Date.parse(`${data}T00:00:00Z`) - alvo) / 86_400_000).toBeLessThanOrEqual(3);
+    }
   });
 });

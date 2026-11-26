@@ -1,24 +1,25 @@
-import { dataDaSemana, dataPorExtenso, rotuloDaPartida } from "../componentes/PreJogo";
 import {
-  competicaoDoMomento,
-  metasDaTemporada,
   candidatar,
   chaveDoLogo,
+  competicaoDoMomento,
   dataDoJogo,
+  dataNaTemporada,
   divisaoDo,
   exigencia,
   fimDeTemporada,
+  idaDoConfronto,
+  metasDaTemporada,
   nomeDaCompeticao,
   novaTemporadaDoJogo,
   posicaoNaTabela,
   proximoJogoDoUsuario,
-  idaDoConfronto,
   relatorioDoAdversario,
   seguir,
   simularPartidaDoUsuario,
 } from "@prancheta/engine";
 import { Fragment } from "react";
 import { LogoCompeticao } from "../componentes/LogoCompeticao";
+import { dataDaSemana, dataPorExtenso, rotuloDaPartida } from "../componentes/PreJogo";
 import { Escudo, Forma, NomeClube } from "../componentes/basicos";
 import { useJogo, useLoja } from "../estado/loja";
 import { Caixa } from "./Clube";
@@ -34,7 +35,7 @@ function ProximoJogo() {
   if (!proximo) {
     return (
       <section className="panel stack">
-        <span className="eyebrow">Semana de {dataPorExtenso(dataDaSemana(t.rodada))}</span>
+        <span className="eyebrow">Semana de {dataPorExtenso(dataDaSemana(t.rodada), t.temporada)}</span>
         <h2>Seu time não joga nesta rodada</h2>
         <p className="muted small" style={{ margin: 0 }}>
           A rodada segue com os outros jogos; o treino e o vestiário continuam na semana.
@@ -54,7 +55,7 @@ function ProximoJogo() {
     <section className="panel stack">
       <span className="eyebrow comp-rotulo">
         <LogoCompeticao competicao={chaveDoLogo(t, proximo.competicao)} tamanho={22} />
-        {competicao} · {rotuloDaPartida(t, proximo)} · {dataPorExtenso(dataDoJogo(proximo))}
+        {competicao} · {rotuloDaPartida(t, proximo)} · {dataPorExtenso(dataDoJogo(proximo), t.temporada)}
       </span>
       <div className="fixture">
         <div className="stack" style={{ alignItems: "center", gap: 6 }}>
@@ -253,7 +254,7 @@ function Noticias() {
               <li key={`${n.rodada}-${i}`} className={n.tipo}>
                 <div>
                   <div className="de">
-                    {n.de} · {dataPorExtenso(dataDaSemana(n.rodada))}
+                    {n.de} · {dataPorExtenso(dataDaSemana(n.rodada), jogo.temporada.temporada)}
                   </div>
                   <div className="small">{n.texto}</div>
                 </div>
@@ -286,7 +287,8 @@ function Calendario() {
           return (
             <li key={j.id} className="cal-item">
               <span className="cal-rod num">
-                {dataDoJogo(j).slice(8, 10)}/{dataDoJogo(j).slice(5, 7)}
+                {dataNaTemporada(dataDoJogo(j), t.temporada).slice(8, 10)}/
+                {dataNaTemporada(dataDoJogo(j), t.temporada).slice(5, 7)}
               </span>
               <NomeClube clube={adv} tamanho={20} />
               <span className="small muted comp-rotulo">

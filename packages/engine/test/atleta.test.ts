@@ -22,6 +22,7 @@ import {
   propostasDaBase,
   propostasDeTecnico,
   proximoJogoDoUsuario,
+  repararLigasDoMundo,
   salaDeTrofeus,
   seguir,
   simularPartidaDoUsuario,
@@ -419,6 +420,59 @@ describe("modo jogador", () => {
     }
     expect(a.contrato.salario).toBeLessThan(60);
   }, 120_000);
+
+  it("clube das ligas do mundo não é confundido com um do pacote de mesmo nome", () => {
+    const liga = (pais: string) => ({
+      id: "mundo-esp",
+      codigo: "ESP",
+      nome: "La Liga",
+      pais,
+      nivel: 1,
+      clubes: [
+        { id: "m-barca", nome: "FC Barcelona", sigla: "FCB", nivel: 85 },
+        ...Array.from({ length: 9 }, (_, i) => ({
+          id: `m-esp-${i}`,
+          nome: `Espanhol ${i}`,
+          sigla: `E${i}`,
+          nivel: 78,
+        })),
+      ],
+    });
+    const criar = (pais: string) =>
+      novoJogoAtleta({
+        semente: 6,
+        temporada: 2026,
+        divisoes: divisoes(),
+        vagasDiretasCopa: ["c0", "c1", "d0", "d1"],
+        clubesExtras: [{ id: "x-barcelona", nome: "Barcelona SC", sigla: "BSC", nivel: 70 }],
+        clubeId: "a5",
+        nome: "Zé",
+        pos: "ATA",
+        origem: "base",
+        mundo: [liga(pais)],
+      });
+    const jogosDa = (e: EstadoJogo) =>
+      Object.values(e.temporada.jogos).filter((j) => j.competicao === "est-mundo-esp");
+    // Liga europeia: o Barcelona de verdade entra, o equatoriano fica nas copas dele.
+    const certo = criar("Espanha");
+    expect(certo.temporada.estaduais!["mundo-esp"]!.clubes).toContain("m-barca");
+    expect(certo.temporada.estaduais!["mundo-esp"]!.clubes).not.toContain("x-barcelona");
+    // Save antigo (clube confundido): o reparo troca pelo clube certo na tabela e nos jogos.
+    const antigo = criar("Argentina");
+    expect(antigo.temporada.estaduais!["mundo-esp"]!.clubes).toContain("x-barcelona");
+    expect(repararLigasDoMundo(antigo, [liga("Espanha")])).toBe(1);
+    const div = antigo.temporada.estaduais!["mundo-esp"]!;
+    expect(div.clubes).toContain("m-barca");
+    expect(div.clubes).not.toContain("x-barcelona");
+    expect(antigo.temporada.formatosEstaduais!["mundo-esp"]!.participantes).toContain("m-barca");
+    expect(jogosDa(antigo).some((j) => j.casa === "m-barca" || j.visitante === "m-barca")).toBe(true);
+    expect(jogosDa(antigo).some((j) => j.casa === "x-barcelona" || j.visitante === "x-barcelona")).toBe(
+      false,
+    );
+    expect(antigo.temporada.clubes["x-barcelona"]).toBeTruthy();
+    // Rodar de novo não troca nada.
+    expect(repararLigasDoMundo(antigo, [liga("Espanha")])).toBe(0);
+  });
 });
 
 function ctx(e: EstadoJogo): ContextoAtleta {

@@ -84,7 +84,7 @@ function Topo() {
         <div className="sub">
           {carreira.tecnico}
           {divisao ? ` · ${nomeDaCompeticao(temporada, divisao)}` : " · desempregado"} · {temporada.temporada}{" "}
-          · {dataPorExtenso(dataDaSemana(temporada.rodada))}
+          · {dataPorExtenso(dataDaSemana(temporada.rodada), temporada.temporada)}
         </div>
       </div>
       {clube && (

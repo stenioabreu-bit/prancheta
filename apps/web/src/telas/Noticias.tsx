@@ -2,6 +2,7 @@ import {
   type EstadoJogo,
   type Noticia,
   dataDoHorario,
+  dataNaTemporada,
   hashTexto,
   metasDaTemporada,
   nomeDaCompeticao,
@@ -29,8 +30,8 @@ const REPERCUSSAO: Record<Noticia["tipo"], string[]> = {
   ],
 };
 
-function data(rodada: number): string {
-  const [a, m, d] = dataDoHorario(rodada, false).split("-");
+function data(rodada: number, temporada: number): string {
+  const [a, m, d] = dataNaTemporada(dataDoHorario(rodada, false), temporada).split("-");
   return `${d}/${m}/${a}`;
 }
 
@@ -97,7 +98,7 @@ export function Noticias() {
               <li key={`${x.rodada}-${i}`} className={x.tipo}>
                 <button type="button" className="link" onClick={() => setAberta(i)} style={{ width: "100%" }}>
                   <div className="de">
-                    {x.de} · {data(x.rodada)}
+                    {x.de} · {data(x.rodada, jogo.temporada.temporada)}
                   </div>
                   <div className="small">{x.texto}</div>
                 </button>
@@ -109,7 +110,7 @@ export function Noticias() {
       {n && m && (
         <Folha titulo={n.de} aoFechar={() => setAberta(null)}>
           <span className="small muted">
-            {data(n.rodada)} · rodada {n.rodada + 1}
+            {data(n.rodada, jogo.temporada.temporada)} · rodada {n.rodada + 1}
           </span>
           <h2 style={{ margin: "4px 0 8px" }}>{m.titulo}</h2>
           {m.paragrafos.map((p) => (

@@ -1,12 +1,13 @@
 import {
+  type EstadoTemporada,
+  type JogoAgendado,
   type Partida,
   chaveDoLogo,
-  dataDoJogo,
   dataDoHorario,
-  type EstadoTemporada,
-  fasesDaCompeticao,
-  type JogoAgendado,
+  dataDoJogo,
+  dataNaTemporada,
   disponivel,
+  fasesDaCompeticao,
   nomeDaCompeticao,
   proximoJogoDoUsuario,
   simularPartidaDoUsuario,
@@ -42,7 +43,9 @@ export function rotuloDaPartida(t: EstadoTemporada, jogo: JogoAgendado): string 
   return `${fase && fase.tipo === "liga" && fase.grupos.length > 1 ? `${jogo.fase} · ` : ""}${jogados + 1}ª rodada`;
 }
 
-export function dataPorExtenso(data: string): string {
+/** "dom, 27/09/2028": a data do calendário-modelo no ano da temporada. */
+export function dataPorExtenso(modelo: string, temporada: number): string {
+  const data = dataNaTemporada(modelo, temporada);
   const [a, m, d] = data.split("-").map(Number);
   const dia = new Date(Date.UTC(a!, m! - 1, d!)).getUTCDay();
   return `${["dom", "seg", "ter", "qua", "qui", "sex", "sáb"][dia]}, ${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${a}`;
@@ -83,7 +86,7 @@ export function PreJogo() {
               {t.clubes[proximo.casa]?.sigla} x {t.clubes[proximo.visitante]?.sigla}
             </b>
             <span className="small muted" style={{ display: "block" }}>
-              {dataPorExtenso(dataDoJogo(proximo))}
+              {dataPorExtenso(dataDoJogo(proximo), t.temporada)}
               {fora > 0 ? ` · ${fora} fora` : ""}
               {cansados > 0 ? ` · ${cansados} cansado(s)` : ""}
             </span>
@@ -126,7 +129,7 @@ export function PreJogo() {
               {t.clubes[proximo.casa]?.nome} x {t.clubes[proximo.visitante]?.nome}
             </h2>
             <span className="small muted">
-              {nomeDaCompeticao(t, proximo.competicao)} · {dataPorExtenso(dataDoJogo(proximo))}
+              {nomeDaCompeticao(t, proximo.competicao)} · {dataPorExtenso(dataDoJogo(proximo), t.temporada)}
             </span>
             <span className="eyebrow" style={{ marginTop: 6 }}>
               Como você quer jogar?

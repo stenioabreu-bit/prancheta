@@ -18,7 +18,9 @@ import type { EstadoFase, EstadoFaseMataMata, IdCompeticao, JogoAgendado } from 
 
 export type FonteContinental =
   | { vencedoresDe: string }
-  | { grupoPos: number; fase: string; competicao?: IdCompeticao };
+  | { grupoPos: number; fase: string; competicao?: IdCompeticao }
+  /** Faixa da classificação de uma fase de liga de grupo único (ex.: 9º ao 16º da fase de liga UEFA). */
+  | { posicoes: [number, number]; fase: string };
 
 export interface FaseContinental {
   tipo: "liga" | "mataMata";
@@ -84,6 +86,11 @@ function lado(est: EstadoContinental, ctx: ContextoContinental, f: FonteContinen
   if ("vencedoresDe" in f) {
     const fase = faseDe(est, f.vencedoresDe) as EstadoFaseMataMata;
     return fase.confrontos.map((c) => c.vencedor!);
+  }
+  if ("posicoes" in f) {
+    const fase = faseDe(est, f.fase);
+    if (fase?.tipo !== "liga") return [];
+    return classificacaoDoGrupo(fase, 0).slice(f.posicoes[0] - 1, f.posicoes[1]);
   }
   const dono = f.competicao ? ctx.outras[f.competicao] : est;
   const fase = dono && faseDe(dono, f.fase);

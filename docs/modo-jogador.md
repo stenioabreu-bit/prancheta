@@ -113,3 +113,24 @@ Tom: adulto, mas narrativo (sem conteúdo explícito).
   lista da Copa, marcos e leilão). Peso cai mais rápido a cada aparição.
 - Garotos gerados para repor elencos de elite podem ter teto até 93, então o mundo continua formando
   estrelas depois que os craques do pacote se aposentam.
+
+## Copas europeias (2026-11-27)
+- `competicao/europa.ts`: Champions League, Europa League e Conference League no formato atual da UEFA:
+  fase de liga com 36 clubes e 8 jogos cada (sorteio por potes de `competicao/uefa.ts`), playoffs (9º–16º
+  contra 17º–24º), oitavas com os oito primeiros, quartas, semifinal e final em campo neutro. Rodam no
+  mesmo motor das copas continentais (`cont-UCL`, `cont-UEL`, `cont-UECL`; fonte nova `posicoes` para
+  faixas da tabela).
+- Vagas por país (`VAGAS_EUROPEIAS`, 36 por copa): Inglaterra e Espanha 5/3/2, Itália e Alemanha 4/3/3,
+  França 3/4/3, Portugal e Países Baixos 3/4/4, Bélgica, Turquia e Escócia 3/4/5. Primeira temporada pela
+  força; depois pela tabela da liga (`virarTemporada` remonta as copas quando `copasEuropeias` está ligado).
+- Calendário-modelo: fase de liga de fevereiro a maio (terça na Champions, quinta nas outras), mata-mata
+  de junho a agosto e finais entre o fim de agosto e setembro.
+- `adicionarCopasEuropeias(estado)` serve para qualquer save com as ligas europeias (base para o modo
+  técnico). Save antigo do modo jogador ganha as copas na próxima virada do ano.
+- Logos oficiais (Wikipédia/Wikimedia) em `apps/web/public/assets/logos/competicoes/continentais/`, no
+  manifesto e no catálogo de `packages/data`.
+- Jogo decisivo agora inclui toda noite continental, topo contra topo, confronto direto com vizinho de
+  tabela (até 2 posições) e a reta final de quem briga por título ou contra o rebaixamento, então time
+  médio também tem jogo grande. Evento novo "Noite de {competição}" antes da fase de liga.
+- Títulos: Champions vale mais na Bola de Ouro (24) que Libertadores (14), Europa League (10),
+  Sul-Americana (8) e Conference (6).

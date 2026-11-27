@@ -30,7 +30,17 @@ function ehElite(comp: string): boolean {
 
 const GRANDES_LIGAS = ["est-mundo-eng", "est-mundo-esp", "est-mundo-ita", "est-mundo-ger", "est-mundo-fra"];
 
+/** Bônus de cada título continental no ranking da Bola de Ouro (Champions no topo). */
+const BONUS_CONTINENTAL: Record<string, number> = {
+  "cont-UCL": 24,
+  "cont-LIB": 14,
+  "cont-UEL": 10,
+  "cont-SUL": 8,
+  "cont-UECL": 6,
+};
+
 function pesoDoTitulo(comp: string): 1 | 2 | 3 {
+  if (comp === "cont-UECL" || comp === "cont-SUL") return 2;
   if (comp.startsWith("cont-")) return 3;
   if (comp === "copa" || ehElite(comp)) return 2;
   return 1;
@@ -154,7 +164,15 @@ function bonusDeTitulos(estado: EstadoJogo): Map<string, number> {
   const m = new Map<string, number>();
   for (const [comp, campeao] of campeoes(estado)) {
     if (!campeao) continue;
-    const b = comp.startsWith("cont-") ? 14 : ehElite(comp) ? 10 : comp === "copa" ? 5 : ehLiga(comp) ? 4 : 2;
+    const b = comp.startsWith("cont-")
+      ? (BONUS_CONTINENTAL[comp] ?? 10)
+      : ehElite(comp)
+        ? 10
+        : comp === "copa"
+          ? 5
+          : ehLiga(comp)
+            ? 4
+            : 2;
     m.set(campeao, (m.get(campeao) ?? 0) + b);
   }
   return m;

@@ -351,6 +351,49 @@ export const EVENTOS_ATLETA_MOMENTOS: DefEvento[] = [
     ],
   },
   {
+    id: "noite-continental",
+    categoria: "carreira",
+    titulo: "Noite de {fase}",
+    texto:
+      "Hino da competição, estádio lotado, câmeras do mundo inteiro e o {adversario} do outro lado. É o tipo de jogo que vira vídeo de melhores momentos para sempre, ou de piores.",
+    agendado: true,
+    opcoes: [
+      {
+        texto: "Ficar no hotel revendo os lances do rival",
+        dica: "Mais leitura de jogo; menos descanso",
+        efeito: { vida: { tecnico: 2 }, marcar: { "estudou-rival": 2 } },
+        resultado: "Você sabe de cor para que lado o zagueiro deles gira o corpo.",
+        auto: true,
+      },
+      {
+        texto: "Ir para o gramado ouvir o hino antes de todo mundo",
+        dica: "Pode arrepiar e inspirar, ou pesar nas pernas",
+        efeito: { vida: { moral: 3 }, marcar: { inspirado: 2 } },
+        resultado: "Você fechou os olhos no círculo central e sentiu o estádio tremer.",
+        sorte: {
+          p: (c) => 0.45 + c.a.vida.moral / 250,
+          senao: {
+            efeito: { vida: { moral: -2 }, marcar: { pressionado: 2 } },
+            resultado: "O barulho entrou fundo demais. Você vai entrar em campo com o coração na boca.",
+          },
+        },
+      },
+      {
+        texto: "Prometer gol para a torcida que viajou",
+        dica: "A promessa vira cobrança se não sair",
+        efeito: { vida: { torcida: 5, fama: 2 }, marcar: { confiante: 2 } },
+        resultado: "A torcida visitante cantou o seu nome a viagem inteira.",
+        sorte: {
+          p: 0.5,
+          senao: {
+            efeito: { vida: { torcida: 2 }, marcar: { pressionado: 2 } },
+            resultado: "Agora cada chance perdida vai ecoar na arquibancada.",
+          },
+        },
+      },
+    ],
+  },
+  {
     id: "reencontro-ex",
     categoria: "carreira",
     titulo: "Reencontro com o {adversario}",

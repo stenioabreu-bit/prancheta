@@ -280,6 +280,18 @@ export const VARIANTES_DO_ATLETA: Record<string, VarianteDoEvento[]> = {
         "Outra vez entre os três melhores do mundo, outra vez sem a Bola. Os jornalistas já perguntam se você vai à cerimônia.",
     },
   ],
+  "noite-continental": [
+    {
+      titulo: "{fase}: jogo de gala",
+      texto:
+        "O {adversario} chega com elenco de seleção. Na coletiva, o técnico deles disse que conhece os seus movimentos de cor.",
+    },
+    {
+      titulo: "{fase} fora de casa",
+      texto:
+        "Viagem longa, estádio hostil e a torcida do {adversario} prometendo um inferno. O ônibus foi recebido com sinalizadores.",
+    },
+  ],
   "reencontro-ex": [
     {
       titulo: "A volta ao estádio do {adversario}",

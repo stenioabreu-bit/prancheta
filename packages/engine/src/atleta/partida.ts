@@ -7,6 +7,7 @@
 import { ehClassico } from "../carreira/diretoria";
 import type { EstadoJogo } from "../carreira/jogo";
 import { escalarAutomatico, forcaDoClube, melhorPara } from "../clube";
+import { classificacaoDoGrupo } from "../competicao/fases";
 import { fasesDaCompeticao, jogosDaRodada, nomeDaCompeticao, registrarPlacar } from "../competicao/temporada";
 import type { JogoAgendado } from "../competicao/tipos";
 import { ESQUEMA_POSTOS, PESO_SETOR } from "../constantes";
@@ -276,11 +277,30 @@ export function escolhaAutomaticaDoLance(l: LanceAtleta): string {
   return melhor.id;
 }
 
-function ehDecisivo(estado: EstadoJogo, jogo: JogoAgendado): boolean {
-  if (jogo.competicao === "copa") return true;
+/**
+ * Jogo que vale parar: copa, noite continental (Champions, Libertadores...), mata-mata, clássico, e na
+ * liga o topo contra o topo, o confronto direto com um vizinho de tabela e a reta final de quem briga por
+ * título ou contra o rebaixamento. Assim o time médio também tem jogo grande.
+ */
+function ehDecisivo(estado: EstadoJogo, jogo: JogoAgendado, clubeId?: string): boolean {
+  if (jogo.competicao === "copa" || jogo.competicao.startsWith("cont-")) return true;
   const fase = fasesDaCompeticao(estado.temporada, jogo.competicao).find((f) => f.nome === jogo.fase);
   if (fase?.tipo === "mataMata") return true;
-  return ehClassico(estado.carreira, jogo.casa, jogo.visitante);
+  if (ehClassico(estado.carreira, jogo.casa, jogo.visitante)) return true;
+  if (fase?.tipo !== "liga") return false;
+  const g = fase.grupos.findIndex((x) => x.includes(jogo.casa));
+  if (g < 0) return false;
+  const ordem = classificacaoDoGrupo(fase, g);
+  const n = ordem.length;
+  const eu = clubeId ?? jogo.casa;
+  const pa = ordem.indexOf(eu) + 1;
+  const pb = ordem.indexOf(eu === jogo.casa ? jogo.visitante : jogo.casa) + 1;
+  const jogos = fase.tabelas[g]?.[eu]?.j ?? 0;
+  const total = (n - 1) * (fase.rodadaFinal > fase.rodadaInicial + n ? 2 : 1);
+  if (jogos < 3) return false;
+  if (pa <= 6 && pb <= 6) return true;
+  if (Math.abs(pa - pb) <= 2) return true;
+  return jogos >= total * 0.6 && (pa <= 3 || pa > n - 4);
 }
 
 /** Qualidade da chance que o motor criou: pesa nas opções de finalização do lance. */
@@ -408,7 +428,7 @@ export function montarJogo(c: ContextoAtleta, jogo: JogoAgendado): JogoDoAtleta 
   } else if (escalacao === "banco" && rng.proximo() < 0.5 + (a.vida.tecnico - 50) / 150) {
     entraAos = inteiroEntre(rng, 55, 82);
   }
-  const decisivo = ehDecisivo(estado, jogo);
+  const decisivo = ehDecisivo(estado, jogo, clube.id);
   // Foco, ressaca, confiança...: as escolhas da semana pesam nas chances de todos os lances.
   const formaJogo = formaNoJogo(a);
 

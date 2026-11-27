@@ -3,7 +3,12 @@ import { type EstadoJogo, type OpcoesNovoJogo, novoJogo } from "../carreira/jogo
  * Modo jogador: criação do atleta (um `Jogador` a mais num clube real) e o avanço da carreira
  * nos três ritmos — semana a semana, só nos momentos decisivos, ou temporada a temporada.
  */
-import { simularRodada, temporadaEncerrada, virarTemporada } from "../competicao/temporada";
+import {
+  adicionarCopasEuropeias,
+  simularRodada,
+  temporadaEncerrada,
+  virarTemporada,
+} from "../competicao/temporada";
 import { EVENTOS_ATLETA } from "../conteudo/atleta";
 import { EVENTOS_ATLETA_EXTRAS } from "../conteudo/atletaExtras";
 import { EVENTOS_ATLETA_MOMENTOS } from "../conteudo/atletaMomentos";
@@ -112,7 +117,10 @@ export function novoJogoAtleta(o: OpcoesNovoAtleta): EstadoJogo {
     .flat()
     .find((c) => c.id === o.clubeId);
   estado.mercado.tecnicos[o.clubeId] = dados?.tecnico ?? nomeDeTecnicoFicticio(criarRng(o.semente ^ 0x5bd1));
-  if (o.mundo?.length) adicionarLigasDoMundo(estado, o.mundo, o.excluirLigas);
+  if (o.mundo?.length) {
+    adicionarLigasDoMundo(estado, o.mundo, o.excluirLigas);
+    adicionarCopasEuropeias(estado.temporada);
+  }
   const clube = estado.temporada.clubes[o.clubeId]!;
   const base = o.origem === "base";
   const ovr = ovrInicial(o.origem, o.semente);
@@ -505,6 +513,9 @@ function virada(estado: EstadoJogo): void {
     a.treinoAcumulado = 0;
     a.numeros = { jogos: 0, gols: 0, assist: 0, somaNotas: 0, qtdNotas: 0 };
   });
+  // Save antigo com as ligas do mundo: as copas europeias entram a partir do ano novo.
+  if (!t.copasEuropeias && Object.keys(t.estaduais ?? {}).some((k) => k.startsWith("mundo-")))
+    t.copasEuropeias = true;
   virarTemporada(t);
   for (const ult of a.ultimosJogos) {
     ult.lances = [];

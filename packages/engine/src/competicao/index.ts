@@ -8,3 +8,4 @@ export * from "./calendario";
 export * from "./continental";
 export * from "./classificacaoContinental";
 export * from "./uefa";
+export * from "./europa";

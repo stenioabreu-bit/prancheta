@@ -4,7 +4,7 @@
  * final, reencontro com um ex-clube) e a lista do torneio de seleções. Cada um vira um dilema.
  */
 import { ehClassico } from "../carreira/diretoria";
-import { fasesDaCompeticao } from "../competicao/temporada";
+import { fasesDaCompeticao, nomeDaCompeticao } from "../competicao/temporada";
 import type { JogoAgendado } from "../competicao/tipos";
 import { convocavelParaTorneio, torneioDoAno } from "./conquistas";
 import { type ContextoAtleta, contarEvento, criarDilema, eventoAtleta, mexerVida, noFeed } from "./motor";
@@ -82,7 +82,11 @@ export function verificarMarcos(c: ContextoAtleta): DilemaAtleta | null {
 export function jogoGrande(
   c: ContextoAtleta,
   jogo: JogoAgendado,
-): { tipo: "final" | "mataMata" | "classico" | "reencontro"; adversario: string; fase: string } | null {
+): {
+  tipo: "final" | "mataMata" | "classico" | "reencontro" | "continental";
+  adversario: string;
+  fase: string;
+} | null {
   const { estado, a, clube } = c;
   const t = estado.temporada;
   const advId = jogo.casa === clube.id ? jogo.visitante : jogo.casa;
@@ -94,6 +98,8 @@ export function jogoGrande(
   if (fase?.tipo === "mataMata" && /final/i.test(faseNome) && !/semi|oitava|quarta/i.test(faseNome))
     return { tipo: "final", adversario, fase: faseNome };
   if (ex.has(advId)) return { tipo: "reencontro", adversario, fase: faseNome };
+  if (jogo.competicao.startsWith("cont-") && fase?.tipo === "liga")
+    return { tipo: "continental", adversario, fase: nomeDaCompeticao(t, jogo.competicao) };
   if (fase?.tipo === "mataMata") return { tipo: "mataMata", adversario, fase: faseNome };
   if (ehClassico(estado.carreira, jogo.casa, jogo.visitante))
     return { tipo: "classico", adversario, fase: faseNome };
@@ -106,6 +112,7 @@ const EVENTO_DO_JOGO = {
   reencontro: { evento: "reencontro-ex", chance: 0.45, intervalo: 30 },
   mataMata: { evento: "semana-de-mata-mata", chance: 0.25, intervalo: 30 },
   classico: { evento: "semana-de-classico", chance: 0.5, intervalo: 10 },
+  continental: { evento: "noite-continental", chance: 0.5, intervalo: 8 },
 } as const;
 
 /** A semana antes de um jogo grande vira história (uma por jogo). */

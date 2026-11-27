@@ -22,6 +22,7 @@ import {
 } from "./continental";
 import { type EstadoCopa, abrirFaseDaCopa, fecharRodadaDaCopa, montarCopa } from "./copa";
 import { type ContextoCompeticao, faseDoEstado, fecharRodadaDaDivisao, iniciarDivisao } from "./divisao";
+import { VAGAS_EUROPEIAS, ehCopaEuropeia, formatosEuropeus } from "./europa";
 import { classificacaoDoGrupo, registrarNaLiga } from "./fases";
 import { FORMATOS_2026 } from "./formatos2026";
 import type { EstadoFase } from "./tipos";
@@ -102,6 +103,8 @@ export interface EstadoTemporada {
   formatosContinentais?: FormatoContinental[];
   /** Tabela-base de 2026 (datas e vagas estrangeiras) para montar as copas dos anos seguintes. */
   formatosContinentaisBase?: FormatoContinental[];
+  /** Champions, Europa League e Conference com os clubes das ligas europeias (renovadas todo ano). */
+  copasEuropeias?: boolean;
 }
 
 export interface OpcoesNovaTemporada {
@@ -381,7 +384,12 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
       j.semJogar = 0;
     }
   }
-  if (estado.formatosContinentais) {
+  // Ranking das ligas europeias da temporada que acabou (vagas das copas do ano novo).
+  const rankingEuropeu = estado.copasEuropeias ? rankingDasLigasEuropeias(estado) : null;
+  const europeiasAntigas = (estado.formatosContinentais ?? []).filter((f) => ehCopaEuropeia(f.id));
+  if (europeiasAntigas.length)
+    estado.formatosContinentais = estado.formatosContinentais!.filter((f) => !ehCopaEuropeia(f.id));
+  if (estado.formatosContinentais?.length) {
     estado.formatosContinentaisBase ??= estado.formatosContinentais;
     const ligaA = div.A.fases.find((f) => f.tipo === "liga");
     const resultado = {
@@ -403,6 +411,13 @@ export function virarTemporada(estado: EstadoTemporada): ResumoTemporada {
       sulAmericana: brasileirosEm("cont-SUL"),
     };
   }
+  if (rankingEuropeu) {
+    const forca = (id: string) => estado.clubes[id]?.forca ?? 50;
+    estado.formatosContinentais = [
+      ...(estado.formatosContinentais ?? []),
+      ...comRng(estado, (rng) => formatosEuropeus(rankingEuropeu, forca, rng)),
+    ];
+  }
   comRng(estado, (rng) => montarCompeticoes(estado, ordem, rng));
   return resumo;
 }
@@ -417,6 +432,50 @@ export function adicionarLigaParalela(estado: EstadoTemporada, chave: string, fo
   estado.formatosEstaduais = { ...(estado.formatosEstaduais ?? {}), [chave]: formato };
   estado.estaduais ??= {};
   estado.estaduais[chave] = comRng(estado, (rng) => iniciarDivisao(formato, ids, contexto(estado, rng)));
+}
+
+/**
+ * Ordem de cada liga europeia do save (chave do país → ids): a tabela, se a liga já teve jogos; senão,
+ * a força dos clubes.
+ */
+function rankingDasLigasEuropeias(estado: EstadoTemporada): Record<string, string[]> {
+  const ranking: Record<string, string[]> = {};
+  for (const pais of Object.keys(VAGAS_EUROPEIAS)) {
+    const div = estado.estaduais?.[`mundo-${pais}`];
+    if (!div) continue;
+    const liga = div.fases.find((f) => f.tipo === "liga");
+    const jogou = liga?.tipo === "liga" && Object.values(liga.tabelas[0] ?? {}).some((l) => l.j > 0);
+    ranking[pais] =
+      jogou && liga?.tipo === "liga"
+        ? classificacaoDoGrupo(liga, 0)
+        : [...div.clubes].sort((x, y) => (estado.clubes[y]?.forca ?? 0) - (estado.clubes[x]?.forca ?? 0));
+  }
+  return ranking;
+}
+
+/**
+ * Liga as copas europeias (Champions, Europa League, Conference) num save com as ligas europeias do
+ * mundo. Na primeira temporada as vagas saem pela força; depois, pela tabela (a cada virada do ano).
+ */
+export function adicionarCopasEuropeias(estado: EstadoTemporada): void {
+  if (estado.copasEuropeias) return;
+  const ranking = rankingDasLigasEuropeias(estado);
+  if (!Object.keys(ranking).length) return;
+  estado.copasEuropeias = true;
+  // Temporada já passou da 1ª rodada da fase de liga: as copas começam na virada do ano.
+  if (estado.rodada > horarioDaData("2026-02-17").semana) return;
+  // A base das copas sul-americanas não pode levar as europeias para a renovação do ano.
+  if (estado.formatosContinentais?.length) estado.formatosContinentaisBase ??= estado.formatosContinentais;
+  const forca = (id: string) => estado.clubes[id]?.forca ?? 50;
+  const novas = comRng(estado, (rng) => formatosEuropeus(ranking, forca, rng));
+  estado.formatosContinentais = [...(estado.formatosContinentais ?? []), ...novas];
+  estado.continentais ??= {};
+  comRng(estado, (rng) => {
+    const ctx = contexto(estado, rng);
+    for (const f of novas)
+      estado.continentais![f.id] = iniciarContinental(f, { ...ctx, outras: estado.continentais! });
+  });
+  resolverConflitos(estado);
 }
 
 /** Estado da competição de liga dona do jogo (Série ou estadual). */

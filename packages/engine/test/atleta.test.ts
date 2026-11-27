@@ -9,6 +9,7 @@ import {
   clubeDoAtleta,
   competicoesAtivas,
   competicoesDoClube,
+  conflitosDeCalendario,
   conquistasNaoVistas,
   criarRng,
   decidirDilema,
@@ -40,6 +41,7 @@ import {
   criarDilema,
   eventoAtleta,
 } from "../src/atleta/motor";
+import { VAGAS_EUROPEIAS, vagasEuropeias } from "../src/competicao/europa";
 
 const TAMANHO: Record<Divisao, number> = { A: 20, B: 20, C: 20, D: 96 };
 const NIVEL: Record<Divisao, number> = { A: 74, B: 67, C: 61, D: 54 };
@@ -524,6 +526,65 @@ describe("modo jogador", () => {
     expect(l.pontos).toBeGreaterThan(50);
     expect(l.clubes).toHaveLength(1);
   });
+
+  it("copas europeias: 36 clubes, fase de liga de 8 jogos, mata-mata e renovação no ano novo", () => {
+    const ranking = Object.fromEntries(
+      Object.keys(VAGAS_EUROPEIAS).map((p) => [p, Array.from({ length: 16 }, (_, i) => `m-${p}-${i}`)]),
+    );
+    const vagas = vagasEuropeias(ranking, () => 70);
+    expect(vagas.map((v) => v.length)).toEqual([36, 36, 36]);
+    expect(new Set(vagas.flat()).size).toBe(108);
+    expect(vagas[0]).toContain("m-eng-0");
+    expect(vagas[0]).not.toContain("m-eng-5");
+
+    const mundo = Object.keys(VAGAS_EUROPEIAS).map((p) => ({
+      id: `mundo-${p}`,
+      codigo: p.toUpperCase(),
+      nome: `Liga ${p}`,
+      pais: `País ${p}`,
+      nivel: 1,
+      clubes: Array.from({ length: 16 }, (_, i) => ({
+        id: `m-${p}-${i}`,
+        nome: `${p.toUpperCase()} Clube ${i}`,
+        sigla: `${p.slice(0, 2).toUpperCase()}${i}`,
+        nivel: 82 - i,
+      })),
+    }));
+    const e = novoJogoAtleta({
+      semente: 8,
+      temporada: 2026,
+      divisoes: divisoes(),
+      vagasDiretasCopa: ["c0", "c1", "d0", "d1"],
+      clubeId: "a5",
+      nome: "Zé Europa",
+      pos: "ATA",
+      origem: "base",
+      ritmo: "temporada",
+      mundo,
+    });
+    const t = e.temporada;
+    for (const id of ["cont-UCL", "cont-UEL", "cont-UECL"]) {
+      expect(t.continentais![id]).toBeTruthy();
+      const jogos = Object.values(t.jogos).filter((j) => j.competicao === id);
+      expect(jogos).toHaveLength(144);
+      const porClube = new Map<string, number>();
+      for (const j of jogos)
+        for (const c of [j.casa, j.visitante]) porClube.set(c, (porClube.get(c) ?? 0) + 1);
+      expect([...porClube.values()].every((n) => n === 8)).toBe(true);
+    }
+    const a = e.atleta!;
+    for (let k = 0; k < 400 && a.historico.length < 1 && !a.aposentado; k++) {
+      const p = avancarAtleta(e, 400);
+      if (p === "dilemas" || p === "lances") responderTudo(e);
+    }
+    expect(a.historico.length).toBe(1);
+    const resumo = t.historico.at(-1)!;
+    for (const id of ["cont-UCL", "cont-UEL", "cont-UECL"])
+      expect(resumo.competicoes!.find((c) => c.id === id)?.campeao).toBeTruthy();
+    // Ano novo: copas remontadas pela tabela, sem conflito de calendário.
+    expect(Object.values(t.jogos).filter((j) => j.competicao === "cont-UCL")).toHaveLength(144);
+    expect(conflitosDeCalendario(t.jogos)).toEqual([]);
+  }, 180_000);
 });
 
 function ctx(e: EstadoJogo): ContextoAtleta {

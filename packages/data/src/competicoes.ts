@@ -114,6 +114,20 @@ export const COMPETICOES: readonly CompeticaoCatalogo[] = [
     pais: "CONMEBOL",
     noMotor: false,
   },
+  ...(
+    [
+      ["uefa-champions-league", "UEFA Champions League", "Champions"],
+      ["uefa-europa-league", "UEFA Europa League", "Europa League"],
+      ["uefa-conference-league", "UEFA Conference League", "Conference"],
+    ] as const
+  ).map(([id, nomeOficial, nomeCurto]) => ({
+    id,
+    nomeOficial,
+    nomeCurto,
+    categoria: "continental" as const,
+    pais: "UEFA",
+    noMotor: false,
+  })),
 ];
 
 /** A Pré-Libertadores é a fase preliminar da Libertadores e usa a mesma identidade. */
